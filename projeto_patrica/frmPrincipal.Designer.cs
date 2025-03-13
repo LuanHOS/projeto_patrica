@@ -43,7 +43,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -53,7 +53,7 @@
             this.condiçãoToolStripMenuItem,
             this.formaDePagamentoToolStripMenuItem1});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
-            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(82, 26);
+            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.cadastroToolStripMenuItem.Text = "Cadastro";
             // 
             // condiçãoToolStripMenuItem
@@ -61,6 +61,7 @@
             this.condiçãoToolStripMenuItem.Name = "condiçãoToolStripMenuItem";
             this.condiçãoToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
             this.condiçãoToolStripMenuItem.Text = "Condição de Pagamento";
+            this.condiçãoToolStripMenuItem.Click += new System.EventHandler(this.condiçãoToolStripMenuItem_Click);
             // 
             // formaDePagamentoToolStripMenuItem1
             // 

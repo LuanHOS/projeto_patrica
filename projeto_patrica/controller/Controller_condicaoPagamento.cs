@@ -1,4 +1,6 @@
-﻿using System;
+﻿using projeto_patrica.classes;
+using projeto_patrica.dao;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,34 +10,46 @@ namespace projeto_patrica.controller
 {
     internal class Controller_condicaoPagamento : Controller
     {
-        /*Dao_Notebooks aDao_Notebooks;
-        Controller_Placas_de_Video oController_Placas_de_video;
-        public Controller_Notebooks()
+        private Dao_condicaoPagamento aDao_condicaoPagamento;
+
+        public Controller_condicaoPagamento()
         {
-            aDao_Notebooks = new Dao_Notebooks();
-            oController_Placas_de_video = new Controller_Placas_de_Video();
-        }
-        public override string Salvar(object obj)
-        {
-            return aDao_Notebooks.Salvar(obj);
-        }
-        public override string CarregaObj(object obj)
-        {
-            return aDao_Notebooks.CarregaObj(obj);
-        }
-        public override string Excluir(object obj)
-        {
-            return aDao_Notebooks.Excluir(obj);
+            aDao_condicaoPagamento = new Dao_condicaoPagamento();
         }
 
-        public List<Notebooks> ListaNotebooks()
+        public override string Salvar(object obj)
         {
-            return aDao_Notebooks.ListarNotebooks();
+            return aDao_condicaoPagamento.Salvar(obj);
         }
-        public Controller_Placas_de_Video OController_Placas_de_video
+
+        public override string CarregaObj(object obj)
         {
-            get => oController_Placas_de_video;
-            set => oController_Placas_de_video = value;
-        }*/
+            return aDao_condicaoPagamento.CarregaObj(obj);
+        }
+
+        public override string Excluir(object obj)
+        {
+            return aDao_condicaoPagamento.Excluir(obj);
+        }
+
+        public List<condicaoPagamento> ListaCondicaoPagamento()
+        {
+            return aDao_condicaoPagamento.ListarCondicaoPagamento();
+        }
+
+        public List<parcelaCondicaoPagamento> ListaParcelas(int idCondicaoPagamento)
+        {
+            return aDao_condicaoPagamento.ListarParcelas(idCondicaoPagamento);
+        }
+
+        public string SalvarParcela(parcelaCondicaoPagamento parcela)
+        {
+            return aDao_condicaoPagamento.SalvarParcela(parcela);
+        }
+
+        public string ExcluirParcela(parcelaCondicaoPagamento parcela)
+        {
+            return aDao_condicaoPagamento.ExcluirParcela(parcela);
+        }
     }
 }

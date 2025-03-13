@@ -14,35 +14,32 @@ namespace projeto_patrica
     {
         frmCadastroCondicaoPagamento oFrmCadCondPag;
         frmCadastroFormaPagamento oFrmCadFormPag;
-        frmCadastroParcelaCondicaoPagamento oFrmCadParcCondPag;
 
-        //frmConsultaCondicaoPagamento oFrmConCondPag;
+        frmConsultaCondicaoPagamento oFrmConCondPag;
         frmConsultaFormaPagamento oFrmConFormPag;
-        //frmConsultaParcelaCondicaoPagamento oFrmConParcCondPag;
 
         public Interfaces()
         {
-            //oFrmConCondPag = new frmConsultaCondicaoPagamento();
+            oFrmConCondPag = new frmConsultaCondicaoPagamento();
             oFrmConFormPag = new frmConsultaFormaPagamento();
-            //oFrmConParcCondPag = new frmConsultaParcelaCondicaoPagamento();
 
 
             oFrmCadCondPag = new frmCadastroCondicaoPagamento();
             oFrmCadFormPag = new frmCadastroFormaPagamento();
-            oFrmCadParcCondPag = new frmCadastroParcelaCondicaoPagamento();
 
 
             //oFrmConNotebooks.setFrmCadastro(oFrmCadNotebooks);
 
             //oFrmCadNotebooks.setConsultaPlacas_de_video(oFrmConPlacas_de_video);
 
+            oFrmConCondPag.setFrmCadastro(oFrmCadCondPag);
             oFrmConFormPag.setFrmCadastro(oFrmCadFormPag);
         }
-        /*public void pecaCondicaoPagamento(condicaoPagamento oCondicaoPagamento, Controller_condicaoPagamento oController_condicaoPagamento)
+        public void pecaCondicaoPagamento(condicaoPagamento oCondicaoPagamento, Controller_condicaoPagamento oController_condicaoPagamento)
         {
             oFrmConCondPag.ConhecaObj(oCondicaoPagamento, oController_condicaoPagamento);
             oFrmConCondPag.ShowDialog();
-        }*/
+        }
         public void pecaConsultaFormaPagamento(formaPagamento aFormaPagamento, Controller_formaPagamento oController_formaPagamento)
         {
             oFrmConFormPag.ConhecaObj(aFormaPagamento, oController_formaPagamento);

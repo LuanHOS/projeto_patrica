@@ -10,7 +10,7 @@ namespace projeto_patrica.controller
 {
     internal class Controller_formaPagamento : Controller
     {
-        Dao_formaPagamento aDao_formaPagamento;
+        private Dao_formaPagamento aDao_formaPagamento;
 
 
         public Controller_formaPagamento()

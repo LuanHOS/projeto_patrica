@@ -1,0 +1,136 @@
+﻿using projeto_patrica.classes;
+using projeto_patrica.controller;
+using projeto_patrica.pages.cadastro;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+namespace projeto_patrica.pages.consulta
+{
+
+    /// <summary>
+    /// ///////////////////////////////////////////
+    /// </summary>
+    public partial class frmConsultaCondicaoPagamento : projeto_patrica.pages.consulta.frmConsulta
+    {
+        frmCadastroCondicaoPagamento oFrmCadCondicaoPagamento;
+        private condicaoPagamento aCondicaoPagamento;
+        Controller_condicaoPagamento aController_condicaoPagamento;
+
+        public frmConsultaCondicaoPagamento()
+        {
+            InitializeComponent();
+        }
+
+        public override void setFrmCadastro(object obj)
+        {
+            oFrmCadCondicaoPagamento = (frmCadastroCondicaoPagamento)obj;
+        }
+
+        public override void ConhecaObj(object obj, object ctrl)
+        {
+            aCondicaoPagamento = (condicaoPagamento)obj;
+            aController_condicaoPagamento = (Controller_condicaoPagamento)ctrl;
+            this.CarregaLV();
+        }
+
+        public override void Incluir()
+        {
+            base.Incluir();
+            oFrmCadCondicaoPagamento.ConhecaObj(aCondicaoPagamento, aController_condicaoPagamento);
+            oFrmCadCondicaoPagamento.Limpartxt();
+            oFrmCadCondicaoPagamento.txtCodigo.Enabled = false;
+            oFrmCadCondicaoPagamento.ShowDialog();
+            this.CarregaLV();
+        }
+
+        public override void Alterar()
+        {
+            base.Alterar();
+            aController_condicaoPagamento.CarregaObj(aCondicaoPagamento);
+            oFrmCadCondicaoPagamento.ConhecaObj(aCondicaoPagamento, aController_condicaoPagamento);
+            oFrmCadCondicaoPagamento.Carregatxt();
+            oFrmCadCondicaoPagamento.txtCodigo.Enabled = false;
+            oFrmCadCondicaoPagamento.ShowDialog();
+            this.CarregaLV();
+        }
+
+        public override void Excluir()
+        {
+            string aux = oFrmCadCondicaoPagamento.btnSave.Text;
+            oFrmCadCondicaoPagamento.btnSave.Text = "Excluir";
+            base.Excluir();
+            oFrmCadCondicaoPagamento.ConhecaObj(aCondicaoPagamento, aController_condicaoPagamento);
+            oFrmCadCondicaoPagamento.Carregatxt();
+            oFrmCadCondicaoPagamento.Bloqueiatxt();
+            btnPesquisar.Enabled = false;
+            oFrmCadCondicaoPagamento.ShowDialog(this);
+            oFrmCadCondicaoPagamento.Desbloqueiatxt();
+            btnPesquisar.Enabled = true;
+            oFrmCadCondicaoPagamento.btnSave.Text = aux;
+            this.CarregaLV();
+        }
+
+        public override void CarregaLV()
+        {
+            base.CarregaLV();
+
+            this.listV.Items.Clear();
+
+            var lista = aController_condicaoPagamento.ListaCondicaoPagamento();
+            foreach (var condicao in lista)
+            {
+                ListViewItem item = new ListViewItem(Convert.ToString(condicao.Id));
+                item.SubItems.Add(condicao.Descricao);
+                item.SubItems.Add(Convert.ToString(condicao.QuantidadeParcelas));
+                this.listV.Items.Add(item);
+            }
+        }
+
+        public override void Pesquisar()
+        {
+            this.listV.Items.Clear();
+
+            string termoPesquisa = txtCodigo.Text.Trim().ToLower();
+
+            var listaResultados = new List<condicaoPagamento>();
+
+            if (string.IsNullOrWhiteSpace(termoPesquisa))
+            {
+                LimparPesquisa();
+            }
+            else
+            {
+                foreach (var condicao in aController_condicaoPagamento.ListaCondicaoPagamento())
+                {
+                    if (termoPesquisa == Convert.ToString(condicao.Id) ||
+                        condicao.Descricao.ToLower().Contains(termoPesquisa))
+                    {
+                        listaResultados.Add(condicao);
+                    }
+                }
+            }
+
+            foreach (var condicao in listaResultados)
+            {
+                ListViewItem item = new ListViewItem(Convert.ToString(condicao.Id));
+                item.SubItems.Add(condicao.Descricao);
+                item.SubItems.Add(Convert.ToString(condicao.QuantidadeParcelas));
+                this.listV.Items.Add(item);
+            }
+        }
+
+        public override void ListV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            base.ListV_SelectedIndexChanged(sender, e);
+
+            if (this.listV.SelectedItems.Count > 0)
+            {
+                ListViewItem linha = listV.SelectedItems[0];
+                aCondicaoPagamento.Id = Convert.ToInt32(linha.SubItems[0].Text);
+                aCondicaoPagamento.Descricao = linha.SubItems[1].Text;
+                aCondicaoPagamento.QuantidadeParcelas = Convert.ToInt32(linha.SubItems[2].Text);
+            }
+        }
+    }
+}

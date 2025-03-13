@@ -1,125 +1,4 @@
-﻿/*using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace projeto_patrica.dao
-{
-    internal class Dao_formaPagamento : Dao
-    {
-        public override string Salvar(object obj)
-        {
-            Placas_de_Video aPlaca_de_video = (Placas_de_Video)obj;
-            string ok = "";
-            char operacao = 'I';
-            string sql;
-            sql = "insert PLACA_DE_VIDEO values('" + aPlaca_de_video.Modelo + "','" + aPlaca_de_video.Marca + "','" + aPlaca_de_video.Nucleos + "')";
-
-            if (aPlaca_de_video.Id != 0)
-            {
-                operacao = 'U';
-                sql = "UPDATE PLACA_DE_VIDEO SET MODELO = '" + aPlaca_de_video.Modelo + "', MARCA = '" + aPlaca_de_video.Marca + "', NUCLEOS = '" + aPlaca_de_video.Nucleos + "' WHERE ID_PLACA_DE_VIDEO = '" + aPlaca_de_video.Id + "'";
-            }
-
-            SqlCommand cnn = new SqlCommand();
-            cnn.Connection = Banco.abrir();
-            cnn.CommandText = sql;
-            cnn.ExecuteNonQuery();
-
-            if (operacao == 'I')
-            {
-                cnn.CommandText = "select @@identity";
-                ok = cnn.ExecuteScalar().ToString();
-                aPlaca_de_video.Id = Convert.ToInt32(ok);
-            }
-
-            cnn.Connection.Close();
-            return ok;
-        }
-
-        public List<Placas_de_Video> ListarPlacas_de_video()
-        {
-            List<Placas_de_Video> lista = new List<Placas_de_Video>();
-            SqlCommand cnn = new SqlCommand();
-            cnn.Connection = Banco.abrir();
-            cnn.CommandType = System.Data.CommandType.Text;
-
-            cnn.CommandText = "select * from PLACA_DE_VIDEO";
-            var dr = cnn.ExecuteReader();
-
-            while (dr.Read())
-            {
-                lista.Add(new Placas_de_Video(Convert.ToInt32(dr.GetValue(0)),
-                    dr.GetString(1),
-                    dr.GetString(2),
-                    Convert.ToInt32(dr.GetValue(3))
-                    ));
-
-            }
-            return lista;
-        }
-
-        public override string CarregaObj(object obj)
-        {
-            Placas_de_Video aPlaca_de_video = (Placas_de_Video)obj;
-            string ok = "";
-
-            try
-            {
-                string sql = "select * from PLACA_DE_VIDEO where ID_PLACA_DE_VIDEO = '" + Convert.ToString(aPlaca_de_video.Id) + "'";
-                SqlCommand cnn = new SqlCommand();
-                cnn.Connection = Banco.abrir();
-                cnn.CommandType = System.Data.CommandType.Text;
-                cnn.CommandText = sql;
-                cnn.ExecuteNonQuery();
-                var dr = cnn.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    aPlaca_de_video.Id = Convert.ToInt32(dr.GetValue(0));
-                    aPlaca_de_video.Modelo = dr.GetString(1);
-                    aPlaca_de_video.Marca = dr.GetString(2);
-                    aPlaca_de_video.Nucleos = Convert.ToInt32(dr.GetString(3));
-                }
-                cnn.Connection.Close();
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return ok;
-        }
-        public override string Excluir(object obj)
-        {
-            Placas_de_Video aPlaca_de_video = (Placas_de_Video)obj;
-            string ok = "";
-
-            try
-            {
-                string sql = "delete from PLACA_DE_VIDEO where ID_PLACA_DE_VIDEO = '" + Convert.ToString(aPlaca_de_video.Id) + "'";
-                SqlCommand cnn = new SqlCommand();
-                cnn.Connection = Banco.abrir();
-                cnn.CommandType = System.Data.CommandType.Text;
-                cnn.CommandText = sql;
-                cnn.ExecuteNonQuery();
-
-                cnn.Connection.Close();
-                ok = "Excluido!";
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return ok;
-        }
-    }
-}
-*/
-
-
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using projeto_patrica.classes;
@@ -198,7 +77,7 @@ namespace projeto_patrica.dao
         public override string CarregaObj(object obj)
         {
             formaPagamento aFormaPagamento = (formaPagamento)obj;
-            string ok = "";
+            string ok = " ";
 
             try
             {
@@ -254,4 +133,3 @@ namespace projeto_patrica.dao
         }
     }
 }
-

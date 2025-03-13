@@ -1,6 +1,6 @@
-﻿namespace projeto_patrica.pages.cadastro
+﻿namespace projeto_patrica.pages.consulta
 {
-    partial class frmCadastroParcelaCondicaoPagamento
+    partial class frmConsultaCondicaoPagamento
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.clmDescricao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmQtdParcelas = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
-            // frmCadastroParcelaCondicaoPagamento
+            // listV
+            // 
+            this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmDescricao,
+            this.clmQtdParcelas});
+            // 
+            // clmDescricao
+            // 
+            this.clmDescricao.Text = "Descrição";
+            this.clmDescricao.Width = 218;
+            // 
+            // clmQtdParcelas
+            // 
+            this.clmQtdParcelas.Text = "Qtd. de Parcelas";
+            this.clmQtdParcelas.Width = 123;
+            // 
+            // frmConsultaCondicaoPagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.ClientSize = new System.Drawing.Size(844, 476);
-            this.Name = "frmCadastroParcelaCondicaoPagamento";
-            this.Text = "Cadastro de Parcela Condição Pagamento";
+            this.Name = "frmConsultaCondicaoPagamento";
+            this.Text = "Consulta Condição de Pagamento";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.ColumnHeader clmDescricao;
+        private System.Windows.Forms.ColumnHeader clmQtdParcelas;
     }
 }

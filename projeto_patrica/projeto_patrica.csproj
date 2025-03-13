@@ -120,6 +120,7 @@
     <Compile Include="controller\Controller_condicaoPagamento.cs" />
     <Compile Include="controller\Controller_formaPagamento.cs" />
     <Compile Include="dao\Dao.cs" />
+    <Compile Include="dao\BaseDao.cs" />
     <Compile Include="dao\Dao_condicaoPagamento.cs" />
     <Compile Include="dao\Dao_formaPagamento.cs" />
     <Compile Include="classes\formaPagamento.cs" />
@@ -155,17 +156,17 @@
     <Compile Include="pages\cadastro\frmCadastroFormaPagamento.Designer.cs">
       <DependentUpon>frmCadastroFormaPagamento.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\cadastro\frmCadastroParcelaCondicaoPagamento.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="pages\cadastro\frmCadastroParcelaCondicaoPagamento.Designer.cs">
-      <DependentUpon>frmCadastroParcelaCondicaoPagamento.cs</DependentUpon>
-    </Compile>
     <Compile Include="pages\consulta\frmConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="pages\consulta\frmConsulta.Designer.cs">
       <DependentUpon>frmConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaCondicaoPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaCondicaoPagamento.Designer.cs">
+      <DependentUpon>frmConsultaCondicaoPagamento.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\consulta\frmConsultaFormaPagamento.cs">
       <SubType>Form</SubType>
@@ -190,11 +191,11 @@
     <EmbeddedResource Include="pages\cadastro\frmCadastroFormaPagamento.resx">
       <DependentUpon>frmCadastroFormaPagamento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\cadastro\frmCadastroParcelaCondicaoPagamento.resx">
-      <DependentUpon>frmCadastroParcelaCondicaoPagamento.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsulta.resx">
       <DependentUpon>frmConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaCondicaoPagamento.resx">
+      <DependentUpon>frmConsultaCondicaoPagamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaFormaPagamento.resx">
       <DependentUpon>frmConsultaFormaPagamento.cs</DependentUpon>
