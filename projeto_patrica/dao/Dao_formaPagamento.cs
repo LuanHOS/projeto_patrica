@@ -14,6 +14,12 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
+
+            /*
+             * 
+             */
+
+
             using (MySqlConnection conn = Banco.Abrir())
             {
                 MySqlCommand cmd = new MySqlCommand();
@@ -49,6 +55,12 @@ namespace projeto_patrica.dao
             return ok;
         }
 
+
+        /*
+         * 
+         */
+
+
         public List<formaPagamento> ListarFormaPagamento()
         {
             List<formaPagamento> lista = new List<formaPagamento>();
@@ -73,6 +85,12 @@ namespace projeto_patrica.dao
 
             return lista;
         }
+
+
+        /*
+         * 
+         */
+
 
         public override string CarregaObj(object obj)
         {
@@ -105,6 +123,12 @@ namespace projeto_patrica.dao
 
             return ok;
         }
+
+
+        /*
+         * 
+         */
+
 
         public override string Excluir(object obj)
         {

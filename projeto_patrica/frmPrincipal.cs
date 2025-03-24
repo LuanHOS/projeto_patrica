@@ -20,6 +20,12 @@ namespace projeto_patrica
         private Controller_formaPagamento oController_formaPagamento;
         private Controller_condicaoPagamento oController_condicaoPagamento;
 
+
+        /*
+         * 
+         */
+
+
         public frmPrincipal()
 		{
             InitializeComponent();
@@ -31,11 +37,23 @@ namespace projeto_patrica
             oController_condicaoPagamento = new Controller_condicaoPagamento();
         }
 
+
+        /*
+         * 
+         */
+
+
         private void formaDePagamentoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             aInter.pecaConsultaFormaPagamento(aFormaPagamento, oController_formaPagamento);
 
         }
+
+
+        /*
+         * 
+         */
+
 
         private void condiçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -17,25 +17,55 @@ namespace projeto_patrica.pages.consulta
             btnExcluir.Enabled = false;
         }
 
+
+        /*
+         * 
+         */
+
+
         public virtual void Incluir()
         {
 
         }
+
+
+        /*
+         * 
+         */
+
 
         public virtual void Excluir()
         {
 
         }
 
+
+        /*
+         * 
+         */
+
+
         public virtual void Alterar()
         {
 
         }
 
+
+        /*
+         * 
+         */
+
+
         public virtual void Pesquisar()
         {
 
         }
+
+
+        /*
+         * 
+         */
+
 
         public virtual void LimparPesquisa()
         {
@@ -44,40 +74,87 @@ namespace projeto_patrica.pages.consulta
         }
 
 
+        /*
+         * 
+         */
+
+
         public virtual void setFrmCadastro(object obj)
         {
 
         }
+
+
+        /*
+         * 
+         */
+
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
             Incluir();
         }
 
+
+        /*
+         * 
+         */
+
+
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             Alterar();
         }
+
+
+        /*
+         * 
+         */
+
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             Excluir();
         }
 
+
+        /*
+         * 
+         */
+
+
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             Pesquisar();
         }
+
+
+        /*
+         * 
+         */
+
 
         private void btnLimparPesquisa_Click(object sender, EventArgs e)
         {
             LimparPesquisa();
         }
 
+
+        /*
+         * 
+         */
+
+
         public virtual void CarregaLV()
         {
 
         }
+
+
+        /*
+         * 
+         */
+
 
         public virtual void ListV_SelectedIndexChanged(object sender, EventArgs e)
         {

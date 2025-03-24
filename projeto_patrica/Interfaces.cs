@@ -18,6 +18,12 @@ namespace projeto_patrica
         frmConsultaCondicaoPagamento oFrmConCondPag;
         frmConsultaFormaPagamento oFrmConFormPag;
 
+
+        /*
+         * 
+         */
+
+
         public Interfaces()
         {
             oFrmConCondPag = new frmConsultaCondicaoPagamento();
@@ -35,11 +41,25 @@ namespace projeto_patrica
             oFrmConCondPag.setFrmCadastro(oFrmCadCondPag);
             oFrmConFormPag.setFrmCadastro(oFrmCadFormPag);
         }
+
+
+        /*
+         * 
+         */
+
+
         public void pecaCondicaoPagamento(condicaoPagamento oCondicaoPagamento, Controller_condicaoPagamento oController_condicaoPagamento)
         {
             oFrmConCondPag.ConhecaObj(oCondicaoPagamento, oController_condicaoPagamento);
             oFrmConCondPag.ShowDialog();
         }
+
+
+        /*
+         * 
+         */
+
+
         public void pecaConsultaFormaPagamento(formaPagamento aFormaPagamento, Controller_formaPagamento oController_formaPagamento)
         {
             oFrmConFormPag.ConhecaObj(aFormaPagamento, oController_formaPagamento);

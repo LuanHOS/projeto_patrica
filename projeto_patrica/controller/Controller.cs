@@ -12,15 +12,35 @@ namespace projeto_patrica.controller
         {
 
         }
+
+
+        /*
+         * 
+         */
+
+
         public virtual string Salvar(object obj)
         {
             return " ";
         }
 
+
+        /*
+         * 
+         */
+
+
         public virtual string CarregaObj(object obj)
         {
             return "";
         }
+
+
+        /*
+         * 
+         */
+
+
         public virtual string Excluir(object obj)
         {
             return " ";

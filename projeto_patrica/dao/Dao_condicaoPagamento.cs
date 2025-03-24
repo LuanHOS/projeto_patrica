@@ -14,6 +14,12 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
+
+            /*
+             * 
+             */
+
+
             using (MySqlConnection conn = Banco.Abrir())
             {
                 MySqlCommand cmd = new MySqlCommand();
@@ -51,6 +57,12 @@ namespace projeto_patrica.dao
             return ok;
         }
 
+
+        /*
+         * 
+         */
+
+
         public override string CarregaObj(object obj)
         {
             condicaoPagamento aCondicaoPagamento = (condicaoPagamento)obj;
@@ -84,6 +96,12 @@ namespace projeto_patrica.dao
             return ok;
         }
 
+
+        /*
+         * 
+         */
+
+
         public override string Excluir(object obj)
         {
             condicaoPagamento aCondicaoPagamento = (condicaoPagamento)obj;
@@ -109,6 +127,12 @@ namespace projeto_patrica.dao
 
             return ok;
         }
+
+
+        /*
+         * 
+         */
+
 
         public List<condicaoPagamento> ListarCondicaoPagamento()
         {
@@ -136,6 +160,12 @@ namespace projeto_patrica.dao
             return lista;
         }
 
+
+        /*
+         * 
+         */
+
+
         public string SalvarParcela(parcelaCondicaoPagamento parcela)
         {
             string ok = "";
@@ -161,6 +191,12 @@ namespace projeto_patrica.dao
             return ok;
         }
 
+
+        /*
+         * 
+         */
+
+
         public string ExcluirParcela(parcelaCondicaoPagamento parcela)
         {
             string ok = "";
@@ -180,6 +216,12 @@ namespace projeto_patrica.dao
 
             return ok;
         }
+
+
+        /*
+         * 
+         */
+
 
         public List<parcelaCondicaoPagamento> ListarParcelas(int codCondPagto)
         {

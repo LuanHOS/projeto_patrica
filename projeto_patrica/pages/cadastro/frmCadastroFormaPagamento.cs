@@ -10,17 +10,35 @@ namespace projeto_patrica.pages.cadastro
         private formaPagamento aFormaPagamento;
         private Controller_formaPagamento aController_formaPagamento;
 
+
+        /*
+         * 
+         */
+
+
         public frmCadastroFormaPagamento()
         {
             InitializeComponent();
             txtCodigo.Text = Convert.ToString("0");
         }
 
+
+        /*
+         * 
+         */
+
+
         public override void ConhecaObj(object obj, object ctrl)
         {
             aFormaPagamento = (formaPagamento)obj;
             aController_formaPagamento = (Controller_formaPagamento)ctrl;
         }
+
+
+        /*
+         * 
+         */
+
 
         public override void Salvar()
         {
@@ -59,6 +77,11 @@ namespace projeto_patrica.pages.cadastro
         }
 
 
+        /*
+         * 
+         */
+
+
         public override void Alterar()
         {
             base.Alterar();
@@ -69,12 +92,24 @@ namespace projeto_patrica.pages.cadastro
             MessageBox.Show($"A forma de pagamento \"{aFormaPagamento.Descricao}\" foi alterada com sucesso.");
         }
 
+
+        /*
+         * 
+         */
+
+
         public override void Limpartxt()
         {
             base.Limpartxt();
 
             this.txtDescricao.Clear();
         }
+
+
+        /*
+         * 
+         */
+
 
         public override void Carregatxt()
         {
@@ -84,11 +119,23 @@ namespace projeto_patrica.pages.cadastro
             this.txtDescricao.Text = aFormaPagamento.Descricao;
         }
 
+
+        /*
+         * 
+         */
+
+
         public override void Bloqueiatxt()
         {
             base.Bloqueiatxt();
             this.txtDescricao.Enabled = false;
         }
+
+
+        /*
+         * 
+         */
+
 
         public override void Desbloqueiatxt()
         {

@@ -33,24 +33,23 @@
             this.txtQtdParcelas = new System.Windows.Forms.TextBox();
             this.lvlQtdParcelas = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblParcelas = new System.Windows.Forms.Label();
-            this.lblNumParcela = new System.Windows.Forms.Label();
-            this.txtNumParcela = new System.Windows.Forms.TextBox();
-            this.lblPercentualParcela = new System.Windows.Forms.Label();
-            this.txtPercentualParcela = new System.Windows.Forms.TextBox();
-            this.lblPrazoDias = new System.Windows.Forms.Label();
-            this.txtPrazoDias = new System.Windows.Forms.TextBox();
-            this.lblFormaPagamento = new System.Windows.Forms.Label();
-            this.txtFormaPagamento = new System.Windows.Forms.TextBox();
-            this.btnPesquisarFormaPagamento = new System.Windows.Forms.Button();
-            this.btnAdcionarParcela = new System.Windows.Forms.Button();
-            this.btnRemoverParcela = new System.Windows.Forms.Button();
             this.listV = new System.Windows.Forms.ListView();
-            this.clmCodCondicaoPagamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmNumParcela = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmCodFormaPagamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmPercentualParcela = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDiasAposPagamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnRemoverParcela = new System.Windows.Forms.Button();
+            this.btnAdcionarParcela = new System.Windows.Forms.Button();
+            this.btnPesquisarFormaPagamento = new System.Windows.Forms.Button();
+            this.lblFormaPagamento = new System.Windows.Forms.Label();
+            this.txtPrazoDias = new System.Windows.Forms.TextBox();
+            this.lblPrazoDias = new System.Windows.Forms.Label();
+            this.txtPercentualParcela = new System.Windows.Forms.TextBox();
+            this.lblPercentualParcela = new System.Windows.Forms.Label();
+            this.txtNumParcela = new System.Windows.Forms.TextBox();
+            this.lblNumParcela = new System.Windows.Forms.Label();
+            this.lblParcelas = new System.Windows.Forms.Label();
+            this.comboBoxFormaPagamento = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,11 +96,11 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.comboBoxFormaPagamento);
             this.panel1.Controls.Add(this.listV);
             this.panel1.Controls.Add(this.btnRemoverParcela);
             this.panel1.Controls.Add(this.btnAdcionarParcela);
             this.panel1.Controls.Add(this.btnPesquisarFormaPagamento);
-            this.panel1.Controls.Add(this.txtFormaPagamento);
             this.panel1.Controls.Add(this.lblFormaPagamento);
             this.panel1.Controls.Add(this.txtPrazoDias);
             this.panel1.Controls.Add(this.lblPrazoDias);
@@ -115,110 +114,9 @@
             this.panel1.Size = new System.Drawing.Size(799, 565);
             this.panel1.TabIndex = 5;
             // 
-            // lblParcelas
-            // 
-            this.lblParcelas.AutoSize = true;
-            this.lblParcelas.Location = new System.Drawing.Point(21, 19);
-            this.lblParcelas.Name = "lblParcelas";
-            this.lblParcelas.Size = new System.Drawing.Size(61, 16);
-            this.lblParcelas.TabIndex = 0;
-            this.lblParcelas.Text = "Parcelas";
-            // 
-            // lblNumParcela
-            // 
-            this.lblNumParcela.AutoSize = true;
-            this.lblNumParcela.Location = new System.Drawing.Point(21, 61);
-            this.lblNumParcela.Name = "lblNumParcela";
-            this.lblNumParcela.Size = new System.Drawing.Size(124, 16);
-            this.lblNumParcela.TabIndex = 0;
-            this.lblNumParcela.Text = "Número da Parcela";
-            // 
-            // txtNumParcela
-            // 
-            this.txtNumParcela.Location = new System.Drawing.Point(24, 81);
-            this.txtNumParcela.Name = "txtNumParcela";
-            this.txtNumParcela.Size = new System.Drawing.Size(135, 22);
-            this.txtNumParcela.TabIndex = 1;
-            // 
-            // lblPercentualParcela
-            // 
-            this.lblPercentualParcela.AutoSize = true;
-            this.lblPercentualParcela.Location = new System.Drawing.Point(181, 61);
-            this.lblPercentualParcela.Name = "lblPercentualParcela";
-            this.lblPercentualParcela.Size = new System.Drawing.Size(71, 16);
-            this.lblPercentualParcela.TabIndex = 0;
-            this.lblPercentualParcela.Text = "Percentual";
-            // 
-            // txtPercentualParcela
-            // 
-            this.txtPercentualParcela.Location = new System.Drawing.Point(184, 81);
-            this.txtPercentualParcela.Name = "txtPercentualParcela";
-            this.txtPercentualParcela.Size = new System.Drawing.Size(135, 22);
-            this.txtPercentualParcela.TabIndex = 1;
-            // 
-            // lblPrazoDias
-            // 
-            this.lblPrazoDias.AutoSize = true;
-            this.lblPrazoDias.Location = new System.Drawing.Point(336, 61);
-            this.lblPrazoDias.Name = "lblPrazoDias";
-            this.lblPrazoDias.Size = new System.Drawing.Size(95, 16);
-            this.lblPrazoDias.TabIndex = 0;
-            this.lblPrazoDias.Text = "Prazo em Dias";
-            // 
-            // txtPrazoDias
-            // 
-            this.txtPrazoDias.Location = new System.Drawing.Point(339, 81);
-            this.txtPrazoDias.Name = "txtPrazoDias";
-            this.txtPrazoDias.Size = new System.Drawing.Size(135, 22);
-            this.txtPrazoDias.TabIndex = 1;
-            // 
-            // lblFormaPagamento
-            // 
-            this.lblFormaPagamento.AutoSize = true;
-            this.lblFormaPagamento.Location = new System.Drawing.Point(488, 61);
-            this.lblFormaPagamento.Name = "lblFormaPagamento";
-            this.lblFormaPagamento.Size = new System.Drawing.Size(138, 16);
-            this.lblFormaPagamento.TabIndex = 0;
-            this.lblFormaPagamento.Text = "Forma de Pagamento";
-            // 
-            // txtFormaPagamento
-            // 
-            this.txtFormaPagamento.Location = new System.Drawing.Point(491, 81);
-            this.txtFormaPagamento.Name = "txtFormaPagamento";
-            this.txtFormaPagamento.Size = new System.Drawing.Size(183, 22);
-            this.txtFormaPagamento.TabIndex = 1;
-            // 
-            // btnPesquisarFormaPagamento
-            // 
-            this.btnPesquisarFormaPagamento.Location = new System.Drawing.Point(680, 75);
-            this.btnPesquisarFormaPagamento.Name = "btnPesquisarFormaPagamento";
-            this.btnPesquisarFormaPagamento.Size = new System.Drawing.Size(96, 35);
-            this.btnPesquisarFormaPagamento.TabIndex = 6;
-            this.btnPesquisarFormaPagamento.Text = "Pesquisar";
-            this.btnPesquisarFormaPagamento.UseVisualStyleBackColor = true;
-            // 
-            // btnAdcionarParcela
-            // 
-            this.btnAdcionarParcela.Location = new System.Drawing.Point(482, 129);
-            this.btnAdcionarParcela.Name = "btnAdcionarParcela";
-            this.btnAdcionarParcela.Size = new System.Drawing.Size(144, 35);
-            this.btnAdcionarParcela.TabIndex = 6;
-            this.btnAdcionarParcela.Text = "Adicionar Parcela";
-            this.btnAdcionarParcela.UseVisualStyleBackColor = true;
-            // 
-            // btnRemoverParcela
-            // 
-            this.btnRemoverParcela.Location = new System.Drawing.Point(632, 129);
-            this.btnRemoverParcela.Name = "btnRemoverParcela";
-            this.btnRemoverParcela.Size = new System.Drawing.Size(144, 35);
-            this.btnRemoverParcela.TabIndex = 6;
-            this.btnRemoverParcela.Text = "Remover Parcela";
-            this.btnRemoverParcela.UseVisualStyleBackColor = true;
-            // 
             // listV
             // 
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clmCodCondicaoPagamento,
             this.clmNumParcela,
             this.clmCodFormaPagamento,
             this.clmPercentualParcela,
@@ -232,11 +130,6 @@
             this.listV.TabIndex = 7;
             this.listV.UseCompatibleStateImageBehavior = false;
             this.listV.View = System.Windows.Forms.View.Details;
-            // 
-            // clmCodCondicaoPagamento
-            // 
-            this.clmCodCondicaoPagamento.Text = "ID Cond. Pagamento";
-            this.clmCodCondicaoPagamento.Width = 150;
             // 
             // clmNumParcela
             // 
@@ -261,6 +154,107 @@
             this.clmDiasAposPagamento.Text = "Dias";
             this.clmDiasAposPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.clmDiasAposPagamento.Width = 72;
+            // 
+            // btnRemoverParcela
+            // 
+            this.btnRemoverParcela.Location = new System.Drawing.Point(632, 129);
+            this.btnRemoverParcela.Name = "btnRemoverParcela";
+            this.btnRemoverParcela.Size = new System.Drawing.Size(144, 35);
+            this.btnRemoverParcela.TabIndex = 6;
+            this.btnRemoverParcela.Text = "Remover Parcela";
+            this.btnRemoverParcela.UseVisualStyleBackColor = true;
+            // 
+            // btnAdcionarParcela
+            // 
+            this.btnAdcionarParcela.Location = new System.Drawing.Point(482, 129);
+            this.btnAdcionarParcela.Name = "btnAdcionarParcela";
+            this.btnAdcionarParcela.Size = new System.Drawing.Size(144, 35);
+            this.btnAdcionarParcela.TabIndex = 6;
+            this.btnAdcionarParcela.Text = "Adicionar Parcela";
+            this.btnAdcionarParcela.UseVisualStyleBackColor = true;
+            // 
+            // btnPesquisarFormaPagamento
+            // 
+            this.btnPesquisarFormaPagamento.Location = new System.Drawing.Point(680, 75);
+            this.btnPesquisarFormaPagamento.Name = "btnPesquisarFormaPagamento";
+            this.btnPesquisarFormaPagamento.Size = new System.Drawing.Size(96, 35);
+            this.btnPesquisarFormaPagamento.TabIndex = 6;
+            this.btnPesquisarFormaPagamento.Text = "Pesquisar";
+            this.btnPesquisarFormaPagamento.UseVisualStyleBackColor = true;
+            // 
+            // lblFormaPagamento
+            // 
+            this.lblFormaPagamento.AutoSize = true;
+            this.lblFormaPagamento.Location = new System.Drawing.Point(488, 61);
+            this.lblFormaPagamento.Name = "lblFormaPagamento";
+            this.lblFormaPagamento.Size = new System.Drawing.Size(138, 16);
+            this.lblFormaPagamento.TabIndex = 0;
+            this.lblFormaPagamento.Text = "Forma de Pagamento";
+            // 
+            // txtPrazoDias
+            // 
+            this.txtPrazoDias.Location = new System.Drawing.Point(339, 81);
+            this.txtPrazoDias.Name = "txtPrazoDias";
+            this.txtPrazoDias.Size = new System.Drawing.Size(135, 22);
+            this.txtPrazoDias.TabIndex = 1;
+            // 
+            // lblPrazoDias
+            // 
+            this.lblPrazoDias.AutoSize = true;
+            this.lblPrazoDias.Location = new System.Drawing.Point(336, 61);
+            this.lblPrazoDias.Name = "lblPrazoDias";
+            this.lblPrazoDias.Size = new System.Drawing.Size(95, 16);
+            this.lblPrazoDias.TabIndex = 0;
+            this.lblPrazoDias.Text = "Prazo em Dias";
+            // 
+            // txtPercentualParcela
+            // 
+            this.txtPercentualParcela.Location = new System.Drawing.Point(184, 81);
+            this.txtPercentualParcela.Name = "txtPercentualParcela";
+            this.txtPercentualParcela.Size = new System.Drawing.Size(135, 22);
+            this.txtPercentualParcela.TabIndex = 1;
+            // 
+            // lblPercentualParcela
+            // 
+            this.lblPercentualParcela.AutoSize = true;
+            this.lblPercentualParcela.Location = new System.Drawing.Point(181, 61);
+            this.lblPercentualParcela.Name = "lblPercentualParcela";
+            this.lblPercentualParcela.Size = new System.Drawing.Size(71, 16);
+            this.lblPercentualParcela.TabIndex = 0;
+            this.lblPercentualParcela.Text = "Percentual";
+            // 
+            // txtNumParcela
+            // 
+            this.txtNumParcela.Location = new System.Drawing.Point(24, 81);
+            this.txtNumParcela.Name = "txtNumParcela";
+            this.txtNumParcela.Size = new System.Drawing.Size(135, 22);
+            this.txtNumParcela.TabIndex = 1;
+            // 
+            // lblNumParcela
+            // 
+            this.lblNumParcela.AutoSize = true;
+            this.lblNumParcela.Location = new System.Drawing.Point(21, 61);
+            this.lblNumParcela.Name = "lblNumParcela";
+            this.lblNumParcela.Size = new System.Drawing.Size(124, 16);
+            this.lblNumParcela.TabIndex = 0;
+            this.lblNumParcela.Text = "Número da Parcela";
+            // 
+            // lblParcelas
+            // 
+            this.lblParcelas.AutoSize = true;
+            this.lblParcelas.Location = new System.Drawing.Point(21, 19);
+            this.lblParcelas.Name = "lblParcelas";
+            this.lblParcelas.Size = new System.Drawing.Size(61, 16);
+            this.lblParcelas.TabIndex = 0;
+            this.lblParcelas.Text = "Parcelas";
+            // 
+            // comboBoxFormaPagamento
+            // 
+            this.comboBoxFormaPagamento.FormattingEnabled = true;
+            this.comboBoxFormaPagamento.Location = new System.Drawing.Point(491, 81);
+            this.comboBoxFormaPagamento.Name = "comboBoxFormaPagamento";
+            this.comboBoxFormaPagamento.Size = new System.Drawing.Size(183, 24);
+            this.comboBoxFormaPagamento.TabIndex = 8;
             // 
             // frmCadastroCondicaoPagamento
             // 
@@ -299,7 +293,6 @@
         private System.Windows.Forms.Button btnRemoverParcela;
         private System.Windows.Forms.Button btnAdcionarParcela;
         private System.Windows.Forms.Button btnPesquisarFormaPagamento;
-        private System.Windows.Forms.TextBox txtFormaPagamento;
         private System.Windows.Forms.Label lblFormaPagamento;
         private System.Windows.Forms.TextBox txtPrazoDias;
         private System.Windows.Forms.Label lblPrazoDias;
@@ -308,10 +301,10 @@
         private System.Windows.Forms.TextBox txtNumParcela;
         private System.Windows.Forms.Label lblNumParcela;
         private System.Windows.Forms.Label lblParcelas;
-        private System.Windows.Forms.ColumnHeader clmCodCondicaoPagamento;
         private System.Windows.Forms.ColumnHeader clmNumParcela;
         private System.Windows.Forms.ColumnHeader clmCodFormaPagamento;
         private System.Windows.Forms.ColumnHeader clmPercentualParcela;
         private System.Windows.Forms.ColumnHeader clmDiasAposPagamento;
+        private System.Windows.Forms.ComboBox comboBoxFormaPagamento;
     }
 }

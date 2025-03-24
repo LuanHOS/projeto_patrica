@@ -16,19 +16,45 @@ namespace projeto_patrica
         {
             InitializeComponent();
         }
+
+
+        /*
+         * 
+         */
+
+
         private void frmBase_Load(object sender, EventArgs e)
         {
 
         }
+
+
+        /*
+         * 
+         */
+
 
         public virtual void Sair()
         {
             Close();
         }
 
+
+        /*
+         * 
+         */
+
+
         public virtual void ConhecaObj(object obj, object ctrl)
         {
+
         }
+
+
+        /*
+         * 
+         */
+
 
         private void btnSair_Click(object sender, EventArgs e)
         {

@@ -14,33 +14,78 @@ namespace projeto_patrica.pages.cadastro
         {
             InitializeComponent();
         }
+
+
+        /*
+         * 
+         */
+
+
         public virtual void Salvar()
         {
             Sair();
         }
 
+
+        /*
+         * 
+         */
+
+
         public virtual void Alterar()
         {
             Sair();
         }
+
+
+        /*
+         * 
+         */
+
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             Salvar();
         }
+
+
+        /*
+         * 
+         */
+
 
         public virtual void Limpartxt()
         {
             this.txtCodigo.Text = "0";
         }
 
+
+        /*
+         * 
+         */
+
+
         public virtual void Carregatxt()
         {
         }
+
+
+        /*
+         * 
+         */
+
 
         public virtual void Bloqueiatxt()
         {
             this.txtCodigo.Enabled = false;
         }
+
+
+        /*
+         * 
+         */
+
+
         public virtual void Desbloqueiatxt()
         {
             this.txtCodigo.Enabled = true;

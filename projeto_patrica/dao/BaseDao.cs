@@ -10,15 +10,33 @@ namespace projeto_patrica.Dao
         protected readonly string _connectionString = "data source=ANA-TANNOURI\\SQLEXPRESS;initial catalog=projeto-pf;user id=sa;password=123";
         protected readonly string _tabela;
 
+
+        /*
+         * 
+         */
+
+
         public BaseDao(string tabela)
         {
             _tabela = tabela;
         }
 
+
+        /*
+         * 
+         */
+
+
         private SqlConnection CriarConexao()
         {
             return new SqlConnection(_connectionString);
         }
+
+
+        /*
+         * 
+         */
+
 
         public bool VerificarDuplicidade(string campo, string valor)
         {
@@ -33,6 +51,12 @@ namespace projeto_patrica.Dao
                 return count > 0;
             }
         }
+
+
+        /*
+         * 
+         */
+
 
         public void Criar(T entidade)
         {
@@ -66,6 +90,12 @@ namespace projeto_patrica.Dao
                 }
             }
         }
+
+
+        /*
+         * 
+         */
+
 
         public List<T> BuscarTodos(string filtro = null)
         {
@@ -127,6 +157,12 @@ namespace projeto_patrica.Dao
             return lista;
         }
 
+
+        /*
+         * 
+         */
+
+
         public T BuscarPorId(int id)
         {
             using (SqlConnection conn = CriarConexao())
@@ -150,6 +186,11 @@ namespace projeto_patrica.Dao
             return null;
         }
 
+
+        /*
+         * 
+         */
+
         public void Excluir(int id)
         {
             using (var connection = CriarConexao())
@@ -163,6 +204,11 @@ namespace projeto_patrica.Dao
                 cmd.ExecuteNonQuery();
             }
         }
+
+
+        /*
+         * 
+         */
 
         public void Atualizar(T entidade)
         {

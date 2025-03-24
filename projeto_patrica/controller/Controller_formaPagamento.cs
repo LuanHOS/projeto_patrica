@@ -13,10 +13,20 @@ namespace projeto_patrica.controller
         private Dao_formaPagamento aDao_formaPagamento;
 
 
+        /*
+         * 
+         */
+
+
         public Controller_formaPagamento()
         {
             aDao_formaPagamento = new Dao_formaPagamento();
         }
+
+
+        /*
+         * 
+         */
 
 
         public override string Salvar(object obj)
@@ -25,16 +35,31 @@ namespace projeto_patrica.controller
         }
 
 
+        /*
+         * 
+         */
+
+
         public override string CarregaObj(object obj)
         {
             return aDao_formaPagamento.CarregaObj(obj);
         }
 
 
+        /*
+         * 
+         */
+
+
         public override string Excluir(object obj)
         {
             return aDao_formaPagamento.Excluir(obj);
         }
+
+
+        /*
+         * 
+         */
 
 
         public List<formaPagamento> ListaFormaPagamento()

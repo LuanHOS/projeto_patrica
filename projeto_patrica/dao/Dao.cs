@@ -13,14 +13,35 @@ namespace projeto_patrica.dao
         {
 
         }
+
+
+        /*
+         * 
+         */
+
+
         public virtual string Salvar(object obj)
         {
             return " ";
         }
+
+
+        /*
+         * 
+         */
+
+
         public virtual string CarregaObj(object obj)
         {
             return "";
         }
+
+
+        /*
+         * 
+         */
+
+
         public virtual string Excluir(object obj)
         {
             return " ";

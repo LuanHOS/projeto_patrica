@@ -17,15 +17,33 @@ namespace projeto_patrica.pages.consulta
         private condicaoPagamento aCondicaoPagamento;
         Controller_condicaoPagamento aController_condicaoPagamento;
 
+
+        /*
+         * 
+         */
+
+
         public frmConsultaCondicaoPagamento()
         {
             InitializeComponent();
         }
 
+
+        /*
+         * 
+         */
+
+
         public override void setFrmCadastro(object obj)
         {
             oFrmCadCondicaoPagamento = (frmCadastroCondicaoPagamento)obj;
         }
+
+
+        /*
+         * 
+         */
+
 
         public override void ConhecaObj(object obj, object ctrl)
         {
@@ -33,6 +51,12 @@ namespace projeto_patrica.pages.consulta
             aController_condicaoPagamento = (Controller_condicaoPagamento)ctrl;
             this.CarregaLV();
         }
+
+
+        /*
+         * 
+         */
+
 
         public override void Incluir()
         {
@@ -44,6 +68,12 @@ namespace projeto_patrica.pages.consulta
             this.CarregaLV();
         }
 
+
+        /*
+         * 
+         */
+
+
         public override void Alterar()
         {
             base.Alterar();
@@ -54,6 +84,12 @@ namespace projeto_patrica.pages.consulta
             oFrmCadCondicaoPagamento.ShowDialog();
             this.CarregaLV();
         }
+
+
+        /*
+         * 
+         */
+
 
         public override void Excluir()
         {
@@ -71,6 +107,12 @@ namespace projeto_patrica.pages.consulta
             this.CarregaLV();
         }
 
+
+        /*
+         * 
+         */
+
+
         public override void CarregaLV()
         {
             base.CarregaLV();
@@ -86,6 +128,12 @@ namespace projeto_patrica.pages.consulta
                 this.listV.Items.Add(item);
             }
         }
+
+
+        /*
+         * 
+         */
+
 
         public override void Pesquisar()
         {
@@ -119,6 +167,12 @@ namespace projeto_patrica.pages.consulta
                 this.listV.Items.Add(item);
             }
         }
+
+
+        /*
+         * 
+         */
+
 
         public override void ListV_SelectedIndexChanged(object sender, EventArgs e)
         {

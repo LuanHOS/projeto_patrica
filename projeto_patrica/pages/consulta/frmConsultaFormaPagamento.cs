@@ -14,15 +14,31 @@ namespace projeto_patrica.pages.consulta
         Controller_formaPagamento aController_formaPagamento;
 
 
+        /*
+         * 
+         */
+
         public frmConsultaFormaPagamento()
         {
             InitializeComponent();
         }
 
+
+        /*
+         * 
+         */
+
+
         public override void setFrmCadastro(object obj)
         {
             oFrmCadFormaPagamento = (frmCadastroFormaPagamento)obj;
         }
+
+
+        /*
+         * 
+         */
+
 
         public override void ConhecaObj(object obj, object ctrl)
         {
@@ -30,6 +46,12 @@ namespace projeto_patrica.pages.consulta
             aController_formaPagamento = (Controller_formaPagamento)ctrl;
             this.CarregaLV();
         }
+
+
+        /*
+         * 
+         */
+
 
         public override void Incluir()
         {
@@ -41,6 +63,12 @@ namespace projeto_patrica.pages.consulta
             this.CarregaLV();
         }
 
+
+        /*
+         * 
+         */
+
+
         public override void Alterar()
         {
             base.Alterar();
@@ -51,6 +79,12 @@ namespace projeto_patrica.pages.consulta
             oFrmCadFormaPagamento.ShowDialog();
             this.CarregaLV();
         }
+
+
+        /*
+         * 
+         */
+
 
         public override void Excluir()
         {
@@ -68,6 +102,12 @@ namespace projeto_patrica.pages.consulta
             this.CarregaLV();
         }
 
+
+        /*
+         * 
+         */
+
+
         public override void CarregaLV()
         {
             base.CarregaLV();
@@ -82,6 +122,12 @@ namespace projeto_patrica.pages.consulta
                 this.listV.Items.Add(item);
             }
         }
+
+
+        /*
+         * 
+         */
+
 
         public override void Pesquisar()
         {
@@ -118,6 +164,12 @@ namespace projeto_patrica.pages.consulta
                 this.listV.Items.Add(item);
             }
         }
+
+
+        /*
+         * 
+         */
+
 
         public override void ListV_SelectedIndexChanged(object sender, EventArgs e)
         {
