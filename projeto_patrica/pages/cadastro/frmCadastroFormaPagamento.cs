@@ -23,8 +23,7 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            aFormaPagamento.Id = Convert.ToInt32(txtCodigo.Text);
-            aFormaPagamento.Descricao = txtDescricao.Text;
+            base.Salvar();
 
             if (txtDescricao.Text == "")
             {
@@ -33,16 +32,32 @@ namespace projeto_patrica.pages.cadastro
                 return;
             }
 
+            aFormaPagamento.Id = Convert.ToInt32(txtCodigo.Text);
+            aFormaPagamento.Descricao = txtDescricao.Text;
+
             if (btnSave.Text == "Excluir")
             {
-                txtCodigo.Text = aController_formaPagamento.Excluir(aFormaPagamento);
+                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (resp == DialogResult.Yes)
+                {
+                    txtCodigo.Text = aController_formaPagamento.Excluir(aFormaPagamento);
+                    MessageBox.Show("Excluído com sucesso.");
+                    Sair();
+                }
+            }
+            else if (btnSave.Text == "Alterar")
+            {
+                txtCodigo.Text = aController_formaPagamento.Salvar(aFormaPagamento);
+                MessageBox.Show("A forma de pagamento " + aFormaPagamento.Descricao + " foi alterada com sucesso.");
             }
             else
             {
                 txtCodigo.Text = aController_formaPagamento.Salvar(aFormaPagamento);
-                MessageBox.Show("Salvo com sucesso.");
+                MessageBox.Show("A forma de pagamento " + aFormaPagamento.Descricao + " foi salva com o código " + txtCodigo.Text + ".");
             }
         }
+
+
 
         public override void Limpartxt()
         {

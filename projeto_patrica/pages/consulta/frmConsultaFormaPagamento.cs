@@ -41,11 +41,14 @@ namespace projeto_patrica.pages.consulta
 
         public override void Alterar()
         {
+            string aux = oFrmCadFormaPagamento.btnSave.Text;
+            oFrmCadFormaPagamento.btnSave.Text = "Alterar";
             base.Alterar();
             aController_formaPagamento.CarregaObj(aFormaPagamento);
             oFrmCadFormaPagamento.ConhecaObj(aFormaPagamento, aController_formaPagamento);
             oFrmCadFormaPagamento.Carregatxt();
             oFrmCadFormaPagamento.ShowDialog();
+            oFrmCadFormaPagamento.btnSave.Text = aux;
             CarregaLV();
         }
 

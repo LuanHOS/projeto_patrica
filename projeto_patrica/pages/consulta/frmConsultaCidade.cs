@@ -41,11 +41,14 @@ namespace projeto_patrica.pages.consulta
 
         public override void Alterar()
         {
+            string aux = oFrmCadastroCidade.btnSave.Text;
+            oFrmCadastroCidade.btnSave.Text = "Alterar";
             base.Alterar();
             aController_cidade.CarregaObj(aCidade);
             oFrmCadastroCidade.ConhecaObj(aCidade, aController_cidade);
             oFrmCadastroCidade.Carregatxt();
             oFrmCadastroCidade.ShowDialog();
+            oFrmCadastroCidade.btnSave.Text = aux;
             this.CarregaLV();
         }
 

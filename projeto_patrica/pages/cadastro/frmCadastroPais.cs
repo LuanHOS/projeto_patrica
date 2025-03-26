@@ -26,37 +26,41 @@ namespace projeto_patrica.pages.cadastro
         }
         public override void Salvar()
         {
+            base.Salvar();
+
             if (txtNome.Text == "")
             {
-                MessageBox.Show("Campo Obrigatorio: Nome do país");
+                MessageBox.Show("Campo Obrigatório: Nome do país");
                 txtNome.Focus();
+                return;
             }
-            else
-            {
-                oPais.Id = Convert.ToInt16(txtCodigo.Text);
-                oPais.Nome = txtNome.Text;
-                
-                if (btnSave.Text == "Excluir")
-                    this.txtCodigo.Text = aController_pais.Excluir(oPais);
-                else
-                {
-                    this.txtCodigo.Text = aController_pais.Salvar(oPais);
-                    MessageBox.Show("o" + oPais.Nome + "foi salvo com o codigo " + this.txtCodigo.Text);
-                }
-            }
-        }
-
-
-        public override void Alterar()
-        {
 
             oPais.Id = Convert.ToInt16(txtCodigo.Text);
             oPais.Nome = txtNome.Text;
-            this.txtCodigo.Text = aController_pais.Salvar(oPais);
-            MessageBox.Show("o" + oPais.Nome + "foi alterado.");
 
-
+            if (btnSave.Text == "Excluir")
+            {
+                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (resp == DialogResult.Yes)
+                {
+                    this.txtCodigo.Text = aController_pais.Excluir(oPais);
+                    MessageBox.Show("O país \"" + oPais.Nome + "\" foi excluído com sucesso.");
+                    Sair();
+                }
+            }
+            else if (btnSave.Text == "Alterar")
+            {
+                this.txtCodigo.Text = aController_pais.Salvar(oPais);
+                MessageBox.Show("O país \"" + oPais.Nome + "\" foi alterado com sucesso.");
+            }
+            else
+            {
+                this.txtCodigo.Text = aController_pais.Salvar(oPais);
+                MessageBox.Show("O país \"" + oPais.Nome + "\" foi salvo com o código " + this.txtCodigo.Text + ".");
+            }
         }
+
+
 
         public override void Limpartxt()
         {

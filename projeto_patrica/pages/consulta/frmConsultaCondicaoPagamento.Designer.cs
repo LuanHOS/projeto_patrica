@@ -37,6 +37,7 @@
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmDescricao,
             this.clmQtdParcelas});
+            this.listV.SelectedIndexChanged += new System.EventHandler(this.ListV_SelectedIndexChanged);
             // 
             // clmDescricao
             // 
@@ -50,8 +51,8 @@
             // 
             // frmConsultaCondicaoPagamento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(844, 476);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(633, 387);
             this.Name = "frmConsultaCondicaoPagamento";
             this.Text = "Consulta de Condição de Pagamento";
             this.ResumeLayout(false);

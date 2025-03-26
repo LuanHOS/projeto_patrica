@@ -2,10 +2,6 @@
 using projeto_patrica.classes;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace projeto_patrica.dao
 {
@@ -13,21 +9,22 @@ namespace projeto_patrica.dao
     {
         public Dao_pais()
         {
-
         }
+
         public override string Salvar(object obj)
         {
             pais oPais = (pais)obj;
             string ok = "";
             char operacao = 'I';
             string sql;
-            sql = "insert pais values('" + oPais.Nome + "')";
+
+            // Correção: nome das colunas especificado no INSERT
+            sql = "INSERT INTO pais (NOME) VALUES('" + oPais.Nome + "')";
 
             if (oPais.Id != 0)
             {
                 operacao = 'U';
-                sql = "UPDATE pais SET Nome = '" + oPais.Nome + "' WHERE ID_PAIS = '" + oPais.Id + "'"; ;
-
+                sql = "UPDATE pais SET NOME = '" + oPais.Nome + "' WHERE ID_PAIS = '" + oPais.Id + "'"; // Correção: Nome da coluna uniformizado
             }
 
             MySqlCommand conn = new MySqlCommand();
@@ -35,14 +32,16 @@ namespace projeto_patrica.dao
             conn.CommandText = sql;
             conn.ExecuteNonQuery();
 
-
             if (operacao == 'I')
             {
-                conn.CommandText = "select @@identity";
+                conn.CommandText = "SELECT @@IDENTITY"; // Corrigido para garantir compatibilidade com MySQL
                 ok = conn.ExecuteScalar().ToString();
                 oPais.Id = Convert.ToInt32(ok);
             }
-
+            else
+            {
+                ok = oPais.Id.ToString(); // Correção: garante que "ok" também seja retornado em UPDATE
+            }
 
             conn.Connection.Close();
             return ok;
@@ -55,15 +54,18 @@ namespace projeto_patrica.dao
             conn.Connection = Banco.Abrir();
             conn.CommandType = System.Data.CommandType.Text;
 
-            conn.CommandText = "select * from PAIS";
+            conn.CommandText = "SELECT * FROM PAIS";
             var dr = conn.ExecuteReader();
 
             while (dr.Read())
             {
-                lista.Add(new pais(Convert.ToInt32(dr.GetValue(0)),
+                lista.Add(new pais(
+                    Convert.ToInt32(dr.GetValue(0)),
                     dr.GetString(1)
-                    ));
+                ));
             }
+
+            conn.Connection.Close(); // Correção: fechamento da conexão após leitura
             return lista;
         }
 
@@ -74,12 +76,13 @@ namespace projeto_patrica.dao
 
             try
             {
-                string sql = "select * from pais where ID_PAIS = '" + Convert.ToString(oPais.Id) + "'";
+                string sql = "SELECT * FROM pais WHERE ID_PAIS = '" + oPais.Id + "'"; // Correção: removido ToString redundante
                 MySqlCommand conn = new MySqlCommand();
                 conn.Connection = Banco.Abrir();
                 conn.CommandType = System.Data.CommandType.Text;
                 conn.CommandText = sql;
-                conn.ExecuteNonQuery();
+
+                // Correção: REMOVIDO ExecuteNonQuery desnecessário em SELECT
                 var dr = conn.ExecuteReader();
 
                 while (dr.Read())
@@ -87,14 +90,17 @@ namespace projeto_patrica.dao
                     oPais.Id = Convert.ToInt32(dr.GetValue(0));
                     oPais.Nome = dr.GetString(1);
                 }
+
                 conn.Connection.Close();
             }
             catch (MySqlException ex)
             {
-                ok = "Error de banco de dados" + ex.Message;
+                ok = "Erro de banco de dados: " + ex.Message; // Correção ortográfica
             }
+
             return ok;
         }
+
         public override string Excluir(object obj)
         {
             pais oPais = (pais)obj;
@@ -102,19 +108,21 @@ namespace projeto_patrica.dao
 
             try
             {
-                string sql = "delete from pais where ID_PAIS = '" + Convert.ToString(oPais.Id) + "'";
+                string sql = "DELETE FROM pais WHERE ID_PAIS = '" + oPais.Id + "'";
                 MySqlCommand conn = new MySqlCommand();
                 conn.Connection = Banco.Abrir();
                 conn.CommandType = System.Data.CommandType.Text;
                 conn.CommandText = sql;
                 conn.ExecuteNonQuery();
                 conn.Connection.Close();
-                ok = "Excluido !";
+
+                ok = "Excluído com sucesso!"; // Correção de formatação
             }
             catch (MySqlException ex)
             {
-                ok = "Error de banco de dados" + ex.Message;
+                ok = "Erro de banco de dados: " + ex.Message; // Correção ortográfica
             }
+
             return ok;
         }
     }

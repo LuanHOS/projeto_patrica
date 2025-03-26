@@ -91,7 +91,7 @@ namespace projeto_patrica.pages.cadastro
 
         public virtual void Desbloqueiatxt()
         {
-            this.txtCodigo.Enabled = true;
+            //this.txtCodigo.Enabled = true;
         }
 
         public override void ConhecaObj(object obj, object ctrl)

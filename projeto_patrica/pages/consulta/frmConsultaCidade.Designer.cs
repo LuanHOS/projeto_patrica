@@ -37,6 +37,7 @@
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmNome,
             this.clmEstado});
+            this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
             // 
             // clmCod
             // 
@@ -54,8 +55,8 @@
             // 
             // frmConsultaCidade
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(844, 476);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(633, 387);
             this.Name = "frmConsultaCidade";
             this.Text = "Consulta de Cidade";
             this.ResumeLayout(false);

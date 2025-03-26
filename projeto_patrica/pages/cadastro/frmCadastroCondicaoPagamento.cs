@@ -44,22 +44,28 @@ namespace projeto_patrica.pages.cadastro
             aCondicaoPagamento.QuantidadeParcelas = Convert.ToInt32(txtQtdParcelas.Text);
             aCondicaoPagamento.Parcelas = listaParcelas;
 
-            if (btnSave.Text == "Salvar" || btnSave.Text == "Alterar")
+            if (btnSave.Text == "Excluir")
             {
-                txtCodigo.Text = aController_condicaoPagamento.Salvar(aCondicaoPagamento);
-                MessageBox.Show("Salvo com sucesso.");
-            }
-            else if (btnSave.Text == "Excluir")
-            {
-                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (resp == DialogResult.Yes)
                 {
                     aController_condicaoPagamento.Excluir(aCondicaoPagamento);
-                    MessageBox.Show("Excluído com sucesso.");
+                    MessageBox.Show("A condição de pagamento " + aCondicaoPagamento.Descricao + " foi excluída com sucesso.");
                     Sair();
                 }
             }
+            else if (btnSave.Text == "Alterar")
+            {
+                this.txtCodigo.Text = aController_condicaoPagamento.Salvar(aCondicaoPagamento);
+                MessageBox.Show("A condição de pagamento " + aCondicaoPagamento.Descricao + " foi alterada com sucesso.");
+            }
+            else
+            {
+                this.txtCodigo.Text = aController_condicaoPagamento.Salvar(aCondicaoPagamento);
+                MessageBox.Show("A condição de pagamento " + aCondicaoPagamento.Descricao + " foi salva com o código " + this.txtCodigo.Text + ".");
+            }
         }
+
 
         public override void Limpartxt()
         {
@@ -89,6 +95,7 @@ namespace projeto_patrica.pages.cadastro
             base.Bloqueiatxt();
             txtDescricao.Enabled = false;
             txtQtdParcelas.Enabled = false;
+            btnPesquisarFormaPagamento.Enabled = false;
             BloquearCamposParcela();
         }
 
@@ -97,6 +104,7 @@ namespace projeto_patrica.pages.cadastro
             base.Desbloqueiatxt();
             txtDescricao.Enabled = true;
             txtQtdParcelas.Enabled = true;
+            btnPesquisarFormaPagamento.Enabled = true;
             DesbloquearCamposParcela();
         }
 

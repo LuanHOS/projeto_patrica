@@ -40,11 +40,14 @@ namespace projeto_patrica.pages.consulta
 
         public override void Alterar()
         {
-            //base.Alterar();
+            string aux = oFrmCadastroEstado.btnSave.Text;
+            oFrmCadastroEstado.btnSave.Text = "Alterar";
+            base.Alterar();
             aController_estado.CarregaObj(oEstado);
             oFrmCadastroEstado.ConhecaObj(oEstado, aController_estado);
             oFrmCadastroEstado.Carregatxt();
             oFrmCadastroEstado.ShowDialog();
+            oFrmCadastroEstado.btnSave.Text = aux;
             this.CarregaLV();
         }
         public override void Pesquisar()
