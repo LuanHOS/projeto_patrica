@@ -44,19 +44,19 @@ namespace projeto_patrica.pages.cadastro
                 if (resp == DialogResult.Yes)
                 {
                     this.txtCodigo.Text = aController_pais.Excluir(oPais);
-                    MessageBox.Show("O país \"" + oPais.Nome + "\" foi excluído com sucesso.");
+                    MessageBox.Show("O país " + oPais.Nome + " foi excluído com sucesso.");
                     Sair();
                 }
             }
             else if (btnSave.Text == "Alterar")
             {
                 this.txtCodigo.Text = aController_pais.Salvar(oPais);
-                MessageBox.Show("O país \"" + oPais.Nome + "\" foi alterado com sucesso.");
+                MessageBox.Show("O país " + oPais.Nome + " foi alterado com sucesso.");
             }
             else
             {
                 this.txtCodigo.Text = aController_pais.Salvar(oPais);
-                MessageBox.Show("O país \"" + oPais.Nome + "\" foi salvo com o código " + this.txtCodigo.Text + ".");
+                MessageBox.Show("O país " + oPais.Nome + " foi salvo com o código " + this.txtCodigo.Text + ".");
             }
         }
 

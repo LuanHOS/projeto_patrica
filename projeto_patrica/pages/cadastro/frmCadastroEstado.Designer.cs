@@ -37,49 +37,55 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(24, 110);
+            this.txtNome.Location = new System.Drawing.Point(18, 89);
+            this.txtNome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(237, 22);
+            this.txtNome.Size = new System.Drawing.Size(179, 20);
             this.txtNome.TabIndex = 6;
             // 
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(21, 91);
+            this.lblNome.Location = new System.Drawing.Point(16, 74);
+            this.lblNome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(44, 16);
+            this.lblNome.Size = new System.Drawing.Size(35, 13);
             this.lblNome.TabIndex = 5;
             this.lblNome.Text = "Nome";
             // 
             // txtPais
             // 
-            this.txtPais.Location = new System.Drawing.Point(24, 179);
+            this.txtPais.Location = new System.Drawing.Point(18, 145);
+            this.txtPais.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPais.Name = "txtPais";
-            this.txtPais.Size = new System.Drawing.Size(237, 22);
+            this.txtPais.Size = new System.Drawing.Size(179, 20);
             this.txtPais.TabIndex = 8;
             // 
             // lblPais
             // 
             this.lblPais.AutoSize = true;
-            this.lblPais.Location = new System.Drawing.Point(21, 160);
+            this.lblPais.Location = new System.Drawing.Point(16, 130);
+            this.lblPais.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPais.Name = "lblPais";
-            this.lblPais.Size = new System.Drawing.Size(34, 16);
+            this.lblPais.Size = new System.Drawing.Size(29, 13);
             this.lblPais.TabIndex = 7;
             this.lblPais.Text = "País";
             // 
             // btnPesquisarPais
             // 
-            this.btnPesquisarPais.Location = new System.Drawing.Point(267, 176);
+            this.btnPesquisarPais.Location = new System.Drawing.Point(200, 143);
+            this.btnPesquisarPais.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPesquisarPais.Name = "btnPesquisarPais";
-            this.btnPesquisarPais.Size = new System.Drawing.Size(99, 28);
+            this.btnPesquisarPais.Size = new System.Drawing.Size(74, 23);
             this.btnPesquisarPais.TabIndex = 9;
             this.btnPesquisarPais.Text = "Pesquisar";
             this.btnPesquisarPais.UseVisualStyleBackColor = true;
+            this.btnPesquisarPais.Click += new System.EventHandler(this.btnPesquisarPais_Click);
             // 
             // frmCadastroEstado
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(844, 476);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(633, 387);
             this.Controls.Add(this.btnPesquisarPais);
             this.Controls.Add(this.txtPais);
             this.Controls.Add(this.lblPais);

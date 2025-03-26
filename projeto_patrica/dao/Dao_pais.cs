@@ -18,13 +18,12 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
-            // Correção: nome das colunas especificado no INSERT
             sql = "INSERT INTO pais (NOME) VALUES('" + oPais.Nome + "')";
 
             if (oPais.Id != 0)
             {
                 operacao = 'U';
-                sql = "UPDATE pais SET NOME = '" + oPais.Nome + "' WHERE ID_PAIS = '" + oPais.Id + "'"; // Correção: Nome da coluna uniformizado
+                sql = "UPDATE pais SET NOME = '" + oPais.Nome + "' WHERE ID_PAIS = '" + oPais.Id + "'"; 
             }
 
             MySqlCommand conn = new MySqlCommand();
@@ -34,13 +33,13 @@ namespace projeto_patrica.dao
 
             if (operacao == 'I')
             {
-                conn.CommandText = "SELECT @@IDENTITY"; // Corrigido para garantir compatibilidade com MySQL
+                conn.CommandText = "SELECT @@IDENTITY"; 
                 ok = conn.ExecuteScalar().ToString();
                 oPais.Id = Convert.ToInt32(ok);
             }
             else
             {
-                ok = oPais.Id.ToString(); // Correção: garante que "ok" também seja retornado em UPDATE
+                ok = oPais.Id.ToString();
             }
 
             conn.Connection.Close();
@@ -65,7 +64,7 @@ namespace projeto_patrica.dao
                 ));
             }
 
-            conn.Connection.Close(); // Correção: fechamento da conexão após leitura
+            conn.Connection.Close();
             return lista;
         }
 
@@ -76,13 +75,13 @@ namespace projeto_patrica.dao
 
             try
             {
-                string sql = "SELECT * FROM pais WHERE ID_PAIS = '" + oPais.Id + "'"; // Correção: removido ToString redundante
+                string sql = "SELECT * FROM pais WHERE ID_PAIS = '" + oPais.Id + "'"; 
                 MySqlCommand conn = new MySqlCommand();
                 conn.Connection = Banco.Abrir();
                 conn.CommandType = System.Data.CommandType.Text;
                 conn.CommandText = sql;
 
-                // Correção: REMOVIDO ExecuteNonQuery desnecessário em SELECT
+               
                 var dr = conn.ExecuteReader();
 
                 while (dr.Read())
@@ -95,7 +94,7 @@ namespace projeto_patrica.dao
             }
             catch (MySqlException ex)
             {
-                ok = "Erro de banco de dados: " + ex.Message; // Correção ortográfica
+                ok = "Erro de banco de dados: " + ex.Message; 
             }
 
             return ok;
@@ -116,11 +115,11 @@ namespace projeto_patrica.dao
                 conn.ExecuteNonQuery();
                 conn.Connection.Close();
 
-                ok = "Excluído com sucesso!"; // Correção de formatação
+                ok = "Excluído com sucesso!"; 
             }
             catch (MySqlException ex)
             {
-                ok = "Erro de banco de dados: " + ex.Message; // Correção ortográfica
+                ok = "Erro de banco de dados: " + ex.Message; 
             }
 
             return ok;
