@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projeto_patrica.classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,33 +11,52 @@ namespace projeto_patrica.classes
     {
         protected int codCondPgto; //PK
         protected int numeroParcela; //PK
-        protected int codFormaPgto; //FK
+        protected formaPagamento aFormaPagamento; //FK
         protected decimal valorPercentual;
         protected int diasAposVenda;
-
         public parcelaCondicaoPagamento()
         {
             codCondPgto = 0;
             numeroParcela = 0;
-            codFormaPgto = 0;
+            aFormaPagamento = new formaPagamento();
             valorPercentual = 0;
             diasAposVenda = 0;
         }
 
-        public parcelaCondicaoPagamento(int codCondPagto, int numeroParcela, int codFormaPagto, decimal valorPercentual, int diasAposVenda)
+        public parcelaCondicaoPagamento(int codCondPagto, int numeroParcela, formaPagamento aFormaPagamento, decimal valorPercentual, int diasAposVenda)
         {
             this.codCondPgto = codCondPagto;
             this.numeroParcela = numeroParcela;
-            this.codFormaPgto = codFormaPagto;
+            this.aFormaPagamento = aFormaPagamento;
             this.valorPercentual = valorPercentual;
             this.diasAposVenda = diasAposVenda;
 
         }
 
-        public int CodCondPagto { get; set; }
-        public int NumeroParcela { get; set; }
-        public int CodFormaPagto { get; set; }
-        public decimal ValorPercentual { get; set; }
-        public int DiasAposVenda { get; set; }
+        public int CodCondPagto
+        {
+            get => codCondPgto;
+            set => codCondPgto = value;
+        }
+        public int NumeroParcela
+        {
+            get => numeroParcela;
+            set => numeroParcela = value;
+        }
+        public formaPagamento AFormaPagamento
+        {
+            get => aFormaPagamento;
+            set => aFormaPagamento = value;
+        }
+        public decimal ValorPercentual
+        {
+            get => valorPercentual;
+            set => valorPercentual = value;
+        }
+        public int DiasAposVenda
+        {
+            get => diasAposVenda;
+            set => diasAposVenda = value;
+        }
     }
 }

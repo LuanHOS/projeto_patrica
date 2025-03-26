@@ -53,7 +53,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.ClientSize = new System.Drawing.Size(844, 476);
             this.Name = "frmConsultaCondicaoPagamento";
-            this.Text = "Consulta Condição de Pagamento";
+            this.Text = "Consulta de Condição de Pagamento";
             this.ResumeLayout(false);
             this.PerformLayout();
 

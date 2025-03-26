@@ -23,6 +23,10 @@ namespace projeto_patrica.classes
             this.descricao = descricao;
         }
 
-        public string Descricao { get; set; }
+        public string Descricao
+        {
+            get => descricao;
+            set => descricao = value;
+        }
     }
 }

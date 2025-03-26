@@ -7,43 +7,21 @@ using System.Windows.Forms;
 
 namespace projeto_patrica.pages.consulta
 {
-
-    /// <summary>
-    /// ///////////////////////////////////////////
-    /// </summary>
     public partial class frmConsultaCondicaoPagamento : projeto_patrica.pages.consulta.frmConsulta
     {
-        frmCadastroCondicaoPagamento oFrmCadCondicaoPagamento;
+        private frmCadastroCondicaoPagamento oFrmCadCondicaoPagamento;
         private condicaoPagamento aCondicaoPagamento;
-        Controller_condicaoPagamento aController_condicaoPagamento;
-
-
-        /*
-         * 
-         */
-
+        private Controller_condicaoPagamento aController_condicaoPagamento;
 
         public frmConsultaCondicaoPagamento()
         {
             InitializeComponent();
         }
 
-
-        /*
-         * 
-         */
-
-
         public override void setFrmCadastro(object obj)
         {
             oFrmCadCondicaoPagamento = (frmCadastroCondicaoPagamento)obj;
         }
-
-
-        /*
-         * 
-         */
-
 
         public override void ConhecaObj(object obj, object ctrl)
         {
@@ -51,12 +29,6 @@ namespace projeto_patrica.pages.consulta
             aController_condicaoPagamento = (Controller_condicaoPagamento)ctrl;
             this.CarregaLV();
         }
-
-
-        /*
-         * 
-         */
-
 
         public override void Incluir()
         {
@@ -68,34 +40,26 @@ namespace projeto_patrica.pages.consulta
             this.CarregaLV();
         }
 
-
-        /*
-         * 
-         */
-
-
         public override void Alterar()
         {
+            string aux = oFrmCadCondicaoPagamento.btnSave.Text;
+            oFrmCadCondicaoPagamento.btnSave.Text = "Alterar";
             base.Alterar();
             aController_condicaoPagamento.CarregaObj(aCondicaoPagamento);
             oFrmCadCondicaoPagamento.ConhecaObj(aCondicaoPagamento, aController_condicaoPagamento);
             oFrmCadCondicaoPagamento.Carregatxt();
             oFrmCadCondicaoPagamento.txtCodigo.Enabled = false;
             oFrmCadCondicaoPagamento.ShowDialog();
+            oFrmCadCondicaoPagamento.btnSave.Text = aux;
             this.CarregaLV();
         }
-
-
-        /*
-         * 
-         */
-
 
         public override void Excluir()
         {
             string aux = oFrmCadCondicaoPagamento.btnSave.Text;
             oFrmCadCondicaoPagamento.btnSave.Text = "Excluir";
             base.Excluir();
+            aController_condicaoPagamento.CarregaObj(aCondicaoPagamento);
             oFrmCadCondicaoPagamento.ConhecaObj(aCondicaoPagamento, aController_condicaoPagamento);
             oFrmCadCondicaoPagamento.Carregatxt();
             oFrmCadCondicaoPagamento.Bloqueiatxt();
@@ -107,78 +71,56 @@ namespace projeto_patrica.pages.consulta
             this.CarregaLV();
         }
 
-
-        /*
-         * 
-         */
-
-
         public override void CarregaLV()
         {
             base.CarregaLV();
+            listV.Items.Clear();
 
-            this.listV.Items.Clear();
-
-            var lista = aController_condicaoPagamento.ListaCondicaoPagamento();
-            foreach (var condicao in lista)
+            foreach (condicaoPagamento aCondPag in aController_condicaoPagamento.ListaCondicaoPagamento())
             {
-                ListViewItem item = new ListViewItem(Convert.ToString(condicao.Id));
-                item.SubItems.Add(condicao.Descricao);
-                item.SubItems.Add(Convert.ToString(condicao.QuantidadeParcelas));
-                this.listV.Items.Add(item);
+                ListViewItem item = new ListViewItem(Convert.ToString(aCondPag.Id));
+                item.SubItems.Add(aCondPag.Descricao);
+                item.SubItems.Add(Convert.ToString(aCondPag.QuantidadeParcelas));
+                listV.Items.Add(item);
             }
         }
 
-
-        /*
-         * 
-         */
-
-
         public override void Pesquisar()
         {
-            this.listV.Items.Clear();
+            listV.Items.Clear();
 
-            string termoPesquisa = txtCodigo.Text.Trim().ToLower();
+            string termo = txtCodigo.Text.Trim().ToLower();
+            List<condicaoPagamento> lista = new List<condicaoPagamento>();
 
-            var listaResultados = new List<condicaoPagamento>();
-
-            if (string.IsNullOrWhiteSpace(termoPesquisa))
+            if (string.IsNullOrWhiteSpace(termo))
             {
-                LimparPesquisa();
+                lista = aController_condicaoPagamento.ListaCondicaoPagamento();
             }
             else
             {
-                foreach (var condicao in aController_condicaoPagamento.ListaCondicaoPagamento())
+                foreach (condicaoPagamento cp in aController_condicaoPagamento.ListaCondicaoPagamento())
                 {
-                    if (termoPesquisa == Convert.ToString(condicao.Id) ||
-                        condicao.Descricao.ToLower().Contains(termoPesquisa))
+                    if (termo == cp.Id.ToString() || cp.Descricao.ToLower().Contains(termo))
                     {
-                        listaResultados.Add(condicao);
+                        lista.Add(cp);
                     }
                 }
             }
 
-            foreach (var condicao in listaResultados)
+            foreach (condicaoPagamento aCondPag in lista)
             {
-                ListViewItem item = new ListViewItem(Convert.ToString(condicao.Id));
-                item.SubItems.Add(condicao.Descricao);
-                item.SubItems.Add(Convert.ToString(condicao.QuantidadeParcelas));
-                this.listV.Items.Add(item);
+                ListViewItem item = new ListViewItem(Convert.ToString(aCondPag.Id));
+                item.SubItems.Add(aCondPag.Descricao);
+                item.SubItems.Add(Convert.ToString(aCondPag.QuantidadeParcelas));
+                listV.Items.Add(item);
             }
         }
-
-
-        /*
-         * 
-         */
-
 
         public override void ListV_SelectedIndexChanged(object sender, EventArgs e)
         {
             base.ListV_SelectedIndexChanged(sender, e);
 
-            if (this.listV.SelectedItems.Count > 0)
+            if (listV.SelectedItems.Count > 0)
             {
                 ListViewItem linha = listV.SelectedItems[0];
                 aCondicaoPagamento.Id = Convert.ToInt32(linha.SubItems[0].Text);

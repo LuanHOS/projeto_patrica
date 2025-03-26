@@ -1,6 +1,6 @@
 ﻿namespace projeto_patrica.pages.consulta
 {
-    partial class frmConsultaFormaPagamento
+    partial class frmConsultaCidade
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.clmDescricao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmNome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmEstado = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listV
             // 
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clmDescricao});
-            this.listV.SelectedIndexChanged += new System.EventHandler(this.ListV_SelectedIndexChanged);
+            this.clmNome,
+            this.clmEstado});
             // 
-            // txtCodigo
+            // clmCod
             // 
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
+            this.clmCod.Width = 101;
             // 
-            // clmDescricao
+            // clmNome
             // 
-            this.clmDescricao.Text = "Descrição";
-            this.clmDescricao.Width = 180;
+            this.clmNome.Text = "Cidade";
+            this.clmNome.Width = 195;
             // 
-            // frmConsultaFormaPagamento
+            // clmEstado
+            // 
+            this.clmEstado.Text = "Estado";
+            this.clmEstado.Width = 190;
+            // 
+            // frmConsultaCidade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.ClientSize = new System.Drawing.Size(844, 476);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmConsultaFormaPagamento";
-            this.Text = "Consulta de Forma de Pagamento";
+            this.Name = "frmConsultaCidade";
+            this.Text = "Consulta de Cidade";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -60,6 +65,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ColumnHeader clmDescricao;
+        private System.Windows.Forms.ColumnHeader clmNome;
+        private System.Windows.Forms.ColumnHeader clmEstado;
     }
 }

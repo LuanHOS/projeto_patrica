@@ -1,7 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
+using projeto_patrica.classes;
 using System;
 using System.Collections.Generic;
-using projeto_patrica.classes;
+using System.Globalization;
 
 namespace projeto_patrica.dao
 {
@@ -14,242 +15,191 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
 
-            /*
-             * 
-             */
-
-
-            using (MySqlConnection conn = Banco.Abrir())
+            if (aCondicaoPagamento.Id == 0)
             {
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = conn;
-
-                if (aCondicaoPagamento.Id == 0)
-                {
-                    sql = "INSERT INTO CONDICAO_PAGAMENTO (DESCRICAO, QUANTIDADE_PARCELAS) VALUES (@descricao, @qtdParcelas);";
-                    cmd.CommandText = sql;
-                    cmd.Parameters.AddWithValue("@descricao", aCondicaoPagamento.Descricao);
-                    cmd.Parameters.AddWithValue("@qtdParcelas", aCondicaoPagamento.QuantidadeParcelas);
-                }
-                else
-                {
-                    operacao = 'U';
-                    sql = "UPDATE CONDICAO_PAGAMENTO SET DESCRICAO = @descricao, QUANTIDADE_PARCELAS = @qtdParcelas WHERE ID_CONDICAO_PAGAMENTO = @id;";
-                    cmd.CommandText = sql;
-                    cmd.Parameters.AddWithValue("@descricao", aCondicaoPagamento.Descricao);
-                    cmd.Parameters.AddWithValue("@qtdParcelas", aCondicaoPagamento.QuantidadeParcelas);
-                    cmd.Parameters.AddWithValue("@id", aCondicaoPagamento.Id);
-                }
-
-                cmd.ExecuteNonQuery();
-
-                if (operacao == 'I')
-                {
-                    cmd.CommandText = "SELECT LAST_INSERT_ID();";
-                    ok = cmd.ExecuteScalar().ToString();
-                    aCondicaoPagamento.Id = Convert.ToInt32(ok);
-                }
-
-                conn.Close();
+                sql = "INSERT CONDICAO_PAGAMENTO (DESCRICAO, QUANTIDADE_PARCELAS) VALUES ('" + aCondicaoPagamento.Descricao + "','" + aCondicaoPagamento.QuantidadeParcelas + "')";
+            }
+            else
+            {
+                operacao = 'U';
+                sql = "UPDATE CONDICAO_PAGAMENTO SET DESCRICAO = '" + aCondicaoPagamento.Descricao + "', QUANTIDADE_PARCELAS = '" + aCondicaoPagamento.QuantidadeParcelas + "' WHERE ID_CONDICAO_PAGAMENTO = '" + aCondicaoPagamento.Id + "'";
             }
 
+            conn.CommandText = sql;
+            conn.ExecuteNonQuery();
+
+            if (operacao == 'I')
+            {
+                conn.CommandText = "SELECT @@IDENTITY";
+                ok = conn.ExecuteScalar().ToString();
+                aCondicaoPagamento.Id = Convert.ToInt32(ok);
+            }
+
+            foreach (parcelaCondicaoPagamento aParcela in aCondicaoPagamento.Parcelas)
+            {
+                aParcela.CodCondPagto = aCondicaoPagamento.Id;
+                SalvarParcela(aParcela, conn.Connection);
+            }
+
+            List<parcelaCondicaoPagamento> parcelasBanco = ListarParcelas(aCondicaoPagamento.Id);
+
+            foreach (parcelaCondicaoPagamento parcelaExistente in parcelasBanco)
+            {
+                bool existe = false;
+
+                foreach (parcelaCondicaoPagamento novaParcela in aCondicaoPagamento.Parcelas)
+                {
+                    if (novaParcela.NumeroParcela == parcelaExistente.NumeroParcela)
+                    {
+                        existe = true;
+                        break;
+                    }
+                }
+
+                if (!existe)
+                {
+                    ExcluirParcela(parcelaExistente);
+                }
+            }
+
+            conn.Connection.Close();
             return ok;
         }
 
-
-        /*
-         * 
-         */
-
-
-        public override string CarregaObj(object obj)
+        public string SalvarParcela(parcelaCondicaoPagamento parcela, MySqlConnection conexaoAberta)
         {
-            condicaoPagamento aCondicaoPagamento = (condicaoPagamento)obj;
+            string sql;
             string ok = "";
 
-            try
-            {
-                using (MySqlConnection conn = Banco.Abrir())
-                {
-                    string sql = "SELECT * FROM CONDICAO_PAGAMENTO WHERE ID_CONDICAO_PAGAMENTO = @id;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@id", aCondicaoPagamento.Id);
-                    var dr = cmd.ExecuteReader();
+            sql = "SELECT COUNT(*) FROM PARCELA_CONDICAO_PAGAMENTO WHERE ID_CONDICAO_PAGAMENTO = '" + parcela.CodCondPagto + "' AND NUMERO_PARCELA = '" + parcela.NumeroParcela + "'";
+            MySqlCommand cmd = new MySqlCommand(sql, conexaoAberta);
+            int qtd = Convert.ToInt32(cmd.ExecuteScalar());
 
-                    if (dr.Read())
-                    {
-                        aCondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
-                        aCondicaoPagamento.Descricao = dr["DESCRICAO"].ToString();
-                        aCondicaoPagamento.QuantidadeParcelas = Convert.ToInt32(dr["QUANTIDADE_PARCELAS"]);
-                        ok = "Encontrado";
-                    }
-
-                    conn.Close();
-                }
-            }
-            catch (Exception ex)
+            if (qtd > 0)
             {
-                ok = "Erro: " + ex.Message;
+                sql = "UPDATE PARCELA_CONDICAO_PAGAMENTO SET ID_FORMA_PAGAMENTO = '" + parcela.AFormaPagamento.Id +
+                      "', VALOR_PERCENTUAL = '" + parcela.ValorPercentual.ToString(CultureInfo.InvariantCulture) +
+                      "', DIAS_APOS_VENDA = '" + parcela.DiasAposVenda +
+                      "' WHERE ID_CONDICAO_PAGAMENTO = '" + parcela.CodCondPagto +
+                      "' AND NUMERO_PARCELA = '" + parcela.NumeroParcela + "'";
             }
+            else
+            {
+                sql = "INSERT INTO PARCELA_CONDICAO_PAGAMENTO VALUES ('" + parcela.CodCondPagto + "', '" + parcela.NumeroParcela +
+                      "', '" + parcela.AFormaPagamento.Id + "', '" + parcela.ValorPercentual.ToString(CultureInfo.InvariantCulture) +
+                      "', '" + parcela.DiasAposVenda + "')";
+            }
+
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
 
             return ok;
         }
-
-
-        /*
-         * 
-         */
-
 
         public override string Excluir(object obj)
         {
             condicaoPagamento aCondicaoPagamento = (condicaoPagamento)obj;
             string ok = "";
 
-            try
-            {
-                using (MySqlConnection conn = Banco.Abrir())
-                {
-                    string sql = "DELETE FROM CONDICAO_PAGAMENTO WHERE ID_CONDICAO_PAGAMENTO = @id;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@id", aCondicaoPagamento.Id);
-                    cmd.ExecuteNonQuery();
+            string sql = "DELETE FROM CONDICAO_PAGAMENTO WHERE ID_CONDICAO_PAGAMENTO = '" + aCondicaoPagamento.Id + "'";
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
+            conn.CommandText = sql;
+            conn.ExecuteNonQuery();
+            conn.Connection.Close();
 
-                    conn.Close();
-                    ok = "Excluído com sucesso!";
-                }
-            }
-            catch (Exception ex)
-            {
-                ok = "Erro ao excluir: " + ex.Message;
-            }
-
+            ok = "Excluído com sucesso!";
             return ok;
         }
 
+        public override string CarregaObj(object obj)
+        {
+            condicaoPagamento aCondicaoPagamento = (condicaoPagamento)obj;
+            string ok = "";
 
-        /*
-         * 
-         */
+            string sql = "SELECT * FROM CONDICAO_PAGAMENTO WHERE ID_CONDICAO_PAGAMENTO = '" + aCondicaoPagamento.Id + "'";
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
+            conn.CommandText = sql;
+            var dr = conn.ExecuteReader();
 
+            while (dr.Read())
+            {
+                aCondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
+                aCondicaoPagamento.Descricao = dr["DESCRICAO"].ToString();
+                aCondicaoPagamento.QuantidadeParcelas = Convert.ToInt32(dr["QUANTIDADE_PARCELAS"]);
+            }
+
+            conn.Connection.Close();
+            return ok;
+        }
 
         public List<condicaoPagamento> ListarCondicaoPagamento()
         {
+            condicaoPagamento aCondicaoPagamento;
             List<condicaoPagamento> lista = new List<condicaoPagamento>();
+            string sql = "SELECT * FROM CONDICAO_PAGAMENTO";
 
-            using (MySqlConnection conn = Banco.Abrir())
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
+            conn.CommandText = sql;
+            var dr = conn.ExecuteReader();
+
+            while (dr.Read())
             {
-                string sql = "SELECT * FROM CONDICAO_PAGAMENTO;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                var dr = cmd.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    lista.Add(new condicaoPagamento
-                    {
-                        Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]),
-                        Descricao = dr["DESCRICAO"].ToString(),
-                        QuantidadeParcelas = Convert.ToInt32(dr["QUANTIDADE_PARCELAS"])
-                    });
-                }
-
-                conn.Close();
+                aCondicaoPagamento = new condicaoPagamento();
+                aCondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
+                aCondicaoPagamento.Descricao = dr["DESCRICAO"].ToString();
+                aCondicaoPagamento.QuantidadeParcelas = Convert.ToInt32(dr["QUANTIDADE_PARCELAS"]);
+                lista.Add(aCondicaoPagamento);
             }
 
+            conn.Connection.Close();
             return lista;
         }
 
-
-        /*
-         * 
-         */
-
-
-        public string SalvarParcela(parcelaCondicaoPagamento parcela)
+        public List<parcelaCondicaoPagamento> ListarParcelas(int idCondicaoPagamento)
         {
-            string ok = "";
+            parcelaCondicaoPagamento parcela;
+            List<parcelaCondicaoPagamento> lista = new List<parcelaCondicaoPagamento>();
 
-            using (MySqlConnection conn = Banco.Abrir())
+            string sql = "SELECT * FROM PARCELA_CONDICAO_PAGAMENTO WHERE ID_CONDICAO_PAGAMENTO = '" + idCondicaoPagamento + "'";
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
+            conn.CommandText = sql;
+            var dr = conn.ExecuteReader();
+
+            while (dr.Read())
             {
-                string sql = "INSERT INTO PARCELA_CONDICAO_PAGAMENTO (ID_CONDICAO_PAGAMENTO, NUMERO_PARCELA, ID_FORMA_PAGAMENTO, VALOR_PERCENTUAL, DIAS_APOS_VENDA) " +
-                             "VALUES (@codCondPagto, @numeroParcela, @codFormaPagto, @valorPercentual, @diasAposVenda);";
+                parcela = new parcelaCondicaoPagamento();
+                parcela.CodCondPagto = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
+                parcela.NumeroParcela = Convert.ToInt32(dr["NUMERO_PARCELA"]);
+                parcela.AFormaPagamento.Id = Convert.ToInt32(dr["ID_FORMA_PAGAMENTO"]);
+                parcela.ValorPercentual = Convert.ToDecimal(dr["VALOR_PERCENTUAL"]);
+                parcela.DiasAposVenda = Convert.ToInt32(dr["DIAS_APOS_VENDA"]);
 
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@codCondPagto", parcela.CodCondPagto);
-                cmd.Parameters.AddWithValue("@numeroParcela", parcela.NumeroParcela);
-                cmd.Parameters.AddWithValue("@codFormaPagto", parcela.CodFormaPagto);
-                cmd.Parameters.AddWithValue("@valorPercentual", parcela.ValorPercentual);
-                cmd.Parameters.AddWithValue("@diasAposVenda", parcela.DiasAposVenda);
-
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                ok = "Parcela salva com sucesso!";
+                lista.Add(parcela);
             }
 
-            return ok;
+            conn.Connection.Close();
+            return lista;
         }
-
-
-        /*
-         * 
-         */
-
 
         public string ExcluirParcela(parcelaCondicaoPagamento parcela)
         {
             string ok = "";
 
-            using (MySqlConnection conn = Banco.Abrir())
-            {
-                string sql = "DELETE FROM PARCELA_CONDICAO_PAGAMENTO WHERE ID_CONDICAO_PAGAMENTO = @codCondPagto AND NUMERO_PARCELA = @numeroParcela;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@codCondPagto", parcela.CodCondPagto);
-                cmd.Parameters.AddWithValue("@numeroParcela", parcela.NumeroParcela);
-
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                ok = "Parcela excluída com sucesso!";
-            }
+            string sql = "DELETE FROM PARCELA_CONDICAO_PAGAMENTO WHERE ID_CONDICAO_PAGAMENTO = '" + parcela.CodCondPagto + "' AND NUMERO_PARCELA = '" + parcela.NumeroParcela + "'";
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
+            conn.CommandText = sql;
+            conn.ExecuteNonQuery();
+            conn.Connection.Close();
 
             return ok;
-        }
-
-
-        /*
-         * 
-         */
-
-
-        public List<parcelaCondicaoPagamento> ListarParcelas(int codCondPagto)
-        {
-            List<parcelaCondicaoPagamento> lista = new List<parcelaCondicaoPagamento>();
-
-            using (MySqlConnection conn = Banco.Abrir())
-            {
-                string sql = "SELECT * FROM PARCELA_CONDICAO_PAGAMENTO WHERE ID_CONDICAO_PAGAMENTO = @codCondPagto;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@codCondPagto", codCondPagto);
-                var dr = cmd.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    lista.Add(new parcelaCondicaoPagamento
-                    {
-                        CodCondPagto = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]),
-                        NumeroParcela = Convert.ToInt32(dr["NUMERO_PARCELA"]),
-                        CodFormaPagto = Convert.ToInt32(dr["ID_FORMA_PAGAMENTO"]),
-                        ValorPercentual = Convert.ToDecimal(dr["VALOR_PERCENTUAL"]),
-                        DiasAposVenda = Convert.ToInt32(dr["DIAS_APOS_VENDA"])
-                    });
-                }
-
-                conn.Close();
-            }
-
-            return lista;
         }
     }
 }

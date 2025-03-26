@@ -1,4 +1,6 @@
-﻿using System;
+﻿using projeto_patrica.classes;
+using projeto_patrica.controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,11 +10,12 @@ using System.Windows.Forms;
 
 namespace projeto_patrica.pages.cadastro
 {
-	public partial class frmCadastro : projeto_patrica.frmBase
-	{
+    public partial class frmCadastro : projeto_patrica.frmBase
+    {
         public frmCadastro()
         {
             InitializeComponent();
+            this.txtCodigo.Enabled = false; //Faz com que a TextBox txtCodigo não possa ser editada
         }
 
 
@@ -89,6 +92,11 @@ namespace projeto_patrica.pages.cadastro
         public virtual void Desbloqueiatxt()
         {
             this.txtCodigo.Enabled = true;
+        }
+
+        public override void ConhecaObj(object obj, object ctrl)
+        {
+
         }
     }
 }

@@ -10,23 +10,10 @@ namespace projeto_patrica.pages.cadastro
         private formaPagamento aFormaPagamento;
         private Controller_formaPagamento aController_formaPagamento;
 
-
-        /*
-         * 
-         */
-
-
         public frmCadastroFormaPagamento()
         {
             InitializeComponent();
-            txtCodigo.Text = Convert.ToString("0");
         }
-
-
-        /*
-         * 
-         */
-
 
         public override void ConhecaObj(object obj, object ctrl)
         {
@@ -34,113 +21,51 @@ namespace projeto_patrica.pages.cadastro
             aController_formaPagamento = (Controller_formaPagamento)ctrl;
         }
 
-
-        /*
-         * 
-         */
-
-
         public override void Salvar()
         {
-            base.Salvar();
+            aFormaPagamento.Id = Convert.ToInt32(txtCodigo.Text);
+            aFormaPagamento.Descricao = txtDescricao.Text;
 
-            if (string.IsNullOrWhiteSpace(txtDescricao.Text))
+            if (txtDescricao.Text == "")
             {
-                MessageBox.Show("Preencha os Campos Obrigatórios!");
+                MessageBox.Show("Preencha a descrição.");
                 txtDescricao.Focus();
                 return;
             }
 
-            aFormaPagamento.Id = Convert.ToInt32(txtCodigo.Text);
-            aFormaPagamento.Descricao = txtDescricao.Text;
-
-            if (btnSave.Text == "Salvar")
+            if (btnSave.Text == "Excluir")
             {
-                this.txtCodigo.Text = aController_formaPagamento.Salvar(aFormaPagamento);
-                MessageBox.Show($"A forma de pagamento \"{aFormaPagamento.Descricao}\" foi salva com o código {this.txtCodigo.Text}.");
+                txtCodigo.Text = aController_formaPagamento.Excluir(aFormaPagamento);
             }
-            else if (btnSave.Text == "Excluir")
+            else
             {
-                var confirmResult = MessageBox.Show(
-                    $"Tem certeza que deseja excluir a forma de pagamento \"{aFormaPagamento.Descricao}\"?",
-                    "Confirmação de Exclusão",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
-
-                if (confirmResult == DialogResult.Yes)
-                {
-                    aController_formaPagamento.Excluir(aFormaPagamento);
-                    MessageBox.Show($"A forma de pagamento \"{aFormaPagamento.Descricao}\" foi excluída com sucesso.");
-                    Sair();
-                }
+                txtCodigo.Text = aController_formaPagamento.Salvar(aFormaPagamento);
+                MessageBox.Show("Salvo com sucesso.");
             }
         }
-
-
-        /*
-         * 
-         */
-
-
-        public override void Alterar()
-        {
-            base.Alterar();
-
-            aFormaPagamento.Id = Convert.ToInt32(txtCodigo.Text);
-            aFormaPagamento.Descricao = txtDescricao.Text;
-            this.txtCodigo.Text = aController_formaPagamento.Salvar(aFormaPagamento);
-            MessageBox.Show($"A forma de pagamento \"{aFormaPagamento.Descricao}\" foi alterada com sucesso.");
-        }
-
-
-        /*
-         * 
-         */
-
 
         public override void Limpartxt()
         {
-            base.Limpartxt();
-
-            this.txtDescricao.Clear();
+            txtCodigo.Text = "0";
+            txtDescricao.Clear();
         }
-
-
-        /*
-         * 
-         */
-
 
         public override void Carregatxt()
         {
-            base.Carregatxt();
-
-            this.txtCodigo.Text = Convert.ToString(aFormaPagamento.Id);
-            this.txtDescricao.Text = aFormaPagamento.Descricao;
+            txtCodigo.Text = Convert.ToString(aFormaPagamento.Id);
+            txtDescricao.Text = aFormaPagamento.Descricao;
         }
-
-
-        /*
-         * 
-         */
-
 
         public override void Bloqueiatxt()
         {
-            base.Bloqueiatxt();
-            this.txtDescricao.Enabled = false;
+            txtCodigo.Enabled = false;
+            txtDescricao.Enabled = false;
         }
-
-
-        /*
-         * 
-         */
-
 
         public override void Desbloqueiatxt()
         {
-            base.Desbloqueiatxt();
-            this.txtDescricao.Enabled = true;
+            txtCodigo.Enabled = true;
+            txtDescricao.Enabled = true;
         }
     }
 }

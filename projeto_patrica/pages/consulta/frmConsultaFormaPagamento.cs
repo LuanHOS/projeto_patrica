@@ -11,63 +11,33 @@ namespace projeto_patrica.pages.consulta
     {
         frmCadastroFormaPagamento oFrmCadFormaPagamento;
         private formaPagamento aFormaPagamento;
-        Controller_formaPagamento aController_formaPagamento;
-
-
-        /*
-         * 
-         */
+        private Controller_formaPagamento aController_formaPagamento;
 
         public frmConsultaFormaPagamento()
         {
             InitializeComponent();
         }
 
-
-        /*
-         * 
-         */
-
-
         public override void setFrmCadastro(object obj)
         {
             oFrmCadFormaPagamento = (frmCadastroFormaPagamento)obj;
         }
 
-
-        /*
-         * 
-         */
-
-
         public override void ConhecaObj(object obj, object ctrl)
         {
             aFormaPagamento = (formaPagamento)obj;
             aController_formaPagamento = (Controller_formaPagamento)ctrl;
-            this.CarregaLV();
+            CarregaLV();
         }
-
-
-        /*
-         * 
-         */
-
 
         public override void Incluir()
         {
             base.Incluir();
             oFrmCadFormaPagamento.ConhecaObj(aFormaPagamento, aController_formaPagamento);
             oFrmCadFormaPagamento.Limpartxt();
-            oFrmCadFormaPagamento.txtCodigo.Enabled = false;
             oFrmCadFormaPagamento.ShowDialog();
-            this.CarregaLV();
+            CarregaLV();
         }
-
-
-        /*
-         * 
-         */
-
 
         public override void Alterar()
         {
@@ -75,66 +45,43 @@ namespace projeto_patrica.pages.consulta
             aController_formaPagamento.CarregaObj(aFormaPagamento);
             oFrmCadFormaPagamento.ConhecaObj(aFormaPagamento, aController_formaPagamento);
             oFrmCadFormaPagamento.Carregatxt();
-            oFrmCadFormaPagamento.txtCodigo.Enabled = false;
             oFrmCadFormaPagamento.ShowDialog();
-            this.CarregaLV();
+            CarregaLV();
         }
-
-
-        /*
-         * 
-         */
-
 
         public override void Excluir()
         {
+            base.Excluir();
             string aux = oFrmCadFormaPagamento.btnSave.Text;
             oFrmCadFormaPagamento.btnSave.Text = "Excluir";
-            base.Excluir();
+            aController_formaPagamento.CarregaObj(aFormaPagamento);
             oFrmCadFormaPagamento.ConhecaObj(aFormaPagamento, aController_formaPagamento);
             oFrmCadFormaPagamento.Carregatxt();
             oFrmCadFormaPagamento.Bloqueiatxt();
-            btnPesquisar.Enabled = false;
             oFrmCadFormaPagamento.ShowDialog(this);
             oFrmCadFormaPagamento.Desbloqueiatxt();
-            btnPesquisar.Enabled = true;
             oFrmCadFormaPagamento.btnSave.Text = aux;
-            this.CarregaLV();
+            CarregaLV();
         }
-
-
-        /*
-         * 
-         */
-
 
         public override void CarregaLV()
         {
             base.CarregaLV();
-
-            this.listV.Items.Clear();
-
+            listV.Items.Clear();
             var lista = aController_formaPagamento.ListaFormaPagamento();
+
             foreach (var aFormaPagamento in lista)
             {
                 ListViewItem item = new ListViewItem(Convert.ToString(aFormaPagamento.Id));
                 item.SubItems.Add(aFormaPagamento.Descricao);
-                this.listV.Items.Add(item);
+                listV.Items.Add(item);
             }
         }
 
-
-        /*
-         * 
-         */
-
-
         public override void Pesquisar()
         {
-            this.listV.Items.Clear();
-
+            listV.Items.Clear();
             string termoPesquisa = txtCodigo.Text.Trim().ToLower();
-
             var listaResultados = new List<formaPagamento>();
 
             if (string.IsNullOrWhiteSpace(termoPesquisa))
@@ -145,37 +92,27 @@ namespace projeto_patrica.pages.consulta
             {
                 foreach (var aFormaPagamento in aController_formaPagamento.ListaFormaPagamento())
                 {
-                    if (termoPesquisa == Convert.ToString(aFormaPagamento.Id))
-                    {
-                        listaResultados.Add(aFormaPagamento);
-                    }
-                    else if (aFormaPagamento.Descricao.ToLower().Contains(termoPesquisa.ToLower()))
+                    if (termoPesquisa == Convert.ToString(aFormaPagamento.Id) ||
+                        aFormaPagamento.Descricao.ToLower().Contains(termoPesquisa))
                     {
                         listaResultados.Add(aFormaPagamento);
                     }
                 }
-
             }
 
             foreach (var aFormaPagamento in listaResultados)
             {
                 ListViewItem item = new ListViewItem(Convert.ToString(aFormaPagamento.Id));
                 item.SubItems.Add(aFormaPagamento.Descricao);
-                this.listV.Items.Add(item);
+                listV.Items.Add(item);
             }
         }
-
-
-        /*
-         * 
-         */
-
 
         public override void ListV_SelectedIndexChanged(object sender, EventArgs e)
         {
             base.ListV_SelectedIndexChanged(sender, e);
 
-            if (this.listV.SelectedItems.Count > 0)
+            if (listV.SelectedItems.Count > 0)
             {
                 ListViewItem linha = listV.SelectedItems[0];
                 aFormaPagamento.Id = Convert.ToInt32(linha.SubItems[0].Text);

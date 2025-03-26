@@ -19,6 +19,10 @@ namespace projeto_patrica.classes
 			this.id = id;
 		}
 
-		public int Id { get; set; }
-	}
+		public int Id
+        {
+            get => id;
+            set => id = value;
+        }
+    }
 }

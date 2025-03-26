@@ -1,134 +1,49 @@
 ﻿using MySql.Data.MySqlClient;
+using projeto_patrica.classes;
 using System;
 using System.Collections.Generic;
-using projeto_patrica.classes;
 
 namespace projeto_patrica.dao
 {
-    internal class Dao_formaPagamento : Dao
+    class Dao_formaPagamento : Dao
     {
+        public Dao_formaPagamento()
+        {
+        }
+
         public override string Salvar(object obj)
         {
             formaPagamento aFormaPagamento = (formaPagamento)obj;
             string ok = "";
             char operacao = 'I';
-            string sql;
+            string sql = "";
 
-
-            /*
-             * 
-             */
-
-
-            using (MySqlConnection conn = Banco.Abrir())
+            if (aFormaPagamento.Id != 0)
             {
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = conn;
-
-                if (aFormaPagamento.Id == 0)
-                {
-                    sql = "INSERT INTO FORMA_PAGAMENTO (DESCRICAO) VALUES (@descricao);";
-                    cmd.CommandText = sql;
-                    cmd.Parameters.AddWithValue("@descricao", aFormaPagamento.Descricao);
-                }
-                else
-                {
-                    operacao = 'U';
-                    sql = "UPDATE FORMA_PAGAMENTO SET DESCRICAO = @descricao WHERE ID_FORMA_PAGAMENTO = @id;";
-                    cmd.CommandText = sql;
-                    cmd.Parameters.AddWithValue("@descricao", aFormaPagamento.Descricao);
-                    cmd.Parameters.AddWithValue("@id", aFormaPagamento.Id);
-                }
-
-                cmd.ExecuteNonQuery();
-
-                if (operacao == 'I')
-                {
-                    cmd.CommandText = "SELECT LAST_INSERT_ID();";
-                    ok = cmd.ExecuteScalar().ToString();
-                    aFormaPagamento.Id = Convert.ToInt32(ok);
-                }
-
-                conn.Close();
+                operacao = 'U';
+                sql = "UPDATE FORMA_PAGAMENTO SET DESCRICAO = '" + aFormaPagamento.Descricao + "' " +
+                      "WHERE ID_FORMA_PAGAMENTO = '" + aFormaPagamento.Id + "'";
+            }
+            else
+            {
+                sql = "INSERT INTO FORMA_PAGAMENTO (DESCRICAO) VALUES ('" + aFormaPagamento.Descricao + "')";
             }
 
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
+            conn.CommandText = sql;
+            conn.ExecuteNonQuery();
+
+            if (operacao == 'I')
+            {
+                conn.CommandText = "SELECT @@identity";
+                ok = conn.ExecuteScalar().ToString();
+                aFormaPagamento.Id = Convert.ToInt32(ok);
+            }
+
+            conn.Connection.Close();
             return ok;
         }
-
-
-        /*
-         * 
-         */
-
-
-        public List<formaPagamento> ListarFormaPagamento()
-        {
-            List<formaPagamento> lista = new List<formaPagamento>();
-
-            using (MySqlConnection conn = Banco.Abrir())
-            {
-                string sql = "SELECT ID_FORMA_PAGAMENTO, DESCRICAO FROM FORMA_PAGAMENTO;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                var dr = cmd.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    lista.Add(new formaPagamento
-                    {
-                        Id = Convert.ToInt32(dr["ID_FORMA_PAGAMENTO"]),
-                        Descricao = dr["DESCRICAO"].ToString()
-                    });
-                }
-
-                conn.Close();
-            }
-
-            return lista;
-        }
-
-
-        /*
-         * 
-         */
-
-
-        public override string CarregaObj(object obj)
-        {
-            formaPagamento aFormaPagamento = (formaPagamento)obj;
-            string ok = " ";
-
-            try
-            {
-                using (MySqlConnection conn = Banco.Abrir())
-                {
-                    string sql = "SELECT * FROM FORMA_PAGAMENTO WHERE ID_FORMA_PAGAMENTO = @id;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@id", aFormaPagamento.Id);
-                    var dr = cmd.ExecuteReader();
-
-                    if (dr.Read())
-                    {
-                        aFormaPagamento.Id = Convert.ToInt32(dr["ID_FORMA_PAGAMENTO"]);
-                        aFormaPagamento.Descricao = dr["DESCRICAO"].ToString();
-                        ok = "Encontrado";
-                    }
-
-                    conn.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                ok = "Erro: " + ex.Message;
-            }
-
-            return ok;
-        }
-
-
-        /*
-         * 
-         */
-
 
         public override string Excluir(object obj)
         {
@@ -137,23 +52,73 @@ namespace projeto_patrica.dao
 
             try
             {
-                using (MySqlConnection conn = Banco.Abrir())
-                {
-                    string sql = "DELETE FROM FORMA_PAGAMENTO WHERE ID_FORMA_PAGAMENTO = @id;";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@id", aFormaPagamento.Id);
-                    cmd.ExecuteNonQuery();
-
-                    conn.Close();
-                    ok = "Excluído com sucesso!";
-                }
+                string sql = "DELETE FROM FORMA_PAGAMENTO WHERE ID_FORMA_PAGAMENTO = '" + aFormaPagamento.Id + "'";
+                MySqlCommand conn = new MySqlCommand();
+                conn.Connection = Banco.Abrir();
+                conn.CommandType = System.Data.CommandType.Text;
+                conn.CommandText = sql;
+                conn.ExecuteNonQuery();
+                conn.Connection.Close();
+                ok = "Excluído!";
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
                 ok = "Erro ao excluir: " + ex.Message;
             }
 
             return ok;
+        }
+
+        public override string CarregaObj(object obj)
+        {
+            formaPagamento aFormaPagamento = (formaPagamento)obj;
+            string ok = "";
+
+            try
+            {
+                string sql = "SELECT * FROM FORMA_PAGAMENTO WHERE ID_FORMA_PAGAMENTO = '" + aFormaPagamento.Id + "'";
+                MySqlCommand conn = new MySqlCommand();
+                conn.Connection = Banco.Abrir();
+                conn.CommandType = System.Data.CommandType.Text;
+                conn.CommandText = sql;
+                var dr = conn.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    aFormaPagamento.Id = Convert.ToInt32(dr.GetValue(0));
+                    aFormaPagamento.Descricao = dr.GetString(1);
+                }
+
+                conn.Connection.Close();
+            }
+            catch (MySqlException ex)
+            {
+                ok = "Erro ao carregar: " + ex.Message;
+            }
+
+            return ok;
+        }
+
+        public List<formaPagamento> ListarFormaPagamento()
+        {
+            formaPagamento aFormaPagamento;
+            List<formaPagamento> lista = new List<formaPagamento>();
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
+            conn.CommandType = System.Data.CommandType.Text;
+            conn.CommandText = "SELECT * FROM FORMA_PAGAMENTO";
+            var dr = conn.ExecuteReader();
+
+            while (dr.Read())
+            {
+                aFormaPagamento = new formaPagamento();
+                aFormaPagamento.Id = Convert.ToInt32(dr.GetValue(0));
+                aFormaPagamento.Descricao = dr.GetString(1);
+                lista.Add(aFormaPagamento);
+            }
+
+            conn.Connection.Close();
+            return lista;
         }
     }
 }

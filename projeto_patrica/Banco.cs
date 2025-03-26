@@ -9,9 +9,9 @@ namespace projeto_patrica
         {
             string strCnn = "Server=localhost;Database=projeto_patrica;User ID=root;Password=Luan!123;";
 
-            MySqlConnection cnn = new MySqlConnection(strCnn);
-            cnn.Open();
-            return cnn;
+            MySqlConnection conn = new MySqlConnection(strCnn);
+            conn.Open();
+            return conn;
         }
     }
 }

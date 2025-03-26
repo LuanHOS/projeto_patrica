@@ -29,8 +29,20 @@ namespace projeto_patrica.classes
             this.parcelas = parcelas;
         }
 
-        public string Descricao { get; set; }
-        public int QuantidadeParcelas { get; set; }
-        public List<parcelaCondicaoPagamento> Parcelas { get; set; }
+        public string Descricao
+        {
+            get => descricao;
+            set => descricao = value;
+        }
+        public int QuantidadeParcelas
+        {
+            get => quantidadeParcelas;
+            set => quantidadeParcelas = value;
+        }
+        public List<parcelaCondicaoPagamento> Parcelas
+        {
+            get => parcelas;
+            set => parcelas = value;
+        }
     }
 }

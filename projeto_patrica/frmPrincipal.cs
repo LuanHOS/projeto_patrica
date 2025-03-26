@@ -12,13 +12,24 @@ using System.Windows.Forms;
 
 namespace projeto_patrica
 {
-	public partial class frmPrincipal : Form
-	{
+    public partial class frmPrincipal : Form
+    {
+        //Interface
+        private Interfaces aInter;
+
+        //Classes
         private formaPagamento aFormaPagamento;
         private condicaoPagamento aCondicaoPagamento;
-        private Interfaces aInter;
+        private pais oPais;
+        private estado oEstado;
+        private cidade aCidade;
+
+        //Controllers
         private Controller_formaPagamento oController_formaPagamento;
         private Controller_condicaoPagamento oController_condicaoPagamento;
+        private Controller_pais oController_pais;
+        private Controller_estado oController_estado;
+        private Controller_cidade oController_cidade;
 
 
         /*
@@ -27,14 +38,29 @@ namespace projeto_patrica
 
 
         public frmPrincipal()
-		{
+        {
             InitializeComponent();
-            aFormaPagamento = new formaPagamento();
-            aInter = new Interfaces();
-            oController_formaPagamento = new Controller_formaPagamento();
 
+            // Instanciando Interface
+            aInter = new Interfaces();
+
+            // Instanciando Classes
+            aFormaPagamento = new formaPagamento();
             aCondicaoPagamento = new condicaoPagamento();
+            oPais = new pais();
+            oEstado = new estado();
+            aCidade = new cidade();
+
+            // Instanciando Controllers
+            oController_formaPagamento = new Controller_formaPagamento();
             oController_condicaoPagamento = new Controller_condicaoPagamento();
+            oController_pais = new Controller_pais();
+            oController_estado = new Controller_estado();
+            oController_cidade = new Controller_cidade();
+
+            // Passando dependências de controllers
+            oController_condicaoPagamento.AController_formaPagamento = oController_formaPagamento;
+            oController_cidade.AController_estado = oController_estado;
         }
 
 
@@ -46,7 +72,6 @@ namespace projeto_patrica
         private void formaDePagamentoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             aInter.pecaConsultaFormaPagamento(aFormaPagamento, oController_formaPagamento);
-
         }
 
 
@@ -57,7 +82,40 @@ namespace projeto_patrica
 
         private void condiçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            aInter.pecaCondicaoPagamento(aCondicaoPagamento, oController_condicaoPagamento);
+            aInter.pecaConsultaCondicaoPagamento(aCondicaoPagamento, oController_condicaoPagamento);
+        }
+
+
+        /*
+         * 
+         */
+
+
+        private void paísToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            aInter.pecaConsultaPais(oPais, oController_pais);
+        }
+
+
+        /*
+         * 
+         */
+
+
+        private void estadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            aInter.pecaConsultaEstado(oEstado, oController_estado);
+        }
+
+
+        /*
+         * 
+         */
+
+
+        private void cidadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            aInter.pecaConsultaCidade(aCidade, oController_cidade);
         }
     }
 }

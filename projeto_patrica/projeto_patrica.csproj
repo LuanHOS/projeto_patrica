@@ -114,17 +114,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Banco.cs" />
+    <Compile Include="classes\cidade.cs" />
+    <Compile Include="classes\cliente.cs" />
     <Compile Include="classes\condicaoPagamento.cs" />
+    <Compile Include="classes\estado.cs" />
+    <Compile Include="classes\fornecedor.cs" />
+    <Compile Include="classes\funcionario.cs" />
+    <Compile Include="classes\pais.cs" />
     <Compile Include="classes\parcelaCondicaoPagamento.cs" />
+    <Compile Include="classes\pessoa.cs" />
     <Compile Include="controller\Controller.cs" />
+    <Compile Include="controller\Controller_cidade.cs" />
     <Compile Include="controller\Controller_condicaoPagamento.cs" />
+    <Compile Include="controller\Controller_estado.cs" />
     <Compile Include="controller\Controller_formaPagamento.cs" />
+    <Compile Include="controller\Controller_pais.cs" />
     <Compile Include="dao\Dao.cs" />
     <Compile Include="dao\BaseDao.cs" />
+    <Compile Include="dao\Dao_cidade.cs" />
     <Compile Include="dao\Dao_condicaoPagamento.cs" />
+    <Compile Include="dao\Dao_estado.cs" />
     <Compile Include="dao\Dao_formaPagamento.cs" />
     <Compile Include="classes\formaPagamento.cs" />
     <Compile Include="classes\pai.cs" />
+    <Compile Include="dao\Dao_pais.cs" />
     <Compile Include="frmBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,11 +157,23 @@
     <Compile Include="pages\cadastro\frmCadastro.Designer.cs">
       <DependentUpon>frmCadastro.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\cadastro\frmCadastroCidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroCidade.Designer.cs">
+      <DependentUpon>frmCadastroCidade.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\cadastro\frmCadastroCondicaoPagamento.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="pages\cadastro\frmCadastroCondicaoPagamento.Designer.cs">
       <DependentUpon>frmCadastroCondicaoPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroEstado.Designer.cs">
+      <DependentUpon>frmCadastroEstado.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\cadastro\frmCadastroFormaPagamento.cs">
       <SubType>Form</SubType>
@@ -156,11 +181,23 @@
     <Compile Include="pages\cadastro\frmCadastroFormaPagamento.Designer.cs">
       <DependentUpon>frmCadastroFormaPagamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\cadastro\frmCadastroPais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroPais.Designer.cs">
+      <DependentUpon>frmCadastroPais.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\consulta\frmConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="pages\consulta\frmConsulta.Designer.cs">
       <DependentUpon>frmConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaCidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaCidade.Designer.cs">
+      <DependentUpon>frmConsultaCidade.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\consulta\frmConsultaCondicaoPagamento.cs">
       <SubType>Form</SubType>
@@ -168,11 +205,23 @@
     <Compile Include="pages\consulta\frmConsultaCondicaoPagamento.Designer.cs">
       <DependentUpon>frmConsultaCondicaoPagamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\consulta\frmConsultaEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaEstado.Designer.cs">
+      <DependentUpon>frmConsultaEstado.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\consulta\frmConsultaFormaPagamento.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="pages\consulta\frmConsultaFormaPagamento.Designer.cs">
       <DependentUpon>frmConsultaFormaPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaPais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaPais.Designer.cs">
+      <DependentUpon>frmConsultaPais.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -185,20 +234,38 @@
     <EmbeddedResource Include="pages\cadastro\frmCadastro.resx">
       <DependentUpon>frmCadastro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroCidade.resx">
+      <DependentUpon>frmCadastroCidade.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroCondicaoPagamento.resx">
       <DependentUpon>frmCadastroCondicaoPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroEstado.resx">
+      <DependentUpon>frmCadastroEstado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroFormaPagamento.resx">
       <DependentUpon>frmCadastroFormaPagamento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroPais.resx">
+      <DependentUpon>frmCadastroPais.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsulta.resx">
       <DependentUpon>frmConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaCidade.resx">
+      <DependentUpon>frmConsultaCidade.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaCondicaoPagamento.resx">
       <DependentUpon>frmConsultaCondicaoPagamento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaEstado.resx">
+      <DependentUpon>frmConsultaEstado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaFormaPagamento.resx">
       <DependentUpon>frmConsultaFormaPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaPais.resx">
+      <DependentUpon>frmConsultaPais.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
