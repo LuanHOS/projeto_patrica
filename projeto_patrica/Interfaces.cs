@@ -3,10 +3,6 @@ using projeto_patrica.controller;
 using projeto_patrica.pages.cadastro;
 using projeto_patrica.pages.consulta;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace projeto_patrica
 {
@@ -19,7 +15,8 @@ namespace projeto_patrica
         frmCadastroEstado oFrmCadEstado;
         frmCadastroCidade oFrmCadCidade;
         frmCadastroCliente oFrmCadCliente;
-
+        frmCadastroFuncionario oFrmCadFuncionario;
+        frmCadastroFornecedor oFrmCadFornecedor;
 
         // Formulários de Consulta
         frmConsultaCondicaoPagamento oFrmConCondPag;
@@ -28,12 +25,12 @@ namespace projeto_patrica
         frmConsultaEstado oFrmConEstado;
         frmConsultaCidade oFrmConCidade;
         frmConsultaCliente oFrmConCliente;
-
+        frmConsultaFuncionario oFrmConFuncionario;
+        frmConsultaFornecedor oFrmConFornecedor;
 
         /*
          * 
          */
-
 
         public Interfaces()
         {
@@ -43,7 +40,8 @@ namespace projeto_patrica
             oFrmConEstado = new frmConsultaEstado();
             oFrmConCidade = new frmConsultaCidade();
             oFrmConCliente = new frmConsultaCliente();
-
+            oFrmConFuncionario = new frmConsultaFuncionario();
+            oFrmConFornecedor = new frmConsultaFornecedor();
 
             oFrmCadCondPag = new frmCadastroCondicaoPagamento();
             oFrmCadFormPag = new frmCadastroFormaPagamento();
@@ -51,7 +49,8 @@ namespace projeto_patrica
             oFrmCadEstado = new frmCadastroEstado();
             oFrmCadCidade = new frmCadastroCidade();
             oFrmCadCliente = new frmCadastroCliente();
-
+            oFrmCadFuncionario = new frmCadastroFuncionario();
+            oFrmCadFornecedor = new frmCadastroFornecedor();
 
             oFrmConCondPag.setFrmCadastro(oFrmCadCondPag);
             oFrmConFormPag.setFrmCadastro(oFrmCadFormPag);
@@ -59,19 +58,20 @@ namespace projeto_patrica
             oFrmConEstado.setFrmCadastro(oFrmCadEstado);
             oFrmConCidade.setFrmCadastro(oFrmCadCidade);
             oFrmConCliente.setFrmCadastro(oFrmCadCliente);
-
+            oFrmConFuncionario.setFrmCadastro(oFrmCadFuncionario);
+            oFrmConFornecedor.setFrmCadastro(oFrmCadFornecedor);
 
             oFrmCadCondPag.setConsultaFormaPagamento(oFrmConFormPag);
             oFrmCadEstado.setConsultaPais(oFrmConPais);
             oFrmCadCidade.setConsultaEstado(oFrmConEstado);
             oFrmCadCliente.setConsultaCidade(oFrmConCidade);
+            oFrmCadFuncionario.setConsultaCidade(oFrmConCidade);
+            oFrmCadFornecedor.setConsultaCidade(oFrmConCidade);
         }
-
 
         /*
          * 
          */
-
 
         public void pecaConsultaCondicaoPagamento(condicaoPagamento oCondicaoPagamento, Controller_condicaoPagamento oController_condicaoPagamento)
         {
@@ -79,11 +79,9 @@ namespace projeto_patrica
             oFrmConCondPag.ShowDialog();
         }
 
-
         /*
          * 
          */
-
 
         public void pecaConsultaFormaPagamento(formaPagamento aFormaPagamento, Controller_formaPagamento oController_formaPagamento)
         {
@@ -91,11 +89,9 @@ namespace projeto_patrica
             oFrmConFormPag.ShowDialog();
         }
 
-
         /*
          * 
          */
-
 
         public void pecaConsultaPais(pais oPais, Controller_pais oController_pais)
         {
@@ -103,11 +99,9 @@ namespace projeto_patrica
             oFrmConPais.ShowDialog();
         }
 
-
         /*
          * 
          */
-
 
         public void pecaConsultaEstado(estado oEstado, Controller_estado oController_estado)
         {
@@ -115,11 +109,9 @@ namespace projeto_patrica
             oFrmConEstado.ShowDialog();
         }
 
-
         /*
          * 
          */
-
 
         public void pecaConsultaCidade(cidade aCidade, Controller_cidade oController_cidade)
         {
@@ -127,22 +119,19 @@ namespace projeto_patrica
             oFrmConCidade.ShowDialog();
         }
 
-
         /*
          * 
          */
 
-
-        public void pecaConsultaFuncionario(cidade aCidade, Controller_cidade oController_cidade)
+        public void pecaConsultaFuncionario(funcionario oFuncionario, Controller_funcionario oController_funcionario)
         {
-
+            oFrmConFuncionario.ConhecaObj(oFuncionario, oController_funcionario);
+            oFrmConFuncionario.ShowDialog();
         }
 
-
         /*
          * 
          */
-
 
         public void pecaConsultaCliente(cliente oCliente, Controller_cliente oController_cliente)
         {
@@ -150,15 +139,14 @@ namespace projeto_patrica
             oFrmConCliente.ShowDialog();
         }
 
-
         /*
          * 
          */
 
-
-        public void pecaConsultaFornecedor(cidade aCidade, Controller_cidade oController_cidade)
+        public void pecaConsultaFornecedor(fornecedor oFornecedor, Controller_fornecedor oController_fornecedor)
         {
-
+            oFrmConFornecedor.ConhecaObj(oFornecedor, oController_fornecedor);
+            oFrmConFornecedor.ShowDialog();
         }
     }
 }

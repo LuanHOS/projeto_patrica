@@ -20,10 +20,7 @@ namespace projeto_patrica.pages.consulta
 
         public override void setFrmCadastro(object obj)
         {
-            if (obj != null)
-            {
-                oFrmCadastroCidade = (frmCadastroCidade)obj;
-            }
+            oFrmCadastroCidade = (frmCadastroCidade)obj;
         }
 
         public override void ConhecaObj(object obj, object ctrl)

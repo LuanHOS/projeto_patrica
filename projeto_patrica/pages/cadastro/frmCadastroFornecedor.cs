@@ -1,18 +1,209 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+﻿using projeto_patrica.classes;
+using projeto_patrica.controller;
+using projeto_patrica.pages.consulta;
+using System;
 using System.Windows.Forms;
 
 namespace projeto_patrica.pages.cadastro
 {
-	public partial class frmCadastroFornecedor : projeto_patrica.pages.cadastro.frmCadastroPessoa
-	{
-		public frmCadastroFornecedor()
-		{
-			InitializeComponent();
-		}
-	}
+    public partial class frmCadastroFornecedor : projeto_patrica.pages.cadastro.frmCadastroPessoa
+    {
+        private fornecedor oFornecedor;
+        private Controller_fornecedor aController_fornecedor;
+        private frmConsultaCidade oFrmConsultaCidade;
+
+        public frmCadastroFornecedor()
+        {
+            InitializeComponent();
+            comboBoxTipo.SelectedIndexChanged += ComboBoxTipo_SelectedIndexChanged;
+            btnPesquisarCidade.Click += BtnPesquisarCidade_Click;
+            comboBoxTipo.SelectedIndex = -1;
+            HabilitarCampos(false);
+            checkBoxAtivo.Enabled = true;
+        }
+
+        public override void ConhecaObj(object obj, object ctrl)
+        {
+            oFornecedor = (fornecedor)obj;
+            aController_fornecedor = (Controller_fornecedor)ctrl;
+        }
+
+        public void setConsultaCidade(frmConsultaCidade consulta)
+        {
+            oFrmConsultaCidade = consulta;
+        }
+
+        public override void Salvar()
+        {
+            base.Salvar();
+
+            if (comboBoxTipo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Selecione o tipo de registro.");
+                return;
+            }
+
+            if (txtNomeRazaoSocial.Text == "")
+            {
+                MessageBox.Show("Preencha o nome ou razão social.");
+                txtNomeRazaoSocial.Focus();
+                return;
+            }
+
+            if (oFornecedor.ACidade == null || oFornecedor.ACidade.Id == 0)
+            {
+                MessageBox.Show("Selecione uma cidade.");
+                return;
+            }
+
+            oFornecedor.Id = Convert.ToInt32(txtCodigo.Text);
+            oFornecedor.TipoPessoa = comboBoxTipo.SelectedIndex == 0 ? 'F' : 'J';
+            oFornecedor.Nome_razaoSocial = txtNomeRazaoSocial.Text;
+            oFornecedor.Apelido_nomeFantasia = txtApelidoNomeFantasia.Text;
+            oFornecedor.DataNascimento_criacao = dtpDataNascimentoCriacao.Value;
+            oFornecedor.Cpf_cnpj = txtCpfCnpj.Text;
+            oFornecedor.Rg_inscricaoEstadual = txtRgInscEstadual.Text;
+            oFornecedor.Email = txtEmail.Text;
+            oFornecedor.Telefone = txtTelefone.Text;
+            oFornecedor.Endereco = txtEndereco.Text;
+            oFornecedor.Bairro = txtBairro.Text;
+            oFornecedor.Cep = txtCep.Text;
+            oFornecedor.Ativo = checkBoxAtivo.Checked;
+            oFornecedor.Genero = comboBoxGenero.Enabled ? (comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F') : ' ';
+            oFornecedor.InscricaoMunicipal = txtInscMunicipal.Text;
+            oFornecedor.InscricaoEstadualSubstitutoTributario = txtInscEstSubTrib.Text;
+
+            if (btnSave.Text == "Excluir")
+            {
+                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (resp == DialogResult.Yes)
+                {
+                    txtCodigo.Text = aController_fornecedor.Excluir(oFornecedor);
+                    MessageBox.Show("Fornecedor excluído com sucesso.");
+                    Sair();
+                }
+            }
+            else if (btnSave.Text == "Alterar")
+            {
+                txtCodigo.Text = aController_fornecedor.Salvar(oFornecedor);
+                MessageBox.Show("Fornecedor alterado com sucesso.");
+            }
+            else
+            {
+                txtCodigo.Text = aController_fornecedor.Salvar(oFornecedor);
+                MessageBox.Show("Fornecedor salvo com o código " + txtCodigo.Text + ".");
+            }
+        }
+
+        public override void Limpartxt()
+        {
+            base.Limpartxt();
+            txtCodigo.Text = "0";
+            txtNomeRazaoSocial.Clear();
+            txtApelidoNomeFantasia.Clear();
+            txtCpfCnpj.Clear();
+            txtRgInscEstadual.Clear();
+            txtEmail.Clear();
+            txtTelefone.Clear();
+            txtEndereco.Clear();
+            txtBairro.Clear();
+            txtCep.Clear();
+            txtCidade.Clear();
+            txtInscMunicipal.Clear();
+            txtInscEstSubTrib.Clear();
+            comboBoxTipo.SelectedIndex = -1;
+            comboBoxGenero.SelectedIndex = -1;
+            checkBoxAtivo.Checked = true;
+            oFornecedor.ACidade = new cidade();
+            HabilitarCampos(false);
+        }
+
+        public override void Carregatxt()
+        {
+            base.Carregatxt();
+            txtCodigo.Text = oFornecedor.Id.ToString();
+            txtNomeRazaoSocial.Text = oFornecedor.Nome_razaoSocial;
+            txtApelidoNomeFantasia.Text = oFornecedor.Apelido_nomeFantasia;
+            txtCpfCnpj.Text = oFornecedor.Cpf_cnpj;
+            txtRgInscEstadual.Text = oFornecedor.Rg_inscricaoEstadual;
+            txtEmail.Text = oFornecedor.Email;
+            txtTelefone.Text = oFornecedor.Telefone;
+            txtEndereco.Text = oFornecedor.Endereco;
+            txtBairro.Text = oFornecedor.Bairro;
+            txtCep.Text = oFornecedor.Cep;
+            txtCidade.Text = oFornecedor.ACidade.Nome;
+            txtInscMunicipal.Text = oFornecedor.InscricaoMunicipal;
+            txtInscEstSubTrib.Text = oFornecedor.InscricaoEstadualSubstitutoTributario;
+
+            if (oFornecedor.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate)
+                dtpDataNascimentoCriacao.Value = dtpDataNascimentoCriacao.MinDate;
+            else
+                dtpDataNascimentoCriacao.Value = oFornecedor.DataNascimento_criacao;
+
+            comboBoxTipo.SelectedIndex = oFornecedor.TipoPessoa == 'F' ? 0 : 1;
+            comboBoxGenero.SelectedIndex = oFornecedor.Genero == 'M' ? 0 : (oFornecedor.Genero == 'F' ? 1 : -1);
+            checkBoxAtivo.Checked = oFornecedor.Ativo;
+        }
+
+        public override void Bloqueiatxt()
+        {
+            base.Bloqueiatxt();
+            HabilitarCampos(false);
+        }
+
+        public override void Desbloqueiatxt()
+        {
+            base.Desbloqueiatxt();
+            if (comboBoxTipo.SelectedIndex != -1) HabilitarCampos(true);
+        }
+
+        private void ComboBoxTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool isFisica = comboBoxTipo.SelectedIndex == 0;
+
+            HabilitarCampos(true);
+            comboBoxGenero.Enabled = isFisica;
+
+            lblNome.Text = isFisica ? "Nome *" : "Razão Social *";
+            lblApelido.Text = isFisica ? "Apelido" : "Nome Fantasia";
+            lblCpf.Text = isFisica ? "CPF *" : "CNPJ *";
+            lblRg.Text = isFisica ? "RG *" : "Inscrição Estadual *";
+            lblDataNascimento.Text = isFisica ? "Data de Nascimento *" : "Data de Criação *";
+        }
+
+        private void BtnPesquisarCidade_Click(object sender, EventArgs e)
+        {
+            if (oFrmConsultaCidade == null)
+                oFrmConsultaCidade = new frmConsultaCidade();
+
+            cidade oCidade = new cidade();
+            Controller_cidade controller = new Controller_cidade();
+            oFrmConsultaCidade.ConhecaObj(oCidade, controller);
+            oFrmConsultaCidade.ShowDialog();
+
+            if (oCidade.Id != 0)
+            {
+                oFornecedor.ACidade = oCidade;
+                txtCidade.Text = oCidade.Nome;
+            }
+        }
+
+        private void HabilitarCampos(bool habilita)
+        {
+            txtNomeRazaoSocial.Enabled = habilita;
+            txtApelidoNomeFantasia.Enabled = habilita;
+            txtCpfCnpj.Enabled = habilita;
+            txtRgInscEstadual.Enabled = habilita;
+            txtEmail.Enabled = habilita;
+            txtTelefone.Enabled = habilita;
+            txtEndereco.Enabled = habilita;
+            txtBairro.Enabled = habilita;
+            txtCep.Enabled = habilita;
+            dtpDataNascimentoCriacao.Enabled = habilita;
+            comboBoxGenero.Enabled = habilita;
+            btnPesquisarCidade.Enabled = habilita;
+            txtInscMunicipal.Enabled = habilita;
+            txtInscEstSubTrib.Enabled = habilita;
+        }
+    }
 }

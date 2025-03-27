@@ -85,6 +85,7 @@
             // btnPesquisarCidade
             // 
             this.btnPesquisarCidade.Location = new System.Drawing.Point(641, 329);
+            this.btnPesquisarCidade.Click += new System.EventHandler(this.btnPesquisarCidade_Click);
             // 
             // lblEndereco
             // 
@@ -216,6 +217,8 @@
             this.Controls.Add(this.lblMatricula);
             this.Name = "frmCadastroFuncionario";
             this.Text = "Cadastro de Funcionário";
+            this.Controls.SetChildIndex(this.lblGenero, 0);
+            this.Controls.SetChildIndex(this.comboBoxGenero, 0);
             this.Controls.SetChildIndex(this.lblMatricula, 0);
             this.Controls.SetChildIndex(this.lblCargo, 0);
             this.Controls.SetChildIndex(this.lblDataAdmissao, 0);

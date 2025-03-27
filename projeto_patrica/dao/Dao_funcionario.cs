@@ -1,12 +1,184 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using projeto_patrica.classes;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace projeto_patrica.dao
 {
-    class Dao_funcionario
+    class Dao_funcionario : Dao
     {
+        public override string Salvar(object obj)
+        {
+            funcionario oFuncionario = (funcionario)obj;
+            string ok = "";
+            char operacao = 'I';
+            string sql;
+
+            sql = "INSERT INTO funcionario (TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, " +
+                  "RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, MATRICULA, CARGO, SALARIO, DATA_ADMISSAO, TURNO, CARGA_HORARIA, GENERO) " +
+                  "VALUES('" + oFuncionario.TipoPessoa + "','" + oFuncionario.Nome_razaoSocial + "','" + oFuncionario.Apelido_nomeFantasia + "','" + oFuncionario.DataNascimento_criacao.ToString("yyyy-MM-dd") + "','" + oFuncionario.Cpf_cnpj + "','" +
+                  oFuncionario.Rg_inscricaoEstadual + "','" + oFuncionario.Email + "','" + oFuncionario.Telefone + "','" + oFuncionario.Endereco + "','" + oFuncionario.Bairro + "','" +
+                  oFuncionario.ACidade.Id + "','" + oFuncionario.Cep + "','" + (oFuncionario.Ativo ? 1 : 0) + "','" + oFuncionario.Matricula + "','" + oFuncionario.Cargo + "','" +
+                  oFuncionario.Salario.ToString().Replace(",", ".") + "','" + oFuncionario.DataAdmissao.ToString("yyyy-MM-dd") + "','" + oFuncionario.Turno + "','" + oFuncionario.CargaHoraria + "','" + oFuncionario.Genero + "')";
+
+            if (oFuncionario.Id != 0)
+            {
+                operacao = 'U';
+                sql = "UPDATE funcionario SET " +
+                      "TIPO_PESSOA = '" + oFuncionario.TipoPessoa + "', " +
+                      "NOME_RAZAO_SOCIAL = '" + oFuncionario.Nome_razaoSocial + "', " +
+                      "APELIDO_NOME_FANTASIA = '" + oFuncionario.Apelido_nomeFantasia + "', " +
+                      "DATA_NASCIMENTO_CRIACAO = '" + oFuncionario.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', " +
+                      "CPF_CNPJ = '" + oFuncionario.Cpf_cnpj + "', " +
+                      "RG_INSCRICAO_ESTADUAL = '" + oFuncionario.Rg_inscricaoEstadual + "', " +
+                      "EMAIL = '" + oFuncionario.Email + "', " +
+                      "TELEFONE = '" + oFuncionario.Telefone + "', " +
+                      "ENDERECO = '" + oFuncionario.Endereco + "', " +
+                      "BAIRRO = '" + oFuncionario.Bairro + "', " +
+                      "ID_CIDADE = '" + oFuncionario.ACidade.Id + "', " +
+                      "CEP = '" + oFuncionario.Cep + "', " +
+                      "ATIVO = '" + (oFuncionario.Ativo ? 1 : 0) + "', " +
+                      "MATRICULA = '" + oFuncionario.Matricula + "', " +
+                      "CARGO = '" + oFuncionario.Cargo + "', " +
+                      "SALARIO = '" + oFuncionario.Salario.ToString().Replace(",", ".") + "', " +
+                      "DATA_ADMISSAO = '" + oFuncionario.DataAdmissao.ToString("yyyy-MM-dd") + "', " +
+                      "TURNO = '" + oFuncionario.Turno + "', " +
+                      "CARGA_HORARIA = '" + oFuncionario.CargaHoraria + "', " +
+                      "GENERO = '" + oFuncionario.Genero + "' " +
+                      "WHERE ID_FUNCIONARIO = '" + oFuncionario.Id + "'";
+            }
+
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
+            conn.CommandText = sql;
+            conn.ExecuteNonQuery();
+
+            if (operacao == 'I')
+            {
+                conn.CommandText = "SELECT @@IDENTITY";
+                ok = conn.ExecuteScalar().ToString();
+                oFuncionario.Id = Convert.ToInt32(ok);
+            }
+            else
+            {
+                ok = oFuncionario.Id.ToString();
+            }
+
+            conn.Connection.Close();
+            return ok;
+        }
+
+        public override string CarregaObj(object obj)
+        {
+            funcionario oFuncionario = (funcionario)obj;
+            string ok = "";
+
+            try
+            {
+                string sql = "SELECT * FROM funcionario WHERE ID_FUNCIONARIO = '" + oFuncionario.Id + "'";
+                MySqlCommand conn = new MySqlCommand();
+                conn.Connection = Banco.Abrir();
+                conn.CommandText = sql;
+                var dr = conn.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    oFuncionario.Id = Convert.ToInt32(dr["ID_FUNCIONARIO"]);
+                    oFuncionario.TipoPessoa = Convert.ToChar(dr["TIPO_PESSOA"]);
+                    oFuncionario.Nome_razaoSocial = dr["NOME_RAZAO_SOCIAL"].ToString();
+                    oFuncionario.Apelido_nomeFantasia = dr["APELIDO_NOME_FANTASIA"].ToString();
+                    oFuncionario.DataNascimento_criacao = Convert.ToDateTime(dr["DATA_NASCIMENTO_CRIACAO"]);
+                    oFuncionario.Cpf_cnpj = dr["CPF_CNPJ"].ToString();
+                    oFuncionario.Rg_inscricaoEstadual = dr["RG_INSCRICAO_ESTADUAL"].ToString();
+                    oFuncionario.Email = dr["EMAIL"].ToString();
+                    oFuncionario.Telefone = dr["TELEFONE"].ToString();
+                    oFuncionario.Endereco = dr["ENDERECO"].ToString();
+                    oFuncionario.Bairro = dr["BAIRRO"].ToString();
+                    oFuncionario.ACidade.Id = Convert.ToInt32(dr["ID_CIDADE"]);
+                    oFuncionario.Cep = dr["CEP"].ToString();
+                    oFuncionario.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                    oFuncionario.Matricula = Convert.ToInt32(dr["MATRICULA"]);
+                    oFuncionario.Cargo = dr["CARGO"].ToString();
+                    oFuncionario.Salario = float.Parse(dr["SALARIO"].ToString());
+                    oFuncionario.DataAdmissao = Convert.ToDateTime(dr["DATA_ADMISSAO"]);
+                    oFuncionario.Turno = dr["TURNO"].ToString();
+                    oFuncionario.CargaHoraria = Convert.ToInt32(dr["CARGA_HORARIA"]);
+                    oFuncionario.Genero = dr["GENERO"].ToString() == "" ? ' ' : Convert.ToChar(dr["GENERO"]);
+                }
+
+                conn.Connection.Close();
+            }
+            catch (MySqlException ex)
+            {
+                ok = "Erro de banco de dados: " + ex.Message;
+            }
+
+            return ok;
+        }
+
+        public override string Excluir(object obj)
+        {
+            funcionario oFuncionario = (funcionario)obj;
+            string ok = "";
+
+            try
+            {
+                string sql = "DELETE FROM funcionario WHERE ID_FUNCIONARIO = '" + oFuncionario.Id + "'";
+                MySqlCommand conn = new MySqlCommand();
+                conn.Connection = Banco.Abrir();
+                conn.CommandText = sql;
+                conn.ExecuteNonQuery();
+                conn.Connection.Close();
+
+                ok = "Excluído com sucesso!";
+            }
+            catch (MySqlException ex)
+            {
+                ok = "Erro de banco de dados: " + ex.Message;
+            }
+
+            return ok;
+        }
+
+        public List<funcionario> ListarFuncionarios()
+        {
+            List<funcionario> lista = new List<funcionario>();
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
+            conn.CommandText = "SELECT * FROM funcionario";
+            var dr = conn.ExecuteReader();
+
+            while (dr.Read())
+            {
+                funcionario oFuncionario = new funcionario();
+                oFuncionario.Id = Convert.ToInt32(dr["ID_FUNCIONARIO"]);
+                oFuncionario.TipoPessoa = Convert.ToChar(dr["TIPO_PESSOA"]);
+                oFuncionario.Nome_razaoSocial = dr["NOME_RAZAO_SOCIAL"].ToString();
+                oFuncionario.Apelido_nomeFantasia = dr["APELIDO_NOME_FANTASIA"].ToString();
+                oFuncionario.DataNascimento_criacao = Convert.ToDateTime(dr["DATA_NASCIMENTO_CRIACAO"]);
+                oFuncionario.Cpf_cnpj = dr["CPF_CNPJ"].ToString();
+                oFuncionario.Rg_inscricaoEstadual = dr["RG_INSCRICAO_ESTADUAL"].ToString();
+                oFuncionario.Email = dr["EMAIL"].ToString();
+                oFuncionario.Telefone = dr["TELEFONE"].ToString();
+                oFuncionario.Endereco = dr["ENDERECO"].ToString();
+                oFuncionario.Bairro = dr["BAIRRO"].ToString();
+                oFuncionario.ACidade = new cidade();
+                oFuncionario.ACidade.Id = Convert.ToInt32(dr["ID_CIDADE"]);
+                oFuncionario.Cep = dr["CEP"].ToString();
+                oFuncionario.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                oFuncionario.Matricula = Convert.ToInt32(dr["MATRICULA"]);
+                oFuncionario.Cargo = dr["CARGO"].ToString();
+                oFuncionario.Salario = float.Parse(dr["SALARIO"].ToString());
+                oFuncionario.DataAdmissao = Convert.ToDateTime(dr["DATA_ADMISSAO"]);
+                oFuncionario.Turno = dr["TURNO"].ToString();
+                oFuncionario.CargaHoraria = Convert.ToInt32(dr["CARGA_HORARIA"]);
+                oFuncionario.Genero = dr["GENERO"].ToString() == "" ? ' ' : Convert.ToChar(dr["GENERO"]);
+
+                lista.Add(oFuncionario);
+            }
+
+            conn.Connection.Close();
+            return lista;
+        }
     }
 }

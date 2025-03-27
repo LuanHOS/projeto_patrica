@@ -73,6 +73,7 @@
             this.clmTurno,
             this.clmCargaHoraria,
             this.clmGenero});
+            this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
             // 
             // clmTipo
             // 
@@ -116,12 +117,10 @@
             // 
             // clmCep
             // 
-            this.clmCep.DisplayIndex = 11;
             this.clmCep.Text = "CEP";
             // 
             // clmCidade
             // 
-            this.clmCidade.DisplayIndex = 12;
             this.clmCidade.Text = "Cidade";
             // 
             // clmAtivo

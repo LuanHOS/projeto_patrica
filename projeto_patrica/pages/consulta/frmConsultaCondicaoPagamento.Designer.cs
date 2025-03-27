@@ -39,6 +39,10 @@
             this.clmQtdParcelas});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.ListV_SelectedIndexChanged);
             // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            // 
             // clmDescricao
             // 
             this.clmDescricao.Text = "Descrição";
@@ -51,8 +55,9 @@
             // 
             // frmConsultaCondicaoPagamento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(633, 387);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(844, 476);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmConsultaCondicaoPagamento";
             this.Text = "Consulta de Condição de Pagamento";
             this.ResumeLayout(false);
