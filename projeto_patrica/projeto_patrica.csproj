@@ -81,6 +81,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
     </Reference>
@@ -163,6 +164,12 @@
     <Compile Include="pages\cadastro\frmCadastroCidade.Designer.cs">
       <DependentUpon>frmCadastroCidade.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\cadastro\frmCadastroCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroCliente.Designer.cs">
+      <DependentUpon>frmCadastroCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\cadastro\frmCadastroCondicaoPagamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,11 +188,29 @@
     <Compile Include="pages\cadastro\frmCadastroFormaPagamento.Designer.cs">
       <DependentUpon>frmCadastroFormaPagamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\cadastro\frmCadastroFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroFornecedor.Designer.cs">
+      <DependentUpon>frmCadastroFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroFuncionario.Designer.cs">
+      <DependentUpon>frmCadastroFuncionario.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\cadastro\frmCadastroPais.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="pages\cadastro\frmCadastroPais.Designer.cs">
       <DependentUpon>frmCadastroPais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroPessoa.Designer.cs">
+      <DependentUpon>frmCadastroPessoa.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\consulta\frmConsulta.cs">
       <SubType>Form</SubType>
@@ -198,6 +223,12 @@
     </Compile>
     <Compile Include="pages\consulta\frmConsultaCidade.Designer.cs">
       <DependentUpon>frmConsultaCidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaCliente.Designer.cs">
+      <DependentUpon>frmConsultaCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\consulta\frmConsultaCondicaoPagamento.cs">
       <SubType>Form</SubType>
@@ -216,6 +247,18 @@
     </Compile>
     <Compile Include="pages\consulta\frmConsultaFormaPagamento.Designer.cs">
       <DependentUpon>frmConsultaFormaPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaFornecedor.Designer.cs">
+      <DependentUpon>frmConsultaFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaFuncionario.Designer.cs">
+      <DependentUpon>frmConsultaFuncionario.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\consulta\frmConsultaPais.cs">
       <SubType>Form</SubType>
@@ -237,6 +280,9 @@
     <EmbeddedResource Include="pages\cadastro\frmCadastroCidade.resx">
       <DependentUpon>frmCadastroCidade.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroCliente.resx">
+      <DependentUpon>frmCadastroCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroCondicaoPagamento.resx">
       <DependentUpon>frmCadastroCondicaoPagamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -246,8 +292,17 @@
     <EmbeddedResource Include="pages\cadastro\frmCadastroFormaPagamento.resx">
       <DependentUpon>frmCadastroFormaPagamento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroFornecedor.resx">
+      <DependentUpon>frmCadastroFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroFuncionario.resx">
+      <DependentUpon>frmCadastroFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroPais.resx">
       <DependentUpon>frmCadastroPais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroPessoa.resx">
+      <DependentUpon>frmCadastroPessoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsulta.resx">
       <DependentUpon>frmConsulta.cs</DependentUpon>

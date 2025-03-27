@@ -51,9 +51,9 @@
             this.lblCod.AutoSize = true;
             this.lblCod.Location = new System.Drawing.Point(21, 27);
             this.lblCod.Name = "lblCod";
-            this.lblCod.Size = new System.Drawing.Size(54, 16);
+            this.lblCod.Size = new System.Drawing.Size(51, 16);
             this.lblCod.TabIndex = 2;
-            this.lblCod.Text = "Codigo:";
+            this.lblCod.Text = "Código";
             // 
             // frmCadastro
             // 
@@ -63,10 +63,10 @@
             this.Controls.Add(this.btnSave);
             this.Name = "frmCadastro";
             this.Text = "Cadastro";
-            this.Controls.SetChildIndex(this.btnSair, 0);
-            this.Controls.SetChildIndex(this.txtCodigo, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.lblCod, 0);
+            this.Controls.SetChildIndex(this.btnSair, 0);
+            this.Controls.SetChildIndex(this.txtCodigo, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

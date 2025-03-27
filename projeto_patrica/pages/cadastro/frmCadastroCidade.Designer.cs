@@ -66,9 +66,9 @@
             this.lblEstado.AutoSize = true;
             this.lblEstado.Location = new System.Drawing.Point(21, 158);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(50, 16);
+            this.lblEstado.Size = new System.Drawing.Size(58, 16);
             this.lblEstado.TabIndex = 12;
-            this.lblEstado.Text = "Estado";
+            this.lblEstado.Text = "Estado *";
             // 
             // txtNome
             // 
@@ -82,9 +82,9 @@
             this.lblNome.AutoSize = true;
             this.lblNome.Location = new System.Drawing.Point(21, 89);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(44, 16);
+            this.lblNome.Size = new System.Drawing.Size(52, 16);
             this.lblNome.TabIndex = 10;
-            this.lblNome.Text = "Nome";
+            this.lblNome.Text = "Nome *";
             // 
             // frmCadastroCidade
             // 

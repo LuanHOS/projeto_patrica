@@ -28,47 +28,47 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.btnSair = new System.Windows.Forms.Button();
-			this.txtCodigo = new System.Windows.Forms.TextBox();
-			this.SuspendLayout();
-			// 
-			// btnSair
-			// 
-			this.btnSair.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnSair.Location = new System.Drawing.Point(720, 408);
-			this.btnSair.Name = "btnSair";
-			this.btnSair.Size = new System.Drawing.Size(80, 35);
-			this.btnSair.TabIndex = 0;
-			this.btnSair.Text = "Sair";
-			this.btnSair.UseVisualStyleBackColor = true;
-			this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
-			// 
-			// txtCodigo
-			// 
-			this.txtCodigo.Location = new System.Drawing.Point(24, 46);
-			this.txtCodigo.MaxLength = 99;
-			this.txtCodigo.Name = "txtCodigo";
-			this.txtCodigo.Size = new System.Drawing.Size(119, 22);
-			this.txtCodigo.TabIndex = 1;
-			// 
-			// frmBase
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.AutoScroll = true;
-			this.ClientSize = new System.Drawing.Size(844, 476);
-			this.Controls.Add(this.txtCodigo);
-			this.Controls.Add(this.btnSair);
-			this.Name = "frmBase";
-			this.ShowIcon = false;
-			this.Text = "frmBase";
-			this.ResumeLayout(false);
-			this.PerformLayout();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // btnSair
+            // 
+            this.btnSair.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSair.Location = new System.Drawing.Point(720, 408);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(80, 35);
+            this.btnSair.TabIndex = 0;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Location = new System.Drawing.Point(24, 46);
+            this.txtCodigo.MaxLength = 99;
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(119, 22);
+            this.txtCodigo.TabIndex = 1;
+            // 
+            // frmBase
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(844, 476);
+            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.btnSair);
+            this.Name = "frmBase";
+            this.ShowIcon = false;
+            this.Text = "frmBase";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 
 		#endregion
 		protected System.Windows.Forms.Button btnSair;
-		public System.Windows.Forms.TextBox txtCodigo;
-	}
+        public System.Windows.Forms.TextBox txtCodigo;
+    }
 }

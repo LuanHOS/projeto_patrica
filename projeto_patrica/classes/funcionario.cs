@@ -14,12 +14,11 @@ namespace projeto_patrica.classes
         protected DateTime dataAdmissao;
         protected string turno;
         protected int cargaHoraria;
-        protected char genero;
 
         public funcionario()
         {
             id = 0;
-            tipoPessoa = ' ';
+            tipoPessoa = 'F';  //Todo funcionário é obrigatóriamente uma pessoa física
             nome_razaoSocial = " ";
             apelido_nomeFantasia = " ";
             dataNascimento_criacao = DateTime.MinValue;
@@ -43,10 +42,10 @@ namespace projeto_patrica.classes
 
         public funcionario(
             int id, char tipoPessoa, string nome_razaoSocial, string apelido_nomeFantasia, DateTime dataNascimento_criacao, string cpf_cnpj, 
-            string rg_inscricaoEstadual, string email, string telefone, string endereco, string bairro, cidade aCidade, string cep, bool ativo, int matricula, 
-            string cargo, float salario, DateTime dataAdmissao, string turno, int cargaHoraria, char genero)
+            string rg_inscricaoEstadual, string email, string telefone, string endereco, string bairro, cidade aCidade, string cep, bool ativo, char genero, int matricula, 
+            string cargo, float salario, DateTime dataAdmissao, string turno, int cargaHoraria)
             : base(id, tipoPessoa, nome_razaoSocial, apelido_nomeFantasia, dataNascimento_criacao, cpf_cnpj, rg_inscricaoEstadual, 
-                  email, telefone, endereco, bairro, aCidade, cep, ativo)
+                  email, telefone, endereco, bairro, aCidade, cep, ativo, genero)
         {
             this.id = id;
             this.tipoPessoa = tipoPessoa;
@@ -100,11 +99,6 @@ namespace projeto_patrica.classes
         {
             get => cargaHoraria;
             set => cargaHoraria = value;
-        }
-        public char Genero
-        {
-            get => genero;
-            set => genero = value;
         }
     }
 }

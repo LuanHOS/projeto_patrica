@@ -21,6 +21,7 @@ namespace projeto_patrica.classes
         protected cidade aCidade;
         protected string cep;
         protected bool ativo;
+        protected char genero;
 
         public pessoa()
         {
@@ -38,10 +39,11 @@ namespace projeto_patrica.classes
             cidade aCidade = new cidade();
             cep = " ";
             ativo = true;
+            genero = ' ';
 
         }
         public pessoa(int id, char tipoPessoa, string nome_razaoSocial, string apelido_nomeFantasia, DateTime dataNascimento_criacao, string cpf_cnpj, 
-            string rg_inscricaoEstadual, string email, string telefone, string endereco, string bairro, cidade aCidade, string cep, bool ativo) : base(id)
+            string rg_inscricaoEstadual, string email, string telefone, string endereco, string bairro, cidade aCidade, string cep, bool ativo, char genero) : base(id)
         {
             this.id = id;
             this.tipoPessoa = tipoPessoa;
@@ -57,6 +59,7 @@ namespace projeto_patrica.classes
             this.aCidade = aCidade;
             this.cep = cep;
             this.ativo = ativo;
+            this.genero = genero;
         }
 
         public char TipoPessoa
@@ -123,6 +126,11 @@ namespace projeto_patrica.classes
         {
             get => ativo;
             set => ativo = value;
+        }
+        public char Genero
+        {
+            get => genero;
+            set => genero = value;
         }
     }
 }

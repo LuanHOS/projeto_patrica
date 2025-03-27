@@ -8,7 +8,6 @@ namespace projeto_patrica.classes
 {
     class cliente : pessoa
     {
-        protected char genero;
         //protected condicaoPagamento aCondicaoPagamento;
 
         public cliente()
@@ -34,7 +33,7 @@ namespace projeto_patrica.classes
         public cliente(int id, char tipoPessoa, string nome_razaoSocial, string apelido_nomeFantasia, DateTime dataNascimento_criacao, string cpf_cnpj,
             string rg_inscricaoEstadual, string email, string telefone, string endereco, string bairro, cidade aCidade, string cep, bool ativo, char genero/*, condicaoPagamento aCondicaoPagamento*/)
             : base(id, tipoPessoa, nome_razaoSocial, apelido_nomeFantasia, dataNascimento_criacao, cpf_cnpj,
-                   rg_inscricaoEstadual, email, telefone, endereco, bairro, aCidade, cep, ativo)
+                   rg_inscricaoEstadual, email, telefone, endereco, bairro, aCidade, cep, ativo, genero)
         {
             this.id = id;
             this.tipoPessoa = tipoPessoa;
@@ -54,11 +53,6 @@ namespace projeto_patrica.classes
             //this.aCondicaoPagamento = aCondicaoPagamento;
         }
 
-        public char Genero
-        {
-            get => genero;
-            set => genero = value;
-        }
         //public condicaoPagamento ACondicaoPagamento { get; set; }
     }
 }

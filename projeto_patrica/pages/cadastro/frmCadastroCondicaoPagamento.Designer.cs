@@ -81,9 +81,9 @@
             this.lblDescricao.AutoSize = true;
             this.lblDescricao.Location = new System.Drawing.Point(21, 87);
             this.lblDescricao.Name = "lblDescricao";
-            this.lblDescricao.Size = new System.Drawing.Size(69, 16);
+            this.lblDescricao.Size = new System.Drawing.Size(77, 16);
             this.lblDescricao.TabIndex = 4;
-            this.lblDescricao.Text = "Descrição";
+            this.lblDescricao.Text = "Descrição *";
             // 
             // txtQtdParcelas
             // 
@@ -98,9 +98,9 @@
             this.lvlQtdParcelas.AutoSize = true;
             this.lvlQtdParcelas.Location = new System.Drawing.Point(21, 145);
             this.lvlQtdParcelas.Name = "lvlQtdParcelas";
-            this.lvlQtdParcelas.Size = new System.Drawing.Size(88, 16);
+            this.lvlQtdParcelas.Size = new System.Drawing.Size(96, 16);
             this.lvlQtdParcelas.TabIndex = 4;
-            this.lvlQtdParcelas.Text = "Qtd. Parcelas";
+            this.lvlQtdParcelas.Text = "Qtd. Parcelas *";
             // 
             // panel1
             // 
