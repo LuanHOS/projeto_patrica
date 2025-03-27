@@ -126,18 +126,24 @@
     <Compile Include="classes\pessoa.cs" />
     <Compile Include="controller\Controller.cs" />
     <Compile Include="controller\Controller_cidade.cs" />
+    <Compile Include="controller\Controller_cliente.cs" />
     <Compile Include="controller\Controller_condicaoPagamento.cs" />
     <Compile Include="controller\Controller_estado.cs" />
     <Compile Include="controller\Controller_formaPagamento.cs" />
+    <Compile Include="controller\controller_fornecedor.cs" />
+    <Compile Include="controller\Controller_funcionario.cs" />
     <Compile Include="controller\Controller_pais.cs" />
     <Compile Include="dao\Dao.cs" />
     <Compile Include="dao\BaseDao.cs" />
     <Compile Include="dao\Dao_cidade.cs" />
+    <Compile Include="dao\Dao_cliente.cs" />
     <Compile Include="dao\Dao_condicaoPagamento.cs" />
     <Compile Include="dao\Dao_estado.cs" />
     <Compile Include="dao\Dao_formaPagamento.cs" />
     <Compile Include="classes\formaPagamento.cs" />
     <Compile Include="classes\pai.cs" />
+    <Compile Include="dao\Dao_fornecedor.cs" />
+    <Compile Include="dao\Dao_funcionario.cs" />
     <Compile Include="dao\Dao_pais.cs" />
     <Compile Include="frmBase.cs">
       <SubType>Form</SubType>

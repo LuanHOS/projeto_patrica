@@ -119,5 +119,38 @@ namespace projeto_patrica
             oFrmConCidade.ConhecaObj(aCidade, oController_cidade);
             oFrmConCidade.ShowDialog();
         }
+
+
+        /*
+         * 
+         */
+
+
+        public void pecaConsultaFuncionario(cidade aCidade, Controller_cidade oController_cidade)
+        {
+
+        }
+
+
+        /*
+         * 
+         */
+
+
+        public void pecaConsultaCliente(cidade aCidade, Controller_cidade oController_cidade)
+        {
+
+        }
+
+
+        /*
+         * 
+         */
+
+
+        public void pecaConsultaFornecedor(cidade aCidade, Controller_cidade oController_cidade)
+        {
+
+        }
     }
 }

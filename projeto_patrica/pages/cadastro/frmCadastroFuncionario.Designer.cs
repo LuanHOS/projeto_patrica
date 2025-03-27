@@ -231,7 +231,6 @@
             this.Controls.SetChildIndex(this.txtApelidoNomeFantasia, 0);
             this.Controls.SetChildIndex(this.txtNomeRazaoSocial, 0);
             this.Controls.SetChildIndex(this.lblApelido, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.lblRg, 0);
             this.Controls.SetChildIndex(this.lblDataNascimento, 0);
             this.Controls.SetChildIndex(this.lblEmail, 0);

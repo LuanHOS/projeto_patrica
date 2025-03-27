@@ -117,5 +117,38 @@ namespace projeto_patrica
         {
             aInter.pecaConsultaCidade(aCidade, oController_cidade);
         }
+
+
+        /*
+         * 
+         */
+
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        /*
+         * 
+         */
+
+
+        private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        /*
+         * 
+         */
+
+
+        private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
