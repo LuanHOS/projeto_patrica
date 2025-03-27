@@ -316,6 +316,9 @@
     <EmbeddedResource Include="pages\consulta\frmConsultaCidade.resx">
       <DependentUpon>frmConsultaCidade.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaCliente.resx">
+      <DependentUpon>frmConsultaCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaCondicaoPagamento.resx">
       <DependentUpon>frmConsultaCondicaoPagamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -324,6 +327,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaFormaPagamento.resx">
       <DependentUpon>frmConsultaFormaPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaFornecedor.resx">
+      <DependentUpon>frmConsultaFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaFuncionario.resx">
+      <DependentUpon>frmConsultaFuncionario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaPais.resx">
       <DependentUpon>frmConsultaPais.cs</DependentUpon>

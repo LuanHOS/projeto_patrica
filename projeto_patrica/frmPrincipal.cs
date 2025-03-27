@@ -23,6 +23,8 @@ namespace projeto_patrica
         private pais oPais;
         private estado oEstado;
         private cidade aCidade;
+        private cliente oCliente;
+
 
         //Controllers
         private Controller_formaPagamento oController_formaPagamento;
@@ -30,6 +32,7 @@ namespace projeto_patrica
         private Controller_pais oController_pais;
         private Controller_estado oController_estado;
         private Controller_cidade oController_cidade;
+        private Controller_cliente oController_cliente;
 
 
         /*
@@ -50,6 +53,8 @@ namespace projeto_patrica
             oPais = new pais();
             oEstado = new estado();
             aCidade = new cidade();
+            oCliente = new cliente();
+
 
             // Instanciando Controllers
             oController_formaPagamento = new Controller_formaPagamento();
@@ -57,10 +62,14 @@ namespace projeto_patrica
             oController_pais = new Controller_pais();
             oController_estado = new Controller_estado();
             oController_cidade = new Controller_cidade();
+            oController_cliente = new Controller_cliente();
+
 
             // Passando dependências de controllers
             oController_condicaoPagamento.AController_formaPagamento = oController_formaPagamento;
             oController_cidade.AController_estado = oController_estado;
+            oController_cliente.AController_cidade = oController_cidade;
+
         }
 
 
@@ -126,8 +135,9 @@ namespace projeto_patrica
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            aInter.pecaConsultaCliente(oCliente, oController_cliente);
         }
+
 
 
         /*

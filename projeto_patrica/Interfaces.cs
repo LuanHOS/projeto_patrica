@@ -18,6 +18,7 @@ namespace projeto_patrica
         frmCadastroPais oFrmCadPais;
         frmCadastroEstado oFrmCadEstado;
         frmCadastroCidade oFrmCadCidade;
+        frmCadastroCliente oFrmCadCliente;
 
 
         // Formulários de Consulta
@@ -26,6 +27,7 @@ namespace projeto_patrica
         frmConsultaPais oFrmConPais;
         frmConsultaEstado oFrmConEstado;
         frmConsultaCidade oFrmConCidade;
+        frmConsultaCliente oFrmConCliente;
 
 
         /*
@@ -40,6 +42,7 @@ namespace projeto_patrica
             oFrmConPais = new frmConsultaPais();
             oFrmConEstado = new frmConsultaEstado();
             oFrmConCidade = new frmConsultaCidade();
+            oFrmConCliente = new frmConsultaCliente();
 
 
             oFrmCadCondPag = new frmCadastroCondicaoPagamento();
@@ -47,6 +50,7 @@ namespace projeto_patrica
             oFrmCadPais = new frmCadastroPais();
             oFrmCadEstado = new frmCadastroEstado();
             oFrmCadCidade = new frmCadastroCidade();
+            oFrmCadCliente = new frmCadastroCliente();
 
 
             oFrmConCondPag.setFrmCadastro(oFrmCadCondPag);
@@ -54,10 +58,13 @@ namespace projeto_patrica
             oFrmConPais.setFrmCadastro(oFrmCadPais);
             oFrmConEstado.setFrmCadastro(oFrmCadEstado);
             oFrmConCidade.setFrmCadastro(oFrmCadCidade);
+            oFrmConCliente.setFrmCadastro(oFrmCadCliente);
+
 
             oFrmCadCondPag.setConsultaFormaPagamento(oFrmConFormPag);
             oFrmCadEstado.setConsultaPais(oFrmConPais);
             oFrmCadCidade.setConsultaEstado(oFrmConEstado);
+            oFrmCadCliente.setConsultaCidade(oFrmConCidade);
         }
 
 
@@ -137,9 +144,10 @@ namespace projeto_patrica
          */
 
 
-        public void pecaConsultaCliente(cidade aCidade, Controller_cidade oController_cidade)
+        public void pecaConsultaCliente(cliente oCliente, Controller_cliente oController_cliente)
         {
-
+            oFrmConCliente.ConhecaObj(oCliente, oController_cliente);
+            oFrmConCliente.ShowDialog();
         }
 
 

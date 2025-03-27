@@ -98,7 +98,7 @@
             // 
             // clmCod
             // 
-            this.clmCod.Text = "Codigo";
+            this.clmCod.Text = "Código";
             // 
             // bntLimparPesquisa
             // 

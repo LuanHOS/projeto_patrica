@@ -114,8 +114,8 @@ namespace projeto_patrica.classes
         }
         public cidade ACidade
         {
-            get => ACidade;
-            set => ACidade = value;
+            get => aCidade;
+            set => aCidade = value;
         }
         public string Cep
         {
