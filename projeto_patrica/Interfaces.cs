@@ -56,8 +56,8 @@ namespace projeto_patrica
             oFrmConCidade.setFrmCadastro(oFrmCadCidade);
 
             oFrmCadCondPag.setConsultaFormaPagamento(oFrmConFormPag);
-            //oFrmCadEstado.setConsultaPais(oFrmConPais);
-            //oFrmCadCidade.setConsultaEstado(oFrmConEstado);
+            oFrmCadEstado.setConsultaPais(oFrmConPais);
+            oFrmCadCidade.setConsultaEstado(oFrmConEstado);
         }
 
 
