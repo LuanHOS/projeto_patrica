@@ -67,6 +67,8 @@ namespace projeto_patrica
             oController_cliente.AController_cidade = oController_cidade;
             oController_funcionario.AController_cidade = oController_cidade;
             oController_fornecedor.AController_cidade = oController_cidade;
+            oController_cliente.AController_condicaoPagamento = oController_condicaoPagamento;
+            oController_fornecedor.AController_condicaoPagamento = oController_condicaoPagamento;
         }
 
         /*

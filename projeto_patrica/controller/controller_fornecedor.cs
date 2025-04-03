@@ -12,6 +12,7 @@ namespace projeto_patrica.controller
     {
         Dao_fornecedor aDao_fornecedor;
         Controller_cidade aController_cidade;
+        Controller_condicaoPagamento aController_condicaoPagamento;
 
         public Controller_fornecedor()
         {
@@ -50,6 +51,12 @@ namespace projeto_patrica.controller
         {
             get => aController_cidade;
             set => aController_cidade = value;
+        }
+
+        public Controller_condicaoPagamento AController_condicaoPagamento
+        {
+            get => aController_condicaoPagamento;
+            set => aController_condicaoPagamento = value;
         }
     }
 }

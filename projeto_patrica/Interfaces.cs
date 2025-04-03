@@ -67,6 +67,8 @@ namespace projeto_patrica
             oFrmCadCliente.setConsultaCidade(oFrmConCidade);
             oFrmCadFuncionario.setConsultaCidade(oFrmConCidade);
             oFrmCadFornecedor.setConsultaCidade(oFrmConCidade);
+            oFrmCadFornecedor.setConsultaCondicaoPagamento(oFrmConCondPag);
+            oFrmCadCliente.setConsultaCondicaoPagamento(oFrmConCondPag);
         }
 
         /*

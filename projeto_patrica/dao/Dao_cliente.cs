@@ -18,8 +18,8 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
-            sql = "INSERT INTO cliente (TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, GENERO) " +
-                  "VALUES ('" + oCliente.TipoPessoa + "', '" + oCliente.Nome_razaoSocial + "', '" + oCliente.Apelido_nomeFantasia + "', '" + oCliente.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', '" + oCliente.Cpf_cnpj + "', '" + oCliente.Rg_inscricaoEstadual + "', '" + oCliente.Email + "', '" + oCliente.Telefone + "', '" + oCliente.Endereco + "', '" + oCliente.Bairro + "', '" + oCliente.ACidade.Id + "', '" + oCliente.Cep + "', '" + (oCliente.Ativo ? 1 : 0) + "', '" + oCliente.Genero + "')";
+            sql = "INSERT INTO cliente (TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, GENERO, ID_CONDICAO_PAGAMENTO) " +
+                  "VALUES ('" + oCliente.TipoPessoa + "', '" + oCliente.Nome_razaoSocial + "', '" + oCliente.Apelido_nomeFantasia + "', '" + oCliente.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', '" + oCliente.Cpf_cnpj + "', '" + oCliente.Rg_inscricaoEstadual + "', '" + oCliente.Email + "', '" + oCliente.Telefone + "', '" + oCliente.Endereco + "', '" + oCliente.Bairro + "', '" + oCliente.ACidade.Id + "', '" + oCliente.Cep + "', '" + (oCliente.Ativo ? 1 : 0) + "', '" + oCliente.Genero + "', '" + oCliente.ACondicaoPagamento.Id + "')";
 
             if (oCliente.Id != 0)
             {
@@ -38,6 +38,7 @@ namespace projeto_patrica.dao
                       "', CEP = '" + oCliente.Cep +
                       "', ATIVO = '" + (oCliente.Ativo ? 1 : 0) +
                       "', GENERO = '" + oCliente.Genero +
+                      "', ID_CONDICAO_PAGAMENTO = '" + oCliente.ACondicaoPagamento.Id +
                       "' WHERE ID_CLIENTE = '" + oCliente.Id + "'";
             }
 
@@ -83,8 +84,8 @@ namespace projeto_patrica.dao
 
                     oCliente.Apelido_nomeFantasia = dr["APELIDO_NOME_FANTASIA"] == DBNull.Value
                         ? ""
-                        : dr["APELIDO_NOME_FANTASIA"].ToString(); 
-                    
+                        : dr["APELIDO_NOME_FANTASIA"].ToString();
+
                     oCliente.DataNascimento_criacao = Convert.ToDateTime(dr["DATA_NASCIMENTO_CRIACAO"]);
                     oCliente.Cpf_cnpj = dr["CPF_CNPJ"].ToString();
                     oCliente.Rg_inscricaoEstadual = dr["RG_INSCRICAO_ESTADUAL"].ToString();
@@ -99,6 +100,8 @@ namespace projeto_patrica.dao
                     oCliente.Genero = dr["GENERO"] == DBNull.Value || string.IsNullOrWhiteSpace(dr["GENERO"].ToString())
                         ? ' '
                         : Convert.ToChar(dr["GENERO"]);
+
+                    oCliente.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
                 }
 
                 conn.Connection.Close();
@@ -169,8 +172,10 @@ namespace projeto_patrica.dao
                 oCliente.Ativo = Convert.ToBoolean(dr["ATIVO"]);
 
                 oCliente.Genero = dr["GENERO"] == DBNull.Value || string.IsNullOrWhiteSpace(dr["GENERO"].ToString())
-                    ? ' ' 
+                    ? ' '
                     : Convert.ToChar(dr["GENERO"]);
+
+                oCliente.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
 
                 lista.Add(oCliente);
             }

@@ -44,165 +44,177 @@
             // 
             // txtCidade
             // 
-            this.txtCidade.Location = new System.Drawing.Point(462, 332);
+            this.txtCidade.Location = new System.Drawing.Point(346, 270);
             // 
             // lblCidade
             // 
-            this.lblCidade.Location = new System.Drawing.Point(459, 313);
+            this.lblCidade.Location = new System.Drawing.Point(344, 254);
             // 
             // txtBairro
             // 
-            this.txtBairro.Location = new System.Drawing.Point(244, 393);
+            this.txtBairro.Location = new System.Drawing.Point(183, 319);
             // 
             // lblBairro
             // 
-            this.lblBairro.Location = new System.Drawing.Point(241, 374);
+            this.lblBairro.Location = new System.Drawing.Point(181, 304);
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(244, 332);
+            this.txtEmail.Location = new System.Drawing.Point(183, 270);
             // 
             // lblEmail
             // 
-            this.lblEmail.Location = new System.Drawing.Point(241, 313);
+            this.lblEmail.Location = new System.Drawing.Point(181, 254);
             // 
             // txtEndereco
             // 
-            this.txtEndereco.Location = new System.Drawing.Point(24, 393);
+            this.txtEndereco.Location = new System.Drawing.Point(18, 319);
             // 
             // txtTelefone
             // 
-            this.txtTelefone.Location = new System.Drawing.Point(24, 332);
+            this.txtTelefone.Location = new System.Drawing.Point(18, 270);
             // 
             // lblCep
             // 
-            this.lblCep.Location = new System.Drawing.Point(459, 374);
+            this.lblCep.Location = new System.Drawing.Point(344, 304);
             // 
             // txtCep
             // 
-            this.txtCep.Location = new System.Drawing.Point(462, 393);
+            this.txtCep.Location = new System.Drawing.Point(346, 319);
             // 
             // btnPesquisarCidade
             // 
-            this.btnPesquisarCidade.Location = new System.Drawing.Point(641, 329);
+            this.btnPesquisarCidade.Location = new System.Drawing.Point(481, 267);
             this.btnPesquisarCidade.Click += new System.EventHandler(this.btnPesquisarCidade_Click);
             // 
             // lblEndereco
             // 
-            this.lblEndereco.Location = new System.Drawing.Point(21, 374);
+            this.lblEndereco.Location = new System.Drawing.Point(16, 304);
             // 
             // lblTelefone
             // 
-            this.lblTelefone.Location = new System.Drawing.Point(21, 313);
+            this.lblTelefone.Location = new System.Drawing.Point(16, 254);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(627, 450);
+            this.btnSave.Location = new System.Drawing.Point(470, 366);
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(720, 450);
+            this.btnSair.Location = new System.Drawing.Point(540, 366);
             // 
             // lblMatricula
             // 
             this.lblMatricula.AutoSize = true;
-            this.lblMatricula.Location = new System.Drawing.Point(21, 197);
+            this.lblMatricula.Location = new System.Drawing.Point(16, 160);
+            this.lblMatricula.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMatricula.Name = "lblMatricula";
-            this.lblMatricula.Size = new System.Drawing.Size(61, 16);
+            this.lblMatricula.Size = new System.Drawing.Size(52, 13);
             this.lblMatricula.TabIndex = 30;
             this.lblMatricula.Text = "Matrícula";
             // 
             // txtMatricula
             // 
-            this.txtMatricula.Location = new System.Drawing.Point(24, 217);
+            this.txtMatricula.Location = new System.Drawing.Point(18, 176);
+            this.txtMatricula.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMatricula.Name = "txtMatricula";
-            this.txtMatricula.Size = new System.Drawing.Size(201, 22);
+            this.txtMatricula.Size = new System.Drawing.Size(152, 20);
             this.txtMatricula.TabIndex = 31;
             // 
             // lblCargo
             // 
             this.lblCargo.AutoSize = true;
-            this.lblCargo.Location = new System.Drawing.Point(241, 197);
+            this.lblCargo.Location = new System.Drawing.Point(181, 160);
+            this.lblCargo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCargo.Name = "lblCargo";
-            this.lblCargo.Size = new System.Drawing.Size(44, 16);
+            this.lblCargo.Size = new System.Drawing.Size(35, 13);
             this.lblCargo.TabIndex = 30;
             this.lblCargo.Text = "Cargo";
             // 
             // txtCargo
             // 
-            this.txtCargo.Location = new System.Drawing.Point(244, 217);
+            this.txtCargo.Location = new System.Drawing.Point(183, 176);
+            this.txtCargo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCargo.Name = "txtCargo";
-            this.txtCargo.Size = new System.Drawing.Size(197, 22);
+            this.txtCargo.Size = new System.Drawing.Size(149, 20);
             this.txtCargo.TabIndex = 31;
             // 
             // lblTurno
             // 
             this.lblTurno.AutoSize = true;
-            this.lblTurno.Location = new System.Drawing.Point(21, 256);
+            this.lblTurno.Location = new System.Drawing.Point(16, 208);
+            this.lblTurno.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTurno.Name = "lblTurno";
-            this.lblTurno.Size = new System.Drawing.Size(42, 16);
+            this.lblTurno.Size = new System.Drawing.Size(35, 13);
             this.lblTurno.TabIndex = 30;
             this.lblTurno.Text = "Turno";
             // 
             // txtTurno
             // 
-            this.txtTurno.Location = new System.Drawing.Point(24, 276);
+            this.txtTurno.Location = new System.Drawing.Point(18, 224);
+            this.txtTurno.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTurno.Name = "txtTurno";
-            this.txtTurno.Size = new System.Drawing.Size(201, 22);
+            this.txtTurno.Size = new System.Drawing.Size(152, 20);
             this.txtTurno.TabIndex = 31;
             // 
             // lblCargaHoraria
             // 
             this.lblCargaHoraria.AutoSize = true;
-            this.lblCargaHoraria.Location = new System.Drawing.Point(241, 256);
+            this.lblCargaHoraria.Location = new System.Drawing.Point(181, 208);
+            this.lblCargaHoraria.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCargaHoraria.Name = "lblCargaHoraria";
-            this.lblCargaHoraria.Size = new System.Drawing.Size(92, 16);
+            this.lblCargaHoraria.Size = new System.Drawing.Size(72, 13);
             this.lblCargaHoraria.TabIndex = 30;
             this.lblCargaHoraria.Text = "Carga Horária";
             // 
             // txtCargaHoraria
             // 
-            this.txtCargaHoraria.Location = new System.Drawing.Point(244, 276);
+            this.txtCargaHoraria.Location = new System.Drawing.Point(183, 224);
+            this.txtCargaHoraria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCargaHoraria.Name = "txtCargaHoraria";
-            this.txtCargaHoraria.Size = new System.Drawing.Size(197, 22);
+            this.txtCargaHoraria.Size = new System.Drawing.Size(149, 20);
             this.txtCargaHoraria.TabIndex = 31;
             // 
             // lblSalario
             // 
             this.lblSalario.AutoSize = true;
-            this.lblSalario.Location = new System.Drawing.Point(458, 256);
+            this.lblSalario.Location = new System.Drawing.Point(344, 208);
+            this.lblSalario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSalario.Name = "lblSalario";
-            this.lblSalario.Size = new System.Drawing.Size(50, 16);
+            this.lblSalario.Size = new System.Drawing.Size(39, 13);
             this.lblSalario.TabIndex = 30;
             this.lblSalario.Text = "Salário";
             // 
             // txtSalario
             // 
-            this.txtSalario.Location = new System.Drawing.Point(461, 276);
+            this.txtSalario.Location = new System.Drawing.Point(346, 224);
+            this.txtSalario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSalario.Name = "txtSalario";
-            this.txtSalario.Size = new System.Drawing.Size(276, 22);
+            this.txtSalario.Size = new System.Drawing.Size(208, 20);
             this.txtSalario.TabIndex = 31;
             // 
             // lblDataAdmissao
             // 
             this.lblDataAdmissao.AutoSize = true;
-            this.lblDataAdmissao.Location = new System.Drawing.Point(459, 197);
+            this.lblDataAdmissao.Location = new System.Drawing.Point(344, 160);
+            this.lblDataAdmissao.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDataAdmissao.Name = "lblDataAdmissao";
-            this.lblDataAdmissao.Size = new System.Drawing.Size(119, 16);
+            this.lblDataAdmissao.Size = new System.Drawing.Size(93, 13);
             this.lblDataAdmissao.TabIndex = 30;
             this.lblDataAdmissao.Text = "Data de Admissão";
             // 
             // dtpDataAdmissao
             // 
-            this.dtpDataAdmissao.Location = new System.Drawing.Point(462, 216);
+            this.dtpDataAdmissao.Location = new System.Drawing.Point(346, 176);
+            this.dtpDataAdmissao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpDataAdmissao.Name = "dtpDataAdmissao";
-            this.dtpDataAdmissao.Size = new System.Drawing.Size(275, 22);
+            this.dtpDataAdmissao.Size = new System.Drawing.Size(207, 20);
             this.dtpDataAdmissao.TabIndex = 32;
             // 
             // frmCadastroFuncionario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(844, 516);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(633, 419);
             this.Controls.Add(this.dtpDataAdmissao);
             this.Controls.Add(this.txtSalario);
             this.Controls.Add(this.txtCargaHoraria);

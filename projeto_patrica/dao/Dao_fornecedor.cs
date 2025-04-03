@@ -14,8 +14,8 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
-            sql = "INSERT INTO fornecedor (TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, GENERO, INSCRICAO_MUNICIPAL, INSCRICAO_ESTADUAL_SUBS_TRIB) " +
-                  "VALUES ('" + oFornecedor.TipoPessoa + "', '" + oFornecedor.Nome_razaoSocial + "', '" + oFornecedor.Apelido_nomeFantasia + "', '" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', '" + oFornecedor.Cpf_cnpj + "', '" + oFornecedor.Rg_inscricaoEstadual + "', '" + oFornecedor.Email + "', '" + oFornecedor.Telefone + "', '" + oFornecedor.Endereco + "', '" + oFornecedor.Bairro + "', '" + oFornecedor.ACidade.Id + "', '" + oFornecedor.Cep + "', '" + (oFornecedor.Ativo ? 1 : 0) + "', '" + oFornecedor.Genero + "', '" + oFornecedor.InscricaoMunicipal + "', '" + oFornecedor.InscricaoEstadualSubstitutoTributario + "')";
+            sql = "INSERT INTO fornecedor (TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, GENERO, INSCRICAO_MUNICIPAL, INSCRICAO_ESTADUAL_SUBS_TRIB, ID_CONDICAO_PAGAMENTO) " +
+                  "VALUES ('" + oFornecedor.TipoPessoa + "', '" + oFornecedor.Nome_razaoSocial + "', '" + oFornecedor.Apelido_nomeFantasia + "', '" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', '" + oFornecedor.Cpf_cnpj + "', '" + oFornecedor.Rg_inscricaoEstadual + "', '" + oFornecedor.Email + "', '" + oFornecedor.Telefone + "', '" + oFornecedor.Endereco + "', '" + oFornecedor.Bairro + "', '" + oFornecedor.ACidade.Id + "', '" + oFornecedor.Cep + "', '" + (oFornecedor.Ativo ? 1 : 0) + "', '" + oFornecedor.Genero + "', '" + oFornecedor.InscricaoMunicipal + "', '" + oFornecedor.InscricaoEstadualSubstitutoTributario + "', '" + oFornecedor.ACondicaoPagamento.Id + "')";
 
             if (oFornecedor.Id != 0)
             {
@@ -36,6 +36,7 @@ namespace projeto_patrica.dao
                       "', GENERO = '" + oFornecedor.Genero +
                       "', INSCRICAO_MUNICIPAL = '" + oFornecedor.InscricaoMunicipal +
                       "', INSCRICAO_ESTADUAL_SUBS_TRIB = '" + oFornecedor.InscricaoEstadualSubstitutoTributario +
+                      "', ID_CONDICAO_PAGAMENTO = '" + oFornecedor.ACondicaoPagamento.Id +
                       "' WHERE ID_FORNECEDOR = '" + oFornecedor.Id + "'";
             }
 
@@ -78,7 +79,6 @@ namespace projeto_patrica.dao
                     oFornecedor.Id = Convert.ToInt32(dr["ID_FORNECEDOR"]);
                     oFornecedor.TipoPessoa = Convert.ToChar(dr["TIPO_PESSOA"]);
                     oFornecedor.Nome_razaoSocial = dr["NOME_RAZAO_SOCIAL"].ToString();
-
                     oFornecedor.Apelido_nomeFantasia = dr["APELIDO_NOME_FANTASIA"] == DBNull.Value ? "" : dr["APELIDO_NOME_FANTASIA"].ToString();
                     oFornecedor.DataNascimento_criacao = Convert.ToDateTime(dr["DATA_NASCIMENTO_CRIACAO"]);
                     oFornecedor.Cpf_cnpj = dr["CPF_CNPJ"].ToString();
@@ -93,6 +93,7 @@ namespace projeto_patrica.dao
                     oFornecedor.Genero = dr["GENERO"] == DBNull.Value || string.IsNullOrWhiteSpace(dr["GENERO"].ToString()) ? ' ' : Convert.ToChar(dr["GENERO"]);
                     oFornecedor.InscricaoMunicipal = dr["INSCRICAO_MUNICIPAL"] == DBNull.Value ? "" : dr["INSCRICAO_MUNICIPAL"].ToString();
                     oFornecedor.InscricaoEstadualSubstitutoTributario = dr["INSCRICAO_ESTADUAL_SUBS_TRIB"] == DBNull.Value ? "" : dr["INSCRICAO_ESTADUAL_SUBS_TRIB"].ToString();
+                    oFornecedor.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
                 }
 
                 conn.Connection.Close();
@@ -160,6 +161,7 @@ namespace projeto_patrica.dao
                 oFornecedor.Genero = dr["GENERO"] == DBNull.Value || string.IsNullOrWhiteSpace(dr["GENERO"].ToString()) ? ' ' : Convert.ToChar(dr["GENERO"]);
                 oFornecedor.InscricaoMunicipal = dr["INSCRICAO_MUNICIPAL"] == DBNull.Value ? "" : dr["INSCRICAO_MUNICIPAL"].ToString();
                 oFornecedor.InscricaoEstadualSubstitutoTributario = dr["INSCRICAO_ESTADUAL_SUBS_TRIB"] == DBNull.Value ? "" : dr["INSCRICAO_ESTADUAL_SUBS_TRIB"].ToString();
+                oFornecedor.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
 
                 lista.Add(oFornecedor);
             }

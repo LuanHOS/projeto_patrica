@@ -10,7 +10,7 @@ namespace projeto_patrica.classes
     {
         protected string inscricaoMunicipal;
         protected string inscricaoEstadualSubstitutoTributario;
-        //protected condicaoPagamento aCondicaoPagamento;
+        protected condicaoPagamento aCondicaoPagamento;
 
         public fornecedor()
         {
@@ -31,12 +31,12 @@ namespace projeto_patrica.classes
             inscricaoMunicipal = " ";
             inscricaoEstadualSubstitutoTributario = " ";
             genero = ' ';
-            //aCondicaoPagamento = new condicaoPagamento();
+            aCondicaoPagamento = new condicaoPagamento();
         }
 
         public fornecedor(int id, char tipoPessoa, string nome_razaoSocial, string apelido_nomeFantasia, DateTime dataNascimento_criacao, string cpf_cnpj,
             string rg_inscricaoEstadual, string email, string telefone, string endereco, string bairro, cidade aCidade, string cep, bool ativo, char genero,
-            string inscricaoMunicipal, string inscricaoEstadualSubstitutoTributario/*, condicaoPagamento aCondicaoPagamento*/)
+            string inscricaoMunicipal, string inscricaoEstadualSubstitutoTributario, condicaoPagamento aCondicaoPagamento)
             : base(id, tipoPessoa, nome_razaoSocial, apelido_nomeFantasia, dataNascimento_criacao, cpf_cnpj, rg_inscricaoEstadual, email, telefone, endereco, bairro, aCidade, cep, ativo, genero)
         {
             this.id = id;
@@ -56,7 +56,7 @@ namespace projeto_patrica.classes
             this.genero = genero;
             this.inscricaoMunicipal = inscricaoMunicipal;
             this.inscricaoEstadualSubstitutoTributario = inscricaoEstadualSubstitutoTributario;
-            //this.aCondicaoPagamento = aCondicaoPagamento;
+            this.aCondicaoPagamento = aCondicaoPagamento;
         }
 
         public string InscricaoMunicipal
@@ -69,6 +69,10 @@ namespace projeto_patrica.classes
             get => inscricaoEstadualSubstitutoTributario;
             set => inscricaoEstadualSubstitutoTributario = value;
         }
-        //public condicaoPagamento ACondicaoPagamento { get; set; }
+        public condicaoPagamento ACondicaoPagamento
+        {
+            get => aCondicaoPagamento;
+            set => aCondicaoPagamento = value;
+        }
     }
 }

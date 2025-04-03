@@ -56,10 +56,8 @@ namespace projeto_patrica.pages.consulta
         }
         public override void Pesquisar()
         {
-            this.listV.Items.Clear();
-
+            listV.Items.Clear();
             string termoPesquisa = txtCodigo.Text.Trim().ToLower();
-
             var listaResultados = new List<pais>();
 
             if (string.IsNullOrWhiteSpace(termoPesquisa))
@@ -70,11 +68,8 @@ namespace projeto_patrica.pages.consulta
             {
                 foreach (var oPais in aController_pais.ListaPaises())
                 {
-                    if (termoPesquisa == Convert.ToString(oPais.Id))
-                    {
-                        listaResultados.Add(oPais);
-                    }
-                    else if (oPais.Nome.ToLower().Contains(termoPesquisa.ToLower()))
+                    if (termoPesquisa == Convert.ToString(oPais.Id) ||
+                        oPais.Nome.ToLower().Contains(termoPesquisa))
                     {
                         listaResultados.Add(oPais);
                     }

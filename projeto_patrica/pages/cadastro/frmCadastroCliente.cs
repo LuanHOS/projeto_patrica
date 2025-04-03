@@ -11,6 +11,7 @@ namespace projeto_patrica.pages.cadastro
         private cliente oCliente;
         private Controller_cliente aController_cliente;
         private frmConsultaCidade oFrmConsultaCidade;
+        private frmConsultaCondicaoPagamento oFrmConsultaCondicaoPagamento;
 
         public frmCadastroCliente()
         {
@@ -31,6 +32,11 @@ namespace projeto_patrica.pages.cadastro
         public void setConsultaCidade(frmConsultaCidade consulta)
         {
             oFrmConsultaCidade = consulta;
+        }
+
+        public void setConsultaCondicaoPagamento(frmConsultaCondicaoPagamento consulta)
+        {
+            oFrmConsultaCondicaoPagamento = consulta;
         }
 
         public override void Salvar()
@@ -111,6 +117,7 @@ namespace projeto_patrica.pages.cadastro
             comboBoxGenero.SelectedIndex = -1;
             checkBoxAtivo.Checked = true;
             oCliente.ACidade = new cidade();
+            oCliente.ACondicaoPagamento = new condicaoPagamento();
             HabilitarCampos(false);
         }
 
@@ -128,6 +135,7 @@ namespace projeto_patrica.pages.cadastro
             txtBairro.Text = oCliente.Bairro;
             txtCep.Text = oCliente.Cep;
             txtCidade.Text = oCliente.ACidade.Nome;
+            txtCondicaoPagamento.Text = oCliente.ACondicaoPagamento.Descricao;
 
             if (oCliente.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate)
                 dtpDataNascimentoCriacao.Value = dtpDataNascimentoCriacao.MinDate;
@@ -182,6 +190,23 @@ namespace projeto_patrica.pages.cadastro
             }
         }
 
+        private void BtnPesquisarCondicaoPagamento_Click(object sender, EventArgs e)
+        {
+            if (oFrmConsultaCondicaoPagamento == null)
+                oFrmConsultaCondicaoPagamento = new frmConsultaCondicaoPagamento();
+
+            condicaoPagamento oCondicaoPagamento = new condicaoPagamento();
+            Controller_condicaoPagamento controller = new Controller_condicaoPagamento();
+            oFrmConsultaCondicaoPagamento.ConhecaObj(oCondicaoPagamento, controller);
+            oFrmConsultaCondicaoPagamento.ShowDialog();
+
+            if (oCondicaoPagamento.Id != 0)
+            {
+                oCliente.ACondicaoPagamento = oCondicaoPagamento;
+                txtCondicaoPagamento.Text = oCondicaoPagamento.Descricao;
+            }
+        }
+
         private void HabilitarCampos(bool habilita)
         {
             txtNomeRazaoSocial.Enabled = habilita;
@@ -193,9 +218,21 @@ namespace projeto_patrica.pages.cadastro
             txtEndereco.Enabled = habilita;
             txtBairro.Enabled = habilita;
             txtCep.Enabled = habilita;
+            txtCidade.Enabled = habilita;
+            txtCondicaoPagamento.Enabled = habilita;
             dtpDataNascimentoCriacao.Enabled = habilita;
             comboBoxGenero.Enabled = habilita;
             btnPesquisarCidade.Enabled = habilita;
+            btnPesquisarCondicaoPagamento.Enabled = habilita;
+
+            if (btnSave.Text == "Excluir")
+            {
+                comboBoxTipo.Enabled = false;
+            }
+            else
+            {
+                comboBoxTipo.Enabled = true;
+            }
         }
     }
 }
