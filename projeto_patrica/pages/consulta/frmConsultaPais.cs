@@ -74,6 +74,14 @@ namespace projeto_patrica.pages.consulta
                         listaResultados.Add(oPais);
                     }
                 }
+
+                foreach (var oPais in listaResultados)
+                {
+                    ListViewItem item = new ListViewItem(oPais.Id.ToString());
+                    item.SubItems.Add(oPais.Nome);
+                    item.Tag = oPais;
+                    listV.Items.Add(item);
+                }
             }
         }
 
