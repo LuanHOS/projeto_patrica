@@ -7,6 +7,10 @@ namespace projeto_patrica.dao
 {
     class Dao_fornecedor : Dao
     {
+        public Dao_fornecedor()
+        {
+        }
+
         public override string Salvar(object obj)
         {
             fornecedor oFornecedor = (fornecedor)obj;

@@ -134,7 +134,6 @@
     <Compile Include="controller\Controller_funcionario.cs" />
     <Compile Include="controller\Controller_pais.cs" />
     <Compile Include="dao\Dao.cs" />
-    <Compile Include="dao\BaseDao.cs" />
     <Compile Include="dao\Dao_cidade.cs" />
     <Compile Include="dao\Dao_cliente.cs" />
     <Compile Include="dao\Dao_condicaoPagamento.cs" />

@@ -8,7 +8,6 @@ namespace projeto_patrica.classes
 {
     internal class condicaoPagamento : pai
     {
-        // id representa o codCondicaoPagamento
         protected string descricao;
         protected int quantidadeParcelas;
         protected List<parcelaCondicaoPagamento> parcelas;

@@ -9,9 +9,9 @@ namespace projeto_patrica.classes
 {
     internal class parcelaCondicaoPagamento
     {
-        protected int codCondPgto; //PK
-        protected int numeroParcela; //PK
-        protected formaPagamento aFormaPagamento; //FK
+        protected int codCondPgto; 
+        protected int numeroParcela; 
+        protected formaPagamento aFormaPagamento; 
         protected decimal valorPercentual;
         protected int diasAposVenda;
         public parcelaCondicaoPagamento()

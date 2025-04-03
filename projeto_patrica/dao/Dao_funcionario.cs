@@ -7,6 +7,10 @@ namespace projeto_patrica.dao
 {
     class Dao_funcionario : Dao
     {
+        public Dao_funcionario()
+        {
+        }
+
         public override string Salvar(object obj)
         {
             funcionario oFuncionario = (funcionario)obj;

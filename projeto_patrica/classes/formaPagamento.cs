@@ -8,7 +8,6 @@ namespace projeto_patrica.classes
 {
     internal class formaPagamento : pai
     {
-        // id representa o codFormaPagamento
         protected string descricao;
 
         public formaPagamento()

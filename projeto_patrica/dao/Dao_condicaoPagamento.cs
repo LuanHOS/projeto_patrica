@@ -8,6 +8,10 @@ namespace projeto_patrica.dao
 {
     internal class Dao_condicaoPagamento : Dao
     {
+        public Dao_condicaoPagamento()
+        {
+        }
+
         public override string Salvar(object obj)
         {
             condicaoPagamento aCondicaoPagamento = (condicaoPagamento)obj;
