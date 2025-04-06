@@ -42,7 +42,6 @@
             this.clmCidade = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmCep = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmInscMunicipal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmInscEstSubTrib = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
@@ -63,7 +62,6 @@
             this.clmCidade,
             this.clmCep,
             this.clmAtivo,
-            this.clmInscMunicipal,
             this.clmInscEstSubTrib});
             // 
             // clmTipo
@@ -122,10 +120,6 @@
             // 
             this.clmAtivo.Text = "Ativo";
             // 
-            // clmInscMunicipal
-            // 
-            this.clmInscMunicipal.Text = "Insc. Municipal";
-            // 
             // clmInscEstSubTrib
             // 
             this.clmInscEstSubTrib.Text = "Insc. Est. Sub. Trib.";
@@ -157,7 +151,6 @@
         private System.Windows.Forms.ColumnHeader clmCidade;
         private System.Windows.Forms.ColumnHeader clmCep;
         private System.Windows.Forms.ColumnHeader clmAtivo;
-        private System.Windows.Forms.ColumnHeader clmInscMunicipal;
         private System.Windows.Forms.ColumnHeader clmInscEstSubTrib;
     }
 }

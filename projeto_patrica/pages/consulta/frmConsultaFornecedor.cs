@@ -90,7 +90,6 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(forn.ACidade.Nome);
                 item.SubItems.Add(forn.Cep);
                 item.SubItems.Add(forn.Ativo ? "Sim" : "Não");
-                item.SubItems.Add(forn.InscricaoMunicipal);
                 item.SubItems.Add(forn.InscricaoEstadualSubstitutoTributario);
                 item.Tag = forn;
                 listV.Items.Add(item);
@@ -134,7 +133,6 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(forn.ACidade.Nome);
                 item.SubItems.Add(forn.Cep);
                 item.SubItems.Add(forn.Ativo ? "Sim" : "Não");
-                item.SubItems.Add(forn.InscricaoMunicipal);
                 item.SubItems.Add(forn.InscricaoEstadualSubstitutoTributario);
                 item.Tag = forn;
                 listV.Items.Add(item);
@@ -163,7 +161,6 @@ namespace projeto_patrica.pages.consulta
                 oFornecedor.Cep = selecionado.Cep;
                 oFornecedor.Ativo = selecionado.Ativo;
                 oFornecedor.Genero = selecionado.Genero;
-                oFornecedor.InscricaoMunicipal = selecionado.InscricaoMunicipal;
                 oFornecedor.InscricaoEstadualSubstitutoTributario = selecionado.InscricaoEstadualSubstitutoTributario;
             }
         }
