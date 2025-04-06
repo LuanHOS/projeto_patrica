@@ -117,6 +117,8 @@ namespace projeto_patrica.pages.consulta
 
         private void listV_SelectedIndexChanged(object sender, EventArgs e)
         {
+            base.ListV_SelectedIndexChanged(sender, e);
+
             if (this.listV.SelectedItems.Count > 0)
             {
                 ListViewItem linha = listV.SelectedItems[0];

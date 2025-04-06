@@ -18,6 +18,7 @@ namespace projeto_patrica.controller
         {
             aDao_fornecedor = new Dao_fornecedor();
             aController_cidade = new Controller_cidade();
+            aController_condicaoPagamento = new Controller_condicaoPagamento();
         }
 
         public override string Salvar(object obj)
@@ -42,6 +43,7 @@ namespace projeto_patrica.controller
             foreach (fornecedor oFornecedor in lista)
             {
                 aController_cidade.CarregaObj(oFornecedor.ACidade);
+                aController_condicaoPagamento.CarregaObj(oFornecedor.ACondicaoPagamento);
             }
 
             return lista;

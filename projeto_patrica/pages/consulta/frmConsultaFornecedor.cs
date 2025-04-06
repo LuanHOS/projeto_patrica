@@ -139,11 +139,32 @@ namespace projeto_patrica.pages.consulta
 
         private void listV_SelectedIndexChanged(object sender, EventArgs e)
         {
+            base.ListV_SelectedIndexChanged(sender, e);
+
             if (listV.SelectedItems.Count > 0)
             {
                 ListViewItem linha = listV.SelectedItems[0];
-                oFornecedor = (fornecedor)linha.Tag;
+                fornecedor selecionado = (fornecedor)linha.Tag;
+
+                oFornecedor.Id = selecionado.Id;
+                oFornecedor.TipoPessoa = selecionado.TipoPessoa;
+                oFornecedor.Nome_razaoSocial = selecionado.Nome_razaoSocial;
+                oFornecedor.Apelido_nomeFantasia = selecionado.Apelido_nomeFantasia;
+                oFornecedor.DataNascimento_criacao = selecionado.DataNascimento_criacao;
+                oFornecedor.Cpf_cnpj = selecionado.Cpf_cnpj;
+                oFornecedor.Rg_inscricaoEstadual = selecionado.Rg_inscricaoEstadual;
+                oFornecedor.Email = selecionado.Email;
+                oFornecedor.Telefone = selecionado.Telefone;
+                oFornecedor.Endereco = selecionado.Endereco;
+                oFornecedor.Bairro = selecionado.Bairro;
+                oFornecedor.ACidade = selecionado.ACidade;
+                oFornecedor.Cep = selecionado.Cep;
+                oFornecedor.Ativo = selecionado.Ativo;
+                oFornecedor.Genero = selecionado.Genero;
+                oFornecedor.InscricaoEstadualSubstitutoTributario = selecionado.InscricaoEstadualSubstitutoTributario;
+                oFornecedor.ACondicaoPagamento = selecionado.ACondicaoPagamento;
             }
         }
+
     }
 }

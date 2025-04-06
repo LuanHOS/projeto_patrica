@@ -18,6 +18,7 @@ namespace projeto_patrica.controller
         {
             aDao_cliente = new Dao_cliente();
             aController_cidade = new Controller_cidade();
+            aController_condicaoPagamento = new Controller_condicaoPagamento();
         }
 
         public override string Salvar(object obj)
@@ -42,6 +43,7 @@ namespace projeto_patrica.controller
             foreach (cliente oCliente in lista)
             {
                 aController_cidade.CarregaObj(oCliente.ACidade);
+                aController_condicaoPagamento.CarregaObj(oCliente.ACondicaoPagamento);
             }
 
             return lista;

@@ -146,14 +146,36 @@ namespace projeto_patrica.pages.consulta
 
         private void listV_SelectedIndexChanged(object sender, EventArgs e)
         {
+            base.ListV_SelectedIndexChanged(sender, e);
+
             if (listV.SelectedItems.Count > 0)
             {
-                funcionario selecionado = (funcionario)listV.SelectedItems[0].Tag;
+                ListViewItem linha = listV.SelectedItems[0];
+                funcionario selecionado = (funcionario)linha.Tag;
+
                 oFuncionario.Id = selecionado.Id;
+                oFuncionario.TipoPessoa = selecionado.TipoPessoa;
                 oFuncionario.Nome_razaoSocial = selecionado.Nome_razaoSocial;
-                oFuncionario.ACidade.Id = selecionado.ACidade.Id;
-                oFuncionario.ACidade.Nome = selecionado.ACidade.Nome;
+                oFuncionario.Apelido_nomeFantasia = selecionado.Apelido_nomeFantasia;
+                oFuncionario.DataNascimento_criacao = selecionado.DataNascimento_criacao;
+                oFuncionario.Cpf_cnpj = selecionado.Cpf_cnpj;
+                oFuncionario.Rg_inscricaoEstadual = selecionado.Rg_inscricaoEstadual;
+                oFuncionario.Email = selecionado.Email;
+                oFuncionario.Telefone = selecionado.Telefone;
+                oFuncionario.Endereco = selecionado.Endereco;
+                oFuncionario.Bairro = selecionado.Bairro;
+                oFuncionario.ACidade = selecionado.ACidade;
+                oFuncionario.Cep = selecionado.Cep;
+                oFuncionario.Ativo = selecionado.Ativo;
+                oFuncionario.Genero = selecionado.Genero;
+                oFuncionario.Matricula = selecionado.Matricula;
+                oFuncionario.Cargo = selecionado.Cargo;
+                oFuncionario.Salario = selecionado.Salario;
+                oFuncionario.DataAdmissao = selecionado.DataAdmissao;
+                oFuncionario.Turno = selecionado.Turno;
+                oFuncionario.CargaHoraria = selecionado.CargaHoraria;
             }
         }
+
     }
 }
