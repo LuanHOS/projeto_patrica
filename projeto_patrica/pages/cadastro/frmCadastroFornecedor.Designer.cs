@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblInscMunicipal = new System.Windows.Forms.Label();
-            this.txtInscMunicipal = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtInscEstSubTrib = new System.Windows.Forms.TextBox();
             this.btnPesquisarCondicaoPagamento = new System.Windows.Forms.Button();
@@ -89,28 +87,10 @@
             // 
             this.lblTelefone.Location = new System.Drawing.Point(16, 204);
             // 
-            // lblInscMunicipal
-            // 
-            this.lblInscMunicipal.AutoSize = true;
-            this.lblInscMunicipal.Location = new System.Drawing.Point(16, 160);
-            this.lblInscMunicipal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblInscMunicipal.Name = "lblInscMunicipal";
-            this.lblInscMunicipal.Size = new System.Drawing.Size(98, 13);
-            this.lblInscMunicipal.TabIndex = 29;
-            this.lblInscMunicipal.Text = "Inscrição Municipal";
-            // 
-            // txtInscMunicipal
-            // 
-            this.txtInscMunicipal.Location = new System.Drawing.Point(18, 176);
-            this.txtInscMunicipal.Margin = new System.Windows.Forms.Padding(2);
-            this.txtInscMunicipal.Name = "txtInscMunicipal";
-            this.txtInscMunicipal.Size = new System.Drawing.Size(251, 20);
-            this.txtInscMunicipal.TabIndex = 30;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(284, 160);
+            this.label2.Location = new System.Drawing.Point(16, 157);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(191, 13);
@@ -119,7 +99,7 @@
             // 
             // txtInscEstSubTrib
             // 
-            this.txtInscEstSubTrib.Location = new System.Drawing.Point(286, 176);
+            this.txtInscEstSubTrib.Location = new System.Drawing.Point(18, 173);
             this.txtInscEstSubTrib.Margin = new System.Windows.Forms.Padding(2);
             this.txtInscEstSubTrib.Name = "txtInscEstSubTrib";
             this.txtInscEstSubTrib.Size = new System.Drawing.Size(267, 20);
@@ -160,12 +140,8 @@
             this.Controls.Add(this.lblCondicaoPagamento);
             this.Controls.Add(this.txtInscEstSubTrib);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtInscMunicipal);
-            this.Controls.Add(this.lblInscMunicipal);
             this.Name = "frmCadastroFornecedor";
             this.Text = "Cadastro de Fornecedor";
-            this.Controls.SetChildIndex(this.lblInscMunicipal, 0);
-            this.Controls.SetChildIndex(this.txtInscMunicipal, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.txtInscEstSubTrib, 0);
             this.Controls.SetChildIndex(this.comboBoxGenero, 0);
@@ -208,9 +184,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblInscMunicipal;
-        private System.Windows.Forms.TextBox txtInscMunicipal;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtInscEstSubTrib;
         private System.Windows.Forms.Button btnPesquisarCondicaoPagamento;

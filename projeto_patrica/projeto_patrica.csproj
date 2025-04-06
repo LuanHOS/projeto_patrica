@@ -329,6 +329,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaFornecedor.resx">
       <DependentUpon>frmConsultaFornecedor.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaFuncionario.resx">
       <DependentUpon>frmConsultaFuncionario.cs</DependentUpon>

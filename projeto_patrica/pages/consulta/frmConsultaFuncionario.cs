@@ -72,35 +72,30 @@ namespace projeto_patrica.pages.consulta
             base.CarregaLV();
             listV.Items.Clear();
 
-            List<funcionario> lista = aController_funcionario.ListaFuncionarios();
-            foreach (funcionario f in lista)
+            var lista = aController_funcionario.ListaFuncionarios();
+            foreach (var oFuncionario in lista)
             {
-                ListViewItem item = new ListViewItem(f.Id.ToString());
-                item.SubItems.Add(f.TipoPessoa.ToString());
-                item.SubItems.Add(f.Nome_razaoSocial);
-                item.SubItems.Add(f.Apelido_nomeFantasia);
-                item.SubItems.Add(f.DataNascimento_criacao == DateTime.MinValue ? "" : f.DataNascimento_criacao.ToShortDateString());
-                item.SubItems.Add(f.Cpf_cnpj);
-                item.SubItems.Add(f.Rg_inscricaoEstadual);
-                item.SubItems.Add(f.Email);
-                item.SubItems.Add(f.Telefone);
-                item.SubItems.Add(f.Endereco);
-                item.SubItems.Add(f.Bairro);
-                item.SubItems.Add(f.ACidade.Nome);
-                item.SubItems.Add(f.Cep);
-                item.SubItems.Add(f.Ativo ? "Sim" : "Não");
-                item.SubItems.Add(f.Matricula.ToString());
-                item.SubItems.Add(f.Cargo);
-                item.SubItems.Add(f.Salario.ToString("F2"));
-                item.SubItems.Add(f.DataAdmissao == DateTime.MinValue ? "" : f.DataAdmissao.ToShortDateString());
-                item.SubItems.Add(f.Turno);
-                item.SubItems.Add(f.CargaHoraria.ToString());
-                item.SubItems.Add(string.IsNullOrWhiteSpace(f.Genero.ToString().Trim()) ? "" : f.Genero.ToString());
+                ListViewItem item = new ListViewItem(oFuncionario.Id.ToString());
+                item.SubItems.Add(oFuncionario.Matricula.ToString());
+                item.SubItems.Add(oFuncionario.Nome_razaoSocial);
+                item.SubItems.Add(oFuncionario.Cargo);
+                item.SubItems.Add(oFuncionario.Salario.ToString("F2"));
+                item.SubItems.Add(oFuncionario.Turno);
+                item.SubItems.Add(oFuncionario.CargaHoraria.ToString());
+                item.SubItems.Add(oFuncionario.Cpf_cnpj);
+                item.SubItems.Add(oFuncionario.Rg_inscricaoEstadual);
+                item.SubItems.Add(oFuncionario.Genero == ' ' ? "" : oFuncionario.Genero.ToString());
+                item.SubItems.Add(oFuncionario.ACidade.Nome);
+                item.SubItems.Add(oFuncionario.Email);
+                item.SubItems.Add(oFuncionario.Telefone);
+                item.SubItems.Add(oFuncionario.DataAdmissao == DateTime.MinValue ? "" : oFuncionario.DataAdmissao.ToShortDateString());
+                item.SubItems.Add(oFuncionario.Ativo ? "Sim" : "Não");
 
-                item.Tag = f;
+                item.Tag = oFuncionario;
                 listV.Items.Add(item);
             }
         }
+
 
         public override void Pesquisar()
         {
@@ -112,47 +107,42 @@ namespace projeto_patrica.pages.consulta
             if (string.IsNullOrWhiteSpace(termo))
             {
                 LimparPesquisa();
+                return;
             }
-            else
+
+            foreach (var oFuncionario in aController_funcionario.ListaFuncionarios())
             {
-                foreach (var f in aController_funcionario.ListaFuncionarios())
+                if (oFuncionario.Id.ToString() == termo ||
+                    oFuncionario.Nome_razaoSocial.ToLower().Contains(termo) ||
+                    oFuncionario.Cargo.ToLower().Contains(termo))
                 {
-                    if (f.Id.ToString() == termo ||
-                        f.Nome_razaoSocial.ToLower().Contains(termo) ||
-                        f.Cargo.ToLower().Contains(termo))
-                    {
-                        listaResultados.Add(f);
-                    }
+                    listaResultados.Add(oFuncionario);
                 }
             }
 
-            foreach (funcionario f in listaResultados)
+            foreach (var oFuncionario in listaResultados)
             {
-                ListViewItem item = new ListViewItem(f.Id.ToString());
-                item.SubItems.Add(f.TipoPessoa.ToString());
-                item.SubItems.Add(f.Nome_razaoSocial);
-                item.SubItems.Add(f.Apelido_nomeFantasia);
-                item.SubItems.Add(f.DataNascimento_criacao == DateTime.MinValue ? "" : f.DataNascimento_criacao.ToShortDateString());
-                item.SubItems.Add(f.Cpf_cnpj);
-                item.SubItems.Add(f.Rg_inscricaoEstadual);
-                item.SubItems.Add(f.Email);
-                item.SubItems.Add(f.Telefone);
-                item.SubItems.Add(f.Endereco);
-                item.SubItems.Add(f.Bairro);
-                item.SubItems.Add(f.ACidade.Nome);
-                item.SubItems.Add(f.Cep);
-                item.SubItems.Add(f.Ativo ? "Sim" : "Não");
-                item.SubItems.Add(f.Matricula.ToString());
-                item.SubItems.Add(f.Cargo);
-                item.SubItems.Add(f.Salario.ToString("F2"));
-                item.SubItems.Add(f.DataAdmissao == DateTime.MinValue ? "" : f.DataAdmissao.ToShortDateString());
-                item.SubItems.Add(f.Turno);
-                item.SubItems.Add(f.CargaHoraria.ToString());
-                item.SubItems.Add(string.IsNullOrWhiteSpace(f.Genero.ToString().Trim()) ? "" : f.Genero.ToString());
+                ListViewItem item = new ListViewItem(oFuncionario.Id.ToString());
+                item.SubItems.Add(oFuncionario.Matricula.ToString());
+                item.SubItems.Add(oFuncionario.Nome_razaoSocial);
+                item.SubItems.Add(oFuncionario.Cargo);
+                item.SubItems.Add(oFuncionario.Salario.ToString("F2"));
+                item.SubItems.Add(oFuncionario.Turno);
+                item.SubItems.Add(oFuncionario.CargaHoraria.ToString());
+                item.SubItems.Add(oFuncionario.Cpf_cnpj);
+                item.SubItems.Add(oFuncionario.Rg_inscricaoEstadual);
+                item.SubItems.Add(oFuncionario.Genero == ' ' ? "" : oFuncionario.Genero.ToString());
+                item.SubItems.Add(oFuncionario.ACidade.Nome);
+                item.SubItems.Add(oFuncionario.Email);
+                item.SubItems.Add(oFuncionario.Telefone);
+                item.SubItems.Add(oFuncionario.DataAdmissao == DateTime.MinValue ? "" : oFuncionario.DataAdmissao.ToShortDateString());
+                item.SubItems.Add(oFuncionario.Ativo ? "Sim" : "Não");
 
+                item.Tag = oFuncionario;
                 listV.Items.Add(item);
             }
         }
+
 
         private void listV_SelectedIndexChanged(object sender, EventArgs e)
         {

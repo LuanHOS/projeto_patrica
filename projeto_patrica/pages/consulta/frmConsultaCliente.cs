@@ -71,28 +71,28 @@ namespace projeto_patrica.pages.consulta
         {
             base.CarregaLV();
             listV.Items.Clear();
+
             var lista = aController_cliente.ListaClientes();
 
-            foreach (cliente cli in lista)
+            foreach (var oCliente in lista)
             {
-                ListViewItem item = new ListViewItem(cli.Id.ToString());
-                item.SubItems.Add(cli.TipoPessoa.ToString());
-                item.SubItems.Add(cli.Nome_razaoSocial);
-                item.SubItems.Add(cli.Apelido_nomeFantasia);
-                item.SubItems.Add(cli.DataNascimento_criacao.ToShortDateString());
-                item.SubItems.Add(cli.Cpf_cnpj);
-                item.SubItems.Add(cli.Rg_inscricaoEstadual);
-                item.SubItems.Add(cli.Email);
-                item.SubItems.Add(cli.Telefone);
-                item.SubItems.Add(cli.Endereco);
-                item.SubItems.Add(cli.Bairro);
-                item.SubItems.Add(cli.ACidade.Nome);
-                item.SubItems.Add(cli.Cep);
-                item.SubItems.Add(cli.Ativo ? "Sim" : "Não");
-                item.Tag = cli;
+                ListViewItem item = new ListViewItem(oCliente.Id.ToString());
+                item.SubItems.Add(oCliente.Nome_razaoSocial);
+                item.SubItems.Add(oCliente.TipoPessoa.ToString());
+                item.SubItems.Add(oCliente.ACondicaoPagamento.Descricao);
+                item.SubItems.Add(oCliente.Cpf_cnpj);
+                item.SubItems.Add(oCliente.Rg_inscricaoEstadual);
+                item.SubItems.Add(oCliente.Genero == ' ' ? "" : oCliente.Genero.ToString());
+                item.SubItems.Add(oCliente.ACidade.Nome);
+                item.SubItems.Add(oCliente.Email);
+                item.SubItems.Add(oCliente.Telefone);
+                item.SubItems.Add(oCliente.Ativo ? "Sim" : "Não");
+
+                item.Tag = oCliente;
                 listV.Items.Add(item);
             }
         }
+
 
         public override void Pesquisar()
         {
@@ -106,34 +106,36 @@ namespace projeto_patrica.pages.consulta
                 return;
             }
 
-            foreach (cliente cli in aController_cliente.ListaClientes())
+            foreach (var oCliente in aController_cliente.ListaClientes())
             {
-                if (cli.Id.ToString() == termo || cli.Nome_razaoSocial.ToLower().Contains(termo) || cli.Cpf_cnpj.ToLower().Contains(termo))
+                if (oCliente.Id.ToString() == termo ||
+                    oCliente.Nome_razaoSocial.ToLower().Contains(termo) ||
+                    oCliente.Cpf_cnpj.ToLower().Contains(termo) ||
+                    oCliente.ACondicaoPagamento.Descricao.ToLower().Contains(termo))
                 {
-                    resultados.Add(cli);
+                    resultados.Add(oCliente);
                 }
             }
 
-            foreach (cliente cli in resultados)
+            foreach (var oCliente in resultados)
             {
-                ListViewItem item = new ListViewItem(cli.Id.ToString());
-                item.SubItems.Add(cli.TipoPessoa.ToString());
-                item.SubItems.Add(cli.Nome_razaoSocial);
-                item.SubItems.Add(cli.Apelido_nomeFantasia);
-                item.SubItems.Add(cli.DataNascimento_criacao.ToShortDateString());
-                item.SubItems.Add(cli.Cpf_cnpj);
-                item.SubItems.Add(cli.Rg_inscricaoEstadual);
-                item.SubItems.Add(cli.Email);
-                item.SubItems.Add(cli.Telefone);
-                item.SubItems.Add(cli.Endereco);
-                item.SubItems.Add(cli.Bairro);
-                item.SubItems.Add(cli.ACidade.Nome);
-                item.SubItems.Add(cli.Cep);
-                item.SubItems.Add(cli.Ativo ? "Sim" : "Não");
-                item.Tag = cli;
+                ListViewItem item = new ListViewItem(oCliente.Id.ToString());
+                item.SubItems.Add(oCliente.Nome_razaoSocial);
+                item.SubItems.Add(oCliente.TipoPessoa.ToString());
+                item.SubItems.Add(oCliente.ACondicaoPagamento.Descricao);
+                item.SubItems.Add(oCliente.Cpf_cnpj);
+                item.SubItems.Add(oCliente.Rg_inscricaoEstadual);
+                item.SubItems.Add(oCliente.Genero == ' ' ? "" : oCliente.Genero.ToString());
+                item.SubItems.Add(oCliente.ACidade.Nome);
+                item.SubItems.Add(oCliente.Email);
+                item.SubItems.Add(oCliente.Telefone);
+                item.SubItems.Add(oCliente.Ativo ? "Sim" : "Não");
+
+                item.Tag = oCliente;
                 listV.Items.Add(item);
             }
         }
+
 
         private void listV_SelectedIndexChanged(object sender, EventArgs e)
         {

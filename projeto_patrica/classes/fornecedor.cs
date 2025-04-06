@@ -8,7 +8,6 @@ namespace projeto_patrica.classes
 {
     class fornecedor : pessoa
     {
-        protected string inscricaoMunicipal;
         protected string inscricaoEstadualSubstitutoTributario;
         protected condicaoPagamento aCondicaoPagamento;
 
@@ -28,15 +27,13 @@ namespace projeto_patrica.classes
             aCidade = new cidade();
             cep = " ";
             ativo = true;
-            inscricaoMunicipal = " ";
             inscricaoEstadualSubstitutoTributario = " ";
             genero = ' ';
             aCondicaoPagamento = new condicaoPagamento();
         }
 
         public fornecedor(int id, char tipoPessoa, string nome_razaoSocial, string apelido_nomeFantasia, DateTime dataNascimento_criacao, string cpf_cnpj,
-            string rg_inscricaoEstadual, string email, string telefone, string endereco, string bairro, cidade aCidade, string cep, bool ativo, char genero,
-            string inscricaoMunicipal, string inscricaoEstadualSubstitutoTributario, condicaoPagamento aCondicaoPagamento)
+            string rg_inscricaoEstadual, string email, string telefone, string endereco, string bairro, cidade aCidade, string cep, bool ativo, char genero, string inscricaoEstadualSubstitutoTributario, condicaoPagamento aCondicaoPagamento)
             : base(id, tipoPessoa, nome_razaoSocial, apelido_nomeFantasia, dataNascimento_criacao, cpf_cnpj, rg_inscricaoEstadual, email, telefone, endereco, bairro, aCidade, cep, ativo, genero)
         {
             this.id = id;
@@ -54,16 +51,10 @@ namespace projeto_patrica.classes
             this.cep = cep;
             this.ativo = ativo;
             this.genero = genero;
-            this.inscricaoMunicipal = inscricaoMunicipal;
             this.inscricaoEstadualSubstitutoTributario = inscricaoEstadualSubstitutoTributario;
             this.aCondicaoPagamento = aCondicaoPagamento;
         }
 
-        public string InscricaoMunicipal
-        {
-            get => inscricaoMunicipal;
-            set => inscricaoMunicipal = value;
-        }
         public string InscricaoEstadualSubstitutoTributario
         {
             get => inscricaoEstadualSubstitutoTributario;

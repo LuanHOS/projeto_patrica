@@ -30,110 +30,97 @@
         {
             this.clmTipo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmNomeRazaoSocial = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmApelidoNomeFantasia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmGenero = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmDataNascimentoCriacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmCpfCnpj = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmRgInscEstadual = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmTelefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmEndereco = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmBairro = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmCidade = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmCep = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmInscMunicipal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmInscEstSubTrib = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmCondicaoPagamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listV
             // 
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clmTipo,
             this.clmNomeRazaoSocial,
-            this.clmApelidoNomeFantasia,
-            this.clmGenero,
-            this.clmDataNascimentoCriacao,
+            this.clmTipo,
+            this.clmCondicaoPagamento,
             this.clmCpfCnpj,
             this.clmRgInscEstadual,
+            this.clmInscEstSubTrib,
+            this.clmGenero,
+            this.clmCidade,
             this.clmEmail,
             this.clmTelefone,
-            this.clmEndereco,
-            this.clmBairro,
-            this.clmCidade,
-            this.clmCep,
-            this.clmAtivo,
-            this.clmInscMunicipal,
-            this.clmInscEstSubTrib});
+            this.clmAtivo});
+            this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
             // 
             // clmTipo
             // 
+            this.clmTipo.DisplayIndex = 1;
             this.clmTipo.Text = "Tipo de Pessoa";
             // 
             // clmNomeRazaoSocial
             // 
+            this.clmNomeRazaoSocial.DisplayIndex = 2;
             this.clmNomeRazaoSocial.Text = "Nome/Razão Social";
-            // 
-            // clmApelidoNomeFantasia
-            // 
-            this.clmApelidoNomeFantasia.Text = "Apelido/Nome Fantasia";
+            this.clmNomeRazaoSocial.Width = 120;
             // 
             // clmGenero
             // 
+            this.clmGenero.DisplayIndex = 3;
             this.clmGenero.Text = "Gênero";
-            // 
-            // clmDataNascimentoCriacao
-            // 
-            this.clmDataNascimentoCriacao.Text = "Data Nasc./Criação";
             // 
             // clmCpfCnpj
             // 
             this.clmCpfCnpj.Text = "CPF/CNPJ";
+            this.clmCpfCnpj.Width = 120;
             // 
             // clmRgInscEstadual
             // 
             this.clmRgInscEstadual.Text = "RG/Insc. Estadual";
+            this.clmRgInscEstadual.Width = 120;
             // 
             // clmEmail
             // 
+            this.clmEmail.DisplayIndex = 6;
             this.clmEmail.Text = "E-mail";
+            this.clmEmail.Width = 120;
             // 
             // clmTelefone
             // 
+            this.clmTelefone.DisplayIndex = 7;
             this.clmTelefone.Text = "Telefone";
-            // 
-            // clmEndereco
-            // 
-            this.clmEndereco.Text = "Endereço";
-            // 
-            // clmBairro
-            // 
-            this.clmBairro.Text = "Bairro";
+            this.clmTelefone.Width = 120;
             // 
             // clmCidade
             // 
             this.clmCidade.Text = "Cidade";
-            // 
-            // clmCep
-            // 
-            this.clmCep.Text = "CEP";
+            this.clmCidade.Width = 120;
             // 
             // clmAtivo
             // 
+            this.clmAtivo.DisplayIndex = 9;
             this.clmAtivo.Text = "Ativo";
-            // 
-            // clmInscMunicipal
-            // 
-            this.clmInscMunicipal.Text = "Insc. Municipal";
             // 
             // clmInscEstSubTrib
             // 
+            this.clmInscEstSubTrib.DisplayIndex = 10;
             this.clmInscEstSubTrib.Text = "Insc. Est. Sub. Trib.";
+            this.clmInscEstSubTrib.Width = 120;
+            // 
+            // clmCondicaoPagamento
+            // 
+            this.clmCondicaoPagamento.DisplayIndex = 11;
+            this.clmCondicaoPagamento.Text = "Condição de Pagamento";
+            this.clmCondicaoPagamento.Width = 120;
             // 
             // frmConsultaFornecedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(844, 476);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(633, 387);
             this.Name = "frmConsultaFornecedor";
             this.Text = "Consulta de Fornecedor";
             this.ResumeLayout(false);
@@ -145,19 +132,14 @@
 
         private System.Windows.Forms.ColumnHeader clmTipo;
         private System.Windows.Forms.ColumnHeader clmNomeRazaoSocial;
-        private System.Windows.Forms.ColumnHeader clmApelidoNomeFantasia;
         private System.Windows.Forms.ColumnHeader clmGenero;
-        private System.Windows.Forms.ColumnHeader clmDataNascimentoCriacao;
         private System.Windows.Forms.ColumnHeader clmCpfCnpj;
         private System.Windows.Forms.ColumnHeader clmRgInscEstadual;
         private System.Windows.Forms.ColumnHeader clmEmail;
         private System.Windows.Forms.ColumnHeader clmTelefone;
-        private System.Windows.Forms.ColumnHeader clmEndereco;
-        private System.Windows.Forms.ColumnHeader clmBairro;
         private System.Windows.Forms.ColumnHeader clmCidade;
-        private System.Windows.Forms.ColumnHeader clmCep;
         private System.Windows.Forms.ColumnHeader clmAtivo;
-        private System.Windows.Forms.ColumnHeader clmInscMunicipal;
         private System.Windows.Forms.ColumnHeader clmInscEstSubTrib;
+        private System.Windows.Forms.ColumnHeader clmCondicaoPagamento;
     }
 }

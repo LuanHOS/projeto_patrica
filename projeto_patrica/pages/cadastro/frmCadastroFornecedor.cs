@@ -76,7 +76,6 @@ namespace projeto_patrica.pages.cadastro
             oFornecedor.Cep = txtCep.Text;
             oFornecedor.Ativo = checkBoxAtivo.Checked;
             oFornecedor.Genero = comboBoxGenero.Enabled ? (comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F') : ' ';
-            oFornecedor.InscricaoMunicipal = txtInscMunicipal.Text;
             oFornecedor.InscricaoEstadualSubstitutoTributario = txtInscEstSubTrib.Text;
 
             if (btnSave.Text == "Excluir")
@@ -115,7 +114,6 @@ namespace projeto_patrica.pages.cadastro
             txtBairro.Clear();
             txtCep.Clear();
             txtCidade.Clear();
-            txtInscMunicipal.Clear();
             txtInscEstSubTrib.Clear();
             comboBoxTipo.SelectedIndex = -1;
             comboBoxGenero.SelectedIndex = -1;
@@ -139,7 +137,6 @@ namespace projeto_patrica.pages.cadastro
             txtBairro.Text = oFornecedor.Bairro;
             txtCep.Text = oFornecedor.Cep;
             txtCidade.Text = oFornecedor.ACidade.Nome;
-            txtInscMunicipal.Text = oFornecedor.InscricaoMunicipal;
             txtInscEstSubTrib.Text = oFornecedor.InscricaoEstadualSubstitutoTributario;
             txtCondicaoPagamento.Text = oFornecedor.ACondicaoPagamento.Descricao;
 
@@ -229,7 +226,6 @@ namespace projeto_patrica.pages.cadastro
             comboBoxGenero.Enabled = habilita;
             btnPesquisarCidade.Enabled = habilita;
             btnPesquisarCondicaoPagamento.Enabled = habilita;
-            txtInscMunicipal.Enabled = habilita;
             txtInscEstSubTrib.Enabled = habilita;
             txtCondicaoPagamento.Enabled = habilita;
 

@@ -73,26 +73,22 @@ namespace projeto_patrica.pages.consulta
             listV.Items.Clear();
             var lista = aController_fornecedor.ListaFornecedores();
 
-            foreach (fornecedor forn in lista)
+            foreach (var oFornecedor in lista)
             {
-                ListViewItem item = new ListViewItem(forn.Id.ToString());
-                item.SubItems.Add(forn.TipoPessoa.ToString());
-                item.SubItems.Add(forn.Nome_razaoSocial);
-                item.SubItems.Add(forn.Apelido_nomeFantasia);
-                item.SubItems.Add(forn.Genero.ToString());
-                item.SubItems.Add(forn.DataNascimento_criacao.ToShortDateString());
-                item.SubItems.Add(forn.Cpf_cnpj);
-                item.SubItems.Add(forn.Rg_inscricaoEstadual);
-                item.SubItems.Add(forn.Email);
-                item.SubItems.Add(forn.Telefone);
-                item.SubItems.Add(forn.Endereco);
-                item.SubItems.Add(forn.Bairro);
-                item.SubItems.Add(forn.ACidade.Nome);
-                item.SubItems.Add(forn.Cep);
-                item.SubItems.Add(forn.Ativo ? "Sim" : "Não");
-                item.SubItems.Add(forn.InscricaoMunicipal);
-                item.SubItems.Add(forn.InscricaoEstadualSubstitutoTributario);
-                item.Tag = forn;
+                ListViewItem item = new ListViewItem(oFornecedor.Id.ToString());
+                item.SubItems.Add(oFornecedor.Nome_razaoSocial);
+                item.SubItems.Add(oFornecedor.TipoPessoa.ToString());
+                item.SubItems.Add(oFornecedor.ACondicaoPagamento.Descricao);
+                item.SubItems.Add(oFornecedor.Cpf_cnpj);
+                item.SubItems.Add(oFornecedor.Rg_inscricaoEstadual);
+                item.SubItems.Add(oFornecedor.InscricaoEstadualSubstitutoTributario);
+                item.SubItems.Add(oFornecedor.Genero == ' ' ? "" : oFornecedor.Genero.ToString());
+                item.SubItems.Add(oFornecedor.ACidade.Nome);
+                item.SubItems.Add(oFornecedor.Email);
+                item.SubItems.Add(oFornecedor.Telefone);
+                item.SubItems.Add(oFornecedor.Ativo ? "Sim" : "Não");
+
+                item.Tag = oFornecedor;
                 listV.Items.Add(item);
             }
         }
@@ -109,62 +105,44 @@ namespace projeto_patrica.pages.consulta
                 return;
             }
 
-            foreach (fornecedor forn in aController_fornecedor.ListaFornecedores())
+            foreach (var oFornecedor in aController_fornecedor.ListaFornecedores())
             {
-                if (forn.Id.ToString() == termo || forn.Nome_razaoSocial.ToLower().Contains(termo) || forn.Cpf_cnpj.ToLower().Contains(termo))
+                if (oFornecedor.Id.ToString() == termo ||
+                    oFornecedor.Nome_razaoSocial.ToLower().Contains(termo) ||
+                    oFornecedor.Cpf_cnpj.ToLower().Contains(termo) ||
+                    oFornecedor.ACondicaoPagamento.Descricao.ToLower().Contains(termo))
                 {
-                    resultados.Add(forn);
+                    resultados.Add(oFornecedor);
                 }
             }
 
-            foreach (fornecedor forn in resultados)
+            foreach (var oFornecedor in resultados)
             {
-                ListViewItem item = new ListViewItem(forn.Id.ToString());
-                item.SubItems.Add(forn.TipoPessoa.ToString());
-                item.SubItems.Add(forn.Nome_razaoSocial);
-                item.SubItems.Add(forn.Apelido_nomeFantasia);
-                item.SubItems.Add(forn.Genero.ToString());
-                item.SubItems.Add(forn.DataNascimento_criacao.ToShortDateString());
-                item.SubItems.Add(forn.Cpf_cnpj);
-                item.SubItems.Add(forn.Rg_inscricaoEstadual);
-                item.SubItems.Add(forn.Email);
-                item.SubItems.Add(forn.Telefone);
-                item.SubItems.Add(forn.Endereco);
-                item.SubItems.Add(forn.Bairro);
-                item.SubItems.Add(forn.ACidade.Nome);
-                item.SubItems.Add(forn.Cep);
-                item.SubItems.Add(forn.Ativo ? "Sim" : "Não");
-                item.SubItems.Add(forn.InscricaoMunicipal);
-                item.SubItems.Add(forn.InscricaoEstadualSubstitutoTributario);
-                item.Tag = forn;
+                ListViewItem item = new ListViewItem(oFornecedor.Id.ToString());
+                item.SubItems.Add(oFornecedor.Nome_razaoSocial);
+                item.SubItems.Add(oFornecedor.TipoPessoa.ToString());
+                item.SubItems.Add(oFornecedor.ACondicaoPagamento.Descricao);
+                item.SubItems.Add(oFornecedor.Cpf_cnpj);
+                item.SubItems.Add(oFornecedor.Rg_inscricaoEstadual);
+                item.SubItems.Add(oFornecedor.InscricaoEstadualSubstitutoTributario);
+                item.SubItems.Add(oFornecedor.Genero == ' ' ? "" : oFornecedor.Genero.ToString());
+                item.SubItems.Add(oFornecedor.ACidade.Nome);
+                item.SubItems.Add(oFornecedor.Email);
+                item.SubItems.Add(oFornecedor.Telefone);
+                item.SubItems.Add(oFornecedor.Ativo ? "Sim" : "Não");
+
+                item.Tag = oFornecedor;
                 listV.Items.Add(item);
             }
         }
+
 
         private void listV_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listV.SelectedItems.Count > 0)
             {
                 ListViewItem linha = listV.SelectedItems[0];
-                fornecedor selecionado = (fornecedor)linha.Tag;
-
-                oFornecedor.Id = selecionado.Id;
-                oFornecedor.TipoPessoa = selecionado.TipoPessoa;
-                oFornecedor.Nome_razaoSocial = selecionado.Nome_razaoSocial;
-                oFornecedor.Apelido_nomeFantasia = selecionado.Apelido_nomeFantasia;
-                oFornecedor.DataNascimento_criacao = selecionado.DataNascimento_criacao;
-                oFornecedor.Cpf_cnpj = selecionado.Cpf_cnpj;
-                oFornecedor.Rg_inscricaoEstadual = selecionado.Rg_inscricaoEstadual;
-                oFornecedor.Email = selecionado.Email;
-                oFornecedor.Telefone = selecionado.Telefone;
-                oFornecedor.Endereco = selecionado.Endereco;
-                oFornecedor.Bairro = selecionado.Bairro;
-                oFornecedor.ACidade = selecionado.ACidade;
-                oFornecedor.Cep = selecionado.Cep;
-                oFornecedor.Ativo = selecionado.Ativo;
-                oFornecedor.Genero = selecionado.Genero;
-                oFornecedor.InscricaoMunicipal = selecionado.InscricaoMunicipal;
-                oFornecedor.InscricaoEstadualSubstitutoTributario = selecionado.InscricaoEstadualSubstitutoTributario;
+                oFornecedor = (fornecedor)linha.Tag;
             }
         }
     }
