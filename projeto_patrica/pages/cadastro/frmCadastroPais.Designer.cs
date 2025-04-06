@@ -35,23 +35,25 @@
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(24, 92);
+            this.lblNome.Location = new System.Drawing.Point(18, 75);
+            this.lblNome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(52, 16);
+            this.lblNome.Size = new System.Drawing.Size(36, 13);
             this.lblNome.TabIndex = 3;
-            this.lblNome.Text = "Nome *";
+            this.lblNome.Text = "País *";
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(27, 111);
+            this.txtNome.Location = new System.Drawing.Point(20, 90);
+            this.txtNome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(237, 22);
+            this.txtNome.Size = new System.Drawing.Size(179, 20);
             this.txtNome.TabIndex = 4;
             // 
             // frmCadastroPais
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(844, 476);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(633, 387);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.lblNome);
             this.Name = "frmCadastroPais";

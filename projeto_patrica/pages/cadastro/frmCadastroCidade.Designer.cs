@@ -39,16 +39,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 89);
+            this.label1.Location = new System.Drawing.Point(18, 72);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 16);
+            this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 3;
             // 
             // btnPesquisarEstado
             // 
-            this.btnPesquisarEstado.Location = new System.Drawing.Point(267, 174);
+            this.btnPesquisarEstado.Location = new System.Drawing.Point(200, 141);
+            this.btnPesquisarEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPesquisarEstado.Name = "btnPesquisarEstado";
-            this.btnPesquisarEstado.Size = new System.Drawing.Size(99, 28);
+            this.btnPesquisarEstado.Size = new System.Drawing.Size(74, 23);
             this.btnPesquisarEstado.TabIndex = 14;
             this.btnPesquisarEstado.Text = "Pesquisar";
             this.btnPesquisarEstado.UseVisualStyleBackColor = true;
@@ -56,40 +58,44 @@
             // 
             // txtEstado
             // 
-            this.txtEstado.Location = new System.Drawing.Point(24, 177);
+            this.txtEstado.Location = new System.Drawing.Point(18, 144);
+            this.txtEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(237, 22);
+            this.txtEstado.Size = new System.Drawing.Size(179, 20);
             this.txtEstado.TabIndex = 13;
             // 
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(21, 158);
+            this.lblEstado.Location = new System.Drawing.Point(16, 128);
+            this.lblEstado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(58, 16);
+            this.lblEstado.Size = new System.Drawing.Size(47, 13);
             this.lblEstado.TabIndex = 12;
             this.lblEstado.Text = "Estado *";
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(24, 108);
+            this.txtNome.Location = new System.Drawing.Point(18, 88);
+            this.txtNome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(237, 22);
+            this.txtNome.Size = new System.Drawing.Size(179, 20);
             this.txtNome.TabIndex = 11;
             // 
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(21, 89);
+            this.lblNome.Location = new System.Drawing.Point(16, 72);
+            this.lblNome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(52, 16);
+            this.lblNome.Size = new System.Drawing.Size(47, 13);
             this.lblNome.TabIndex = 10;
-            this.lblNome.Text = "Nome *";
+            this.lblNome.Text = "Cidade *";
             // 
             // frmCadastroCidade
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(844, 476);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(633, 387);
             this.Controls.Add(this.btnPesquisarEstado);
             this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.lblEstado);

@@ -35,23 +35,25 @@
             // lblDescricao
             // 
             this.lblDescricao.AutoSize = true;
-            this.lblDescricao.Location = new System.Drawing.Point(21, 116);
+            this.lblDescricao.Location = new System.Drawing.Point(16, 94);
+            this.lblDescricao.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDescricao.Name = "lblDescricao";
-            this.lblDescricao.Size = new System.Drawing.Size(77, 16);
+            this.lblDescricao.Size = new System.Drawing.Size(115, 13);
             this.lblDescricao.TabIndex = 8;
-            this.lblDescricao.Text = "Descrição *";
+            this.lblDescricao.Text = "Forma de Pagamento *";
             // 
             // txtDescricao
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(24, 135);
+            this.txtDescricao.Location = new System.Drawing.Point(18, 110);
+            this.txtDescricao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(412, 22);
+            this.txtDescricao.Size = new System.Drawing.Size(310, 20);
             this.txtDescricao.TabIndex = 6;
             // 
             // frmCadastroFormaPagamento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(844, 476);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(633, 387);
             this.Controls.Add(this.lblDescricao);
             this.Controls.Add(this.txtDescricao);
             this.Name = "frmCadastroFormaPagamento";
