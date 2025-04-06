@@ -15,8 +15,8 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastroFuncionario()
         {
             InitializeComponent();
-            comboBoxTipo.SelectedIndex = 0; // Pessoa Física
-            comboBoxTipo.Enabled = false;   // Tipo fixo 'F'
+            comboBoxTipo.SelectedIndex = 0; 
+            comboBoxTipo.Enabled = false;   
         }
 
         public override void ConhecaObj(object obj, object ctrl)
@@ -138,26 +138,55 @@ namespace projeto_patrica.pages.cadastro
         public override void Bloqueiatxt()
         {
             base.Bloqueiatxt();
+
+            txtNomeRazaoSocial.Enabled = false;
+            txtApelidoNomeFantasia.Enabled = false;
+            txtCpfCnpj.Enabled = false;
+            txtRgInscEstadual.Enabled = false;
+            txtEmail.Enabled = false;
+            txtTelefone.Enabled = false;
+            txtEndereco.Enabled = false;
+            txtBairro.Enabled = false;
+            txtCep.Enabled = false;
+            txtCidade.Enabled = false;
+            comboBoxTipo.Enabled = false;
+            comboBoxGenero.Enabled = false;
+            dtpDataNascimentoCriacao.Enabled = false;
+            btnPesquisarCidade.Enabled = false;
             txtMatricula.Enabled = false;
             txtCargo.Enabled = false;
             txtSalario.Enabled = false;
             dtpDataAdmissao.Enabled = false;
             txtTurno.Enabled = false;
             txtCargaHoraria.Enabled = false;
-            btnPesquisarCidade.Enabled = false;
         }
+
 
         public override void Desbloqueiatxt()
         {
             base.Desbloqueiatxt();
+
+            txtNomeRazaoSocial.Enabled = true;
+            txtApelidoNomeFantasia.Enabled = true;
+            txtCpfCnpj.Enabled = true;
+            txtRgInscEstadual.Enabled = true;
+            txtEmail.Enabled = true;
+            txtTelefone.Enabled = true;
+            txtEndereco.Enabled = true;
+            txtBairro.Enabled = true;
+            txtCep.Enabled = true;
+            txtCidade.Enabled = true;
+            btnPesquisarCidade.Enabled = true;
+            dtpDataNascimentoCriacao.Enabled = true;
+            comboBoxGenero.Enabled = true;
             txtMatricula.Enabled = true;
             txtCargo.Enabled = true;
             txtSalario.Enabled = true;
             dtpDataAdmissao.Enabled = true;
             txtTurno.Enabled = true;
             txtCargaHoraria.Enabled = true;
-            btnPesquisarCidade.Enabled = true;
         }
+
 
         private void btnPesquisarCidade_Click(object sender, EventArgs e)
         {

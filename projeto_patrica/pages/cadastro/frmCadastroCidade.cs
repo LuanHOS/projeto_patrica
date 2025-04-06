@@ -91,6 +91,7 @@ namespace projeto_patrica.pages.cadastro
         {
             base.Bloqueiatxt();
             txtNome.Enabled = false;
+            txtEstado.Enabled = false;
             btnPesquisarEstado.Enabled = false;
         }
 
@@ -98,6 +99,7 @@ namespace projeto_patrica.pages.cadastro
         {
             base.Desbloqueiatxt();
             txtNome.Enabled = true;
+            txtEstado.Enabled = true;
             btnPesquisarEstado.Enabled = true;
         }
 
