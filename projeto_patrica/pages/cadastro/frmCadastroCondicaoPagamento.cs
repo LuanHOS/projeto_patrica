@@ -19,7 +19,6 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastroCondicaoPagamento()
         {
             InitializeComponent();
-            txtCodigo.Text = "0";
             CarregarFormasDePagamento();
         }
 
@@ -31,11 +30,35 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            base.Salvar();
-
-            if (txtDescricao.Text == "" || txtQtdParcelas.Text == "")
+            if (
+                string.IsNullOrWhiteSpace(txtDescricao.Text) ||
+                string.IsNullOrWhiteSpace(txtQtdParcelas.Text) ||
+                !int.TryParse(txtQtdParcelas.Text, out int qtdInformada) ||
+                listaParcelas.Count != qtdInformada
+            )
             {
-                MessageBox.Show("Preencha todos os campos obrigatórios.");
+                txtDescricao.Focus();
+                txtQtdParcelas.Focus();
+                listVParcelas.Focus();
+
+                if (!int.TryParse(txtQtdParcelas.Text, out qtdInformada) || listaParcelas.Count != qtdInformada)
+                    MessageBox.Show("A quantidade de parcelas informada não corresponde à quantidade de parcelas na lista. Verifique antes de salvar.");
+                else
+                    MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");
+
+                return;
+            }
+
+            decimal totalPercentual = 0;
+            foreach (var parcela in listaParcelas)
+            {
+                totalPercentual += parcela.ValorPercentual;
+            }
+
+            if (totalPercentual != 100)
+            {
+                MessageBox.Show("A soma das porcentagens das parcelas deve ser exatamente 100%. Ajuste os valores antes de salvar.");
+                listVParcelas.Focus();
                 return;
             }
 
@@ -44,34 +67,46 @@ namespace projeto_patrica.pages.cadastro
             aCondicaoPagamento.QuantidadeParcelas = Convert.ToInt32(txtQtdParcelas.Text);
             aCondicaoPagamento.Parcelas = listaParcelas;
 
-            if (btnSave.Text == "Excluir")
+            try
             {
-                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (resp == DialogResult.Yes)
+                if (btnSave.Text == "Excluir")
                 {
-                    aController_condicaoPagamento.Excluir(aCondicaoPagamento);
-                    MessageBox.Show("A condição de pagamento " + aCondicaoPagamento.Descricao + " foi excluída com sucesso.");
-                    Sair();
+                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (resp == DialogResult.Yes)
+                    {
+                        aController_condicaoPagamento.Excluir(aCondicaoPagamento);
+                        MessageBox.Show("A condição de pagamento \"" + aCondicaoPagamento.Descricao + "\" foi excluída com sucesso.");
+                        Sair();
+                    }
+                }
+                else if (btnSave.Text == "Alterar")
+                {
+                    txtCodigo.Text = aController_condicaoPagamento.Salvar(aCondicaoPagamento);
+                    MessageBox.Show("A condição de pagamento \"" + aCondicaoPagamento.Descricao + "\" foi alterada com sucesso.");
+                }
+                else
+                {
+                    txtCodigo.Text = aController_condicaoPagamento.Salvar(aCondicaoPagamento);
+                    MessageBox.Show("A condição de pagamento \"" + aCondicaoPagamento.Descricao + "\" foi salva com o código " + txtCodigo.Text + ".");
                 }
             }
-            else if (btnSave.Text == "Alterar")
+            catch (Exception ex)
             {
-                this.txtCodigo.Text = aController_condicaoPagamento.Salvar(aCondicaoPagamento);
-                MessageBox.Show("A condição de pagamento " + aCondicaoPagamento.Descricao + " foi alterada com sucesso.");
+                MessageBox.Show("Não foi possível concluir a operação. Verifique os dados e tente novamente.\n\nDetalhes técnicos: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
-            {
-                this.txtCodigo.Text = aController_condicaoPagamento.Salvar(aCondicaoPagamento);
-                MessageBox.Show("A condição de pagamento " + aCondicaoPagamento.Descricao + " foi salva com o código " + this.txtCodigo.Text + ".");
-            }
+
+            base.Salvar();
         }
+
+
 
 
         public override void Limpartxt()
         {
             base.Limpartxt();
             txtDescricao.Clear();
-            txtQtdParcelas.Clear();
+            txtQtdParcelas.Text = "1";
             listaParcelas.Clear();
             listVParcelas.Items.Clear();
             LimparCamposParcela();
@@ -122,6 +157,9 @@ namespace projeto_patrica.pages.cadastro
                 item.SubItems.Add(parcela.DiasAposVenda.ToString());
                 listVParcelas.Items.Add(item);
             }
+
+            AtualizarPorcentagemTotal();
+
         }
 
         private void btnAdicionarParcela_Click(object sender, EventArgs e)
@@ -140,6 +178,9 @@ namespace projeto_patrica.pages.cadastro
                 CarregarParcelasNaListView();
                 LimparCamposParcela();
             }
+
+            AtualizarPorcentagemTotal();
+
         }
 
         private void btnEditarParcela_Click(object sender, EventArgs e)
@@ -183,6 +224,8 @@ namespace projeto_patrica.pages.cadastro
                     MessageBox.Show("Selecione uma parcela para editar.");
                 }
             }
+
+            AtualizarPorcentagemTotal();
         }
 
         private void btnRemoverParcela_Click(object sender, EventArgs e)
@@ -205,6 +248,8 @@ namespace projeto_patrica.pages.cadastro
                     MessageBox.Show("Selecione uma parcela para remover.");
                 }
             }
+
+            AtualizarPorcentagemTotal();
         }
 
         private void FinalizarEdicaoParcela()
@@ -222,8 +267,8 @@ namespace projeto_patrica.pages.cadastro
         private void LimparCamposParcela()
         {
             txtNumParcela.Clear();
-            txtPercentualParcela.Clear();
-            txtPrazoDias.Clear();
+            txtPercentualParcela.Text = "0";
+            txtPrazoDias.Text = "0";
             if (comboBoxFormaPagamento.Items.Count > 0)
                 comboBoxFormaPagamento.SelectedIndex = 0;
         }
@@ -258,14 +303,48 @@ namespace projeto_patrica.pages.cadastro
                 return false;
             }
 
-            if (!int.TryParse(txtNumParcela.Text, out _) || !decimal.TryParse(txtPercentualParcela.Text, out _) || !int.TryParse(txtPrazoDias.Text, out _))
+            if (!int.TryParse(txtNumParcela.Text, out int numParcela) ||
+                !decimal.TryParse(txtPercentualParcela.Text, out decimal percentual) ||
+                !int.TryParse(txtPrazoDias.Text, out int prazoDias))
             {
                 MessageBox.Show("Campos numéricos inválidos.");
                 return false;
             }
 
+            if (numParcela <= 0)
+            {
+                MessageBox.Show("O número da parcela deve ser maior que zero.");
+                return false;
+            }
+
+            if (prazoDias < 0)
+            {
+                MessageBox.Show("O prazo em dias não pode ser negativo.");
+                return false;
+            }
+
+            if (percentual <= 0)
+            {
+                MessageBox.Show("O percentual da parcela deve ser maior que zero.");
+                return false;
+            }
+
+            if (!editandoParcela)
+            {
+                foreach (var parcela in listaParcelas)
+                {
+                    if (parcela.NumeroParcela == numParcela)
+                    {
+                        MessageBox.Show("Já existe uma parcela com esse número.");
+                        return false;
+                    }
+                }
+            }
+
             return true;
         }
+
+
 
         private void CarregarParcelasDoBanco()
         {
@@ -315,5 +394,18 @@ namespace projeto_patrica.pages.cadastro
                 comboBoxFormaPagamento.SelectedValue = formaSelecionada.Id;
             }
         }
+
+        private void AtualizarPorcentagemTotal()
+        {
+            decimal total = 0;
+
+            foreach (var parcela in listaParcelas)
+            {
+                total += parcela.ValorPercentual;
+            }
+
+            lblPorcentagemTotalNum.Text = total.ToString("F2");
+        }
+
     }
 }

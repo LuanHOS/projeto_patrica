@@ -213,7 +213,7 @@
             this.checkBoxAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxAtivo.Location = new System.Drawing.Point(776, 12);
             this.checkBoxAtivo.Name = "checkBoxAtivo";
-            this.checkBoxAtivo.Size = new System.Drawing.Size(56, 20);
+            this.checkBoxAtivo.Size = new System.Drawing.Size(59, 20);
             this.checkBoxAtivo.TabIndex = 25;
             this.checkBoxAtivo.Text = "Ativo";
             this.checkBoxAtivo.UseVisualStyleBackColor = true;
@@ -280,9 +280,9 @@
             this.lblGenero.AutoSize = true;
             this.lblGenero.Location = new System.Drawing.Point(572, 85);
             this.lblGenero.Name = "lblGenero";
-            this.lblGenero.Size = new System.Drawing.Size(52, 16);
+            this.lblGenero.Size = new System.Drawing.Size(60, 16);
             this.lblGenero.TabIndex = 10;
-            this.lblGenero.Text = "Gênero";
+            this.lblGenero.Text = "Gênero *";
             // 
             // comboBoxGenero
             // 

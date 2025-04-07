@@ -35,81 +35,119 @@
             this.lblCondicaoPagamento = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // txtRgInscEstadual
+            // 
+            this.txtRgInscEstadual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            // 
+            // txtNomeRazaoSocial
+            // 
+            this.txtNomeRazaoSocial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            // 
             // txtCidade
             // 
-            this.txtCidade.Location = new System.Drawing.Point(346, 219);
+            this.txtCidade.Location = new System.Drawing.Point(461, 270);
+            this.txtCidade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // lblCidade
             // 
-            this.lblCidade.Location = new System.Drawing.Point(344, 204);
+            this.lblCidade.Location = new System.Drawing.Point(459, 251);
+            this.lblCidade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             // 
             // txtBairro
             // 
-            this.txtBairro.Location = new System.Drawing.Point(183, 269);
+            this.txtBairro.Location = new System.Drawing.Point(244, 331);
+            this.txtBairro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // lblBairro
             // 
-            this.lblBairro.Location = new System.Drawing.Point(181, 254);
+            this.lblBairro.Location = new System.Drawing.Point(241, 313);
+            this.lblBairro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(183, 219);
+            this.txtEmail.Location = new System.Drawing.Point(244, 270);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // lblEmail
             // 
-            this.lblEmail.Location = new System.Drawing.Point(181, 204);
+            this.lblEmail.Location = new System.Drawing.Point(241, 251);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             // 
             // txtEndereco
             // 
-            this.txtEndereco.Location = new System.Drawing.Point(18, 269);
+            this.txtEndereco.Location = new System.Drawing.Point(24, 331);
+            this.txtEndereco.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // txtTelefone
             // 
-            this.txtTelefone.Location = new System.Drawing.Point(18, 219);
+            this.txtTelefone.Location = new System.Drawing.Point(24, 270);
+            this.txtTelefone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            // 
+            // txtCpfCnpj
+            // 
+            this.txtCpfCnpj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // lblCep
             // 
-            this.lblCep.Location = new System.Drawing.Point(344, 254);
+            this.lblCep.Location = new System.Drawing.Point(459, 313);
+            this.lblCep.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             // 
             // txtCep
             // 
-            this.txtCep.Location = new System.Drawing.Point(346, 269);
+            this.txtCep.Location = new System.Drawing.Point(461, 331);
+            this.txtCep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // btnPesquisarCidade
             // 
-            this.btnPesquisarCidade.Location = new System.Drawing.Point(481, 217);
+            this.btnPesquisarCidade.Location = new System.Drawing.Point(641, 267);
+            this.btnPesquisarCidade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            // 
+            // txtApelidoNomeFantasia
+            // 
+            this.txtApelidoNomeFantasia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // lblEndereco
             // 
-            this.lblEndereco.Location = new System.Drawing.Point(16, 254);
+            this.lblEndereco.Location = new System.Drawing.Point(21, 313);
+            this.lblEndereco.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             // 
             // lblTelefone
             // 
-            this.lblTelefone.Location = new System.Drawing.Point(16, 204);
+            this.lblTelefone.Location = new System.Drawing.Point(21, 251);
+            this.lblTelefone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            // 
+            // lblGenero
+            // 
+            this.lblGenero.Size = new System.Drawing.Size(60, 16);
+            this.lblGenero.Text = "Gênero *";
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 157);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(21, 193);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(191, 13);
+            this.label2.Size = new System.Drawing.Size(246, 16);
             this.label2.TabIndex = 29;
-            this.label2.Text = "Inscrição Estadual Substituto Tributario";
+            this.label2.Text = "Inscrição Estadual Substituto Tributario *";
             // 
             // txtInscEstSubTrib
             // 
-            this.txtInscEstSubTrib.Location = new System.Drawing.Point(18, 173);
-            this.txtInscEstSubTrib.Margin = new System.Windows.Forms.Padding(2);
+            this.txtInscEstSubTrib.Location = new System.Drawing.Point(24, 213);
+            this.txtInscEstSubTrib.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInscEstSubTrib.Name = "txtInscEstSubTrib";
-            this.txtInscEstSubTrib.Size = new System.Drawing.Size(267, 20);
+            this.txtInscEstSubTrib.Size = new System.Drawing.Size(355, 22);
             this.txtInscEstSubTrib.TabIndex = 30;
             // 
             // btnPesquisarCondicaoPagamento
             // 
-            this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(483, 35);
+            this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(644, 43);
+            this.btnPesquisarCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPesquisarCondicaoPagamento.Name = "btnPesquisarCondicaoPagamento";
-            this.btnPesquisarCondicaoPagamento.Size = new System.Drawing.Size(75, 20);
+            this.btnPesquisarCondicaoPagamento.Size = new System.Drawing.Size(100, 25);
             this.btnPesquisarCondicaoPagamento.TabIndex = 38;
             this.btnPesquisarCondicaoPagamento.Text = "Pesquisar";
             this.btnPesquisarCondicaoPagamento.UseVisualStyleBackColor = true;
@@ -117,29 +155,32 @@
             // 
             // txtCondicaoPagamento
             // 
-            this.txtCondicaoPagamento.Location = new System.Drawing.Point(348, 36);
+            this.txtCondicaoPagamento.Location = new System.Drawing.Point(464, 44);
+            this.txtCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCondicaoPagamento.Name = "txtCondicaoPagamento";
-            this.txtCondicaoPagamento.Size = new System.Drawing.Size(129, 20);
+            this.txtCondicaoPagamento.Size = new System.Drawing.Size(171, 22);
             this.txtCondicaoPagamento.TabIndex = 37;
             // 
             // lblCondicaoPagamento
             // 
             this.lblCondicaoPagamento.AutoSize = true;
-            this.lblCondicaoPagamento.Location = new System.Drawing.Point(348, 19);
+            this.lblCondicaoPagamento.Location = new System.Drawing.Point(464, 23);
+            this.lblCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCondicaoPagamento.Name = "lblCondicaoPagamento";
-            this.lblCondicaoPagamento.Size = new System.Drawing.Size(124, 13);
+            this.lblCondicaoPagamento.Size = new System.Drawing.Size(165, 16);
             this.lblCondicaoPagamento.TabIndex = 36;
-            this.lblCondicaoPagamento.Text = "Condição de Pagamento";
+            this.lblCondicaoPagamento.Text = "Condição de Pagamento *";
             // 
             // frmCadastroFornecedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(633, 387);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(844, 476);
             this.Controls.Add(this.btnPesquisarCondicaoPagamento);
             this.Controls.Add(this.txtCondicaoPagamento);
             this.Controls.Add(this.lblCondicaoPagamento);
             this.Controls.Add(this.txtInscEstSubTrib);
             this.Controls.Add(this.label2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmCadastroFornecedor";
             this.Text = "Cadastro de Fornecedor";
             this.Controls.SetChildIndex(this.label2, 0);

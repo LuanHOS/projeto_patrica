@@ -30,45 +30,51 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            base.Salvar();
-
-            if (txtNome.Text == "")
+            if (string.IsNullOrWhiteSpace(txtNome.Text) || oEstado.OPais == null || oEstado.OPais.Id == 0)
             {
-                MessageBox.Show("Campo Obrigatório: Nome do estado");
                 txtNome.Focus();
-                return;
-            }
+                txtPais.Focus();
 
-            if (oEstado.OPais == null || oEstado.OPais.Id == 0)
-            {
-                MessageBox.Show("Selecione um país.");
+                MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");
                 return;
             }
 
             oEstado.Id = Convert.ToInt16(txtCodigo.Text);
             oEstado.Nome = txtNome.Text;
 
-            if (btnSave.Text == "Excluir")
+            try
             {
-                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (resp == DialogResult.Yes)
+                if (btnSave.Text == "Excluir")
                 {
-                    txtCodigo.Text = aController_estado.Excluir(oEstado);
-                    MessageBox.Show("O estado \"" + oEstado.Nome + "\" foi excluído com sucesso.");
-                    Sair();
+                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (resp == DialogResult.Yes)
+                    {
+                        txtCodigo.Text = aController_estado.Excluir(oEstado);
+                        MessageBox.Show("O estado \"" + oEstado.Nome + "\" foi excluído com sucesso.");
+                        Sair();
+                    }
+                }
+                else if (btnSave.Text == "Alterar")
+                {
+                    txtCodigo.Text = aController_estado.Salvar(oEstado);
+                    MessageBox.Show("O estado \"" + oEstado.Nome + "\" foi alterado com sucesso.");
+                }
+                else
+                {
+                    txtCodigo.Text = aController_estado.Salvar(oEstado);
+                    MessageBox.Show("O estado \"" + oEstado.Nome + "\" foi salvo com o código " + txtCodigo.Text + ".");
                 }
             }
-            else if (btnSave.Text == "Alterar")
+            catch (Exception ex)
             {
-                txtCodigo.Text = aController_estado.Salvar(oEstado);
-                MessageBox.Show("O estado \"" + oEstado.Nome + "\" foi alterado com sucesso.");
+                MessageBox.Show("Não foi possível concluir a operação. Verifique os dados e tente novamente.\n\nDetalhes técnicos: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
-            {
-                txtCodigo.Text = aController_estado.Salvar(oEstado);
-                MessageBox.Show("O estado \"" + oEstado.Nome + "\" foi salvo com o código " + txtCodigo.Text + ".");
-            }
+
+            base.Salvar();
         }
+
+
 
         public override void Limpartxt()
         {

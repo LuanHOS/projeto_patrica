@@ -32,22 +32,49 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            base.Salvar();
-
-            if (txtNomeRazaoSocial.Text == "")
+            if (
+                string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
+                comboBoxGenero.SelectedIndex == -1 ||
+                string.IsNullOrWhiteSpace(txtCpfCnpj.Text) ||
+                string.IsNullOrWhiteSpace(txtRgInscEstadual.Text) ||
+                string.IsNullOrWhiteSpace(txtMatricula.Text) ||
+                string.IsNullOrWhiteSpace(txtCargo.Text) ||
+                string.IsNullOrWhiteSpace(txtTurno.Text) ||
+                string.IsNullOrWhiteSpace(txtCargaHoraria.Text) ||
+                string.IsNullOrWhiteSpace(txtSalario.Text) ||
+                string.IsNullOrWhiteSpace(txtTelefone.Text) ||
+                string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                string.IsNullOrWhiteSpace(txtEndereco.Text) ||
+                string.IsNullOrWhiteSpace(txtBairro.Text) ||
+                string.IsNullOrWhiteSpace(txtCep.Text) ||
+                oFuncionario.ACidade == null || oFuncionario.ACidade.Id == 0 ||
+                dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate ||
+                dtpDataAdmissao.Value <= dtpDataAdmissao.MinDate
+            )
             {
-                MessageBox.Show("Campo obrigatório: Nome");
                 txtNomeRazaoSocial.Focus();
+                comboBoxGenero.Focus();
+                txtCpfCnpj.Focus();
+                txtRgInscEstadual.Focus();
+                txtMatricula.Focus();
+                txtCargo.Focus();
+                txtTurno.Focus();
+                txtCargaHoraria.Focus();
+                txtSalario.Focus();
+                txtTelefone.Focus();
+                txtEmail.Focus();
+                txtEndereco.Focus();
+                txtBairro.Focus();
+                txtCep.Focus();
+                txtCidade.Focus();
+                dtpDataNascimentoCriacao.Focus();
+                dtpDataAdmissao.Focus();
+
+                MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");
                 return;
             }
 
-            if (oFuncionario.ACidade == null || oFuncionario.ACidade.Id == 0)
-            {
-                MessageBox.Show("Selecione uma cidade.");
-                return;
-            }
-
-            oFuncionario.Id = Convert.ToInt16(txtCodigo.Text);
+            oFuncionario.Id = Convert.ToInt32(txtCodigo.Text);
             oFuncionario.TipoPessoa = 'F';
             oFuncionario.Nome_razaoSocial = txtNomeRazaoSocial.Text;
             oFuncionario.Apelido_nomeFantasia = txtApelidoNomeFantasia.Text;
@@ -61,7 +88,6 @@ namespace projeto_patrica.pages.cadastro
             oFuncionario.Cep = txtCep.Text;
             oFuncionario.Ativo = checkBoxAtivo.Checked;
             oFuncionario.Genero = comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F';
-
             oFuncionario.Matricula = Convert.ToInt32(txtMatricula.Text);
             oFuncionario.Cargo = txtCargo.Text;
             oFuncionario.Salario = Convert.ToSingle(txtSalario.Text);
@@ -69,27 +95,41 @@ namespace projeto_patrica.pages.cadastro
             oFuncionario.Turno = txtTurno.Text;
             oFuncionario.CargaHoraria = Convert.ToInt32(txtCargaHoraria.Text);
 
-            if (btnSave.Text == "Excluir")
+            try
             {
-                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (resp == DialogResult.Yes)
+                if (btnSave.Text == "Excluir")
                 {
-                    txtCodigo.Text = aController_funcionario.Excluir(oFuncionario);
-                    MessageBox.Show("O funcionário foi excluído com sucesso.");
-                    Sair();
+                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (resp == DialogResult.Yes)
+                    {
+                        txtCodigo.Text = aController_funcionario.Excluir(oFuncionario);
+                        MessageBox.Show("O funcionário foi excluído com sucesso.");
+                        Sair();
+                    }
+                }
+                else if (btnSave.Text == "Alterar")
+                {
+                    txtCodigo.Text = aController_funcionario.Salvar(oFuncionario);
+                    MessageBox.Show("Funcionário alterado com sucesso.");
+                }
+                else
+                {
+                    txtCodigo.Text = aController_funcionario.Salvar(oFuncionario);
+                    MessageBox.Show("Funcionário salvo com o código " + txtCodigo.Text);
                 }
             }
-            else if (btnSave.Text == "Alterar")
+            catch (Exception ex)
             {
-                txtCodigo.Text = aController_funcionario.Salvar(oFuncionario);
-                MessageBox.Show("Funcionário alterado com sucesso.");
+                MessageBox.Show("Não foi possível concluir a operação. Verifique os dados e tente novamente.\n\nDetalhes técnicos: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
-            {
-                txtCodigo.Text = aController_funcionario.Salvar(oFuncionario);
-                MessageBox.Show("Funcionário salvo com o código " + txtCodigo.Text);
-            }
+
+            base.Salvar();
         }
+
+
+
+
 
         public override void Limpartxt()
         {

@@ -42,179 +42,213 @@
             this.dtpDataAdmissao = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
+            // txtRgInscEstadual
+            // 
+            this.txtRgInscEstadual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            // 
+            // txtNomeRazaoSocial
+            // 
+            this.txtNomeRazaoSocial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            // 
             // txtCidade
             // 
-            this.txtCidade.Location = new System.Drawing.Point(346, 270);
+            this.txtCidade.Location = new System.Drawing.Point(461, 332);
+            this.txtCidade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // lblCidade
             // 
-            this.lblCidade.Location = new System.Drawing.Point(344, 254);
+            this.lblCidade.Location = new System.Drawing.Point(459, 313);
+            this.lblCidade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             // 
             // txtBairro
             // 
-            this.txtBairro.Location = new System.Drawing.Point(183, 319);
+            this.txtBairro.Location = new System.Drawing.Point(244, 393);
+            this.txtBairro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // lblBairro
             // 
-            this.lblBairro.Location = new System.Drawing.Point(181, 304);
+            this.lblBairro.Location = new System.Drawing.Point(241, 374);
+            this.lblBairro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(183, 270);
+            this.txtEmail.Location = new System.Drawing.Point(244, 332);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // lblEmail
             // 
-            this.lblEmail.Location = new System.Drawing.Point(181, 254);
+            this.lblEmail.Location = new System.Drawing.Point(241, 313);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             // 
             // txtEndereco
             // 
-            this.txtEndereco.Location = new System.Drawing.Point(18, 319);
+            this.txtEndereco.Location = new System.Drawing.Point(24, 393);
+            this.txtEndereco.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // txtTelefone
             // 
-            this.txtTelefone.Location = new System.Drawing.Point(18, 270);
+            this.txtTelefone.Location = new System.Drawing.Point(24, 332);
+            this.txtTelefone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            // 
+            // txtCpfCnpj
+            // 
+            this.txtCpfCnpj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // lblCep
             // 
-            this.lblCep.Location = new System.Drawing.Point(344, 304);
+            this.lblCep.Location = new System.Drawing.Point(459, 374);
+            this.lblCep.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             // 
             // txtCep
             // 
-            this.txtCep.Location = new System.Drawing.Point(346, 319);
+            this.txtCep.Location = new System.Drawing.Point(461, 393);
+            this.txtCep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // btnPesquisarCidade
             // 
-            this.btnPesquisarCidade.Location = new System.Drawing.Point(481, 267);
+            this.btnPesquisarCidade.Location = new System.Drawing.Point(641, 329);
+            this.btnPesquisarCidade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPesquisarCidade.Click += new System.EventHandler(this.btnPesquisarCidade_Click);
+            // 
+            // txtApelidoNomeFantasia
+            // 
+            this.txtApelidoNomeFantasia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // lblEndereco
             // 
-            this.lblEndereco.Location = new System.Drawing.Point(16, 304);
+            this.lblEndereco.Location = new System.Drawing.Point(21, 374);
+            this.lblEndereco.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             // 
             // lblTelefone
             // 
-            this.lblTelefone.Location = new System.Drawing.Point(16, 254);
+            this.lblTelefone.Location = new System.Drawing.Point(21, 313);
+            this.lblTelefone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            // 
+            // lblGenero
+            // 
+            this.lblGenero.Size = new System.Drawing.Size(60, 16);
+            this.lblGenero.Text = "Gênero *";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(470, 366);
+            this.btnSave.Location = new System.Drawing.Point(627, 450);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(540, 366);
+            this.btnSair.Location = new System.Drawing.Point(720, 450);
+            this.btnSair.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // lblMatricula
             // 
             this.lblMatricula.AutoSize = true;
-            this.lblMatricula.Location = new System.Drawing.Point(16, 160);
-            this.lblMatricula.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMatricula.Location = new System.Drawing.Point(21, 197);
             this.lblMatricula.Name = "lblMatricula";
-            this.lblMatricula.Size = new System.Drawing.Size(52, 13);
+            this.lblMatricula.Size = new System.Drawing.Size(69, 16);
             this.lblMatricula.TabIndex = 30;
-            this.lblMatricula.Text = "Matrícula";
+            this.lblMatricula.Text = "Matrícula *";
             // 
             // txtMatricula
             // 
-            this.txtMatricula.Location = new System.Drawing.Point(18, 176);
-            this.txtMatricula.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMatricula.Location = new System.Drawing.Point(24, 217);
+            this.txtMatricula.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMatricula.Name = "txtMatricula";
-            this.txtMatricula.Size = new System.Drawing.Size(152, 20);
+            this.txtMatricula.Size = new System.Drawing.Size(201, 22);
             this.txtMatricula.TabIndex = 31;
             // 
             // lblCargo
             // 
             this.lblCargo.AutoSize = true;
-            this.lblCargo.Location = new System.Drawing.Point(181, 160);
-            this.lblCargo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCargo.Location = new System.Drawing.Point(241, 197);
             this.lblCargo.Name = "lblCargo";
-            this.lblCargo.Size = new System.Drawing.Size(35, 13);
+            this.lblCargo.Size = new System.Drawing.Size(52, 16);
             this.lblCargo.TabIndex = 30;
-            this.lblCargo.Text = "Cargo";
+            this.lblCargo.Text = "Cargo *";
             // 
             // txtCargo
             // 
-            this.txtCargo.Location = new System.Drawing.Point(183, 176);
-            this.txtCargo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCargo.Location = new System.Drawing.Point(244, 217);
+            this.txtCargo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCargo.Name = "txtCargo";
-            this.txtCargo.Size = new System.Drawing.Size(149, 20);
+            this.txtCargo.Size = new System.Drawing.Size(197, 22);
             this.txtCargo.TabIndex = 31;
             // 
             // lblTurno
             // 
             this.lblTurno.AutoSize = true;
-            this.lblTurno.Location = new System.Drawing.Point(16, 208);
-            this.lblTurno.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTurno.Location = new System.Drawing.Point(21, 256);
             this.lblTurno.Name = "lblTurno";
-            this.lblTurno.Size = new System.Drawing.Size(35, 13);
+            this.lblTurno.Size = new System.Drawing.Size(50, 16);
             this.lblTurno.TabIndex = 30;
-            this.lblTurno.Text = "Turno";
+            this.lblTurno.Text = "Turno *";
             // 
             // txtTurno
             // 
-            this.txtTurno.Location = new System.Drawing.Point(18, 224);
-            this.txtTurno.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTurno.Location = new System.Drawing.Point(24, 276);
+            this.txtTurno.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTurno.Name = "txtTurno";
-            this.txtTurno.Size = new System.Drawing.Size(152, 20);
+            this.txtTurno.Size = new System.Drawing.Size(201, 22);
             this.txtTurno.TabIndex = 31;
             // 
             // lblCargaHoraria
             // 
             this.lblCargaHoraria.AutoSize = true;
-            this.lblCargaHoraria.Location = new System.Drawing.Point(181, 208);
-            this.lblCargaHoraria.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCargaHoraria.Location = new System.Drawing.Point(241, 256);
             this.lblCargaHoraria.Name = "lblCargaHoraria";
-            this.lblCargaHoraria.Size = new System.Drawing.Size(72, 13);
+            this.lblCargaHoraria.Size = new System.Drawing.Size(100, 16);
             this.lblCargaHoraria.TabIndex = 30;
-            this.lblCargaHoraria.Text = "Carga Horária";
+            this.lblCargaHoraria.Text = "Carga Horária *";
             // 
             // txtCargaHoraria
             // 
-            this.txtCargaHoraria.Location = new System.Drawing.Point(183, 224);
-            this.txtCargaHoraria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCargaHoraria.Location = new System.Drawing.Point(244, 276);
+            this.txtCargaHoraria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCargaHoraria.Name = "txtCargaHoraria";
-            this.txtCargaHoraria.Size = new System.Drawing.Size(149, 20);
+            this.txtCargaHoraria.Size = new System.Drawing.Size(197, 22);
             this.txtCargaHoraria.TabIndex = 31;
             // 
             // lblSalario
             // 
             this.lblSalario.AutoSize = true;
-            this.lblSalario.Location = new System.Drawing.Point(344, 208);
-            this.lblSalario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSalario.Location = new System.Drawing.Point(459, 256);
             this.lblSalario.Name = "lblSalario";
-            this.lblSalario.Size = new System.Drawing.Size(39, 13);
+            this.lblSalario.Size = new System.Drawing.Size(58, 16);
             this.lblSalario.TabIndex = 30;
-            this.lblSalario.Text = "Salário";
+            this.lblSalario.Text = "Salário *";
             // 
             // txtSalario
             // 
-            this.txtSalario.Location = new System.Drawing.Point(346, 224);
-            this.txtSalario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSalario.Location = new System.Drawing.Point(461, 276);
+            this.txtSalario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSalario.Name = "txtSalario";
-            this.txtSalario.Size = new System.Drawing.Size(208, 20);
+            this.txtSalario.Size = new System.Drawing.Size(276, 22);
             this.txtSalario.TabIndex = 31;
             // 
             // lblDataAdmissao
             // 
             this.lblDataAdmissao.AutoSize = true;
-            this.lblDataAdmissao.Location = new System.Drawing.Point(344, 160);
-            this.lblDataAdmissao.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDataAdmissao.Location = new System.Drawing.Point(459, 197);
             this.lblDataAdmissao.Name = "lblDataAdmissao";
-            this.lblDataAdmissao.Size = new System.Drawing.Size(93, 13);
+            this.lblDataAdmissao.Size = new System.Drawing.Size(127, 16);
             this.lblDataAdmissao.TabIndex = 30;
-            this.lblDataAdmissao.Text = "Data de Admissão";
+            this.lblDataAdmissao.Text = "Data de Admissão *";
             // 
             // dtpDataAdmissao
             // 
-            this.dtpDataAdmissao.Location = new System.Drawing.Point(346, 176);
-            this.dtpDataAdmissao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpDataAdmissao.Location = new System.Drawing.Point(461, 217);
+            this.dtpDataAdmissao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpDataAdmissao.Name = "dtpDataAdmissao";
-            this.dtpDataAdmissao.Size = new System.Drawing.Size(207, 20);
+            this.dtpDataAdmissao.Size = new System.Drawing.Size(275, 22);
             this.dtpDataAdmissao.TabIndex = 32;
             // 
             // frmCadastroFuncionario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(633, 419);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(844, 516);
             this.Controls.Add(this.dtpDataAdmissao);
             this.Controls.Add(this.txtSalario);
             this.Controls.Add(this.txtCargaHoraria);
@@ -227,6 +261,7 @@
             this.Controls.Add(this.lblDataAdmissao);
             this.Controls.Add(this.lblCargo);
             this.Controls.Add(this.lblMatricula);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmCadastroFuncionario";
             this.Text = "Cadastro de Funcionário";
             this.Controls.SetChildIndex(this.lblGenero, 0);

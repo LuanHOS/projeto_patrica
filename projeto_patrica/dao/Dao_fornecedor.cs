@@ -18,7 +18,7 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
-            sql = "INSERT INTO fornecedor (TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, GENERO, INSCRICAO_MUNICIPAL, INSCRICAO_ESTADUAL_SUBS_TRIB, ID_CONDICAO_PAGAMENTO) " +
+            sql = "INSERT INTO fornecedor (TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, GENERO, INSCRICAO_ESTADUAL_SUBS_TRIB, ID_CONDICAO_PAGAMENTO) " +
                   "VALUES ('" + oFornecedor.TipoPessoa + "', '" + oFornecedor.Nome_razaoSocial + "', '" + oFornecedor.Apelido_nomeFantasia + "', '" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', '" + oFornecedor.Cpf_cnpj + "', '" + oFornecedor.Rg_inscricaoEstadual + "', '" + oFornecedor.Email + "', '" + oFornecedor.Telefone + "', '" + oFornecedor.Endereco + "', '" + oFornecedor.Bairro + "', '" + oFornecedor.ACidade.Id + "', '" + oFornecedor.Cep + "', '" + (oFornecedor.Ativo ? 1 : 0) + "', '" + oFornecedor.Genero + "', '" + "', '" + oFornecedor.InscricaoEstadualSubstitutoTributario + "', '" + oFornecedor.ACondicaoPagamento.Id + "')";
 
             if (oFornecedor.Id != 0)

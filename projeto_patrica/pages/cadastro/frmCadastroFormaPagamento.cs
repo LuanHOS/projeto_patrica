@@ -23,39 +23,49 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            base.Salvar();
-
-            if (txtDescricao.Text == "")
+            if (string.IsNullOrWhiteSpace(txtDescricao.Text))
             {
-                MessageBox.Show("Preencha a descrição.");
                 txtDescricao.Focus();
+
+                MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");
                 return;
             }
 
             aFormaPagamento.Id = Convert.ToInt32(txtCodigo.Text);
             aFormaPagamento.Descricao = txtDescricao.Text;
 
-            if (btnSave.Text == "Excluir")
+            try
             {
-                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (resp == DialogResult.Yes)
+                if (btnSave.Text == "Excluir")
                 {
-                    txtCodigo.Text = aController_formaPagamento.Excluir(aFormaPagamento);
-                    MessageBox.Show("Excluído com sucesso.");
-                    Sair();
+                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (resp == DialogResult.Yes)
+                    {
+                        txtCodigo.Text = aController_formaPagamento.Excluir(aFormaPagamento);
+                        MessageBox.Show("A forma de pagamento \"" + aFormaPagamento.Descricao + "\" foi excluída com sucesso.");
+                        Sair();
+                    }
+                }
+                else if (btnSave.Text == "Alterar")
+                {
+                    txtCodigo.Text = aController_formaPagamento.Salvar(aFormaPagamento);
+                    MessageBox.Show("A forma de pagamento \"" + aFormaPagamento.Descricao + "\" foi alterada com sucesso.");
+                }
+                else
+                {
+                    txtCodigo.Text = aController_formaPagamento.Salvar(aFormaPagamento);
+                    MessageBox.Show("A forma de pagamento \"" + aFormaPagamento.Descricao + "\" foi salva com o código " + txtCodigo.Text + ".");
                 }
             }
-            else if (btnSave.Text == "Alterar")
+            catch (Exception ex)
             {
-                txtCodigo.Text = aController_formaPagamento.Salvar(aFormaPagamento);
-                MessageBox.Show("A forma de pagamento " + aFormaPagamento.Descricao + " foi alterada com sucesso.");
+                MessageBox.Show("Não foi possível concluir a operação. Verifique os dados e tente novamente.\n\nDetalhes técnicos: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
-            {
-                txtCodigo.Text = aController_formaPagamento.Salvar(aFormaPagamento);
-                MessageBox.Show("A forma de pagamento " + aFormaPagamento.Descricao + " foi salva com o código " + txtCodigo.Text + ".");
-            }
+
+            base.Salvar();
         }
+
 
 
 

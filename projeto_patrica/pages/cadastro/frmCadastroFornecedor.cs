@@ -41,24 +41,39 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            base.Salvar();
-
-            if (comboBoxTipo.SelectedIndex == -1)
+            if (
+                comboBoxTipo.SelectedIndex == -1 ||
+                string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
+                string.IsNullOrWhiteSpace(txtCpfCnpj.Text) ||
+                string.IsNullOrWhiteSpace(txtRgInscEstadual.Text) ||
+                string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                string.IsNullOrWhiteSpace(txtTelefone.Text) ||
+                string.IsNullOrWhiteSpace(txtEndereco.Text) ||
+                string.IsNullOrWhiteSpace(txtBairro.Text) ||
+                string.IsNullOrWhiteSpace(txtCep.Text) ||
+                string.IsNullOrWhiteSpace(txtInscEstSubTrib.Text) ||
+                comboBoxGenero.SelectedIndex == -1 ||
+                oFornecedor.ACidade == null || oFornecedor.ACidade.Id == 0 ||
+                oFornecedor.ACondicaoPagamento == null || oFornecedor.ACondicaoPagamento.Id == 0 ||
+                dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate
+            )
             {
-                MessageBox.Show("Selecione o tipo de registro.");
-                return;
-            }
-
-            if (txtNomeRazaoSocial.Text == "")
-            {
-                MessageBox.Show("Preencha o nome ou razão social.");
+                comboBoxTipo.Focus();
                 txtNomeRazaoSocial.Focus();
-                return;
-            }
+                txtCpfCnpj.Focus();
+                txtRgInscEstadual.Focus();
+                txtEmail.Focus();
+                txtTelefone.Focus();
+                txtEndereco.Focus();
+                txtBairro.Focus();
+                txtCep.Focus();
+                txtInscEstSubTrib.Focus();
+                comboBoxGenero.Focus();
+                txtCidade.Focus();
+                txtCondicaoPagamento.Focus();
+                dtpDataNascimentoCriacao.Focus();
 
-            if (oFornecedor.ACidade == null || oFornecedor.ACidade.Id == 0)
-            {
-                MessageBox.Show("Selecione uma cidade.");
+                MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");
                 return;
             }
 
@@ -75,30 +90,43 @@ namespace projeto_patrica.pages.cadastro
             oFornecedor.Bairro = txtBairro.Text;
             oFornecedor.Cep = txtCep.Text;
             oFornecedor.Ativo = checkBoxAtivo.Checked;
-            oFornecedor.Genero = comboBoxGenero.Enabled ? (comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F') : ' ';
+            oFornecedor.Genero = comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F';
             oFornecedor.InscricaoEstadualSubstitutoTributario = txtInscEstSubTrib.Text;
 
-            if (btnSave.Text == "Excluir")
+            try
             {
-                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (resp == DialogResult.Yes)
+                if (btnSave.Text == "Excluir")
                 {
-                    txtCodigo.Text = aController_fornecedor.Excluir(oFornecedor);
-                    MessageBox.Show("Fornecedor excluído com sucesso.");
-                    Sair();
+                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (resp == DialogResult.Yes)
+                    {
+                        txtCodigo.Text = aController_fornecedor.Excluir(oFornecedor);
+                        MessageBox.Show("Fornecedor excluído com sucesso.");
+                        Sair();
+                    }
+                }
+                else if (btnSave.Text == "Alterar")
+                {
+                    txtCodigo.Text = aController_fornecedor.Salvar(oFornecedor);
+                    MessageBox.Show("Fornecedor alterado com sucesso.");
+                }
+                else
+                {
+                    txtCodigo.Text = aController_fornecedor.Salvar(oFornecedor);
+                    MessageBox.Show("Fornecedor salvo com o código " + txtCodigo.Text + ".");
                 }
             }
-            else if (btnSave.Text == "Alterar")
+            catch (Exception ex)
             {
-                txtCodigo.Text = aController_fornecedor.Salvar(oFornecedor);
-                MessageBox.Show("Fornecedor alterado com sucesso.");
+                MessageBox.Show("Não foi possível concluir a operação. Verifique os dados e tente novamente.\n\nDetalhes técnicos: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
-            {
-                txtCodigo.Text = aController_fornecedor.Salvar(oFornecedor);
-                MessageBox.Show("Fornecedor salvo com o código " + txtCodigo.Text + ".");
-            }
+
+            base.Salvar();
         }
+
+
+
 
         public override void Limpartxt()
         {
