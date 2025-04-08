@@ -100,7 +100,7 @@ namespace projeto_patrica.pages.consulta
         public override void Pesquisar()
         {
             listV.Items.Clear();
-            string termo = txtCodigo.Text.Trim().ToLower();
+            string termo = txtCodigo.Text.Trim().ToUpper();
 
             var listaResultados = new List<funcionario>();
 
@@ -113,8 +113,8 @@ namespace projeto_patrica.pages.consulta
             foreach (var oFuncionario in aController_funcionario.ListaFuncionarios())
             {
                 if (oFuncionario.Id.ToString() == termo ||
-                    oFuncionario.Nome_razaoSocial.ToLower().Contains(termo) ||
-                    oFuncionario.Cargo.ToLower().Contains(termo))
+                    oFuncionario.Nome_razaoSocial.ToUpper().Contains(termo) ||
+                    oFuncionario.Cargo.ToUpper().Contains(termo))
                 {
                     listaResultados.Add(oFuncionario);
                 }

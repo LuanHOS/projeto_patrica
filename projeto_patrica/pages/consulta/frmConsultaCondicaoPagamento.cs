@@ -89,7 +89,7 @@ namespace projeto_patrica.pages.consulta
         {
             listV.Items.Clear();
 
-            string termo = txtCodigo.Text.Trim().ToLower();
+            string termo = txtCodigo.Text.Trim().ToUpper();
             List<condicaoPagamento> lista = new List<condicaoPagamento>();
 
             if (string.IsNullOrWhiteSpace(termo))
@@ -100,7 +100,7 @@ namespace projeto_patrica.pages.consulta
             {
                 foreach (condicaoPagamento cp in aController_condicaoPagamento.ListaCondicaoPagamento())
                 {
-                    if (termo == cp.Id.ToString() || cp.Descricao.ToLower().Contains(termo))
+                    if (termo == cp.Id.ToString() || cp.Descricao.ToUpper().Contains(termo))
                     {
                         lista.Add(cp);
                     }

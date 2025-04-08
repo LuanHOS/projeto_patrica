@@ -97,10 +97,11 @@
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(24, 96);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             // 
             // txtCidade
             // 
+            this.txtCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCidade.Location = new System.Drawing.Point(24, 161);
             this.txtCidade.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCidade.Name = "txtCidade";
@@ -119,6 +120,7 @@
             // 
             // txtBairro
             // 
+            this.txtBairro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBairro.Location = new System.Drawing.Point(311, 161);
             this.txtBairro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBairro.Name = "txtBairro";
@@ -136,6 +138,7 @@
             // 
             // txtEmail
             // 
+            this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEmail.Location = new System.Drawing.Point(244, 332);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmail.Name = "txtEmail";
@@ -189,6 +192,7 @@
             // 
             // txtEndereco
             // 
+            this.txtEndereco.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEndereco.Location = new System.Drawing.Point(24, 218);
             this.txtEndereco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEndereco.Name = "txtEndereco";
@@ -206,6 +210,7 @@
             // 
             // txtTelefone
             // 
+            this.txtTelefone.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtTelefone.Location = new System.Drawing.Point(24, 332);
             this.txtTelefone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTelefone.Name = "txtTelefone";
@@ -223,6 +228,7 @@
             // 
             // txtCpfCnpj
             // 
+            this.txtCpfCnpj.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCpfCnpj.Location = new System.Drawing.Point(24, 274);
             this.txtCpfCnpj.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCpfCnpj.Name = "txtCpfCnpj";
@@ -249,6 +255,7 @@
             // 
             // txtCep
             // 
+            this.txtCep.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCep.Location = new System.Drawing.Point(569, 161);
             this.txtCep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCep.Name = "txtCep";
@@ -281,9 +288,9 @@
             this.comboBoxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTipo.FormattingEnabled = true;
             this.comboBoxTipo.Items.AddRange(new object[] {
-            "Pessoa Física",
-            "Pessoa Jurídica"});
-            this.comboBoxTipo.Location = new System.Drawing.Point(24, 37);
+            "PESSOA FÍSICA",
+            "PESSOA JURÍDICA"});
+            this.comboBoxTipo.Location = new System.Drawing.Point(19, 36);
             this.comboBoxTipo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxTipo.Name = "comboBoxTipo";
             this.comboBoxTipo.Size = new System.Drawing.Size(275, 24);
@@ -310,6 +317,7 @@
             // 
             // txtApelidoNomeFantasia
             // 
+            this.txtApelidoNomeFantasia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtApelidoNomeFantasia.Location = new System.Drawing.Point(160, 98);
             this.txtApelidoNomeFantasia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtApelidoNomeFantasia.Name = "txtApelidoNomeFantasia";
@@ -318,6 +326,7 @@
             // 
             // txtRgInscEstadual
             // 
+            this.txtRgInscEstadual.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtRgInscEstadual.Location = new System.Drawing.Point(244, 274);
             this.txtRgInscEstadual.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtRgInscEstadual.Name = "txtRgInscEstadual";
@@ -326,6 +335,7 @@
             // 
             // txtNomeRazaoSocial
             // 
+            this.txtNomeRazaoSocial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNomeRazaoSocial.Location = new System.Drawing.Point(380, 98);
             this.txtNomeRazaoSocial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNomeRazaoSocial.Name = "txtNomeRazaoSocial";
@@ -346,8 +356,8 @@
             this.comboBoxGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGenero.FormattingEnabled = true;
             this.comboBoxGenero.Items.AddRange(new object[] {
-            "Masculino",
-            "Feminino"});
+            "MASCULINO",
+            "FEMININO"});
             this.comboBoxGenero.Location = new System.Drawing.Point(597, 96);
             this.comboBoxGenero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxGenero.Name = "comboBoxGenero";
@@ -366,6 +376,7 @@
             // 
             // txtNumeroEndereco
             // 
+            this.txtNumeroEndereco.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNumeroEndereco.Enabled = false;
             this.txtNumeroEndereco.Location = new System.Drawing.Point(480, 161);
             this.txtNumeroEndereco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -385,6 +396,7 @@
             // 
             // txtComplementoEndereco
             // 
+            this.txtComplementoEndereco.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtComplementoEndereco.Enabled = false;
             this.txtComplementoEndereco.Location = new System.Drawing.Point(193, 218);
             this.txtComplementoEndereco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -428,7 +440,7 @@
             this.Controls.Add(this.txtNomeRazaoSocial);
             this.Controls.Add(this.txtApelidoNomeFantasia);
             this.Controls.Add(this.lblNome);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroPessoa";
             this.Text = "Cadastro de Pessoa";
             this.Controls.SetChildIndex(this.lblDataCadastro, 0);

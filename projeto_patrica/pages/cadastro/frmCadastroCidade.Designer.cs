@@ -36,30 +36,6 @@
             this.lblNome = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // lblDataCadastro
-            // 
-            this.lblDataCadastro.Location = new System.Drawing.Point(21, 395);
-            // 
-            // lblDataUltimaEdicao
-            // 
-            this.lblDataUltimaEdicao.Location = new System.Drawing.Point(21, 411);
-            // 
-            // lblUltimoUsuarioQueEditou
-            // 
-            this.lblUltimoUsuarioQueEditou.Location = new System.Drawing.Point(21, 427);
-            // 
-            // lblDataCadastroData
-            // 
-            this.lblDataCadastroData.Location = new System.Drawing.Point(143, 395);
-            // 
-            // lblDataUltimaEdicaoData
-            // 
-            this.lblDataUltimaEdicaoData.Location = new System.Drawing.Point(172, 411);
-            // 
-            // lblUltimoUsuarioQueEditouNome
-            // 
-            this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(192, 427);
-            // 
             // txtCodigo
             // 
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
@@ -85,6 +61,7 @@
             // 
             // txtEstado
             // 
+            this.txtEstado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEstado.Location = new System.Drawing.Point(24, 177);
             this.txtEstado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEstado.Name = "txtEstado";
@@ -103,6 +80,7 @@
             // 
             // txtNome
             // 
+            this.txtNome.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNome.Location = new System.Drawing.Point(24, 108);
             this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.Name = "txtNome";

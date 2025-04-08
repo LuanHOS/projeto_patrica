@@ -87,7 +87,7 @@ namespace projeto_patrica.pages.consulta
         {
             listV.Items.Clear();
 
-            string termoPesquisa = txtCodigo.Text.Trim().ToLower();
+            string termoPesquisa = txtCodigo.Text.Trim().ToUpper();
             var listaResultados = new List<cidade>();
 
             if (string.IsNullOrWhiteSpace(termoPesquisa))
@@ -99,8 +99,8 @@ namespace projeto_patrica.pages.consulta
                 foreach (var cidade in aController_cidade.ListaCidades())
                 {
                     if (termoPesquisa == cidade.Id.ToString() ||
-                        cidade.Nome.ToLower().Contains(termoPesquisa) ||
-                        cidade.OEstado.Nome.ToLower().Contains(termoPesquisa))
+                        cidade.Nome.ToUpper().Contains(termoPesquisa) ||
+                        cidade.OEstado.Nome.ToUpper().Contains(termoPesquisa))
                     {
                         listaResultados.Add(cidade);
                     }

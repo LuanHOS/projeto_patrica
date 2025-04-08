@@ -96,7 +96,7 @@ namespace projeto_patrica.pages.consulta
         public override void Pesquisar()
         {
             listV.Items.Clear();
-            string termo = txtCodigo.Text.Trim().ToLower();
+            string termo = txtCodigo.Text.Trim().ToUpper();
             var resultados = new List<fornecedor>();
 
             if (string.IsNullOrWhiteSpace(termo))
@@ -108,9 +108,9 @@ namespace projeto_patrica.pages.consulta
             foreach (var oFornecedor in aController_fornecedor.ListaFornecedores())
             {
                 if (oFornecedor.Id.ToString() == termo ||
-                    oFornecedor.Nome_razaoSocial.ToLower().Contains(termo) ||
-                    oFornecedor.Cpf_cnpj.ToLower().Contains(termo) ||
-                    oFornecedor.ACondicaoPagamento.Descricao.ToLower().Contains(termo))
+                    oFornecedor.Nome_razaoSocial.ToUpper().Contains(termo) ||
+                    oFornecedor.Cpf_cnpj.ToUpper().Contains(termo) ||
+                    oFornecedor.ACondicaoPagamento.Descricao.ToUpper().Contains(termo))
                 {
                     resultados.Add(oFornecedor);
                 }

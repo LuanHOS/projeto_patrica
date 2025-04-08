@@ -39,14 +39,16 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Size = new System.Drawing.Size(160, 20);
+            this.txtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Size = new System.Drawing.Size(212, 22);
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(476, 332);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExcluir.Location = new System.Drawing.Point(635, 409);
+            this.btnExcluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(60, 28);
+            this.btnExcluir.Size = new System.Drawing.Size(80, 34);
             this.btnExcluir.TabIndex = 2;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
@@ -54,10 +56,10 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(411, 332);
-            this.btnAlterar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAlterar.Location = new System.Drawing.Point(548, 409);
+            this.btnAlterar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(60, 28);
+            this.btnAlterar.Size = new System.Drawing.Size(80, 34);
             this.btnAlterar.TabIndex = 3;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
@@ -65,10 +67,10 @@
             // 
             // btnIncluir
             // 
-            this.btnIncluir.Location = new System.Drawing.Point(346, 332);
-            this.btnIncluir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnIncluir.Location = new System.Drawing.Point(461, 409);
+            this.btnIncluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnIncluir.Name = "btnIncluir";
-            this.btnIncluir.Size = new System.Drawing.Size(60, 28);
+            this.btnIncluir.Size = new System.Drawing.Size(80, 34);
             this.btnIncluir.TabIndex = 4;
             this.btnIncluir.Text = "Incluir";
             this.btnIncluir.UseVisualStyleBackColor = true;
@@ -76,10 +78,10 @@
             // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(194, 35);
-            this.btnPesquisar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPesquisar.Location = new System.Drawing.Point(259, 43);
+            this.btnPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(61, 23);
+            this.btnPesquisar.Size = new System.Drawing.Size(81, 28);
             this.btnPesquisar.TabIndex = 6;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
@@ -92,10 +94,10 @@
             this.listV.FullRowSelect = true;
             this.listV.GridLines = true;
             this.listV.HideSelection = false;
-            this.listV.Location = new System.Drawing.Point(18, 67);
-            this.listV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listV.Location = new System.Drawing.Point(24, 82);
+            this.listV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listV.Name = "listV";
-            this.listV.Size = new System.Drawing.Size(583, 249);
+            this.listV.Size = new System.Drawing.Size(776, 306);
             this.listV.TabIndex = 7;
             this.listV.UseCompatibleStateImageBehavior = false;
             this.listV.View = System.Windows.Forms.View.Details;
@@ -107,10 +109,10 @@
             // 
             // bntLimparPesquisa
             // 
-            this.bntLimparPesquisa.Location = new System.Drawing.Point(259, 35);
-            this.bntLimparPesquisa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bntLimparPesquisa.Location = new System.Drawing.Point(345, 43);
+            this.bntLimparPesquisa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bntLimparPesquisa.Name = "bntLimparPesquisa";
-            this.bntLimparPesquisa.Size = new System.Drawing.Size(60, 23);
+            this.bntLimparPesquisa.Size = new System.Drawing.Size(80, 28);
             this.bntLimparPesquisa.TabIndex = 6;
             this.bntLimparPesquisa.Text = "Limpar";
             this.bntLimparPesquisa.UseVisualStyleBackColor = true;
@@ -118,14 +120,15 @@
             // 
             // frmConsulta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(633, 387);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(844, 476);
             this.Controls.Add(this.listV);
             this.Controls.Add(this.bntLimparPesquisa);
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.btnIncluir);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnExcluir);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmConsulta";
             this.Text = "Consulta";
             this.Controls.SetChildIndex(this.btnSair, 0);

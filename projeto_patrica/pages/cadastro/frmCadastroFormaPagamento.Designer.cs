@@ -34,7 +34,7 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             // 
             // lblDescricao
             // 
@@ -47,10 +47,11 @@
             // 
             // txtDescricao
             // 
+            this.txtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescricao.Location = new System.Drawing.Point(24, 112);
             this.txtDescricao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(412, 22);
+            this.txtDescricao.Size = new System.Drawing.Size(323, 22);
             this.txtDescricao.TabIndex = 6;
             // 
             // frmCadastroFormaPagamento
@@ -59,7 +60,7 @@
             this.ClientSize = new System.Drawing.Size(844, 476);
             this.Controls.Add(this.lblDescricao);
             this.Controls.Add(this.txtDescricao);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroFormaPagamento";
             this.Text = "Cadastro de Forma de Pagamento";
             this.Controls.SetChildIndex(this.lblCod, 0);

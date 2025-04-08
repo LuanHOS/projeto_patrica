@@ -209,6 +209,7 @@
             // 
             // txtMatricula
             // 
+            this.txtMatricula.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtMatricula.Location = new System.Drawing.Point(25, 153);
             this.txtMatricula.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMatricula.Name = "txtMatricula";
@@ -226,6 +227,7 @@
             // 
             // txtCargo
             // 
+            this.txtCargo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCargo.Location = new System.Drawing.Point(212, 153);
             this.txtCargo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCargo.Name = "txtCargo";
@@ -243,6 +245,7 @@
             // 
             // txtTurno
             // 
+            this.txtTurno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtTurno.Location = new System.Drawing.Point(395, 153);
             this.txtTurno.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTurno.Name = "txtTurno";
@@ -260,6 +263,7 @@
             // 
             // txtCargaHoraria
             // 
+            this.txtCargaHoraria.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCargaHoraria.Location = new System.Drawing.Point(570, 153);
             this.txtCargaHoraria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCargaHoraria.Name = "txtCargaHoraria";
@@ -277,6 +281,7 @@
             // 
             // txtSalario
             // 
+            this.txtSalario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSalario.Location = new System.Drawing.Point(25, 207);
             this.txtSalario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSalario.Name = "txtSalario";

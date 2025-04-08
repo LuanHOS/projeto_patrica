@@ -85,7 +85,7 @@ namespace projeto_patrica.pages.consulta
         public override void Pesquisar()
         {
             listV.Items.Clear();
-            string termoPesquisa = txtCodigo.Text.Trim().ToLower();
+            string termoPesquisa = txtCodigo.Text.Trim().ToUpper();
             var listaResultados = new List<formaPagamento>();
 
             if (string.IsNullOrWhiteSpace(termoPesquisa))
@@ -97,7 +97,7 @@ namespace projeto_patrica.pages.consulta
                 foreach (var aFormaPagamento in aController_formaPagamento.ListaFormaPagamento())
                 {
                     if (termoPesquisa == Convert.ToString(aFormaPagamento.Id) ||
-                        aFormaPagamento.Descricao.ToLower().Contains(termoPesquisa))
+                        aFormaPagamento.Descricao.ToUpper().Contains(termoPesquisa))
                     {
                         listaResultados.Add(aFormaPagamento);
                     }

@@ -44,6 +44,7 @@
             // 
             // txtCodigo
             // 
+            this.txtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodigo.ReadOnly = true;
             // 
             // btnSave

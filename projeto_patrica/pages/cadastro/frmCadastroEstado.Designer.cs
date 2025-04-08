@@ -37,10 +37,11 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             // 
             // txtNome
             // 
+            this.txtNome.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNome.Location = new System.Drawing.Point(24, 110);
             this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.Name = "txtNome";
@@ -58,6 +59,7 @@
             // 
             // txtPais
             // 
+            this.txtPais.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPais.Location = new System.Drawing.Point(24, 178);
             this.txtPais.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPais.Name = "txtPais";
@@ -94,9 +96,16 @@
             this.Controls.Add(this.lblPais);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.lblNome);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroEstado";
             this.Text = "Cadastro de Estado";
+            this.Controls.SetChildIndex(this.lblCod, 0);
+            this.Controls.SetChildIndex(this.lblDataCadastro, 0);
+            this.Controls.SetChildIndex(this.lblDataCadastroData, 0);
+            this.Controls.SetChildIndex(this.lblDataUltimaEdicao, 0);
+            this.Controls.SetChildIndex(this.lblDataUltimaEdicaoData, 0);
+            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditou, 0);
+            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditouNome, 0);
             this.Controls.SetChildIndex(this.btnSair, 0);
             this.Controls.SetChildIndex(this.txtCodigo, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);

@@ -102,6 +102,7 @@
             // 
             // txtDescricao
             // 
+            this.txtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescricao.Location = new System.Drawing.Point(24, 106);
             this.txtDescricao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescricao.Name = "txtDescricao";
@@ -119,6 +120,7 @@
             // 
             // txtQtdParcelas
             // 
+            this.txtQtdParcelas.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtQtdParcelas.Location = new System.Drawing.Point(254, 106);
             this.txtQtdParcelas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtQtdParcelas.Name = "txtQtdParcelas";
@@ -284,6 +286,7 @@
             // 
             // txtPrazoDias
             // 
+            this.txtPrazoDias.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPrazoDias.Location = new System.Drawing.Point(339, 73);
             this.txtPrazoDias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPrazoDias.Name = "txtPrazoDias";
@@ -301,6 +304,7 @@
             // 
             // txtPercentualParcela
             // 
+            this.txtPercentualParcela.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPercentualParcela.Location = new System.Drawing.Point(184, 73);
             this.txtPercentualParcela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPercentualParcela.Name = "txtPercentualParcela";
@@ -318,6 +322,7 @@
             // 
             // txtNumParcela
             // 
+            this.txtNumParcela.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNumParcela.Location = new System.Drawing.Point(24, 73);
             this.txtNumParcela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNumParcela.Name = "txtNumParcela";
@@ -344,6 +349,7 @@
             // 
             // txtJuros
             // 
+            this.txtJuros.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtJuros.Enabled = false;
             this.txtJuros.Location = new System.Drawing.Point(364, 106);
             this.txtJuros.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -363,6 +369,7 @@
             // 
             // txtMulta
             // 
+            this.txtMulta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtMulta.Enabled = false;
             this.txtMulta.Location = new System.Drawing.Point(474, 106);
             this.txtMulta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -382,6 +389,7 @@
             // 
             // txtDesconto
             // 
+            this.txtDesconto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDesconto.Enabled = false;
             this.txtDesconto.Location = new System.Drawing.Point(580, 105);
             this.txtDesconto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

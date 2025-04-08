@@ -142,6 +142,7 @@
             // 
             // txtInscEstSubTrib
             // 
+            this.txtInscEstSubTrib.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtInscEstSubTrib.Location = new System.Drawing.Point(465, 274);
             this.txtInscEstSubTrib.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInscEstSubTrib.Name = "txtInscEstSubTrib";
@@ -161,6 +162,7 @@
             // 
             // txtCondicaoPagamento
             // 
+            this.txtCondicaoPagamento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCondicaoPagamento.Location = new System.Drawing.Point(318, 38);
             this.txtCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4);
             this.txtCondicaoPagamento.Name = "txtCondicaoPagamento";

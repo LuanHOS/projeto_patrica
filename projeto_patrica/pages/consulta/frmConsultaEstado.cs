@@ -91,7 +91,7 @@ namespace projeto_patrica.pages.consulta
         {
             listV.Items.Clear();
 
-            string termoPesquisa = txtCodigo.Text.Trim().ToLower();
+            string termoPesquisa = txtCodigo.Text.Trim().ToUpper();
 
             var listaResultados = new List<estado>();
 
@@ -104,8 +104,8 @@ namespace projeto_patrica.pages.consulta
                 foreach (var estado in aController_estado.ListaEstados())
                 {
                     if (termoPesquisa == Convert.ToString(estado.Id) ||
-                        estado.Nome.ToLower().Contains(termoPesquisa) ||
-                        estado.OPais.Nome.ToLower().Contains(termoPesquisa))
+                        estado.Nome.ToUpper().Contains(termoPesquisa) ||
+                        estado.OPais.Nome.ToUpper().Contains(termoPesquisa))
                     {
                         listaResultados.Add(estado);
                     }

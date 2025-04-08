@@ -73,10 +73,6 @@
             // 
             this.txtApelidoNomeFantasia.Margin = new System.Windows.Forms.Padding(4);
             // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
-            // 
             // btnPesquisarCondicaoPagamento
             // 
             this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(498, 37);
@@ -90,6 +86,7 @@
             // 
             // txtCondicaoPagamento
             // 
+            this.txtCondicaoPagamento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCondicaoPagamento.Location = new System.Drawing.Point(318, 38);
             this.txtCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4);
             this.txtCondicaoPagamento.Name = "txtCondicaoPagamento";
@@ -114,7 +111,6 @@
             this.Controls.Add(this.btnPesquisarCondicaoPagamento);
             this.Controls.Add(this.txtCondicaoPagamento);
             this.Controls.Add(this.lblCondicaoPagamento);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroCliente";
             this.Text = "Cadastro de Cliente";
             this.Controls.SetChildIndex(this.lblDataCadastro, 0);
