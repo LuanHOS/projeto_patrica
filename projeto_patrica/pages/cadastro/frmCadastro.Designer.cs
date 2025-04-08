@@ -30,11 +30,21 @@
 		{
             this.btnSave = new System.Windows.Forms.Button();
             this.lblCod = new System.Windows.Forms.Label();
+            this.lblDataCadastro = new System.Windows.Forms.Label();
+            this.lblDataUltimaEdicao = new System.Windows.Forms.Label();
+            this.lblUltimoUsuarioQueEditou = new System.Windows.Forms.Label();
+            this.lblDataCadastroData = new System.Windows.Forms.Label();
+            this.lblDataUltimaEdicaoData = new System.Windows.Forms.Label();
+            this.lblUltimoUsuarioQueEditouNome = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSair
             // 
             this.btnSair.TabIndex = 1;
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.ReadOnly = true;
             // 
             // btnSave
             // 
@@ -55,10 +65,76 @@
             this.lblCod.TabIndex = 2;
             this.lblCod.Text = "Código";
             // 
+            // lblDataCadastro
+            // 
+            this.lblDataCadastro.AutoSize = true;
+            this.lblDataCadastro.Enabled = false;
+            this.lblDataCadastro.Location = new System.Drawing.Point(21, 395);
+            this.lblDataCadastro.Name = "lblDataCadastro";
+            this.lblDataCadastro.Size = new System.Drawing.Size(116, 16);
+            this.lblDataCadastro.TabIndex = 3;
+            this.lblDataCadastro.Text = "Data de Cadastro:";
+            // 
+            // lblDataUltimaEdicao
+            // 
+            this.lblDataUltimaEdicao.AutoSize = true;
+            this.lblDataUltimaEdicao.Enabled = false;
+            this.lblDataUltimaEdicao.Location = new System.Drawing.Point(21, 411);
+            this.lblDataUltimaEdicao.Name = "lblDataUltimaEdicao";
+            this.lblDataUltimaEdicao.Size = new System.Drawing.Size(145, 16);
+            this.lblDataUltimaEdicao.TabIndex = 3;
+            this.lblDataUltimaEdicao.Text = "Data da Última Edição:";
+            // 
+            // lblUltimoUsuarioQueEditou
+            // 
+            this.lblUltimoUsuarioQueEditou.AutoSize = true;
+            this.lblUltimoUsuarioQueEditou.Enabled = false;
+            this.lblUltimoUsuarioQueEditou.Location = new System.Drawing.Point(21, 427);
+            this.lblUltimoUsuarioQueEditou.Name = "lblUltimoUsuarioQueEditou";
+            this.lblUltimoUsuarioQueEditou.Size = new System.Drawing.Size(165, 16);
+            this.lblUltimoUsuarioQueEditou.TabIndex = 3;
+            this.lblUltimoUsuarioQueEditou.Text = "Último Usuário que Editou:";
+            // 
+            // lblDataCadastroData
+            // 
+            this.lblDataCadastroData.AutoSize = true;
+            this.lblDataCadastroData.Enabled = false;
+            this.lblDataCadastroData.Location = new System.Drawing.Point(143, 395);
+            this.lblDataCadastroData.Name = "lblDataCadastroData";
+            this.lblDataCadastroData.Size = new System.Drawing.Size(93, 16);
+            this.lblDataCadastroData.TabIndex = 3;
+            this.lblDataCadastroData.Text = "DD/MM/AAAA";
+            // 
+            // lblDataUltimaEdicaoData
+            // 
+            this.lblDataUltimaEdicaoData.AutoSize = true;
+            this.lblDataUltimaEdicaoData.Enabled = false;
+            this.lblDataUltimaEdicaoData.Location = new System.Drawing.Point(172, 411);
+            this.lblDataUltimaEdicaoData.Name = "lblDataUltimaEdicaoData";
+            this.lblDataUltimaEdicaoData.Size = new System.Drawing.Size(93, 16);
+            this.lblDataUltimaEdicaoData.TabIndex = 3;
+            this.lblDataUltimaEdicaoData.Text = "DD/MM/AAAA";
+            // 
+            // lblUltimoUsuarioQueEditouNome
+            // 
+            this.lblUltimoUsuarioQueEditouNome.AutoSize = true;
+            this.lblUltimoUsuarioQueEditouNome.Enabled = false;
+            this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(192, 427);
+            this.lblUltimoUsuarioQueEditouNome.Name = "lblUltimoUsuarioQueEditouNome";
+            this.lblUltimoUsuarioQueEditouNome.Size = new System.Drawing.Size(155, 16);
+            this.lblUltimoUsuarioQueEditouNome.TabIndex = 3;
+            this.lblUltimoUsuarioQueEditouNome.Text = "Usuário Não Identificado";
+            // 
             // frmCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.ClientSize = new System.Drawing.Size(844, 476);
+            this.Controls.Add(this.lblUltimoUsuarioQueEditouNome);
+            this.Controls.Add(this.lblUltimoUsuarioQueEditou);
+            this.Controls.Add(this.lblDataUltimaEdicaoData);
+            this.Controls.Add(this.lblDataUltimaEdicao);
+            this.Controls.Add(this.lblDataCadastroData);
+            this.Controls.Add(this.lblDataCadastro);
             this.Controls.Add(this.lblCod);
             this.Controls.Add(this.btnSave);
             this.Name = "frmCadastro";
@@ -67,13 +143,25 @@
             this.Controls.SetChildIndex(this.lblCod, 0);
             this.Controls.SetChildIndex(this.btnSair, 0);
             this.Controls.SetChildIndex(this.txtCodigo, 0);
+            this.Controls.SetChildIndex(this.lblDataCadastro, 0);
+            this.Controls.SetChildIndex(this.lblDataCadastroData, 0);
+            this.Controls.SetChildIndex(this.lblDataUltimaEdicao, 0);
+            this.Controls.SetChildIndex(this.lblDataUltimaEdicaoData, 0);
+            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditou, 0);
+            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditouNome, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
 		}
 
 		#endregion
-		private System.Windows.Forms.Label lblCod;
         public System.Windows.Forms.Button btnSave;
+        protected System.Windows.Forms.Label lblCod;
+        public System.Windows.Forms.Label lblDataCadastro;
+        public System.Windows.Forms.Label lblDataUltimaEdicao;
+        public System.Windows.Forms.Label lblUltimoUsuarioQueEditou;
+        public System.Windows.Forms.Label lblDataCadastroData;
+        public System.Windows.Forms.Label lblDataUltimaEdicaoData;
+        public System.Windows.Forms.Label lblUltimoUsuarioQueEditouNome;
     }
 }

@@ -36,21 +36,48 @@
             this.lblNome = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // lblDataCadastro
+            // 
+            this.lblDataCadastro.Location = new System.Drawing.Point(21, 395);
+            // 
+            // lblDataUltimaEdicao
+            // 
+            this.lblDataUltimaEdicao.Location = new System.Drawing.Point(21, 411);
+            // 
+            // lblUltimoUsuarioQueEditou
+            // 
+            this.lblUltimoUsuarioQueEditou.Location = new System.Drawing.Point(21, 427);
+            // 
+            // lblDataCadastroData
+            // 
+            this.lblDataCadastroData.Location = new System.Drawing.Point(143, 395);
+            // 
+            // lblDataUltimaEdicaoData
+            // 
+            this.lblDataUltimaEdicaoData.Location = new System.Drawing.Point(172, 411);
+            // 
+            // lblUltimoUsuarioQueEditouNome
+            // 
+            this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(192, 427);
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 72);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(24, 89);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.Size = new System.Drawing.Size(0, 16);
             this.label1.TabIndex = 3;
             // 
             // btnPesquisarEstado
             // 
-            this.btnPesquisarEstado.Location = new System.Drawing.Point(200, 141);
-            this.btnPesquisarEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPesquisarEstado.Location = new System.Drawing.Point(267, 174);
+            this.btnPesquisarEstado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarEstado.Name = "btnPesquisarEstado";
-            this.btnPesquisarEstado.Size = new System.Drawing.Size(74, 23);
+            this.btnPesquisarEstado.Size = new System.Drawing.Size(99, 28);
             this.btnPesquisarEstado.TabIndex = 14;
             this.btnPesquisarEstado.Text = "Pesquisar";
             this.btnPesquisarEstado.UseVisualStyleBackColor = true;
@@ -58,52 +85,59 @@
             // 
             // txtEstado
             // 
-            this.txtEstado.Location = new System.Drawing.Point(18, 144);
-            this.txtEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEstado.Location = new System.Drawing.Point(24, 177);
+            this.txtEstado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(179, 20);
+            this.txtEstado.ReadOnly = true;
+            this.txtEstado.Size = new System.Drawing.Size(237, 22);
             this.txtEstado.TabIndex = 13;
             // 
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(16, 128);
-            this.lblEstado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEstado.Location = new System.Drawing.Point(21, 158);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(47, 13);
+            this.lblEstado.Size = new System.Drawing.Size(58, 16);
             this.lblEstado.TabIndex = 12;
             this.lblEstado.Text = "Estado *";
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(18, 88);
-            this.txtNome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNome.Location = new System.Drawing.Point(24, 108);
+            this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(179, 20);
+            this.txtNome.Size = new System.Drawing.Size(237, 22);
             this.txtNome.TabIndex = 11;
             // 
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(16, 72);
-            this.lblNome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNome.Location = new System.Drawing.Point(21, 89);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(47, 13);
+            this.lblNome.Size = new System.Drawing.Size(59, 16);
             this.lblNome.TabIndex = 10;
             this.lblNome.Text = "Cidade *";
             // 
             // frmCadastroCidade
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(633, 387);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(844, 476);
             this.Controls.Add(this.btnPesquisarEstado);
             this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroCidade";
             this.Text = "Cadastro de Cidade";
+            this.Controls.SetChildIndex(this.lblCod, 0);
+            this.Controls.SetChildIndex(this.lblDataCadastro, 0);
+            this.Controls.SetChildIndex(this.lblDataCadastroData, 0);
+            this.Controls.SetChildIndex(this.lblDataUltimaEdicao, 0);
+            this.Controls.SetChildIndex(this.lblDataUltimaEdicaoData, 0);
+            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditou, 0);
+            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditouNome, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.btnSair, 0);
             this.Controls.SetChildIndex(this.txtCodigo, 0);

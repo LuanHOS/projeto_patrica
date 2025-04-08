@@ -74,7 +74,6 @@ namespace projeto_patrica.pages.cadastro
         public override void Limpartxt()
         {
             base.Limpartxt();
-            this.txtCodigo.Text = "0";
             this.txtNome.Clear();
         }
 

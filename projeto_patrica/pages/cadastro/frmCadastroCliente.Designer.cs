@@ -35,57 +35,52 @@
             // 
             // txtRgInscEstadual
             // 
-            this.txtRgInscEstadual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRgInscEstadual.Margin = new System.Windows.Forms.Padding(4);
             // 
             // txtNomeRazaoSocial
             // 
-            this.txtNomeRazaoSocial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNomeRazaoSocial.Margin = new System.Windows.Forms.Padding(4);
             // 
             // txtCidade
             // 
-            this.txtCidade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCidade.Margin = new System.Windows.Forms.Padding(4);
             // 
             // txtBairro
             // 
-            this.txtBairro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBairro.Margin = new System.Windows.Forms.Padding(4);
             // 
             // txtEmail
             // 
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             // 
             // txtEndereco
             // 
-            this.txtEndereco.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEndereco.Margin = new System.Windows.Forms.Padding(4);
             // 
             // txtTelefone
             // 
-            this.txtTelefone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTelefone.Margin = new System.Windows.Forms.Padding(4);
             // 
             // txtCpfCnpj
             // 
-            this.txtCpfCnpj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCpfCnpj.Margin = new System.Windows.Forms.Padding(4);
             // 
             // txtCep
             // 
-            this.txtCep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCep.Margin = new System.Windows.Forms.Padding(4);
             // 
             // txtApelidoNomeFantasia
             // 
-            this.txtApelidoNomeFantasia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            // 
-            // lblGenero
-            // 
-            this.lblGenero.Size = new System.Drawing.Size(60, 16);
-            this.lblGenero.Text = "Gênero *";
+            this.txtApelidoNomeFantasia.Margin = new System.Windows.Forms.Padding(4);
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             // 
             // btnPesquisarCondicaoPagamento
             // 
-            this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(641, 43);
-            this.btnPesquisarCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(498, 37);
+            this.btnPesquisarCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4);
             this.btnPesquisarCondicaoPagamento.Name = "btnPesquisarCondicaoPagamento";
             this.btnPesquisarCondicaoPagamento.Size = new System.Drawing.Size(100, 25);
             this.btnPesquisarCondicaoPagamento.TabIndex = 38;
@@ -95,16 +90,17 @@
             // 
             // txtCondicaoPagamento
             // 
-            this.txtCondicaoPagamento.Location = new System.Drawing.Point(461, 44);
-            this.txtCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCondicaoPagamento.Location = new System.Drawing.Point(318, 38);
+            this.txtCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4);
             this.txtCondicaoPagamento.Name = "txtCondicaoPagamento";
+            this.txtCondicaoPagamento.ReadOnly = true;
             this.txtCondicaoPagamento.Size = new System.Drawing.Size(171, 22);
             this.txtCondicaoPagamento.TabIndex = 37;
             // 
             // lblCondicaoPagamento
             // 
             this.lblCondicaoPagamento.AutoSize = true;
-            this.lblCondicaoPagamento.Location = new System.Drawing.Point(461, 23);
+            this.lblCondicaoPagamento.Location = new System.Drawing.Point(318, 17);
             this.lblCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCondicaoPagamento.Name = "lblCondicaoPagamento";
             this.lblCondicaoPagamento.Size = new System.Drawing.Size(165, 16);
@@ -118,9 +114,20 @@
             this.Controls.Add(this.btnPesquisarCondicaoPagamento);
             this.Controls.Add(this.txtCondicaoPagamento);
             this.Controls.Add(this.lblCondicaoPagamento);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroCliente";
             this.Text = "Cadastro de Cliente";
+            this.Controls.SetChildIndex(this.lblDataCadastro, 0);
+            this.Controls.SetChildIndex(this.lblDataCadastroData, 0);
+            this.Controls.SetChildIndex(this.lblDataUltimaEdicao, 0);
+            this.Controls.SetChildIndex(this.lblDataUltimaEdicaoData, 0);
+            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditou, 0);
+            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditouNome, 0);
+            this.Controls.SetChildIndex(this.txtNumeroEndereco, 0);
+            this.Controls.SetChildIndex(this.lblNumeroEndereco, 0);
+            this.Controls.SetChildIndex(this.txtComplementoEndereco, 0);
+            this.Controls.SetChildIndex(this.lblComplementoEndereco, 0);
+            this.Controls.SetChildIndex(this.lblCod, 0);
             this.Controls.SetChildIndex(this.lblNome, 0);
             this.Controls.SetChildIndex(this.txtApelidoNomeFantasia, 0);
             this.Controls.SetChildIndex(this.txtNomeRazaoSocial, 0);

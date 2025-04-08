@@ -32,32 +32,43 @@
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            // 
             // lblDescricao
             // 
             this.lblDescricao.AutoSize = true;
-            this.lblDescricao.Location = new System.Drawing.Point(16, 94);
-            this.lblDescricao.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDescricao.Location = new System.Drawing.Point(21, 93);
             this.lblDescricao.Name = "lblDescricao";
-            this.lblDescricao.Size = new System.Drawing.Size(115, 13);
+            this.lblDescricao.Size = new System.Drawing.Size(146, 16);
             this.lblDescricao.TabIndex = 8;
             this.lblDescricao.Text = "Forma de Pagamento *";
             // 
             // txtDescricao
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(18, 110);
-            this.txtDescricao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescricao.Location = new System.Drawing.Point(24, 112);
+            this.txtDescricao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(310, 20);
+            this.txtDescricao.Size = new System.Drawing.Size(412, 22);
             this.txtDescricao.TabIndex = 6;
             // 
             // frmCadastroFormaPagamento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(633, 387);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(844, 476);
             this.Controls.Add(this.lblDescricao);
             this.Controls.Add(this.txtDescricao);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmCadastroFormaPagamento";
             this.Text = "Cadastro de Forma de Pagamento";
+            this.Controls.SetChildIndex(this.lblCod, 0);
+            this.Controls.SetChildIndex(this.lblDataCadastro, 0);
+            this.Controls.SetChildIndex(this.lblDataCadastroData, 0);
+            this.Controls.SetChildIndex(this.lblDataUltimaEdicao, 0);
+            this.Controls.SetChildIndex(this.lblDataUltimaEdicaoData, 0);
+            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditou, 0);
+            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditouNome, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.btnSair, 0);
             this.Controls.SetChildIndex(this.txtCodigo, 0);

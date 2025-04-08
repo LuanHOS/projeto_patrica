@@ -15,7 +15,7 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastro()
         {
             InitializeComponent();
-            this.txtCodigo.Enabled = false; //Faz com que a TextBox txtCodigo não possa ser editada
+            this.txtCodigo.Enabled = false;
         }
 
 

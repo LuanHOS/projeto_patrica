@@ -32,37 +32,48 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
+            // 
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(18, 75);
-            this.lblNome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNome.Location = new System.Drawing.Point(24, 92);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(36, 13);
+            this.lblNome.Size = new System.Drawing.Size(42, 16);
             this.lblNome.TabIndex = 3;
             this.lblNome.Text = "País *";
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(20, 90);
-            this.txtNome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNome.Location = new System.Drawing.Point(27, 111);
+            this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(179, 20);
+            this.txtNome.Size = new System.Drawing.Size(237, 22);
             this.txtNome.TabIndex = 4;
             // 
             // frmCadastroPais
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(633, 387);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(844, 476);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.lblNome);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroPais";
             this.Text = "Cadastro de País";
+            this.Controls.SetChildIndex(this.lblCod, 0);
             this.Controls.SetChildIndex(this.btnSair, 0);
             this.Controls.SetChildIndex(this.txtCodigo, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.lblNome, 0);
             this.Controls.SetChildIndex(this.txtNome, 0);
+            this.Controls.SetChildIndex(this.lblDataCadastro, 0);
+            this.Controls.SetChildIndex(this.lblDataCadastroData, 0);
+            this.Controls.SetChildIndex(this.lblDataUltimaEdicao, 0);
+            this.Controls.SetChildIndex(this.lblDataUltimaEdicaoData, 0);
+            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditou, 0);
+            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditouNome, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
