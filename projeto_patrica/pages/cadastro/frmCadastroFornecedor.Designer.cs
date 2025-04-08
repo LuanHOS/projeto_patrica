@@ -37,7 +37,6 @@
             // 
             // txtRgInscEstadual
             // 
-            this.txtRgInscEstadual.Location = new System.Drawing.Point(247, 330);
             this.txtRgInscEstadual.Margin = new System.Windows.Forms.Padding(4);
             // 
             // txtNomeRazaoSocial
@@ -66,7 +65,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(244, 274);
+            this.txtEmail.Location = new System.Drawing.Point(244, 330);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             // 
             // lblEmail
@@ -77,10 +76,6 @@
             // lblDataNascimento
             // 
             this.lblDataNascimento.Location = new System.Drawing.Point(462, 310);
-            // 
-            // lblRg
-            // 
-            this.lblRg.Location = new System.Drawing.Point(241, 260);
             // 
             // txtEndereco
             // 
