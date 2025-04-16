@@ -35,6 +35,14 @@
             this.btnPesquisarPais = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // btnSave
+            // 
+            this.btnSave.TabIndex = 5;
+            // 
+            // btnSair
+            // 
+            this.btnSair.TabIndex = 6;
+            // 
             // txtCodigo
             // 
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
@@ -46,7 +54,7 @@
             this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(237, 22);
-            this.txtNome.TabIndex = 6;
+            this.txtNome.TabIndex = 2;
             // 
             // lblNome
             // 
@@ -65,7 +73,7 @@
             this.txtPais.Name = "txtPais";
             this.txtPais.ReadOnly = true;
             this.txtPais.Size = new System.Drawing.Size(237, 22);
-            this.txtPais.TabIndex = 8;
+            this.txtPais.TabIndex = 3;
             // 
             // lblPais
             // 
@@ -82,7 +90,7 @@
             this.btnPesquisarPais.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarPais.Name = "btnPesquisarPais";
             this.btnPesquisarPais.Size = new System.Drawing.Size(99, 28);
-            this.btnPesquisarPais.TabIndex = 9;
+            this.btnPesquisarPais.TabIndex = 4;
             this.btnPesquisarPais.Text = "Pesquisar";
             this.btnPesquisarPais.UseVisualStyleBackColor = true;
             this.btnPesquisarPais.Click += new System.EventHandler(this.btnPesquisarPais_Click);

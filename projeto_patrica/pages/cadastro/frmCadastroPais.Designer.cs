@@ -32,6 +32,14 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
+            // btnSave
+            // 
+            this.btnSave.TabIndex = 3;
+            // 
+            // btnSair
+            // 
+            this.btnSair.TabIndex = 4;
+            // 
             // txtCodigo
             // 
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
@@ -52,7 +60,7 @@
             this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(237, 22);
-            this.txtNome.TabIndex = 4;
+            this.txtNome.TabIndex = 2;
             // 
             // frmCadastroPais
             // 

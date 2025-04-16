@@ -36,6 +36,14 @@
             this.lblNome = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // btnSave
+            // 
+            this.btnSave.TabIndex = 5;
+            // 
+            // btnSair
+            // 
+            this.btnSair.TabIndex = 6;
+            // 
             // txtCodigo
             // 
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
@@ -54,7 +62,7 @@
             this.btnPesquisarEstado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarEstado.Name = "btnPesquisarEstado";
             this.btnPesquisarEstado.Size = new System.Drawing.Size(99, 28);
-            this.btnPesquisarEstado.TabIndex = 14;
+            this.btnPesquisarEstado.TabIndex = 4;
             this.btnPesquisarEstado.Text = "Pesquisar";
             this.btnPesquisarEstado.UseVisualStyleBackColor = true;
             this.btnPesquisarEstado.Click += new System.EventHandler(this.btnPesquisarEstado_Click);
@@ -67,7 +75,7 @@
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.ReadOnly = true;
             this.txtEstado.Size = new System.Drawing.Size(237, 22);
-            this.txtEstado.TabIndex = 13;
+            this.txtEstado.TabIndex = 3;
             // 
             // lblEstado
             // 
@@ -85,7 +93,7 @@
             this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(237, 22);
-            this.txtNome.TabIndex = 11;
+            this.txtNome.TabIndex = 2;
             // 
             // lblNome
             // 

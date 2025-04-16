@@ -69,6 +69,7 @@
             this.txtBairro.Location = new System.Drawing.Point(25, 209);
             this.txtBairro.Margin = new System.Windows.Forms.Padding(4);
             this.txtBairro.Size = new System.Drawing.Size(200, 22);
+            this.txtBairro.TabIndex = 11;
             // 
             // lblBairro
             // 
@@ -99,6 +100,7 @@
             this.txtEndereco.Location = new System.Drawing.Point(493, 155);
             this.txtEndereco.Margin = new System.Windows.Forms.Padding(4);
             this.txtEndereco.Size = new System.Drawing.Size(177, 22);
+            this.txtEndereco.TabIndex = 9;
             // 
             // txtTelefone
             // 
@@ -120,11 +122,11 @@
             this.txtCep.Location = new System.Drawing.Point(244, 209);
             this.txtCep.Margin = new System.Windows.Forms.Padding(4);
             this.txtCep.Size = new System.Drawing.Size(151, 22);
+            this.txtCep.TabIndex = 12;
             // 
             // dtpDataNascimentoCriacao
             // 
             this.dtpDataNascimentoCriacao.Location = new System.Drawing.Point(485, 264);
-            this.dtpDataNascimentoCriacao.Size = new System.Drawing.Size(135, 22);
             // 
             // btnPesquisarCidade
             // 
@@ -153,6 +155,10 @@
             // lblCpf
             // 
             this.lblCpf.Location = new System.Drawing.Point(22, 245);
+            // 
+            // checkBoxAtivo
+            // 
+            this.checkBoxAtivo.TabIndex = 99;
             // 
             // lblNumeroEndereco
             // 
@@ -184,6 +190,7 @@
             // 
             this.btnSave.Location = new System.Drawing.Point(627, 518);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.TabIndex = 26;
             // 
             // lblDataCadastro
             // 
@@ -213,6 +220,7 @@
             // 
             this.btnSair.Location = new System.Drawing.Point(720, 518);
             this.btnSair.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSair.TabIndex = 27;
             // 
             // lblMatricula
             // 
@@ -230,7 +238,7 @@
             this.txtMatricula.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.Size = new System.Drawing.Size(172, 22);
-            this.txtMatricula.TabIndex = 31;
+            this.txtMatricula.TabIndex = 19;
             // 
             // lblCargo
             // 
@@ -248,7 +256,7 @@
             this.txtCargo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCargo.Name = "txtCargo";
             this.txtCargo.Size = new System.Drawing.Size(167, 22);
-            this.txtCargo.TabIndex = 31;
+            this.txtCargo.TabIndex = 20;
             // 
             // lblTurno
             // 
@@ -266,7 +274,7 @@
             this.txtTurno.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTurno.Name = "txtTurno";
             this.txtTurno.Size = new System.Drawing.Size(157, 22);
-            this.txtTurno.TabIndex = 31;
+            this.txtTurno.TabIndex = 21;
             // 
             // lblCargaHoraria
             // 
@@ -284,7 +292,7 @@
             this.txtCargaHoraria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCargaHoraria.Name = "txtCargaHoraria";
             this.txtCargaHoraria.Size = new System.Drawing.Size(188, 22);
-            this.txtCargaHoraria.TabIndex = 31;
+            this.txtCargaHoraria.TabIndex = 22;
             // 
             // lblSalario
             // 
@@ -302,7 +310,7 @@
             this.txtSalario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSalario.Name = "txtSalario";
             this.txtSalario.Size = new System.Drawing.Size(150, 22);
-            this.txtSalario.TabIndex = 31;
+            this.txtSalario.TabIndex = 23;
             // 
             // lblDataAdmissao
             // 
@@ -320,7 +328,7 @@
             this.dtpDataAdmissao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpDataAdmissao.Name = "dtpDataAdmissao";
             this.dtpDataAdmissao.Size = new System.Drawing.Size(135, 22);
-            this.dtpDataAdmissao.TabIndex = 32;
+            this.dtpDataAdmissao.TabIndex = 24;
             // 
             // dtpDataDemissao
             // 
@@ -332,7 +340,7 @@
             this.dtpDataDemissao.Name = "dtpDataDemissao";
             this.dtpDataDemissao.ShowCheckBox = true;
             this.dtpDataDemissao.Size = new System.Drawing.Size(135, 22);
-            this.dtpDataDemissao.TabIndex = 35;
+            this.dtpDataDemissao.TabIndex = 25;
             // 
             // lblDataDemissao
             // 

@@ -32,6 +32,14 @@
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
+            // btnSave
+            // 
+            this.btnSave.TabIndex = 3;
+            // 
+            // btnSair
+            // 
+            this.btnSair.TabIndex = 4;
+            // 
             // txtCodigo
             // 
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
@@ -52,7 +60,7 @@
             this.txtDescricao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(323, 22);
-            this.txtDescricao.TabIndex = 6;
+            this.txtDescricao.TabIndex = 2;
             // 
             // frmCadastroFormaPagamento
             // 

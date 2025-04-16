@@ -57,6 +57,7 @@
             this.txtBairro.Location = new System.Drawing.Point(24, 218);
             this.txtBairro.Margin = new System.Windows.Forms.Padding(4);
             this.txtBairro.Size = new System.Drawing.Size(201, 22);
+            this.txtBairro.TabIndex = 11;
             // 
             // lblBairro
             // 
@@ -82,6 +83,7 @@
             this.txtEndereco.Location = new System.Drawing.Point(487, 161);
             this.txtEndereco.Margin = new System.Windows.Forms.Padding(4);
             this.txtEndereco.Size = new System.Drawing.Size(183, 22);
+            this.txtEndereco.TabIndex = 9;
             // 
             // txtTelefone
             // 
@@ -102,11 +104,11 @@
             this.txtCep.Location = new System.Drawing.Point(244, 218);
             this.txtCep.Margin = new System.Windows.Forms.Padding(4);
             this.txtCep.Size = new System.Drawing.Size(197, 22);
+            this.txtCep.TabIndex = 12;
             // 
             // dtpDataNascimentoCriacao
             // 
             this.dtpDataNascimentoCriacao.Location = new System.Drawing.Point(465, 274);
-            this.dtpDataNascimentoCriacao.Size = new System.Drawing.Size(135, 22);
             // 
             // comboBoxTipo
             // 
@@ -131,6 +133,10 @@
             this.lblTelefone.Location = new System.Drawing.Point(21, 311);
             this.lblTelefone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             // 
+            // checkBoxAtivo
+            // 
+            this.checkBoxAtivo.TabIndex = 99;
+            // 
             // lblComplementoEndereco
             // 
             this.lblComplementoEndereco.Location = new System.Drawing.Point(461, 199);
@@ -143,6 +149,7 @@
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(627, 471);
+            this.btnSave.TabIndex = 22;
             // 
             // lblDataCadastro
             // 
@@ -171,6 +178,7 @@
             // btnSair
             // 
             this.btnSair.Location = new System.Drawing.Point(720, 471);
+            this.btnSair.TabIndex = 23;
             // 
             // label2
             // 
@@ -188,7 +196,7 @@
             this.txtInscEstSubTrib.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInscEstSubTrib.Name = "txtInscEstSubTrib";
             this.txtInscEstSubTrib.Size = new System.Drawing.Size(293, 22);
-            this.txtInscEstSubTrib.TabIndex = 30;
+            this.txtInscEstSubTrib.TabIndex = 21;
             // 
             // btnPesquisarCondicaoPagamento
             // 
@@ -196,7 +204,7 @@
             this.btnPesquisarCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4);
             this.btnPesquisarCondicaoPagamento.Name = "btnPesquisarCondicaoPagamento";
             this.btnPesquisarCondicaoPagamento.Size = new System.Drawing.Size(100, 25);
-            this.btnPesquisarCondicaoPagamento.TabIndex = 38;
+            this.btnPesquisarCondicaoPagamento.TabIndex = 20;
             this.btnPesquisarCondicaoPagamento.Text = "Pesquisar";
             this.btnPesquisarCondicaoPagamento.UseVisualStyleBackColor = true;
             this.btnPesquisarCondicaoPagamento.Click += new System.EventHandler(this.BtnPesquisarCondicaoPagamento_Click);
@@ -209,7 +217,7 @@
             this.txtCondicaoPagamento.Name = "txtCondicaoPagamento";
             this.txtCondicaoPagamento.ReadOnly = true;
             this.txtCondicaoPagamento.Size = new System.Drawing.Size(171, 22);
-            this.txtCondicaoPagamento.TabIndex = 37;
+            this.txtCondicaoPagamento.TabIndex = 19;
             // 
             // lblCondicaoPagamento
             // 

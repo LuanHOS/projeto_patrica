@@ -66,6 +66,7 @@
             // 
             this.btnSave.Location = new System.Drawing.Point(651, 789);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.TabIndex = 15;
             // 
             // lblDataCadastro
             // 
@@ -95,6 +96,7 @@
             // 
             this.btnSair.Location = new System.Drawing.Point(743, 789);
             this.btnSair.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSair.TabIndex = 16;
             // 
             // txtCodigo
             // 
@@ -107,7 +109,7 @@
             this.txtDescricao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(212, 22);
-            this.txtDescricao.TabIndex = 3;
+            this.txtDescricao.TabIndex = 2;
             // 
             // lblDescricao
             // 
@@ -187,7 +189,7 @@
             this.comboBoxFormaPagamento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxFormaPagamento.Name = "comboBoxFormaPagamento";
             this.comboBoxFormaPagamento.Size = new System.Drawing.Size(183, 24);
-            this.comboBoxFormaPagamento.TabIndex = 8;
+            this.comboBoxFormaPagamento.TabIndex = 10;
             // 
             // listVParcelas
             // 
@@ -237,7 +239,7 @@
             this.btnRemoverParcela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoverParcela.Name = "btnRemoverParcela";
             this.btnRemoverParcela.Size = new System.Drawing.Size(144, 34);
-            this.btnRemoverParcela.TabIndex = 6;
+            this.btnRemoverParcela.TabIndex = 14;
             this.btnRemoverParcela.Text = "Remover Parcela";
             this.btnRemoverParcela.UseVisualStyleBackColor = true;
             this.btnRemoverParcela.Click += new System.EventHandler(this.btnRemoverParcela_Click);
@@ -248,7 +250,7 @@
             this.btnEditarParcela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEditarParcela.Name = "btnEditarParcela";
             this.btnEditarParcela.Size = new System.Drawing.Size(144, 34);
-            this.btnEditarParcela.TabIndex = 6;
+            this.btnEditarParcela.TabIndex = 13;
             this.btnEditarParcela.Text = "Editar Parcela";
             this.btnEditarParcela.UseVisualStyleBackColor = true;
             this.btnEditarParcela.Click += new System.EventHandler(this.btnEditarParcela_Click);
@@ -259,7 +261,7 @@
             this.btnAdicionarParcela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdicionarParcela.Name = "btnAdicionarParcela";
             this.btnAdicionarParcela.Size = new System.Drawing.Size(144, 34);
-            this.btnAdicionarParcela.TabIndex = 6;
+            this.btnAdicionarParcela.TabIndex = 12;
             this.btnAdicionarParcela.Text = "Adicionar Parcela";
             this.btnAdicionarParcela.UseVisualStyleBackColor = true;
             this.btnAdicionarParcela.Click += new System.EventHandler(this.btnAdicionarParcela_Click);
@@ -270,7 +272,7 @@
             this.btnPesquisarFormaPagamento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarFormaPagamento.Name = "btnPesquisarFormaPagamento";
             this.btnPesquisarFormaPagamento.Size = new System.Drawing.Size(96, 34);
-            this.btnPesquisarFormaPagamento.TabIndex = 6;
+            this.btnPesquisarFormaPagamento.TabIndex = 11;
             this.btnPesquisarFormaPagamento.Text = "Pesquisar";
             this.btnPesquisarFormaPagamento.UseVisualStyleBackColor = true;
             this.btnPesquisarFormaPagamento.Click += new System.EventHandler(this.btnPesquisarFormaPagamento_Click);
@@ -291,7 +293,7 @@
             this.txtPrazoDias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPrazoDias.Name = "txtPrazoDias";
             this.txtPrazoDias.Size = new System.Drawing.Size(135, 22);
-            this.txtPrazoDias.TabIndex = 1;
+            this.txtPrazoDias.TabIndex = 9;
             // 
             // lblPrazoDias
             // 
@@ -309,7 +311,7 @@
             this.txtPercentualParcela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPercentualParcela.Name = "txtPercentualParcela";
             this.txtPercentualParcela.Size = new System.Drawing.Size(135, 22);
-            this.txtPercentualParcela.TabIndex = 1;
+            this.txtPercentualParcela.TabIndex = 8;
             // 
             // lblPercentualParcela
             // 
@@ -327,7 +329,7 @@
             this.txtNumParcela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNumParcela.Name = "txtNumParcela";
             this.txtNumParcela.Size = new System.Drawing.Size(135, 22);
-            this.txtNumParcela.TabIndex = 1;
+            this.txtNumParcela.TabIndex = 7;
             // 
             // lblNumParcela
             // 
@@ -355,7 +357,7 @@
             this.txtJuros.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtJuros.Name = "txtJuros";
             this.txtJuros.Size = new System.Drawing.Size(92, 22);
-            this.txtJuros.TabIndex = 3;
+            this.txtJuros.TabIndex = 4;
             // 
             // lblJuros
             // 
@@ -375,7 +377,7 @@
             this.txtMulta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMulta.Name = "txtMulta";
             this.txtMulta.Size = new System.Drawing.Size(92, 22);
-            this.txtMulta.TabIndex = 3;
+            this.txtMulta.TabIndex = 5;
             // 
             // lblMulta
             // 
@@ -395,7 +397,7 @@
             this.txtDesconto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.Size = new System.Drawing.Size(92, 22);
-            this.txtDesconto.TabIndex = 3;
+            this.txtDesconto.TabIndex = 6;
             // 
             // lblDesconto
             // 
