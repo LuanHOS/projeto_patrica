@@ -10,9 +10,10 @@ namespace projeto_patrica.pages.consulta
 {
 	public partial class frmConsulta : projeto_patrica.frmBase
 	{
-		public frmConsulta()
+		public frmConsulta() : base()
 		{
-			InitializeComponent();
+            InitializeComponent();
+            //ConfigurarFormularioBase();
             btnAlterar.Enabled = false;
             btnExcluir.Enabled = false;
         }

@@ -13,7 +13,7 @@ namespace projeto_patrica.pages.consulta
         private formaPagamento aFormaPagamento;
         private Controller_formaPagamento aController_formaPagamento;
 
-        public frmConsultaFormaPagamento()
+        public frmConsultaFormaPagamento() : base()
         {
             InitializeComponent();
         }

@@ -13,7 +13,7 @@ namespace projeto_patrica.pages.consulta
         private condicaoPagamento aCondicaoPagamento;
         private Controller_condicaoPagamento aController_condicaoPagamento;
 
-        public frmConsultaCondicaoPagamento()
+        public frmConsultaCondicaoPagamento() : base()
         {
             InitializeComponent();
         }

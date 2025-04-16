@@ -13,7 +13,7 @@ namespace projeto_patrica.pages.consulta
         private fornecedor oFornecedor;
         Controller_fornecedor aController_fornecedor;
 
-        public frmConsultaFornecedor()
+        public frmConsultaFornecedor() : base()
         {
             InitializeComponent();
         }

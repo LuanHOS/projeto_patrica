@@ -13,7 +13,7 @@ namespace projeto_patrica.pages.consulta
         private cliente oCliente;
         Controller_cliente aController_cliente;
 
-        public frmConsultaCliente()
+        public frmConsultaCliente() : base()
         {
             InitializeComponent();
         }

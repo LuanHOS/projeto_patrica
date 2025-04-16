@@ -129,7 +129,6 @@
             // frmCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(844, 476);
             this.Controls.Add(this.lblUltimoUsuarioQueEditouNome);
             this.Controls.Add(this.lblUltimoUsuarioQueEditou);
             this.Controls.Add(this.lblDataUltimaEdicaoData);

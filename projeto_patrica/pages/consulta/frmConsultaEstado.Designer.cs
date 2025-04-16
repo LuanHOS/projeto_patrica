@@ -43,6 +43,10 @@
             // 
             this.clmCod.Width = 134;
             // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            // 
             // clmNome
             // 
             this.clmNome.Text = "Estado";
@@ -55,8 +59,9 @@
             // 
             // frmConsultaEstado
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(633, 387);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 721);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "frmConsultaEstado";
             this.Text = "Consulta de Estado";
             this.ResumeLayout(false);

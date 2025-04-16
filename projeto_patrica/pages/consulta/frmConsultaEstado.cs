@@ -17,7 +17,7 @@ namespace projeto_patrica.pages.consulta
         private estado oEstado;
         Controller_estado aController_estado;
 
-        public frmConsultaEstado()
+        public frmConsultaEstado() : base()
         {
             InitializeComponent();
         }

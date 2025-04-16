@@ -53,8 +53,13 @@
             this.clmEmail,
             this.clmTelefone,
             this.clmAtivo});
-            this.listV.Location = new System.Drawing.Point(18, 70);
+            this.listV.Location = new System.Drawing.Point(24, 86);
+            this.listV.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             // 
             // clmTipo
             // 
@@ -105,8 +110,7 @@
             // 
             // frmConsultaCliente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(633, 387);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "frmConsultaCliente";
             this.Text = "Consulta de Cliente";
             this.ResumeLayout(false);

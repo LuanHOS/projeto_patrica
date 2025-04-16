@@ -180,7 +180,6 @@
             // frmCadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(844, 557);
             this.Controls.Add(this.txtLimiteDeCredito);
             this.Controls.Add(this.lblLimiteDeCredito);
             this.Controls.Add(this.btnPesquisarCondicaoPagamento);

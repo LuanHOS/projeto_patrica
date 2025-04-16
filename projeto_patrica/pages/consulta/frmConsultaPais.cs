@@ -17,7 +17,8 @@ namespace projeto_patrica.pages.consulta
         frmCadastroPais oFrmCadastroPais;
         private pais oPais;
         Controller_pais aController_pais;
-        public frmConsultaPais()
+
+        public frmConsultaPais() : base()
         {
             InitializeComponent();
         }

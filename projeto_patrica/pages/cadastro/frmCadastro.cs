@@ -12,10 +12,12 @@ namespace projeto_patrica.pages.cadastro
 {
     public partial class frmCadastro : projeto_patrica.frmBase
     {
-        public frmCadastro()
+        public frmCadastro() : base()
         {
             InitializeComponent();
+            //ConfigurarFormularioBase();
             this.txtCodigo.Enabled = false;
+
         }
 
 

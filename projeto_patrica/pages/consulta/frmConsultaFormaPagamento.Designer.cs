@@ -37,10 +37,6 @@
             this.clmDescricao});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.ListV_SelectedIndexChanged);
             // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
-            // 
             // clmDescricao
             // 
             this.clmDescricao.Text = "Descrição";
@@ -49,8 +45,7 @@
             // frmConsultaFormaPagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(844, 476);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.ClientSize = new System.Drawing.Size(1342, 721);
             this.Name = "frmConsultaFormaPagamento";
             this.Text = "Consulta de Forma de Pagamento";
             this.ResumeLayout(false);

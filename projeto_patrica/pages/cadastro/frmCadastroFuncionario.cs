@@ -12,7 +12,7 @@ namespace projeto_patrica.pages.cadastro
         private Controller_funcionario aController_funcionario;
         private frmConsultaCidade oFrmConsultaCidade;
 
-        public frmCadastroFuncionario()
+        public frmCadastroFuncionario() : base()
         {
             InitializeComponent();
             comboBoxTipo.SelectedIndex = 0; 

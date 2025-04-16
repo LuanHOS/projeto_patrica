@@ -13,7 +13,7 @@ namespace projeto_patrica.pages.consulta
         private cidade aCidade;
         private Controller_cidade aController_cidade;
 
-        public frmConsultaCidade()
+        public frmConsultaCidade() : base()
         {
             InitializeComponent();
         }

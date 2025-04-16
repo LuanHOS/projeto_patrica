@@ -15,6 +15,7 @@ namespace projeto_patrica
         public frmBase()
         {
             InitializeComponent();
+            ConfigurarFormularioBase();
         }
 
 
@@ -56,9 +57,37 @@ namespace projeto_patrica
          */
 
 
-        private void btnSair_Click(object sender, EventArgs e)
+        public void btnSair_Click(object sender, EventArgs e)
         {
             Sair();
+        }
+
+
+        /*
+         * 
+         */
+
+
+        public void FrmBase_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
+        public virtual void ConfigurarFormularioBase()
+        {
+            this.AutoScaleMode = AutoScaleMode.Font;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.ShowIcon = false;
+            this.AutoScroll = true;
+            this.CancelButton = this.btnSair;
+            this.Size = new Size(1360, 768);
         }
     }
 }

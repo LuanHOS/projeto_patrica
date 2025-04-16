@@ -13,7 +13,7 @@ namespace projeto_patrica.pages.consulta
         private funcionario oFuncionario;
         private Controller_funcionario aController_funcionario;
 
-        public frmConsultaFuncionario()
+        public frmConsultaFuncionario() : base()
         {
             InitializeComponent();
         }

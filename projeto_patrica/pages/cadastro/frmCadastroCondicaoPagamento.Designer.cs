@@ -64,37 +64,37 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(651, 789);
+            this.btnSave.Location = new System.Drawing.Point(651, 648);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.TabIndex = 15;
             // 
             // lblDataCadastro
             // 
-            this.lblDataCadastro.Location = new System.Drawing.Point(21, 776);
+            this.lblDataCadastro.Location = new System.Drawing.Point(21, 635);
             // 
             // lblDataUltimaEdicao
             // 
-            this.lblDataUltimaEdicao.Location = new System.Drawing.Point(21, 792);
+            this.lblDataUltimaEdicao.Location = new System.Drawing.Point(21, 651);
             // 
             // lblUltimoUsuarioQueEditou
             // 
-            this.lblUltimoUsuarioQueEditou.Location = new System.Drawing.Point(21, 808);
+            this.lblUltimoUsuarioQueEditou.Location = new System.Drawing.Point(21, 667);
             // 
             // lblDataCadastroData
             // 
-            this.lblDataCadastroData.Location = new System.Drawing.Point(143, 776);
+            this.lblDataCadastroData.Location = new System.Drawing.Point(143, 635);
             // 
             // lblDataUltimaEdicaoData
             // 
-            this.lblDataUltimaEdicaoData.Location = new System.Drawing.Point(172, 792);
+            this.lblDataUltimaEdicaoData.Location = new System.Drawing.Point(172, 651);
             // 
             // lblUltimoUsuarioQueEditouNome
             // 
-            this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(192, 808);
+            this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(192, 667);
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(743, 789);
+            this.btnSair.Location = new System.Drawing.Point(743, 648);
             this.btnSair.Margin = new System.Windows.Forms.Padding(4);
             this.btnSair.TabIndex = 16;
             // 
@@ -160,7 +160,7 @@
             this.panel1.Location = new System.Drawing.Point(24, 150);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(799, 612);
+            this.panel1.Size = new System.Drawing.Size(799, 465);
             this.panel1.TabIndex = 5;
             // 
             // lblPorcentagemTotalNum
@@ -204,7 +204,7 @@
             this.listVParcelas.Location = new System.Drawing.Point(24, 174);
             this.listVParcelas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listVParcelas.Name = "listVParcelas";
-            this.listVParcelas.Size = new System.Drawing.Size(752, 409);
+            this.listVParcelas.Size = new System.Drawing.Size(752, 266);
             this.listVParcelas.TabIndex = 7;
             this.listVParcelas.UseCompatibleStateImageBehavior = false;
             this.listVParcelas.View = System.Windows.Forms.View.Details;
@@ -412,7 +412,6 @@
             // frmCadastroCondicaoPagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(844, 845);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblDesconto);
             this.Controls.Add(this.lblMulta);

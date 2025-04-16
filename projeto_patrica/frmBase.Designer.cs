@@ -35,6 +35,7 @@
             // btnSair
             // 
             this.btnSair.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSair.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnSair.Location = new System.Drawing.Point(720, 408);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(80, 35);
@@ -56,9 +57,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(844, 476);
+            this.CancelButton = this.btnSair;
+            this.ClientSize = new System.Drawing.Size(1342, 721);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.btnSair);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1360, 768);
             this.Name = "frmBase";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

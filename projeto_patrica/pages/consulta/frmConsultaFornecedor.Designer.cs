@@ -116,7 +116,6 @@
             // frmConsultaFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(844, 476);
             this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "frmConsultaFornecedor";
             this.Text = "Consulta de Fornecedor";
