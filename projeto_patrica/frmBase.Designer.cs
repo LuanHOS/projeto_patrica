@@ -61,6 +61,7 @@
             this.Controls.Add(this.btnSair);
             this.Name = "frmBase";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmBase";
             this.ResumeLayout(false);
             this.PerformLayout();
