@@ -49,6 +49,10 @@
             // 
             this.txtBairro.Margin = new System.Windows.Forms.Padding(4);
             // 
+            // lblBairro
+            // 
+            this.lblBairro.Location = new System.Drawing.Point(23, 199);
+            // 
             // txtEmail
             // 
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
@@ -67,15 +71,62 @@
             // 
             // txtCep
             // 
+            this.txtCep.Location = new System.Drawing.Point(27, 218);
             this.txtCep.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCep.Size = new System.Drawing.Size(198, 22);
+            // 
+            // dtpDataNascimentoCriacao
+            // 
+            this.dtpDataNascimentoCriacao.Size = new System.Drawing.Size(135, 22);
             // 
             // txtApelidoNomeFantasia
             // 
             this.txtApelidoNomeFantasia.Margin = new System.Windows.Forms.Padding(4);
             // 
+            // lblComplementoEndereco
+            // 
+            this.lblComplementoEndereco.Location = new System.Drawing.Point(459, 199);
+            // 
+            // txtComplementoEndereco
+            // 
+            this.txtComplementoEndereco.Location = new System.Drawing.Point(463, 218);
+            this.txtComplementoEndereco.Size = new System.Drawing.Size(295, 22);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(627, 485);
+            // 
+            // lblDataCadastro
+            // 
+            this.lblDataCadastro.Location = new System.Drawing.Point(21, 472);
+            // 
+            // lblDataUltimaEdicao
+            // 
+            this.lblDataUltimaEdicao.Location = new System.Drawing.Point(21, 488);
+            // 
+            // lblUltimoUsuarioQueEditou
+            // 
+            this.lblUltimoUsuarioQueEditou.Location = new System.Drawing.Point(21, 504);
+            // 
+            // lblDataCadastroData
+            // 
+            this.lblDataCadastroData.Location = new System.Drawing.Point(142, 472);
+            // 
+            // lblDataUltimaEdicaoData
+            // 
+            this.lblDataUltimaEdicaoData.Location = new System.Drawing.Point(171, 488);
+            // 
+            // lblUltimoUsuarioQueEditouNome
+            // 
+            this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(191, 504);
+            // 
+            // btnSair
+            // 
+            this.btnSair.Location = new System.Drawing.Point(720, 485);
+            // 
             // btnPesquisarCondicaoPagamento
             // 
-            this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(498, 37);
+            this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(204, 395);
             this.btnPesquisarCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4);
             this.btnPesquisarCondicaoPagamento.Name = "btnPesquisarCondicaoPagamento";
             this.btnPesquisarCondicaoPagamento.Size = new System.Drawing.Size(100, 25);
@@ -87,7 +138,7 @@
             // txtCondicaoPagamento
             // 
             this.txtCondicaoPagamento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCondicaoPagamento.Location = new System.Drawing.Point(318, 38);
+            this.txtCondicaoPagamento.Location = new System.Drawing.Point(24, 396);
             this.txtCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4);
             this.txtCondicaoPagamento.Name = "txtCondicaoPagamento";
             this.txtCondicaoPagamento.ReadOnly = true;
@@ -97,7 +148,7 @@
             // lblCondicaoPagamento
             // 
             this.lblCondicaoPagamento.AutoSize = true;
-            this.lblCondicaoPagamento.Location = new System.Drawing.Point(318, 17);
+            this.lblCondicaoPagamento.Location = new System.Drawing.Point(24, 375);
             this.lblCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCondicaoPagamento.Name = "lblCondicaoPagamento";
             this.lblCondicaoPagamento.Size = new System.Drawing.Size(165, 16);
@@ -107,12 +158,14 @@
             // frmCadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(844, 476);
+            this.ClientSize = new System.Drawing.Size(844, 557);
             this.Controls.Add(this.btnPesquisarCondicaoPagamento);
             this.Controls.Add(this.txtCondicaoPagamento);
             this.Controls.Add(this.lblCondicaoPagamento);
             this.Name = "frmCadastroCliente";
             this.Text = "Cadastro de Cliente";
+            this.Controls.SetChildIndex(this.lblEstado, 0);
+            this.Controls.SetChildIndex(this.txtEstado, 0);
             this.Controls.SetChildIndex(this.lblDataCadastro, 0);
             this.Controls.SetChildIndex(this.lblDataCadastroData, 0);
             this.Controls.SetChildIndex(this.lblDataUltimaEdicao, 0);

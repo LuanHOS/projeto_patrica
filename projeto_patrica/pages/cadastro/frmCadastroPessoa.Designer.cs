@@ -60,6 +60,8 @@
             this.txtNumeroEndereco = new System.Windows.Forms.TextBox();
             this.lblComplementoEndereco = new System.Windows.Forms.Label();
             this.txtComplementoEndereco = new System.Windows.Forms.TextBox();
+            this.lblEstado = new System.Windows.Forms.Label();
+            this.txtEstado = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblCod
@@ -121,16 +123,16 @@
             // txtBairro
             // 
             this.txtBairro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtBairro.Location = new System.Drawing.Point(311, 161);
+            this.txtBairro.Location = new System.Drawing.Point(488, 161);
             this.txtBairro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(153, 22);
+            this.txtBairro.Size = new System.Drawing.Size(181, 22);
             this.txtBairro.TabIndex = 13;
             // 
             // lblBairro
             // 
             this.lblBairro.AutoSize = true;
-            this.lblBairro.Location = new System.Drawing.Point(565, 142);
+            this.lblBairro.Location = new System.Drawing.Point(21, 199);
             this.lblBairro.Name = "lblBairro";
             this.lblBairro.Size = new System.Drawing.Size(51, 16);
             this.lblBairro.TabIndex = 6;
@@ -193,16 +195,16 @@
             // txtEndereco
             // 
             this.txtEndereco.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEndereco.Location = new System.Drawing.Point(24, 218);
+            this.txtEndereco.Location = new System.Drawing.Point(244, 218);
             this.txtEndereco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEndereco.Name = "txtEndereco";
-            this.txtEndereco.Size = new System.Drawing.Size(153, 22);
+            this.txtEndereco.Size = new System.Drawing.Size(197, 22);
             this.txtEndereco.TabIndex = 22;
             // 
             // lblEndereco
             // 
             this.lblEndereco.AutoSize = true;
-            this.lblEndereco.Location = new System.Drawing.Point(308, 142);
+            this.lblEndereco.Location = new System.Drawing.Point(485, 142);
             this.lblEndereco.Name = "lblEndereco";
             this.lblEndereco.Size = new System.Drawing.Size(74, 16);
             this.lblEndereco.TabIndex = 19;
@@ -247,7 +249,7 @@
             // lblCep
             // 
             this.lblCep.AutoSize = true;
-            this.lblCep.Location = new System.Drawing.Point(27, 199);
+            this.lblCep.Location = new System.Drawing.Point(247, 199);
             this.lblCep.Name = "lblCep";
             this.lblCep.Size = new System.Drawing.Size(42, 16);
             this.lblCep.TabIndex = 5;
@@ -256,10 +258,10 @@
             // txtCep
             // 
             this.txtCep.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCep.Location = new System.Drawing.Point(569, 161);
+            this.txtCep.Location = new System.Drawing.Point(24, 218);
             this.txtCep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCep.Name = "txtCep";
-            this.txtCep.Size = new System.Drawing.Size(191, 22);
+            this.txtCep.Size = new System.Drawing.Size(201, 22);
             this.txtCep.TabIndex = 12;
             // 
             // checkBoxAtivo
@@ -267,7 +269,7 @@
             this.checkBoxAtivo.AutoSize = true;
             this.checkBoxAtivo.Checked = true;
             this.checkBoxAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAtivo.Location = new System.Drawing.Point(776, 12);
+            this.checkBoxAtivo.Location = new System.Drawing.Point(762, 11);
             this.checkBoxAtivo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxAtivo.Name = "checkBoxAtivo";
             this.checkBoxAtivo.Size = new System.Drawing.Size(59, 20);
@@ -277,10 +279,11 @@
             // 
             // dtpDataNascimentoCriacao
             // 
+            this.dtpDataNascimentoCriacao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDataNascimentoCriacao.Location = new System.Drawing.Point(463, 274);
             this.dtpDataNascimentoCriacao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpDataNascimentoCriacao.Name = "dtpDataNascimentoCriacao";
-            this.dtpDataNascimentoCriacao.Size = new System.Drawing.Size(275, 22);
+            this.dtpDataNascimentoCriacao.Size = new System.Drawing.Size(135, 22);
             this.dtpDataNascimentoCriacao.TabIndex = 26;
             // 
             // comboBoxTipo
@@ -290,7 +293,7 @@
             this.comboBoxTipo.Items.AddRange(new object[] {
             "PESSOA FÍSICA",
             "PESSOA JURÍDICA"});
-            this.comboBoxTipo.Location = new System.Drawing.Point(19, 36);
+            this.comboBoxTipo.Location = new System.Drawing.Point(24, 36);
             this.comboBoxTipo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxTipo.Name = "comboBoxTipo";
             this.comboBoxTipo.Size = new System.Drawing.Size(275, 24);
@@ -309,7 +312,7 @@
             // lblTipo
             // 
             this.lblTipo.AutoSize = true;
-            this.lblTipo.Location = new System.Drawing.Point(21, 18);
+            this.lblTipo.Location = new System.Drawing.Point(21, 16);
             this.lblTipo.Name = "lblTipo";
             this.lblTipo.Size = new System.Drawing.Size(116, 16);
             this.lblTipo.TabIndex = 7;
@@ -368,7 +371,7 @@
             // 
             this.lblNumeroEndereco.AutoSize = true;
             this.lblNumeroEndereco.Enabled = false;
-            this.lblNumeroEndereco.Location = new System.Drawing.Point(477, 142);
+            this.lblNumeroEndereco.Location = new System.Drawing.Point(683, 142);
             this.lblNumeroEndereco.Name = "lblNumeroEndereco";
             this.lblNumeroEndereco.Size = new System.Drawing.Size(63, 16);
             this.lblNumeroEndereco.TabIndex = 31;
@@ -378,7 +381,7 @@
             // 
             this.txtNumeroEndereco.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNumeroEndereco.Enabled = false;
-            this.txtNumeroEndereco.Location = new System.Drawing.Point(480, 161);
+            this.txtNumeroEndereco.Location = new System.Drawing.Point(686, 161);
             this.txtNumeroEndereco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNumeroEndereco.Name = "txtNumeroEndereco";
             this.txtNumeroEndereco.Size = new System.Drawing.Size(72, 22);
@@ -388,7 +391,7 @@
             // 
             this.lblComplementoEndereco.AutoSize = true;
             this.lblComplementoEndereco.Enabled = false;
-            this.lblComplementoEndereco.Location = new System.Drawing.Point(189, 199);
+            this.lblComplementoEndereco.Location = new System.Drawing.Point(451, 199);
             this.lblComplementoEndereco.Name = "lblComplementoEndereco";
             this.lblComplementoEndereco.Size = new System.Drawing.Size(91, 16);
             this.lblComplementoEndereco.TabIndex = 33;
@@ -398,16 +401,36 @@
             // 
             this.txtComplementoEndereco.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtComplementoEndereco.Enabled = false;
-            this.txtComplementoEndereco.Location = new System.Drawing.Point(193, 218);
+            this.txtComplementoEndereco.Location = new System.Drawing.Point(455, 218);
             this.txtComplementoEndereco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtComplementoEndereco.Name = "txtComplementoEndereco";
-            this.txtComplementoEndereco.Size = new System.Drawing.Size(153, 22);
+            this.txtComplementoEndereco.Size = new System.Drawing.Size(303, 22);
             this.txtComplementoEndereco.TabIndex = 32;
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Location = new System.Drawing.Point(317, 142);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(50, 16);
+            this.lblEstado.TabIndex = 34;
+            this.lblEstado.Text = "Estado";
+            // 
+            // txtEstado
+            // 
+            this.txtEstado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtEstado.Location = new System.Drawing.Point(320, 161);
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.ReadOnly = true;
+            this.txtEstado.Size = new System.Drawing.Size(151, 22);
+            this.txtEstado.TabIndex = 35;
             // 
             // frmCadastroPessoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.ClientSize = new System.Drawing.Size(844, 476);
+            this.Controls.Add(this.txtEstado);
+            this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.lblComplementoEndereco);
             this.Controls.Add(this.txtComplementoEndereco);
             this.Controls.Add(this.lblNumeroEndereco);
@@ -485,6 +508,8 @@
             this.Controls.SetChildIndex(this.btnSair, 0);
             this.Controls.SetChildIndex(this.txtCodigo, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
+            this.Controls.SetChildIndex(this.lblEstado, 0);
+            this.Controls.SetChildIndex(this.txtEstado, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,5 +548,7 @@
         protected System.Windows.Forms.TextBox txtNumeroEndereco;
         protected System.Windows.Forms.Label lblComplementoEndereco;
         protected System.Windows.Forms.TextBox txtComplementoEndereco;
+        protected System.Windows.Forms.Label lblEstado;
+        protected System.Windows.Forms.TextBox txtEstado;
     }
 }
