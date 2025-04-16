@@ -37,10 +37,14 @@
             this.bntLimparPesquisa = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // btnSair
+            // 
+            this.btnSair.TabIndex = 8;
+            // 
             // txtCodigo
             // 
             this.txtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigo.Size = new System.Drawing.Size(212, 22);
             // 
             // btnExcluir
@@ -49,7 +53,7 @@
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(80, 34);
-            this.btnExcluir.TabIndex = 2;
+            this.btnExcluir.TabIndex = 7;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -60,7 +64,7 @@
             this.btnAlterar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(80, 34);
-            this.btnAlterar.TabIndex = 3;
+            this.btnAlterar.TabIndex = 6;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
@@ -71,7 +75,7 @@
             this.btnIncluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnIncluir.Name = "btnIncluir";
             this.btnIncluir.Size = new System.Drawing.Size(80, 34);
-            this.btnIncluir.TabIndex = 4;
+            this.btnIncluir.TabIndex = 5;
             this.btnIncluir.Text = "Incluir";
             this.btnIncluir.UseVisualStyleBackColor = true;
             this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
@@ -82,7 +86,7 @@
             this.btnPesquisar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(81, 28);
-            this.btnPesquisar.TabIndex = 6;
+            this.btnPesquisar.TabIndex = 2;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
@@ -98,7 +102,7 @@
             this.listV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listV.Name = "listV";
             this.listV.Size = new System.Drawing.Size(776, 306);
-            this.listV.TabIndex = 7;
+            this.listV.TabIndex = 4;
             this.listV.UseCompatibleStateImageBehavior = false;
             this.listV.View = System.Windows.Forms.View.Details;
             this.listV.SelectedIndexChanged += new System.EventHandler(this.ListV_SelectedIndexChanged);
@@ -113,7 +117,7 @@
             this.bntLimparPesquisa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bntLimparPesquisa.Name = "bntLimparPesquisa";
             this.bntLimparPesquisa.Size = new System.Drawing.Size(80, 28);
-            this.bntLimparPesquisa.TabIndex = 6;
+            this.bntLimparPesquisa.TabIndex = 3;
             this.bntLimparPesquisa.Text = "Limpar";
             this.bntLimparPesquisa.UseVisualStyleBackColor = true;
             this.bntLimparPesquisa.Click += new System.EventHandler(this.btnLimparPesquisa_Click);
@@ -128,7 +132,7 @@
             this.Controls.Add(this.btnIncluir);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnExcluir);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmConsulta";
             this.Text = "Consulta";
             this.Controls.SetChildIndex(this.btnSair, 0);
