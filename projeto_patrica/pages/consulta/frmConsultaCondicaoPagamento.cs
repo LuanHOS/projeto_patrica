@@ -35,7 +35,6 @@ namespace projeto_patrica.pages.consulta
             base.Incluir();
             oFrmCadCondicaoPagamento.ConhecaObj(aCondicaoPagamento, aController_condicaoPagamento);
             oFrmCadCondicaoPagamento.Limpartxt();
-            oFrmCadCondicaoPagamento.txtCodigo.Enabled = false;
             oFrmCadCondicaoPagamento.ShowDialog();
             this.CarregaLV();
         }
@@ -48,7 +47,6 @@ namespace projeto_patrica.pages.consulta
             aController_condicaoPagamento.CarregaObj(aCondicaoPagamento);
             oFrmCadCondicaoPagamento.ConhecaObj(aCondicaoPagamento, aController_condicaoPagamento);
             oFrmCadCondicaoPagamento.Carregatxt();
-            oFrmCadCondicaoPagamento.txtCodigo.Enabled = false;
             oFrmCadCondicaoPagamento.ShowDialog();
             oFrmCadCondicaoPagamento.btnSave.Text = aux;
             this.CarregaLV();
@@ -63,10 +61,8 @@ namespace projeto_patrica.pages.consulta
             oFrmCadCondicaoPagamento.ConhecaObj(aCondicaoPagamento, aController_condicaoPagamento);
             oFrmCadCondicaoPagamento.Carregatxt();
             oFrmCadCondicaoPagamento.Bloqueiatxt();
-            btnPesquisar.Enabled = false;
             oFrmCadCondicaoPagamento.ShowDialog(this);
             oFrmCadCondicaoPagamento.Desbloqueiatxt();
-            btnPesquisar.Enabled = true;
             oFrmCadCondicaoPagamento.btnSave.Text = aux;
             this.CarregaLV();
         }

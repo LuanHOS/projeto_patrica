@@ -95,8 +95,8 @@ namespace projeto_patrica.pages.cadastro
             oFuncionario.Turno = txtTurno.Text;
             oFuncionario.CargaHoraria = Convert.ToInt32(txtCargaHoraria.Text);
             oFuncionario.NumeroEndereco = txtNumeroEndereco.Text;
-            oFuncionario.ComplementoEndereco = txtComplementoEndereco.Text; 
-            oFuncionario.DataDemissao = dtpDataDemissao.Value == dtpDataDemissao.MinDate ? (DateTime?)null : dtpDataDemissao.Value;
+            oFuncionario.ComplementoEndereco = txtComplementoEndereco.Text;
+            oFuncionario.DataDemissao = dtpDataDemissao.Checked ? dtpDataDemissao.Value : (DateTime?)null;
 
             try
             {
@@ -143,8 +143,6 @@ namespace projeto_patrica.pages.cadastro
             txtEndereco.Clear();
             txtBairro.Clear();
             txtCep.Clear();
-            //comboBoxTipo.SelectedIndex = -1;
-            //comboBoxGenero.SelectedIndex = -1;
             dtpDataNascimentoCriacao.Value = DateTime.Today;
             txtMatricula.Clear();
             txtCargo.Clear();
@@ -158,7 +156,10 @@ namespace projeto_patrica.pages.cadastro
             txtNumeroEndereco.Clear(); 
             txtComplementoEndereco.Clear(); 
             dtpDataDemissao.Value = DateTime.Today; 
+            dtpDataDemissao.Checked = false;
 
+            dtpDataDemissao.Enabled = false;
+            lblDataDemissao.Enabled = false;
         }
 
         public override void Carregatxt()
@@ -177,11 +178,9 @@ namespace projeto_patrica.pages.cadastro
             txtCep.Text = oFuncionario.Cep;
             txtCidade.Text = oFuncionario.ACidade.Nome;
             txtEstado.Text = oFuncionario.ACidade.OEstado.Nome;
-
             dtpDataNascimentoCriacao.Value = (oFuncionario.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oFuncionario.DataNascimento_criacao;
             comboBoxGenero.SelectedIndex = oFuncionario.Genero == 'M' ? 0 : 1;
             checkBoxAtivo.Checked = oFuncionario.Ativo;
-
             txtMatricula.Text = oFuncionario.Matricula.ToString();
             txtCargo.Text = oFuncionario.Cargo;
             txtSalario.Text = oFuncionario.Salario.ToString("F2");
@@ -191,8 +190,12 @@ namespace projeto_patrica.pages.cadastro
             txtNumeroEndereco.Text = oFuncionario.NumeroEndereco;
             txtComplementoEndereco.Text = oFuncionario.ComplementoEndereco;  
             dtpDataDemissao.Value = (oFuncionario.DataDemissao ?? DateTime.Today);
+            dtpDataDemissao.Checked = oFuncionario.DataDemissao.HasValue;
             lblDataCadastroData.Text = oFuncionario.DataCadastro.ToShortDateString();
             lblDataUltimaEdicaoData.Text = oFuncionario.DataUltimaEdicao?.ToShortDateString() ?? " ";
+
+            dtpDataDemissao.Enabled = true;
+            lblDataDemissao.Enabled = true;
         }
 
         public override void Bloqueiatxt()
