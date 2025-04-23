@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace projeto_patrica.classes
 {
@@ -16,14 +12,20 @@ namespace projeto_patrica.classes
             id = 0;
             nome = " ";
             oPais = new pais();
-
+            ativo = true;
+            dataCadastro = DateTime.MinValue;
+            dataUltimaEdicao = null;
         }
 
-        public estado(int id, string nome, pais oPais) : base(id)
+        public estado(int id, string nome, pais oPais, bool ativo, DateTime dataCadastro, DateTime? dataUltimaEdicao)
+            : base(id, ativo, dataCadastro, dataUltimaEdicao)
         {
             this.id = id;
             this.nome = nome;
             this.oPais = oPais;
+            this.ativo = ativo;
+            this.dataCadastro = dataCadastro;
+            this.dataUltimaEdicao = dataUltimaEdicao;
         }
 
         public string Nome

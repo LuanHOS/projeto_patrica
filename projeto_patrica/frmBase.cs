@@ -82,12 +82,14 @@ namespace projeto_patrica
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.KeyPreview = true;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.MaximizeBox = true;
+            this.MinimizeBox = true;
             this.ShowIcon = false;
             this.AutoScroll = true;
             this.CancelButton = this.btnSair;
             this.Size = new Size(1360, 768);
+            this.AutoSize = false;
+            //this.AutoSizeMode = AutoSizeMode.GrowOnly;
         }
     }
 }

@@ -352,7 +352,6 @@
             // txtJuros
             // 
             this.txtJuros.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtJuros.Enabled = false;
             this.txtJuros.Location = new System.Drawing.Point(364, 106);
             this.txtJuros.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtJuros.Name = "txtJuros";
@@ -362,7 +361,6 @@
             // lblJuros
             // 
             this.lblJuros.AutoSize = true;
-            this.lblJuros.Enabled = false;
             this.lblJuros.Location = new System.Drawing.Point(361, 87);
             this.lblJuros.Name = "lblJuros";
             this.lblJuros.Size = new System.Drawing.Size(63, 16);
@@ -372,7 +370,6 @@
             // txtMulta
             // 
             this.txtMulta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMulta.Enabled = false;
             this.txtMulta.Location = new System.Drawing.Point(474, 106);
             this.txtMulta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMulta.Name = "txtMulta";
@@ -382,7 +379,6 @@
             // lblMulta
             // 
             this.lblMulta.AutoSize = true;
-            this.lblMulta.Enabled = false;
             this.lblMulta.Location = new System.Drawing.Point(471, 87);
             this.lblMulta.Name = "lblMulta";
             this.lblMulta.Size = new System.Drawing.Size(62, 16);
@@ -392,7 +388,6 @@
             // txtDesconto
             // 
             this.txtDesconto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDesconto.Enabled = false;
             this.txtDesconto.Location = new System.Drawing.Point(580, 105);
             this.txtDesconto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDesconto.Name = "txtDesconto";
@@ -402,7 +397,6 @@
             // lblDesconto
             // 
             this.lblDesconto.AutoSize = true;
-            this.lblDesconto.Enabled = false;
             this.lblDesconto.Location = new System.Drawing.Point(577, 87);
             this.lblDesconto.Name = "lblDesconto";
             this.lblDesconto.Size = new System.Drawing.Size(88, 16);
@@ -412,6 +406,7 @@
             // frmCadastroCondicaoPagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 721);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblDesconto);
             this.Controls.Add(this.lblMulta);
@@ -426,6 +421,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroCondicaoPagamento";
             this.Text = "Cadastro de Condição de Pagamento";
+            this.Controls.SetChildIndex(this.checkBoxAtivo, 0);
             this.Controls.SetChildIndex(this.lblCod, 0);
             this.Controls.SetChildIndex(this.lblDataCadastro, 0);
             this.Controls.SetChildIndex(this.lblDataCadastroData, 0);

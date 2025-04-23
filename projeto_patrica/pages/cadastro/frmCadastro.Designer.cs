@@ -36,6 +36,7 @@
             this.lblDataCadastroData = new System.Windows.Forms.Label();
             this.lblDataUltimaEdicaoData = new System.Windows.Forms.Label();
             this.lblUltimoUsuarioQueEditouNome = new System.Windows.Forms.Label();
+            this.checkBoxAtivo = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnSair
@@ -69,7 +70,6 @@
             // lblDataCadastro
             // 
             this.lblDataCadastro.AutoSize = true;
-            this.lblDataCadastro.Enabled = false;
             this.lblDataCadastro.Location = new System.Drawing.Point(21, 395);
             this.lblDataCadastro.Name = "lblDataCadastro";
             this.lblDataCadastro.Size = new System.Drawing.Size(116, 16);
@@ -79,7 +79,6 @@
             // lblDataUltimaEdicao
             // 
             this.lblDataUltimaEdicao.AutoSize = true;
-            this.lblDataUltimaEdicao.Enabled = false;
             this.lblDataUltimaEdicao.Location = new System.Drawing.Point(21, 411);
             this.lblDataUltimaEdicao.Name = "lblDataUltimaEdicao";
             this.lblDataUltimaEdicao.Size = new System.Drawing.Size(145, 16);
@@ -89,7 +88,6 @@
             // lblUltimoUsuarioQueEditou
             // 
             this.lblUltimoUsuarioQueEditou.AutoSize = true;
-            this.lblUltimoUsuarioQueEditou.Enabled = false;
             this.lblUltimoUsuarioQueEditou.Location = new System.Drawing.Point(21, 427);
             this.lblUltimoUsuarioQueEditou.Name = "lblUltimoUsuarioQueEditou";
             this.lblUltimoUsuarioQueEditou.Size = new System.Drawing.Size(165, 16);
@@ -99,36 +97,45 @@
             // lblDataCadastroData
             // 
             this.lblDataCadastroData.AutoSize = true;
-            this.lblDataCadastroData.Enabled = false;
             this.lblDataCadastroData.Location = new System.Drawing.Point(143, 395);
             this.lblDataCadastroData.Name = "lblDataCadastroData";
-            this.lblDataCadastroData.Size = new System.Drawing.Size(93, 16);
+            this.lblDataCadastroData.Size = new System.Drawing.Size(0, 16);
             this.lblDataCadastroData.TabIndex = 3;
-            this.lblDataCadastroData.Text = "DD/MM/AAAA";
             // 
             // lblDataUltimaEdicaoData
             // 
             this.lblDataUltimaEdicaoData.AutoSize = true;
-            this.lblDataUltimaEdicaoData.Enabled = false;
             this.lblDataUltimaEdicaoData.Location = new System.Drawing.Point(172, 411);
             this.lblDataUltimaEdicaoData.Name = "lblDataUltimaEdicaoData";
-            this.lblDataUltimaEdicaoData.Size = new System.Drawing.Size(93, 16);
+            this.lblDataUltimaEdicaoData.Size = new System.Drawing.Size(0, 16);
             this.lblDataUltimaEdicaoData.TabIndex = 3;
-            this.lblDataUltimaEdicaoData.Text = "DD/MM/AAAA";
             // 
             // lblUltimoUsuarioQueEditouNome
             // 
             this.lblUltimoUsuarioQueEditouNome.AutoSize = true;
-            this.lblUltimoUsuarioQueEditouNome.Enabled = false;
             this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(192, 427);
             this.lblUltimoUsuarioQueEditouNome.Name = "lblUltimoUsuarioQueEditouNome";
-            this.lblUltimoUsuarioQueEditouNome.Size = new System.Drawing.Size(155, 16);
+            this.lblUltimoUsuarioQueEditouNome.Size = new System.Drawing.Size(0, 16);
             this.lblUltimoUsuarioQueEditouNome.TabIndex = 3;
-            this.lblUltimoUsuarioQueEditouNome.Text = "Usuário Não Identificado";
+            // 
+            // checkBoxAtivo
+            // 
+            this.checkBoxAtivo.AutoSize = true;
+            this.checkBoxAtivo.Checked = true;
+            this.checkBoxAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxAtivo.Location = new System.Drawing.Point(741, 23);
+            this.checkBoxAtivo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBoxAtivo.Name = "checkBoxAtivo";
+            this.checkBoxAtivo.Size = new System.Drawing.Size(59, 20);
+            this.checkBoxAtivo.TabIndex = 100;
+            this.checkBoxAtivo.Text = "Ativo";
+            this.checkBoxAtivo.UseVisualStyleBackColor = true;
             // 
             // frmCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 721);
+            this.Controls.Add(this.checkBoxAtivo);
             this.Controls.Add(this.lblUltimoUsuarioQueEditouNome);
             this.Controls.Add(this.lblUltimoUsuarioQueEditou);
             this.Controls.Add(this.lblDataUltimaEdicaoData);
@@ -149,6 +156,7 @@
             this.Controls.SetChildIndex(this.lblDataUltimaEdicaoData, 0);
             this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditou, 0);
             this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditouNome, 0);
+            this.Controls.SetChildIndex(this.checkBoxAtivo, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,5 +171,6 @@
         public System.Windows.Forms.Label lblDataCadastroData;
         public System.Windows.Forms.Label lblDataUltimaEdicaoData;
         public System.Windows.Forms.Label lblUltimoUsuarioQueEditouNome;
+        protected System.Windows.Forms.CheckBox checkBoxAtivo;
     }
 }

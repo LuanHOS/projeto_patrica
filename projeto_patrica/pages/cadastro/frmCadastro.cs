@@ -15,9 +15,7 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastro() : base()
         {
             InitializeComponent();
-            //ConfigurarFormularioBase();
-            this.txtCodigo.Enabled = false;
-
+            txtCodigo.Enabled = false;
         }
 
 
@@ -61,7 +59,11 @@ namespace projeto_patrica.pages.cadastro
 
         public virtual void Limpartxt()
         {
-            this.txtCodigo.Text = "0";
+            txtCodigo.Text = "0";
+            lblDataCadastroData.Text = " ";
+            lblDataUltimaEdicaoData.Text = " ";
+            lblUltimoUsuarioQueEditouNome.Text = " ";
+            checkBoxAtivo.Checked = true;
         }
 
 
@@ -82,7 +84,8 @@ namespace projeto_patrica.pages.cadastro
 
         public virtual void Bloqueiatxt()
         {
-            this.txtCodigo.Enabled = false;
+            txtCodigo.Enabled = false;
+            checkBoxAtivo.Enabled = false;
         }
 
 
@@ -93,7 +96,8 @@ namespace projeto_patrica.pages.cadastro
 
         public virtual void Desbloqueiatxt()
         {
-            //this.txtCodigo.Enabled = true;
+            checkBoxAtivo.Enabled = true;
+
         }
 
         public override void ConhecaObj(object obj, object ctrl)

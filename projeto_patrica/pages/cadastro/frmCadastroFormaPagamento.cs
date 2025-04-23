@@ -10,7 +10,7 @@ namespace projeto_patrica.pages.cadastro
         private formaPagamento aFormaPagamento;
         private Controller_formaPagamento aController_formaPagamento;
 
-        public frmCadastroFormaPagamento()
+        public frmCadastroFormaPagamento() : base()
         {
             InitializeComponent();
         }
@@ -33,6 +33,7 @@ namespace projeto_patrica.pages.cadastro
 
             aFormaPagamento.Id = Convert.ToInt32(txtCodigo.Text);
             aFormaPagamento.Descricao = txtDescricao.Text;
+            aFormaPagamento.Ativo = checkBoxAtivo.Checked;
 
             try
             {
@@ -71,25 +72,33 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Limpartxt()
         {
-            txtCodigo.Text = "0";
+            base.Limpartxt();
+
             txtDescricao.Clear();
         }
 
         public override void Carregatxt()
         {
+            base.Carregatxt();
+
             txtCodigo.Text = Convert.ToString(aFormaPagamento.Id);
             txtDescricao.Text = aFormaPagamento.Descricao;
+            checkBoxAtivo.Checked = aFormaPagamento.Ativo;
+            lblDataCadastroData.Text = aFormaPagamento.DataCadastro.ToShortDateString();
+            lblDataUltimaEdicaoData.Text = aFormaPagamento.DataUltimaEdicao?.ToShortDateString() ?? " ";
         }
 
         public override void Bloqueiatxt()
         {
-            txtCodigo.Enabled = false;
+            base.Bloqueiatxt();
+
             txtDescricao.Enabled = false;
         }
 
         public override void Desbloqueiatxt()
         {
-            txtCodigo.Enabled = true;
+            base.Desbloqueiatxt();
+
             txtDescricao.Enabled = true;
         }
     }

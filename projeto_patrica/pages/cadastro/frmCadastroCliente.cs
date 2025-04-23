@@ -13,14 +13,11 @@ namespace projeto_patrica.pages.cadastro
         private frmConsultaCidade oFrmConsultaCidade;
         private frmConsultaCondicaoPagamento oFrmConsultaCondicaoPagamento;
 
-        public frmCadastroCliente()
+        public frmCadastroCliente() : base()
         {
             InitializeComponent();
-            comboBoxTipo.SelectedIndexChanged += ComboBoxTipo_SelectedIndexChanged;
-            btnPesquisarCidade.Click += BtnPesquisarCidade_Click;
             comboBoxTipo.SelectedIndex = -1;
             HabilitarCampos(false);
-            checkBoxAtivo.Enabled = true;
         }
 
         public override void ConhecaObj(object obj, object ctrl)
@@ -89,6 +86,10 @@ namespace projeto_patrica.pages.cadastro
             oCliente.Cep = txtCep.Text;
             oCliente.Ativo = checkBoxAtivo.Checked;
             oCliente.Genero = comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F';
+            oCliente.NumeroEndereco = txtNumeroEndereco.Text;
+            oCliente.ComplementoEndereco = txtComplementoEndereco.Text;
+            oCliente.LimiteDeCredito = string.IsNullOrWhiteSpace(txtLimiteDeCredito.Text) ? 0 : Convert.ToDecimal(txtLimiteDeCredito.Text.Replace(".", ","));
+
 
             try
             {
@@ -126,7 +127,7 @@ namespace projeto_patrica.pages.cadastro
         public override void Limpartxt()
         {
             base.Limpartxt();
-            txtCodigo.Text = "0";
+
             txtNomeRazaoSocial.Clear();
             txtApelidoNomeFantasia.Clear();
             txtCpfCnpj.Clear();
@@ -137,9 +138,14 @@ namespace projeto_patrica.pages.cadastro
             txtBairro.Clear();
             txtCep.Clear();
             txtCidade.Clear();
+            txtEstado.Clear();
+            txtNumeroEndereco.Clear();
+            txtComplementoEndereco.Clear();
+            txtLimiteDeCredito.Clear();
+            txtCondicaoPagamento.Clear();
             comboBoxTipo.SelectedIndex = -1;
             comboBoxGenero.SelectedIndex = -1;
-            checkBoxAtivo.Checked = true;
+            dtpDataNascimentoCriacao.Value = DateTime.Today;
             oCliente.ACidade = new cidade();
             oCliente.ACondicaoPagamento = new condicaoPagamento();
             HabilitarCampos(false);
@@ -148,6 +154,7 @@ namespace projeto_patrica.pages.cadastro
         public override void Carregatxt()
         {
             base.Carregatxt();
+
             txtCodigo.Text = oCliente.Id.ToString();
             txtNomeRazaoSocial.Text = oCliente.Nome_razaoSocial;
             txtApelidoNomeFantasia.Text = oCliente.Apelido_nomeFantasia;
@@ -159,27 +166,30 @@ namespace projeto_patrica.pages.cadastro
             txtBairro.Text = oCliente.Bairro;
             txtCep.Text = oCliente.Cep;
             txtCidade.Text = oCliente.ACidade.Nome;
+            txtEstado.Text = oCliente.ACidade.OEstado.Nome;
             txtCondicaoPagamento.Text = oCliente.ACondicaoPagamento.Descricao;
-
-            if (oCliente.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate)
-                dtpDataNascimentoCriacao.Value = dtpDataNascimentoCriacao.MinDate;
-            else
-                dtpDataNascimentoCriacao.Value = oCliente.DataNascimento_criacao;
-
+            dtpDataNascimentoCriacao.Value = (oCliente.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oCliente.DataNascimento_criacao;
+            txtNumeroEndereco.Text = oCliente.NumeroEndereco;
+            txtComplementoEndereco.Text = oCliente.ComplementoEndereco;
+            txtLimiteDeCredito.Text = oCliente.LimiteDeCredito.ToString("F2");
+            lblDataCadastroData.Text = oCliente.DataCadastro.ToShortDateString();
+            lblDataUltimaEdicaoData.Text = oCliente.DataUltimaEdicao?.ToShortDateString() ?? " ";
             comboBoxTipo.SelectedIndex = oCliente.TipoPessoa == 'F' ? 0 : 1;
-            comboBoxGenero.SelectedIndex = oCliente.Genero == 'M' ? 0 : (oCliente.Genero == 'F' ? 1 : -1);
+            comboBoxGenero.SelectedIndex = oCliente.Genero == 'M' ? 0 : 1;
             checkBoxAtivo.Checked = oCliente.Ativo;
         }
 
         public override void Bloqueiatxt()
         {
             base.Bloqueiatxt();
+
             HabilitarCampos(false);
         }
 
         public override void Desbloqueiatxt()
         {
             base.Desbloqueiatxt();
+
             if (comboBoxTipo.SelectedIndex != -1) HabilitarCampos(true);
         }
 
@@ -202,15 +212,16 @@ namespace projeto_patrica.pages.cadastro
             if (oFrmConsultaCidade == null)
                 oFrmConsultaCidade = new frmConsultaCidade();
 
-            cidade oCidade = new cidade();
+            cidade aCidade = new cidade();
             Controller_cidade controller = new Controller_cidade();
-            oFrmConsultaCidade.ConhecaObj(oCidade, controller);
+            oFrmConsultaCidade.ConhecaObj(aCidade, controller);
             oFrmConsultaCidade.ShowDialog();
 
-            if (oCidade.Id != 0)
+            if (aCidade.Id != 0)
             {
-                oCliente.ACidade = oCidade;
-                txtCidade.Text = oCidade.Nome;
+                oCliente.ACidade = aCidade;
+                txtCidade.Text = aCidade.Nome;
+                txtEstado.Text = aCidade.OEstado.Nome;
             }
         }
 
@@ -243,11 +254,15 @@ namespace projeto_patrica.pages.cadastro
             txtBairro.Enabled = habilita;
             txtCep.Enabled = habilita;
             txtCidade.Enabled = habilita;
+            txtEstado.Enabled = habilita;
             txtCondicaoPagamento.Enabled = habilita;
             dtpDataNascimentoCriacao.Enabled = habilita;
             comboBoxGenero.Enabled = habilita;
             btnPesquisarCidade.Enabled = habilita;
             btnPesquisarCondicaoPagamento.Enabled = habilita;
+            txtNumeroEndereco.Enabled = habilita;
+            txtComplementoEndereco.Enabled = habilita;
+            txtLimiteDeCredito.Enabled = habilita;
 
             if (btnSave.Text == "Excluir")
             {

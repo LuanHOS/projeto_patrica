@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using projeto_patrica.classes;
+using projeto_patrica.controller;
 using System;
 using System.Collections.Generic;
 
@@ -19,37 +20,46 @@ namespace projeto_patrica.dao
             string sql;
 
             sql = "INSERT INTO funcionario (TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, " +
-                  "RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, MATRICULA, CARGO, SALARIO, DATA_ADMISSAO, TURNO, CARGA_HORARIA, GENERO) " +
+                  "RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, MATRICULA, CARGO, SALARIO, DATA_ADMISSAO, TURNO, CARGA_HORARIA, GENERO, " +
+                  "NUMERO_ENDERECO, COMPLEMENTO_ENDERECO, DATA_DEMISSAO) " +
                   "VALUES('" + oFuncionario.TipoPessoa + "','" + oFuncionario.Nome_razaoSocial + "','" + oFuncionario.Apelido_nomeFantasia + "','" + oFuncionario.DataNascimento_criacao.ToString("yyyy-MM-dd") + "','" + oFuncionario.Cpf_cnpj + "','" +
                   oFuncionario.Rg_inscricaoEstadual + "','" + oFuncionario.Email + "','" + oFuncionario.Telefone + "','" + oFuncionario.Endereco + "','" + oFuncionario.Bairro + "','" +
                   oFuncionario.ACidade.Id + "','" + oFuncionario.Cep + "','" + (oFuncionario.Ativo ? 1 : 0) + "','" + oFuncionario.Matricula + "','" + oFuncionario.Cargo + "','" +
-                  oFuncionario.Salario.ToString().Replace(",", ".") + "','" + oFuncionario.DataAdmissao.ToString("yyyy-MM-dd") + "','" + oFuncionario.Turno + "','" + oFuncionario.CargaHoraria + "','" + oFuncionario.Genero + "')";
+                  oFuncionario.Salario.ToString().Replace(",", ".") + "','" + oFuncionario.DataAdmissao.ToString("yyyy-MM-dd") + "','" + oFuncionario.Turno + "','" + oFuncionario.CargaHoraria + "','" + oFuncionario.Genero + "', " +
+                  "'" + oFuncionario.NumeroEndereco + "', '" + oFuncionario.ComplementoEndereco + "', " +
+                  (oFuncionario.DataDemissao.HasValue ? "'" + oFuncionario.DataDemissao.Value.ToString("yyyy-MM-dd") + "'" : "NULL") + ")";
+
 
             if (oFuncionario.Id != 0)
             {
                 operacao = 'U';
                 sql = "UPDATE funcionario SET " +
-                      "TIPO_PESSOA = '" + oFuncionario.TipoPessoa + "', " +
-                      "NOME_RAZAO_SOCIAL = '" + oFuncionario.Nome_razaoSocial + "', " +
-                      "APELIDO_NOME_FANTASIA = '" + oFuncionario.Apelido_nomeFantasia + "', " +
-                      "DATA_NASCIMENTO_CRIACAO = '" + oFuncionario.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', " +
-                      "CPF_CNPJ = '" + oFuncionario.Cpf_cnpj + "', " +
-                      "RG_INSCRICAO_ESTADUAL = '" + oFuncionario.Rg_inscricaoEstadual + "', " +
-                      "EMAIL = '" + oFuncionario.Email + "', " +
-                      "TELEFONE = '" + oFuncionario.Telefone + "', " +
-                      "ENDERECO = '" + oFuncionario.Endereco + "', " +
-                      "BAIRRO = '" + oFuncionario.Bairro + "', " +
-                      "ID_CIDADE = '" + oFuncionario.ACidade.Id + "', " +
-                      "CEP = '" + oFuncionario.Cep + "', " +
-                      "ATIVO = '" + (oFuncionario.Ativo ? 1 : 0) + "', " +
-                      "MATRICULA = '" + oFuncionario.Matricula + "', " +
-                      "CARGO = '" + oFuncionario.Cargo + "', " +
-                      "SALARIO = '" + oFuncionario.Salario.ToString().Replace(",", ".") + "', " +
-                      "DATA_ADMISSAO = '" + oFuncionario.DataAdmissao.ToString("yyyy-MM-dd") + "', " +
-                      "TURNO = '" + oFuncionario.Turno + "', " +
-                      "CARGA_HORARIA = '" + oFuncionario.CargaHoraria + "', " +
-                      "GENERO = '" + oFuncionario.Genero + "' " +
-                      "WHERE ID_FUNCIONARIO = '" + oFuncionario.Id + "'";
+                    "TIPO_PESSOA = '" + oFuncionario.TipoPessoa + "', " +
+                    "NOME_RAZAO_SOCIAL = '" + oFuncionario.Nome_razaoSocial + "', " +
+                    "APELIDO_NOME_FANTASIA = '" + oFuncionario.Apelido_nomeFantasia + "', " +
+                    "DATA_NASCIMENTO_CRIACAO = '" + oFuncionario.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', " +
+                    "CPF_CNPJ = '" + oFuncionario.Cpf_cnpj + "', " +
+                    "RG_INSCRICAO_ESTADUAL = '" + oFuncionario.Rg_inscricaoEstadual + "', " +
+                    "EMAIL = '" + oFuncionario.Email + "', " +
+                    "TELEFONE = '" + oFuncionario.Telefone + "', " +
+                    "ENDERECO = '" + oFuncionario.Endereco + "', " +
+                    "BAIRRO = '" + oFuncionario.Bairro + "', " +
+                    "ID_CIDADE = '" + oFuncionario.ACidade.Id + "', " +
+                    "CEP = '" + oFuncionario.Cep + "', " +
+                    "ATIVO = '" + (oFuncionario.Ativo ? 1 : 0) + "', " +
+                    "MATRICULA = '" + oFuncionario.Matricula + "', " +
+                    "CARGO = '" + oFuncionario.Cargo + "', " +
+                    "SALARIO = '" + oFuncionario.Salario.ToString().Replace(",", ".") + "', " +
+                    "DATA_ADMISSAO = '" + oFuncionario.DataAdmissao.ToString("yyyy-MM-dd") + "', " +
+                    "TURNO = '" + oFuncionario.Turno + "', " +
+                    "CARGA_HORARIA = '" + oFuncionario.CargaHoraria + "', " +
+                    "GENERO = '" + oFuncionario.Genero + "', " +
+                    "NUMERO_ENDERECO = '" + oFuncionario.NumeroEndereco + "', " +
+                    "COMPLEMENTO_ENDERECO = '" + oFuncionario.ComplementoEndereco + "', " +
+                    "DATA_DEMISSAO = " + (oFuncionario.DataDemissao.HasValue ? "'" + oFuncionario.DataDemissao.Value.ToString("yyyy-MM-dd") + "'" : "NULL") + ", " +
+                    "DATA_ULTIMA_EDICAO = CURRENT_DATE " +
+                    "WHERE ID_FUNCIONARIO = '" + oFuncionario.Id + "'";
+
             }
 
             MySqlCommand conn = new MySqlCommand();
@@ -103,14 +113,22 @@ namespace projeto_patrica.dao
                     oFuncionario.Ativo = Convert.ToBoolean(dr["ATIVO"]);
                     oFuncionario.Matricula = Convert.ToInt32(dr["MATRICULA"]);
                     oFuncionario.Cargo = dr["CARGO"].ToString();
-                    oFuncionario.Salario = float.Parse(dr["SALARIO"].ToString());
+                    oFuncionario.Salario = decimal.Parse(dr["SALARIO"].ToString());
                     oFuncionario.DataAdmissao = Convert.ToDateTime(dr["DATA_ADMISSAO"]);
                     oFuncionario.Turno = dr["TURNO"].ToString();
                     oFuncionario.CargaHoraria = Convert.ToInt32(dr["CARGA_HORARIA"]);
                     oFuncionario.Genero = dr["GENERO"].ToString() == "" ? ' ' : Convert.ToChar(dr["GENERO"]);
+                    oFuncionario.NumeroEndereco = dr["NUMERO_ENDERECO"].ToString();
+                    oFuncionario.ComplementoEndereco = dr["COMPLEMENTO_ENDERECO"].ToString();
+                    oFuncionario.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                    oFuncionario.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
+                    oFuncionario.DataDemissao = dr.IsDBNull(dr.GetOrdinal("DATA_DEMISSAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_DEMISSAO"]);
                 }
 
                 conn.Connection.Close();
+
+                Controller_cidade controller = new Controller_cidade();
+                controller.CarregaObj(oFuncionario.ACidade);
             }
             catch (MySqlException ex)
             {
@@ -166,17 +184,21 @@ namespace projeto_patrica.dao
                 oFuncionario.Telefone = dr["TELEFONE"].ToString();
                 oFuncionario.Endereco = dr["ENDERECO"].ToString();
                 oFuncionario.Bairro = dr["BAIRRO"].ToString();
-                oFuncionario.ACidade = new cidade();
                 oFuncionario.ACidade.Id = Convert.ToInt32(dr["ID_CIDADE"]);
                 oFuncionario.Cep = dr["CEP"].ToString();
                 oFuncionario.Ativo = Convert.ToBoolean(dr["ATIVO"]);
                 oFuncionario.Matricula = Convert.ToInt32(dr["MATRICULA"]);
                 oFuncionario.Cargo = dr["CARGO"].ToString();
-                oFuncionario.Salario = float.Parse(dr["SALARIO"].ToString());
+                oFuncionario.Salario = decimal.Parse(dr["SALARIO"].ToString());
                 oFuncionario.DataAdmissao = Convert.ToDateTime(dr["DATA_ADMISSAO"]);
                 oFuncionario.Turno = dr["TURNO"].ToString();
                 oFuncionario.CargaHoraria = Convert.ToInt32(dr["CARGA_HORARIA"]);
                 oFuncionario.Genero = dr["GENERO"].ToString() == "" ? ' ' : Convert.ToChar(dr["GENERO"]);
+                oFuncionario.NumeroEndereco = dr["NUMERO_ENDERECO"].ToString();
+                oFuncionario.ComplementoEndereco = dr["COMPLEMENTO_ENDERECO"].ToString();
+                oFuncionario.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                oFuncionario.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
+                oFuncionario.DataDemissao = dr.IsDBNull(dr.GetOrdinal("DATA_DEMISSAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_DEMISSAO"]);
 
                 lista.Add(oFuncionario);
             }

@@ -36,11 +36,6 @@ namespace projeto_patrica.controller
             return aDao_condicaoPagamento.ListarCondicaoPagamento();
         }
 
-        public List<parcelaCondicaoPagamento> ListaParcelas(int idCondicaoPagamento)
-        {
-            return aDao_condicaoPagamento.ListarParcelas(idCondicaoPagamento);
-        }
-
         public string SalvarParcela(parcelaCondicaoPagamento parcela, MySqlConnection conn)
         {
             return aDao_condicaoPagamento.SalvarParcela(parcela, conn);

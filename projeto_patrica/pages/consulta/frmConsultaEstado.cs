@@ -135,6 +135,7 @@ namespace projeto_patrica.pages.consulta
                 oEstado.Nome = estadoSelecionado.Nome;
                 oEstado.OPais.Id = estadoSelecionado.OPais.Id;
                 oEstado.OPais.Nome = estadoSelecionado.OPais.Nome;
+                oEstado.Ativo = estadoSelecionado.Ativo;
             }
         }
     }

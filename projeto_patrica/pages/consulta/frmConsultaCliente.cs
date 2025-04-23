@@ -156,12 +156,17 @@ namespace projeto_patrica.pages.consulta
                 oCliente.Email = selecionado.Email;
                 oCliente.Telefone = selecionado.Telefone;
                 oCliente.Endereco = selecionado.Endereco;
+                oCliente.NumeroEndereco = selecionado.NumeroEndereco;
+                oCliente.ComplementoEndereco = selecionado.ComplementoEndereco;
                 oCliente.Bairro = selecionado.Bairro;
                 oCliente.ACidade = selecionado.ACidade;
                 oCliente.Cep = selecionado.Cep;
                 oCliente.Ativo = selecionado.Ativo;
                 oCliente.Genero = selecionado.Genero;
                 oCliente.ACondicaoPagamento = selecionado.ACondicaoPagamento;
+                oCliente.LimiteDeCredito = selecionado.LimiteDeCredito;
+                oCliente.DataCadastro = selecionado.DataCadastro;
+                oCliente.DataUltimaEdicao = selecionado.DataUltimaEdicao;
             }
         }
     }

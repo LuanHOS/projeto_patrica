@@ -61,7 +61,7 @@ namespace projeto_patrica.pages.consulta
             oFrmCadastroFuncionario.ConhecaObj(oFuncionario, aController_funcionario);
             oFrmCadastroFuncionario.Carregatxt();
             oFrmCadastroFuncionario.Bloqueiatxt();
-            oFrmCadastroFuncionario.ShowDialog(this);
+            oFrmCadastroFuncionario.ShowDialog();
             oFrmCadastroFuncionario.Desbloqueiatxt();
             oFrmCadastroFuncionario.btnSave.Text = aux;
             this.CarregaLV();

@@ -39,6 +39,30 @@
             // 
             this.btnSave.TabIndex = 5;
             // 
+            // lblDataCadastro
+            // 
+            this.lblDataCadastro.Enabled = true;
+            // 
+            // lblDataUltimaEdicao
+            // 
+            this.lblDataUltimaEdicao.Enabled = true;
+            // 
+            // lblUltimoUsuarioQueEditou
+            // 
+            this.lblUltimoUsuarioQueEditou.Enabled = true;
+            // 
+            // lblDataCadastroData
+            // 
+            this.lblDataCadastroData.Enabled = true;
+            // 
+            // lblDataUltimaEdicaoData
+            // 
+            this.lblDataUltimaEdicaoData.Enabled = true;
+            // 
+            // lblUltimoUsuarioQueEditouNome
+            // 
+            this.lblUltimoUsuarioQueEditouNome.Enabled = true;
+            // 
             // btnSair
             // 
             this.btnSair.TabIndex = 6;
@@ -98,6 +122,7 @@
             // frmCadastroEstado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 721);
             this.Controls.Add(this.btnPesquisarPais);
             this.Controls.Add(this.txtPais);
             this.Controls.Add(this.lblPais);
@@ -106,6 +131,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroEstado";
             this.Text = "Cadastro de Estado";
+            this.Controls.SetChildIndex(this.checkBoxAtivo, 0);
             this.Controls.SetChildIndex(this.lblCod, 0);
             this.Controls.SetChildIndex(this.lblDataCadastro, 0);
             this.Controls.SetChildIndex(this.lblDataCadastroData, 0);

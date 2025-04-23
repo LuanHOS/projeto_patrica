@@ -14,7 +14,8 @@ namespace projeto_patrica.pages.cadastro
 	{
         private pais oPais;
         private Controller_pais aController_pais;
-        public frmCadastroPais()
+
+        public frmCadastroPais() : base()
         {
             InitializeComponent();
         }
@@ -35,6 +36,7 @@ namespace projeto_patrica.pages.cadastro
 
             oPais.Id = Convert.ToInt16(txtCodigo.Text);
             oPais.Nome = txtNome.Text;
+            oPais.Ativo = checkBoxAtivo.Checked;
 
             try
             {
@@ -74,25 +76,28 @@ namespace projeto_patrica.pages.cadastro
         public override void Limpartxt()
         {
             base.Limpartxt();
-            this.txtNome.Clear();
+            txtNome.Clear();
         }
 
         public override void Carregatxt()
         {
             base.Carregatxt();
-            this.txtCodigo.Text = Convert.ToString(oPais.Id);
-            this.txtNome.Text = oPais.Nome;
+            txtCodigo.Text = Convert.ToString(oPais.Id);
+            txtNome.Text = oPais.Nome;
+            lblDataCadastroData.Text = oPais.DataCadastro.ToShortDateString();
+            lblDataUltimaEdicaoData.Text = oPais.DataUltimaEdicao?.ToShortDateString() ?? " ";
+            checkBoxAtivo.Checked = oPais.Ativo;
         }
 
         public override void Bloqueiatxt()
         {
             base.Bloqueiatxt();
-            this.txtNome.Enabled = false;
+            txtNome.Enabled = false;
         }
         public override void Desbloqueiatxt()
         {
             base.Desbloqueiatxt();
-            this.txtNome.Enabled = true;
+            txtNome.Enabled = true;
         }
     }
 }

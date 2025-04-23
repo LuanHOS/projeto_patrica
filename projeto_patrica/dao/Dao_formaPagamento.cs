@@ -9,6 +9,7 @@ namespace projeto_patrica.dao
     {
         public Dao_formaPagamento()
         {
+
         }
 
         public override string Salvar(object obj)
@@ -16,17 +17,21 @@ namespace projeto_patrica.dao
             formaPagamento aFormaPagamento = (formaPagamento)obj;
             string ok = "";
             char operacao = 'I';
-            string sql = "";
+            string sql;
 
             if (aFormaPagamento.Id != 0)
             {
                 operacao = 'U';
-                sql = "UPDATE FORMA_PAGAMENTO SET DESCRICAO = '" + aFormaPagamento.Descricao + "' " +
+                sql = "UPDATE FORMA_PAGAMENTO SET " +
+                      "DESCRICAO = '" + aFormaPagamento.Descricao + "', " +
+                      "ATIVO = '" + (aFormaPagamento.Ativo ? 1 : 0) + "', " +
+                      "DATA_ULTIMA_EDICAO = CURRENT_DATE " +
                       "WHERE ID_FORMA_PAGAMENTO = '" + aFormaPagamento.Id + "'";
             }
             else
             {
-                sql = "INSERT INTO FORMA_PAGAMENTO (DESCRICAO) VALUES ('" + aFormaPagamento.Descricao + "')";
+                sql = "INSERT INTO FORMA_PAGAMENTO (DESCRICAO, ATIVO) " +
+                      "VALUES ('" + aFormaPagamento.Descricao + "', '" + (aFormaPagamento.Ativo ? 1 : 0) + "')";
             }
 
             MySqlCommand conn = new MySqlCommand();
@@ -85,8 +90,11 @@ namespace projeto_patrica.dao
 
                 while (dr.Read())
                 {
-                    aFormaPagamento.Id = Convert.ToInt32(dr.GetValue(0));
-                    aFormaPagamento.Descricao = dr.GetString(1);
+                    aFormaPagamento.Id = Convert.ToInt32(dr["ID_FORMA_PAGAMENTO"]);
+                    aFormaPagamento.Descricao = dr["DESCRICAO"].ToString();
+                    aFormaPagamento.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                    aFormaPagamento.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                    aFormaPagamento.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
                 }
 
                 conn.Connection.Close();
@@ -112,8 +120,12 @@ namespace projeto_patrica.dao
             while (dr.Read())
             {
                 aFormaPagamento = new formaPagamento();
-                aFormaPagamento.Id = Convert.ToInt32(dr.GetValue(0));
-                aFormaPagamento.Descricao = dr.GetString(1);
+                aFormaPagamento.Id = Convert.ToInt32(dr["ID_FORMA_PAGAMENTO"]);
+                aFormaPagamento.Descricao = dr["DESCRICAO"].ToString();
+                aFormaPagamento.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                aFormaPagamento.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                aFormaPagamento.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
+
                 lista.Add(aFormaPagamento);
             }
 

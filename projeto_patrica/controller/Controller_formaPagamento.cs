@@ -39,10 +39,10 @@ namespace projeto_patrica.controller
 
         public formaPagamento CarregaPorId(int id)
         {
-            formaPagamento aForma = new formaPagamento();
-            aForma.Id = id;
-            aDao_formaPagamento.CarregaObj(aForma);
-            return aForma;
+            formaPagamento aFormaPagamento = new formaPagamento();
+            aFormaPagamento.Id = id;
+            aDao_formaPagamento.CarregaObj(aFormaPagamento);
+            return aFormaPagamento;
         }
     }
 }

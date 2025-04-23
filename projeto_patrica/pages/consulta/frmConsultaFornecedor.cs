@@ -163,8 +163,9 @@ namespace projeto_patrica.pages.consulta
                 oFornecedor.Genero = selecionado.Genero;
                 oFornecedor.InscricaoEstadualSubstitutoTributario = selecionado.InscricaoEstadualSubstitutoTributario;
                 oFornecedor.ACondicaoPagamento = selecionado.ACondicaoPagamento;
+                oFornecedor.NumeroEndereco = selecionado.NumeroEndereco;
+                oFornecedor.ComplementoEndereco = selecionado.ComplementoEndereco;
             }
         }
-
     }
 }

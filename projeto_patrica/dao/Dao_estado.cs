@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using projeto_patrica.classes;
+using projeto_patrica.controller;
 using System;
 using System.Collections.Generic;
 
@@ -18,12 +19,18 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
-            sql = "INSERT INTO estado (NOME, ID_PAIS) VALUES('" + oEstado.Nome + "', '" + oEstado.OPais.Id + "')";
+            sql = "INSERT INTO estado (NOME, ID_PAIS, ATIVO) " +
+                  "VALUES('" + oEstado.Nome + "', '" + oEstado.OPais.Id + "', '" + (oEstado.Ativo ? 1 : 0) + "')";
 
             if (oEstado.Id != 0)
             {
                 operacao = 'U';
-                sql = "UPDATE estado SET NOME = '" + oEstado.Nome + "', ID_PAIS = '" + oEstado.OPais.Id + "' WHERE ID_ESTADO = '" + oEstado.Id + "'";
+                sql = "UPDATE estado SET " +
+                      "NOME = '" + oEstado.Nome + "', " +
+                      "ID_PAIS = '" + oEstado.OPais.Id + "', " +
+                      "ATIVO = '" + (oEstado.Ativo ? 1 : 0) + "', " +
+                      "DATA_ULTIMA_EDICAO = CURRENT_DATE " +
+                      "WHERE ID_ESTADO = '" + oEstado.Id + "'";
             }
 
             MySqlCommand conn = new MySqlCommand();
@@ -60,9 +67,16 @@ namespace projeto_patrica.dao
             while (dr.Read())
             {
                 oEstado = new estado();
-                oEstado.Id = Convert.ToInt32(dr.GetValue(0));
-                oEstado.Nome = dr.GetString(1);
-                oEstado.OPais.Id = Convert.ToInt32(dr.GetValue(2));
+                oEstado.Id = Convert.ToInt32(dr["ID_ESTADO"]);
+                oEstado.Nome = dr["NOME"].ToString();
+                oEstado.OPais.Id = Convert.ToInt32(dr["ID_PAIS"]);
+                oEstado.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                oEstado.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                oEstado.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
+
+                Controller_pais controller = new Controller_pais();
+                controller.CarregaObj(oEstado.OPais);
+
                 lista.Add(oEstado);
             }
 
@@ -86,12 +100,18 @@ namespace projeto_patrica.dao
 
                 while (dr.Read())
                 {
-                    oEstado.Id = Convert.ToInt32(dr.GetValue(0));
-                    oEstado.Nome = dr.GetString(1);
-                    oEstado.OPais.Id = Convert.ToInt16(dr.GetValue(2));
+                    oEstado.Id = Convert.ToInt32(dr["ID_ESTADO"]);
+                    oEstado.Nome = dr["NOME"].ToString();
+                    oEstado.OPais.Id = Convert.ToInt32(dr["ID_PAIS"]);
+                    oEstado.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                    oEstado.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                    oEstado.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
                 }
 
                 conn.Connection.Close();
+
+                Controller_pais controller = new Controller_pais();
+                controller.CarregaObj(oEstado.OPais);
             }
             catch (MySqlException ex)
             {

@@ -13,7 +13,6 @@ namespace projeto_patrica.pages.consulta
 		public frmConsulta() : base()
 		{
             InitializeComponent();
-            //ConfigurarFormularioBase();
             btnAlterar.Enabled = false;
             btnExcluir.Enabled = false;
         }

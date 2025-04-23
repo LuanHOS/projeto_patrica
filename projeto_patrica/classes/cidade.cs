@@ -16,14 +16,20 @@ namespace projeto_patrica.classes
             id = 0;
             nome = " ";
             oEstado = new estado();
-
+            ativo = true;
+            dataCadastro = DateTime.MinValue;
+            dataUltimaEdicao = null;
         }
 
-        public cidade(int id, string nome, estado oEstado) : base(id)
+        public cidade(int id, string nome, estado oEstado, bool ativo, DateTime dataCadastro, DateTime? dataUltimaEdicao)
+            : base(id, ativo, dataCadastro, dataUltimaEdicao)
         {
             this.id = id;
             this.nome = nome;
             this.oEstado = oEstado;
+            this.ativo = ativo;
+            this.dataCadastro = dataCadastro;
+            this.dataUltimaEdicao = dataUltimaEdicao;
         }
 
         public string Nome

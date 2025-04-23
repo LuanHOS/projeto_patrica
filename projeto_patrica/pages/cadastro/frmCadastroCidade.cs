@@ -12,7 +12,7 @@ namespace projeto_patrica.pages.cadastro
         private Controller_cidade aController_cidade;
         private frmConsultaEstado oFrmConsultaEstado;
 
-        public frmCadastroCidade()
+        public frmCadastroCidade() : base()
         {
             InitializeComponent();
         }
@@ -30,7 +30,7 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            if (txtNome.Text == "" || aCidade.OEstado == null || aCidade.OEstado.Id == 0)
+            if (string.IsNullOrWhiteSpace(txtNome.Text) || aCidade.OEstado == null || aCidade.OEstado.Id == 0)
             {
                 txtNome.Focus();
                 txtEstado.Focus();
@@ -41,6 +41,7 @@ namespace projeto_patrica.pages.cadastro
 
             aCidade.Id = Convert.ToInt32(txtCodigo.Text);
             aCidade.Nome = txtNome.Text;
+            aCidade.Ativo = checkBoxAtivo.Checked;
 
             try
             {
@@ -78,7 +79,7 @@ namespace projeto_patrica.pages.cadastro
         public override void Limpartxt()
         {
             base.Limpartxt();
-            txtCodigo.Text = "0";
+
             txtNome.Clear();
             txtEstado.Clear();
             aCidade.OEstado = new estado();
@@ -87,14 +88,19 @@ namespace projeto_patrica.pages.cadastro
         public override void Carregatxt()
         {
             base.Carregatxt();
+
             txtCodigo.Text = aCidade.Id.ToString();
             txtNome.Text = aCidade.Nome;
             txtEstado.Text = aCidade.OEstado.Nome;
+            checkBoxAtivo.Checked = aCidade.Ativo;
+            lblDataCadastroData.Text = aCidade.DataCadastro.ToShortDateString();
+            lblDataUltimaEdicaoData.Text = aCidade.DataUltimaEdicao?.ToShortDateString() ?? " ";
         }
 
         public override void Bloqueiatxt()
         {
             base.Bloqueiatxt();
+
             txtNome.Enabled = false;
             txtEstado.Enabled = false;
             btnPesquisarEstado.Enabled = false;
@@ -103,6 +109,7 @@ namespace projeto_patrica.pages.cadastro
         public override void Desbloqueiatxt()
         {
             base.Desbloqueiatxt();
+
             txtNome.Enabled = true;
             txtEstado.Enabled = true;
             btnPesquisarEstado.Enabled = true;

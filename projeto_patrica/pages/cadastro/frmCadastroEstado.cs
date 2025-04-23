@@ -12,7 +12,7 @@ namespace projeto_patrica.pages.cadastro
         private Controller_estado aController_estado;
         private frmConsultaPais oFrmConsultaPais;
 
-        public frmCadastroEstado()
+        public frmCadastroEstado() : base()
         {
             InitializeComponent();
         }
@@ -39,8 +39,9 @@ namespace projeto_patrica.pages.cadastro
                 return;
             }
 
-            oEstado.Id = Convert.ToInt16(txtCodigo.Text);
+            oEstado.Id = Convert.ToInt32(txtCodigo.Text);
             oEstado.Nome = txtNome.Text;
+            oEstado.Ativo = checkBoxAtivo.Checked;
 
             try
             {
@@ -74,12 +75,10 @@ namespace projeto_patrica.pages.cadastro
             base.Salvar();
         }
 
-
-
         public override void Limpartxt()
         {
             base.Limpartxt();
-            txtCodigo.Text = "0";
+
             txtNome.Clear();
             txtPais.Clear();
             oEstado.OPais = new pais();
@@ -88,14 +87,19 @@ namespace projeto_patrica.pages.cadastro
         public override void Carregatxt()
         {
             base.Carregatxt();
+
             txtCodigo.Text = oEstado.Id.ToString();
             txtNome.Text = oEstado.Nome;
             txtPais.Text = oEstado.OPais.Nome;
+            checkBoxAtivo.Checked = oEstado.Ativo;
+            lblDataCadastroData.Text = oEstado.DataCadastro.ToShortDateString();
+            lblDataUltimaEdicaoData.Text = oEstado.DataUltimaEdicao?.ToShortDateString() ?? " ";
         }
 
         public override void Bloqueiatxt()
         {
             base.Bloqueiatxt();
+
             txtNome.Enabled = false;
             txtPais.Enabled = false;
             btnPesquisarPais.Enabled = false;
@@ -104,6 +108,7 @@ namespace projeto_patrica.pages.cadastro
         public override void Desbloqueiatxt()
         {
             base.Desbloqueiatxt();
+
             txtNome.Enabled = true;
             txtPais.Enabled = true;
             btnPesquisarPais.Enabled = true;

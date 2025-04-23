@@ -37,103 +37,120 @@
             // 
             // txtRgInscEstadual
             // 
-            this.txtRgInscEstadual.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRgInscEstadual.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             // 
             // txtNomeRazaoSocial
             // 
-            this.txtNomeRazaoSocial.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNomeRazaoSocial.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             // 
             // txtCidade
             // 
-            this.txtCidade.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCidade.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             // 
             // txtBairro
             // 
-            this.txtBairro.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBairro.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             // 
             // lblBairro
             // 
-            this.lblBairro.Location = new System.Drawing.Point(23, 199);
+            this.lblBairro.Location = new System.Drawing.Point(17, 162);
             // 
             // txtEmail
             // 
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             // 
             // txtEndereco
             // 
-            this.txtEndereco.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEndereco.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             // 
             // txtTelefone
             // 
-            this.txtTelefone.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTelefone.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             // 
             // txtCpfCnpj
             // 
-            this.txtCpfCnpj.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCpfCnpj.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             // 
             // txtCep
             // 
-            this.txtCep.Location = new System.Drawing.Point(27, 218);
-            this.txtCep.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCep.Size = new System.Drawing.Size(198, 22);
+            this.txtCep.Location = new System.Drawing.Point(188, 178);
+            this.txtCep.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.txtCep.Size = new System.Drawing.Size(144, 20);
+            // 
+            // comboBoxTipo
+            // 
+            this.comboBoxTipo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTipo_SelectedIndexChanged);
+            // 
+            // btnPesquisarCidade
+            // 
+            this.btnPesquisarCidade.Click += new System.EventHandler(this.BtnPesquisarCidade_Click);
             // 
             // txtApelidoNomeFantasia
             // 
-            this.txtApelidoNomeFantasia.Margin = new System.Windows.Forms.Padding(4);
+            this.txtApelidoNomeFantasia.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            // 
+            // lblComplementoEndereco
+            // 
+            this.lblComplementoEndereco.Location = new System.Drawing.Point(344, 162);
+            // 
+            // txtComplementoEndereco
+            // 
+            this.txtComplementoEndereco.Location = new System.Drawing.Point(347, 177);
+            this.txtComplementoEndereco.Size = new System.Drawing.Size(222, 20);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(470, 394);
+            this.btnSave.TabIndex = 22;
+            // 
+            // lblDataCadastro
+            // 
+            this.lblDataCadastro.Location = new System.Drawing.Point(16, 384);
+            this.lblDataCadastro.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            // 
+            // lblDataUltimaEdicao
+            // 
+            this.lblDataUltimaEdicao.Location = new System.Drawing.Point(16, 396);
+            this.lblDataUltimaEdicao.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            // 
+            // lblUltimoUsuarioQueEditou
+            // 
+            this.lblUltimoUsuarioQueEditou.Location = new System.Drawing.Point(16, 410);
+            this.lblUltimoUsuarioQueEditou.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            // 
+            // lblDataCadastroData
+            // 
+            this.lblDataCadastroData.Location = new System.Drawing.Point(106, 384);
+            this.lblDataCadastroData.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            // 
+            // lblDataUltimaEdicaoData
+            // 
+            this.lblDataUltimaEdicaoData.Location = new System.Drawing.Point(128, 396);
+            this.lblDataUltimaEdicaoData.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            // 
+            // lblUltimoUsuarioQueEditouNome
+            // 
+            this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(143, 410);
+            this.lblUltimoUsuarioQueEditouNome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             // 
             // checkBoxAtivo
             // 
             this.checkBoxAtivo.TabIndex = 99;
             // 
-            // lblComplementoEndereco
-            // 
-            this.lblComplementoEndereco.Location = new System.Drawing.Point(459, 199);
-            // 
-            // txtComplementoEndereco
-            // 
-            this.txtComplementoEndereco.Location = new System.Drawing.Point(463, 218);
-            this.txtComplementoEndereco.Size = new System.Drawing.Size(295, 22);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(627, 485);
-            this.btnSave.TabIndex = 22;
-            // 
-            // lblDataCadastro
-            // 
-            this.lblDataCadastro.Location = new System.Drawing.Point(21, 472);
-            // 
-            // lblDataUltimaEdicao
-            // 
-            this.lblDataUltimaEdicao.Location = new System.Drawing.Point(21, 488);
-            // 
-            // lblUltimoUsuarioQueEditou
-            // 
-            this.lblUltimoUsuarioQueEditou.Location = new System.Drawing.Point(21, 504);
-            // 
-            // lblDataCadastroData
-            // 
-            this.lblDataCadastroData.Location = new System.Drawing.Point(142, 472);
-            // 
-            // lblDataUltimaEdicaoData
-            // 
-            this.lblDataUltimaEdicaoData.Location = new System.Drawing.Point(171, 488);
-            // 
-            // lblUltimoUsuarioQueEditouNome
-            // 
-            this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(191, 504);
-            // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(720, 485);
+            this.btnSair.Location = new System.Drawing.Point(540, 394);
             this.btnSair.TabIndex = 23;
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             // 
             // btnPesquisarCondicaoPagamento
             // 
-            this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(204, 395);
-            this.btnPesquisarCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(153, 321);
             this.btnPesquisarCondicaoPagamento.Name = "btnPesquisarCondicaoPagamento";
-            this.btnPesquisarCondicaoPagamento.Size = new System.Drawing.Size(100, 25);
+            this.btnPesquisarCondicaoPagamento.Size = new System.Drawing.Size(75, 20);
             this.btnPesquisarCondicaoPagamento.TabIndex = 20;
             this.btnPesquisarCondicaoPagamento.Text = "Pesquisar";
             this.btnPesquisarCondicaoPagamento.UseVisualStyleBackColor = true;
@@ -142,49 +159,50 @@
             // txtCondicaoPagamento
             // 
             this.txtCondicaoPagamento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCondicaoPagamento.Location = new System.Drawing.Point(24, 396);
-            this.txtCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCondicaoPagamento.Location = new System.Drawing.Point(18, 322);
             this.txtCondicaoPagamento.Name = "txtCondicaoPagamento";
             this.txtCondicaoPagamento.ReadOnly = true;
-            this.txtCondicaoPagamento.Size = new System.Drawing.Size(171, 22);
+            this.txtCondicaoPagamento.Size = new System.Drawing.Size(129, 20);
             this.txtCondicaoPagamento.TabIndex = 19;
             // 
             // lblCondicaoPagamento
             // 
             this.lblCondicaoPagamento.AutoSize = true;
-            this.lblCondicaoPagamento.Location = new System.Drawing.Point(24, 375);
-            this.lblCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCondicaoPagamento.Location = new System.Drawing.Point(18, 305);
             this.lblCondicaoPagamento.Name = "lblCondicaoPagamento";
-            this.lblCondicaoPagamento.Size = new System.Drawing.Size(165, 16);
+            this.lblCondicaoPagamento.Size = new System.Drawing.Size(131, 13);
             this.lblCondicaoPagamento.TabIndex = 36;
             this.lblCondicaoPagamento.Text = "Condição de Pagamento *";
             // 
             // lblLimiteDeCredito
             // 
             this.lblLimiteDeCredito.AutoSize = true;
-            this.lblLimiteDeCredito.Enabled = false;
-            this.lblLimiteDeCredito.Location = new System.Drawing.Point(317, 375);
+            this.lblLimiteDeCredito.Location = new System.Drawing.Point(238, 305);
+            this.lblLimiteDeCredito.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLimiteDeCredito.Name = "lblLimiteDeCredito";
-            this.lblLimiteDeCredito.Size = new System.Drawing.Size(107, 16);
+            this.lblLimiteDeCredito.Size = new System.Drawing.Size(85, 13);
             this.lblLimiteDeCredito.TabIndex = 39;
             this.lblLimiteDeCredito.Text = "Limite de Crédito";
             // 
             // txtLimiteDeCredito
             // 
-            this.txtLimiteDeCredito.Enabled = false;
-            this.txtLimiteDeCredito.Location = new System.Drawing.Point(320, 396);
+            this.txtLimiteDeCredito.Location = new System.Drawing.Point(240, 322);
+            this.txtLimiteDeCredito.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtLimiteDeCredito.Name = "txtLimiteDeCredito";
-            this.txtLimiteDeCredito.Size = new System.Drawing.Size(121, 22);
+            this.txtLimiteDeCredito.Size = new System.Drawing.Size(92, 20);
             this.txtLimiteDeCredito.TabIndex = 21;
             // 
             // frmCadastroCliente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(1006, 586);
             this.Controls.Add(this.txtLimiteDeCredito);
             this.Controls.Add(this.lblLimiteDeCredito);
             this.Controls.Add(this.btnPesquisarCondicaoPagamento);
             this.Controls.Add(this.txtCondicaoPagamento);
             this.Controls.Add(this.lblCondicaoPagamento);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(441, 357);
             this.Name = "frmCadastroCliente";
             this.Text = "Cadastro de Cliente";
             this.Controls.SetChildIndex(this.lblEstado, 0);

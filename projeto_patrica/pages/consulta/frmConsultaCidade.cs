@@ -130,7 +130,9 @@ namespace projeto_patrica.pages.consulta
                 aCidade.Nome = cidadeSelecionada.Nome;
                 aCidade.OEstado.Id = cidadeSelecionada.OEstado.Id;
                 aCidade.OEstado.Nome = cidadeSelecionada.OEstado.Nome;
+                aCidade.Ativo = cidadeSelecionada.Ativo;
             }
         }
+
     }
 }

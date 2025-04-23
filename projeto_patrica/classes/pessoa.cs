@@ -17,10 +17,11 @@ namespace projeto_patrica.classes
         protected string email;
         protected string telefone;
         protected string endereco;
+        protected string numeroEndereco;
+        protected string complementoEndereco;
         protected string bairro;
         protected cidade aCidade;
         protected string cep;
-        protected bool ativo;
         protected char genero;
 
         public pessoa()
@@ -28,22 +29,28 @@ namespace projeto_patrica.classes
             id = 0;
             tipoPessoa = ' ';
             nome_razaoSocial = " ";
-            Apelido_nomeFantasia = " ";
+            apelido_nomeFantasia = " ";
             dataNascimento_criacao = DateTime.MinValue;
             cpf_cnpj = " ";
             rg_inscricaoEstadual = " ";
             email = " ";
             telefone = " ";
             endereco = " ";
+            numeroEndereco = " ";
+            complementoEndereco = " ";
             bairro = " ";
-            cidade aCidade = new cidade();
+            aCidade = new cidade();
             cep = " ";
             ativo = true;
             genero = ' ';
-
+            dataCadastro = DateTime.MinValue;
+            dataUltimaEdicao = null;
         }
-        public pessoa(int id, char tipoPessoa, string nome_razaoSocial, string apelido_nomeFantasia, DateTime dataNascimento_criacao, string cpf_cnpj, 
-            string rg_inscricaoEstadual, string email, string telefone, string endereco, string bairro, cidade aCidade, string cep, bool ativo, char genero) : base(id)
+
+        public pessoa(int id, char tipoPessoa, string nome_razaoSocial, string apelido_nomeFantasia, DateTime dataNascimento_criacao, string cpf_cnpj,
+            string rg_inscricaoEstadual, string email, string telefone, string endereco, string numeroEndereco, string complementoEndereco,
+            string bairro, cidade aCidade, string cep, bool ativo, char genero, DateTime dataCadastro, DateTime? dataUltimaEdicao)
+            : base(id, ativo, dataCadastro, dataUltimaEdicao)
         {
             this.id = id;
             this.tipoPessoa = tipoPessoa;
@@ -55,6 +62,8 @@ namespace projeto_patrica.classes
             this.email = email;
             this.telefone = telefone;
             this.endereco = endereco;
+            this.numeroEndereco = numeroEndereco;
+            this.complementoEndereco = complementoEndereco;
             this.bairro = bairro;
             this.aCidade = aCidade;
             this.cep = cep;
@@ -107,6 +116,16 @@ namespace projeto_patrica.classes
             get => endereco;
             set => endereco = value;
         }
+        public string NumeroEndereco
+        {
+            get => numeroEndereco;
+            set => numeroEndereco = value;
+        }
+        public string ComplementoEndereco
+        {
+            get => complementoEndereco;
+            set => complementoEndereco = value;
+        }
         public string Bairro
         {
             get => bairro;
@@ -121,11 +140,6 @@ namespace projeto_patrica.classes
         {
             get => cep;
             set => cep = value;
-        }
-        public bool Ativo
-        {
-            get => ativo;
-            set => ativo = value;
         }
         public char Genero
         {

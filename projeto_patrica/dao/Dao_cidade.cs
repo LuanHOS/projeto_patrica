@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using projeto_patrica.classes;
+using projeto_patrica.controller;
 using System;
 using System.Collections.Generic;
 
@@ -18,12 +19,18 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
-            sql = "INSERT INTO cidade (NOME, ID_ESTADO) VALUES('" + aCidade.Nome + "', '" + aCidade.OEstado.Id + "')";
+            sql = "INSERT INTO cidade (NOME, ID_ESTADO, ATIVO) " +
+                  "VALUES('" + aCidade.Nome + "', '" + aCidade.OEstado.Id + "', '" + (aCidade.Ativo ? 1 : 0) + "')";
 
             if (aCidade.Id != 0)
             {
                 operacao = 'U';
-                sql = "UPDATE cidade SET NOME = '" + aCidade.Nome + "', ID_ESTADO = '" + aCidade.OEstado.Id + "' WHERE ID_CIDADE = '" + aCidade.Id + "'";
+                sql = "UPDATE cidade SET " +
+                      "NOME = '" + aCidade.Nome + "', " +
+                      "ID_ESTADO = '" + aCidade.OEstado.Id + "', " +
+                      "ATIVO = '" + (aCidade.Ativo ? 1 : 0) + "', " +
+                      "DATA_ULTIMA_EDICAO = CURRENT_DATE " +
+                      "WHERE ID_CIDADE = '" + aCidade.Id + "'";
             }
 
             MySqlCommand conn = new MySqlCommand();
@@ -63,12 +70,18 @@ namespace projeto_patrica.dao
 
                 while (dr.Read())
                 {
-                    aCidade.Id = Convert.ToInt32(dr.GetValue(0));
-                    aCidade.Nome = dr.GetString(1);
-                    aCidade.OEstado.Id = Convert.ToInt32(dr.GetValue(2));
+                    aCidade.Id = Convert.ToInt32(dr["ID_CIDADE"]);
+                    aCidade.Nome = dr["NOME"].ToString();
+                    aCidade.OEstado.Id = Convert.ToInt32(dr["ID_ESTADO"]);
+                    aCidade.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                    aCidade.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                    aCidade.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
                 }
 
                 conn.Connection.Close();
+
+                Controller_estado controller = new Controller_estado();
+                controller.CarregaObj(aCidade.OEstado);
             }
             catch (MySqlException ex)
             {
@@ -117,9 +130,12 @@ namespace projeto_patrica.dao
             while (dr.Read())
             {
                 aCidade = new cidade();
-                aCidade.Id = Convert.ToInt32(dr.GetValue(0));
-                aCidade.Nome = dr.GetString(1);
-                aCidade.OEstado.Id = Convert.ToInt32(dr.GetValue(2));
+                aCidade.Id = Convert.ToInt32(dr["ID_CIDADE"]);
+                aCidade.Nome = dr["NOME"].ToString();
+                aCidade.OEstado.Id = Convert.ToInt32(dr["ID_ESTADO"]);
+                aCidade.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                aCidade.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                aCidade.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
                 lista.Add(aCidade);
             }
 
@@ -128,4 +144,3 @@ namespace projeto_patrica.dao
         }
     }
 }
-

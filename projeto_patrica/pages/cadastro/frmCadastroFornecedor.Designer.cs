@@ -113,11 +113,13 @@
             // comboBoxTipo
             // 
             this.comboBoxTipo.Location = new System.Drawing.Point(25, 35);
+            this.comboBoxTipo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTipo_SelectedIndexChanged);
             // 
             // btnPesquisarCidade
             // 
             this.btnPesquisarCidade.Location = new System.Drawing.Point(204, 158);
             this.btnPesquisarCidade.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPesquisarCidade.Click += new System.EventHandler(this.BtnPesquisarCidade_Click);
             // 
             // txtApelidoNomeFantasia
             // 
@@ -132,10 +134,6 @@
             // 
             this.lblTelefone.Location = new System.Drawing.Point(21, 311);
             this.lblTelefone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            // 
-            // checkBoxAtivo
-            // 
-            this.checkBoxAtivo.TabIndex = 99;
             // 
             // lblComplementoEndereco
             // 
@@ -174,6 +172,10 @@
             // lblUltimoUsuarioQueEditouNome
             // 
             this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(191, 490);
+            // 
+            // checkBoxAtivo
+            // 
+            this.checkBoxAtivo.TabIndex = 99;
             // 
             // btnSair
             // 
@@ -232,6 +234,7 @@
             // frmCadastroFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 721);
             this.Controls.Add(this.btnPesquisarCondicaoPagamento);
             this.Controls.Add(this.txtCondicaoPagamento);
             this.Controls.Add(this.lblCondicaoPagamento);

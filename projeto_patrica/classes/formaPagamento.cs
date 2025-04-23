@@ -14,12 +14,19 @@ namespace projeto_patrica.classes
         {
             id = 0;
             descricao = " ";
+            ativo = true;
+            dataCadastro = DateTime.MinValue;
+            dataUltimaEdicao = null;
         }
 
-        public formaPagamento(int id, string descricao) : base(id)
+        public formaPagamento(int id, string descricao, bool ativo, DateTime dataCadastro, DateTime? dataUltimaEdicao)
+            : base(id, ativo, dataCadastro, dataUltimaEdicao)
         {
             this.id = id;
             this.descricao = descricao;
+            this.ativo = ativo;
+            this.dataCadastro = dataCadastro;
+            this.dataUltimaEdicao = dataUltimaEdicao;
         }
 
         public string Descricao

@@ -11,6 +11,9 @@ namespace projeto_patrica.classes
         protected string descricao;
         protected int quantidadeParcelas;
         protected List<parcelaCondicaoPagamento> parcelas;
+        protected decimal juros;
+        protected decimal multa;
+        protected decimal desconto;
 
         public condicaoPagamento()
         {
@@ -18,14 +21,27 @@ namespace projeto_patrica.classes
             descricao = " ";
             quantidadeParcelas = 0;
             parcelas = new List<parcelaCondicaoPagamento>();
+            ativo = true;
+            dataCadastro = DateTime.MinValue;
+            dataUltimaEdicao = null;
+            juros = 0;
+            multa = 0;
+            desconto = 0;
         }
 
-        public condicaoPagamento(int id, string descricao, int quantidadeParcelas, List<parcelaCondicaoPagamento> parcelas) : base(id)
+        public condicaoPagamento(int id, string descricao, int quantidadeParcelas, List<parcelaCondicaoPagamento> parcelas, decimal juros, decimal multa, decimal desconto, bool ativo, DateTime dataCadastro, DateTime? dataUltimaEdicao)
+            : base(id, ativo, dataCadastro, dataUltimaEdicao)
         {
             this.id = id;
             this.descricao = descricao;
             this.quantidadeParcelas = quantidadeParcelas;
             this.parcelas = parcelas;
+            this.juros = juros;
+            this.multa = multa;
+            this.desconto = desconto;
+            this.ativo = ativo;
+            this.dataCadastro = dataCadastro;
+            this.dataUltimaEdicao = dataUltimaEdicao;
         }
 
         public string Descricao
@@ -42,6 +58,21 @@ namespace projeto_patrica.classes
         {
             get => parcelas;
             set => parcelas = value;
+        }
+        public decimal Juros
+        {
+            get => juros;
+            set => juros = value;
+        }
+        public decimal Multa
+        {
+            get => multa;
+            set => multa = value;
+        }
+        public decimal Desconto
+        {
+            get => desconto;
+            set => desconto = value;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace projeto_patrica.pages.cadastro
         private bool editandoParcela = false;
         private int indiceParcelaEditando = -1;
 
-        public frmCadastroCondicaoPagamento()
+        public frmCadastroCondicaoPagamento() : base()
         {
             InitializeComponent();
             CarregarFormasDePagamento();
@@ -65,7 +65,11 @@ namespace projeto_patrica.pages.cadastro
             aCondicaoPagamento.Id = Convert.ToInt32(txtCodigo.Text);
             aCondicaoPagamento.Descricao = txtDescricao.Text;
             aCondicaoPagamento.QuantidadeParcelas = Convert.ToInt32(txtQtdParcelas.Text);
+            aCondicaoPagamento.Multa = Convert.ToDecimal(txtMulta.Text);
+            aCondicaoPagamento.Juros = Convert.ToDecimal(txtJuros.Text);
+            aCondicaoPagamento.Desconto = Convert.ToDecimal(txtDesconto.Text);
             aCondicaoPagamento.Parcelas = listaParcelas;
+            aCondicaoPagamento.Ativo = checkBoxAtivo.Checked;
 
             try
             {
@@ -105,19 +109,31 @@ namespace projeto_patrica.pages.cadastro
         public override void Limpartxt()
         {
             base.Limpartxt();
+
             txtDescricao.Clear();
             txtQtdParcelas.Text = "1";
+            txtJuros.Clear();
+            txtMulta.Clear();
+            txtDesconto.Clear();
             listaParcelas.Clear();
             listVParcelas.Items.Clear();
             LimparCamposParcela();
         }
 
+
         public override void Carregatxt()
         {
             base.Carregatxt();
+
             txtCodigo.Text = aCondicaoPagamento.Id.ToString();
             txtDescricao.Text = aCondicaoPagamento.Descricao;
             txtQtdParcelas.Text = aCondicaoPagamento.QuantidadeParcelas.ToString();
+            txtMulta.Text = aCondicaoPagamento.Multa.ToString("F2");
+            txtJuros.Text = aCondicaoPagamento.Juros.ToString("F2");
+            txtDesconto.Text = aCondicaoPagamento.Desconto.ToString("F2");
+            checkBoxAtivo.Checked = aCondicaoPagamento.Ativo;
+            lblDataCadastroData.Text = aCondicaoPagamento.DataCadastro.ToShortDateString();
+            lblDataUltimaEdicaoData.Text = aCondicaoPagamento.DataUltimaEdicao?.ToShortDateString() ?? " ";
 
             if (btnSave.Text == "Alterar" || btnSave.Text == "Excluir")
                 CarregarParcelasDoBanco();
@@ -125,21 +141,30 @@ namespace projeto_patrica.pages.cadastro
                 CarregarParcelasNaListView();
         }
 
+
         public override void Bloqueiatxt()
         {
             base.Bloqueiatxt();
+
             txtDescricao.Enabled = false;
             txtQtdParcelas.Enabled = false;
             btnPesquisarFormaPagamento.Enabled = false;
+            txtMulta.Enabled = false;
+            txtJuros.Enabled = false;
+            txtDesconto.Enabled = false;
             BloquearCamposParcela();
         }
 
         public override void Desbloqueiatxt()
         {
             base.Desbloqueiatxt();
+
             txtDescricao.Enabled = true;
             txtQtdParcelas.Enabled = true;
             btnPesquisarFormaPagamento.Enabled = true;
+            txtMulta.Enabled = true;
+            txtJuros.Enabled = true;
+            txtDesconto.Enabled = true; 
             DesbloquearCamposParcela();
         }
 

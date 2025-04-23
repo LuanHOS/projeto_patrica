@@ -36,6 +36,30 @@
             // 
             this.btnSave.TabIndex = 3;
             // 
+            // lblDataCadastro
+            // 
+            this.lblDataCadastro.Enabled = true;
+            // 
+            // lblDataUltimaEdicao
+            // 
+            this.lblDataUltimaEdicao.Enabled = true;
+            // 
+            // lblUltimoUsuarioQueEditou
+            // 
+            this.lblUltimoUsuarioQueEditou.Enabled = true;
+            // 
+            // lblDataCadastroData
+            // 
+            this.lblDataCadastroData.Enabled = true;
+            // 
+            // lblDataUltimaEdicaoData
+            // 
+            this.lblDataUltimaEdicaoData.Enabled = true;
+            // 
+            // lblUltimoUsuarioQueEditouNome
+            // 
+            this.lblUltimoUsuarioQueEditouNome.Enabled = true;
+            // 
             // btnSair
             // 
             this.btnSair.TabIndex = 4;
@@ -65,11 +89,13 @@
             // frmCadastroFormaPagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 721);
             this.Controls.Add(this.lblDescricao);
             this.Controls.Add(this.txtDescricao);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroFormaPagamento";
             this.Text = "Cadastro de Forma de Pagamento";
+            this.Controls.SetChildIndex(this.checkBoxAtivo, 0);
             this.Controls.SetChildIndex(this.lblCod, 0);
             this.Controls.SetChildIndex(this.lblDataCadastro, 0);
             this.Controls.SetChildIndex(this.lblDataCadastroData, 0);

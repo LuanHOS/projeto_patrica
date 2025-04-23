@@ -15,8 +15,8 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastroFuncionario() : base()
         {
             InitializeComponent();
-            comboBoxTipo.SelectedIndex = 0; 
-            comboBoxTipo.Enabled = false;   
+            comboBoxTipo.SelectedIndex = 0;
+            comboBoxTipo.Enabled = false;
         }
 
         public override void ConhecaObj(object obj, object ctrl)
@@ -90,10 +90,13 @@ namespace projeto_patrica.pages.cadastro
             oFuncionario.Genero = comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F';
             oFuncionario.Matricula = Convert.ToInt32(txtMatricula.Text);
             oFuncionario.Cargo = txtCargo.Text;
-            oFuncionario.Salario = Convert.ToSingle(txtSalario.Text);
+            oFuncionario.Salario = Convert.ToDecimal(txtSalario.Text);
             oFuncionario.DataAdmissao = dtpDataAdmissao.Value;
             oFuncionario.Turno = txtTurno.Text;
             oFuncionario.CargaHoraria = Convert.ToInt32(txtCargaHoraria.Text);
+            oFuncionario.NumeroEndereco = txtNumeroEndereco.Text;
+            oFuncionario.ComplementoEndereco = txtComplementoEndereco.Text; 
+            oFuncionario.DataDemissao = dtpDataDemissao.Value == dtpDataDemissao.MinDate ? (DateTime?)null : dtpDataDemissao.Value;
 
             try
             {
@@ -127,24 +130,35 @@ namespace projeto_patrica.pages.cadastro
             base.Salvar();
         }
 
-
-
-
-
         public override void Limpartxt()
         {
             base.Limpartxt();
 
-            txtCodigo.Text = "0";
+            txtNomeRazaoSocial.Clear();
+            txtApelidoNomeFantasia.Clear();
+            txtCpfCnpj.Clear();
+            txtRgInscEstadual.Clear();
+            txtEmail.Clear();
+            txtTelefone.Clear();
+            txtEndereco.Clear();
+            txtBairro.Clear();
+            txtCep.Clear();
+            //comboBoxTipo.SelectedIndex = -1;
+            //comboBoxGenero.SelectedIndex = -1;
+            dtpDataNascimentoCriacao.Value = DateTime.Today;
             txtMatricula.Clear();
             txtCargo.Clear();
             txtSalario.Clear();
             dtpDataAdmissao.Value = DateTime.Today;
             txtTurno.Clear();
             txtCargaHoraria.Clear();
-
-            txtCidade.Clear();
             oFuncionario.ACidade = new cidade();
+            txtCidade.Clear();
+            txtEstado.Clear();
+            txtNumeroEndereco.Clear(); 
+            txtComplementoEndereco.Clear(); 
+            dtpDataDemissao.Value = DateTime.Today; 
+
         }
 
         public override void Carregatxt()
@@ -162,6 +176,7 @@ namespace projeto_patrica.pages.cadastro
             txtBairro.Text = oFuncionario.Bairro;
             txtCep.Text = oFuncionario.Cep;
             txtCidade.Text = oFuncionario.ACidade.Nome;
+            txtEstado.Text = oFuncionario.ACidade.OEstado.Nome;
 
             dtpDataNascimentoCriacao.Value = (oFuncionario.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oFuncionario.DataNascimento_criacao;
             comboBoxGenero.SelectedIndex = oFuncionario.Genero == 'M' ? 0 : 1;
@@ -173,6 +188,11 @@ namespace projeto_patrica.pages.cadastro
             dtpDataAdmissao.Value = (oFuncionario.DataAdmissao < dtpDataAdmissao.MinDate) ? dtpDataAdmissao.MinDate : oFuncionario.DataAdmissao;
             txtTurno.Text = oFuncionario.Turno;
             txtCargaHoraria.Text = oFuncionario.CargaHoraria.ToString();
+            txtNumeroEndereco.Text = oFuncionario.NumeroEndereco;
+            txtComplementoEndereco.Text = oFuncionario.ComplementoEndereco;  
+            dtpDataDemissao.Value = (oFuncionario.DataDemissao ?? DateTime.Today);
+            lblDataCadastroData.Text = oFuncionario.DataCadastro.ToShortDateString();
+            lblDataUltimaEdicaoData.Text = oFuncionario.DataUltimaEdicao?.ToShortDateString() ?? " ";
         }
 
         public override void Bloqueiatxt()
@@ -189,6 +209,7 @@ namespace projeto_patrica.pages.cadastro
             txtBairro.Enabled = false;
             txtCep.Enabled = false;
             txtCidade.Enabled = false;
+            txtEstado.Enabled = false;
             comboBoxTipo.Enabled = false;
             comboBoxGenero.Enabled = false;
             dtpDataNascimentoCriacao.Enabled = false;
@@ -199,8 +220,10 @@ namespace projeto_patrica.pages.cadastro
             dtpDataAdmissao.Enabled = false;
             txtTurno.Enabled = false;
             txtCargaHoraria.Enabled = false;
+            txtNumeroEndereco.Enabled = false; 
+            txtComplementoEndereco.Enabled = false; 
+            dtpDataDemissao.Enabled = false;
         }
-
 
         public override void Desbloqueiatxt()
         {
@@ -216,6 +239,7 @@ namespace projeto_patrica.pages.cadastro
             txtBairro.Enabled = true;
             txtCep.Enabled = true;
             txtCidade.Enabled = true;
+            txtEstado.Enabled = true;
             btnPesquisarCidade.Enabled = true;
             dtpDataNascimentoCriacao.Enabled = true;
             comboBoxGenero.Enabled = true;
@@ -225,8 +249,10 @@ namespace projeto_patrica.pages.cadastro
             dtpDataAdmissao.Enabled = true;
             txtTurno.Enabled = true;
             txtCargaHoraria.Enabled = true;
+            txtNumeroEndereco.Enabled = true; 
+            txtComplementoEndereco.Enabled = true; 
+            dtpDataDemissao.Enabled = true;
         }
-
 
         private void btnPesquisarCidade_Click(object sender, EventArgs e)
         {
@@ -242,6 +268,7 @@ namespace projeto_patrica.pages.cadastro
             {
                 oFuncionario.ACidade = cidade;
                 txtCidade.Text = cidade.Nome;
+                txtEstado.Text = cidade.OEstado.Nome;
             }
         }
     }

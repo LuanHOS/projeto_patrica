@@ -24,12 +24,26 @@ namespace projeto_patrica.dao
 
             if (aCondicaoPagamento.Id == 0)
             {
-                sql = "INSERT CONDICAO_PAGAMENTO (DESCRICAO, QUANTIDADE_PARCELAS) VALUES ('" + aCondicaoPagamento.Descricao + "','" + aCondicaoPagamento.QuantidadeParcelas + "')";
+                sql = "INSERT INTO CONDICAO_PAGAMENTO (DESCRICAO, QUANTIDADE_PARCELAS, ATIVO, JUROS, MULTA, DESCONTO) VALUES (" +
+                      "'" + aCondicaoPagamento.Descricao + "', " +
+                      "'" + aCondicaoPagamento.QuantidadeParcelas + "', " +
+                      "'" + (aCondicaoPagamento.Ativo ? 1 : 0) + "', " +
+                      "'" + aCondicaoPagamento.Juros.ToString().Replace(",", ".") + "', " +
+                      "'" + aCondicaoPagamento.Multa.ToString().Replace(",", ".") + "', " +
+                      "'" + aCondicaoPagamento.Desconto.ToString().Replace(",", ".") + "')";
             }
             else
             {
                 operacao = 'U';
-                sql = "UPDATE CONDICAO_PAGAMENTO SET DESCRICAO = '" + aCondicaoPagamento.Descricao + "', QUANTIDADE_PARCELAS = '" + aCondicaoPagamento.QuantidadeParcelas + "' WHERE ID_CONDICAO_PAGAMENTO = '" + aCondicaoPagamento.Id + "'";
+                sql = "UPDATE CONDICAO_PAGAMENTO SET " +
+                      "DESCRICAO = '" + aCondicaoPagamento.Descricao + "', " +
+                      "QUANTIDADE_PARCELAS = '" + aCondicaoPagamento.QuantidadeParcelas + "', " +
+                      "ATIVO = '" + (aCondicaoPagamento.Ativo ? 1 : 0) + "', " +
+                      "JUROS = '" + aCondicaoPagamento.Juros.ToString().Replace(",", ".") + "', " +
+                      "MULTA = '" + aCondicaoPagamento.Multa.ToString().Replace(",", ".") + "', " +
+                      "DESCONTO = '" + aCondicaoPagamento.Desconto.ToString().Replace(",", ".") + "', " +
+                      "DATA_ULTIMA_EDICAO = CURRENT_DATE " +
+                      "WHERE ID_CONDICAO_PAGAMENTO = '" + aCondicaoPagamento.Id + "'";
             }
 
             conn.CommandText = sql;
@@ -40,6 +54,10 @@ namespace projeto_patrica.dao
                 conn.CommandText = "SELECT @@IDENTITY";
                 ok = conn.ExecuteScalar().ToString();
                 aCondicaoPagamento.Id = Convert.ToInt32(ok);
+            }
+            else
+            {
+                ok = aCondicaoPagamento.Id.ToString();
             }
 
             foreach (parcelaCondicaoPagamento aParcela in aCondicaoPagamento.Parcelas)
@@ -73,6 +91,7 @@ namespace projeto_patrica.dao
             return ok;
         }
 
+
         public string SalvarParcela(parcelaCondicaoPagamento parcela, MySqlConnection conexaoAberta)
         {
             string sql;
@@ -84,17 +103,21 @@ namespace projeto_patrica.dao
 
             if (qtd > 0)
             {
-                sql = "UPDATE PARCELA_CONDICAO_PAGAMENTO SET ID_FORMA_PAGAMENTO = '" + parcela.AFormaPagamento.Id +
-                      "', VALOR_PERCENTUAL = '" + parcela.ValorPercentual.ToString(CultureInfo.InvariantCulture) +
-                      "', DIAS_APOS_VENDA = '" + parcela.DiasAposVenda +
-                      "' WHERE ID_CONDICAO_PAGAMENTO = '" + parcela.CodCondPagto +
+                sql = "UPDATE PARCELA_CONDICAO_PAGAMENTO SET " +
+                      "ID_FORMA_PAGAMENTO = '" + parcela.AFormaPagamento.Id + "', " +
+                      "VALOR_PERCENTUAL = '" + parcela.ValorPercentual.ToString().Replace(",", ".") + "', " +
+                      "DIAS_APOS_VENDA = '" + parcela.DiasAposVenda + "' " +
+                      "WHERE ID_CONDICAO_PAGAMENTO = '" + parcela.CodCondPagto + 
                       "' AND NUMERO_PARCELA = '" + parcela.NumeroParcela + "'";
             }
             else
             {
-                sql = "INSERT INTO PARCELA_CONDICAO_PAGAMENTO VALUES ('" + parcela.CodCondPagto + "', '" + parcela.NumeroParcela +
-                      "', '" + parcela.AFormaPagamento.Id + "', '" + parcela.ValorPercentual.ToString(CultureInfo.InvariantCulture) +
-                      "', '" + parcela.DiasAposVenda + "')";
+                sql = "INSERT INTO PARCELA_CONDICAO_PAGAMENTO VALUES (" +
+                      "'" + parcela.CodCondPagto + "', " +
+                      "'" + parcela.NumeroParcela + "', " +
+                      "'" + parcela.AFormaPagamento.Id + "', " +
+                      "'" + parcela.ValorPercentual.ToString().Replace(",", ".") + "', " +
+                      "'" + parcela.DiasAposVenda + "')";
             }
 
             cmd.CommandText = sql;
@@ -102,6 +125,7 @@ namespace projeto_patrica.dao
 
             return ok;
         }
+
 
         public override string Excluir(object obj)
         {
@@ -135,6 +159,13 @@ namespace projeto_patrica.dao
                 aCondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
                 aCondicaoPagamento.Descricao = dr["DESCRICAO"].ToString();
                 aCondicaoPagamento.QuantidadeParcelas = Convert.ToInt32(dr["QUANTIDADE_PARCELAS"]);
+                aCondicaoPagamento.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                aCondicaoPagamento.Juros = Convert.ToDecimal(dr["JUROS"]);
+                aCondicaoPagamento.Multa = Convert.ToDecimal(dr["MULTA"]);
+                aCondicaoPagamento.Desconto = Convert.ToDecimal(dr["DESCONTO"]);
+                aCondicaoPagamento.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
+                aCondicaoPagamento.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                aCondicaoPagamento.Parcelas = ListarParcelas(aCondicaoPagamento.Id);
             }
 
             conn.Connection.Close();

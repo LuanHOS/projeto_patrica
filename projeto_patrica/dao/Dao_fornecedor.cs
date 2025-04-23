@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using projeto_patrica.classes;
+using projeto_patrica.controller;
 using System;
 using System.Collections.Generic;
 
@@ -18,30 +19,40 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
-            sql = "INSERT INTO fornecedor (TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, GENERO, INSCRICAO_ESTADUAL_SUBS_TRIB, ID_CONDICAO_PAGAMENTO) " + 
-                "VALUES ('" + oFornecedor.TipoPessoa + "', '" + oFornecedor.Nome_razaoSocial + "', '" + oFornecedor.Apelido_nomeFantasia + "', '" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', '" + oFornecedor.Cpf_cnpj + "', '" + oFornecedor.Rg_inscricaoEstadual + "', '" + oFornecedor.Email + "', '" + oFornecedor.Telefone + "', '" + oFornecedor.Endereco + "', '" + oFornecedor.Bairro + "', '" + oFornecedor.ACidade.Id + "', '" + oFornecedor.Cep + "', '" + (oFornecedor.Ativo ? 1 : 0) + "', '" + oFornecedor.Genero + "', '" + oFornecedor.InscricaoEstadualSubstitutoTributario + "', '" + oFornecedor.ACondicaoPagamento.Id + "')";
-
+            sql = "INSERT INTO fornecedor (" +
+                "TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, " +
+                "RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, " +
+                "INSCRICAO_ESTADUAL_SUBS_TRIB, ID_CONDICAO_PAGAMENTO, NUMERO_ENDERECO, COMPLEMENTO_ENDERECO" +
+                ") VALUES (" +
+                "'" + oFornecedor.TipoPessoa + "', '" + oFornecedor.Nome_razaoSocial + "', '" + oFornecedor.Apelido_nomeFantasia + "', '" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', '" + oFornecedor.Cpf_cnpj + "', '" +
+                oFornecedor.Rg_inscricaoEstadual + "', '" + oFornecedor.Email + "', '" + oFornecedor.Telefone + "', '" + oFornecedor.Endereco + "', '" + oFornecedor.Bairro + "', '" +
+                oFornecedor.ACidade.Id + "', '" + oFornecedor.Cep + "', '" + (oFornecedor.Ativo ? 1 : 0) + "', '" +
+                oFornecedor.InscricaoEstadualSubstitutoTributario + "', '" + oFornecedor.ACondicaoPagamento.Id + "', '" + oFornecedor.NumeroEndereco + "', '" + oFornecedor.ComplementoEndereco + "'" +
+                ")";
 
             if (oFornecedor.Id != 0)
             {
                 operacao = 'U';
-                sql = "UPDATE fornecedor SET TIPO_PESSOA = '" + oFornecedor.TipoPessoa +
-                      "', NOME_RAZAO_SOCIAL = '" + oFornecedor.Nome_razaoSocial +
-                      "', APELIDO_NOME_FANTASIA = '" + oFornecedor.Apelido_nomeFantasia +
-                      "', DATA_NASCIMENTO_CRIACAO = '" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") +
-                      "', CPF_CNPJ = '" + oFornecedor.Cpf_cnpj +
-                      "', RG_INSCRICAO_ESTADUAL = '" + oFornecedor.Rg_inscricaoEstadual +
-                      "', EMAIL = '" + oFornecedor.Email +
-                      "', TELEFONE = '" + oFornecedor.Telefone +
-                      "', ENDERECO = '" + oFornecedor.Endereco +
-                      "', BAIRRO = '" + oFornecedor.Bairro +
-                      "', ID_CIDADE = '" + oFornecedor.ACidade.Id +
-                      "', CEP = '" + oFornecedor.Cep +
-                      "', ATIVO = '" + (oFornecedor.Ativo ? 1 : 0) +
-                      "', GENERO = '" + oFornecedor.Genero +
-                      "', INSCRICAO_ESTADUAL_SUBS_TRIB = '" + oFornecedor.InscricaoEstadualSubstitutoTributario +
-                      "', ID_CONDICAO_PAGAMENTO = '" + oFornecedor.ACondicaoPagamento.Id +
-                      "' WHERE ID_FORNECEDOR = '" + oFornecedor.Id + "'";
+                sql = "UPDATE fornecedor SET " +
+                    "TIPO_PESSOA = '" + oFornecedor.TipoPessoa + "', " +
+                    "NOME_RAZAO_SOCIAL = '" + oFornecedor.Nome_razaoSocial + "', " +
+                    "APELIDO_NOME_FANTASIA = '" + oFornecedor.Apelido_nomeFantasia + "', " +
+                    "DATA_NASCIMENTO_CRIACAO = '" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', " +
+                    "CPF_CNPJ = '" + oFornecedor.Cpf_cnpj + "', " +
+                    "RG_INSCRICAO_ESTADUAL = '" + oFornecedor.Rg_inscricaoEstadual + "', " +
+                    "EMAIL = '" + oFornecedor.Email + "', " +
+                    "TELEFONE = '" + oFornecedor.Telefone + "', " +
+                    "ENDERECO = '" + oFornecedor.Endereco + "', " +
+                    "BAIRRO = '" + oFornecedor.Bairro + "', " +
+                    "ID_CIDADE = '" + oFornecedor.ACidade.Id + "', " +
+                    "CEP = '" + oFornecedor.Cep + "', " +
+                    "ATIVO = '" + (oFornecedor.Ativo ? 1 : 0) + "', " +
+                    "INSCRICAO_ESTADUAL_SUBS_TRIB = '" + oFornecedor.InscricaoEstadualSubstitutoTributario + "', " +
+                    "ID_CONDICAO_PAGAMENTO = '" + oFornecedor.ACondicaoPagamento.Id + "', " +
+                    "NUMERO_ENDERECO = '" + oFornecedor.NumeroEndereco + "', " +
+                    "COMPLEMENTO_ENDERECO = '" + oFornecedor.ComplementoEndereco + "', " +
+                    "DATA_ULTIMA_EDICAO = CURRENT_DATE " +
+                    "WHERE ID_FORNECEDOR = '" + oFornecedor.Id + "'";
             }
 
             MySqlCommand conn = new MySqlCommand();
@@ -97,9 +108,19 @@ namespace projeto_patrica.dao
                     oFornecedor.Genero = dr["GENERO"] == DBNull.Value || string.IsNullOrWhiteSpace(dr["GENERO"].ToString()) ? ' ' : Convert.ToChar(dr["GENERO"]);
                     oFornecedor.InscricaoEstadualSubstitutoTributario = dr["INSCRICAO_ESTADUAL_SUBS_TRIB"] == DBNull.Value ? "" : dr["INSCRICAO_ESTADUAL_SUBS_TRIB"].ToString();
                     oFornecedor.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
+                    oFornecedor.NumeroEndereco = dr["NUMERO_ENDERECO"] == DBNull.Value ? "" : dr["NUMERO_ENDERECO"].ToString();
+                    oFornecedor.ComplementoEndereco = dr["COMPLEMENTO_ENDERECO"] == DBNull.Value ? "" : dr["COMPLEMENTO_ENDERECO"].ToString();
+                    oFornecedor.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                    oFornecedor.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
+
                 }
 
                 conn.Connection.Close();
+
+                Controller_cidade controller = new Controller_cidade();
+                controller.CarregaObj(oFornecedor.ACidade);
+                Controller_condicaoPagamento controller2 = new Controller_condicaoPagamento();
+                controller2.CarregaObj(oFornecedor.ACondicaoPagamento);
             }
             catch (MySqlException ex)
             {
@@ -164,6 +185,10 @@ namespace projeto_patrica.dao
                 oFornecedor.Genero = dr["GENERO"] == DBNull.Value || string.IsNullOrWhiteSpace(dr["GENERO"].ToString()) ? ' ' : Convert.ToChar(dr["GENERO"]);
                 oFornecedor.InscricaoEstadualSubstitutoTributario = dr["INSCRICAO_ESTADUAL_SUBS_TRIB"] == DBNull.Value ? "" : dr["INSCRICAO_ESTADUAL_SUBS_TRIB"].ToString();
                 oFornecedor.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
+                oFornecedor.NumeroEndereco = dr["NUMERO_ENDERECO"] == DBNull.Value ? "" : dr["NUMERO_ENDERECO"].ToString();
+                oFornecedor.ComplementoEndereco = dr["COMPLEMENTO_ENDERECO"] == DBNull.Value ? "" : dr["COMPLEMENTO_ENDERECO"].ToString();
+                oFornecedor.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                oFornecedor.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
 
                 lista.Add(oFornecedor);
             }

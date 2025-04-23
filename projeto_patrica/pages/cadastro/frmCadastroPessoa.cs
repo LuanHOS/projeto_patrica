@@ -10,8 +10,8 @@ namespace projeto_patrica.pages.cadastro
 {
 	public partial class frmCadastroPessoa : projeto_patrica.pages.cadastro.frmCadastro
 	{
-		public frmCadastroPessoa()
-		{
+		public frmCadastroPessoa() : base()
+        {
 			InitializeComponent();
 		}
     }

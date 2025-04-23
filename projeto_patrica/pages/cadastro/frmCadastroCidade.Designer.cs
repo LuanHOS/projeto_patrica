@@ -107,6 +107,7 @@
             // frmCadastroCidade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 721);
             this.Controls.Add(this.btnPesquisarEstado);
             this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.lblEstado);
@@ -116,6 +117,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroCidade";
             this.Text = "Cadastro de Cidade";
+            this.Controls.SetChildIndex(this.checkBoxAtivo, 0);
             this.Controls.SetChildIndex(this.lblCod, 0);
             this.Controls.SetChildIndex(this.lblDataCadastro, 0);
             this.Controls.SetChildIndex(this.lblDataCadastroData, 0);
