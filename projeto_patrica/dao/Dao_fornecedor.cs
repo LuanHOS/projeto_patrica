@@ -22,13 +22,16 @@ namespace projeto_patrica.dao
             sql = "INSERT INTO fornecedor (" +
                 "TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, " +
                 "RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, " +
+                "GENERO, " +
                 "INSCRICAO_ESTADUAL_SUBS_TRIB, ID_CONDICAO_PAGAMENTO, NUMERO_ENDERECO, COMPLEMENTO_ENDERECO" +
                 ") VALUES (" +
                 "'" + oFornecedor.TipoPessoa + "', '" + oFornecedor.Nome_razaoSocial + "', '" + oFornecedor.Apelido_nomeFantasia + "', '" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', '" + oFornecedor.Cpf_cnpj + "', '" +
                 oFornecedor.Rg_inscricaoEstadual + "', '" + oFornecedor.Email + "', '" + oFornecedor.Telefone + "', '" + oFornecedor.Endereco + "', '" + oFornecedor.Bairro + "', '" +
                 oFornecedor.ACidade.Id + "', '" + oFornecedor.Cep + "', '" + (oFornecedor.Ativo ? 1 : 0) + "', '" +
-                oFornecedor.InscricaoEstadualSubstitutoTributario + "', '" + oFornecedor.ACondicaoPagamento.Id + "', '" + oFornecedor.NumeroEndereco + "', '" + oFornecedor.ComplementoEndereco + "'" +
+                oFornecedor.Genero + "', " + 
+                "'" + oFornecedor.InscricaoEstadualSubstitutoTributario + "', '" + oFornecedor.ACondicaoPagamento.Id + "', '" + oFornecedor.NumeroEndereco + "', '" + oFornecedor.ComplementoEndereco + "'" +
                 ")";
+
 
             if (oFornecedor.Id != 0)
             {
@@ -49,6 +52,7 @@ namespace projeto_patrica.dao
                     "ATIVO = '" + (oFornecedor.Ativo ? 1 : 0) + "', " +
                     "INSCRICAO_ESTADUAL_SUBS_TRIB = '" + oFornecedor.InscricaoEstadualSubstitutoTributario + "', " +
                     "ID_CONDICAO_PAGAMENTO = '" + oFornecedor.ACondicaoPagamento.Id + "', " +
+                    "GENERO = '" + oFornecedor.Genero + "', " +
                     "NUMERO_ENDERECO = '" + oFornecedor.NumeroEndereco + "', " +
                     "COMPLEMENTO_ENDERECO = '" + oFornecedor.ComplementoEndereco + "', " +
                     "DATA_ULTIMA_EDICAO = CURRENT_DATE " +

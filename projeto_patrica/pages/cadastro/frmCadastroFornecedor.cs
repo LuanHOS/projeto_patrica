@@ -49,7 +49,6 @@ namespace projeto_patrica.pages.cadastro
                 string.IsNullOrWhiteSpace(txtBairro.Text) ||
                 string.IsNullOrWhiteSpace(txtCep.Text) ||
                 string.IsNullOrWhiteSpace(txtInscEstSubTrib.Text) ||
-                comboBoxGenero.SelectedIndex == -1 ||
                 oFornecedor.ACidade == null || oFornecedor.ACidade.Id == 0 ||
                 oFornecedor.ACondicaoPagamento == null || oFornecedor.ACondicaoPagamento.Id == 0 ||
                 dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate
