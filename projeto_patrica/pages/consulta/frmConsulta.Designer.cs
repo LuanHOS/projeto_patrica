@@ -124,7 +124,6 @@
             // 
             // frmConsulta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.Controls.Add(this.listV);
             this.Controls.Add(this.bntLimparPesquisa);
             this.Controls.Add(this.btnPesquisar);
@@ -132,7 +131,6 @@
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnExcluir);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1360, 768);
             this.Name = "frmConsulta";
             this.Text = "Consulta";
             this.Controls.SetChildIndex(this.btnSair, 0);

@@ -366,8 +366,6 @@
             // 
             // frmCadastroFuncionario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1006, 586);
             this.Controls.Add(this.dtpDataDemissao);
             this.Controls.Add(this.lblDataDemissao);
             this.Controls.Add(this.dtpDataAdmissao);
@@ -383,7 +381,6 @@
             this.Controls.Add(this.lblCargo);
             this.Controls.Add(this.lblMatricula);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MinimumSize = new System.Drawing.Size(441, 357);
             this.Name = "frmCadastroFuncionario";
             this.Text = "Cadastro de Funcionário";
             this.Controls.SetChildIndex(this.lblEstado, 0);

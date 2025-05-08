@@ -121,8 +121,6 @@
             // 
             // frmCadastroEstado
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(1342, 721);
             this.Controls.Add(this.btnPesquisarPais);
             this.Controls.Add(this.txtPais);
             this.Controls.Add(this.lblPais);

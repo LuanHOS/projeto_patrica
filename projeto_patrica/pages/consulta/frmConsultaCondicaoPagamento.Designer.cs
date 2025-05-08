@@ -55,7 +55,6 @@
             // 
             // frmConsultaCondicaoPagamento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmConsultaCondicaoPagamento";
             this.Text = "Consulta de Condição de Pagamento";

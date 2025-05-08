@@ -405,8 +405,6 @@
             // 
             // frmCadastroCondicaoPagamento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(1342, 721);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblDesconto);
             this.Controls.Add(this.lblMulta);

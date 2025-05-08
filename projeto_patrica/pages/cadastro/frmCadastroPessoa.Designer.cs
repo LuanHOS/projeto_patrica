@@ -419,8 +419,6 @@
             // 
             // frmCadastroPessoa
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(1789, 887);
             this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.lblComplementoEndereco);
@@ -455,7 +453,6 @@
             this.Controls.Add(this.txtApelidoNomeFantasia);
             this.Controls.Add(this.lblNome);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MinimumSize = new System.Drawing.Size(771, 518);
             this.Name = "frmCadastroPessoa";
             this.Text = "Cadastro de Pessoa";
             this.Controls.SetChildIndex(this.checkBoxAtivo, 0);
