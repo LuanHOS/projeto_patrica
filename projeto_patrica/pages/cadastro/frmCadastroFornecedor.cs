@@ -146,8 +146,8 @@ namespace projeto_patrica.pages.cadastro
             dtpDataNascimentoCriacao.Value = DateTime.Today;
             oFornecedor.ACidade = new cidade();
             oFornecedor.ACondicaoPagamento = new condicaoPagamento();
-
             HabilitarCampos(false);
+            comboBoxTipo.Enabled = true;
         }
 
         public override void Carregatxt()
@@ -171,6 +171,7 @@ namespace projeto_patrica.pages.cadastro
             txtCondicaoPagamento.Text = oFornecedor.ACondicaoPagamento.Descricao;
             dtpDataNascimentoCriacao.Value = (oFornecedor.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oFornecedor.DataNascimento_criacao;
             comboBoxTipo.SelectedIndex = oFornecedor.TipoPessoa == 'F' ? 0 : 1;
+            comboBoxTipo.Enabled = false;
             comboBoxGenero.SelectedIndex = oFornecedor.Genero == 'M' ? 0 : 1;
             checkBoxAtivo.Checked = oFornecedor.Ativo;
             lblDataCadastroData.Text = oFornecedor.DataCadastro.ToShortDateString();
@@ -260,15 +261,6 @@ namespace projeto_patrica.pages.cadastro
             btnPesquisarCidade.Enabled = habilita;
             btnPesquisarCondicaoPagamento.Enabled = habilita;
             txtCondicaoPagamento.Enabled = habilita;
-
-            if (btnSave.Text == "Excluir")
-            {
-                comboBoxTipo.Enabled = false;
-            }
-            else
-            {
-                comboBoxTipo.Enabled = true;
-            }
         }
     }
 }

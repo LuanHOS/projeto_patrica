@@ -149,6 +149,7 @@ namespace projeto_patrica.pages.cadastro
             oCliente.ACidade = new cidade();
             oCliente.ACondicaoPagamento = new condicaoPagamento();
             HabilitarCampos(false);
+            comboBoxTipo.Enabled = true;
         }
 
         public override void Carregatxt()
@@ -175,6 +176,7 @@ namespace projeto_patrica.pages.cadastro
             lblDataCadastroData.Text = oCliente.DataCadastro.ToShortDateString();
             lblDataUltimaEdicaoData.Text = oCliente.DataUltimaEdicao?.ToShortDateString() ?? " ";
             comboBoxTipo.SelectedIndex = oCliente.TipoPessoa == 'F' ? 0 : 1;
+            comboBoxTipo.Enabled = false;
             comboBoxGenero.SelectedIndex = oCliente.Genero == 'M' ? 0 : 1;
             checkBoxAtivo.Checked = oCliente.Ativo;
         }
@@ -263,15 +265,6 @@ namespace projeto_patrica.pages.cadastro
             txtNumeroEndereco.Enabled = habilita;
             txtComplementoEndereco.Enabled = habilita;
             txtLimiteDeCredito.Enabled = habilita;
-
-            if (btnSave.Text == "Excluir")
-            {
-                comboBoxTipo.Enabled = false;
-            }
-            else
-            {
-                comboBoxTipo.Enabled = true;
-            }
         }
     }
 }
