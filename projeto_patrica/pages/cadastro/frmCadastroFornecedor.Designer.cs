@@ -37,6 +37,10 @@
             // 
             this.comboBoxTipo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTipo_SelectedIndexChanged);
             // 
+            // btnPesquisarCidade
+            // 
+            this.btnPesquisarCidade.Click += new System.EventHandler(this.BtnPesquisarCidade_Click);
+            // 
             // btnSave
             // 
             this.btnSave.TabIndex = 22;
@@ -82,8 +86,8 @@
             // 
             // frmCadastroFornecedor
             // 
-            //this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            //this.ClientSize = new System.Drawing.Size(1342, 681);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Controls.Add(this.btnPesquisarCondicaoPagamento);
             this.Controls.Add(this.txtCondicaoPagamento);
             this.Controls.Add(this.lblCondicaoPagamento);
