@@ -36,6 +36,7 @@ namespace projeto_patrica.pages.consulta
             oFrmCadastroCliente.ConhecaObj(oCliente, aController_cliente);
             oFrmCadastroCliente.Limpartxt();
             oFrmCadastroCliente.ShowDialog();
+            oFrmCadastroCliente.Desbloqueiatxt();
             this.CarregaLV();
         }
 

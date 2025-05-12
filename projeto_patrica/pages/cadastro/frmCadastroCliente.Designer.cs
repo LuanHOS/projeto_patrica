@@ -35,6 +35,10 @@
             this.txtLimiteDeCredito = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
+            // comboBoxTipo
+            // 
+            this.comboBoxTipo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTipo_SelectedIndexChanged);
+            // 
             // btnSave
             // 
             this.btnSave.TabIndex = 22;

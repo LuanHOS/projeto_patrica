@@ -33,6 +33,10 @@
             this.lblCondicaoPagamento = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // comboBoxTipo
+            // 
+            this.comboBoxTipo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTipo_SelectedIndexChanged);
+            // 
             // btnSave
             // 
             this.btnSave.TabIndex = 22;

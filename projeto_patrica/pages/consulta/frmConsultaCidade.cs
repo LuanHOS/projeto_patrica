@@ -36,6 +36,7 @@ namespace projeto_patrica.pages.consulta
             oFrmCadastroCidade.ConhecaObj(aCidade, aController_cidade);
             oFrmCadastroCidade.Limpartxt();
             oFrmCadastroCidade.ShowDialog();
+            oFrmCadastroCidade.Desbloqueiatxt();
             this.CarregaLV();
         }
 

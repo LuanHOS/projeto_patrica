@@ -36,6 +36,7 @@ namespace projeto_patrica.pages.consulta
             oFrmCadFormaPagamento.ConhecaObj(aFormaPagamento, aController_formaPagamento);
             oFrmCadFormaPagamento.Limpartxt();
             oFrmCadFormaPagamento.ShowDialog();
+            oFrmCadFormaPagamento.Desbloqueiatxt();
             CarregaLV();
         }
 

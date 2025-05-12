@@ -36,6 +36,7 @@ namespace projeto_patrica.pages.consulta
             oFrmCadastroFornecedor.ConhecaObj(oFornecedor, aController_fornecedor);
             oFrmCadastroFornecedor.Limpartxt();
             oFrmCadastroFornecedor.ShowDialog();
+            oFrmCadastroFornecedor.Desbloqueiatxt();
             this.CarregaLV();
         }
 

@@ -40,6 +40,7 @@ namespace projeto_patrica.pages.consulta
             oFrmCadastroEstado.ConhecaObj(oEstado, aController_estado);
             oFrmCadastroEstado.Limpartxt();
             oFrmCadastroEstado.ShowDialog();
+            oFrmCadastroEstado.Desbloqueiatxt();
             this.CarregaLV();
         }
 

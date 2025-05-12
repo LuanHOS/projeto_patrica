@@ -64,6 +64,7 @@ namespace projeto_patrica.pages.cadastro
             lblDataUltimaEdicaoData.Text = " ";
             lblUltimoUsuarioQueEditouNome.Text = " ";
             checkBoxAtivo.Checked = true;
+            checkBoxAtivo.Enabled = false;
         }
 
 

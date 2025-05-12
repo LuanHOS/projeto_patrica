@@ -41,6 +41,7 @@ namespace projeto_patrica.pages.consulta
             oFrmCadastroPais.ConhecaObj(oPais, aController_pais);
             oFrmCadastroPais.Limpartxt();
             oFrmCadastroPais.ShowDialog();
+            oFrmCadastroPais.Desbloqueiatxt();
             this.CarregaLV();
         }
         public override void Alterar()
