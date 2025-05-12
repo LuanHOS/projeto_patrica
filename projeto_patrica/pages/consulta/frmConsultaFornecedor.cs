@@ -81,7 +81,6 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(oFornecedor.ACondicaoPagamento.Descricao);
                 item.SubItems.Add(oFornecedor.Cpf_cnpj);
                 item.SubItems.Add(oFornecedor.Rg_inscricaoEstadual);
-                item.SubItems.Add(oFornecedor.InscricaoEstadualSubstitutoTributario);
                 item.SubItems.Add(oFornecedor.Genero == ' ' ? "" : oFornecedor.Genero.ToString());
                 item.SubItems.Add(oFornecedor.ACidade.Nome);
                 item.SubItems.Add(oFornecedor.Email);
@@ -124,7 +123,6 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(oFornecedor.ACondicaoPagamento.Descricao);
                 item.SubItems.Add(oFornecedor.Cpf_cnpj);
                 item.SubItems.Add(oFornecedor.Rg_inscricaoEstadual);
-                item.SubItems.Add(oFornecedor.InscricaoEstadualSubstitutoTributario);
                 item.SubItems.Add(oFornecedor.Genero == ' ' ? "" : oFornecedor.Genero.ToString());
                 item.SubItems.Add(oFornecedor.ACidade.Nome);
                 item.SubItems.Add(oFornecedor.Email);
@@ -161,7 +159,6 @@ namespace projeto_patrica.pages.consulta
                 oFornecedor.Cep = selecionado.Cep;
                 oFornecedor.Ativo = selecionado.Ativo;
                 oFornecedor.Genero = selecionado.Genero;
-                oFornecedor.InscricaoEstadualSubstitutoTributario = selecionado.InscricaoEstadualSubstitutoTributario;
                 oFornecedor.ACondicaoPagamento = selecionado.ACondicaoPagamento;
                 oFornecedor.NumeroEndereco = selecionado.NumeroEndereco;
                 oFornecedor.ComplementoEndereco = selecionado.ComplementoEndereco;

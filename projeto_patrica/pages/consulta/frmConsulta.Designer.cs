@@ -39,6 +39,7 @@
             // 
             // btnSair
             // 
+            this.btnSair.Location = new System.Drawing.Point(1229, 616);
             this.btnSair.TabIndex = 8;
             // 
             // txtCodigo
@@ -49,7 +50,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(635, 409);
+            this.btnExcluir.Location = new System.Drawing.Point(1144, 617);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(80, 34);
@@ -60,7 +61,7 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(548, 409);
+            this.btnAlterar.Location = new System.Drawing.Point(1057, 617);
             this.btnAlterar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(80, 34);
@@ -71,7 +72,7 @@
             // 
             // btnIncluir
             // 
-            this.btnIncluir.Location = new System.Drawing.Point(461, 409);
+            this.btnIncluir.Location = new System.Drawing.Point(970, 617);
             this.btnIncluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnIncluir.Name = "btnIncluir";
             this.btnIncluir.Size = new System.Drawing.Size(80, 34);
@@ -101,7 +102,7 @@
             this.listV.Location = new System.Drawing.Point(24, 82);
             this.listV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listV.Name = "listV";
-            this.listV.Size = new System.Drawing.Size(776, 306);
+            this.listV.Size = new System.Drawing.Size(1285, 511);
             this.listV.TabIndex = 4;
             this.listV.UseCompatibleStateImageBehavior = false;
             this.listV.View = System.Windows.Forms.View.Details;
@@ -124,6 +125,8 @@
             // 
             // frmConsulta
             // 
+            //this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            //this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Controls.Add(this.listV);
             this.Controls.Add(this.bntLimparPesquisa);
             this.Controls.Add(this.btnPesquisar);

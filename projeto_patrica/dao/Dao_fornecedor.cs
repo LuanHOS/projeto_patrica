@@ -23,13 +23,13 @@ namespace projeto_patrica.dao
                 "TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, " +
                 "RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, " +
                 "GENERO, " +
-                "INSCRICAO_ESTADUAL_SUBS_TRIB, ID_CONDICAO_PAGAMENTO, NUMERO_ENDERECO, COMPLEMENTO_ENDERECO" +
+                "ID_CONDICAO_PAGAMENTO, NUMERO_ENDERECO, COMPLEMENTO_ENDERECO" +
                 ") VALUES (" +
                 "'" + oFornecedor.TipoPessoa + "', '" + oFornecedor.Nome_razaoSocial + "', '" + oFornecedor.Apelido_nomeFantasia + "', '" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', '" + oFornecedor.Cpf_cnpj + "', '" +
                 oFornecedor.Rg_inscricaoEstadual + "', '" + oFornecedor.Email + "', '" + oFornecedor.Telefone + "', '" + oFornecedor.Endereco + "', '" + oFornecedor.Bairro + "', '" +
                 oFornecedor.ACidade.Id + "', '" + oFornecedor.Cep + "', '" + (oFornecedor.Ativo ? 1 : 0) + "', '" +
                 oFornecedor.Genero + "', " + 
-                "'" + oFornecedor.InscricaoEstadualSubstitutoTributario + "', '" + oFornecedor.ACondicaoPagamento.Id + "', '" + oFornecedor.NumeroEndereco + "', '" + oFornecedor.ComplementoEndereco + "'" +
+                "', '" + oFornecedor.ACondicaoPagamento.Id + "', '" + oFornecedor.NumeroEndereco + "', '" + oFornecedor.ComplementoEndereco + "'" +
                 ")";
 
 
@@ -50,7 +50,6 @@ namespace projeto_patrica.dao
                     "ID_CIDADE = '" + oFornecedor.ACidade.Id + "', " +
                     "CEP = '" + oFornecedor.Cep + "', " +
                     "ATIVO = '" + (oFornecedor.Ativo ? 1 : 0) + "', " +
-                    "INSCRICAO_ESTADUAL_SUBS_TRIB = '" + oFornecedor.InscricaoEstadualSubstitutoTributario + "', " +
                     "ID_CONDICAO_PAGAMENTO = '" + oFornecedor.ACondicaoPagamento.Id + "', " +
                     "GENERO = '" + oFornecedor.Genero + "', " +
                     "NUMERO_ENDERECO = '" + oFornecedor.NumeroEndereco + "', " +
@@ -110,7 +109,6 @@ namespace projeto_patrica.dao
                     oFornecedor.Cep = dr["CEP"].ToString();
                     oFornecedor.Ativo = Convert.ToBoolean(dr["ATIVO"]);
                     oFornecedor.Genero = dr["GENERO"] == DBNull.Value || string.IsNullOrWhiteSpace(dr["GENERO"].ToString()) ? ' ' : Convert.ToChar(dr["GENERO"]);
-                    oFornecedor.InscricaoEstadualSubstitutoTributario = dr["INSCRICAO_ESTADUAL_SUBS_TRIB"] == DBNull.Value ? "" : dr["INSCRICAO_ESTADUAL_SUBS_TRIB"].ToString();
                     oFornecedor.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
                     oFornecedor.NumeroEndereco = dr["NUMERO_ENDERECO"] == DBNull.Value ? "" : dr["NUMERO_ENDERECO"].ToString();
                     oFornecedor.ComplementoEndereco = dr["COMPLEMENTO_ENDERECO"] == DBNull.Value ? "" : dr["COMPLEMENTO_ENDERECO"].ToString();
@@ -187,7 +185,6 @@ namespace projeto_patrica.dao
                 oFornecedor.Cep = dr["CEP"].ToString();
                 oFornecedor.Ativo = Convert.ToBoolean(dr["ATIVO"]);
                 oFornecedor.Genero = dr["GENERO"] == DBNull.Value || string.IsNullOrWhiteSpace(dr["GENERO"].ToString()) ? ' ' : Convert.ToChar(dr["GENERO"]);
-                oFornecedor.InscricaoEstadualSubstitutoTributario = dr["INSCRICAO_ESTADUAL_SUBS_TRIB"] == DBNull.Value ? "" : dr["INSCRICAO_ESTADUAL_SUBS_TRIB"].ToString();
                 oFornecedor.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
                 oFornecedor.NumeroEndereco = dr["NUMERO_ENDERECO"] == DBNull.Value ? "" : dr["NUMERO_ENDERECO"].ToString();
                 oFornecedor.ComplementoEndereco = dr["COMPLEMENTO_ENDERECO"] == DBNull.Value ? "" : dr["COMPLEMENTO_ENDERECO"].ToString();

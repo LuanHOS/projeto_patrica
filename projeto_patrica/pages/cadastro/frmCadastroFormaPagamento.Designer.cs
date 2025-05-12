@@ -36,30 +36,6 @@
             // 
             this.btnSave.TabIndex = 3;
             // 
-            // lblDataCadastro
-            // 
-            this.lblDataCadastro.Enabled = true;
-            // 
-            // lblDataUltimaEdicao
-            // 
-            this.lblDataUltimaEdicao.Enabled = true;
-            // 
-            // lblUltimoUsuarioQueEditou
-            // 
-            this.lblUltimoUsuarioQueEditou.Enabled = true;
-            // 
-            // lblDataCadastroData
-            // 
-            this.lblDataCadastroData.Enabled = true;
-            // 
-            // lblDataUltimaEdicaoData
-            // 
-            this.lblDataUltimaEdicaoData.Enabled = true;
-            // 
-            // lblUltimoUsuarioQueEditouNome
-            // 
-            this.lblUltimoUsuarioQueEditouNome.Enabled = true;
-            // 
             // btnSair
             // 
             this.btnSair.TabIndex = 4;

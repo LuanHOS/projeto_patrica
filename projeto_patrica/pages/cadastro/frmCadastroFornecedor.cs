@@ -48,7 +48,6 @@ namespace projeto_patrica.pages.cadastro
                 string.IsNullOrWhiteSpace(txtEndereco.Text) ||
                 string.IsNullOrWhiteSpace(txtBairro.Text) ||
                 string.IsNullOrWhiteSpace(txtCep.Text) ||
-                string.IsNullOrWhiteSpace(txtInscEstSubTrib.Text) ||
                 oFornecedor.ACidade == null || oFornecedor.ACidade.Id == 0 ||
                 oFornecedor.ACondicaoPagamento == null || oFornecedor.ACondicaoPagamento.Id == 0 ||
                 dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate
@@ -63,7 +62,6 @@ namespace projeto_patrica.pages.cadastro
                 txtEndereco.Focus();
                 txtBairro.Focus();
                 txtCep.Focus();
-                txtInscEstSubTrib.Focus();
                 comboBoxGenero.Focus();
                 txtCidade.Focus();
                 txtCondicaoPagamento.Focus();
@@ -87,7 +85,6 @@ namespace projeto_patrica.pages.cadastro
             oFornecedor.Cep = txtCep.Text;
             oFornecedor.Ativo = checkBoxAtivo.Checked;
             oFornecedor.Genero = comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F';
-            oFornecedor.InscricaoEstadualSubstitutoTributario = txtInscEstSubTrib.Text;
             oFornecedor.NumeroEndereco = txtNumeroEndereco.Text;
             oFornecedor.ComplementoEndereco = txtComplementoEndereco.Text;
 
@@ -143,7 +140,6 @@ namespace projeto_patrica.pages.cadastro
             txtEstado.Clear();
             txtNumeroEndereco.Clear();
             txtComplementoEndereco.Clear();
-            txtInscEstSubTrib.Clear();
             txtCondicaoPagamento.Clear();
             comboBoxTipo.SelectedIndex = -1;
             comboBoxGenero.SelectedIndex = -1;
@@ -172,7 +168,6 @@ namespace projeto_patrica.pages.cadastro
             txtEstado.Text = oFornecedor.ACidade.OEstado.Nome;
             txtNumeroEndereco.Text = oFornecedor.NumeroEndereco;
             txtComplementoEndereco.Text = oFornecedor.ComplementoEndereco;
-            txtInscEstSubTrib.Text = oFornecedor.InscricaoEstadualSubstitutoTributario;
             txtCondicaoPagamento.Text = oFornecedor.ACondicaoPagamento.Descricao;
             dtpDataNascimentoCriacao.Value = (oFornecedor.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oFornecedor.DataNascimento_criacao;
             comboBoxTipo.SelectedIndex = oFornecedor.TipoPessoa == 'F' ? 0 : 1;
@@ -264,7 +259,6 @@ namespace projeto_patrica.pages.cadastro
             comboBoxGenero.Enabled = habilita;
             btnPesquisarCidade.Enabled = habilita;
             btnPesquisarCondicaoPagamento.Enabled = habilita;
-            txtInscEstSubTrib.Enabled = habilita;
             txtCondicaoPagamento.Enabled = habilita;
 
             if (btnSave.Text == "Excluir")

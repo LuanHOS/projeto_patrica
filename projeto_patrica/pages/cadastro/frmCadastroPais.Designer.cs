@@ -36,30 +36,6 @@
             // 
             this.btnSave.TabIndex = 3;
             // 
-            // lblDataCadastro
-            // 
-            this.lblDataCadastro.Enabled = true;
-            // 
-            // lblDataUltimaEdicao
-            // 
-            this.lblDataUltimaEdicao.Enabled = true;
-            // 
-            // lblUltimoUsuarioQueEditou
-            // 
-            this.lblUltimoUsuarioQueEditou.Enabled = true;
-            // 
-            // lblDataCadastroData
-            // 
-            this.lblDataCadastroData.Enabled = true;
-            // 
-            // lblDataUltimaEdicaoData
-            // 
-            this.lblDataUltimaEdicaoData.Enabled = true;
-            // 
-            // lblUltimoUsuarioQueEditouNome
-            // 
-            this.lblUltimoUsuarioQueEditouNome.Enabled = true;
-            // 
             // btnSair
             // 
             this.btnSair.TabIndex = 4;
@@ -83,7 +59,7 @@
             this.txtNome.Location = new System.Drawing.Point(27, 111);
             this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(237, 22);
+            this.txtNome.Size = new System.Drawing.Size(411, 22);
             this.txtNome.TabIndex = 2;
             // 
             // frmCadastroPais

@@ -8,7 +8,6 @@ namespace projeto_patrica.classes
 {
     class fornecedor : pessoa
     {
-        protected string inscricaoEstadualSubstitutoTributario;
         protected condicaoPagamento aCondicaoPagamento;
 
         public fornecedor()
@@ -32,7 +31,6 @@ namespace projeto_patrica.classes
             genero = ' ';
             dataCadastro = DateTime.MinValue;
             dataUltimaEdicao = null;
-            inscricaoEstadualSubstitutoTributario = " ";
             aCondicaoPagamento = new condicaoPagamento();
         }
 
@@ -40,7 +38,7 @@ namespace projeto_patrica.classes
             int id, char tipoPessoa, string nome_razaoSocial, string apelido_nomeFantasia, DateTime dataNascimento_criacao,
             string cpf_cnpj, string rg_inscricaoEstadual, string email, string telefone, string endereco, string numeroEndereco,
             string complementoEndereco, string bairro, cidade aCidade, string cep, bool ativo, DateTime dataCadastro,
-            DateTime? dataUltimaEdicao, char genero, string inscricaoEstadualSubstitutoTributario, condicaoPagamento aCondicaoPagamento
+            DateTime? dataUltimaEdicao, char genero, condicaoPagamento aCondicaoPagamento
         )
         : base(id, tipoPessoa, nome_razaoSocial, apelido_nomeFantasia, dataNascimento_criacao, cpf_cnpj,
               rg_inscricaoEstadual, email, telefone, endereco, numeroEndereco, complementoEndereco,
@@ -65,15 +63,9 @@ namespace projeto_patrica.classes
             this.dataCadastro = dataCadastro;
             this.dataUltimaEdicao = dataUltimaEdicao;
             this.genero = genero;
-            this.inscricaoEstadualSubstitutoTributario = inscricaoEstadualSubstitutoTributario;
             this.aCondicaoPagamento = aCondicaoPagamento;
         }
 
-        public string InscricaoEstadualSubstitutoTributario
-        {
-            get => inscricaoEstadualSubstitutoTributario;
-            set => inscricaoEstadualSubstitutoTributario = value;
-        }
         public condicaoPagamento ACondicaoPagamento
         {
             get => aCondicaoPagamento;

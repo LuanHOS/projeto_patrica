@@ -64,37 +64,11 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(651, 648);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.TabIndex = 15;
             // 
-            // lblDataCadastro
-            // 
-            this.lblDataCadastro.Location = new System.Drawing.Point(21, 635);
-            // 
-            // lblDataUltimaEdicao
-            // 
-            this.lblDataUltimaEdicao.Location = new System.Drawing.Point(21, 651);
-            // 
-            // lblUltimoUsuarioQueEditou
-            // 
-            this.lblUltimoUsuarioQueEditou.Location = new System.Drawing.Point(21, 667);
-            // 
-            // lblDataCadastroData
-            // 
-            this.lblDataCadastroData.Location = new System.Drawing.Point(143, 635);
-            // 
-            // lblDataUltimaEdicaoData
-            // 
-            this.lblDataUltimaEdicaoData.Location = new System.Drawing.Point(172, 651);
-            // 
-            // lblUltimoUsuarioQueEditouNome
-            // 
-            this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(192, 667);
-            // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(743, 648);
             this.btnSair.Margin = new System.Windows.Forms.Padding(4);
             this.btnSair.TabIndex = 16;
             // 
@@ -108,7 +82,7 @@
             this.txtDescricao.Location = new System.Drawing.Point(24, 106);
             this.txtDescricao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(212, 22);
+            this.txtDescricao.Size = new System.Drawing.Size(445, 22);
             this.txtDescricao.TabIndex = 2;
             // 
             // lblDescricao
@@ -123,16 +97,16 @@
             // txtQtdParcelas
             // 
             this.txtQtdParcelas.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtQtdParcelas.Location = new System.Drawing.Point(254, 106);
+            this.txtQtdParcelas.Location = new System.Drawing.Point(24, 163);
             this.txtQtdParcelas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtQtdParcelas.Name = "txtQtdParcelas";
-            this.txtQtdParcelas.Size = new System.Drawing.Size(93, 22);
+            this.txtQtdParcelas.Size = new System.Drawing.Size(142, 22);
             this.txtQtdParcelas.TabIndex = 3;
             // 
             // lvlQtdParcelas
             // 
             this.lvlQtdParcelas.AutoSize = true;
-            this.lvlQtdParcelas.Location = new System.Drawing.Point(251, 87);
+            this.lvlQtdParcelas.Location = new System.Drawing.Point(21, 144);
             this.lvlQtdParcelas.Name = "lvlQtdParcelas";
             this.lvlQtdParcelas.Size = new System.Drawing.Size(96, 16);
             this.lvlQtdParcelas.TabIndex = 4;
@@ -156,17 +130,16 @@
             this.panel1.Controls.Add(this.lblPercentualParcela);
             this.panel1.Controls.Add(this.txtNumParcela);
             this.panel1.Controls.Add(this.lblNumParcela);
-            this.panel1.Controls.Add(this.lblParcelas);
-            this.panel1.Location = new System.Drawing.Point(24, 150);
+            this.panel1.Location = new System.Drawing.Point(494, 64);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(799, 465);
+            this.panel1.Size = new System.Drawing.Size(799, 521);
             this.panel1.TabIndex = 5;
             // 
             // lblPorcentagemTotalNum
             // 
             this.lblPorcentagemTotalNum.AutoSize = true;
-            this.lblPorcentagemTotalNum.Location = new System.Drawing.Point(246, 106);
+            this.lblPorcentagemTotalNum.Location = new System.Drawing.Point(247, 74);
             this.lblPorcentagemTotalNum.Name = "lblPorcentagemTotalNum";
             this.lblPorcentagemTotalNum.Size = new System.Drawing.Size(14, 16);
             this.lblPorcentagemTotalNum.TabIndex = 10;
@@ -175,7 +148,7 @@
             // lblPorcentagemTotal
             // 
             this.lblPorcentagemTotal.AutoSize = true;
-            this.lblPorcentagemTotal.Location = new System.Drawing.Point(181, 106);
+            this.lblPorcentagemTotal.Location = new System.Drawing.Point(182, 74);
             this.lblPorcentagemTotal.Name = "lblPorcentagemTotal";
             this.lblPorcentagemTotal.Size = new System.Drawing.Size(59, 16);
             this.lblPorcentagemTotal.TabIndex = 9;
@@ -185,7 +158,7 @@
             // 
             this.comboBoxFormaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFormaPagamento.FormattingEnabled = true;
-            this.comboBoxFormaPagamento.Location = new System.Drawing.Point(491, 73);
+            this.comboBoxFormaPagamento.Location = new System.Drawing.Point(492, 41);
             this.comboBoxFormaPagamento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxFormaPagamento.Name = "comboBoxFormaPagamento";
             this.comboBoxFormaPagamento.Size = new System.Drawing.Size(183, 24);
@@ -201,10 +174,10 @@
             this.listVParcelas.FullRowSelect = true;
             this.listVParcelas.GridLines = true;
             this.listVParcelas.HideSelection = false;
-            this.listVParcelas.Location = new System.Drawing.Point(24, 174);
+            this.listVParcelas.Location = new System.Drawing.Point(24, 114);
             this.listVParcelas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listVParcelas.Name = "listVParcelas";
-            this.listVParcelas.Size = new System.Drawing.Size(752, 266);
+            this.listVParcelas.Size = new System.Drawing.Size(752, 387);
             this.listVParcelas.TabIndex = 7;
             this.listVParcelas.UseCompatibleStateImageBehavior = false;
             this.listVParcelas.View = System.Windows.Forms.View.Details;
@@ -235,7 +208,7 @@
             // 
             // btnRemoverParcela
             // 
-            this.btnRemoverParcela.Location = new System.Drawing.Point(632, 121);
+            this.btnRemoverParcela.Location = new System.Drawing.Point(632, 76);
             this.btnRemoverParcela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoverParcela.Name = "btnRemoverParcela";
             this.btnRemoverParcela.Size = new System.Drawing.Size(144, 34);
@@ -246,7 +219,7 @@
             // 
             // btnEditarParcela
             // 
-            this.btnEditarParcela.Location = new System.Drawing.Point(483, 121);
+            this.btnEditarParcela.Location = new System.Drawing.Point(483, 76);
             this.btnEditarParcela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEditarParcela.Name = "btnEditarParcela";
             this.btnEditarParcela.Size = new System.Drawing.Size(144, 34);
@@ -257,7 +230,7 @@
             // 
             // btnAdicionarParcela
             // 
-            this.btnAdicionarParcela.Location = new System.Drawing.Point(333, 121);
+            this.btnAdicionarParcela.Location = new System.Drawing.Point(333, 76);
             this.btnAdicionarParcela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdicionarParcela.Name = "btnAdicionarParcela";
             this.btnAdicionarParcela.Size = new System.Drawing.Size(144, 34);
@@ -268,7 +241,7 @@
             // 
             // btnPesquisarFormaPagamento
             // 
-            this.btnPesquisarFormaPagamento.Location = new System.Drawing.Point(680, 67);
+            this.btnPesquisarFormaPagamento.Location = new System.Drawing.Point(681, 35);
             this.btnPesquisarFormaPagamento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarFormaPagamento.Name = "btnPesquisarFormaPagamento";
             this.btnPesquisarFormaPagamento.Size = new System.Drawing.Size(96, 34);
@@ -280,7 +253,7 @@
             // lblFormaPagamento
             // 
             this.lblFormaPagamento.AutoSize = true;
-            this.lblFormaPagamento.Location = new System.Drawing.Point(488, 54);
+            this.lblFormaPagamento.Location = new System.Drawing.Point(489, 22);
             this.lblFormaPagamento.Name = "lblFormaPagamento";
             this.lblFormaPagamento.Size = new System.Drawing.Size(138, 16);
             this.lblFormaPagamento.TabIndex = 0;
@@ -289,7 +262,7 @@
             // txtPrazoDias
             // 
             this.txtPrazoDias.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPrazoDias.Location = new System.Drawing.Point(339, 73);
+            this.txtPrazoDias.Location = new System.Drawing.Point(340, 41);
             this.txtPrazoDias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPrazoDias.Name = "txtPrazoDias";
             this.txtPrazoDias.Size = new System.Drawing.Size(135, 22);
@@ -298,7 +271,7 @@
             // lblPrazoDias
             // 
             this.lblPrazoDias.AutoSize = true;
-            this.lblPrazoDias.Location = new System.Drawing.Point(336, 54);
+            this.lblPrazoDias.Location = new System.Drawing.Point(337, 22);
             this.lblPrazoDias.Name = "lblPrazoDias";
             this.lblPrazoDias.Size = new System.Drawing.Size(95, 16);
             this.lblPrazoDias.TabIndex = 0;
@@ -307,7 +280,7 @@
             // txtPercentualParcela
             // 
             this.txtPercentualParcela.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPercentualParcela.Location = new System.Drawing.Point(184, 73);
+            this.txtPercentualParcela.Location = new System.Drawing.Point(185, 41);
             this.txtPercentualParcela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPercentualParcela.Name = "txtPercentualParcela";
             this.txtPercentualParcela.Size = new System.Drawing.Size(135, 22);
@@ -316,7 +289,7 @@
             // lblPercentualParcela
             // 
             this.lblPercentualParcela.AutoSize = true;
-            this.lblPercentualParcela.Location = new System.Drawing.Point(181, 54);
+            this.lblPercentualParcela.Location = new System.Drawing.Point(182, 22);
             this.lblPercentualParcela.Name = "lblPercentualParcela";
             this.lblPercentualParcela.Size = new System.Drawing.Size(71, 16);
             this.lblPercentualParcela.TabIndex = 0;
@@ -325,16 +298,16 @@
             // txtNumParcela
             // 
             this.txtNumParcela.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNumParcela.Location = new System.Drawing.Point(24, 73);
+            this.txtNumParcela.Location = new System.Drawing.Point(25, 41);
             this.txtNumParcela.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNumParcela.Name = "txtNumParcela";
-            this.txtNumParcela.Size = new System.Drawing.Size(135, 22);
+            this.txtNumParcela.Size = new System.Drawing.Size(143, 22);
             this.txtNumParcela.TabIndex = 7;
             // 
             // lblNumParcela
             // 
             this.lblNumParcela.AutoSize = true;
-            this.lblNumParcela.Location = new System.Drawing.Point(21, 54);
+            this.lblNumParcela.Location = new System.Drawing.Point(22, 22);
             this.lblNumParcela.Name = "lblNumParcela";
             this.lblNumParcela.Size = new System.Drawing.Size(124, 16);
             this.lblNumParcela.TabIndex = 0;
@@ -343,7 +316,7 @@
             // lblParcelas
             // 
             this.lblParcelas.AutoSize = true;
-            this.lblParcelas.Location = new System.Drawing.Point(21, 18);
+            this.lblParcelas.Location = new System.Drawing.Point(491, 36);
             this.lblParcelas.Name = "lblParcelas";
             this.lblParcelas.Size = new System.Drawing.Size(61, 16);
             this.lblParcelas.TabIndex = 0;
@@ -352,16 +325,16 @@
             // txtJuros
             // 
             this.txtJuros.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtJuros.Location = new System.Drawing.Point(364, 106);
+            this.txtJuros.Location = new System.Drawing.Point(24, 219);
             this.txtJuros.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtJuros.Name = "txtJuros";
-            this.txtJuros.Size = new System.Drawing.Size(92, 22);
+            this.txtJuros.Size = new System.Drawing.Size(142, 22);
             this.txtJuros.TabIndex = 4;
             // 
             // lblJuros
             // 
             this.lblJuros.AutoSize = true;
-            this.lblJuros.Location = new System.Drawing.Point(361, 87);
+            this.lblJuros.Location = new System.Drawing.Point(21, 200);
             this.lblJuros.Name = "lblJuros";
             this.lblJuros.Size = new System.Drawing.Size(63, 16);
             this.lblJuros.TabIndex = 4;
@@ -370,16 +343,16 @@
             // txtMulta
             // 
             this.txtMulta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMulta.Location = new System.Drawing.Point(474, 106);
+            this.txtMulta.Location = new System.Drawing.Point(24, 279);
             this.txtMulta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMulta.Name = "txtMulta";
-            this.txtMulta.Size = new System.Drawing.Size(92, 22);
+            this.txtMulta.Size = new System.Drawing.Size(142, 22);
             this.txtMulta.TabIndex = 5;
             // 
             // lblMulta
             // 
             this.lblMulta.AutoSize = true;
-            this.lblMulta.Location = new System.Drawing.Point(471, 87);
+            this.lblMulta.Location = new System.Drawing.Point(21, 260);
             this.lblMulta.Name = "lblMulta";
             this.lblMulta.Size = new System.Drawing.Size(62, 16);
             this.lblMulta.TabIndex = 4;
@@ -388,16 +361,16 @@
             // txtDesconto
             // 
             this.txtDesconto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDesconto.Location = new System.Drawing.Point(580, 105);
+            this.txtDesconto.Location = new System.Drawing.Point(24, 337);
             this.txtDesconto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDesconto.Name = "txtDesconto";
-            this.txtDesconto.Size = new System.Drawing.Size(92, 22);
+            this.txtDesconto.Size = new System.Drawing.Size(142, 22);
             this.txtDesconto.TabIndex = 6;
             // 
             // lblDesconto
             // 
             this.lblDesconto.AutoSize = true;
-            this.lblDesconto.Location = new System.Drawing.Point(577, 87);
+            this.lblDesconto.Location = new System.Drawing.Point(21, 319);
             this.lblDesconto.Name = "lblDesconto";
             this.lblDesconto.Size = new System.Drawing.Size(88, 16);
             this.lblDesconto.TabIndex = 4;
@@ -416,20 +389,11 @@
             this.Controls.Add(this.txtJuros);
             this.Controls.Add(this.txtQtdParcelas);
             this.Controls.Add(this.txtDescricao);
+            this.Controls.Add(this.lblParcelas);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroCondicaoPagamento";
             this.Text = "Cadastro de Condição de Pagamento";
-            this.Controls.SetChildIndex(this.checkBoxAtivo, 0);
-            this.Controls.SetChildIndex(this.lblCod, 0);
-            this.Controls.SetChildIndex(this.lblDataCadastro, 0);
-            this.Controls.SetChildIndex(this.lblDataCadastroData, 0);
-            this.Controls.SetChildIndex(this.lblDataUltimaEdicao, 0);
-            this.Controls.SetChildIndex(this.lblDataUltimaEdicaoData, 0);
-            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditou, 0);
-            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditouNome, 0);
-            this.Controls.SetChildIndex(this.btnSave, 0);
-            this.Controls.SetChildIndex(this.btnSair, 0);
-            this.Controls.SetChildIndex(this.txtCodigo, 0);
+            this.Controls.SetChildIndex(this.lblParcelas, 0);
             this.Controls.SetChildIndex(this.txtDescricao, 0);
             this.Controls.SetChildIndex(this.txtQtdParcelas, 0);
             this.Controls.SetChildIndex(this.txtJuros, 0);
@@ -441,6 +405,17 @@
             this.Controls.SetChildIndex(this.lblMulta, 0);
             this.Controls.SetChildIndex(this.lblDesconto, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.checkBoxAtivo, 0);
+            this.Controls.SetChildIndex(this.lblCod, 0);
+            this.Controls.SetChildIndex(this.lblDataCadastro, 0);
+            this.Controls.SetChildIndex(this.lblDataCadastroData, 0);
+            this.Controls.SetChildIndex(this.lblDataUltimaEdicao, 0);
+            this.Controls.SetChildIndex(this.lblDataUltimaEdicaoData, 0);
+            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditou, 0);
+            this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditouNome, 0);
+            this.Controls.SetChildIndex(this.btnSave, 0);
+            this.Controls.SetChildIndex(this.btnSair, 0);
+            this.Controls.SetChildIndex(this.txtCodigo, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

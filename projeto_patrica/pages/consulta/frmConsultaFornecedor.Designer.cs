@@ -33,7 +33,6 @@
             this.clmCondicaoPagamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmCpfCnpj = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmRgInscEstadual = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmInscEstSubTrib = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmGenero = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmCidade = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,7 +48,6 @@
             this.clmCondicaoPagamento,
             this.clmCpfCnpj,
             this.clmRgInscEstadual,
-            this.clmInscEstSubTrib,
             this.clmGenero,
             this.clmCidade,
             this.clmEmail,
@@ -59,7 +57,7 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(5);
             // 
             // clmNomeRazaoSocial
             // 
@@ -84,11 +82,6 @@
             // 
             this.clmRgInscEstadual.Text = "RG/Insc. Estadual";
             this.clmRgInscEstadual.Width = 120;
-            // 
-            // clmInscEstSubTrib
-            // 
-            this.clmInscEstSubTrib.Text = "Insc. Estadual Sub. Trib.";
-            this.clmInscEstSubTrib.Width = 120;
             // 
             // clmGenero
             // 
@@ -115,7 +108,7 @@
             // 
             // frmConsultaFornecedor
             // 
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "frmConsultaFornecedor";
             this.Text = "Consulta de Fornecedor";
             this.ResumeLayout(false);
@@ -130,7 +123,6 @@
         private System.Windows.Forms.ColumnHeader clmCondicaoPagamento;
         private System.Windows.Forms.ColumnHeader clmCpfCnpj;
         private System.Windows.Forms.ColumnHeader clmRgInscEstadual;
-        private System.Windows.Forms.ColumnHeader clmInscEstSubTrib;
         private System.Windows.Forms.ColumnHeader clmGenero;
         private System.Windows.Forms.ColumnHeader clmCidade;
         private System.Windows.Forms.ColumnHeader clmEmail;

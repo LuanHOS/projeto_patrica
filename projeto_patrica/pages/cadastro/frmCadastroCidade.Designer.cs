@@ -58,7 +58,7 @@
             // 
             // btnPesquisarEstado
             // 
-            this.btnPesquisarEstado.Location = new System.Drawing.Point(267, 174);
+            this.btnPesquisarEstado.Location = new System.Drawing.Point(451, 174);
             this.btnPesquisarEstado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarEstado.Name = "btnPesquisarEstado";
             this.btnPesquisarEstado.Size = new System.Drawing.Size(99, 28);
@@ -74,7 +74,7 @@
             this.txtEstado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.ReadOnly = true;
-            this.txtEstado.Size = new System.Drawing.Size(237, 22);
+            this.txtEstado.Size = new System.Drawing.Size(421, 22);
             this.txtEstado.TabIndex = 3;
             // 
             // lblEstado
@@ -92,7 +92,7 @@
             this.txtNome.Location = new System.Drawing.Point(24, 108);
             this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(237, 22);
+            this.txtNome.Size = new System.Drawing.Size(421, 22);
             this.txtNome.TabIndex = 2;
             // 
             // lblNome

@@ -41,6 +41,7 @@
             // 
             // btnSair
             // 
+            this.btnSair.Location = new System.Drawing.Point(1213, 603);
             this.btnSair.TabIndex = 1;
             // 
             // txtCodigo
@@ -50,7 +51,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(627, 408);
+            this.btnSave.Location = new System.Drawing.Point(1120, 603);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 35);
             this.btnSave.TabIndex = 0;
@@ -70,7 +71,7 @@
             // lblDataCadastro
             // 
             this.lblDataCadastro.AutoSize = true;
-            this.lblDataCadastro.Location = new System.Drawing.Point(21, 395);
+            this.lblDataCadastro.Location = new System.Drawing.Point(21, 590);
             this.lblDataCadastro.Name = "lblDataCadastro";
             this.lblDataCadastro.Size = new System.Drawing.Size(116, 16);
             this.lblDataCadastro.TabIndex = 3;
@@ -79,7 +80,7 @@
             // lblDataUltimaEdicao
             // 
             this.lblDataUltimaEdicao.AutoSize = true;
-            this.lblDataUltimaEdicao.Location = new System.Drawing.Point(21, 411);
+            this.lblDataUltimaEdicao.Location = new System.Drawing.Point(21, 606);
             this.lblDataUltimaEdicao.Name = "lblDataUltimaEdicao";
             this.lblDataUltimaEdicao.Size = new System.Drawing.Size(145, 16);
             this.lblDataUltimaEdicao.TabIndex = 3;
@@ -88,7 +89,7 @@
             // lblUltimoUsuarioQueEditou
             // 
             this.lblUltimoUsuarioQueEditou.AutoSize = true;
-            this.lblUltimoUsuarioQueEditou.Location = new System.Drawing.Point(21, 427);
+            this.lblUltimoUsuarioQueEditou.Location = new System.Drawing.Point(21, 622);
             this.lblUltimoUsuarioQueEditou.Name = "lblUltimoUsuarioQueEditou";
             this.lblUltimoUsuarioQueEditou.Size = new System.Drawing.Size(165, 16);
             this.lblUltimoUsuarioQueEditou.TabIndex = 3;
@@ -97,7 +98,7 @@
             // lblDataCadastroData
             // 
             this.lblDataCadastroData.AutoSize = true;
-            this.lblDataCadastroData.Location = new System.Drawing.Point(143, 395);
+            this.lblDataCadastroData.Location = new System.Drawing.Point(143, 590);
             this.lblDataCadastroData.Name = "lblDataCadastroData";
             this.lblDataCadastroData.Size = new System.Drawing.Size(0, 16);
             this.lblDataCadastroData.TabIndex = 3;
@@ -105,7 +106,7 @@
             // lblDataUltimaEdicaoData
             // 
             this.lblDataUltimaEdicaoData.AutoSize = true;
-            this.lblDataUltimaEdicaoData.Location = new System.Drawing.Point(172, 411);
+            this.lblDataUltimaEdicaoData.Location = new System.Drawing.Point(172, 606);
             this.lblDataUltimaEdicaoData.Name = "lblDataUltimaEdicaoData";
             this.lblDataUltimaEdicaoData.Size = new System.Drawing.Size(0, 16);
             this.lblDataUltimaEdicaoData.TabIndex = 3;
@@ -113,7 +114,7 @@
             // lblUltimoUsuarioQueEditouNome
             // 
             this.lblUltimoUsuarioQueEditouNome.AutoSize = true;
-            this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(192, 427);
+            this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(192, 622);
             this.lblUltimoUsuarioQueEditouNome.Name = "lblUltimoUsuarioQueEditouNome";
             this.lblUltimoUsuarioQueEditouNome.Size = new System.Drawing.Size(0, 16);
             this.lblUltimoUsuarioQueEditouNome.TabIndex = 3;
@@ -123,7 +124,7 @@
             this.checkBoxAtivo.AutoSize = true;
             this.checkBoxAtivo.Checked = true;
             this.checkBoxAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAtivo.Location = new System.Drawing.Point(741, 23);
+            this.checkBoxAtivo.Location = new System.Drawing.Point(1234, 23);
             this.checkBoxAtivo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxAtivo.Name = "checkBoxAtivo";
             this.checkBoxAtivo.Size = new System.Drawing.Size(59, 20);

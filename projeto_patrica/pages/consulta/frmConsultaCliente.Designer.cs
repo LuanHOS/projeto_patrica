@@ -42,7 +42,6 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(635, 429);
             // 
             // listV
             // 
@@ -63,15 +62,12 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(548, 429);
             // 
             // btnIncluir
             // 
-            this.btnIncluir.Location = new System.Drawing.Point(461, 429);
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(720, 428);
             // 
             // txtCodigo
             // 
