@@ -44,9 +44,34 @@
             this.lblDataDemissao = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // txtNomeRazaoSocial
+            // 
+            this.txtNomeRazaoSocial.TabIndex = 3;
+            // 
+            // txtBairro
+            // 
+            this.txtBairro.TabIndex = 11;
+            // 
+            // txtEndereco
+            // 
+            this.txtEndereco.TabIndex = 9;
+            // 
+            // txtCep
+            // 
+            this.txtCep.TabIndex = 12;
+            // 
             // btnPesquisarCidade
             // 
             this.btnPesquisarCidade.Click += new System.EventHandler(this.btnPesquisarCidade_Click);
+            // 
+            // txtApelidoNomeFantasia
+            // 
+            this.txtApelidoNomeFantasia.TabIndex = 4;
+            // 
+            // lblNome
+            // 
+            this.lblNome.Size = new System.Drawing.Size(125, 16);
+            this.lblNome.Text = "Funcionário Nome *";
             // 
             // btnSave
             // 
@@ -119,7 +144,7 @@
             this.txtTurno.Margin = new System.Windows.Forms.Padding(2);
             this.txtTurno.Name = "txtTurno";
             this.txtTurno.Size = new System.Drawing.Size(336, 22);
-            this.txtTurno.TabIndex = 21;
+            this.txtTurno.TabIndex = 22;
             // 
             // lblCargaHoraria
             // 
@@ -138,7 +163,7 @@
             this.txtCargaHoraria.Margin = new System.Windows.Forms.Padding(2);
             this.txtCargaHoraria.Name = "txtCargaHoraria";
             this.txtCargaHoraria.Size = new System.Drawing.Size(332, 22);
-            this.txtCargaHoraria.TabIndex = 22;
+            this.txtCargaHoraria.TabIndex = 23;
             // 
             // lblSalario
             // 
@@ -157,7 +182,7 @@
             this.txtSalario.Margin = new System.Windows.Forms.Padding(2);
             this.txtSalario.Name = "txtSalario";
             this.txtSalario.Size = new System.Drawing.Size(292, 22);
-            this.txtSalario.TabIndex = 23;
+            this.txtSalario.TabIndex = 21;
             // 
             // lblDataAdmissao
             // 
@@ -202,6 +227,8 @@
             // 
             // frmCadastroFuncionario
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Controls.Add(this.dtpDataDemissao);
             this.Controls.Add(this.lblDataDemissao);
             this.Controls.Add(this.dtpDataAdmissao);

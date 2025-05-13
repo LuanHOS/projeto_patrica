@@ -74,6 +74,13 @@ namespace projeto_patrica.pages.cadastro
                 return;
             }
 
+            if (dtpDataDemissao.Checked && dtpDataDemissao.Value < dtpDataAdmissao.Value)
+            {
+                MessageBox.Show("A data de demissão não pode ser anterior à data de admissão.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dtpDataDemissao.Focus();
+                return;
+            }
+
             oFuncionario.Id = Convert.ToInt32(txtCodigo.Text);
             oFuncionario.TipoPessoa = 'F';
             oFuncionario.Nome_razaoSocial = txtNomeRazaoSocial.Text;
@@ -88,7 +95,7 @@ namespace projeto_patrica.pages.cadastro
             oFuncionario.Cep = txtCep.Text;
             oFuncionario.Ativo = checkBoxAtivo.Checked;
             oFuncionario.Genero = comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F';
-            oFuncionario.Matricula = Convert.ToInt32(txtMatricula.Text);
+            oFuncionario.Matricula = txtMatricula.Text;
             oFuncionario.Cargo = txtCargo.Text;
             oFuncionario.Salario = Convert.ToDecimal(txtSalario.Text);
             oFuncionario.DataAdmissao = dtpDataAdmissao.Value;
@@ -181,7 +188,7 @@ namespace projeto_patrica.pages.cadastro
             dtpDataNascimentoCriacao.Value = (oFuncionario.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oFuncionario.DataNascimento_criacao;
             comboBoxGenero.SelectedIndex = oFuncionario.Genero == 'M' ? 0 : 1;
             checkBoxAtivo.Checked = oFuncionario.Ativo;
-            txtMatricula.Text = oFuncionario.Matricula.ToString();
+            txtMatricula.Text = oFuncionario.Matricula;
             txtCargo.Text = oFuncionario.Cargo;
             txtSalario.Text = oFuncionario.Salario.ToString("F2");
             dtpDataAdmissao.Value = (oFuncionario.DataAdmissao < dtpDataAdmissao.MinDate) ? dtpDataAdmissao.MinDate : oFuncionario.DataAdmissao;

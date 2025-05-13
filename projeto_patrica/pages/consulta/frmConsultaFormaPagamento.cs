@@ -78,6 +78,7 @@ namespace projeto_patrica.pages.consulta
             {
                 ListViewItem item = new ListViewItem(Convert.ToString(aFormaPagamento.Id));
                 item.SubItems.Add(aFormaPagamento.Descricao);
+                item.Tag = aFormaPagamento;
                 listV.Items.Add(item);
             }
         }
@@ -108,6 +109,7 @@ namespace projeto_patrica.pages.consulta
             {
                 ListViewItem item = new ListViewItem(Convert.ToString(aFormaPagamento.Id));
                 item.SubItems.Add(aFormaPagamento.Descricao);
+                item.Tag = aFormaPagamento;
                 listV.Items.Add(item);
             }
         }
@@ -119,9 +121,37 @@ namespace projeto_patrica.pages.consulta
             if (listV.SelectedItems.Count > 0)
             {
                 ListViewItem linha = listV.SelectedItems[0];
-                aFormaPagamento.Id = Convert.ToInt32(linha.SubItems[0].Text);
-                aFormaPagamento.Descricao = linha.SubItems[1].Text;
+                formaPagamento formaPagamentoSelecionada = (formaPagamento)linha.Tag;
+
+                aFormaPagamento.Id = formaPagamentoSelecionada.Id;
+                aFormaPagamento.Descricao = formaPagamentoSelecionada.Descricao;
             }
+        }
+
+        private void frmConsultaFormaPagamento_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listV.SelectedItems.Count > 0)
+            {
+                ListViewItem linha = listV.SelectedItems[0];
+                formaPagamento formaPagamentoSelecionada = (formaPagamento)linha.Tag;
+
+                if (!formaPagamentoSelecionada.Ativo)
+                {
+                    MessageBox.Show("Este item está inativo e não pode ser selecionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                aFormaPagamento.Id = formaPagamentoSelecionada.Id;
+                aFormaPagamento.Descricao = formaPagamentoSelecionada.Descricao;
+
+                this.Close();
+            }
+        }
+
+        public override void Sair()
+        {
+            aFormaPagamento.Id = 0;
+            base.Sair();
         }
     }
 }

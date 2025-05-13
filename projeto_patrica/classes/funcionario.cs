@@ -8,7 +8,7 @@ namespace projeto_patrica.classes
 {
     class funcionario : pessoa
     {
-        protected int matricula;
+        protected string matricula;
         protected string cargo;
         protected decimal salario;
         protected DateTime dataAdmissao;
@@ -37,7 +37,7 @@ namespace projeto_patrica.classes
             genero = ' ';
             dataCadastro = DateTime.MinValue;
             dataUltimaEdicao = null;
-            matricula = 0;
+            matricula = " ";
             cargo = " ";
             salario = 0;
             dataAdmissao = DateTime.MinValue;
@@ -50,7 +50,7 @@ namespace projeto_patrica.classes
             int id, char tipoPessoa, string nome_razaoSocial, string apelido_nomeFantasia, DateTime dataNascimento_criacao,
             string cpf_cnpj, string rg_inscricaoEstadual, string email, string telefone, string endereco, string numeroEndereco,
             string complementoEndereco, string bairro, cidade aCidade, string cep, bool ativo, DateTime dataCadastro,
-            DateTime? dataUltimaEdicao, char genero, int matricula, string cargo, decimal salario,
+            DateTime? dataUltimaEdicao, char genero, string matricula, string cargo, decimal salario,
             DateTime dataAdmissao, DateTime? dataDemissao, string turno, int cargaHoraria
         ) : base(id, tipoPessoa, nome_razaoSocial, apelido_nomeFantasia, dataNascimento_criacao,
                  cpf_cnpj, rg_inscricaoEstadual, email, telefone, endereco, numeroEndereco,
@@ -84,7 +84,7 @@ namespace projeto_patrica.classes
             this.cargaHoraria = cargaHoraria;
         }
 
-        public int Matricula
+        public string Matricula
         {
             get => matricula;
             set => matricula = value;

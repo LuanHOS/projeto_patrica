@@ -22,16 +22,12 @@ namespace projeto_patrica.dao
             sql = "INSERT INTO fornecedor (" +
                 "TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, " +
                 "RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, " +
-                "GENERO, " +
-                "ID_CONDICAO_PAGAMENTO, NUMERO_ENDERECO, COMPLEMENTO_ENDERECO" +
+                "GENERO, ID_CONDICAO_PAGAMENTO, NUMERO_ENDERECO, COMPLEMENTO_ENDERECO" +
                 ") VALUES (" +
-                "'" + oFornecedor.TipoPessoa + "', '" + oFornecedor.Nome_razaoSocial + "', '" + oFornecedor.Apelido_nomeFantasia + "', '" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', '" + oFornecedor.Cpf_cnpj + "', '" +
-                oFornecedor.Rg_inscricaoEstadual + "', '" + oFornecedor.Email + "', '" + oFornecedor.Telefone + "', '" + oFornecedor.Endereco + "', '" + oFornecedor.Bairro + "', '" +
-                oFornecedor.ACidade.Id + "', '" + oFornecedor.Cep + "', '" + (oFornecedor.Ativo ? 1 : 0) + "', '" +
-                oFornecedor.Genero + "', " + 
-                "', '" + oFornecedor.ACondicaoPagamento.Id + "', '" + oFornecedor.NumeroEndereco + "', '" + oFornecedor.ComplementoEndereco + "'" +
-                ")";
-
+                "'" + oFornecedor.TipoPessoa + "', '" + oFornecedor.Nome_razaoSocial + "', '" + oFornecedor.Apelido_nomeFantasia + "', '" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', '" + oFornecedor.Cpf_cnpj + "', " +
+                "'" + oFornecedor.Rg_inscricaoEstadual + "', '" + oFornecedor.Email + "', '" + oFornecedor.Telefone + "', '" + oFornecedor.Endereco + "', '" + oFornecedor.Bairro + "', " +
+                "'" + oFornecedor.ACidade.Id + "', '" + oFornecedor.Cep + "', '" + (oFornecedor.Ativo ? 1 : 0) + "', " +
+                "'" + oFornecedor.Genero + "', '" + oFornecedor.ACondicaoPagamento.Id + "', '" + oFornecedor.NumeroEndereco + "', '" + oFornecedor.ComplementoEndereco + "')";
 
             if (oFornecedor.Id != 0)
             {

@@ -38,6 +38,7 @@
             this.clmNome,
             this.clmPais});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
+            this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaEstado_MouseDoubleClick);
             // 
             // clmCod
             // 
@@ -59,9 +60,12 @@
             // 
             // frmConsultaEstado
             // 
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 681);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "frmConsultaEstado";
             this.Text = "Consulta de Estado";
+            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaEstado_MouseDoubleClick);
             this.ResumeLayout(false);
             this.PerformLayout();
 

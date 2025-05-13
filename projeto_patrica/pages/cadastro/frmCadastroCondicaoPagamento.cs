@@ -387,12 +387,16 @@ namespace projeto_patrica.pages.cadastro
         private void CarregarFormasDePagamento()
         {
             Controller_formaPagamento controllerFormaPagamento = new Controller_formaPagamento();
+
             var formasDePagamento = controllerFormaPagamento.ListaFormaPagamento();
 
-            comboBoxFormaPagamento.DataSource = formasDePagamento;
+            var formasAtivas = formasDePagamento.FindAll(fp => fp.Ativo);
+
+            comboBoxFormaPagamento.DataSource = formasAtivas;
             comboBoxFormaPagamento.DisplayMember = "Descricao";
             comboBoxFormaPagamento.ValueMember = "Id";
         }
+
 
         public void setConsultaFormaPagamento(object obj)
         {

@@ -135,5 +135,34 @@ namespace projeto_patrica.pages.consulta
             }
         }
 
+        private void listV_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            if (listV.SelectedItems.Count > 0)
+            {
+                ListViewItem linha = listV.SelectedItems[0];
+                cidade cidadeSelecionada = (cidade)linha.Tag;
+
+                if (!cidadeSelecionada.Ativo)
+                {
+                    MessageBox.Show("Este item está inativo e não pode ser selecionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                aCidade.Id = cidadeSelecionada.Id;
+                aCidade.Nome = cidadeSelecionada.Nome;
+                aCidade.OEstado.Id = cidadeSelecionada.OEstado.Id;
+                aCidade.OEstado.Nome = cidadeSelecionada.OEstado.Nome;
+                aCidade.Ativo = cidadeSelecionada.Ativo;
+
+                this.Close();
+            }
+        }
+
+        public override void Sair()
+        {
+            aCidade.Id = 0;
+            base.Sair();
+        }
     }
 }

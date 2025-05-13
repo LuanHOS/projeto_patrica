@@ -62,10 +62,11 @@
             this.clmDataAdmissao,
             this.clmAtivo});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
+            this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaFuncionario_MouseDoubleClick);
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(5);
             // 
             // clmMatricula
             // 
@@ -132,9 +133,12 @@
             // 
             // frmConsultaFuncionario
             // 
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 681);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "frmConsultaFuncionario";
             this.Text = "Consulta de Funcionário";
+            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaFuncionario_MouseDoubleClick);
             this.ResumeLayout(false);
             this.PerformLayout();
 

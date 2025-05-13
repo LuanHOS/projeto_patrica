@@ -38,10 +38,7 @@
             this.clmDescricao,
             this.clmQtdParcelas});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.ListV_SelectedIndexChanged);
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaCondicaoPagamento_MouseDoubleClick);
             // 
             // clmDescricao
             // 
@@ -55,9 +52,11 @@
             // 
             // frmConsultaCondicaoPagamento
             // 
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Name = "frmConsultaCondicaoPagamento";
             this.Text = "Consulta de Condição de Pagamento";
+            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaCondicaoPagamento_MouseDoubleClick);
             this.ResumeLayout(false);
             this.PerformLayout();
 

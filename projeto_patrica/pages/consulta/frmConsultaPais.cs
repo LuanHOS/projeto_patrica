@@ -113,6 +113,7 @@ namespace projeto_patrica.pages.consulta
             {
                 ListViewItem item = new ListViewItem(Convert.ToString(oPais.Id));
                 item.SubItems.Add(oPais.Nome);
+                item.Tag = oPais;
                 this.listV.Items.Add(item);
             }
         }
@@ -124,9 +125,38 @@ namespace projeto_patrica.pages.consulta
             if (this.listV.SelectedItems.Count > 0)
             {
                 ListViewItem linha = listV.SelectedItems[0];
-                oPais.Id = Convert.ToInt16(linha.SubItems[0].Text);
-                oPais.Nome = linha.SubItems[1].Text;
+                pais paisSelecionado = (pais)linha.Tag;
+
+                oPais.Id = paisSelecionado.Id;
+                oPais.Nome = paisSelecionado.Nome;
             }
+        }
+
+
+        private void frmConsultaPais_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (this.listV.SelectedItems.Count > 0)
+            {
+                ListViewItem linha = listV.SelectedItems[0];
+                pais paisSelecionado = (pais)linha.Tag;
+
+                if (!paisSelecionado.Ativo)
+                {
+                    MessageBox.Show("Este item está inativo e não pode ser selecionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                oPais.Id = paisSelecionado.Id;
+                oPais.Nome = paisSelecionado.Nome;
+
+                this.Close();
+            }
+        }
+
+        public override void Sair()
+        {
+            oPais.Id = 0;
+            base.Sair();
         }
     }
 }

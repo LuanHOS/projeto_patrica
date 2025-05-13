@@ -108,7 +108,7 @@
             this.txtBairro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(336, 22);
-            this.txtBairro.TabIndex = 9;
+            this.txtBairro.TabIndex = 11;
             // 
             // lblBairro
             // 
@@ -180,7 +180,7 @@
             this.txtEndereco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(319, 22);
-            this.txtEndereco.TabIndex = 12;
+            this.txtEndereco.TabIndex = 9;
             // 
             // lblEndereco
             // 
@@ -243,7 +243,7 @@
             this.txtCep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCep.Name = "txtCep";
             this.txtCep.Size = new System.Drawing.Size(332, 22);
-            this.txtCep.TabIndex = 11;
+            this.txtCep.TabIndex = 12;
             // 
             // dtpDataNascimentoCriacao
             // 
@@ -293,7 +293,7 @@
             this.txtApelidoNomeFantasia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtApelidoNomeFantasia.Name = "txtApelidoNomeFantasia";
             this.txtApelidoNomeFantasia.Size = new System.Drawing.Size(332, 22);
-            this.txtApelidoNomeFantasia.TabIndex = 3;
+            this.txtApelidoNomeFantasia.TabIndex = 4;
             // 
             // txtRgInscEstadual
             // 
@@ -311,7 +311,7 @@
             this.txtNomeRazaoSocial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNomeRazaoSocial.Name = "txtNomeRazaoSocial";
             this.txtNomeRazaoSocial.Size = new System.Drawing.Size(332, 22);
-            this.txtNomeRazaoSocial.TabIndex = 4;
+            this.txtNomeRazaoSocial.TabIndex = 3;
             // 
             // lblGenero
             // 
@@ -392,6 +392,8 @@
             // 
             // frmCadastroPessoa
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.lblComplementoEndereco);

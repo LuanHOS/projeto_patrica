@@ -35,6 +35,22 @@
             this.txtLimiteDeCredito = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
+            // txtNomeRazaoSocial
+            // 
+            this.txtNomeRazaoSocial.TabIndex = 3;
+            // 
+            // txtBairro
+            // 
+            this.txtBairro.TabIndex = 11;
+            // 
+            // txtEndereco
+            // 
+            this.txtEndereco.TabIndex = 9;
+            // 
+            // txtCep
+            // 
+            this.txtCep.TabIndex = 12;
+            // 
             // comboBoxTipo
             // 
             this.comboBoxTipo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTipo_SelectedIndexChanged);
@@ -42,6 +58,15 @@
             // btnPesquisarCidade
             // 
             this.btnPesquisarCidade.Click += new System.EventHandler(this.BtnPesquisarCidade_Click);
+            // 
+            // txtApelidoNomeFantasia
+            // 
+            this.txtApelidoNomeFantasia.TabIndex = 4;
+            // 
+            // lblNome
+            // 
+            this.lblNome.Size = new System.Drawing.Size(96, 16);
+            this.lblNome.Text = "Cliente Nome *";
             // 
             // btnSave
             // 
@@ -107,6 +132,8 @@
             // 
             // frmCadastroCliente
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Controls.Add(this.txtLimiteDeCredito);
             this.Controls.Add(this.lblLimiteDeCredito);
             this.Controls.Add(this.btnPesquisarCondicaoPagamento);

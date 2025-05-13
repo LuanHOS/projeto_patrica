@@ -77,7 +77,7 @@ namespace projeto_patrica.pages.consulta
             foreach (var oFuncionario in lista)
             {
                 ListViewItem item = new ListViewItem(oFuncionario.Id.ToString());
-                item.SubItems.Add(oFuncionario.Matricula.ToString());
+                item.SubItems.Add(oFuncionario.Matricula);
                 item.SubItems.Add(oFuncionario.Nome_razaoSocial);
                 item.SubItems.Add(oFuncionario.Cargo);
                 item.SubItems.Add(oFuncionario.Salario.ToString("F2"));
@@ -124,7 +124,7 @@ namespace projeto_patrica.pages.consulta
             foreach (var oFuncionario in listaResultados)
             {
                 ListViewItem item = new ListViewItem(oFuncionario.Id.ToString());
-                item.SubItems.Add(oFuncionario.Matricula.ToString());
+                item.SubItems.Add(oFuncionario.Matricula);
                 item.SubItems.Add(oFuncionario.Nome_razaoSocial);
                 item.SubItems.Add(oFuncionario.Cargo);
                 item.SubItems.Add(oFuncionario.Salario.ToString("F2"));
@@ -178,5 +178,49 @@ namespace projeto_patrica.pages.consulta
             }
         }
 
+        private void frmConsultaFuncionario_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listV.SelectedItems.Count > 0)
+            {
+                ListViewItem linha = listV.SelectedItems[0];
+                funcionario funcionarioSelecionado = (funcionario)linha.Tag;
+
+                if (!funcionarioSelecionado.Ativo)
+                {
+                    MessageBox.Show("Este item está inativo e não pode ser selecionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                oFuncionario.Id = funcionarioSelecionado.Id;
+                oFuncionario.TipoPessoa = funcionarioSelecionado.TipoPessoa;
+                oFuncionario.Nome_razaoSocial = funcionarioSelecionado.Nome_razaoSocial;
+                oFuncionario.Apelido_nomeFantasia = funcionarioSelecionado.Apelido_nomeFantasia;
+                oFuncionario.DataNascimento_criacao = funcionarioSelecionado.DataNascimento_criacao;
+                oFuncionario.Cpf_cnpj = funcionarioSelecionado.Cpf_cnpj;
+                oFuncionario.Rg_inscricaoEstadual = funcionarioSelecionado.Rg_inscricaoEstadual;
+                oFuncionario.Email = funcionarioSelecionado.Email;
+                oFuncionario.Telefone = funcionarioSelecionado.Telefone;
+                oFuncionario.Endereco = funcionarioSelecionado.Endereco;
+                oFuncionario.Bairro = funcionarioSelecionado.Bairro;
+                oFuncionario.ACidade = funcionarioSelecionado.ACidade;
+                oFuncionario.Cep = funcionarioSelecionado.Cep;
+                oFuncionario.Ativo = funcionarioSelecionado.Ativo;
+                oFuncionario.Genero = funcionarioSelecionado.Genero;
+                oFuncionario.Matricula = funcionarioSelecionado.Matricula;
+                oFuncionario.Cargo = funcionarioSelecionado.Cargo;
+                oFuncionario.Salario = funcionarioSelecionado.Salario;
+                oFuncionario.DataAdmissao = funcionarioSelecionado.DataAdmissao;
+                oFuncionario.Turno = funcionarioSelecionado.Turno;
+                oFuncionario.CargaHoraria = funcionarioSelecionado.CargaHoraria;
+
+                this.Close();
+            }
+        }
+
+        public override void Sair()
+        {
+            oFuncionario.Id = 0;
+            base.Sair();
+        }
     }
 }

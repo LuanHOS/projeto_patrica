@@ -165,5 +165,47 @@ namespace projeto_patrica.pages.consulta
                 oFornecedor.ComplementoEndereco = selecionado.ComplementoEndereco;
             }
         }
+
+        private void frmConsultaFornecedor_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listV.SelectedItems.Count > 0)
+            {
+                ListViewItem linha = listV.SelectedItems[0];
+                fornecedor fornecedorSelecionado = (fornecedor)linha.Tag;
+
+                if (!fornecedorSelecionado.Ativo)
+                {
+                    MessageBox.Show("Este item está inativo e não pode ser selecionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                oFornecedor.Id = fornecedorSelecionado.Id;
+                oFornecedor.TipoPessoa = fornecedorSelecionado.TipoPessoa;
+                oFornecedor.Nome_razaoSocial = fornecedorSelecionado.Nome_razaoSocial;
+                oFornecedor.Apelido_nomeFantasia = fornecedorSelecionado.Apelido_nomeFantasia;
+                oFornecedor.DataNascimento_criacao = fornecedorSelecionado.DataNascimento_criacao;
+                oFornecedor.Cpf_cnpj = fornecedorSelecionado.Cpf_cnpj;
+                oFornecedor.Rg_inscricaoEstadual = fornecedorSelecionado.Rg_inscricaoEstadual;
+                oFornecedor.Email = fornecedorSelecionado.Email;
+                oFornecedor.Telefone = fornecedorSelecionado.Telefone;
+                oFornecedor.Endereco = fornecedorSelecionado.Endereco;
+                oFornecedor.Bairro = fornecedorSelecionado.Bairro;
+                oFornecedor.ACidade = fornecedorSelecionado.ACidade;
+                oFornecedor.Cep = fornecedorSelecionado.Cep;
+                oFornecedor.Ativo = fornecedorSelecionado.Ativo;
+                oFornecedor.Genero = fornecedorSelecionado.Genero;
+                oFornecedor.ACondicaoPagamento = fornecedorSelecionado.ACondicaoPagamento;
+                oFornecedor.NumeroEndereco = fornecedorSelecionado.NumeroEndereco;
+                oFornecedor.ComplementoEndereco = fornecedorSelecionado.ComplementoEndereco;
+
+                this.Close();
+            }
+        }
+
+        public override void Sair()
+        {
+            oFornecedor.Id = 0;
+            base.Sair();
+        }
     }
 }

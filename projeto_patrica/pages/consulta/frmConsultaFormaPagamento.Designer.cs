@@ -36,6 +36,7 @@
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmDescricao});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.ListV_SelectedIndexChanged);
+            this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaFormaPagamento_MouseDoubleClick);
             // 
             // clmDescricao
             // 
@@ -44,8 +45,11 @@
             // 
             // frmConsultaFormaPagamento
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Name = "frmConsultaFormaPagamento";
             this.Text = "Consulta de Forma de Pagamento";
+            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaFormaPagamento_MouseDoubleClick);
             this.ResumeLayout(false);
             this.PerformLayout();
 

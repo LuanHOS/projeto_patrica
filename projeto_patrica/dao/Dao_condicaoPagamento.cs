@@ -189,6 +189,7 @@ namespace projeto_patrica.dao
                 aCondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
                 aCondicaoPagamento.Descricao = dr["DESCRICAO"].ToString();
                 aCondicaoPagamento.QuantidadeParcelas = Convert.ToInt32(dr["QUANTIDADE_PARCELAS"]);
+                aCondicaoPagamento.Ativo = Convert.ToBoolean(dr["ATIVO"]);
                 lista.Add(aCondicaoPagamento);
             }
 

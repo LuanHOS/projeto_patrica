@@ -170,5 +170,50 @@ namespace projeto_patrica.pages.consulta
                 oCliente.DataUltimaEdicao = selecionado.DataUltimaEdicao;
             }
         }
+
+        private void listV_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listV.SelectedItems.Count > 0)
+            {
+                ListViewItem linha = listV.SelectedItems[0];
+                cliente clienteSelecionado = (cliente)linha.Tag;
+
+                if (!clienteSelecionado.Ativo)
+                {
+                    MessageBox.Show("Este item está inativo e não pode ser selecionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                oCliente.Id = clienteSelecionado.Id;
+                oCliente.TipoPessoa = clienteSelecionado.TipoPessoa;
+                oCliente.Nome_razaoSocial = clienteSelecionado.Nome_razaoSocial;
+                oCliente.Apelido_nomeFantasia = clienteSelecionado.Apelido_nomeFantasia;
+                oCliente.DataNascimento_criacao = clienteSelecionado.DataNascimento_criacao;
+                oCliente.Cpf_cnpj = clienteSelecionado.Cpf_cnpj;
+                oCliente.Rg_inscricaoEstadual = clienteSelecionado.Rg_inscricaoEstadual;
+                oCliente.Email = clienteSelecionado.Email;
+                oCliente.Telefone = clienteSelecionado.Telefone;
+                oCliente.Endereco = clienteSelecionado.Endereco;
+                oCliente.NumeroEndereco = clienteSelecionado.NumeroEndereco;
+                oCliente.ComplementoEndereco = clienteSelecionado.ComplementoEndereco;
+                oCliente.Bairro = clienteSelecionado.Bairro;
+                oCliente.ACidade = clienteSelecionado.ACidade;
+                oCliente.Cep = clienteSelecionado.Cep;
+                oCliente.Ativo = clienteSelecionado.Ativo;
+                oCliente.Genero = clienteSelecionado.Genero;
+                oCliente.ACondicaoPagamento = clienteSelecionado.ACondicaoPagamento;
+                oCliente.LimiteDeCredito = clienteSelecionado.LimiteDeCredito;
+                oCliente.DataCadastro = clienteSelecionado.DataCadastro;
+                oCliente.DataUltimaEdicao = clienteSelecionado.DataUltimaEdicao;
+
+                this.Close();
+            }
+        }
+
+        public override void Sair()
+        {
+            oCliente.Id = 0;
+            base.Sair();
+        }
     }
 }

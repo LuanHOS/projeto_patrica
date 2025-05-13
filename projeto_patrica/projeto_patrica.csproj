@@ -275,54 +275,70 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBase.resx">
       <DependentUpon>frmBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastro.resx">
       <DependentUpon>frmCadastro.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroCidade.resx">
       <DependentUpon>frmCadastroCidade.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroCliente.resx">
       <DependentUpon>frmCadastroCliente.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroCondicaoPagamento.resx">
       <DependentUpon>frmCadastroCondicaoPagamento.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroEstado.resx">
       <DependentUpon>frmCadastroEstado.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroFormaPagamento.resx">
       <DependentUpon>frmCadastroFormaPagamento.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroFornecedor.resx">
       <DependentUpon>frmCadastroFornecedor.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroFuncionario.resx">
       <DependentUpon>frmCadastroFuncionario.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroPais.resx">
       <DependentUpon>frmCadastroPais.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroPessoa.resx">
       <DependentUpon>frmCadastroPessoa.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsulta.resx">
       <DependentUpon>frmConsulta.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaCidade.resx">
       <DependentUpon>frmConsultaCidade.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaCliente.resx">
       <DependentUpon>frmConsultaCliente.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaCondicaoPagamento.resx">
       <DependentUpon>frmConsultaCondicaoPagamento.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaEstado.resx">
       <DependentUpon>frmConsultaEstado.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaFormaPagamento.resx">
       <DependentUpon>frmConsultaFormaPagamento.cs</DependentUpon>

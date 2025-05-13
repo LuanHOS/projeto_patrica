@@ -40,9 +40,6 @@
             this.clmCondicaoPagamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
-            // btnExcluir
-            // 
-            // 
             // listV
             // 
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -59,15 +56,7 @@
             this.listV.Location = new System.Drawing.Point(24, 86);
             this.listV.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
-            // 
-            // btnAlterar
-            // 
-            // 
-            // btnIncluir
-            // 
-            // 
-            // btnSair
-            // 
+            this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listV_MouseDoubleClick);
             // 
             // txtCodigo
             // 
@@ -122,6 +111,8 @@
             // 
             // frmConsultaCliente
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "frmConsultaCliente";
             this.Text = "Consulta de Cliente";

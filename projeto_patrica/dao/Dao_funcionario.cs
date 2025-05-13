@@ -111,7 +111,7 @@ namespace projeto_patrica.dao
                     oFuncionario.ACidade.Id = Convert.ToInt32(dr["ID_CIDADE"]);
                     oFuncionario.Cep = dr["CEP"].ToString();
                     oFuncionario.Ativo = Convert.ToBoolean(dr["ATIVO"]);
-                    oFuncionario.Matricula = Convert.ToInt32(dr["MATRICULA"]);
+                    oFuncionario.Matricula = dr["MATRICULA"].ToString();
                     oFuncionario.Cargo = dr["CARGO"].ToString();
                     oFuncionario.Salario = decimal.Parse(dr["SALARIO"].ToString());
                     oFuncionario.DataAdmissao = Convert.ToDateTime(dr["DATA_ADMISSAO"]);
@@ -187,7 +187,7 @@ namespace projeto_patrica.dao
                 oFuncionario.ACidade.Id = Convert.ToInt32(dr["ID_CIDADE"]);
                 oFuncionario.Cep = dr["CEP"].ToString();
                 oFuncionario.Ativo = Convert.ToBoolean(dr["ATIVO"]);
-                oFuncionario.Matricula = Convert.ToInt32(dr["MATRICULA"]);
+                oFuncionario.Matricula = dr["MATRICULA"].ToString();
                 oFuncionario.Cargo = dr["CARGO"].ToString();
                 oFuncionario.Salario = decimal.Parse(dr["SALARIO"].ToString());
                 oFuncionario.DataAdmissao = Convert.ToDateTime(dr["DATA_ADMISSAO"]);

@@ -118,6 +118,7 @@ namespace projeto_patrica.pages.consulta
                 ListViewItem item = new ListViewItem(Convert.ToString(estado.Id));
                 item.SubItems.Add(estado.Nome);
                 item.SubItems.Add(estado.OPais.Nome);
+                item.Tag = oEstado;
                 listV.Items.Add(item);
             }
         }
@@ -138,6 +139,35 @@ namespace projeto_patrica.pages.consulta
                 oEstado.OPais.Nome = estadoSelecionado.OPais.Nome;
                 oEstado.Ativo = estadoSelecionado.Ativo;
             }
+        }
+
+        private void frmConsultaEstado_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listV.SelectedItems.Count > 0)
+            {
+                ListViewItem linha = listV.SelectedItems[0];
+                estado estadoSelecionado = (estado)linha.Tag;
+
+                if (!estadoSelecionado.Ativo)
+                {
+                    MessageBox.Show("Este item está inativo e não pode ser selecionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                oEstado.Id = estadoSelecionado.Id;
+                oEstado.Nome = estadoSelecionado.Nome;
+                oEstado.OPais.Id = estadoSelecionado.OPais.Id;
+                oEstado.OPais.Nome = estadoSelecionado.OPais.Nome;
+                oEstado.Ativo = estadoSelecionado.Ativo;
+
+                this.Close();
+            }
+        }
+
+        public override void Sair()
+        {
+            oEstado.Id = 0;
+            base.Sair();
         }
     }
 }

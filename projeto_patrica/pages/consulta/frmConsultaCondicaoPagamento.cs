@@ -78,6 +78,7 @@ namespace projeto_patrica.pages.consulta
                 ListViewItem item = new ListViewItem(Convert.ToString(aCondPag.Id));
                 item.SubItems.Add(aCondPag.Descricao);
                 item.SubItems.Add(Convert.ToString(aCondPag.QuantidadeParcelas));
+                item.Tag = aCondPag;
                 listV.Items.Add(item);
             }
         }
@@ -109,6 +110,7 @@ namespace projeto_patrica.pages.consulta
                 ListViewItem item = new ListViewItem(Convert.ToString(aCondPag.Id));
                 item.SubItems.Add(aCondPag.Descricao);
                 item.SubItems.Add(Convert.ToString(aCondPag.QuantidadeParcelas));
+                item.Tag = aCondPag;
                 listV.Items.Add(item);
             }
         }
@@ -120,10 +122,39 @@ namespace projeto_patrica.pages.consulta
             if (listV.SelectedItems.Count > 0)
             {
                 ListViewItem linha = listV.SelectedItems[0];
-                aCondicaoPagamento.Id = Convert.ToInt32(linha.SubItems[0].Text);
-                aCondicaoPagamento.Descricao = linha.SubItems[1].Text;
-                aCondicaoPagamento.QuantidadeParcelas = Convert.ToInt32(linha.SubItems[2].Text);
+                condicaoPagamento condicaoPagamentoSelecionada = (condicaoPagamento)linha.Tag;
+
+                aCondicaoPagamento.Id = condicaoPagamentoSelecionada.Id;
+                aCondicaoPagamento.Descricao = condicaoPagamentoSelecionada.Descricao;
+                aCondicaoPagamento.QuantidadeParcelas = condicaoPagamentoSelecionada.QuantidadeParcelas;
             }
+        }
+
+        private void frmConsultaCondicaoPagamento_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listV.SelectedItems.Count > 0)
+            {
+                ListViewItem linha = listV.SelectedItems[0];
+                condicaoPagamento condicaoPagamentoSelecionada = (condicaoPagamento)linha.Tag;
+
+                if (!condicaoPagamentoSelecionada.Ativo)
+                {
+                    MessageBox.Show("Este item está inativo e não pode ser selecionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                aCondicaoPagamento.Id = condicaoPagamentoSelecionada.Id;
+                aCondicaoPagamento.Descricao = condicaoPagamentoSelecionada.Descricao;
+                aCondicaoPagamento.QuantidadeParcelas = condicaoPagamentoSelecionada.QuantidadeParcelas;
+
+                this.Close();
+            }
+        }
+
+        public override void Sair()
+        {
+            aCondicaoPagamento.Id = 0;
+            base.Sair();
         }
     }
 }
