@@ -376,9 +376,9 @@
             this.lblEstado.AutoSize = true;
             this.lblEstado.Location = new System.Drawing.Point(483, 142);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(50, 16);
+            this.lblEstado.Size = new System.Drawing.Size(58, 16);
             this.lblEstado.TabIndex = 34;
-            this.lblEstado.Text = "Estado";
+            this.lblEstado.Text = "Estado *";
             // 
             // txtEstado
             // 

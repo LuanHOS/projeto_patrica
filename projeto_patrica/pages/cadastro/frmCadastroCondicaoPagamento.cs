@@ -33,12 +33,19 @@ namespace projeto_patrica.pages.cadastro
             if (
                 string.IsNullOrWhiteSpace(txtDescricao.Text) ||
                 string.IsNullOrWhiteSpace(txtQtdParcelas.Text) ||
+                string.IsNullOrWhiteSpace(txtJuros.Text) ||
+                string.IsNullOrWhiteSpace(txtMulta.Text) ||
+                string.IsNullOrWhiteSpace(txtDesconto.Text) ||
+
                 !int.TryParse(txtQtdParcelas.Text, out int qtdInformada) ||
                 listaParcelas.Count != qtdInformada
             )
             {
                 txtDescricao.Focus();
                 txtQtdParcelas.Focus();
+                txtJuros.Focus();
+                txtMulta.Focus();
+                txtDesconto.Focus();
                 listVParcelas.Focus();
 
                 if (!int.TryParse(txtQtdParcelas.Text, out qtdInformada) || listaParcelas.Count != qtdInformada)
@@ -112,9 +119,9 @@ namespace projeto_patrica.pages.cadastro
 
             txtDescricao.Clear();
             txtQtdParcelas.Text = "1";
-            txtJuros.Clear();
-            txtMulta.Clear();
-            txtDesconto.Clear();
+            txtJuros.Text = "0";
+            txtMulta.Text = "0";
+            txtDesconto.Text = "0";
             listaParcelas.Clear();
             listVParcelas.Items.Clear();
             LimparCamposParcela();

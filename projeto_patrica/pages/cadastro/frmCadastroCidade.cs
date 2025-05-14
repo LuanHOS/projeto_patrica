@@ -30,7 +30,9 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            if (string.IsNullOrWhiteSpace(txtNome.Text) || aCidade.OEstado == null || aCidade.OEstado.Id == 0)
+            if (string.IsNullOrWhiteSpace(txtNome.Text) || 
+                aCidade.OEstado == null
+                )
             {
                 txtNome.Focus();
                 txtEstado.Focus();

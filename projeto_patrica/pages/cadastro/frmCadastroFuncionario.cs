@@ -12,6 +12,7 @@ namespace projeto_patrica.pages.cadastro
         private Controller_funcionario aController_funcionario;
         private frmConsultaCidade oFrmConsultaCidade;
 
+
         public frmCadastroFuncionario() : base()
         {
             InitializeComponent();
@@ -33,41 +34,46 @@ namespace projeto_patrica.pages.cadastro
         public override void Salvar()
         {
             if (
-                string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
-                comboBoxGenero.SelectedIndex == -1 ||
-                string.IsNullOrWhiteSpace(txtCpfCnpj.Text) ||
-                string.IsNullOrWhiteSpace(txtRgInscEstadual.Text) ||
-                string.IsNullOrWhiteSpace(txtMatricula.Text) ||
-                string.IsNullOrWhiteSpace(txtCargo.Text) ||
-                string.IsNullOrWhiteSpace(txtTurno.Text) ||
-                string.IsNullOrWhiteSpace(txtCargaHoraria.Text) ||
-                string.IsNullOrWhiteSpace(txtSalario.Text) ||
-                string.IsNullOrWhiteSpace(txtTelefone.Text) ||
-                string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                string.IsNullOrWhiteSpace(txtEndereco.Text) ||
-                string.IsNullOrWhiteSpace(txtBairro.Text) ||
-                string.IsNullOrWhiteSpace(txtCep.Text) ||
-                oFuncionario.ACidade == null || oFuncionario.ACidade.Id == 0 ||
-                dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate ||
-                dtpDataAdmissao.Value <= dtpDataAdmissao.MinDate
+                    string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
+                    comboBoxGenero.SelectedIndex == -1 ||
+                    string.IsNullOrWhiteSpace(txtCidade.Text) ||
+                    string.IsNullOrWhiteSpace(txtEstado.Text) ||
+                    string.IsNullOrWhiteSpace(txtEndereco.Text) ||
+                    string.IsNullOrWhiteSpace(txtNumeroEndereco.Text) ||
+                    string.IsNullOrWhiteSpace(txtBairro.Text) ||
+                    string.IsNullOrWhiteSpace(txtCep.Text) ||
+                    string.IsNullOrWhiteSpace(txtCpfCnpj.Text) ||
+                    string.IsNullOrWhiteSpace(txtRgInscEstadual.Text) ||
+                    dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate ||
+                    string.IsNullOrWhiteSpace(txtTelefone.Text) ||
+                    string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                    string.IsNullOrWhiteSpace(txtMatricula.Text) ||
+                    string.IsNullOrWhiteSpace(txtCargo.Text) ||
+                    string.IsNullOrWhiteSpace(txtSalario.Text) ||
+                    string.IsNullOrWhiteSpace(txtTurno.Text) ||
+                    string.IsNullOrWhiteSpace(txtCargaHoraria.Text) ||
+                    dtpDataAdmissao.Value <= dtpDataAdmissao.MinDate
             )
             {
+                comboBoxTipo.Focus();
                 txtNomeRazaoSocial.Focus();
-                comboBoxGenero.Focus();
-                txtCpfCnpj.Focus();
-                txtRgInscEstadual.Focus();
-                txtMatricula.Focus();
-                txtCargo.Focus();
-                txtTurno.Focus();
-                txtCargaHoraria.Focus();
-                txtSalario.Focus();
-                txtTelefone.Focus();
-                txtEmail.Focus();
+                comboBoxGenero.Focus(); 
+                txtCidade.Focus();
+                txtEstado.Focus();
                 txtEndereco.Focus();
+                txtNumeroEndereco.Focus();
                 txtBairro.Focus();
                 txtCep.Focus();
-                txtCidade.Focus();
+                txtCpfCnpj.Focus();
+                txtRgInscEstadual.Focus();
                 dtpDataNascimentoCriacao.Focus();
+                txtTelefone.Focus();
+                txtEmail.Focus();
+                txtMatricula.Focus();
+                txtCargo.Focus();
+                txtSalario.Focus();
+                txtTurno.Focus();
+                txtCargaHoraria.Focus();
                 dtpDataAdmissao.Focus();
 
                 MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");

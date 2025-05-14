@@ -44,29 +44,9 @@
             this.lblDataDemissao = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txtNomeRazaoSocial
-            // 
-            this.txtNomeRazaoSocial.TabIndex = 3;
-            // 
-            // txtBairro
-            // 
-            this.txtBairro.TabIndex = 11;
-            // 
-            // txtEndereco
-            // 
-            this.txtEndereco.TabIndex = 9;
-            // 
-            // txtCep
-            // 
-            this.txtCep.TabIndex = 12;
-            // 
             // btnPesquisarCidade
             // 
             this.btnPesquisarCidade.Click += new System.EventHandler(this.btnPesquisarCidade_Click);
-            // 
-            // txtApelidoNomeFantasia
-            // 
-            this.txtApelidoNomeFantasia.TabIndex = 4;
             // 
             // lblNome
             // 
