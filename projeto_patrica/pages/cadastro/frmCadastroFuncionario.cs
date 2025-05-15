@@ -1,4 +1,5 @@
-﻿using projeto_patrica.classes;
+﻿using MySqlX.XDevAPI;
+using projeto_patrica.classes;
 using projeto_patrica.controller;
 using projeto_patrica.pages.consulta;
 using System;
@@ -33,38 +34,43 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
+            Controller_cidade controllerCidade = new Controller_cidade();
+            controllerCidade.CarregaObj(oFuncionario.ACidade);
+
+            bool isEstrangeiro = oFuncionario.ACidade?.OEstado?.OPais?.Nome?.Trim().ToUpper() != "BRASIL";
+
             if (
-                    string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
-                    comboBoxGenero.SelectedIndex == -1 ||
-                    string.IsNullOrWhiteSpace(txtCidade.Text) ||
-                    string.IsNullOrWhiteSpace(txtEstado.Text) ||
-                    string.IsNullOrWhiteSpace(txtEndereco.Text) ||
-                    string.IsNullOrWhiteSpace(txtNumeroEndereco.Text) ||
-                    string.IsNullOrWhiteSpace(txtBairro.Text) ||
-                    string.IsNullOrWhiteSpace(txtCep.Text) ||
-                    string.IsNullOrWhiteSpace(txtCpfCnpj.Text) ||
-                    string.IsNullOrWhiteSpace(txtRgInscEstadual.Text) ||
-                    dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate ||
-                    string.IsNullOrWhiteSpace(txtTelefone.Text) ||
-                    string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                    string.IsNullOrWhiteSpace(txtMatricula.Text) ||
-                    string.IsNullOrWhiteSpace(txtCargo.Text) ||
-                    string.IsNullOrWhiteSpace(txtSalario.Text) ||
-                    string.IsNullOrWhiteSpace(txtTurno.Text) ||
-                    string.IsNullOrWhiteSpace(txtCargaHoraria.Text) ||
-                    dtpDataAdmissao.Value <= dtpDataAdmissao.MinDate
+                string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
+                comboBoxGenero.SelectedIndex == -1 ||
+                string.IsNullOrWhiteSpace(txtCidade.Text) ||
+                string.IsNullOrWhiteSpace(txtEstado.Text) ||
+                string.IsNullOrWhiteSpace(txtEndereco.Text) ||
+                string.IsNullOrWhiteSpace(txtNumeroEndereco.Text) ||
+                string.IsNullOrWhiteSpace(txtBairro.Text) ||
+                (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCep.Text)) || // obrigatório só se for brasileiro
+                (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCpfCnpj.Text)) || // obrigatório só se for brasileiro
+                string.IsNullOrWhiteSpace(txtRgInscEstadual.Text) ||
+                dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate ||
+                string.IsNullOrWhiteSpace(txtTelefone.Text) ||
+                string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                string.IsNullOrWhiteSpace(txtMatricula.Text) ||
+                string.IsNullOrWhiteSpace(txtCargo.Text) ||
+                string.IsNullOrWhiteSpace(txtSalario.Text) ||
+                string.IsNullOrWhiteSpace(txtTurno.Text) ||
+                string.IsNullOrWhiteSpace(txtCargaHoraria.Text) ||
+                dtpDataAdmissao.Value <= dtpDataAdmissao.MinDate
             )
             {
                 comboBoxTipo.Focus();
                 txtNomeRazaoSocial.Focus();
-                comboBoxGenero.Focus(); 
+                comboBoxGenero.Focus();
                 txtCidade.Focus();
                 txtEstado.Focus();
                 txtEndereco.Focus();
                 txtNumeroEndereco.Focus();
                 txtBairro.Focus();
-                txtCep.Focus();
-                txtCpfCnpj.Focus();
+                if (!isEstrangeiro) txtCep.Focus();
+                if (!isEstrangeiro) txtCpfCnpj.Focus();
                 txtRgInscEstadual.Focus();
                 dtpDataNascimentoCriacao.Focus();
                 txtTelefone.Focus();
@@ -90,25 +96,25 @@ namespace projeto_patrica.pages.cadastro
             oFuncionario.Id = Convert.ToInt32(txtCodigo.Text);
             oFuncionario.TipoPessoa = 'F';
             oFuncionario.Nome_razaoSocial = txtNomeRazaoSocial.Text;
-            oFuncionario.Apelido_nomeFantasia = txtApelidoNomeFantasia.Text;
+            oFuncionario.Apelido_nomeFantasia = string.IsNullOrWhiteSpace(txtApelidoNomeFantasia.Text) ? null : txtApelidoNomeFantasia.Text;
             oFuncionario.DataNascimento_criacao = dtpDataNascimentoCriacao.Value;
-            oFuncionario.Cpf_cnpj = txtCpfCnpj.Text;
+            oFuncionario.Cpf_cnpj = string.IsNullOrWhiteSpace(txtCpfCnpj.Text) ? null : txtCpfCnpj.Text;
             oFuncionario.Rg_inscricaoEstadual = txtRgInscEstadual.Text;
             oFuncionario.Email = txtEmail.Text;
             oFuncionario.Telefone = txtTelefone.Text;
             oFuncionario.Endereco = txtEndereco.Text;
             oFuncionario.Bairro = txtBairro.Text;
-            oFuncionario.Cep = txtCep.Text;
+            oFuncionario.Cep = string.IsNullOrWhiteSpace(txtCep.Text) ? null : txtCep.Text;
             oFuncionario.Ativo = checkBoxAtivo.Checked;
-            oFuncionario.Genero = comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F';
+            oFuncionario.Genero = comboBoxGenero.SelectedIndex == -1 ? ' ' : (comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F');
             oFuncionario.Matricula = txtMatricula.Text;
             oFuncionario.Cargo = txtCargo.Text;
             oFuncionario.Salario = Convert.ToDecimal(txtSalario.Text);
-            oFuncionario.DataAdmissao = dtpDataAdmissao.Value;
             oFuncionario.Turno = txtTurno.Text;
             oFuncionario.CargaHoraria = Convert.ToInt32(txtCargaHoraria.Text);
             oFuncionario.NumeroEndereco = txtNumeroEndereco.Text;
-            oFuncionario.ComplementoEndereco = txtComplementoEndereco.Text;
+            oFuncionario.ComplementoEndereco = string.IsNullOrWhiteSpace(txtComplementoEndereco.Text) ? null : txtComplementoEndereco.Text;
+            oFuncionario.DataAdmissao = dtpDataAdmissao.Value;
             oFuncionario.DataDemissao = dtpDataDemissao.Checked ? dtpDataDemissao.Value : (DateTime?)null;
 
             try

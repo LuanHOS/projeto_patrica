@@ -1,4 +1,5 @@
-﻿using projeto_patrica.classes;
+﻿using MySqlX.XDevAPI;
+using projeto_patrica.classes;
 using projeto_patrica.controller;
 using projeto_patrica.pages.consulta;
 using System;
@@ -38,34 +39,45 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
+            bool isFisica = comboBoxTipo.SelectedIndex == 0; // 0 = Pessoa Física, 1 = Pessoa Jurídica
+
+            Controller_cidade controllerCidade = new Controller_cidade();
+            controllerCidade.CarregaObj(oFornecedor.ACidade);
+
+            bool isEstrangeiro = oFornecedor.ACidade?.OEstado?.OPais?.Nome?.Trim().ToUpper() != "BRASIL";
+
             if (
-                comboBoxTipo.SelectedIndex == -1 ||
                 string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
-                string.IsNullOrWhiteSpace(txtCpfCnpj.Text) ||
-                string.IsNullOrWhiteSpace(txtRgInscEstadual.Text) ||
-                string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                string.IsNullOrWhiteSpace(txtTelefone.Text) ||
+                (isFisica && comboBoxGenero.SelectedIndex == -1) || // obrigatório só se for física
+                string.IsNullOrWhiteSpace(txtCidade.Text) ||
+                string.IsNullOrWhiteSpace(txtEstado.Text) ||
                 string.IsNullOrWhiteSpace(txtEndereco.Text) ||
+                string.IsNullOrWhiteSpace(txtNumeroEndereco.Text) ||
                 string.IsNullOrWhiteSpace(txtBairro.Text) ||
-                string.IsNullOrWhiteSpace(txtCep.Text) ||
-                oFornecedor.ACidade == null || oFornecedor.ACidade.Id == 0 ||
-                oFornecedor.ACondicaoPagamento == null || oFornecedor.ACondicaoPagamento.Id == 0 ||
-                dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate
+                (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCep.Text)) || // obrigatório só se for brasileiro
+                (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCpfCnpj.Text)) || // obrigatório só se for brasileiro
+                string.IsNullOrWhiteSpace(txtRgInscEstadual.Text) ||
+                dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate ||
+                string.IsNullOrWhiteSpace(txtTelefone.Text) ||
+                string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                string.IsNullOrWhiteSpace(txtCondicaoPagamento.Text)
             )
             {
                 comboBoxTipo.Focus();
                 txtNomeRazaoSocial.Focus();
-                txtCpfCnpj.Focus();
-                txtRgInscEstadual.Focus();
-                txtEmail.Focus();
-                txtTelefone.Focus();
-                txtEndereco.Focus();
-                txtBairro.Focus();
-                txtCep.Focus();
-                comboBoxGenero.Focus();
+                if (isFisica) comboBoxGenero.Focus();
                 txtCidade.Focus();
-                txtCondicaoPagamento.Focus();
+                txtEstado.Focus();
+                txtEndereco.Focus();
+                txtNumeroEndereco.Focus();
+                txtBairro.Focus();
+                if (!isEstrangeiro) txtCep.Focus();
+                if (!isEstrangeiro) txtCpfCnpj.Focus();
+                txtRgInscEstadual.Focus();
                 dtpDataNascimentoCriacao.Focus();
+                txtTelefone.Focus();
+                txtEmail.Focus();
+                txtCondicaoPagamento.Focus();
 
                 MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");
                 return;
@@ -74,19 +86,19 @@ namespace projeto_patrica.pages.cadastro
             oFornecedor.Id = Convert.ToInt32(txtCodigo.Text);
             oFornecedor.TipoPessoa = comboBoxTipo.SelectedIndex == 0 ? 'F' : 'J';
             oFornecedor.Nome_razaoSocial = txtNomeRazaoSocial.Text;
-            oFornecedor.Apelido_nomeFantasia = txtApelidoNomeFantasia.Text;
+            oFornecedor.Apelido_nomeFantasia = string.IsNullOrWhiteSpace(txtApelidoNomeFantasia.Text) ? null : txtApelidoNomeFantasia.Text;
             oFornecedor.DataNascimento_criacao = dtpDataNascimentoCriacao.Value;
-            oFornecedor.Cpf_cnpj = txtCpfCnpj.Text;
+            oFornecedor.Cpf_cnpj = string.IsNullOrWhiteSpace(txtCpfCnpj.Text) ? null : txtCpfCnpj.Text;
             oFornecedor.Rg_inscricaoEstadual = txtRgInscEstadual.Text;
             oFornecedor.Email = txtEmail.Text;
             oFornecedor.Telefone = txtTelefone.Text;
             oFornecedor.Endereco = txtEndereco.Text;
             oFornecedor.Bairro = txtBairro.Text;
-            oFornecedor.Cep = txtCep.Text;
+            oFornecedor.Cep = string.IsNullOrWhiteSpace(txtCep.Text) ? null : txtCep.Text;
             oFornecedor.Ativo = checkBoxAtivo.Checked;
-            oFornecedor.Genero = comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F';
+            oFornecedor.Genero = comboBoxGenero.SelectedIndex == -1 ? ' ' : (comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F');
             oFornecedor.NumeroEndereco = txtNumeroEndereco.Text;
-            oFornecedor.ComplementoEndereco = txtComplementoEndereco.Text;
+            oFornecedor.ComplementoEndereco = string.IsNullOrWhiteSpace(txtComplementoEndereco.Text) ? null : txtComplementoEndereco.Text;
 
             try
             {
@@ -194,10 +206,13 @@ namespace projeto_patrica.pages.cadastro
 
         private void ComboBoxTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            comboBoxGenero.SelectedIndex = -1;
+
             bool isFisica = comboBoxTipo.SelectedIndex == 0;
 
             HabilitarCampos(true);
             comboBoxGenero.Enabled = isFisica;
+            lblGenero.Enabled = isFisica;
 
             lblNome.Text = isFisica ? "Fornecedor Nome *" : "Fornecedor Razão Social *";
             lblApelido.Text = isFisica ? "Apelido" : "Nome Fantasia";

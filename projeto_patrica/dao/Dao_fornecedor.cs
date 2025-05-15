@@ -20,38 +20,51 @@ namespace projeto_patrica.dao
             string sql;
 
             sql = "INSERT INTO fornecedor (" +
-                "TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, " +
-                "RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, " +
-                "GENERO, ID_CONDICAO_PAGAMENTO, NUMERO_ENDERECO, COMPLEMENTO_ENDERECO" +
-                ") VALUES (" +
-                "'" + oFornecedor.TipoPessoa + "', '" + oFornecedor.Nome_razaoSocial + "', '" + oFornecedor.Apelido_nomeFantasia + "', '" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', '" + oFornecedor.Cpf_cnpj + "', " +
-                "'" + oFornecedor.Rg_inscricaoEstadual + "', '" + oFornecedor.Email + "', '" + oFornecedor.Telefone + "', '" + oFornecedor.Endereco + "', '" + oFornecedor.Bairro + "', " +
-                "'" + oFornecedor.ACidade.Id + "', '" + oFornecedor.Cep + "', '" + (oFornecedor.Ativo ? 1 : 0) + "', " +
-                "'" + oFornecedor.Genero + "', '" + oFornecedor.ACondicaoPagamento.Id + "', '" + oFornecedor.NumeroEndereco + "', '" + oFornecedor.ComplementoEndereco + "')";
+                  "TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, " +
+                  "RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, " +
+                  "GENERO, ID_CONDICAO_PAGAMENTO, NUMERO_ENDERECO, COMPLEMENTO_ENDERECO" +
+                  ") VALUES (" +
+                  "'" + oFornecedor.TipoPessoa + "', " +
+                  "'" + oFornecedor.Nome_razaoSocial + "', " +
+                  (string.IsNullOrWhiteSpace(oFornecedor.Apelido_nomeFantasia) ? "NULL" : "'" + oFornecedor.Apelido_nomeFantasia + "'") + ", " +
+                  "'" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', " +
+                  (string.IsNullOrWhiteSpace(oFornecedor.Cpf_cnpj) ? "NULL" : "'" + oFornecedor.Cpf_cnpj + "'") + ", " +
+                  "'" + oFornecedor.Rg_inscricaoEstadual + "', " +
+                  "'" + oFornecedor.Email + "', " +
+                  "'" + oFornecedor.Telefone + "', " +
+                  "'" + oFornecedor.Endereco + "', " +
+                  "'" + oFornecedor.Bairro + "', " +
+                  "'" + oFornecedor.ACidade.Id + "', " +
+                  (string.IsNullOrWhiteSpace(oFornecedor.Cep) ? "NULL" : "'" + oFornecedor.Cep + "'") + ", " +
+                  (oFornecedor.Ativo ? "1" : "0") + ", " +
+                  (oFornecedor.Genero == ' ' ? "NULL" : "'" + oFornecedor.Genero + "'") + ", " +
+                  "'" + oFornecedor.ACondicaoPagamento.Id + "', " +
+                  "'" + oFornecedor.NumeroEndereco + "', " +
+                  (string.IsNullOrWhiteSpace(oFornecedor.ComplementoEndereco) ? "NULL" : "'" + oFornecedor.ComplementoEndereco + "'") + ")";
 
             if (oFornecedor.Id != 0)
             {
                 operacao = 'U';
                 sql = "UPDATE fornecedor SET " +
-                    "TIPO_PESSOA = '" + oFornecedor.TipoPessoa + "', " +
-                    "NOME_RAZAO_SOCIAL = '" + oFornecedor.Nome_razaoSocial + "', " +
-                    "APELIDO_NOME_FANTASIA = '" + oFornecedor.Apelido_nomeFantasia + "', " +
-                    "DATA_NASCIMENTO_CRIACAO = '" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', " +
-                    "CPF_CNPJ = '" + oFornecedor.Cpf_cnpj + "', " +
-                    "RG_INSCRICAO_ESTADUAL = '" + oFornecedor.Rg_inscricaoEstadual + "', " +
-                    "EMAIL = '" + oFornecedor.Email + "', " +
-                    "TELEFONE = '" + oFornecedor.Telefone + "', " +
-                    "ENDERECO = '" + oFornecedor.Endereco + "', " +
-                    "BAIRRO = '" + oFornecedor.Bairro + "', " +
-                    "ID_CIDADE = '" + oFornecedor.ACidade.Id + "', " +
-                    "CEP = '" + oFornecedor.Cep + "', " +
-                    "ATIVO = '" + (oFornecedor.Ativo ? 1 : 0) + "', " +
-                    "ID_CONDICAO_PAGAMENTO = '" + oFornecedor.ACondicaoPagamento.Id + "', " +
-                    "GENERO = '" + oFornecedor.Genero + "', " +
-                    "NUMERO_ENDERECO = '" + oFornecedor.NumeroEndereco + "', " +
-                    "COMPLEMENTO_ENDERECO = '" + oFornecedor.ComplementoEndereco + "', " +
-                    "DATA_ULTIMA_EDICAO = CURRENT_DATE " +
-                    "WHERE ID_FORNECEDOR = '" + oFornecedor.Id + "'";
+                     "TIPO_PESSOA = '" + oFornecedor.TipoPessoa + "', " +
+                     "NOME_RAZAO_SOCIAL = '" + oFornecedor.Nome_razaoSocial + "', " +
+                     "APELIDO_NOME_FANTASIA = " + (string.IsNullOrWhiteSpace(oFornecedor.Apelido_nomeFantasia) ? "NULL" : "'" + oFornecedor.Apelido_nomeFantasia + "'") + ", " +
+                     "DATA_NASCIMENTO_CRIACAO = '" + oFornecedor.DataNascimento_criacao.ToString("yyyy-MM-dd") + "', " +
+                     "CPF_CNPJ = " + (string.IsNullOrWhiteSpace(oFornecedor.Cpf_cnpj) ? "NULL" : "'" + oFornecedor.Cpf_cnpj + "'") + ", " +
+                     "RG_INSCRICAO_ESTADUAL = '" + oFornecedor.Rg_inscricaoEstadual + "', " +
+                     "EMAIL = '" + oFornecedor.Email + "', " +
+                     "TELEFONE = '" + oFornecedor.Telefone + "', " +
+                     "ENDERECO = '" + oFornecedor.Endereco + "', " +
+                     "BAIRRO = '" + oFornecedor.Bairro + "', " +
+                     "ID_CIDADE = '" + oFornecedor.ACidade.Id + "', " +
+                     "CEP = " + (string.IsNullOrWhiteSpace(oFornecedor.Cep) ? "NULL" : "'" + oFornecedor.Cep + "'") + ", " +
+                     "ATIVO = '" + (oFornecedor.Ativo ? 1 : 0) + "', " +
+                     "GENERO = " + (oFornecedor.Genero == ' ' ? "NULL" : "'" + oFornecedor.Genero + "'") + ", " +
+                     "ID_CONDICAO_PAGAMENTO = '" + oFornecedor.ACondicaoPagamento.Id + "', " +
+                     "NUMERO_ENDERECO = '" + oFornecedor.NumeroEndereco + "', " +
+                     "COMPLEMENTO_ENDERECO = " + (string.IsNullOrWhiteSpace(oFornecedor.ComplementoEndereco) ? "NULL" : "'" + oFornecedor.ComplementoEndereco + "'") + ", " +
+                     "DATA_ULTIMA_EDICAO = CURRENT_DATE " +
+                     "WHERE ID_FORNECEDOR = '" + oFornecedor.Id + "'";
             }
 
             MySqlCommand conn = new MySqlCommand();
@@ -90,26 +103,30 @@ namespace projeto_patrica.dao
 
                 while (dr.Read())
                 {
-                    oFornecedor.Id = Convert.ToInt32(dr["ID_FORNECEDOR"]);
-                    oFornecedor.TipoPessoa = Convert.ToChar(dr["TIPO_PESSOA"]);
-                    oFornecedor.Nome_razaoSocial = dr["NOME_RAZAO_SOCIAL"].ToString();
-                    oFornecedor.Apelido_nomeFantasia = dr["APELIDO_NOME_FANTASIA"] == DBNull.Value ? "" : dr["APELIDO_NOME_FANTASIA"].ToString();
-                    oFornecedor.DataNascimento_criacao = Convert.ToDateTime(dr["DATA_NASCIMENTO_CRIACAO"]);
-                    oFornecedor.Cpf_cnpj = dr["CPF_CNPJ"].ToString();
-                    oFornecedor.Rg_inscricaoEstadual = dr["RG_INSCRICAO_ESTADUAL"].ToString();
-                    oFornecedor.Email = dr["EMAIL"].ToString();
-                    oFornecedor.Telefone = dr["TELEFONE"].ToString();
-                    oFornecedor.Endereco = dr["ENDERECO"].ToString();
-                    oFornecedor.Bairro = dr["BAIRRO"].ToString();
-                    oFornecedor.ACidade.Id = Convert.ToInt32(dr["ID_CIDADE"]);
-                    oFornecedor.Cep = dr["CEP"].ToString();
-                    oFornecedor.Ativo = Convert.ToBoolean(dr["ATIVO"]);
-                    oFornecedor.Genero = dr["GENERO"] == DBNull.Value || string.IsNullOrWhiteSpace(dr["GENERO"].ToString()) ? ' ' : Convert.ToChar(dr["GENERO"]);
-                    oFornecedor.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
-                    oFornecedor.NumeroEndereco = dr["NUMERO_ENDERECO"] == DBNull.Value ? "" : dr["NUMERO_ENDERECO"].ToString();
-                    oFornecedor.ComplementoEndereco = dr["COMPLEMENTO_ENDERECO"] == DBNull.Value ? "" : dr["COMPLEMENTO_ENDERECO"].ToString();
-                    oFornecedor.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
-                    oFornecedor.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
+                    while (dr.Read())
+                    {
+                        oFornecedor.Id = Convert.ToInt32(dr["ID_FORNECEDOR"]);
+                        oFornecedor.TipoPessoa = Convert.ToChar(dr["TIPO_PESSOA"]);
+                        oFornecedor.Nome_razaoSocial = dr["NOME_RAZAO_SOCIAL"].ToString();
+                        oFornecedor.Apelido_nomeFantasia = dr["APELIDO_NOME_FANTASIA"] == DBNull.Value ? null : dr["APELIDO_NOME_FANTASIA"].ToString();
+                        oFornecedor.DataNascimento_criacao = Convert.ToDateTime(dr["DATA_NASCIMENTO_CRIACAO"]);
+                        oFornecedor.Cpf_cnpj = dr["CPF_CNPJ"] == DBNull.Value ? null : dr["CPF_CNPJ"].ToString();
+                        oFornecedor.Rg_inscricaoEstadual = dr["RG_INSCRICAO_ESTADUAL"].ToString();
+                        oFornecedor.Email = dr["EMAIL"].ToString();
+                        oFornecedor.Telefone = dr["TELEFONE"].ToString();
+                        oFornecedor.Endereco = dr["ENDERECO"].ToString();
+                        oFornecedor.Bairro = dr["BAIRRO"].ToString();
+                        oFornecedor.ACidade.Id = Convert.ToInt32(dr["ID_CIDADE"]);
+                        oFornecedor.Cep = dr["CEP"] == DBNull.Value ? null : dr["CEP"].ToString();
+                        oFornecedor.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                        oFornecedor.Genero = dr["GENERO"] == DBNull.Value || string.IsNullOrWhiteSpace(dr["GENERO"].ToString()) ? ' ' : Convert.ToChar(dr["GENERO"]);
+                        oFornecedor.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
+                        oFornecedor.NumeroEndereco = dr["NUMERO_ENDERECO"].ToString();
+                        oFornecedor.ComplementoEndereco = dr["COMPLEMENTO_ENDERECO"] == DBNull.Value ? null : dr["COMPLEMENTO_ENDERECO"].ToString();
+                        oFornecedor.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                        oFornecedor.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
+                    }
+
 
                 }
 
@@ -169,23 +186,24 @@ namespace projeto_patrica.dao
                 oFornecedor.Id = Convert.ToInt32(dr["ID_FORNECEDOR"]);
                 oFornecedor.TipoPessoa = Convert.ToChar(dr["TIPO_PESSOA"]);
                 oFornecedor.Nome_razaoSocial = dr["NOME_RAZAO_SOCIAL"].ToString();
-                oFornecedor.Apelido_nomeFantasia = dr["APELIDO_NOME_FANTASIA"] == DBNull.Value ? "" : dr["APELIDO_NOME_FANTASIA"].ToString();
+                oFornecedor.Apelido_nomeFantasia = dr["APELIDO_NOME_FANTASIA"] == DBNull.Value ? null : dr["APELIDO_NOME_FANTASIA"].ToString();
                 oFornecedor.DataNascimento_criacao = Convert.ToDateTime(dr["DATA_NASCIMENTO_CRIACAO"]);
-                oFornecedor.Cpf_cnpj = dr["CPF_CNPJ"].ToString();
+                oFornecedor.Cpf_cnpj = dr["CPF_CNPJ"] == DBNull.Value ? null : dr["CPF_CNPJ"].ToString();
                 oFornecedor.Rg_inscricaoEstadual = dr["RG_INSCRICAO_ESTADUAL"].ToString();
                 oFornecedor.Email = dr["EMAIL"].ToString();
                 oFornecedor.Telefone = dr["TELEFONE"].ToString();
                 oFornecedor.Endereco = dr["ENDERECO"].ToString();
                 oFornecedor.Bairro = dr["BAIRRO"].ToString();
                 oFornecedor.ACidade.Id = Convert.ToInt32(dr["ID_CIDADE"]);
-                oFornecedor.Cep = dr["CEP"].ToString();
+                oFornecedor.Cep = dr["CEP"] == DBNull.Value ? null : dr["CEP"].ToString();
                 oFornecedor.Ativo = Convert.ToBoolean(dr["ATIVO"]);
                 oFornecedor.Genero = dr["GENERO"] == DBNull.Value || string.IsNullOrWhiteSpace(dr["GENERO"].ToString()) ? ' ' : Convert.ToChar(dr["GENERO"]);
                 oFornecedor.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
-                oFornecedor.NumeroEndereco = dr["NUMERO_ENDERECO"] == DBNull.Value ? "" : dr["NUMERO_ENDERECO"].ToString();
-                oFornecedor.ComplementoEndereco = dr["COMPLEMENTO_ENDERECO"] == DBNull.Value ? "" : dr["COMPLEMENTO_ENDERECO"].ToString();
+                oFornecedor.NumeroEndereco = dr["NUMERO_ENDERECO"].ToString();
+                oFornecedor.ComplementoEndereco = dr["COMPLEMENTO_ENDERECO"] == DBNull.Value ? null : dr["COMPLEMENTO_ENDERECO"].ToString();
                 oFornecedor.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
                 oFornecedor.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
+
 
                 lista.Add(oFornecedor);
             }
