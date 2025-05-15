@@ -413,8 +413,6 @@
             // 
             // frmCadastroPessoa
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Controls.Add(this.txtPais);
             this.Controls.Add(this.lblPais);
             this.Controls.Add(this.txtEstado);
