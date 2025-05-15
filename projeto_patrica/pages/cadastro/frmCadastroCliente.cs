@@ -12,6 +12,8 @@ namespace projeto_patrica.pages.cadastro
         private Controller_cliente aController_cliente;
         private frmConsultaCidade oFrmConsultaCidade;
         private frmConsultaCondicaoPagamento oFrmConsultaCondicaoPagamento;
+        private bool isFisica = true;
+        private bool isEstrangeiro = false;
 
         public frmCadastroCliente() : base()
         {
@@ -38,14 +40,6 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            bool isFisica = comboBoxTipo.SelectedIndex == 0; // 0 = Pessoa Física, 1 = Pessoa Jurídica
-
-            Controller_cidade controllerCidade = new Controller_cidade();
-            controllerCidade.CarregaObj(oCliente.ACidade);
-
-            bool isEstrangeiro = oCliente.ACidade?.OEstado?.OPais?.Nome?.Trim().ToUpper() != "BRASIL";
-
-
             if (
                 string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
                 (isFisica && comboBoxGenero.SelectedIndex == -1) || // obrigatório só se for física
@@ -150,6 +144,7 @@ namespace projeto_patrica.pages.cadastro
             txtCep.Clear();
             txtCidade.Clear();
             txtEstado.Clear();
+            txtPais.Clear();
             txtNumeroEndereco.Clear();
             txtComplementoEndereco.Clear();
             txtLimiteDeCredito.Clear();
@@ -179,6 +174,7 @@ namespace projeto_patrica.pages.cadastro
             txtCep.Text = oCliente.Cep;
             txtCidade.Text = oCliente.ACidade.Nome;
             txtEstado.Text = oCliente.ACidade.OEstado.Nome;
+            txtPais.Text = oCliente.ACidade.OEstado.OPais.Nome;
             txtCondicaoPagamento.Text = oCliente.ACondicaoPagamento.Descricao;
             dtpDataNascimentoCriacao.Value = (oCliente.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oCliente.DataNascimento_criacao;
             txtNumeroEndereco.Text = oCliente.NumeroEndereco;
@@ -210,7 +206,7 @@ namespace projeto_patrica.pages.cadastro
         {
             comboBoxGenero.SelectedIndex = -1;
 
-            bool isFisica = comboBoxTipo.SelectedIndex == 0;
+            isFisica = comboBoxTipo.SelectedIndex == 0; // 0 = Pessoa Física, 1 = Pessoa Jurídica
 
             HabilitarCampos(true);
             comboBoxGenero.Enabled = isFisica;
@@ -218,26 +214,43 @@ namespace projeto_patrica.pages.cadastro
 
             lblNome.Text = isFisica ? "Cliente Nome *" : "Cliente Razão Social *";
             lblApelido.Text = isFisica ? "Apelido" : "Nome Fantasia";
-            lblCpf.Text = isFisica ? "CPF *" : "CNPJ *";
+
+            if (isFisica)
+                lblCpf.Text = isEstrangeiro ? "CPF" : "CPF *";
+            else
+                lblCpf.Text = isEstrangeiro ? "CNPJ" : "CNPJ *";
+
             lblRg.Text = isFisica ? "RG *" : "Inscrição Estadual *";
             lblDataNascimento.Text = isFisica ? "Data de Nascimento *" : "Data de Criação *";
         }
 
-        private void BtnPesquisarCidade_Click(object sender, EventArgs e)
+        private void btnPesquisarCidade_Click(object sender, EventArgs e)
         {
             if (oFrmConsultaCidade == null)
                 oFrmConsultaCidade = new frmConsultaCidade();
 
-            cidade aCidade = new cidade();
+            cidade cidade = new cidade();
             Controller_cidade controller = new Controller_cidade();
-            oFrmConsultaCidade.ConhecaObj(aCidade, controller);
+            oFrmConsultaCidade.ConhecaObj(cidade, controller);
             oFrmConsultaCidade.ShowDialog();
 
-            if (aCidade.Id != 0)
+            if (cidade.Id != 0)
             {
-                oCliente.ACidade = aCidade;
-                txtCidade.Text = aCidade.Nome;
-                txtEstado.Text = aCidade.OEstado.Nome;
+                controller.CarregaObj(cidade);
+
+                oCliente.ACidade = cidade;
+                txtCidade.Text = cidade.Nome;
+                txtEstado.Text = cidade.OEstado.Nome;
+                txtPais.Text = cidade.OEstado.OPais.Nome;
+
+                isEstrangeiro = cidade.OEstado.OPais.Nome.Trim().ToUpper() != "BRASIL";
+
+                lblCep.Text = isEstrangeiro ? "CEP" : "CEP *";
+
+                if (isFisica)
+                    lblCpf.Text = isEstrangeiro ? "CPF" : "CPF *";
+                else
+                    lblCpf.Text = isEstrangeiro ? "CNPJ" : "CNPJ *";
             }
         }
 
@@ -271,6 +284,7 @@ namespace projeto_patrica.pages.cadastro
             txtCep.Enabled = habilita;
             txtCidade.Enabled = habilita;
             txtEstado.Enabled = habilita;
+            txtPais.Enabled = habilita;
             txtCondicaoPagamento.Enabled = habilita;
             dtpDataNascimentoCriacao.Enabled = habilita;
             comboBoxGenero.Enabled = habilita;

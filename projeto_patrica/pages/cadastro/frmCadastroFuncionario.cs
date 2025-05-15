@@ -12,7 +12,7 @@ namespace projeto_patrica.pages.cadastro
         private funcionario oFuncionario;
         private Controller_funcionario aController_funcionario;
         private frmConsultaCidade oFrmConsultaCidade;
-
+        private bool isEstrangeiro = false;
 
         public frmCadastroFuncionario() : base()
         {
@@ -34,11 +34,6 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            Controller_cidade controllerCidade = new Controller_cidade();
-            controllerCidade.CarregaObj(oFuncionario.ACidade);
-
-            bool isEstrangeiro = oFuncionario.ACidade?.OEstado?.OPais?.Nome?.Trim().ToUpper() != "BRASIL";
-
             if (
                 string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
                 comboBoxGenero.SelectedIndex == -1 ||
@@ -172,6 +167,7 @@ namespace projeto_patrica.pages.cadastro
             oFuncionario.ACidade = new cidade();
             txtCidade.Clear();
             txtEstado.Clear();
+            txtPais.Clear();
             txtNumeroEndereco.Clear(); 
             txtComplementoEndereco.Clear(); 
             dtpDataDemissao.Value = DateTime.Today; 
@@ -197,6 +193,7 @@ namespace projeto_patrica.pages.cadastro
             txtCep.Text = oFuncionario.Cep;
             txtCidade.Text = oFuncionario.ACidade.Nome;
             txtEstado.Text = oFuncionario.ACidade.OEstado.Nome;
+            txtPais.Text = oFuncionario.ACidade.OEstado.OPais.Nome;
             dtpDataNascimentoCriacao.Value = (oFuncionario.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oFuncionario.DataNascimento_criacao;
             comboBoxGenero.SelectedIndex = oFuncionario.Genero == 'M' ? 0 : 1;
             checkBoxAtivo.Checked = oFuncionario.Ativo;
@@ -232,6 +229,7 @@ namespace projeto_patrica.pages.cadastro
             txtCep.Enabled = false;
             txtCidade.Enabled = false;
             txtEstado.Enabled = false;
+            txtPais.Enabled = false;
             comboBoxTipo.Enabled = false;
             comboBoxGenero.Enabled = false;
             dtpDataNascimentoCriacao.Enabled = false;
@@ -262,6 +260,7 @@ namespace projeto_patrica.pages.cadastro
             txtCep.Enabled = true;
             txtCidade.Enabled = true;
             txtEstado.Enabled = true;
+            txtPais.Enabled = true;
             btnPesquisarCidade.Enabled = true;
             dtpDataNascimentoCriacao.Enabled = true;
             comboBoxGenero.Enabled = true;
@@ -288,10 +287,19 @@ namespace projeto_patrica.pages.cadastro
 
             if (cidade.Id != 0)
             {
+                controller.CarregaObj(cidade);
+
                 oFuncionario.ACidade = cidade;
                 txtCidade.Text = cidade.Nome;
                 txtEstado.Text = cidade.OEstado.Nome;
+                txtPais.Text = cidade.OEstado.OPais.Nome;
+
+                isEstrangeiro = cidade.OEstado.OPais.Nome.Trim().ToUpper() != "BRASIL";
+
+                lblCep.Text = isEstrangeiro ? "CEP" : "CEP *";
+                lblCpf.Text = isEstrangeiro ? "CPF" : "CPF *";
             }
         }
+
     }
 }

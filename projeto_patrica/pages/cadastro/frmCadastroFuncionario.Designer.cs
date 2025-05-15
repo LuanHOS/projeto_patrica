@@ -55,7 +55,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.TabIndex = 26;
+            this.btnSave.TabIndex = 27;
             // 
             // checkBoxAtivo
             // 
@@ -63,7 +63,7 @@
             // 
             // btnSair
             // 
-            this.btnSair.TabIndex = 27;
+            this.btnSair.TabIndex = 28;
             // 
             // txtCodigo
             // 
@@ -86,7 +86,7 @@
             this.txtMatricula.Margin = new System.Windows.Forms.Padding(2);
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.Size = new System.Drawing.Size(336, 22);
-            this.txtMatricula.TabIndex = 19;
+            this.txtMatricula.TabIndex = 20;
             // 
             // lblCargo
             // 
@@ -105,7 +105,7 @@
             this.txtCargo.Margin = new System.Windows.Forms.Padding(2);
             this.txtCargo.Name = "txtCargo";
             this.txtCargo.Size = new System.Drawing.Size(332, 22);
-            this.txtCargo.TabIndex = 20;
+            this.txtCargo.TabIndex = 21;
             // 
             // lblTurno
             // 
@@ -124,7 +124,7 @@
             this.txtTurno.Margin = new System.Windows.Forms.Padding(2);
             this.txtTurno.Name = "txtTurno";
             this.txtTurno.Size = new System.Drawing.Size(336, 22);
-            this.txtTurno.TabIndex = 22;
+            this.txtTurno.TabIndex = 23;
             // 
             // lblCargaHoraria
             // 
@@ -143,7 +143,7 @@
             this.txtCargaHoraria.Margin = new System.Windows.Forms.Padding(2);
             this.txtCargaHoraria.Name = "txtCargaHoraria";
             this.txtCargaHoraria.Size = new System.Drawing.Size(332, 22);
-            this.txtCargaHoraria.TabIndex = 23;
+            this.txtCargaHoraria.TabIndex = 24;
             // 
             // lblSalario
             // 
@@ -162,7 +162,7 @@
             this.txtSalario.Margin = new System.Windows.Forms.Padding(2);
             this.txtSalario.Name = "txtSalario";
             this.txtSalario.Size = new System.Drawing.Size(292, 22);
-            this.txtSalario.TabIndex = 21;
+            this.txtSalario.TabIndex = 22;
             // 
             // lblDataAdmissao
             // 
@@ -181,7 +181,7 @@
             this.dtpDataAdmissao.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDataAdmissao.Name = "dtpDataAdmissao";
             this.dtpDataAdmissao.Size = new System.Drawing.Size(135, 22);
-            this.dtpDataAdmissao.TabIndex = 24;
+            this.dtpDataAdmissao.TabIndex = 25;
             // 
             // dtpDataDemissao
             // 
@@ -192,7 +192,7 @@
             this.dtpDataDemissao.Name = "dtpDataDemissao";
             this.dtpDataDemissao.ShowCheckBox = true;
             this.dtpDataDemissao.Size = new System.Drawing.Size(135, 22);
-            this.dtpDataDemissao.TabIndex = 25;
+            this.dtpDataDemissao.TabIndex = 26;
             // 
             // lblDataDemissao
             // 
@@ -207,6 +207,8 @@
             // 
             // frmCadastroFuncionario
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Controls.Add(this.dtpDataDemissao);
             this.Controls.Add(this.lblDataDemissao);
             this.Controls.Add(this.dtpDataAdmissao);
@@ -224,6 +226,8 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmCadastroFuncionario";
             this.Text = "Cadastro de Funcionário";
+            this.Controls.SetChildIndex(this.lblPais, 0);
+            this.Controls.SetChildIndex(this.txtPais, 0);
             this.Controls.SetChildIndex(this.lblEstado, 0);
             this.Controls.SetChildIndex(this.txtEstado, 0);
             this.Controls.SetChildIndex(this.lblDataCadastro, 0);

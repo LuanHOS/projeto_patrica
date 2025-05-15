@@ -35,33 +35,13 @@
             this.txtLimiteDeCredito = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // txtNomeRazaoSocial
-            // 
-            this.txtNomeRazaoSocial.TabIndex = 3;
-            // 
-            // txtBairro
-            // 
-            this.txtBairro.TabIndex = 11;
-            // 
-            // txtEndereco
-            // 
-            this.txtEndereco.TabIndex = 9;
-            // 
-            // txtCep
-            // 
-            this.txtCep.TabIndex = 12;
-            // 
             // comboBoxTipo
             // 
             this.comboBoxTipo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTipo_SelectedIndexChanged);
             // 
             // btnPesquisarCidade
             // 
-            this.btnPesquisarCidade.Click += new System.EventHandler(this.BtnPesquisarCidade_Click);
-            // 
-            // txtApelidoNomeFantasia
-            // 
-            this.txtApelidoNomeFantasia.TabIndex = 4;
+            this.btnPesquisarCidade.Click += new System.EventHandler(this.btnPesquisarCidade_Click);
             // 
             // lblNome
             // 
@@ -70,7 +50,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.TabIndex = 22;
+            this.btnSave.TabIndex = 23;
             // 
             // checkBoxAtivo
             // 
@@ -78,7 +58,7 @@
             // 
             // btnSair
             // 
-            this.btnSair.TabIndex = 23;
+            this.btnSair.TabIndex = 24;
             // 
             // txtCodigo
             // 
@@ -89,7 +69,7 @@
             this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(265, 390);
             this.btnPesquisarCondicaoPagamento.Name = "btnPesquisarCondicaoPagamento";
             this.btnPesquisarCondicaoPagamento.Size = new System.Drawing.Size(95, 26);
-            this.btnPesquisarCondicaoPagamento.TabIndex = 20;
+            this.btnPesquisarCondicaoPagamento.TabIndex = 21;
             this.btnPesquisarCondicaoPagamento.Text = "Pesquisar";
             this.btnPesquisarCondicaoPagamento.UseVisualStyleBackColor = true;
             this.btnPesquisarCondicaoPagamento.Click += new System.EventHandler(this.BtnPesquisarCondicaoPagamento_Click);
@@ -101,7 +81,7 @@
             this.txtCondicaoPagamento.Name = "txtCondicaoPagamento";
             this.txtCondicaoPagamento.ReadOnly = true;
             this.txtCondicaoPagamento.Size = new System.Drawing.Size(235, 22);
-            this.txtCondicaoPagamento.TabIndex = 19;
+            this.txtCondicaoPagamento.TabIndex = 20;
             // 
             // lblCondicaoPagamento
             // 
@@ -128,10 +108,12 @@
             this.txtLimiteDeCredito.Margin = new System.Windows.Forms.Padding(2);
             this.txtLimiteDeCredito.Name = "txtLimiteDeCredito";
             this.txtLimiteDeCredito.Size = new System.Drawing.Size(183, 22);
-            this.txtLimiteDeCredito.TabIndex = 21;
+            this.txtLimiteDeCredito.TabIndex = 22;
             // 
             // frmCadastroCliente
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Controls.Add(this.txtLimiteDeCredito);
             this.Controls.Add(this.lblLimiteDeCredito);
             this.Controls.Add(this.btnPesquisarCondicaoPagamento);
@@ -140,6 +122,8 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmCadastroCliente";
             this.Text = "Cadastro de Cliente";
+            this.Controls.SetChildIndex(this.lblPais, 0);
+            this.Controls.SetChildIndex(this.txtPais, 0);
             this.Controls.SetChildIndex(this.lblEstado, 0);
             this.Controls.SetChildIndex(this.txtEstado, 0);
             this.Controls.SetChildIndex(this.lblDataCadastro, 0);
