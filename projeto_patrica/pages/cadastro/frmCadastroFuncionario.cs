@@ -34,6 +34,9 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
+            if (!ValidacaoCampos())
+                return;
+
             if (
                 string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
                 comboBoxGenero.SelectedIndex == -1 ||
@@ -301,5 +304,25 @@ namespace projeto_patrica.pages.cadastro
             }
         }
 
+        public override void CamposRestricoes()
+        {
+            base.CamposRestricoes();
+
+            txtCpfCnpj.MaxLength = 11;
+            txtMatricula.MaxLength = 20;
+            txtCargo.MaxLength = 40;
+            txtSalario.MaxLength = 40;
+            txtTurno.MaxLength = 40;
+            txtCargaHoraria.MaxLength = 3;
+
+            txtMatricula.KeyPress -= ApenasNumeros;
+            txtMatricula.KeyPress += ApenasNumeros;
+
+            txtSalario.KeyPress -= ApenasNumeros;
+            txtSalario.KeyPress += ApenasNumeros;
+
+            txtCargaHoraria.KeyPress -= ApenasNumeros;
+            txtCargaHoraria.KeyPress += ApenasNumeros;
+        }
     }
 }

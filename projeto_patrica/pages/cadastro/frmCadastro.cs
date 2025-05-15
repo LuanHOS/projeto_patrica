@@ -16,46 +16,23 @@ namespace projeto_patrica.pages.cadastro
         {
             InitializeComponent();
             txtCodigo.Enabled = false;
+            this.Shown += (s, e) => CamposRestricoes();
         }
-
-
-        /*
-         * 
-         */
-
 
         public virtual void Salvar()
         {
             Sair();
         }
 
-
-        /*
-         * 
-         */
-
-
         public virtual void Alterar()
         {
             Sair();
         }
 
-
-        /*
-         * 
-         */
-
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             Salvar();
         }
-
-
-        /*
-         * 
-         */
-
 
         public virtual void Limpartxt()
         {
@@ -67,33 +44,15 @@ namespace projeto_patrica.pages.cadastro
             checkBoxAtivo.Enabled = false;
         }
 
-
-        /*
-         * 
-         */
-
-
         public virtual void Carregatxt()
         {
         }
-
-
-        /*
-         * 
-         */
-
 
         public virtual void Bloqueiatxt()
         {
             txtCodigo.Enabled = false;
             checkBoxAtivo.Enabled = false;
         }
-
-
-        /*
-         * 
-         */
-
 
         public virtual void Desbloqueiatxt()
         {
@@ -102,6 +61,16 @@ namespace projeto_patrica.pages.cadastro
         }
 
         public override void ConhecaObj(object obj, object ctrl)
+        {
+
+        }
+
+        public virtual bool ValidacaoCampos()
+        {
+            return false;
+        }
+
+        public virtual void CamposRestricoes()
         {
 
         }

@@ -41,6 +41,11 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
+
+            if (!ValidacaoCampos())
+                return;
+
+
             if (
                 string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
                 (isFisica && comboBoxGenero.SelectedIndex == -1) || // obrigatório só se for física
@@ -185,6 +190,11 @@ namespace projeto_patrica.pages.cadastro
             checkBoxAtivo.Checked = oFornecedor.Ativo;
             lblDataCadastroData.Text = oFornecedor.DataCadastro.ToShortDateString();
             lblDataUltimaEdicaoData.Text = oFornecedor.DataUltimaEdicao?.ToShortDateString() ?? " ";
+
+            if (isFisica)
+                txtCpfCnpj.MaxLength = 11;
+            else
+                txtCpfCnpj.MaxLength = 14;
         }
 
         public override void Bloqueiatxt()
@@ -215,9 +225,16 @@ namespace projeto_patrica.pages.cadastro
             lblApelido.Text = isFisica ? "Apelido" : "Nome Fantasia";
 
             if (isFisica)
+            {
                 lblCpf.Text = isEstrangeiro ? "CPF" : "CPF *";
+                txtCpfCnpj.MaxLength = 11;
+            }
             else
+            {
                 lblCpf.Text = isEstrangeiro ? "CNPJ" : "CNPJ *";
+                txtCpfCnpj.MaxLength = 14;
+            }
+
 
             lblRg.Text = isFisica ? "RG *" : "Inscrição Estadual *";
             lblDataNascimento.Text = isFisica ? "Data de Nascimento *" : "Data de Criação *";
