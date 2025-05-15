@@ -53,8 +53,6 @@
             // 
             // frmConsultaPais
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "frmConsultaPais";
             this.Text = "Consulta de País";

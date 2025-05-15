@@ -45,8 +45,6 @@
             // 
             // frmConsultaFormaPagamento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Name = "frmConsultaFormaPagamento";
             this.Text = "Consulta de Forma de Pagamento";
             this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaFormaPagamento_MouseDoubleClick);
