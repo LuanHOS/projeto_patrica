@@ -319,7 +319,7 @@ namespace projeto_patrica.pages.cadastro
         {
             base.CamposRestricoes();
 
-            txtLimiteDeCredito.MaxLength = 40;
+            txtLimiteDeCredito.MaxLength = 13;
 
             txtLimiteDeCredito.KeyPress -= ApenasNumeros;
             txtLimiteDeCredito.KeyPress += ApenasNumeros;
