@@ -19,21 +19,16 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
-            MySqlCommand conn = new MySqlCommand();
-            conn.Connection = Banco.Abrir();
+            sql = "INSERT INTO CONDICAO_PAGAMENTO (DESCRICAO, QUANTIDADE_PARCELAS, ATIVO, JUROS, MULTA, DESCONTO) VALUES (" +
+                  "'" + aCondicaoPagamento.Descricao + "', " +
+                  "'" + aCondicaoPagamento.QuantidadeParcelas + "', " +
+                  "'" + (aCondicaoPagamento.Ativo ? 1 : 0) + "', " +
+                  "'" + aCondicaoPagamento.Juros.ToString().Replace(",", ".") + "', " +
+                  "'" + aCondicaoPagamento.Multa.ToString().Replace(",", ".") + "', " +
+                  "'" + aCondicaoPagamento.Desconto.ToString().Replace(",", ".") + "')";
 
-            if (aCondicaoPagamento.Id == 0)
-            {
-                sql = "INSERT INTO CONDICAO_PAGAMENTO (DESCRICAO, QUANTIDADE_PARCELAS, ATIVO, JUROS, MULTA, DESCONTO) VALUES (" +
-                      "'" + aCondicaoPagamento.Descricao + "', " +
-                      "'" + aCondicaoPagamento.QuantidadeParcelas + "', " +
-                      "'" + (aCondicaoPagamento.Ativo ? 1 : 0) + "', " +
-                      "'" + aCondicaoPagamento.Juros.ToString().Replace(",", ".") + "', " +
-                      "'" + aCondicaoPagamento.Multa.ToString().Replace(",", ".") + "', " +
-                      "'" + aCondicaoPagamento.Desconto.ToString().Replace(",", ".") + "')";
-            }
-            else
-            {
+            if (aCondicaoPagamento.Id != 0)
+            { 
                 operacao = 'U';
                 sql = "UPDATE CONDICAO_PAGAMENTO SET " +
                       "DESCRICAO = '" + aCondicaoPagamento.Descricao + "', " +
@@ -46,6 +41,8 @@ namespace projeto_patrica.dao
                       "WHERE ID_CONDICAO_PAGAMENTO = '" + aCondicaoPagamento.Id + "'";
             }
 
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
             conn.CommandText = sql;
             conn.ExecuteNonQuery();
 
