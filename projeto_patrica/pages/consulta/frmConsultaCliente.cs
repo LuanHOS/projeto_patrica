@@ -111,8 +111,8 @@ namespace projeto_patrica.pages.consulta
             {
                 if (oCliente.Id.ToString() == termo ||
                     oCliente.Nome_razaoSocial.ToUpper().Contains(termo) ||
-                    oCliente.Cpf_cnpj.ToUpper().Contains(termo) ||
-                    oCliente.ACondicaoPagamento.Descricao.ToUpper().Contains(termo))
+                    (oCliente.Cpf_cnpj ?? "").ToUpper().Contains(termo) ||
+                    oCliente.Rg_inscricaoEstadual.ToUpper().Contains(termo))
                 {
                     resultados.Add(oCliente);
                 }

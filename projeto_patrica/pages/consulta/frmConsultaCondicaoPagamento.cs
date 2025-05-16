@@ -98,7 +98,8 @@ namespace projeto_patrica.pages.consulta
             {
                 foreach (condicaoPagamento cp in aController_condicaoPagamento.ListaCondicaoPagamento())
                 {
-                    if (termo == cp.Id.ToString() || cp.Descricao.ToUpper().Contains(termo))
+                    if (termo == cp.Id.ToString() ||
+                        cp.Descricao.ToUpper().Contains(termo))
                     {
                         lista.Add(cp);
                     }

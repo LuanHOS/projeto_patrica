@@ -1,4 +1,5 @@
-﻿using projeto_patrica.classes;
+﻿using MySqlX.XDevAPI;
+using projeto_patrica.classes;
 using projeto_patrica.controller;
 using projeto_patrica.pages.cadastro;
 using System;
@@ -109,8 +110,8 @@ namespace projeto_patrica.pages.consulta
             {
                 if (oFornecedor.Id.ToString() == termo ||
                     oFornecedor.Nome_razaoSocial.ToUpper().Contains(termo) ||
-                    oFornecedor.Cpf_cnpj.ToUpper().Contains(termo) ||
-                    oFornecedor.ACondicaoPagamento.Descricao.ToUpper().Contains(termo))
+                    (oFornecedor.Cpf_cnpj ?? "").ToUpper().Contains(termo) ||
+                    oFornecedor.Rg_inscricaoEstadual.ToUpper().Contains(termo))
                 {
                     resultados.Add(oFornecedor);
                 }
