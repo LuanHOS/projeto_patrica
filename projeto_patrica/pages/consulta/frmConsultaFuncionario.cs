@@ -81,16 +81,17 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(oFuncionario.Matricula);
                 item.SubItems.Add(oFuncionario.Nome_razaoSocial);
                 item.SubItems.Add(oFuncionario.Cargo);
-                item.SubItems.Add(oFuncionario.Salario.ToString("F2"));
+                item.SubItems.Add("R$ " + oFuncionario.Salario.ToString("F2"));
                 item.SubItems.Add(oFuncionario.Turno);
                 item.SubItems.Add(oFuncionario.CargaHoraria.ToString());
                 item.SubItems.Add(oFuncionario.Cpf_cnpj);
                 item.SubItems.Add(oFuncionario.Rg_inscricaoEstadual);
-                item.SubItems.Add(oFuncionario.Genero == ' ' ? "" : oFuncionario.Genero.ToString());
+                item.SubItems.Add(oFuncionario.Genero == 'M' ? "MASCULINO" : oFuncionario.Genero == 'F' ? "FEMININO" : "");
                 item.SubItems.Add(oFuncionario.ACidade.Nome);
                 item.SubItems.Add(oFuncionario.Email);
                 item.SubItems.Add(oFuncionario.Telefone);
                 item.SubItems.Add(oFuncionario.DataAdmissao == DateTime.MinValue ? "" : oFuncionario.DataAdmissao.ToShortDateString());
+                item.SubItems.Add(oFuncionario.DataDemissao.HasValue ? oFuncionario.DataDemissao.Value.ToShortDateString() : "");
                 item.SubItems.Add(oFuncionario.Ativo ? "Sim" : "Não");
 
                 item.Tag = oFuncionario;

@@ -42,7 +42,7 @@
             // 
             // clmCod
             // 
-            this.clmCod.Width = 101;
+            this.clmCod.Width = 100;
             // 
             // txtCodigo
             // 
@@ -51,12 +51,12 @@
             // clmNome
             // 
             this.clmNome.Text = "Cidade";
-            this.clmNome.Width = 195;
+            this.clmNome.Width = 200;
             // 
             // clmEstado
             // 
             this.clmEstado.Text = "Estado";
-            this.clmEstado.Width = 190;
+            this.clmEstado.Width = 200;
             // 
             // frmConsultaCidade
             // 

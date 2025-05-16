@@ -111,6 +111,7 @@
             // clmCod
             // 
             this.clmCod.Text = "Código";
+            this.clmCod.Width = 100;
             // 
             // bntLimparPesquisa
             // 

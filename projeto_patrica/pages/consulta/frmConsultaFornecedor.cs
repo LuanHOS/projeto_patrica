@@ -79,11 +79,11 @@ namespace projeto_patrica.pages.consulta
             {
                 ListViewItem item = new ListViewItem(oFornecedor.Id.ToString());
                 item.SubItems.Add(oFornecedor.Nome_razaoSocial);
-                item.SubItems.Add(oFornecedor.TipoPessoa.ToString());
+                item.SubItems.Add(oFornecedor.TipoPessoa == 'F' ? "FÍSICA" : oFornecedor.TipoPessoa == 'J' ? "JURÍDICA" : "");
                 item.SubItems.Add(oFornecedor.ACondicaoPagamento.Descricao);
                 item.SubItems.Add(oFornecedor.Cpf_cnpj);
                 item.SubItems.Add(oFornecedor.Rg_inscricaoEstadual);
-                item.SubItems.Add(oFornecedor.Genero == ' ' ? "" : oFornecedor.Genero.ToString());
+                item.SubItems.Add(oFornecedor.Genero == 'M' ? "MASCULINO" : oFornecedor.Genero == 'F' ? "FEMININO" : "");
                 item.SubItems.Add(oFornecedor.ACidade.Nome);
                 item.SubItems.Add(oFornecedor.Email);
                 item.SubItems.Add(oFornecedor.Telefone);

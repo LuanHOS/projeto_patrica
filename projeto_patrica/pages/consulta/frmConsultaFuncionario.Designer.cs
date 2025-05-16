@@ -42,6 +42,7 @@
             this.clmTelefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDataAdmissao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmDataDemissao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listV
@@ -60,6 +61,7 @@
             this.clmEmail,
             this.clmTelefone,
             this.clmDataAdmissao,
+            this.clmDataDemissao,
             this.clmAtivo});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
             this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaFuncionario_MouseDoubleClick);
@@ -71,65 +73,77 @@
             // clmMatricula
             // 
             this.clmMatricula.Text = "Matrícula";
-            this.clmMatricula.Width = 120;
+            this.clmMatricula.Width = 100;
             // 
             // clmNome
             // 
             this.clmNome.Text = "Nome";
-            this.clmNome.Width = 120;
+            this.clmNome.Width = 200;
             // 
             // clmCargo
             // 
             this.clmCargo.Text = "Cargo";
+            this.clmCargo.Width = 100;
             // 
             // clmSalario
             // 
             this.clmSalario.Text = "Salário";
+            this.clmSalario.Width = 130;
             // 
             // clmTurno
             // 
             this.clmTurno.Text = "Turno";
+            this.clmTurno.Width = 100;
             // 
             // clmCargaHoraria
             // 
             this.clmCargaHoraria.Text = "Carga Horária";
+            this.clmCargaHoraria.Width = 80;
             // 
             // clmCpf
             // 
             this.clmCpf.Text = "CPF";
-            this.clmCpf.Width = 120;
+            this.clmCpf.Width = 100;
             // 
             // clmRg
             // 
             this.clmRg.Text = "RG";
-            this.clmRg.Width = 120;
+            this.clmRg.Width = 100;
             // 
             // clmGenero
             // 
             this.clmGenero.Text = "Gênero";
+            this.clmGenero.Width = 80;
             // 
             // clmCidade
             // 
             this.clmCidade.Text = "Cidade";
-            this.clmCidade.Width = 120;
+            this.clmCidade.Width = 150;
             // 
             // clmEmail
             // 
             this.clmEmail.Text = "E-mail";
-            this.clmEmail.Width = 120;
+            this.clmEmail.Width = 150;
             // 
             // clmTelefone
             // 
             this.clmTelefone.Text = "Telefone";
-            this.clmTelefone.Width = 120;
+            this.clmTelefone.Width = 100;
             // 
             // clmDataAdmissao
             // 
-            this.clmDataAdmissao.Text = "Data de Admissão";
+            this.clmDataAdmissao.Text = "Admissão";
+            this.clmDataAdmissao.Width = 80;
             // 
             // clmAtivo
             // 
             this.clmAtivo.Text = "Ativo";
+            this.clmAtivo.Width = 80;
+            // 
+            // clmDataDemissao
+            // 
+            this.clmDataDemissao.Text = "Demissão";
+            this.clmDataDemissao.Width = 80;
             // 
             // frmConsultaFuncionario
             // 
@@ -158,5 +172,6 @@
         private System.Windows.Forms.ColumnHeader clmTelefone;
         private System.Windows.Forms.ColumnHeader clmDataAdmissao;
         private System.Windows.Forms.ColumnHeader clmAtivo;
+        private System.Windows.Forms.ColumnHeader clmDataDemissao;
     }
 }

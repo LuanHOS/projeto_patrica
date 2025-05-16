@@ -63,49 +63,52 @@
             // clmNomeRazaoSocial
             // 
             this.clmNomeRazaoSocial.Text = "Nome/Razão Social";
-            this.clmNomeRazaoSocial.Width = 120;
+            this.clmNomeRazaoSocial.Width = 200;
             // 
             // clmTipo
             // 
             this.clmTipo.Text = "Tipo";
+            this.clmTipo.Width = 100;
             // 
             // clmCondicaoPagamento
             // 
             this.clmCondicaoPagamento.Text = "Condição de Pagamento";
-            this.clmCondicaoPagamento.Width = 120;
+            this.clmCondicaoPagamento.Width = 200;
             // 
             // clmCpfCnpj
             // 
             this.clmCpfCnpj.Text = "CPF/CNPJ";
-            this.clmCpfCnpj.Width = 120;
+            this.clmCpfCnpj.Width = 100;
             // 
             // clmRgInscEstadual
             // 
-            this.clmRgInscEstadual.Text = "RG/Insc. Estadual";
-            this.clmRgInscEstadual.Width = 120;
+            this.clmRgInscEstadual.Text = "RG/Insc. Est.";
+            this.clmRgInscEstadual.Width = 100;
             // 
             // clmGenero
             // 
             this.clmGenero.Text = "Gênero";
+            this.clmGenero.Width = 80;
             // 
             // clmCidade
             // 
             this.clmCidade.Text = "Cidade";
-            this.clmCidade.Width = 120;
+            this.clmCidade.Width = 150;
             // 
             // clmEmail
             // 
             this.clmEmail.Text = "E-mail";
-            this.clmEmail.Width = 120;
+            this.clmEmail.Width = 150;
             // 
             // clmTelefone
             // 
             this.clmTelefone.Text = "Telefone";
-            this.clmTelefone.Width = 120;
+            this.clmTelefone.Width = 100;
             // 
             // clmAtivo
             // 
             this.clmAtivo.Text = "Ativo";
+            this.clmAtivo.Width = 80;
             // 
             // frmConsultaFornecedor
             // 

@@ -40,15 +40,19 @@
             this.listV.SelectedIndexChanged += new System.EventHandler(this.ListV_SelectedIndexChanged);
             this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaCondicaoPagamento_MouseDoubleClick);
             // 
+            // clmCod
+            // 
+            this.clmCod.Width = 100;
+            // 
             // clmDescricao
             // 
             this.clmDescricao.Text = "Descrição";
-            this.clmDescricao.Width = 218;
+            this.clmDescricao.Width = 200;
             // 
             // clmQtdParcelas
             // 
             this.clmQtdParcelas.Text = "Qtd. de Parcelas";
-            this.clmQtdParcelas.Width = 123;
+            this.clmQtdParcelas.Width = 150;
             // 
             // frmConsultaCondicaoPagamento
             // 

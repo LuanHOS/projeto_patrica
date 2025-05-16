@@ -38,10 +38,14 @@
             this.listV.SelectedIndexChanged += new System.EventHandler(this.ListV_SelectedIndexChanged);
             this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaFormaPagamento_MouseDoubleClick);
             // 
+            // clmCod
+            // 
+            this.clmCod.Width = 100;
+            // 
             // clmDescricao
             // 
             this.clmDescricao.Text = "Descrição";
-            this.clmDescricao.Width = 180;
+            this.clmDescricao.Width = 200;
             // 
             // frmConsultaFormaPagamento
             // 
