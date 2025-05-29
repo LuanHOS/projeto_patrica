@@ -325,7 +325,7 @@
             // txtJuros
             // 
             this.txtJuros.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtJuros.Location = new System.Drawing.Point(24, 219);
+            this.txtJuros.Location = new System.Drawing.Point(24, 306);
             this.txtJuros.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtJuros.Name = "txtJuros";
             this.txtJuros.Size = new System.Drawing.Size(142, 22);
@@ -334,7 +334,7 @@
             // lblJuros
             // 
             this.lblJuros.AutoSize = true;
-            this.lblJuros.Location = new System.Drawing.Point(21, 200);
+            this.lblJuros.Location = new System.Drawing.Point(21, 287);
             this.lblJuros.Name = "lblJuros";
             this.lblJuros.Size = new System.Drawing.Size(63, 16);
             this.lblJuros.TabIndex = 4;
@@ -343,7 +343,7 @@
             // txtMulta
             // 
             this.txtMulta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMulta.Location = new System.Drawing.Point(24, 279);
+            this.txtMulta.Location = new System.Drawing.Point(24, 250);
             this.txtMulta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMulta.Name = "txtMulta";
             this.txtMulta.Size = new System.Drawing.Size(142, 22);
@@ -352,7 +352,7 @@
             // lblMulta
             // 
             this.lblMulta.AutoSize = true;
-            this.lblMulta.Location = new System.Drawing.Point(21, 260);
+            this.lblMulta.Location = new System.Drawing.Point(21, 231);
             this.lblMulta.Name = "lblMulta";
             this.lblMulta.Size = new System.Drawing.Size(62, 16);
             this.lblMulta.TabIndex = 4;
@@ -361,7 +361,7 @@
             // txtDesconto
             // 
             this.txtDesconto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDesconto.Location = new System.Drawing.Point(24, 337);
+            this.txtDesconto.Location = new System.Drawing.Point(24, 361);
             this.txtDesconto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.Size = new System.Drawing.Size(142, 22);
@@ -370,7 +370,7 @@
             // lblDesconto
             // 
             this.lblDesconto.AutoSize = true;
-            this.lblDesconto.Location = new System.Drawing.Point(21, 319);
+            this.lblDesconto.Location = new System.Drawing.Point(21, 343);
             this.lblDesconto.Name = "lblDesconto";
             this.lblDesconto.Size = new System.Drawing.Size(88, 16);
             this.lblDesconto.TabIndex = 4;
