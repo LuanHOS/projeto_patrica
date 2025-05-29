@@ -221,7 +221,7 @@ namespace projeto_patrica.pages.cadastro
             comboBoxGenero.Enabled = isFisica;
             lblGenero.Enabled = isFisica;
 
-            lblNome.Text = isFisica ? "Cliente Nome *" : "Cliente Razão Social *";
+            lblNome.Text = isFisica ? "Fornecedor Nome *" : "Fornecedor Razão Social *";
             lblApelido.Text = isFisica ? "Apelido" : "Nome Fantasia";
 
             if (isFisica)

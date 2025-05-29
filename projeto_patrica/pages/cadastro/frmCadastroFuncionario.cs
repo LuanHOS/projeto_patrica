@@ -315,9 +315,6 @@ namespace projeto_patrica.pages.cadastro
             txtTurno.MaxLength = 40;
             txtCargaHoraria.MaxLength = 3;
 
-            txtMatricula.KeyPress -= ApenasNumeros;
-            txtMatricula.KeyPress += ApenasNumeros;
-
             txtSalario.KeyPress -= ApenasNumeros;
             txtSalario.KeyPress += ApenasNumeros;
 
