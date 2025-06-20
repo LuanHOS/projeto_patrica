@@ -115,16 +115,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Banco.cs" />
+    <Compile Include="classes\categoria.cs" />
     <Compile Include="classes\cidade.cs" />
     <Compile Include="classes\cliente.cs" />
     <Compile Include="classes\condicaoPagamento.cs" />
     <Compile Include="classes\estado.cs" />
     <Compile Include="classes\fornecedor.cs" />
     <Compile Include="classes\funcionario.cs" />
+    <Compile Include="classes\marca.cs" />
     <Compile Include="classes\pais.cs" />
     <Compile Include="classes\parcelaCondicaoPagamento.cs" />
     <Compile Include="classes\pessoa.cs" />
+    <Compile Include="classes\produto.cs" />
+    <Compile Include="classes\transportadora.cs" />
+    <Compile Include="classes\unidade_medida.cs" />
     <Compile Include="controller\Controller.cs" />
+    <Compile Include="controller\Controller_categoria.cs" />
     <Compile Include="controller\Controller_cidade.cs" />
     <Compile Include="controller\Controller_cliente.cs" />
     <Compile Include="controller\Controller_condicaoPagamento.cs" />
@@ -132,8 +138,13 @@
     <Compile Include="controller\Controller_formaPagamento.cs" />
     <Compile Include="controller\controller_fornecedor.cs" />
     <Compile Include="controller\Controller_funcionario.cs" />
+    <Compile Include="controller\Controller_marca.cs" />
     <Compile Include="controller\Controller_pais.cs" />
+    <Compile Include="controller\Controller_produto.cs" />
+    <Compile Include="controller\Controller_transportadora.cs" />
+    <Compile Include="controller\Controller_unidade_medida.cs" />
     <Compile Include="dao\Dao.cs" />
+    <Compile Include="dao\Dao_categoria.cs" />
     <Compile Include="dao\Dao_cidade.cs" />
     <Compile Include="dao\Dao_cliente.cs" />
     <Compile Include="dao\Dao_condicaoPagamento.cs" />
@@ -143,7 +154,11 @@
     <Compile Include="classes\pai.cs" />
     <Compile Include="dao\Dao_fornecedor.cs" />
     <Compile Include="dao\Dao_funcionario.cs" />
+    <Compile Include="dao\Dao_marca.cs" />
     <Compile Include="dao\Dao_pais.cs" />
+    <Compile Include="dao\Dao_produto.cs" />
+    <Compile Include="dao\Dao_transportadora.cs" />
+    <Compile Include="dao\Dao_unidade_medida.cs" />
     <Compile Include="frmBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +177,12 @@
     </Compile>
     <Compile Include="pages\cadastro\frmCadastro.Designer.cs">
       <DependentUpon>frmCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroCategoria.Designer.cs">
+      <DependentUpon>frmCadastroCategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\cadastro\frmCadastroCidade.cs">
       <SubType>Form</SubType>
@@ -222,6 +243,12 @@
     </Compile>
     <Compile Include="pages\consulta\frmConsulta.Designer.cs">
       <DependentUpon>frmConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaCategoria.Designer.cs">
+      <DependentUpon>frmConsultaCategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\consulta\frmConsultaCidade.cs">
       <SubType>Form</SubType>

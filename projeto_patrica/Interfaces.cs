@@ -17,7 +17,7 @@ namespace projeto_patrica
         frmCadastroCliente oFrmCadCliente;
         frmCadastroFuncionario oFrmCadFuncionario;
         frmCadastroFornecedor oFrmCadFornecedor;
-        frmCadastroCategoria oFrmCadCategoria; // Adicionado
+        frmCadastroCategoria oFrmCadCategoria;
 
         // Formulários de Consulta
         frmConsultaCondicaoPagamento oFrmConCondPag;
@@ -28,10 +28,10 @@ namespace projeto_patrica
         frmConsultaCliente oFrmConCliente;
         frmConsultaFuncionario oFrmConFuncionario;
         frmConsultaFornecedor oFrmConFornecedor;
+        frmConsultaCategoria oFrmConCategoria; 
 
         /*
-         * 
-         */
+         * */
 
         public Interfaces()
         {
@@ -43,6 +43,7 @@ namespace projeto_patrica
             oFrmConCliente = new frmConsultaCliente();
             oFrmConFuncionario = new frmConsultaFuncionario();
             oFrmConFornecedor = new frmConsultaFornecedor();
+            oFrmConCategoria = new frmConsultaCategoria(); 
 
             oFrmCadCondPag = new frmCadastroCondicaoPagamento();
             oFrmCadFormPag = new frmCadastroFormaPagamento();
@@ -52,6 +53,7 @@ namespace projeto_patrica
             oFrmCadCliente = new frmCadastroCliente();
             oFrmCadFuncionario = new frmCadastroFuncionario();
             oFrmCadFornecedor = new frmCadastroFornecedor();
+            oFrmCadCategoria = new frmCadastroCategoria();
 
             oFrmConCondPag.setFrmCadastro(oFrmCadCondPag);
             oFrmConFormPag.setFrmCadastro(oFrmCadFormPag);
@@ -61,6 +63,7 @@ namespace projeto_patrica
             oFrmConCliente.setFrmCadastro(oFrmCadCliente);
             oFrmConFuncionario.setFrmCadastro(oFrmCadFuncionario);
             oFrmConFornecedor.setFrmCadastro(oFrmCadFornecedor);
+            oFrmConCategoria.setFrmCadastro(oFrmCadCategoria); 
 
             oFrmCadCondPag.setConsultaFormaPagamento(oFrmConFormPag);
             oFrmCadEstado.setConsultaPais(oFrmConPais);
@@ -73,8 +76,13 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
+                
+        public void pecaConsultaCategoria(categoria oCategoria, Controller_categoria oController_categoria)
+        {
+            oFrmConCategoria.ConhecaObj(oCategoria, oController_categoria);
+            oFrmConCategoria.ShowDialog();
+        }
 
         public void pecaConsultaCondicaoPagamento(condicaoPagamento oCondicaoPagamento, Controller_condicaoPagamento oController_condicaoPagamento)
         {
@@ -83,8 +91,7 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         public void pecaConsultaFormaPagamento(formaPagamento aFormaPagamento, Controller_formaPagamento oController_formaPagamento)
         {
@@ -93,8 +100,7 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         public void pecaConsultaPais(pais oPais, Controller_pais oController_pais)
         {
@@ -103,8 +109,7 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         public void pecaConsultaEstado(estado oEstado, Controller_estado oController_estado)
         {
@@ -113,8 +118,7 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         public void pecaConsultaCidade(cidade aCidade, Controller_cidade oController_cidade)
         {
@@ -123,8 +127,7 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         public void pecaConsultaFuncionario(funcionario oFuncionario, Controller_funcionario oController_funcionario)
         {
@@ -133,8 +136,7 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         public void pecaConsultaCliente(cliente oCliente, Controller_cliente oController_cliente)
         {
@@ -143,8 +145,7 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         public void pecaConsultaFornecedor(fornecedor oFornecedor, Controller_fornecedor oController_fornecedor)
         {

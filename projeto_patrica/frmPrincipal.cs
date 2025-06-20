@@ -19,6 +19,7 @@ namespace projeto_patrica
         private cliente oCliente;
         private funcionario oFuncionario;
         private fornecedor oFornecedor;
+        private categoria aCategoria;
 
         //Controllers
         private Controller_formaPagamento oController_formaPagamento;
@@ -29,10 +30,10 @@ namespace projeto_patrica
         private Controller_cliente oController_cliente;
         private Controller_funcionario oController_funcionario;
         private Controller_fornecedor oController_fornecedor;
+        private Controller_categoria oController_categoria;
 
         /*
-         * 
-         */
+         * */
 
         public frmPrincipal()
         {
@@ -50,6 +51,7 @@ namespace projeto_patrica
             oCliente = new cliente();
             oFuncionario = new funcionario();
             oFornecedor = new fornecedor();
+            aCategoria = new categoria(); 
 
             // Instanciando Controllers
             oController_formaPagamento = new Controller_formaPagamento();
@@ -60,6 +62,7 @@ namespace projeto_patrica
             oController_cliente = new Controller_cliente();
             oController_funcionario = new Controller_funcionario();
             oController_fornecedor = new Controller_fornecedor();
+            oController_categoria = new Controller_categoria();
 
             // Passando dependências de controllers
             oController_condicaoPagamento.AController_formaPagamento = oController_formaPagamento;
@@ -72,8 +75,7 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         private void formaDePagamentoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -81,8 +83,7 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         private void condiçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -90,8 +91,7 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         private void paísToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -99,8 +99,7 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         private void estadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -108,8 +107,7 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         private void cidadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -117,8 +115,7 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -126,8 +123,7 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -135,12 +131,16 @@ namespace projeto_patrica
         }
 
         /*
-         * 
-         */
+         * */
 
         private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             aInter.pecaConsultaFornecedor(oFornecedor, oController_fornecedor);
+        }
+
+        private void categoriaToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            aInter.pecaConsultaCategoria(aCategoria, oController_categoria);
         }
     }
 }
