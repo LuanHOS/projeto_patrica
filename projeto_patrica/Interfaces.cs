@@ -17,6 +17,7 @@ namespace projeto_patrica
         frmCadastroCliente oFrmCadCliente;
         frmCadastroFuncionario oFrmCadFuncionario;
         frmCadastroFornecedor oFrmCadFornecedor;
+        frmCadastroCategoria oFrmCadCategoria; // Adicionado
 
         // Formulários de Consulta
         frmConsultaCondicaoPagamento oFrmConCondPag;
