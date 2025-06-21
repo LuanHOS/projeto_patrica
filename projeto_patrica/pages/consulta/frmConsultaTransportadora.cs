@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace projeto_patrica.pages.consulta
 {
-    public partial class frmConsultaTransportadora : frmConsulta
+    public partial class frmConsultaTransportadora : projeto_patrica.pages.consulta.frmConsulta
     {
-        private frmCadastroTransportadora oFrmCadastroTransportadora;
+        frmCadastroTransportadora oFrmCadastroTransportadora;
         private transportadora oTransportadora;
-        private Controller_transportadora aController_transportadora;
+        Controller_transportadora aController_transportadora;
 
         public frmConsultaTransportadora() : base()
         {
@@ -33,54 +33,39 @@ namespace projeto_patrica.pages.consulta
         public override void Incluir()
         {
             base.Incluir();
-            oFrmCadastroTransportadora.ConhecaObj(new transportadora(), aController_transportadora);
-            oFrmCadastroTransportadora.Desbloqueiatxt();
+            oFrmCadastroTransportadora.ConhecaObj(oTransportadora, aController_transportadora);
             oFrmCadastroTransportadora.Limpartxt();
             oFrmCadastroTransportadora.ShowDialog();
+            oFrmCadastroTransportadora.Desbloqueiatxt();
             this.CarregaLV();
         }
 
         public override void Alterar()
         {
-            if (listV.SelectedItems.Count > 0)
-            {
-                string aux = oFrmCadastroTransportadora.btnSave.Text;
-                oFrmCadastroTransportadora.btnSave.Text = "Alterar";
-                base.Alterar();
-                aController_transportadora.CarregaObj(oTransportadora);
-                oFrmCadastroTransportadora.ConhecaObj(oTransportadora, aController_transportadora);
-                oFrmCadastroTransportadora.Carregatxt();
-                oFrmCadastroTransportadora.Desbloqueiatxt();
-                oFrmCadastroTransportadora.ShowDialog();
-                oFrmCadastroTransportadora.btnSave.Text = aux;
-                this.CarregaLV();
-            }
-            else
-            {
-                MessageBox.Show("Selecione um item para alterar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            string aux = oFrmCadastroTransportadora.btnSave.Text;
+            oFrmCadastroTransportadora.btnSave.Text = "Alterar";
+            base.Alterar();
+            aController_transportadora.CarregaObj(oTransportadora);
+            oFrmCadastroTransportadora.ConhecaObj(oTransportadora, aController_transportadora);
+            oFrmCadastroTransportadora.Carregatxt();
+            oFrmCadastroTransportadora.ShowDialog();
+            oFrmCadastroTransportadora.btnSave.Text = aux;
+            this.CarregaLV();
         }
 
         public override void Excluir()
         {
-            if (listV.SelectedItems.Count > 0)
-            {
-                base.Excluir();
-                string aux = oFrmCadastroTransportadora.btnSave.Text;
-                oFrmCadastroTransportadora.btnSave.Text = "Excluir";
-                aController_transportadora.CarregaObj(oTransportadora);
-                oFrmCadastroTransportadora.ConhecaObj(oTransportadora, aController_transportadora);
-                oFrmCadastroTransportadora.Carregatxt();
-                oFrmCadastroTransportadora.Bloqueiatxt();
-                oFrmCadastroTransportadora.ShowDialog(this);
-                oFrmCadastroTransportadora.Desbloqueiatxt();
-                oFrmCadastroTransportadora.btnSave.Text = aux;
-                this.CarregaLV();
-            }
-            else
-            {
-                MessageBox.Show("Selecione um item para excluir.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            base.Excluir();
+            string aux = oFrmCadastroTransportadora.btnSave.Text;
+            oFrmCadastroTransportadora.btnSave.Text = "Excluir";
+            aController_transportadora.CarregaObj(oTransportadora);
+            oFrmCadastroTransportadora.ConhecaObj(oTransportadora, aController_transportadora);
+            oFrmCadastroTransportadora.Carregatxt();
+            oFrmCadastroTransportadora.Bloqueiatxt();
+            oFrmCadastroTransportadora.ShowDialog(this);
+            oFrmCadastroTransportadora.Desbloqueiatxt();
+            oFrmCadastroTransportadora.btnSave.Text = aux;
+            this.CarregaLV();
         }
 
         public override void CarregaLV()
@@ -89,20 +74,21 @@ namespace projeto_patrica.pages.consulta
             listV.Items.Clear();
             var lista = aController_transportadora.ListaTransportadoras();
 
-            foreach (var oTransp in lista)
+            foreach (var oTransportadora in lista)
             {
-                ListViewItem item = new ListViewItem(oTransp.Id.ToString());
-                item.SubItems.Add(oTransp.Nome_razaoSocial);
-                item.SubItems.Add(oTransp.TipoPessoa == 'F' ? "FÍSICA" : oTransp.TipoPessoa == 'J' ? "JURÍDICA" : "");
-                item.SubItems.Add(oTransp.ACondicaoPagamento.Descricao);
-                item.SubItems.Add(oTransp.Cpf_cnpj);
-                item.SubItems.Add(oTransp.Rg_inscricaoEstadual);
-                item.SubItems.Add(oTransp.Genero == 'M' ? "MASCULINO" : oTransp.Genero == 'F' ? "FEMININO" : "");
-                item.SubItems.Add(oTransp.ACidade.Nome);
-                item.SubItems.Add(oTransp.Email);
-                item.SubItems.Add(oTransp.Telefone);
-                item.SubItems.Add(oTransp.Ativo ? "Sim" : "Não");
-                item.Tag = oTransp;
+                ListViewItem item = new ListViewItem(oTransportadora.Id.ToString());
+                item.SubItems.Add(oTransportadora.Nome_razaoSocial);
+                item.SubItems.Add(oTransportadora.TipoPessoa == 'F' ? "FÍSICA" : oTransportadora.TipoPessoa == 'J' ? "JURÍDICA" : "");
+                item.SubItems.Add(oTransportadora.ACondicaoPagamento.Descricao);
+                item.SubItems.Add(oTransportadora.Cpf_cnpj);
+                item.SubItems.Add(oTransportadora.Rg_inscricaoEstadual);
+                item.SubItems.Add(oTransportadora.Genero == 'M' ? "MASCULINO" : oTransportadora.Genero == 'F' ? "FEMININO" : "");
+                item.SubItems.Add(oTransportadora.ACidade.Nome);
+                item.SubItems.Add(oTransportadora.Email);
+                item.SubItems.Add(oTransportadora.Telefone);
+                item.SubItems.Add(oTransportadora.Ativo ? "Sim" : "Não");
+
+                item.Tag = oTransportadora;
                 listV.Items.Add(item);
             }
         }
@@ -112,51 +98,71 @@ namespace projeto_patrica.pages.consulta
             listV.Items.Clear();
             string termo = txtCodigo.Text.Trim().ToUpper();
             var resultados = new List<transportadora>();
-            var listaCompleta = aController_transportadora.ListaTransportadoras();
 
             if (string.IsNullOrWhiteSpace(termo))
             {
-                resultados = listaCompleta;
+                LimparPesquisa();
+                return;
             }
-            else
+
+            foreach (var oTransportadora in aController_transportadora.ListaTransportadoras())
             {
-                foreach (var oTransp in listaCompleta)
+                if (oTransportadora.Id.ToString() == termo ||
+                    oTransportadora.Nome_razaoSocial.ToUpper().Contains(termo) ||
+                    (oTransportadora.Cpf_cnpj ?? "").ToUpper().Contains(termo) ||
+                    oTransportadora.Rg_inscricaoEstadual.ToUpper().Contains(termo))
                 {
-                    if (oTransp.Id.ToString().Contains(termo) ||
-                        oTransp.Nome_razaoSocial.ToUpper().Contains(termo) ||
-                        (oTransp.Cpf_cnpj ?? "").ToUpper().Contains(termo) ||
-                        oTransp.Rg_inscricaoEstadual.ToUpper().Contains(termo))
-                    {
-                        resultados.Add(oTransp);
-                    }
+                    resultados.Add(oTransportadora);
                 }
             }
 
-            foreach (var oTransp in resultados)
+            foreach (var oTransportadora in resultados)
             {
-                ListViewItem item = new ListViewItem(oTransp.Id.ToString());
-                item.SubItems.Add(oTransp.Nome_razaoSocial);
-                item.SubItems.Add(oTransp.TipoPessoa.ToString());
-                item.SubItems.Add(oTransp.ACondicaoPagamento.Descricao);
-                item.SubItems.Add(oTransp.Cpf_cnpj);
-                item.SubItems.Add(oTransp.Rg_inscricaoEstadual);
-                item.SubItems.Add(oTransp.Genero == ' ' ? "" : oTransp.Genero.ToString());
-                item.SubItems.Add(oTransp.ACidade.Nome);
-                item.SubItems.Add(oTransp.Email);
-                item.SubItems.Add(oTransp.Telefone);
-                item.SubItems.Add(oTransp.Ativo ? "Sim" : "Não");
-                item.Tag = oTransp;
+                ListViewItem item = new ListViewItem(oTransportadora.Id.ToString());
+                item.SubItems.Add(oTransportadora.Nome_razaoSocial);
+                item.SubItems.Add(oTransportadora.TipoPessoa.ToString());
+                item.SubItems.Add(oTransportadora.ACondicaoPagamento.Descricao);
+                item.SubItems.Add(oTransportadora.Cpf_cnpj);
+                item.SubItems.Add(oTransportadora.Rg_inscricaoEstadual);
+                item.SubItems.Add(oTransportadora.Genero == ' ' ? "" : oTransportadora.Genero.ToString());
+                item.SubItems.Add(oTransportadora.ACidade.Nome);
+                item.SubItems.Add(oTransportadora.Email);
+                item.SubItems.Add(oTransportadora.Telefone);
+                item.SubItems.Add(oTransportadora.Ativo ? "Sim" : "Não");
+
+                item.Tag = oTransportadora;
                 listV.Items.Add(item);
             }
         }
 
+
         private void listV_SelectedIndexChanged(object sender, EventArgs e)
         {
             base.ListV_SelectedIndexChanged(sender, e);
+
             if (listV.SelectedItems.Count > 0)
             {
                 ListViewItem linha = listV.SelectedItems[0];
-                oTransportadora = (transportadora)linha.Tag;
+                transportadora selecionado = (transportadora)linha.Tag;
+
+                oTransportadora.Id = selecionado.Id;
+                oTransportadora.TipoPessoa = selecionado.TipoPessoa;
+                oTransportadora.Nome_razaoSocial = selecionado.Nome_razaoSocial;
+                oTransportadora.Apelido_nomeFantasia = selecionado.Apelido_nomeFantasia;
+                oTransportadora.DataNascimento_criacao = selecionado.DataNascimento_criacao;
+                oTransportadora.Cpf_cnpj = selecionado.Cpf_cnpj;
+                oTransportadora.Rg_inscricaoEstadual = selecionado.Rg_inscricaoEstadual;
+                oTransportadora.Email = selecionado.Email;
+                oTransportadora.Telefone = selecionado.Telefone;
+                oTransportadora.Endereco = selecionado.Endereco;
+                oTransportadora.Bairro = selecionado.Bairro;
+                oTransportadora.ACidade = selecionado.ACidade;
+                oTransportadora.Cep = selecionado.Cep;
+                oTransportadora.Ativo = selecionado.Ativo;
+                oTransportadora.Genero = selecionado.Genero;
+                oTransportadora.ACondicaoPagamento = selecionado.ACondicaoPagamento;
+                oTransportadora.NumeroEndereco = selecionado.NumeroEndereco;
+                oTransportadora.ComplementoEndereco = selecionado.ComplementoEndereco;
             }
         }
 
@@ -165,13 +171,33 @@ namespace projeto_patrica.pages.consulta
             if (listV.SelectedItems.Count > 0)
             {
                 ListViewItem linha = listV.SelectedItems[0];
-                oTransportadora = (transportadora)linha.Tag;
+                transportadora transportadoraSelecionada = (transportadora)linha.Tag;
 
-                if (!oTransportadora.Ativo)
+                if (!transportadoraSelecionada.Ativo)
                 {
-                    MessageBox.Show("Esta transportadora está inativa e não pode ser selecionada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Este item está inativo e não pode ser selecionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
+                oTransportadora.Id = transportadoraSelecionada.Id;
+                oTransportadora.TipoPessoa = transportadoraSelecionada.TipoPessoa;
+                oTransportadora.Nome_razaoSocial = transportadoraSelecionada.Nome_razaoSocial;
+                oTransportadora.Apelido_nomeFantasia = transportadoraSelecionada.Apelido_nomeFantasia;
+                oTransportadora.DataNascimento_criacao = transportadoraSelecionada.DataNascimento_criacao;
+                oTransportadora.Cpf_cnpj = transportadoraSelecionada.Cpf_cnpj;
+                oTransportadora.Rg_inscricaoEstadual = transportadoraSelecionada.Rg_inscricaoEstadual;
+                oTransportadora.Email = transportadoraSelecionada.Email;
+                oTransportadora.Telefone = transportadoraSelecionada.Telefone;
+                oTransportadora.Endereco = transportadoraSelecionada.Endereco;
+                oTransportadora.Bairro = transportadoraSelecionada.Bairro;
+                oTransportadora.ACidade = transportadoraSelecionada.ACidade;
+                oTransportadora.Cep = transportadoraSelecionada.Cep;
+                oTransportadora.Ativo = transportadoraSelecionada.Ativo;
+                oTransportadora.Genero = transportadoraSelecionada.Genero;
+                oTransportadora.ACondicaoPagamento = transportadoraSelecionada.ACondicaoPagamento;
+                oTransportadora.NumeroEndereco = transportadoraSelecionada.NumeroEndereco;
+                oTransportadora.ComplementoEndereco = transportadoraSelecionada.ComplementoEndereco;
+
                 this.Close();
             }
         }

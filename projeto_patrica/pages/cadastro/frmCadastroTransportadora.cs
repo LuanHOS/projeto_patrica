@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace projeto_patrica.pages.cadastro
 {
-    public partial class frmCadastroTransportadora : frmCadastroPessoa
+    public partial class frmCadastroTransportadora : projeto_patrica.pages.cadastro.frmCadastroPessoa
     {
         private transportadora oTransportadora;
         private Controller_transportadora aController_transportadora;
@@ -40,19 +40,21 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
+
             if (!ValidacaoCampos())
                 return;
 
+
             if (
                 string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
-                (isFisica && comboBoxGenero.SelectedIndex == -1) ||
+                (isFisica && comboBoxGenero.SelectedIndex == -1) || // obrigatório só se for física
                 string.IsNullOrWhiteSpace(txtCidade.Text) ||
                 string.IsNullOrWhiteSpace(txtEstado.Text) ||
                 string.IsNullOrWhiteSpace(txtEndereco.Text) ||
                 string.IsNullOrWhiteSpace(txtNumeroEndereco.Text) ||
                 string.IsNullOrWhiteSpace(txtBairro.Text) ||
-                (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCep.Text)) ||
-                (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCpfCnpj.Text)) ||
+                (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCep.Text)) || // obrigatório só se for brasileiro
+                (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCpfCnpj.Text)) || // obrigatório só se for brasileiro
                 string.IsNullOrWhiteSpace(txtRgInscEstadual.Text) ||
                 dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate ||
                 string.IsNullOrWhiteSpace(txtTelefone.Text) ||
@@ -60,7 +62,23 @@ namespace projeto_patrica.pages.cadastro
                 string.IsNullOrWhiteSpace(txtCondicaoPagamento.Text)
             )
             {
-                MessageBox.Show("Preencha todos os campos obrigatórios para salvar.", "Campos Obrigatórios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                comboBoxTipo.Focus();
+                txtNomeRazaoSocial.Focus();
+                if (isFisica) comboBoxGenero.Focus();
+                txtCidade.Focus();
+                txtEstado.Focus();
+                txtEndereco.Focus();
+                txtNumeroEndereco.Focus();
+                txtBairro.Focus();
+                if (!isEstrangeiro) txtCep.Focus();
+                if (!isEstrangeiro) txtCpfCnpj.Focus();
+                txtRgInscEstadual.Focus();
+                dtpDataNascimentoCriacao.Focus();
+                txtTelefone.Focus();
+                txtEmail.Focus();
+                txtCondicaoPagamento.Focus();
+
+                MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");
                 return;
             }
 
@@ -85,25 +103,23 @@ namespace projeto_patrica.pages.cadastro
             {
                 if (btnSave.Text == "Excluir")
                 {
-                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (resp == DialogResult.Yes)
                     {
-                        aController_transportadora.Excluir(oTransportadora);
-                        MessageBox.Show("Transportadora excluída com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtCodigo.Text = aController_transportadora.Excluir(oTransportadora);
+                        MessageBox.Show("Transportadora excluída com sucesso.");
                         Sair();
                     }
                 }
                 else if (btnSave.Text == "Alterar")
                 {
-                    oTransportadora.DataUltimaEdicao = DateTime.Now;
                     txtCodigo.Text = aController_transportadora.Salvar(oTransportadora);
-                    MessageBox.Show("Transportadora alterada com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Transportadora alterada com sucesso.");
                 }
                 else
                 {
-                    oTransportadora.DataCadastro = DateTime.Now;
                     txtCodigo.Text = aController_transportadora.Salvar(oTransportadora);
-                    MessageBox.Show("Transportadora salva com o código " + txtCodigo.Text + ".", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Transportadora salva com o código " + txtCodigo.Text + ".");
                 }
             }
             catch (Exception ex)
@@ -166,7 +182,7 @@ namespace projeto_patrica.pages.cadastro
             dtpDataNascimentoCriacao.Value = (oTransportadora.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oTransportadora.DataNascimento_criacao;
             comboBoxTipo.SelectedIndex = oTransportadora.TipoPessoa == 'F' ? 0 : 1;
             comboBoxTipo.Enabled = false;
-            comboBoxGenero.SelectedIndex = oTransportadora.Genero == 'M' ? 0 : 1;
+            comboBoxGenero.SelectedIndex = oTransportadora.Genero == 'M' ? 0 : (oTransportadora.Genero == 'F' ? 1 : -1);
             checkBoxAtivo.Checked = oTransportadora.Ativo;
             lblDataCadastroData.Text = oTransportadora.DataCadastro.ToShortDateString();
             lblDataUltimaEdicaoData.Text = oTransportadora.DataUltimaEdicao?.ToShortDateString() ?? " ";
@@ -180,13 +196,91 @@ namespace projeto_patrica.pages.cadastro
         public override void Bloqueiatxt()
         {
             base.Bloqueiatxt();
+
             HabilitarCampos(false);
         }
 
         public override void Desbloqueiatxt()
         {
             base.Desbloqueiatxt();
+
             if (comboBoxTipo.SelectedIndex != -1) HabilitarCampos(true);
+        }
+
+        private void ComboBoxTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxGenero.SelectedIndex = -1;
+
+            isFisica = comboBoxTipo.SelectedIndex == 0; // 0 = Pessoa Física, 1 = Pessoa Jurídica
+
+            HabilitarCampos(true);
+            comboBoxGenero.Enabled = isFisica;
+            lblGenero.Enabled = isFisica;
+
+            lblNome.Text = isFisica ? "Transportadora Nome *" : "Transportadora Razão Social *";
+            lblApelido.Text = isFisica ? "Apelido" : "Nome Fantasia";
+
+            if (isFisica)
+            {
+                lblCpf.Text = isEstrangeiro ? "CPF" : "CPF *";
+                txtCpfCnpj.MaxLength = 11;
+            }
+            else
+            {
+                lblCpf.Text = isEstrangeiro ? "CNPJ" : "CNPJ *";
+                txtCpfCnpj.MaxLength = 14;
+            }
+
+
+            lblRg.Text = isFisica ? "RG *" : "Inscrição Estadual *";
+            lblDataNascimento.Text = isFisica ? "Data de Nascimento *" : "Data de Criação *";
+        }
+
+        private void btnPesquisarCidade_Click(object sender, EventArgs e)
+        {
+            if (oFrmConsultaCidade == null)
+                oFrmConsultaCidade = new frmConsultaCidade();
+
+            cidade cidade = new cidade();
+            Controller_cidade controller = new Controller_cidade();
+            oFrmConsultaCidade.ConhecaObj(cidade, controller);
+            oFrmConsultaCidade.ShowDialog();
+
+            if (cidade.Id != 0)
+            {
+                controller.CarregaObj(cidade);
+
+                oTransportadora.ACidade = cidade;
+                txtCidade.Text = cidade.Nome;
+                txtEstado.Text = cidade.OEstado.Nome;
+                txtPais.Text = cidade.OEstado.OPais.Nome;
+
+                isEstrangeiro = cidade.OEstado.OPais.Nome.Trim().ToUpper() != "BRASIL";
+
+                lblCep.Text = isEstrangeiro ? "CEP" : "CEP *";
+
+                if (isFisica)
+                    lblCpf.Text = isEstrangeiro ? "CPF" : "CPF *";
+                else
+                    lblCpf.Text = isEstrangeiro ? "CNPJ" : "CNPJ *";
+            }
+        }
+
+        private void BtnPesquisarCondicaoPagamento_Click(object sender, EventArgs e)
+        {
+            if (oFrmConsultaCondicaoPagamento == null)
+                oFrmConsultaCondicaoPagamento = new frmConsultaCondicaoPagamento();
+
+            condicaoPagamento oCondicaoPagamento = new condicaoPagamento();
+            Controller_condicaoPagamento controller = new Controller_condicaoPagamento();
+            oFrmConsultaCondicaoPagamento.ConhecaObj(oCondicaoPagamento, controller);
+            oFrmConsultaCondicaoPagamento.ShowDialog();
+
+            if (oCondicaoPagamento.Id != 0)
+            {
+                oTransportadora.ACondicaoPagamento = oCondicaoPagamento;
+                txtCondicaoPagamento.Text = oCondicaoPagamento.Descricao;
+            }
         }
 
         private void HabilitarCampos(bool habilita)
@@ -210,70 +304,6 @@ namespace projeto_patrica.pages.cadastro
             btnPesquisarCidade.Enabled = habilita;
             btnPesquisarCondicaoPagamento.Enabled = habilita;
             txtCondicaoPagamento.Enabled = habilita;
-        }
-
-        private void ComboBoxTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            comboBoxGenero.SelectedIndex = -1;
-            isFisica = comboBoxTipo.SelectedIndex == 0;
-            HabilitarCampos(true);
-            comboBoxGenero.Enabled = isFisica;
-            lblGenero.Enabled = isFisica;
-            lblNome.Text = isFisica ? "Transportadora Nome *" : "Transportadora Razão Social *";
-            lblApelido.Text = isFisica ? "Apelido" : "Nome Fantasia";
-            if (isFisica)
-            {
-                lblCpf.Text = isEstrangeiro ? "CPF" : "CPF *";
-                txtCpfCnpj.MaxLength = 11;
-            }
-            else
-            {
-                lblCpf.Text = isEstrangeiro ? "CNPJ" : "CNPJ *";
-                txtCpfCnpj.MaxLength = 14;
-            }
-            lblRg.Text = isFisica ? "RG *" : "Inscrição Estadual *";
-            lblDataNascimento.Text = isFisica ? "Data de Nascimento *" : "Data de Criação *";
-        }
-
-        private void btnPesquisarCidade_Click(object sender, EventArgs e)
-        {
-            if (oFrmConsultaCidade == null)
-                oFrmConsultaCidade = new frmConsultaCidade();
-
-            cidade cidade = new cidade();
-            Controller_cidade controller = new Controller_cidade();
-            oFrmConsultaCidade.ConhecaObj(cidade, controller);
-            oFrmConsultaCidade.ShowDialog();
-
-            if (cidade.Id != 0)
-            {
-                controller.CarregaObj(cidade);
-                oTransportadora.ACidade = cidade;
-                txtCidade.Text = cidade.Nome;
-                txtEstado.Text = cidade.OEstado.Nome;
-                txtPais.Text = cidade.OEstado.OPais.Nome;
-
-                isEstrangeiro = cidade.OEstado.OPais.Nome.Trim().ToUpper() != "BRASIL";
-                lblCep.Text = isEstrangeiro ? "CEP" : "CEP *";
-                lblCpf.Text = isFisica ? (isEstrangeiro ? "CPF" : "CPF *") : (isEstrangeiro ? "CNPJ" : "CNPJ *");
-            }
-        }
-
-        private void BtnPesquisarCondicaoPagamento_Click(object sender, EventArgs e)
-        {
-            if (oFrmConsultaCondicaoPagamento == null)
-                oFrmConsultaCondicaoPagamento = new frmConsultaCondicaoPagamento();
-
-            condicaoPagamento oCondicaoPagamento = new condicaoPagamento();
-            Controller_condicaoPagamento controller = new Controller_condicaoPagamento();
-            oFrmConsultaCondicaoPagamento.ConhecaObj(oCondicaoPagamento, controller);
-            oFrmConsultaCondicaoPagamento.ShowDialog();
-
-            if (oCondicaoPagamento.Id != 0)
-            {
-                oTransportadora.ACondicaoPagamento = oCondicaoPagamento;
-                txtCondicaoPagamento.Text = oCondicaoPagamento.Descricao;
-            }
         }
     }
 }

@@ -186,7 +186,7 @@ namespace projeto_patrica.pages.cadastro
             dtpDataNascimentoCriacao.Value = (oFornecedor.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oFornecedor.DataNascimento_criacao;
             comboBoxTipo.SelectedIndex = oFornecedor.TipoPessoa == 'F' ? 0 : 1;
             comboBoxTipo.Enabled = false;
-            comboBoxGenero.SelectedIndex = oFornecedor.Genero == 'M' ? 0 : 1;
+            comboBoxGenero.SelectedIndex = oFornecedor.Genero == 'M' ? 0 : (oFornecedor.Genero == 'F' ? 1 : -1);
             checkBoxAtivo.Checked = oFornecedor.Ativo;
             lblDataCadastroData.Text = oFornecedor.DataCadastro.ToShortDateString();
             lblDataUltimaEdicaoData.Text = oFornecedor.DataUltimaEdicao?.ToShortDateString() ?? " ";

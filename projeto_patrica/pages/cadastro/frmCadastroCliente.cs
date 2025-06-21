@@ -187,7 +187,7 @@ namespace projeto_patrica.pages.cadastro
             lblDataUltimaEdicaoData.Text = oCliente.DataUltimaEdicao?.ToShortDateString() ?? " ";
             comboBoxTipo.SelectedIndex = oCliente.TipoPessoa == 'F' ? 0 : 1;
             comboBoxTipo.Enabled = false;
-            comboBoxGenero.SelectedIndex = oCliente.Genero == 'M' ? 0 : 1;
+            comboBoxGenero.SelectedIndex = oCliente.Genero == 'M' ? 0 : (oCliente.Genero == 'F' ? 1 : -1);
             checkBoxAtivo.Checked = oCliente.Ativo;
 
             if (isFisica)

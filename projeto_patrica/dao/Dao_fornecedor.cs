@@ -103,32 +103,28 @@ namespace projeto_patrica.dao
 
                 while (dr.Read())
                 {
-                    while (dr.Read())
-                    {
-                        oFornecedor.Id = Convert.ToInt32(dr["ID_FORNECEDOR"]);
-                        oFornecedor.TipoPessoa = Convert.ToChar(dr["TIPO_PESSOA"]);
-                        oFornecedor.Nome_razaoSocial = dr["NOME_RAZAO_SOCIAL"].ToString();
-                        oFornecedor.Apelido_nomeFantasia = dr["APELIDO_NOME_FANTASIA"] == DBNull.Value ? null : dr["APELIDO_NOME_FANTASIA"].ToString();
-                        oFornecedor.DataNascimento_criacao = Convert.ToDateTime(dr["DATA_NASCIMENTO_CRIACAO"]);
-                        oFornecedor.Cpf_cnpj = dr["CPF_CNPJ"] == DBNull.Value ? null : dr["CPF_CNPJ"].ToString();
-                        oFornecedor.Rg_inscricaoEstadual = dr["RG_INSCRICAO_ESTADUAL"].ToString();
-                        oFornecedor.Email = dr["EMAIL"].ToString();
-                        oFornecedor.Telefone = dr["TELEFONE"].ToString();
-                        oFornecedor.Endereco = dr["ENDERECO"].ToString();
-                        oFornecedor.Bairro = dr["BAIRRO"].ToString();
-                        oFornecedor.ACidade.Id = Convert.ToInt32(dr["ID_CIDADE"]);
-                        oFornecedor.Cep = dr["CEP"] == DBNull.Value ? null : dr["CEP"].ToString();
-                        oFornecedor.Ativo = Convert.ToBoolean(dr["ATIVO"]);
-                        oFornecedor.Genero = dr["GENERO"] == DBNull.Value || string.IsNullOrWhiteSpace(dr["GENERO"].ToString()) ? ' ' : Convert.ToChar(dr["GENERO"]);
-                        oFornecedor.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
-                        oFornecedor.NumeroEndereco = dr["NUMERO_ENDERECO"].ToString();
-                        oFornecedor.ComplementoEndereco = dr["COMPLEMENTO_ENDERECO"] == DBNull.Value ? null : dr["COMPLEMENTO_ENDERECO"].ToString();
-                        oFornecedor.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
-                        oFornecedor.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
-                    }
-
-
+                    oFornecedor.Id = Convert.ToInt32(dr["ID_FORNECEDOR"]);
+                    oFornecedor.TipoPessoa = Convert.ToChar(dr["TIPO_PESSOA"]);
+                    oFornecedor.Nome_razaoSocial = dr["NOME_RAZAO_SOCIAL"].ToString();
+                    oFornecedor.Apelido_nomeFantasia = dr["APELIDO_NOME_FANTASIA"] == DBNull.Value ? null : dr["APELIDO_NOME_FANTASIA"].ToString();
+                    oFornecedor.DataNascimento_criacao = Convert.ToDateTime(dr["DATA_NASCIMENTO_CRIACAO"]);
+                    oFornecedor.Cpf_cnpj = dr["CPF_CNPJ"] == DBNull.Value ? null : dr["CPF_CNPJ"].ToString();
+                    oFornecedor.Rg_inscricaoEstadual = dr["RG_INSCRICAO_ESTADUAL"].ToString();
+                    oFornecedor.Email = dr["EMAIL"].ToString();
+                    oFornecedor.Telefone = dr["TELEFONE"].ToString();
+                    oFornecedor.Endereco = dr["ENDERECO"].ToString();
+                    oFornecedor.Bairro = dr["BAIRRO"].ToString();
+                    oFornecedor.ACidade.Id = Convert.ToInt32(dr["ID_CIDADE"]);
+                    oFornecedor.Cep = dr["CEP"] == DBNull.Value ? null : dr["CEP"].ToString();
+                    oFornecedor.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                    oFornecedor.Genero = dr["GENERO"] == DBNull.Value || string.IsNullOrWhiteSpace(dr["GENERO"].ToString()) ? ' ' : Convert.ToChar(dr["GENERO"]);
+                    oFornecedor.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
+                    oFornecedor.NumeroEndereco = dr["NUMERO_ENDERECO"].ToString();
+                    oFornecedor.ComplementoEndereco = dr["COMPLEMENTO_ENDERECO"] == DBNull.Value ? null : dr["COMPLEMENTO_ENDERECO"].ToString();
+                    oFornecedor.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                    oFornecedor.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
                 }
+
 
                 conn.Connection.Close();
 
