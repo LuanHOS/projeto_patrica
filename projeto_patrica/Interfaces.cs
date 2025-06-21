@@ -18,6 +18,7 @@ namespace projeto_patrica
         frmCadastroFuncionario oFrmCadFuncionario;
         frmCadastroFornecedor oFrmCadFornecedor;
         frmCadastroCategoria oFrmCadCategoria;
+        frmCadastroMarca oFrmCadMarca;
 
         // Formulários de Consulta
         frmConsultaCondicaoPagamento oFrmConCondPag;
@@ -28,7 +29,8 @@ namespace projeto_patrica
         frmConsultaCliente oFrmConCliente;
         frmConsultaFuncionario oFrmConFuncionario;
         frmConsultaFornecedor oFrmConFornecedor;
-        frmConsultaCategoria oFrmConCategoria; 
+        frmConsultaCategoria oFrmConCategoria;
+        frmConsultaMarca oFrmConMarca; 
 
         /*
          * */
@@ -43,7 +45,8 @@ namespace projeto_patrica
             oFrmConCliente = new frmConsultaCliente();
             oFrmConFuncionario = new frmConsultaFuncionario();
             oFrmConFornecedor = new frmConsultaFornecedor();
-            oFrmConCategoria = new frmConsultaCategoria(); 
+            oFrmConCategoria = new frmConsultaCategoria();
+            oFrmConMarca = new frmConsultaMarca();
 
             oFrmCadCondPag = new frmCadastroCondicaoPagamento();
             oFrmCadFormPag = new frmCadastroFormaPagamento();
@@ -54,6 +57,7 @@ namespace projeto_patrica
             oFrmCadFuncionario = new frmCadastroFuncionario();
             oFrmCadFornecedor = new frmCadastroFornecedor();
             oFrmCadCategoria = new frmCadastroCategoria();
+            oFrmCadMarca = new frmCadastroMarca(); 
 
             oFrmConCondPag.setFrmCadastro(oFrmCadCondPag);
             oFrmConFormPag.setFrmCadastro(oFrmCadFormPag);
@@ -63,7 +67,8 @@ namespace projeto_patrica
             oFrmConCliente.setFrmCadastro(oFrmCadCliente);
             oFrmConFuncionario.setFrmCadastro(oFrmCadFuncionario);
             oFrmConFornecedor.setFrmCadastro(oFrmCadFornecedor);
-            oFrmConCategoria.setFrmCadastro(oFrmCadCategoria); 
+            oFrmConCategoria.setFrmCadastro(oFrmCadCategoria);
+            oFrmConMarca.setFrmCadastro(oFrmCadMarca); 
 
             oFrmCadCondPag.setConsultaFormaPagamento(oFrmConFormPag);
             oFrmCadEstado.setConsultaPais(oFrmConPais);
@@ -77,7 +82,13 @@ namespace projeto_patrica
 
         /*
          * */
-                
+
+        public void pecaConsultaMarca(marca oMarca, Controller_marca oController_marca)
+        {
+            oFrmConMarca.ConhecaObj(oMarca, oController_marca);
+            oFrmConMarca.ShowDialog();
+        }
+
         public void pecaConsultaCategoria(categoria oCategoria, Controller_categoria oController_categoria)
         {
             oFrmConCategoria.ConhecaObj(oCategoria, oController_categoria);

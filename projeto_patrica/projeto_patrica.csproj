@@ -226,6 +226,12 @@
     <Compile Include="pages\cadastro\frmCadastroFuncionario.Designer.cs">
       <DependentUpon>frmCadastroFuncionario.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\cadastro\frmCadastroMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroMarca.Designer.cs">
+      <DependentUpon>frmCadastroMarca.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\cadastro\frmCadastroPais.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,6 +297,12 @@
     </Compile>
     <Compile Include="pages\consulta\frmConsultaFuncionario.Designer.cs">
       <DependentUpon>frmConsultaFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaMarca.Designer.cs">
+      <DependentUpon>frmConsultaMarca.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\consulta\frmConsultaPais.cs">
       <SubType>Form</SubType>
