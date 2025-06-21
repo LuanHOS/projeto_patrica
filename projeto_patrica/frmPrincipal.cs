@@ -20,7 +20,8 @@ namespace projeto_patrica
         private funcionario oFuncionario;
         private fornecedor oFornecedor;
         private categoria aCategoria;
-        private marca aMarca; 
+        private marca aMarca;
+        private transportadora aTransportadora;
 
         //Controllers
         private Controller_formaPagamento oController_formaPagamento;
@@ -32,7 +33,8 @@ namespace projeto_patrica
         private Controller_funcionario oController_funcionario;
         private Controller_fornecedor oController_fornecedor;
         private Controller_categoria oController_categoria;
-        private Controller_marca oController_marca; 
+        private Controller_marca oController_marca;
+        private Controller_transportadora oController_transportadora; 
 
         /*
          * */
@@ -54,7 +56,8 @@ namespace projeto_patrica
             oFuncionario = new funcionario();
             oFornecedor = new fornecedor();
             aCategoria = new categoria();
-            aMarca = new marca(); 
+            aMarca = new marca();
+            aTransportadora = new transportadora();
 
             // Instanciando Controllers
             oController_formaPagamento = new Controller_formaPagamento();
@@ -67,6 +70,7 @@ namespace projeto_patrica
             oController_fornecedor = new Controller_fornecedor();
             oController_categoria = new Controller_categoria();
             oController_marca = new Controller_marca();
+            oController_transportadora = new Controller_transportadora();
 
             // Passando dependências de controllers
             oController_condicaoPagamento.AController_formaPagamento = oController_formaPagamento;
@@ -76,10 +80,17 @@ namespace projeto_patrica
             oController_fornecedor.AController_cidade = oController_cidade;
             oController_cliente.AController_condicaoPagamento = oController_condicaoPagamento;
             oController_fornecedor.AController_condicaoPagamento = oController_condicaoPagamento;
+            oController_transportadora.AController_cidade = oController_cidade;
+            oController_transportadora.AController_condicaoPagamento = oController_condicaoPagamento; 
         }
 
         /*
          * */
+
+        private void transportadoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            aInter.pecaConsultaTransportadora(aTransportadora, oController_transportadora);
+        }
 
         private void marcaToolStripMenuItem_Click(object sender, EventArgs e)
         {

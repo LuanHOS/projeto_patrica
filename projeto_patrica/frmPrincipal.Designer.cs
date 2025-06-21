@@ -40,6 +40,7 @@
             this.fornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transportadoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +69,8 @@
             this.funcionárioToolStripMenuItem,
             this.fornecedorToolStripMenuItem,
             this.categoriaToolStripMenuItem,
-            this.marcaToolStripMenuItem});
+            this.marcaToolStripMenuItem,
+            this.transportadoraToolStripMenuItem});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.cadastroToolStripMenuItem.Text = "Cadastro";
@@ -143,6 +145,13 @@
             this.marcaToolStripMenuItem.Text = "Marca";
             this.marcaToolStripMenuItem.Click += new System.EventHandler(this.marcaToolStripMenuItem_Click);
             // 
+            // transportadoraToolStripMenuItem
+            // 
+            this.transportadoraToolStripMenuItem.Name = "transportadoraToolStripMenuItem";
+            this.transportadoraToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
+            this.transportadoraToolStripMenuItem.Text = "Transportadora";
+            this.transportadoraToolStripMenuItem.Click += new System.EventHandler(this.transportadoraToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -178,6 +187,7 @@
         private System.Windows.Forms.ToolStripMenuItem fornecedorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marcaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transportadoraToolStripMenuItem;
     }
 }
 
