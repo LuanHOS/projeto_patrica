@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace projeto_patrica.pages.cadastro
 {
-    public partial class frmCadastroMarca : frmCadastro
+    public partial class frmCadastroMarca : projeto_patrica.pages.cadastro.frmCadastro
     {
         private marca oMarca;
         private Controller_marca aController_marca;
@@ -20,13 +20,12 @@ namespace projeto_patrica.pages.cadastro
             oMarca = (marca)obj;
             aController_marca = (Controller_marca)ctrl;
         }
-
         public override void Salvar()
         {
             if (string.IsNullOrWhiteSpace(txtNome.Text))
             {
                 txtNome.Focus();
-                MessageBox.Show("Preencha o nome da marca para salvar.", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");
                 return;
             }
 
@@ -38,25 +37,23 @@ namespace projeto_patrica.pages.cadastro
             {
                 if (btnSave.Text == "Excluir")
                 {
-                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (resp == DialogResult.Yes)
                     {
-                        aController_marca.Excluir(oMarca);
-                        MessageBox.Show("A marca \"" + oMarca.Nome + "\" foi excluída com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtCodigo.Text = aController_marca.Excluir(oMarca);
+                        MessageBox.Show("A marca \"" + oMarca.Nome + "\" foi excluída com sucesso.");
                         Sair();
                     }
                 }
                 else if (btnSave.Text == "Alterar")
                 {
-                    oMarca.DataUltimaEdicao = DateTime.Now;
                     txtCodigo.Text = aController_marca.Salvar(oMarca);
-                    MessageBox.Show("A marca \"" + oMarca.Nome + "\" foi alterada com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("A marca \"" + oMarca.Nome + "\" foi alterada com sucesso.");
                 }
                 else
                 {
-                    oMarca.DataCadastro = DateTime.Now;
                     txtCodigo.Text = aController_marca.Salvar(oMarca);
-                    MessageBox.Show("A marca \"" + oMarca.Nome + "\" foi salva com o código " + txtCodigo.Text + ".", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("A marca \"" + oMarca.Nome + "\" foi salva com o código " + txtCodigo.Text + ".");
                 }
             }
             catch (Exception ex)
@@ -77,11 +74,11 @@ namespace projeto_patrica.pages.cadastro
         public override void Carregatxt()
         {
             base.Carregatxt();
-            txtCodigo.Text = oMarca.Id.ToString();
+            txtCodigo.Text = Convert.ToString(oMarca.Id);
             txtNome.Text = oMarca.Nome;
-            checkBoxAtivo.Checked = oMarca.Ativo;
             lblDataCadastroData.Text = oMarca.DataCadastro.ToShortDateString();
             lblDataUltimaEdicaoData.Text = oMarca.DataUltimaEdicao?.ToShortDateString() ?? " ";
+            checkBoxAtivo.Checked = oMarca.Ativo;
         }
 
         public override void Bloqueiatxt()
@@ -89,7 +86,6 @@ namespace projeto_patrica.pages.cadastro
             base.Bloqueiatxt();
             txtNome.Enabled = false;
         }
-
         public override void Desbloqueiatxt()
         {
             base.Desbloqueiatxt();
