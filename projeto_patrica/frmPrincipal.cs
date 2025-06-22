@@ -22,6 +22,7 @@ namespace projeto_patrica
         private categoria aCategoria;
         private marca aMarca;
         private transportadora aTransportadora;
+        private unidade_medida aUnidadeMedida;
 
         //Controllers
         private Controller_formaPagamento oController_formaPagamento;
@@ -34,7 +35,8 @@ namespace projeto_patrica
         private Controller_fornecedor oController_fornecedor;
         private Controller_categoria oController_categoria;
         private Controller_marca oController_marca;
-        private Controller_transportadora oController_transportadora; 
+        private Controller_transportadora oController_transportadora;
+        private Controller_unidade_medida oController_unidade_medida; 
 
         /*
          * */
@@ -58,6 +60,7 @@ namespace projeto_patrica
             aCategoria = new categoria();
             aMarca = new marca();
             aTransportadora = new transportadora();
+            aUnidadeMedida = new unidade_medida(); 
 
             // Instanciando Controllers
             oController_formaPagamento = new Controller_formaPagamento();
@@ -71,6 +74,7 @@ namespace projeto_patrica
             oController_categoria = new Controller_categoria();
             oController_marca = new Controller_marca();
             oController_transportadora = new Controller_transportadora();
+            oController_unidade_medida = new Controller_unidade_medida(); 
 
             // Passando dependências de controllers
             oController_condicaoPagamento.AController_formaPagamento = oController_formaPagamento;
@@ -81,7 +85,15 @@ namespace projeto_patrica
             oController_cliente.AController_condicaoPagamento = oController_condicaoPagamento;
             oController_fornecedor.AController_condicaoPagamento = oController_condicaoPagamento;
             oController_transportadora.AController_cidade = oController_cidade;
-            oController_transportadora.AController_condicaoPagamento = oController_condicaoPagamento; 
+            oController_transportadora.AController_condicaoPagamento = oController_condicaoPagamento;
+        }
+
+        /*
+         * */
+
+        private void unidadesDeMedidaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            aInter.pecaConsultaUnidadeMedida(aUnidadeMedida, oController_unidade_medida);
         }
 
         /*
@@ -92,15 +104,24 @@ namespace projeto_patrica
             aInter.pecaConsultaTransportadora(aTransportadora, oController_transportadora);
         }
 
+        /*
+         * */
+
         private void marcaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             aInter.pecaConsultaMarca(aMarca, oController_marca);
         }
 
+        /*
+         * */
+
         private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             aInter.pecaConsultaCategoria(aCategoria, oController_categoria);
         }
+
+        /*
+         * */
 
         private void formaDePagamentoToolStripMenuItem1_Click(object sender, EventArgs e)
         {

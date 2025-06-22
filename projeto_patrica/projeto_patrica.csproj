@@ -250,6 +250,12 @@
     <Compile Include="pages\cadastro\frmCadastroTransportadora.Designer.cs">
       <DependentUpon>frmCadastroTransportadora.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\cadastro\frmCadastroUnidade_medida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroUnidade_medida.Designer.cs">
+      <DependentUpon>frmCadastroUnidade_medida.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\consulta\frmConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -321,6 +327,12 @@
     </Compile>
     <Compile Include="pages\consulta\frmConsultaTransportadora.Designer.cs">
       <DependentUpon>frmConsultaTransportadora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaUnidade_medida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaUnidade_medida.Designer.cs">
+      <DependentUpon>frmConsultaUnidade_medida.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

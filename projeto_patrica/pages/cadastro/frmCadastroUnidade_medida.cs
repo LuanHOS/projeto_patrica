@@ -1,29 +1,24 @@
 ﻿using projeto_patrica.classes;
 using projeto_patrica.controller;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace projeto_patrica.pages.cadastro
 {
-	public partial class frmCadastroPais : projeto_patrica.pages.cadastro.frmCadastro
-	{
-        private pais oPais;
-        private Controller_pais aController_pais;
+    public partial class frmCadastroUnidade_medida : projeto_patrica.pages.cadastro.frmCadastro
+    {
+        private unidade_medida oUnidadeMedida;
+        private Controller_unidade_medida aController_unidade_medida;
 
-        public frmCadastroPais() : base()
+        public frmCadastroUnidade_medida() : base()
         {
             InitializeComponent();
         }
 
         public override void ConhecaObj(object obj, object ctrl)
         {
-            oPais = (pais)obj;
-            aController_pais = (Controller_pais)ctrl;
+            oUnidadeMedida = (unidade_medida)obj;
+            aController_unidade_medida = (Controller_unidade_medida)ctrl;
         }
         public override void Salvar()
         {
@@ -34,9 +29,9 @@ namespace projeto_patrica.pages.cadastro
                 return;
             }
 
-            oPais.Id = Convert.ToInt32(txtCodigo.Text);
-            oPais.Nome = txtNome.Text;
-            oPais.Ativo = checkBoxAtivo.Checked;
+            oUnidadeMedida.Id = Convert.ToInt32(txtCodigo.Text);
+            oUnidadeMedida.Nome = txtNome.Text;
+            oUnidadeMedida.Ativo = checkBoxAtivo.Checked;
 
             try
             {
@@ -45,20 +40,20 @@ namespace projeto_patrica.pages.cadastro
                     DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (resp == DialogResult.Yes)
                     {
-                        txtCodigo.Text = aController_pais.Excluir(oPais);
-                        MessageBox.Show("O país \"" + oPais.Nome + "\" foi excluído com sucesso.");
+                        txtCodigo.Text = aController_unidade_medida.Excluir(oUnidadeMedida);
+                        MessageBox.Show("A unidade de medida \"" + oUnidadeMedida.Nome + "\" foi excluída com sucesso.");
                         Sair();
                     }
                 }
                 else if (btnSave.Text == "Alterar")
                 {
-                    txtCodigo.Text = aController_pais.Salvar(oPais);
-                    MessageBox.Show("O país \"" + oPais.Nome + "\" foi alterado com sucesso.");
+                    txtCodigo.Text = aController_unidade_medida.Salvar(oUnidadeMedida);
+                    MessageBox.Show("A unidade de medida \"" + oUnidadeMedida.Nome + "\" foi alterada com sucesso.");
                 }
                 else
                 {
-                    txtCodigo.Text = aController_pais.Salvar(oPais);
-                    MessageBox.Show("O país \"" + oPais.Nome + "\" foi salvo com o código " + txtCodigo.Text + ".");
+                    txtCodigo.Text = aController_unidade_medida.Salvar(oUnidadeMedida);
+                    MessageBox.Show("A unidade de medida \"" + oUnidadeMedida.Nome + "\" foi salva com o código " + txtCodigo.Text + ".");
                 }
             }
             catch (Exception ex)
@@ -70,9 +65,6 @@ namespace projeto_patrica.pages.cadastro
             base.Salvar();
         }
 
-
-
-
         public override void Limpartxt()
         {
             base.Limpartxt();
@@ -82,11 +74,11 @@ namespace projeto_patrica.pages.cadastro
         public override void Carregatxt()
         {
             base.Carregatxt();
-            txtCodigo.Text = Convert.ToString(oPais.Id);
-            txtNome.Text = oPais.Nome;
-            lblDataCadastroData.Text = oPais.DataCadastro.ToShortDateString();
-            lblDataUltimaEdicaoData.Text = oPais.DataUltimaEdicao?.ToShortDateString() ?? " ";
-            checkBoxAtivo.Checked = oPais.Ativo;
+            txtCodigo.Text = Convert.ToString(oUnidadeMedida.Id);
+            txtNome.Text = oUnidadeMedida.Nome;
+            lblDataCadastroData.Text = oUnidadeMedida.DataCadastro.ToShortDateString();
+            lblDataUltimaEdicaoData.Text = oUnidadeMedida.DataUltimaEdicao?.ToShortDateString() ?? " ";
+            checkBoxAtivo.Checked = oUnidadeMedida.Ativo;
         }
 
         public override void Bloqueiatxt()
