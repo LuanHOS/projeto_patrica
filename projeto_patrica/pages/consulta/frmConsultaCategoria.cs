@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace projeto_patrica.pages.consulta
 {
-    public partial class frmConsultaCategoria : frmConsulta
+    public partial class frmConsultaCategoria : projeto_patrica.pages.consulta.frmConsulta
     {
-        private frmCadastroCategoria oFrmCadastroCategoria;
+        frmCadastroCategoria oFrmCadastroCategoria;
         private categoria oCategoria;
-        private Controller_categoria aController_categoria;
+        Controller_categoria aController_categoria;
 
         public frmConsultaCategoria() : base()
         {
@@ -33,127 +33,120 @@ namespace projeto_patrica.pages.consulta
         public override void Incluir()
         {
             base.Incluir();
-            oFrmCadastroCategoria.ConhecaObj(new categoria(), aController_categoria);
-            oFrmCadastroCategoria.Desbloqueiatxt();
+            oFrmCadastroCategoria.ConhecaObj(oCategoria, aController_categoria);
             oFrmCadastroCategoria.Limpartxt();
             oFrmCadastroCategoria.ShowDialog();
+            oFrmCadastroCategoria.Desbloqueiatxt();
             this.CarregaLV();
         }
 
         public override void Alterar()
         {
-            if (listV.SelectedItems.Count > 0)
-            {
-                string aux = oFrmCadastroCategoria.btnSave.Text;
-                oFrmCadastroCategoria.btnSave.Text = "Alterar";
-                base.Alterar();
-                aController_categoria.CarregaObj(oCategoria);
-                oFrmCadastroCategoria.ConhecaObj(oCategoria, aController_categoria);
-                oFrmCadastroCategoria.Carregatxt();
-                oFrmCadastroCategoria.Desbloqueiatxt();
-                oFrmCadastroCategoria.ShowDialog();
-                oFrmCadastroCategoria.btnSave.Text = aux;
-                this.CarregaLV();
-            }
-            else
-            {
-                MessageBox.Show("Selecione um item para alterar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        public override void Excluir()
-        {
-            if (listV.SelectedItems.Count > 0)
-            {
-                base.Excluir();
-                string aux = oFrmCadastroCategoria.btnSave.Text;
-                oFrmCadastroCategoria.btnSave.Text = "Excluir";
-                aController_categoria.CarregaObj(oCategoria);
-                oFrmCadastroCategoria.ConhecaObj(oCategoria, aController_categoria);
-                oFrmCadastroCategoria.Carregatxt();
-                oFrmCadastroCategoria.Bloqueiatxt();
-                oFrmCadastroCategoria.ShowDialog(this);
-                oFrmCadastroCategoria.Desbloqueiatxt();
-                oFrmCadastroCategoria.btnSave.Text = aux;
-                this.CarregaLV();
-            }
-            else
-            {
-                MessageBox.Show("Selecione um item para excluir.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        public override void CarregaLV()
-        {
-            base.CarregaLV();
-            listV.Items.Clear();
-            List<categoria> lista = aController_categoria.ListaCategorias();
-
-            foreach (var cat in lista)
-            {
-                ListViewItem item = new ListViewItem(cat.Id.ToString());
-                item.SubItems.Add(cat.Nome);
-                item.SubItems.Add(cat.Descricao);
-                item.Tag = cat;
-                listV.Items.Add(item);
-            }
+            string aux = oFrmCadastroCategoria.btnSave.Text;
+            oFrmCadastroCategoria.btnSave.Text = "Alterar";
+            base.Alterar();
+            aController_categoria.CarregaObj(oCategoria);
+            oFrmCadastroCategoria.ConhecaObj(oCategoria, aController_categoria);
+            oFrmCadastroCategoria.Carregatxt();
+            oFrmCadastroCategoria.ShowDialog();
+            oFrmCadastroCategoria.btnSave.Text = aux;
+            this.CarregaLV();
         }
 
         public override void Pesquisar()
         {
             listV.Items.Clear();
-            string termo = txtCodigo.Text.Trim().ToUpper();
-            var resultados = new List<categoria>();
-            var listaCompleta = aController_categoria.ListaCategorias();
+            string termoPesquisa = txtCodigo.Text.Trim().ToUpper();
+            var listaResultados = new List<categoria>();
 
-            if (string.IsNullOrWhiteSpace(termo))
+            if (string.IsNullOrWhiteSpace(termoPesquisa))
             {
-                resultados = listaCompleta;
+                LimparPesquisa();
             }
             else
             {
-                foreach (var cat in listaCompleta)
+                foreach (var oCategoria in aController_categoria.ListaCategorias())
                 {
-                    if (cat.Id.ToString().Contains(termo) ||
-                        cat.Nome.ToUpper().Contains(termo))
+                    if (termoPesquisa == Convert.ToString(oCategoria.Id) ||
+                        oCategoria.Nome.ToUpper().Contains(termoPesquisa))
                     {
-                        resultados.Add(cat);
+                        listaResultados.Add(oCategoria);
                     }
                 }
-            }
 
-            foreach (var cat in resultados)
+                foreach (var oCategoria in listaResultados)
+                {
+                    ListViewItem item = new ListViewItem(oCategoria.Id.ToString());
+                    item.SubItems.Add(oCategoria.Nome);
+                    item.SubItems.Add(oCategoria.Descricao);
+                    item.Tag = oCategoria;
+                    listV.Items.Add(item);
+                }
+            }
+        }
+
+        public override void Excluir()
+        {
+            base.Excluir();
+            string aux = oFrmCadastroCategoria.btnSave.Text;
+            oFrmCadastroCategoria.btnSave.Text = "Excluir";
+            aController_categoria.CarregaObj(oCategoria);
+            oFrmCadastroCategoria.ConhecaObj(oCategoria, aController_categoria);
+            oFrmCadastroCategoria.Carregatxt();
+            oFrmCadastroCategoria.Bloqueiatxt();
+            oFrmCadastroCategoria.ShowDialog(this);
+            oFrmCadastroCategoria.Desbloqueiatxt();
+            oFrmCadastroCategoria.btnSave.Text = aux;
+            this.CarregaLV();
+        }
+
+        public override void CarregaLV()
+        {
+            base.CarregaLV();
+            this.listV.Items.Clear();
+            var lista = aController_categoria.ListaCategorias();
+            foreach (var oCategoria in lista)
             {
-                ListViewItem item = new ListViewItem(cat.Id.ToString());
-                item.SubItems.Add(cat.Nome);
-                item.SubItems.Add(cat.Descricao);
-                item.Tag = cat;
-                listV.Items.Add(item);
+                ListViewItem item = new ListViewItem(Convert.ToString(oCategoria.Id));
+                item.SubItems.Add(oCategoria.Nome);
+                item.SubItems.Add(oCategoria.Descricao);
+                item.Tag = oCategoria;
+                this.listV.Items.Add(item);
             }
         }
 
         private void listV_SelectedIndexChanged(object sender, EventArgs e)
         {
             base.ListV_SelectedIndexChanged(sender, e);
-            if (listV.SelectedItems.Count > 0)
+
+            if (this.listV.SelectedItems.Count > 0)
             {
                 ListViewItem linha = listV.SelectedItems[0];
-                oCategoria = (categoria)linha.Tag;
+                categoria categoriaSelecionada = (categoria)linha.Tag;
+
+                oCategoria.Id = categoriaSelecionada.Id;
+                oCategoria.Nome = categoriaSelecionada.Nome;
+                oCategoria.Descricao = categoriaSelecionada.Descricao;
             }
         }
 
         private void frmConsultaCategoria_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (listV.SelectedItems.Count > 0)
+            if (this.listV.SelectedItems.Count > 0)
             {
                 ListViewItem linha = listV.SelectedItems[0];
-                oCategoria = (categoria)linha.Tag;
+                categoria categoriaSelecionada = (categoria)linha.Tag;
 
-                if (!oCategoria.Ativo)
+                if (!categoriaSelecionada.Ativo)
                 {
-                    MessageBox.Show("Esta categoria está inativa e não pode ser selecionada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Este item está inativo e não pode ser selecionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
+                oCategoria.Id = categoriaSelecionada.Id;
+                oCategoria.Nome = categoriaSelecionada.Nome;
+                oCategoria.Descricao = categoriaSelecionada.Descricao;
+
                 this.Close();
             }
         }

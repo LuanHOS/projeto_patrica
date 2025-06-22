@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace projeto_patrica.pages.cadastro
 {
-    public partial class frmCadastroCategoria : frmCadastro
+    public partial class frmCadastroCategoria : projeto_patrica.pages.cadastro.frmCadastro
     {
         private categoria oCategoria;
         private Controller_categoria aController_categoria;
@@ -26,7 +26,7 @@ namespace projeto_patrica.pages.cadastro
             if (string.IsNullOrWhiteSpace(txtNome.Text))
             {
                 txtNome.Focus();
-                MessageBox.Show("Preencha o nome da categoria para salvar.", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");
                 return;
             }
 
@@ -39,25 +39,23 @@ namespace projeto_patrica.pages.cadastro
             {
                 if (btnSave.Text == "Excluir")
                 {
-                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (resp == DialogResult.Yes)
                     {
                         aController_categoria.Excluir(oCategoria);
-                        MessageBox.Show("A categoria \"" + oCategoria.Nome + "\" foi excluída com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("A categoria \"" + oCategoria.Nome + "\" foi excluída com sucesso.");
                         Sair();
                     }
                 }
                 else if (btnSave.Text == "Alterar")
                 {
-                    oCategoria.DataUltimaEdicao = DateTime.Now;
                     txtCodigo.Text = aController_categoria.Salvar(oCategoria);
-                    MessageBox.Show("A categoria \"" + oCategoria.Nome + "\" foi alterada com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("A categoria \"" + oCategoria.Nome + "\" foi alterada com sucesso.");
                 }
                 else
                 {
-                    oCategoria.DataCadastro = DateTime.Now;
                     txtCodigo.Text = aController_categoria.Salvar(oCategoria);
-                    MessageBox.Show("A categoria \"" + oCategoria.Nome + "\" foi salva com o código " + txtCodigo.Text + ".", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("A categoria \"" + oCategoria.Nome + "\" foi salva com o código " + txtCodigo.Text + ".");
                 }
             }
             catch (Exception ex)
