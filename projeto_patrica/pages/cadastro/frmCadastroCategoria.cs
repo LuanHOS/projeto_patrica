@@ -98,5 +98,12 @@ namespace projeto_patrica.pages.cadastro
             txtNome.Enabled = true;
             txtDescricao.Enabled = true;
         }
+
+        public override void CamposRestricoes()
+        {
+            base.CamposRestricoes();
+            txtNome.MaxLength = 40;
+            txtDescricao.MaxLength = 80;
+        }
     }
 }

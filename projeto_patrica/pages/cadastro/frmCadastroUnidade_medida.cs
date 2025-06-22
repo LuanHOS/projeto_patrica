@@ -91,5 +91,11 @@ namespace projeto_patrica.pages.cadastro
             base.Desbloqueiatxt();
             txtNome.Enabled = true;
         }
+
+        public override void CamposRestricoes()
+        {
+            base.CamposRestricoes();
+            txtNome.MaxLength = 40;
+        }
     }
 }
