@@ -34,11 +34,11 @@
             // 
             // btnSave
             // 
-            this.btnSave.TabIndex = 2;
+            this.btnSave.TabIndex = 3;
             // 
             // btnSair
             // 
-            this.btnSair.TabIndex = 3;
+            this.btnSair.TabIndex = 4;
             // 
             // txtCodigo
             // 
@@ -49,7 +49,7 @@
             this.lblNome.AutoSize = true;
             this.lblNome.Location = new System.Drawing.Point(24, 92);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(52, 16);
+            this.lblNome.Size = new System.Drawing.Size(44, 13);
             this.lblNome.TabIndex = 3;
             this.lblNome.Text = "Marca *";
             // 
@@ -60,8 +60,8 @@
             this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.MaxLength = 40;
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(411, 22);
-            this.txtNome.TabIndex = 1;
+            this.txtNome.Size = new System.Drawing.Size(411, 20);
+            this.txtNome.TabIndex = 2;
             // 
             // frmCadastroMarca
             // 
@@ -85,6 +85,7 @@
             this.Controls.SetChildIndex(this.txtNome, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

@@ -443,5 +443,42 @@ namespace projeto_patrica.pages.cadastro
             lblPorcentagemTotalNum.Text = total.ToString("F2");
         }
 
+        public override void CamposRestricoes()
+        {
+            base.CamposRestricoes();
+
+            txtDescricao.MaxLength = 40;
+            txtQtdParcelas.MaxLength = 10;
+            txtJuros.MaxLength = 7;
+            txtMulta.MaxLength = 7;
+            txtDesconto.MaxLength = 7;
+            txtNumParcela.MaxLength = 10;
+            txtPrazoDias.MaxLength = 10;
+            txtPercentualParcela.MaxLength = 7;
+
+
+            txtQtdParcelas.KeyPress -= ApenasNumeros;
+            txtQtdParcelas.KeyPress += ApenasNumeros;
+
+            txtJuros.KeyPress -= ApenasNumeros;
+            txtJuros.KeyPress += ApenasNumeros;
+
+            txtMulta.KeyPress -= ApenasNumeros;
+            txtMulta.KeyPress += ApenasNumeros;
+
+            txtDesconto.KeyPress -= ApenasNumeros;
+            txtDesconto.KeyPress += ApenasNumeros;
+
+            txtNumParcela.KeyPress -= ApenasNumeros;
+            txtNumParcela.KeyPress += ApenasNumeros;
+
+            txtPrazoDias.KeyPress -= ApenasNumeros;
+            txtPrazoDias.KeyPress += ApenasNumeros;
+
+            txtPercentualParcela.KeyPress -= ApenasNumeros;
+            txtPercentualParcela.KeyPress += ApenasNumeros;
+
+        }
+
     }
 }

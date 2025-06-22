@@ -67,9 +67,6 @@ namespace projeto_patrica.pages.cadastro
             base.Salvar();
         }
 
-
-
-
         public override void Limpartxt()
         {
             base.Limpartxt();
@@ -100,6 +97,12 @@ namespace projeto_patrica.pages.cadastro
             base.Desbloqueiatxt();
 
             txtDescricao.Enabled = true;
+        }
+
+        public override void CamposRestricoes()
+        {
+            base.CamposRestricoes();
+            txtDescricao.MaxLength = 40;
         }
     }
 }

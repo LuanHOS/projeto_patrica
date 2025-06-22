@@ -36,11 +36,11 @@
             // 
             // btnSave
             // 
-            this.btnSave.TabIndex = 3;
+            this.btnSave.TabIndex = 4;
             // 
             // btnSair
             // 
-            this.btnSair.TabIndex = 4;
+            this.btnSair.TabIndex = 5;
             // 
             // txtCodigo
             // 
@@ -51,7 +51,7 @@
             this.lblNome.AutoSize = true;
             this.lblNome.Location = new System.Drawing.Point(24, 92);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(73, 16);
+            this.lblNome.Size = new System.Drawing.Size(59, 13);
             this.lblNome.TabIndex = 3;
             this.lblNome.Text = "Categoria *";
             // 
@@ -62,15 +62,15 @@
             this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.MaxLength = 40;
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(411, 22);
-            this.txtNome.TabIndex = 1;
+            this.txtNome.Size = new System.Drawing.Size(411, 20);
+            this.txtNome.TabIndex = 2;
             // 
             // lblDescricao
             // 
             this.lblDescricao.AutoSize = true;
             this.lblDescricao.Location = new System.Drawing.Point(24, 154);
             this.lblDescricao.Name = "lblDescricao";
-            this.lblDescricao.Size = new System.Drawing.Size(69, 16);
+            this.lblDescricao.Size = new System.Drawing.Size(55, 13);
             this.lblDescricao.TabIndex = 4;
             this.lblDescricao.Text = "Descrição";
             // 
@@ -81,8 +81,8 @@
             this.txtDescricao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescricao.MaxLength = 80;
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(411, 22);
-            this.txtDescricao.TabIndex = 2;
+            this.txtDescricao.Size = new System.Drawing.Size(411, 20);
+            this.txtDescricao.TabIndex = 3;
             // 
             // frmCadastroCategoria
             // 
@@ -110,6 +110,7 @@
             this.Controls.SetChildIndex(this.txtDescricao, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

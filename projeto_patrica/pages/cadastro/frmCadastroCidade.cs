@@ -133,5 +133,10 @@ namespace projeto_patrica.pages.cadastro
                 txtEstado.Text = oEstado.Nome;
             }
         }
+        public override void CamposRestricoes()
+        {
+            base.CamposRestricoes();
+            txtNome.MaxLength = 58;
+        }
     }
 }

@@ -17,12 +17,6 @@ namespace projeto_patrica.pages.cadastro
             InitializeComponent();
         }
 
-        public void ApenasNumeros(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-                e.Handled = true;
-        }
-
         public override void CamposRestricoes()
         {
             txtNomeRazaoSocial.MaxLength = 40;

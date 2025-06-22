@@ -41,7 +41,8 @@
             this.categoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transportadoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.unidadesDeMedidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unidadeDeMedidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +73,8 @@
             this.categoriaToolStripMenuItem,
             this.marcaToolStripMenuItem,
             this.transportadoraToolStripMenuItem,
-            this.unidadesDeMedidaToolStripMenuItem});
+            this.unidadeDeMedidaToolStripMenuItem,
+            this.produtoToolStripMenuItem});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.cadastroToolStripMenuItem.Text = "Cadastro";
@@ -154,12 +156,19 @@
             this.transportadoraToolStripMenuItem.Text = "Transportadora";
             this.transportadoraToolStripMenuItem.Click += new System.EventHandler(this.transportadoraToolStripMenuItem_Click);
             // 
-            // unidadesDeMedidaToolStripMenuItem
+            // unidadeDeMedidaToolStripMenuItem
             // 
-            this.unidadesDeMedidaToolStripMenuItem.Name = "unidadesDeMedidaToolStripMenuItem";
-            this.unidadesDeMedidaToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.unidadesDeMedidaToolStripMenuItem.Text = "Unidades de Medida";
-            this.unidadesDeMedidaToolStripMenuItem.Click += new System.EventHandler(this.unidadesDeMedidaToolStripMenuItem_Click);
+            this.unidadeDeMedidaToolStripMenuItem.Name = "unidadeDeMedidaToolStripMenuItem";
+            this.unidadeDeMedidaToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.unidadeDeMedidaToolStripMenuItem.Text = "Unidade de Medida";
+            this.unidadeDeMedidaToolStripMenuItem.Click += new System.EventHandler(this.unidadeDeMedidaToolStripMenuItem_Click);
+            // 
+            // produtoToolStripMenuItem
+            // 
+            this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.produtoToolStripMenuItem.Text = "Produto";
+            this.produtoToolStripMenuItem.Click += new System.EventHandler(this.produtoToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -170,7 +179,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";
@@ -197,7 +206,8 @@
         private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marcaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transportadoraToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem unidadesDeMedidaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unidadeDeMedidaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem;
     }
 }
 

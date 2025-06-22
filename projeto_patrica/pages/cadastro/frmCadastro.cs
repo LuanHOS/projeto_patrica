@@ -65,6 +65,26 @@ namespace projeto_patrica.pages.cadastro
 
         }
 
+        public virtual void ApenasNumeros(object sender, KeyPressEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                char ch = e.KeyChar;
+
+                if (char.IsControl(ch))
+                    return;
+
+                if (char.IsDigit(ch))
+                    return;
+
+                if ((ch == ',') && !textBox.Text.Contains(","))
+                    return;
+
+                e.Handled = true;
+            }
+        }
+
+
         public virtual bool ValidacaoCampos()
         {
             return false;

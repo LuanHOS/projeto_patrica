@@ -244,6 +244,12 @@
     <Compile Include="pages\cadastro\frmCadastroPessoa.Designer.cs">
       <DependentUpon>frmCadastroPessoa.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\cadastro\frmCadastroProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroProduto.Designer.cs">
+      <DependentUpon>frmCadastroProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\cadastro\frmCadastroTransportadora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +328,12 @@
     <Compile Include="pages\consulta\frmConsultaPais.Designer.cs">
       <DependentUpon>frmConsultaPais.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\consulta\frmConsultaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaProduto.Designer.cs">
+      <DependentUpon>frmConsultaProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\consulta\frmConsultaTransportadora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -348,6 +360,9 @@
     <EmbeddedResource Include="pages\cadastro\frmCadastro.resx">
       <DependentUpon>frmCadastro.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroCategoria.resx">
+      <DependentUpon>frmCadastroCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroCidade.resx">
       <DependentUpon>frmCadastroCidade.cs</DependentUpon>
@@ -377,6 +392,9 @@
       <DependentUpon>frmCadastroFuncionario.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroMarca.resx">
+      <DependentUpon>frmCadastroMarca.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroPais.resx">
       <DependentUpon>frmCadastroPais.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -384,6 +402,9 @@
     <EmbeddedResource Include="pages\cadastro\frmCadastroPessoa.resx">
       <DependentUpon>frmCadastroPessoa.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroProduto.resx">
+      <DependentUpon>frmCadastroProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsulta.resx">
       <DependentUpon>frmConsulta.cs</DependentUpon>

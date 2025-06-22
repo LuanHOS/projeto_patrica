@@ -23,6 +23,7 @@ namespace projeto_patrica
         private marca aMarca;
         private transportadora aTransportadora;
         private unidade_medida aUnidadeMedida;
+        private produto oProduto;
 
         //Controllers
         private Controller_formaPagamento oController_formaPagamento;
@@ -36,7 +37,8 @@ namespace projeto_patrica
         private Controller_categoria oController_categoria;
         private Controller_marca oController_marca;
         private Controller_transportadora oController_transportadora;
-        private Controller_unidade_medida oController_unidade_medida; 
+        private Controller_unidade_medida oController_unidade_medida;
+        private Controller_produto oController_produto;
 
         /*
          * */
@@ -60,7 +62,8 @@ namespace projeto_patrica
             aCategoria = new categoria();
             aMarca = new marca();
             aTransportadora = new transportadora();
-            aUnidadeMedida = new unidade_medida(); 
+            aUnidadeMedida = new unidade_medida();
+            oProduto = new produto();
 
             // Instanciando Controllers
             oController_formaPagamento = new Controller_formaPagamento();
@@ -74,7 +77,8 @@ namespace projeto_patrica
             oController_categoria = new Controller_categoria();
             oController_marca = new Controller_marca();
             oController_transportadora = new Controller_transportadora();
-            oController_unidade_medida = new Controller_unidade_medida(); 
+            oController_unidade_medida = new Controller_unidade_medida();
+            oController_produto = new Controller_produto();
 
             // Passando dependências de controllers
             oController_condicaoPagamento.AController_formaPagamento = oController_formaPagamento;
@@ -86,12 +90,24 @@ namespace projeto_patrica
             oController_fornecedor.AController_condicaoPagamento = oController_condicaoPagamento;
             oController_transportadora.AController_cidade = oController_cidade;
             oController_transportadora.AController_condicaoPagamento = oController_condicaoPagamento;
+            oController_produto.AController_marca = oController_marca;
+            oController_produto.AController_categoria = oController_categoria;
+            oController_produto.AController_unidade_medida = oController_unidade_medida;
+            oController_produto.AController_fornecedor = oController_fornecedor;
         }
 
         /*
          * */
 
-        private void unidadesDeMedidaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            aInter.pecaConsultaProduto(oProduto, oController_produto);
+        }
+
+        /*
+         * */
+
+        private void unidadeDeMedidaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             aInter.pecaConsultaUnidadeMedida(aUnidadeMedida, oController_unidade_medida);
         }

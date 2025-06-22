@@ -20,7 +20,8 @@ namespace projeto_patrica
         frmCadastroCategoria oFrmCadCategoria;
         frmCadastroMarca oFrmCadMarca;
         frmCadastroTransportadora oFrmCadTransportadora;
-        frmCadastroUnidade_medida oFrmCadUnidadeMedida; 
+        frmCadastroUnidade_medida oFrmCadUnidadeMedida;
+        frmCadastroProduto oFrmCadProduto;
 
         // Formulários de Consulta
         frmConsultaCondicaoPagamento oFrmConCondPag;
@@ -35,6 +36,7 @@ namespace projeto_patrica
         frmConsultaMarca oFrmConMarca;
         frmConsultaTransportadora oFrmConTransportadora;
         frmConsultaUnidade_medida oFrmConUnidadeMedida;
+        frmConsultaProduto oFrmConProduto;
 
         /*
          * */
@@ -52,7 +54,8 @@ namespace projeto_patrica
             oFrmConCategoria = new frmConsultaCategoria();
             oFrmConMarca = new frmConsultaMarca();
             oFrmConTransportadora = new frmConsultaTransportadora();
-            oFrmConUnidadeMedida = new frmConsultaUnidade_medida(); 
+            oFrmConUnidadeMedida = new frmConsultaUnidade_medida();
+            oFrmConProduto = new frmConsultaProduto();
 
             oFrmCadCondPag = new frmCadastroCondicaoPagamento();
             oFrmCadFormPag = new frmCadastroFormaPagamento();
@@ -65,7 +68,8 @@ namespace projeto_patrica
             oFrmCadCategoria = new frmCadastroCategoria();
             oFrmCadMarca = new frmCadastroMarca();
             oFrmCadTransportadora = new frmCadastroTransportadora();
-            oFrmCadUnidadeMedida = new frmCadastroUnidade_medida(); 
+            oFrmCadUnidadeMedida = new frmCadastroUnidade_medida();
+            oFrmCadProduto = new frmCadastroProduto();
 
             oFrmConCondPag.setFrmCadastro(oFrmCadCondPag);
             oFrmConFormPag.setFrmCadastro(oFrmCadFormPag);
@@ -78,7 +82,8 @@ namespace projeto_patrica
             oFrmConCategoria.setFrmCadastro(oFrmCadCategoria);
             oFrmConMarca.setFrmCadastro(oFrmCadMarca);
             oFrmConTransportadora.setFrmCadastro(oFrmCadTransportadora);
-            oFrmConUnidadeMedida.setFrmCadastro(oFrmCadUnidadeMedida); 
+            oFrmConUnidadeMedida.setFrmCadastro(oFrmCadUnidadeMedida);
+            oFrmConProduto.setFrmCadastro(oFrmCadProduto);
 
             oFrmCadCondPag.setConsultaFormaPagamento(oFrmConFormPag);
             oFrmCadEstado.setConsultaPais(oFrmConPais);
@@ -90,6 +95,18 @@ namespace projeto_patrica
             oFrmCadCliente.setConsultaCondicaoPagamento(oFrmConCondPag);
             oFrmCadTransportadora.setConsultaCidade(oFrmConCidade);
             oFrmCadTransportadora.setConsultaCondicaoPagamento(oFrmConCondPag);
+            oFrmCadProduto.setConsultaMarca(oFrmConMarca);
+            oFrmCadProduto.setConsultaCategoria(oFrmConCategoria);
+            oFrmCadProduto.setConsultaUnidadeMedida(oFrmConUnidadeMedida);
+            oFrmCadProduto.setConsultaFornecedor(oFrmConFornecedor);
+        }
+
+        /*
+         * */
+        public void pecaConsultaProduto(produto oProduto, Controller_produto oController_produto)
+        {
+            oFrmConProduto.ConhecaObj(oProduto, oController_produto);
+            oFrmConProduto.ShowDialog();
         }
 
         /*
