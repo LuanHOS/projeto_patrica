@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.clmNome = new System.Windows.Forms.ColumnHeader();
-            this.clmCodBarras = new System.Windows.Forms.ColumnHeader();
-            this.clmMarca = new System.Windows.Forms.ColumnHeader();
-            this.clmCategoria = new System.Windows.Forms.ColumnHeader();
-            this.clmValorVenda = new System.Windows.Forms.ColumnHeader();
-            this.clmEstoque = new System.Windows.Forms.ColumnHeader();
+            this.clmNome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmCodBarras = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmMarca = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmCategoria = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmValorVenda = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmEstoque = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listV
@@ -44,13 +45,10 @@
             this.clmMarca,
             this.clmCategoria,
             this.clmValorVenda,
-            this.clmEstoque});
+            this.clmEstoque,
+            this.clmAtivo});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
             this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listV_MouseDoubleClick);
-            // 
-            // clmCod
-            // 
-            this.clmCod.Width = 100;
             // 
             // txtCodigo
             // 
@@ -86,6 +84,11 @@
             this.clmEstoque.Text = "Estoque";
             this.clmEstoque.Width = 80;
             // 
+            // clmAtivo
+            // 
+            this.clmAtivo.Text = "Ativo";
+            this.clmAtivo.Width = 100;
+            // 
             // frmConsultaProduto
             // 
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -104,5 +107,6 @@
         private System.Windows.Forms.ColumnHeader clmCategoria;
         private System.Windows.Forms.ColumnHeader clmValorVenda;
         private System.Windows.Forms.ColumnHeader clmEstoque;
+        private System.Windows.Forms.ColumnHeader clmAtivo;
     }
 }

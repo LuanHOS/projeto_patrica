@@ -77,6 +77,8 @@ namespace projeto_patrica.pages.consulta
                 {
                     ListViewItem item = new ListViewItem(oUnidadeMedida.Id.ToString());
                     item.SubItems.Add(oUnidadeMedida.Nome);
+                    item.SubItems.Add(oUnidadeMedida.Ativo ? "Sim" : "Não");
+
                     item.Tag = oUnidadeMedida;
                     listV.Items.Add(item);
                 }
@@ -109,6 +111,8 @@ namespace projeto_patrica.pages.consulta
             {
                 ListViewItem item = new ListViewItem(Convert.ToString(oUnidadeMedida.Id));
                 item.SubItems.Add(oUnidadeMedida.Nome);
+                item.SubItems.Add(oUnidadeMedida.Ativo ? "Sim" : "Não");
+
                 item.Tag = oUnidadeMedida;
                 this.listV.Items.Add(item);
             }

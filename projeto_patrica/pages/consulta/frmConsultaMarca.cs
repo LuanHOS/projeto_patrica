@@ -78,6 +78,8 @@ namespace projeto_patrica.pages.consulta
                     ListViewItem item = new ListViewItem(oMarca.Id.ToString());
                     item.SubItems.Add(oMarca.Nome);
                     item.Tag = oMarca;
+                    item.SubItems.Add(oMarca.Ativo ? "Sim" : "Não");
+
                     listV.Items.Add(item);
                 }
             }
@@ -109,6 +111,8 @@ namespace projeto_patrica.pages.consulta
             {
                 ListViewItem item = new ListViewItem(Convert.ToString(oMarca.Id));
                 item.SubItems.Add(oMarca.Nome);
+                item.SubItems.Add(oMarca.Ativo ? "Sim" : "Não");
+
                 item.Tag = oMarca;
                 this.listV.Items.Add(item);
             }

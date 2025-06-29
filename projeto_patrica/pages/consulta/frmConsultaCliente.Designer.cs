@@ -102,7 +102,7 @@
             // clmAtivo
             // 
             this.clmAtivo.Text = "Ativo";
-            this.clmAtivo.Width = 80;
+            this.clmAtivo.Width = 100;
             // 
             // clmGenero
             // 

@@ -78,6 +78,8 @@ namespace projeto_patrica.pages.consulta
             {
                 ListViewItem item = new ListViewItem(Convert.ToString(aFormaPagamento.Id));
                 item.SubItems.Add(aFormaPagamento.Descricao);
+                item.SubItems.Add(aFormaPagamento.Ativo ? "Sim" : "Não");
+
                 item.Tag = aFormaPagamento;
                 listV.Items.Add(item);
             }
@@ -109,6 +111,8 @@ namespace projeto_patrica.pages.consulta
             {
                 ListViewItem item = new ListViewItem(Convert.ToString(aFormaPagamento.Id));
                 item.SubItems.Add(aFormaPagamento.Descricao);
+                item.SubItems.Add(aFormaPagamento.Ativo ? "Sim" : "Não");
+
                 item.Tag = aFormaPagamento;
                 listV.Items.Add(item);
             }

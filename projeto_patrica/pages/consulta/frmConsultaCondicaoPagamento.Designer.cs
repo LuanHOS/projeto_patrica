@@ -30,13 +30,15 @@
         {
             this.clmDescricao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmQtdParcelas = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listV
             // 
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmDescricao,
-            this.clmQtdParcelas});
+            this.clmQtdParcelas,
+            this.clmAtivo});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.ListV_SelectedIndexChanged);
             this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaCondicaoPagamento_MouseDoubleClick);
             // 
@@ -49,6 +51,11 @@
             // 
             this.clmQtdParcelas.Text = "Qtd. de Parcelas";
             this.clmQtdParcelas.Width = 150;
+            // 
+            // clmAtivo
+            // 
+            this.clmAtivo.Text = "Ativo";
+            this.clmAtivo.Width = 100;
             // 
             // frmConsultaCondicaoPagamento
             // 
@@ -64,5 +71,6 @@
 
         private System.Windows.Forms.ColumnHeader clmDescricao;
         private System.Windows.Forms.ColumnHeader clmQtdParcelas;
+        private System.Windows.Forms.ColumnHeader clmAtivo;
     }
 }

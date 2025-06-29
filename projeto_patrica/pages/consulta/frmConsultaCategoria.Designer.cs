@@ -30,13 +30,15 @@
         {
             this.clmNome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDescricao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listV
             // 
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmNome,
-            this.clmDescricao});
+            this.clmDescricao,
+            this.clmAtivo});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
             this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaCategoria_MouseDoubleClick);
             // 
@@ -54,6 +56,11 @@
             this.clmDescricao.Text = "Descrição";
             this.clmDescricao.Width = 350;
             // 
+            // clmAtivo
+            // 
+            this.clmAtivo.Text = "Ativo";
+            this.clmAtivo.Width = 100;
+            // 
             // frmConsultaCategoria
             // 
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -68,5 +75,6 @@
 
         private System.Windows.Forms.ColumnHeader clmNome;
         private System.Windows.Forms.ColumnHeader clmDescricao;
+        private System.Windows.Forms.ColumnHeader clmAtivo;
     }
 }

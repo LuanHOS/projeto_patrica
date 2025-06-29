@@ -79,6 +79,8 @@ namespace projeto_patrica.pages.consulta
                 ListViewItem item = new ListViewItem(cidade.Id.ToString());
                 item.SubItems.Add(cidade.Nome);
                 item.SubItems.Add(cidade.OEstado.Nome);
+                item.SubItems.Add(cidade.Ativo ? "Sim" : "Não");
+
                 item.Tag = cidade;
                 listV.Items.Add(item);
             }
@@ -113,6 +115,8 @@ namespace projeto_patrica.pages.consulta
                 ListViewItem item = new ListViewItem(cidade.Id.ToString());
                 item.SubItems.Add(cidade.Nome);
                 item.SubItems.Add(cidade.OEstado.Nome);
+                item.SubItems.Add(cidade.Ativo ? "Sim" : "Não");
+
                 item.Tag = cidade;
                 listV.Items.Add(item);
             }

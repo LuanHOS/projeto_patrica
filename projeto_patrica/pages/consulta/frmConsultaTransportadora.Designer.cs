@@ -104,7 +104,7 @@
             // clmAtivo
             // 
             this.clmAtivo.Text = "Ativo";
-            this.clmAtivo.Width = 80;
+            this.clmAtivo.Width = 100;
             // 
             // frmConsultaTransportadora
             // 
@@ -112,6 +112,7 @@
             this.Text = "Consulta de Transportadora";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

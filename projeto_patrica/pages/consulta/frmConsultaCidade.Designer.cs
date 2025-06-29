@@ -30,19 +30,17 @@
         {
             this.clmNome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmEstado = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listV
             // 
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmNome,
-            this.clmEstado});
+            this.clmEstado,
+            this.clmAtivo});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
             this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listV_MouseDoubleClick);
-            // 
-            // clmCod
-            // 
-            this.clmCod.Width = 100;
             // 
             // txtCodigo
             // 
@@ -58,6 +56,11 @@
             this.clmEstado.Text = "Estado";
             this.clmEstado.Width = 200;
             // 
+            // clmAtivo
+            // 
+            this.clmAtivo.Text = "Ativo";
+            this.clmAtivo.Width = 100;
+            // 
             // frmConsultaCidade
             // 
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -72,5 +75,6 @@
 
         private System.Windows.Forms.ColumnHeader clmNome;
         private System.Windows.Forms.ColumnHeader clmEstado;
+        private System.Windows.Forms.ColumnHeader clmAtivo;
     }
 }

@@ -410,6 +410,9 @@
       <DependentUpon>frmConsulta.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaCategoria.resx">
+      <DependentUpon>frmConsultaCategoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaCidade.resx">
       <DependentUpon>frmConsultaCidade.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -436,8 +439,20 @@
     <EmbeddedResource Include="pages\consulta\frmConsultaFuncionario.resx">
       <DependentUpon>frmConsultaFuncionario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaMarca.resx">
+      <DependentUpon>frmConsultaMarca.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaPais.resx">
       <DependentUpon>frmConsultaPais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaProduto.resx">
+      <DependentUpon>frmConsultaProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaTransportadora.resx">
+      <DependentUpon>frmConsultaTransportadora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaUnidade_medida.resx">
+      <DependentUpon>frmConsultaUnidade_medida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -83,6 +83,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(produto.OCategoria.Nome);
                 item.SubItems.Add(produto.ValorVenda.ToString());
                 item.SubItems.Add(produto.Estoque.ToString());
+                item.SubItems.Add(produto.Ativo ? "Sim" : "Não");
                 item.Tag = produto;
                 listV.Items.Add(item);
             }
@@ -123,6 +124,8 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(produto.OCategoria.Nome);
                 item.SubItems.Add(produto.ValorVenda.ToString("C"));
                 item.SubItems.Add(produto.Estoque.ToString());
+                item.SubItems.Add(produto.Ativo ? "Sim" : "Não");
+
                 item.Tag = produto;
                 listV.Items.Add(item);
             }

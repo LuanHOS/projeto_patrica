@@ -30,19 +30,17 @@
         {
             this.clmNome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmPais = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listV
             // 
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmNome,
-            this.clmPais});
+            this.clmPais,
+            this.clmAtivo});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
             this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaEstado_MouseDoubleClick);
-            // 
-            // clmCod
-            // 
-            this.clmCod.Width = 100;
             // 
             // txtCodigo
             // 
@@ -57,6 +55,11 @@
             // 
             this.clmPais.Text = "País";
             this.clmPais.Width = 200;
+            // 
+            // clmAtivo
+            // 
+            this.clmAtivo.Text = "Ativo";
+            this.clmAtivo.Width = 100;
             // 
             // frmConsultaEstado
             // 
@@ -73,5 +76,6 @@
 
         private System.Windows.Forms.ColumnHeader clmNome;
         private System.Windows.Forms.ColumnHeader clmPais;
+        private System.Windows.Forms.ColumnHeader clmAtivo;
     }
 }

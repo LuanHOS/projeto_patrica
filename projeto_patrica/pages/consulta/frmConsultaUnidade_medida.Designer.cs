@@ -29,18 +29,16 @@
         private void InitializeComponent()
         {
             this.clmNome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listV
             // 
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clmNome});
+            this.clmNome,
+            this.clmAtivo});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
             this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmConsultaUnidade_medida_MouseDoubleClick);
-            // 
-            // clmCod
-            // 
-            this.clmCod.Width = 100;
             // 
             // txtCodigo
             // 
@@ -50,6 +48,11 @@
             // 
             this.clmNome.Text = "Unidade de Medida";
             this.clmNome.Width = 200;
+            // 
+            // clmAtivo
+            // 
+            this.clmAtivo.Text = "Ativo";
+            this.clmAtivo.Width = 100;
             // 
             // frmConsultaUnidade_medida
             // 
@@ -65,5 +68,6 @@
         #endregion
 
         private System.Windows.Forms.ColumnHeader clmNome;
+        private System.Windows.Forms.ColumnHeader clmAtivo;
     }
 }
