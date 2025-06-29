@@ -40,7 +40,6 @@
             this.fornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.transportadoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unidadeDeMedidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -72,7 +71,6 @@
             this.fornecedorToolStripMenuItem,
             this.categoriaToolStripMenuItem,
             this.marcaToolStripMenuItem,
-            this.transportadoraToolStripMenuItem,
             this.unidadeDeMedidaToolStripMenuItem,
             this.produtoToolStripMenuItem});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
@@ -149,13 +147,6 @@
             this.marcaToolStripMenuItem.Text = "Marca";
             this.marcaToolStripMenuItem.Click += new System.EventHandler(this.marcaToolStripMenuItem_Click);
             // 
-            // transportadoraToolStripMenuItem
-            // 
-            this.transportadoraToolStripMenuItem.Name = "transportadoraToolStripMenuItem";
-            this.transportadoraToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.transportadoraToolStripMenuItem.Text = "Transportadora";
-            this.transportadoraToolStripMenuItem.Click += new System.EventHandler(this.transportadoraToolStripMenuItem_Click);
-            // 
             // unidadeDeMedidaToolStripMenuItem
             // 
             this.unidadeDeMedidaToolStripMenuItem.Name = "unidadeDeMedidaToolStripMenuItem";
@@ -205,7 +196,6 @@
         private System.Windows.Forms.ToolStripMenuItem fornecedorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marcaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem transportadoraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unidadeDeMedidaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem;
     }
