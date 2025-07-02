@@ -52,10 +52,8 @@ namespace projeto_patrica.pages.cadastro
                 }
             }
 
-
             if (!ValidacaoCampos())
                 return;
-
 
             if (
                 string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||

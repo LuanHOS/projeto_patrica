@@ -22,6 +22,8 @@ namespace projeto_patrica.pages.cadastro
 
         public override void CamposRestricoes()
         {
+            base.CamposRestricoes();
+
             txtNomeRazaoSocial.MaxLength = 40;
             txtApelidoNomeFantasia.MaxLength = 40;
             txtCpfCnpj.MaxLength = 14;

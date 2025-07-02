@@ -299,6 +299,8 @@ namespace projeto_patrica.pages.cadastro
 
         public override void CamposRestricoes()
         {
+            base.CamposRestricoes();
+
             txtCodBarras.MaxLength = 13;
             txtNome.MaxLength = 40;
             txtDescricao.MaxLength = 80;

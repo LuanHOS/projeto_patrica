@@ -72,7 +72,7 @@ namespace projeto_patrica.pages.cadastro
 
         public virtual void CamposRestricoes()
         {
-
+            DisablePasteInTextBoxes(this.Controls);
         }
 
         /// Permite a digitação apenas de números inteiros (0-9) e teclas de controle (ex: Backspace).
@@ -158,6 +158,23 @@ namespace projeto_patrica.pages.cadastro
 
                 // Bloqueia qualquer outro caractere
                 e.Handled = true;
+            }
+        }
+
+        // Desabilitar a colagem em todos os textboxes
+        private void DisablePasteInTextBoxes(Control.ControlCollection controls)
+        {
+            foreach (Control control in controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    textBox.ShortcutsEnabled = false;
+                }
+
+                if (control.HasChildren)
+                {
+                    DisablePasteInTextBoxes(control.Controls);
+                }
             }
         }
     }
