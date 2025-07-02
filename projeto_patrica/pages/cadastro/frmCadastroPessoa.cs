@@ -12,9 +12,12 @@ namespace projeto_patrica.pages.cadastro
 {
     public partial class frmCadastroPessoa : projeto_patrica.pages.cadastro.frmCadastro
     {
+        protected bool isFisica;
+
         public frmCadastroPessoa() : base()
         {
             InitializeComponent();
+            this.isFisica = true;
         }
 
         public override void CamposRestricoes()
@@ -53,29 +56,51 @@ namespace projeto_patrica.pages.cadastro
             string doc = txtCpfCnpj.Text.Trim();
             if (!string.IsNullOrEmpty(doc))
             {
-                if (doc.Length <= 11 && !validaCPF.IsCpf(doc))
+                if (isFisica) // Se for Pessoa Física (CPF)
                 {
-                    MessageBox.Show("CPF inválido.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtCpfCnpj.Focus();
-
-                    return false;
+                    if (doc.Length != 11)
+                    {
+                        MessageBox.Show("CPF deve conter 11 dígitos.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtCpfCnpj.Focus();
+                        return false;
+                    }
+                    if (!validaCPF.IsCpf(doc))
+                    {
+                        MessageBox.Show("CPF inválido.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtCpfCnpj.Focus();
+                        return false;
+                    }
                 }
-                else if (doc.Length > 11 && !validaCNPJ.IsCnpj(doc))
+                else // Se for Pessoa Jurídica (CNPJ)
                 {
-                    MessageBox.Show("CNPJ inválido.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtCpfCnpj.Focus();
-
-                    return false;
+                    if (doc.Length != 14)
+                    {
+                        MessageBox.Show("CNPJ deve conter 14 dígitos.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtCpfCnpj.Focus();
+                        return false;
+                    }
+                    if (!validaCNPJ.IsCnpj(doc))
+                    {
+                        MessageBox.Show("CNPJ inválido.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtCpfCnpj.Focus();
+                        return false;
+                    }
                 }
             }
 
+            // --- Data de Nascimento/Criação ---
+            if (dtpDataNascimentoCriacao.Value > DateTime.Today)
+            {
+                MessageBox.Show("A Data de Nascimento/Criação não pode ser uma data futura.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dtpDataNascimentoCriacao.Focus();
+                return false;
+            }
+
             // --- E-mail ---
-            txtEmail.MaxLength = 40;
-            if (!System.Text.RegularExpressions.Regex.IsMatch(txtEmail.Text, @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"))
+            if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !System.Text.RegularExpressions.Regex.IsMatch(txtEmail.Text, @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"))
             {
                 MessageBox.Show("E-mail inválido. Informe um endereço de e-mail no formato correto (ex: nome@dominio.com).", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtEmail.Focus();
-
                 return false;
             }
 
@@ -84,7 +109,6 @@ namespace projeto_patrica.pages.cadastro
             {
                 MessageBox.Show("CEP inválido.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCep.Focus();
-
                 return false;
             }
 

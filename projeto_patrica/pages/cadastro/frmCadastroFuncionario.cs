@@ -34,6 +34,18 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
+            if (btnSave.Text == "Excluir")
+            {
+                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (resp == DialogResult.Yes)
+                {
+                    txtCodigo.Text = aController_funcionario.Excluir(oFuncionario);
+                    MessageBox.Show("O funcionário foi excluído com sucesso.");
+                    Sair();
+                    return;
+                }
+            }
+
             if (!ValidacaoCampos())
                 return;
 
@@ -117,17 +129,7 @@ namespace projeto_patrica.pages.cadastro
 
             try
             {
-                if (btnSave.Text == "Excluir")
-                {
-                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (resp == DialogResult.Yes)
-                    {
-                        txtCodigo.Text = aController_funcionario.Excluir(oFuncionario);
-                        MessageBox.Show("O funcionário foi excluído com sucesso.");
-                        Sair();
-                    }
-                }
-                else if (btnSave.Text == "Alterar")
+                if (btnSave.Text == "Alterar")
                 {
                     txtCodigo.Text = aController_funcionario.Salvar(oFuncionario);
                     MessageBox.Show("Funcionário alterado com sucesso.");
@@ -311,12 +313,12 @@ namespace projeto_patrica.pages.cadastro
             txtCpfCnpj.MaxLength = 11;
             txtMatricula.MaxLength = 20;
             txtCargo.MaxLength = 40;
-            txtSalario.MaxLength = 40;
+            txtSalario.MaxLength = 11;
             txtTurno.MaxLength = 40;
             txtCargaHoraria.MaxLength = 3;
 
-            txtSalario.KeyPress -= ApenasNumeros;
-            txtSalario.KeyPress += ApenasNumeros;
+            txtSalario.KeyPress -= ApenasNumerosDecimal;
+            txtSalario.KeyPress += ApenasNumerosDecimal;
 
             txtCargaHoraria.KeyPress -= ApenasNumeros;
             txtCargaHoraria.KeyPress += ApenasNumeros;

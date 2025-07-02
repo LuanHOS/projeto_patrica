@@ -13,7 +13,6 @@ namespace projeto_patrica.pages.cadastro
         private Controller_fornecedor aController_fornecedor;
         private frmConsultaCidade oFrmConsultaCidade;
         private frmConsultaCondicaoPagamento oFrmConsultaCondicaoPagamento;
-        private bool isFisica = true;
         private bool isEstrangeiro = false;
 
         public frmCadastroFornecedor() : base()
@@ -41,6 +40,18 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
+            if (btnSave.Text == "Excluir")
+            {
+                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (resp == DialogResult.Yes)
+                {
+                    txtCodigo.Text = aController_fornecedor.Excluir(oFornecedor);
+                    MessageBox.Show("Fornecedor excluído com sucesso.");
+                    Sair();
+                    return;
+                }
+            }
+
 
             if (!ValidacaoCampos())
                 return;
@@ -102,17 +113,7 @@ namespace projeto_patrica.pages.cadastro
 
             try
             {
-                if (btnSave.Text == "Excluir")
-                {
-                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (resp == DialogResult.Yes)
-                    {
-                        txtCodigo.Text = aController_fornecedor.Excluir(oFornecedor);
-                        MessageBox.Show("Fornecedor excluído com sucesso.");
-                        Sair();
-                    }
-                }
-                else if (btnSave.Text == "Alterar")
+                if (btnSave.Text == "Alterar")
                 {
                     txtCodigo.Text = aController_fornecedor.Salvar(oFornecedor);
                     MessageBox.Show("Fornecedor alterado com sucesso.");

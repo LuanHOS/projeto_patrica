@@ -302,23 +302,23 @@ namespace projeto_patrica.pages.cadastro
             txtCodBarras.MaxLength = 13;
             txtNome.MaxLength = 40;
             txtDescricao.MaxLength = 80;
-            txtValorCompra.MaxLength = 12;
-            txtValorVenda.MaxLength = 12;
-            txtPorcentagemLucro.MaxLength = 7;
+            txtValorCompra.MaxLength = 11;
+            txtValorVenda.MaxLength = 11;
+            txtPorcentagemLucro.MaxLength = 11;
             txtEstoque.MaxLength = 10;
 
 
             txtCodBarras.KeyPress -= ApenasNumeros;
             txtCodBarras.KeyPress += ApenasNumeros;
 
-            txtValorCompra.KeyPress -= ApenasNumeros;
-            txtValorCompra.KeyPress += ApenasNumeros;
+            txtValorCompra.KeyPress -= ApenasNumerosDecimal;
+            txtValorCompra.KeyPress += ApenasNumerosDecimal;
 
-            txtValorVenda.KeyPress -= ApenasNumeros;
-            txtValorVenda.KeyPress += ApenasNumeros;
+            txtValorVenda.KeyPress -= ApenasNumerosDecimal;
+            txtValorVenda.KeyPress += ApenasNumerosDecimal;
 
-            txtPorcentagemLucro.KeyPress -= ApenasNumeros;
-            txtPorcentagemLucro.KeyPress += ApenasNumeros;
+            txtPorcentagemLucro.KeyPress -= ApenasNumerosDecimal;
+            txtPorcentagemLucro.KeyPress += ApenasNumerosDecimal;
 
             txtEstoque.KeyPress -= ApenasNumeros;
             txtEstoque.KeyPress += ApenasNumeros;

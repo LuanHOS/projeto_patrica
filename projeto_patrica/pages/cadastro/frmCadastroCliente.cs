@@ -12,7 +12,6 @@ namespace projeto_patrica.pages.cadastro
         private Controller_cliente aController_cliente;
         private frmConsultaCidade oFrmConsultaCidade;
         private frmConsultaCondicaoPagamento oFrmConsultaCondicaoPagamento;
-        private bool isFisica = true;
         private bool isEstrangeiro = false;
 
         public frmCadastroCliente() : base()
@@ -40,6 +39,18 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
+            if (btnSave.Text == "Excluir")
+            {
+                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (resp == DialogResult.Yes)
+                {
+                    txtCodigo.Text = aController_cliente.Excluir(oCliente);
+                    MessageBox.Show("Cliente excluído com sucesso.");
+                    Sair();
+                    return;
+                }
+            }
+
             if (!ValidacaoCampos())
                 return;
 
@@ -319,10 +330,10 @@ namespace projeto_patrica.pages.cadastro
         {
             base.CamposRestricoes();
 
-            txtLimiteDeCredito.MaxLength = 13;
+            txtLimiteDeCredito.MaxLength = 11;
 
-            txtLimiteDeCredito.KeyPress -= ApenasNumeros;
-            txtLimiteDeCredito.KeyPress += ApenasNumeros;
+            txtLimiteDeCredito.KeyPress -= ApenasNumerosDecimal;
+            txtLimiteDeCredito.KeyPress += ApenasNumerosDecimal;
         }
     }
 }

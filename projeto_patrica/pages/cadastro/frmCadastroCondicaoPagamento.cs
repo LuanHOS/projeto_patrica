@@ -449,25 +449,25 @@ namespace projeto_patrica.pages.cadastro
 
             txtDescricao.MaxLength = 40;
             txtQtdParcelas.MaxLength = 10;
-            txtJuros.MaxLength = 7;
-            txtMulta.MaxLength = 7;
-            txtDesconto.MaxLength = 7;
+            txtJuros.MaxLength = 11;
+            txtMulta.MaxLength = 11;
+            txtDesconto.MaxLength = 11;
             txtNumParcela.MaxLength = 10;
             txtPrazoDias.MaxLength = 10;
-            txtPercentualParcela.MaxLength = 7;
+            txtPercentualParcela.MaxLength = 11;
 
 
             txtQtdParcelas.KeyPress -= ApenasNumeros;
             txtQtdParcelas.KeyPress += ApenasNumeros;
 
-            txtJuros.KeyPress -= ApenasNumeros;
-            txtJuros.KeyPress += ApenasNumeros;
+            txtJuros.KeyPress -= ApenasNumerosDecimal;
+            txtJuros.KeyPress += ApenasNumerosDecimal;
 
-            txtMulta.KeyPress -= ApenasNumeros;
-            txtMulta.KeyPress += ApenasNumeros;
+            txtMulta.KeyPress -= ApenasNumerosDecimal;
+            txtMulta.KeyPress += ApenasNumerosDecimal;
 
-            txtDesconto.KeyPress -= ApenasNumeros;
-            txtDesconto.KeyPress += ApenasNumeros;
+            txtDesconto.KeyPress -= ApenasNumerosDecimal;
+            txtDesconto.KeyPress += ApenasNumerosDecimal;
 
             txtNumParcela.KeyPress -= ApenasNumeros;
             txtNumParcela.KeyPress += ApenasNumeros;
@@ -475,8 +475,8 @@ namespace projeto_patrica.pages.cadastro
             txtPrazoDias.KeyPress -= ApenasNumeros;
             txtPrazoDias.KeyPress += ApenasNumeros;
 
-            txtPercentualParcela.KeyPress -= ApenasNumeros;
-            txtPercentualParcela.KeyPress += ApenasNumeros;
+            txtPercentualParcela.KeyPress -= ApenasNumerosDecimal;
+            txtPercentualParcela.KeyPress += ApenasNumerosDecimal;
 
         }
 
