@@ -40,19 +40,19 @@ namespace projeto_patrica.pages.cadastro
                     DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (resp == DialogResult.Yes)
                     {
-                        txtCodigo.Text = aController_unidade_medida.Excluir(oUnidadeMedida);
+                        aController_unidade_medida.Excluir(oUnidadeMedida);
                         MessageBox.Show("A unidade de medida \"" + oUnidadeMedida.Nome + "\" foi excluída com sucesso.");
                         Sair();
                     }
                 }
                 else if (btnSave.Text == "Alterar")
                 {
-                    txtCodigo.Text = aController_unidade_medida.Salvar(oUnidadeMedida);
+                    aController_unidade_medida.Salvar(oUnidadeMedida);
                     MessageBox.Show("A unidade de medida \"" + oUnidadeMedida.Nome + "\" foi alterada com sucesso.");
                 }
                 else
                 {
-                    txtCodigo.Text = aController_unidade_medida.Salvar(oUnidadeMedida);
+                    aController_unidade_medida.Salvar(oUnidadeMedida);
                     MessageBox.Show("A unidade de medida \"" + oUnidadeMedida.Nome + "\" foi salva com o código " + txtCodigo.Text + ".");
                 }
             }

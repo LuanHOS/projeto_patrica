@@ -44,7 +44,7 @@ namespace projeto_patrica.pages.cadastro
                 DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (resp == DialogResult.Yes)
                 {
-                    txtCodigo.Text = aController_cliente.Excluir(oCliente);
+                    aController_cliente.Excluir(oCliente);
                     MessageBox.Show("Cliente excluído com sucesso.");
                     Sair();
                     return;
@@ -112,24 +112,14 @@ namespace projeto_patrica.pages.cadastro
 
             try
             {
-                if (btnSave.Text == "Excluir")
+                if (btnSave.Text == "Alterar")
                 {
-                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (resp == DialogResult.Yes)
-                    {
-                        txtCodigo.Text = aController_cliente.Excluir(oCliente);
-                        MessageBox.Show("Cliente excluído com sucesso.");
-                        Sair();
-                    }
-                }
-                else if (btnSave.Text == "Alterar")
-                {
-                    txtCodigo.Text = aController_cliente.Salvar(oCliente);
+                    aController_cliente.Salvar(oCliente);
                     MessageBox.Show("Cliente alterado com sucesso.");
                 }
                 else
                 {
-                    txtCodigo.Text = aController_cliente.Salvar(oCliente);
+                    aController_cliente.Salvar(oCliente);
                     MessageBox.Show("Cliente salvo com o código " + txtCodigo.Text + ".");
                 }
             }

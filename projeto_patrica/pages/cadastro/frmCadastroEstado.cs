@@ -52,19 +52,19 @@ namespace projeto_patrica.pages.cadastro
                     DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (resp == DialogResult.Yes)
                     {
-                        txtCodigo.Text = aController_estado.Excluir(oEstado);
+                        aController_estado.Excluir(oEstado);
                         MessageBox.Show("O estado \"" + oEstado.Nome + "\" foi excluído com sucesso.");
                         Sair();
                     }
                 }
                 else if (btnSave.Text == "Alterar")
                 {
-                    txtCodigo.Text = aController_estado.Salvar(oEstado);
+                    aController_estado.Salvar(oEstado);
                     MessageBox.Show("O estado \"" + oEstado.Nome + "\" foi alterado com sucesso.");
                 }
                 else
                 {
-                    txtCodigo.Text = aController_estado.Salvar(oEstado);
+                    aController_estado.Salvar(oEstado);
                     MessageBox.Show("O estado \"" + oEstado.Nome + "\" foi salvo com o código " + txtCodigo.Text + ".");
                 }
             }

@@ -42,19 +42,19 @@ namespace projeto_patrica.pages.cadastro
                     DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (resp == DialogResult.Yes)
                     {
-                        txtCodigo.Text = aController_formaPagamento.Excluir(aFormaPagamento);
+                        aController_formaPagamento.Excluir(aFormaPagamento);
                         MessageBox.Show("A forma de pagamento \"" + aFormaPagamento.Descricao + "\" foi excluída com sucesso.");
                         Sair();
                     }
                 }
                 else if (btnSave.Text == "Alterar")
                 {
-                    txtCodigo.Text = aController_formaPagamento.Salvar(aFormaPagamento);
+                    aController_formaPagamento.Salvar(aFormaPagamento);
                     MessageBox.Show("A forma de pagamento \"" + aFormaPagamento.Descricao + "\" foi alterada com sucesso.");
                 }
                 else
                 {
-                    txtCodigo.Text = aController_formaPagamento.Salvar(aFormaPagamento);
+                    aController_formaPagamento.Salvar(aFormaPagamento);
                     MessageBox.Show("A forma de pagamento \"" + aFormaPagamento.Descricao + "\" foi salva com o código " + txtCodigo.Text + ".");
                 }
             }

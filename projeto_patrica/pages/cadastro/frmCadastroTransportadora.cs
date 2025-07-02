@@ -106,19 +106,19 @@ namespace projeto_patrica.pages.cadastro
                     DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (resp == DialogResult.Yes)
                     {
-                        txtCodigo.Text = aController_transportadora.Excluir(oTransportadora);
+                        aController_transportadora.Excluir(oTransportadora);
                         MessageBox.Show("Transportadora excluída com sucesso.");
                         Sair();
                     }
                 }
                 else if (btnSave.Text == "Alterar")
                 {
-                    txtCodigo.Text = aController_transportadora.Salvar(oTransportadora);
+                    aController_transportadora.Salvar(oTransportadora);
                     MessageBox.Show("Transportadora alterada com sucesso.");
                 }
                 else
                 {
-                    txtCodigo.Text = aController_transportadora.Salvar(oTransportadora);
+                    aController_transportadora.Salvar(oTransportadora);
                     MessageBox.Show("Transportadora salva com o código " + txtCodigo.Text + ".");
                 }
             }

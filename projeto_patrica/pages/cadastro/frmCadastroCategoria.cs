@@ -49,12 +49,12 @@ namespace projeto_patrica.pages.cadastro
                 }
                 else if (btnSave.Text == "Alterar")
                 {
-                    txtCodigo.Text = aController_categoria.Salvar(oCategoria);
+                    aController_categoria.Salvar(oCategoria);
                     MessageBox.Show("A categoria \"" + oCategoria.Nome + "\" foi alterada com sucesso.");
                 }
                 else
                 {
-                    txtCodigo.Text = aController_categoria.Salvar(oCategoria);
+                    aController_categoria.Salvar(oCategoria);
                     MessageBox.Show("A categoria \"" + oCategoria.Nome + "\" foi salva com o código " + txtCodigo.Text + ".");
                 }
             }

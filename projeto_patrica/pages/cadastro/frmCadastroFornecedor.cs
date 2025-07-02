@@ -45,7 +45,7 @@ namespace projeto_patrica.pages.cadastro
                 DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (resp == DialogResult.Yes)
                 {
-                    txtCodigo.Text = aController_fornecedor.Excluir(oFornecedor);
+                    aController_fornecedor.Excluir(oFornecedor);
                     MessageBox.Show("Fornecedor excluído com sucesso.");
                     Sair();
                     return;
@@ -113,12 +113,12 @@ namespace projeto_patrica.pages.cadastro
             {
                 if (btnSave.Text == "Alterar")
                 {
-                    txtCodigo.Text = aController_fornecedor.Salvar(oFornecedor);
+                    aController_fornecedor.Salvar(oFornecedor);
                     MessageBox.Show("Fornecedor alterado com sucesso.");
                 }
                 else
                 {
-                    txtCodigo.Text = aController_fornecedor.Salvar(oFornecedor);
+                    aController_fornecedor.Salvar(oFornecedor);
                     MessageBox.Show("Fornecedor salvo com o código " + txtCodigo.Text + ".");
                 }
             }

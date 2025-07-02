@@ -39,7 +39,7 @@ namespace projeto_patrica.pages.cadastro
                 DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (resp == DialogResult.Yes)
                 {
-                    txtCodigo.Text = aController_funcionario.Excluir(oFuncionario);
+                    aController_funcionario.Excluir(oFuncionario);
                     MessageBox.Show("O funcionário foi excluído com sucesso.");
                     Sair();
                     return;
@@ -131,12 +131,12 @@ namespace projeto_patrica.pages.cadastro
             {
                 if (btnSave.Text == "Alterar")
                 {
-                    txtCodigo.Text = aController_funcionario.Salvar(oFuncionario);
+                    aController_funcionario.Salvar(oFuncionario);
                     MessageBox.Show("Funcionário alterado com sucesso.");
                 }
                 else
                 {
-                    txtCodigo.Text = aController_funcionario.Salvar(oFuncionario);
+                    aController_funcionario.Salvar(oFuncionario);
                     MessageBox.Show("Funcionário salvo com o código " + txtCodigo.Text);
                 }
             }

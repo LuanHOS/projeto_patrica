@@ -83,19 +83,19 @@ namespace projeto_patrica.pages.cadastro
                     DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (resp == DialogResult.Yes)
                     {
-                        txtCodigo.Text = aController_produto.Excluir(oProduto);
+                        aController_produto.Excluir(oProduto);
                         MessageBox.Show("O produto \"" + oProduto.Nome + "\" foi excluído com sucesso.");
                         Sair();
                     }
                 }
                 else if (btnSave.Text == "Alterar")
                 {
-                    txtCodigo.Text = aController_produto.Salvar(oProduto);
+                    aController_produto.Salvar(oProduto);
                     MessageBox.Show("O produto \"" + oProduto.Nome + "\" foi alterado com sucesso.");
                 }
                 else
                 {
-                    txtCodigo.Text = aController_produto.Salvar(oProduto);
+                    aController_produto.Salvar(oProduto);
                     MessageBox.Show("O produto \"" + oProduto.Nome + "\" foi salvo com o código " + txtCodigo.Text + ".");
                 }
             }

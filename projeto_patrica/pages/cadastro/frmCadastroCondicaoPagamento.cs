@@ -92,12 +92,12 @@ namespace projeto_patrica.pages.cadastro
                 }
                 else if (btnSave.Text == "Alterar")
                 {
-                    txtCodigo.Text = aController_condicaoPagamento.Salvar(aCondicaoPagamento);
+                    aController_condicaoPagamento.Salvar(aCondicaoPagamento);
                     MessageBox.Show("A condição de pagamento \"" + aCondicaoPagamento.Descricao + "\" foi alterada com sucesso.");
                 }
                 else
                 {
-                    txtCodigo.Text = aController_condicaoPagamento.Salvar(aCondicaoPagamento);
+                    aController_condicaoPagamento.Salvar(aCondicaoPagamento);
                     MessageBox.Show("A condição de pagamento \"" + aCondicaoPagamento.Descricao + "\" foi salva com o código " + txtCodigo.Text + ".");
                 }
             }
