@@ -144,26 +144,16 @@ namespace projeto_patrica.dao
         public override string Excluir(object obj)
         {
             cliente oCliente = (cliente)obj;
-            string ok = "";
+            
+            string sql = "DELETE FROM cliente WHERE ID_CLIENTE = '" + oCliente.Id + "'";
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
+            conn.CommandType = System.Data.CommandType.Text;
+            conn.CommandText = sql;
+            conn.ExecuteNonQuery();
+            conn.Connection.Close();
 
-            try
-            {
-                string sql = "DELETE FROM cliente WHERE ID_CLIENTE = '" + oCliente.Id + "'";
-                MySqlCommand conn = new MySqlCommand();
-                conn.Connection = Banco.Abrir();
-                conn.CommandType = System.Data.CommandType.Text;
-                conn.CommandText = sql;
-                conn.ExecuteNonQuery();
-                conn.Connection.Close();
-
-                ok = "Excluído com sucesso!";
-            }
-            catch (MySqlException ex)
-            {
-                ok = "Erro de banco de dados: " + ex.Message;
-            }
-
-            return ok;
+            return "Excluído com sucesso!";
         }
 
         public List<cliente> ListarClientes()

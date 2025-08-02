@@ -127,7 +127,6 @@ namespace projeto_patrica.dao
         public override string Excluir(object obj)
         {
             condicaoPagamento aCondicaoPagamento = (condicaoPagamento)obj;
-            string ok = "";
 
             string sql = "DELETE FROM CONDICAO_PAGAMENTO WHERE ID_CONDICAO_PAGAMENTO = '" + aCondicaoPagamento.Id + "'";
             MySqlCommand conn = new MySqlCommand();
@@ -136,8 +135,7 @@ namespace projeto_patrica.dao
             conn.ExecuteNonQuery();
             conn.Connection.Close();
 
-            ok = "Excluído com sucesso!";
-            return ok;
+            return "Excluído com sucesso!";
         }
 
         public override string CarregaObj(object obj)

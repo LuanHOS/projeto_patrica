@@ -53,26 +53,18 @@ namespace projeto_patrica.dao
         public override string Excluir(object obj)
         {
             formaPagamento aFormaPagamento = (formaPagamento)obj;
-            string ok = "";
 
-            try
-            {
-                string sql = "DELETE FROM FORMA_PAGAMENTO WHERE ID_FORMA_PAGAMENTO = '" + aFormaPagamento.Id + "'";
-                MySqlCommand conn = new MySqlCommand();
-                conn.Connection = Banco.Abrir();
-                conn.CommandType = System.Data.CommandType.Text;
-                conn.CommandText = sql;
-                conn.ExecuteNonQuery();
-                conn.Connection.Close();
-                ok = "Excluído!";
-            }
-            catch (MySqlException ex)
-            {
-                ok = "Erro ao excluir: " + ex.Message;
-            }
+            string sql = "DELETE FROM FORMA_PAGAMENTO WHERE ID_FORMA_PAGAMENTO = '" + aFormaPagamento.Id + "'";
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
+            conn.CommandType = System.Data.CommandType.Text;
+            conn.CommandText = sql;
+            conn.ExecuteNonQuery();
+            conn.Connection.Close();
 
-            return ok;
+            return "Excluído com sucesso!";
         }
+    
 
         public override string CarregaObj(object obj)
         {

@@ -94,26 +94,17 @@ namespace projeto_patrica.dao
         public override string Excluir(object obj)
         {
             cidade aCidade = (cidade)obj;
-            string ok = "";
 
-            try
-            {
-                string sql = "DELETE FROM cidade WHERE ID_CIDADE = '" + aCidade.Id + "'";
-                MySqlCommand conn = new MySqlCommand();
-                conn.Connection = Banco.Abrir();
-                conn.CommandType = System.Data.CommandType.Text;
-                conn.CommandText = sql;
-                conn.ExecuteNonQuery();
-                conn.Connection.Close();
+            string sql = "DELETE FROM cidade WHERE ID_CIDADE = '" + aCidade.Id + "'";
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
+            conn.CommandType = System.Data.CommandType.Text;
+            conn.CommandText = sql;
+            conn.ExecuteNonQuery();
+            conn.Connection.Close();
 
-                ok = "Excluído com sucesso!";
-            }
-            catch (MySqlException ex)
-            {
-                ok = "Erro de banco de dados: " + ex.Message;
-            }
+            return "Excluído com sucesso!";
 
-            return ok;
         }
 
         public List<cidade> ListarCidades()

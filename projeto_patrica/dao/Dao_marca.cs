@@ -89,28 +89,20 @@ namespace projeto_patrica.dao
         public override string Excluir(object obj)
         {
             marca oMarca = (marca)obj;
-            string ok = "";
 
-            try
-            {
-                string sql = "DELETE FROM MARCA WHERE ID_MARCA = '" + oMarca.Id + "'";
-                MySqlCommand conn = new MySqlCommand();
-                conn.Connection = Banco.Abrir();
-                conn.CommandType = System.Data.CommandType.Text;
-                conn.CommandText = sql;
-                conn.ExecuteNonQuery();
-                conn.Connection.Close();
 
-                ok = "Excluído com sucesso!";
-            }
-            catch (MySqlException ex)
-            {
-                ok = "Erro de banco de dados: " + ex.Message;
-            }
+             string sql = "DELETE FROM MARCA WHERE ID_MARCA = '" + oMarca.Id + "'";
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
+            conn.CommandType = System.Data.CommandType.Text;
+            conn.CommandText = sql;
+            conn.ExecuteNonQuery();
+            conn.Connection.Close();
 
-            return ok;
+            return "Excluído com sucesso!";
         }
-
+    
+        
         public List<marca> ListarMarcas()
         {
             List<marca> lista = new List<marca>();

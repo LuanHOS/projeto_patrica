@@ -112,26 +112,16 @@ namespace projeto_patrica.dao
         public override string Excluir(object obj)
         {
             unidade_medida oUnidadeMedida = (unidade_medida)obj;
-            string ok = "";
 
-            try
-            {
-                string sql = "DELETE FROM UNIDADE_MEDIDA WHERE ID_UNIDADE_MEDIDA = '" + oUnidadeMedida.Id + "'";
-                MySqlCommand conn = new MySqlCommand();
-                conn.Connection = Banco.Abrir();
-                conn.CommandType = System.Data.CommandType.Text;
-                conn.CommandText = sql;
-                conn.ExecuteNonQuery();
-                conn.Connection.Close();
+            string sql = "DELETE FROM UNIDADE_MEDIDA WHERE ID_UNIDADE_MEDIDA = '" + oUnidadeMedida.Id + "'";
+            MySqlCommand conn = new MySqlCommand();
+            conn.Connection = Banco.Abrir();
+            conn.CommandType = System.Data.CommandType.Text;
+            conn.CommandText = sql;
+            conn.ExecuteNonQuery();
+            conn.Connection.Close();
 
-                ok = "Excluído com sucesso!";
-            }
-            catch (MySqlException ex)
-            {
-                ok = "Erro de banco de dados: " + ex.Message;
-            }
-
-            return ok;
+            return "Excluído com sucesso!";
         }
     }
 }
