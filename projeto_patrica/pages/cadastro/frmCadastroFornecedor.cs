@@ -120,7 +120,7 @@ namespace projeto_patrica.pages.cadastro
                 else
                 {
                     aController_fornecedor.Salvar(oFornecedor);
-                    MessageBox.Show("Fornecedor salvo com o código " + txtCodigo.Text + ".");
+                    MessageBox.Show("Fornecedor salvo com o código " + oFornecedor.Id + ".");
                 }
 
                 base.Salvar();

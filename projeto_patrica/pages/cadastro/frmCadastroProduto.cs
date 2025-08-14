@@ -97,7 +97,7 @@ namespace projeto_patrica.pages.cadastro
                 else
                 {
                     aController_produto.Salvar(oProduto);
-                    MessageBox.Show("O produto \"" + oProduto.Nome + "\" foi salvo com o código " + txtCodigo.Text + ".");
+                    MessageBox.Show("O produto \"" + oProduto.Nome + "\" foi salvo com o código " + oProduto.Id + ".");
                 }
 
                 base.Salvar();

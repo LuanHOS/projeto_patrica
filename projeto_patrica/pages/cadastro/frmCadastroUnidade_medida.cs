@@ -54,7 +54,7 @@ namespace projeto_patrica.pages.cadastro
                 else
                 {
                     aController_unidade_medida.Salvar(oUnidadeMedida);
-                    MessageBox.Show("A unidade de medida \"" + oUnidadeMedida.Nome + "\" foi salva com o código " + txtCodigo.Text + ".");
+                    MessageBox.Show("A unidade de medida \"" + oUnidadeMedida.Nome + "\" foi salva com o código " + oUnidadeMedida.Id + ".");
                 }
 
                 base.Salvar();

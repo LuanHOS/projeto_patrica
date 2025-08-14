@@ -121,7 +121,7 @@ namespace projeto_patrica.pages.cadastro
                 else
                 {
                     aController_cliente.Salvar(oCliente);
-                    MessageBox.Show("Cliente salvo com o código " + txtCodigo.Text + ".");
+                    MessageBox.Show("Cliente salvo com o código " + oCliente.Id + ".");
                 }
 
                 base.Salvar();

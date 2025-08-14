@@ -99,7 +99,7 @@ namespace projeto_patrica.pages.cadastro
                 else
                 {
                     aController_condicaoPagamento.Salvar(aCondicaoPagamento);
-                    MessageBox.Show("A condição de pagamento \"" + aCondicaoPagamento.Descricao + "\" foi salva com o código " + txtCodigo.Text + ".");
+                    MessageBox.Show("A condição de pagamento \"" + aCondicaoPagamento.Descricao + "\" foi salva com o código " + aCondicaoPagamento.Id + ".");
                 }
 
                 base.Salvar();

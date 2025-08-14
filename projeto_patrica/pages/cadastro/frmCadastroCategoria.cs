@@ -57,7 +57,7 @@ namespace projeto_patrica.pages.cadastro
                 else
                 {
                     aController_categoria.Salvar(oCategoria);
-                    MessageBox.Show("A categoria \"" + oCategoria.Nome + "\" foi salva com o código " + txtCodigo.Text + ".");
+                    MessageBox.Show("A categoria \"" + oCategoria.Nome + "\" foi salva com o código " + oCategoria.Id + ".");
                 }
 
                 base.Salvar(); 

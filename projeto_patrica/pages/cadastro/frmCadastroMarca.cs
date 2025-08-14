@@ -54,7 +54,7 @@ namespace projeto_patrica.pages.cadastro
                 else
                 {
                     aController_marca.Salvar(oMarca);
-                    MessageBox.Show("A marca \"" + oMarca.Nome + "\" foi salva com o código " + txtCodigo.Text + ".");
+                    MessageBox.Show("A marca \"" + oMarca.Nome + "\" foi salva com o código " + oMarca.Id + ".");
                 }
 
                 base.Salvar();

@@ -56,7 +56,7 @@ namespace projeto_patrica.pages.cadastro
                 else
                 {
                     aController_formaPagamento.Salvar(aFormaPagamento);
-                    MessageBox.Show("A forma de pagamento \"" + aFormaPagamento.Descricao + "\" foi salva com o código " + txtCodigo.Text + ".");
+                    MessageBox.Show("A forma de pagamento \"" + aFormaPagamento.Descricao + "\" foi salva com o código " + aFormaPagamento.Id + ".");
                 }
 
                 base.Salvar();

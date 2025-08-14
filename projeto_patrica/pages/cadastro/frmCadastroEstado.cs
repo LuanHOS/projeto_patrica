@@ -66,7 +66,7 @@ namespace projeto_patrica.pages.cadastro
                 else
                 {
                     aController_estado.Salvar(oEstado);
-                    MessageBox.Show("O estado \"" + oEstado.Nome + "\" foi salvo com o código " + txtCodigo.Text + ".");
+                    MessageBox.Show("O estado \"" + oEstado.Nome + "\" foi salvo com o código " + oEstado.Id + ".");
                 }
 
                 base.Salvar();

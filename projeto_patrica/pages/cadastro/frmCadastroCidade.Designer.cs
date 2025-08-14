@@ -47,6 +47,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigo.ShortcutsEnabled = false;
             // 
             // label1
             // 
@@ -74,6 +75,7 @@
             this.txtEstado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.ReadOnly = true;
+            this.txtEstado.ShortcutsEnabled = false;
             this.txtEstado.Size = new System.Drawing.Size(421, 22);
             this.txtEstado.TabIndex = 3;
             // 
@@ -93,6 +95,7 @@
             this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.MaxLength = 58;
             this.txtNome.Name = "txtNome";
+            this.txtNome.ShortcutsEnabled = false;
             this.txtNome.Size = new System.Drawing.Size(421, 22);
             this.txtNome.TabIndex = 2;
             // 
@@ -107,6 +110,8 @@
             // 
             // frmCadastroCidade
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Controls.Add(this.btnPesquisarEstado);
             this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.lblEstado);

@@ -138,7 +138,7 @@ namespace projeto_patrica.pages.cadastro
                 else
                 {
                     aController_funcionario.Salvar(oFuncionario);
-                    MessageBox.Show("Funcionário salvo com o código " + txtCodigo.Text);
+                    MessageBox.Show("Funcionário salvo com o código " + oFuncionario.Id);
                 }
 
                 base.Salvar();

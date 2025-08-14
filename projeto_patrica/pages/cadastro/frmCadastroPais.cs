@@ -59,7 +59,7 @@ namespace projeto_patrica.pages.cadastro
                 else
                 {
                     aController_pais.Salvar(oPais);
-                    MessageBox.Show("O país \"" + oPais.Nome + "\" foi salvo com o código " + txtCodigo.Text + ".");
+                    MessageBox.Show("O país \"" + oPais.Nome + "\" foi salvo com o código " + oPais.Id + ".");
                 }
 
                 base.Salvar();
