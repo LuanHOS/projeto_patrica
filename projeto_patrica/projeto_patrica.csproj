@@ -196,6 +196,12 @@
     <Compile Include="pages\cadastro\frmCadastroCliente.Designer.cs">
       <DependentUpon>frmCadastroCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\cadastro\frmCadastroCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroCompra.Designer.cs">
+      <DependentUpon>frmCadastroCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\cadastro\frmCadastroCondicaoPagamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -286,6 +292,12 @@
     <Compile Include="pages\consulta\frmConsultaCliente.Designer.cs">
       <DependentUpon>frmConsultaCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\consulta\frmConsultaCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaCompra.Designer.cs">
+      <DependentUpon>frmConsultaCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\consulta\frmConsultaCondicaoPagamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -371,6 +383,9 @@
     <EmbeddedResource Include="pages\cadastro\frmCadastroCliente.resx">
       <DependentUpon>frmCadastroCliente.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroCompra.resx">
+      <DependentUpon>frmCadastroCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroCondicaoPagamento.resx">
       <DependentUpon>frmCadastroCondicaoPagamento.cs</DependentUpon>
