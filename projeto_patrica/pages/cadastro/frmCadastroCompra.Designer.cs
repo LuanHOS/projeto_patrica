@@ -37,8 +37,6 @@
             this.btnPesquisarFornecedor = new System.Windows.Forms.Button();
             this.lblDataEmissao = new System.Windows.Forms.Label();
             this.lblDataEntrega = new System.Windows.Forms.Label();
-            this.lblInformacoes = new System.Windows.Forms.Label();
-            this.lblListaDeProdutos = new System.Windows.Forms.Label();
             this.lblProduto = new System.Windows.Forms.Label();
             this.txtProduto = new System.Windows.Forms.TextBox();
             this.btnPesquisarProduto = new System.Windows.Forms.Button();
@@ -66,46 +64,49 @@
             this.btnLimparParcelas = new System.Windows.Forms.Button();
             this.btnLimparListaProduto = new System.Windows.Forms.Button();
             this.listVParcelas = new System.Windows.Forms.ListView();
-            this.lblCondicaoDePagamentolbl = new System.Windows.Forms.Label();
-            this.lblValores = new System.Windows.Forms.Label();
             this.dtpDataEntrega = new System.Windows.Forms.DateTimePicker();
             this.dtpDataEmissao = new System.Windows.Forms.DateTimePicker();
             this.lblTotalGeralProdutos = new System.Windows.Forms.Label();
             this.lblValorTotalGeralProdutos = new System.Windows.Forms.Label();
+            this.btnPesquisarCondicaoDePagamento = new System.Windows.Forms.Button();
+            this.txtCodFornecedor = new System.Windows.Forms.TextBox();
+            this.txtCodProduto = new System.Windows.Forms.TextBox();
+            this.txtCodCondicaoDePagamento = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(1159, 634);
+            this.btnSave.Location = new System.Drawing.Point(1143, 634);
             // 
             // lblCod
             // 
+            this.lblCod.Location = new System.Drawing.Point(13, 13);
             this.lblCod.Size = new System.Drawing.Size(61, 16);
             this.lblCod.Text = "Modelo *";
             // 
             // lblDataCadastro
             // 
-            this.lblDataCadastro.Location = new System.Drawing.Point(21, 621);
+            this.lblDataCadastro.Location = new System.Drawing.Point(1086, 54);
             // 
             // lblDataUltimaEdicao
             // 
-            this.lblDataUltimaEdicao.Location = new System.Drawing.Point(21, 637);
+            this.lblDataUltimaEdicao.Location = new System.Drawing.Point(1086, 70);
             // 
             // lblUltimoUsuarioQueEditou
             // 
-            this.lblUltimoUsuarioQueEditou.Location = new System.Drawing.Point(21, 653);
+            this.lblUltimoUsuarioQueEditou.Location = new System.Drawing.Point(1086, 86);
             // 
             // lblDataCadastroData
             // 
-            this.lblDataCadastroData.Location = new System.Drawing.Point(143, 621);
+            this.lblDataCadastroData.Location = new System.Drawing.Point(1222, 54);
             // 
             // lblDataUltimaEdicaoData
             // 
-            this.lblDataUltimaEdicaoData.Location = new System.Drawing.Point(172, 637);
+            this.lblDataUltimaEdicaoData.Location = new System.Drawing.Point(1251, 70);
             // 
             // lblUltimoUsuarioQueEditouNome
             // 
-            this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(192, 653);
+            this.lblUltimoUsuarioQueEditouNome.Location = new System.Drawing.Point(1251, 558);
             // 
             // checkBoxAtivo
             // 
@@ -113,16 +114,19 @@
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(1252, 634);
+            this.btnSair.Location = new System.Drawing.Point(1236, 634);
             // 
             // txtCodigo
             // 
+            this.txtCodigo.Location = new System.Drawing.Point(16, 32);
             this.txtCodigo.ShortcutsEnabled = false;
+            this.txtCodigo.Size = new System.Drawing.Size(58, 22);
+            this.txtCodigo.Text = "55";
             // 
             // lblSerie
             // 
             this.lblSerie.AutoSize = true;
-            this.lblSerie.Location = new System.Drawing.Point(172, 27);
+            this.lblSerie.Location = new System.Drawing.Point(94, 15);
             this.lblSerie.Name = "lblSerie";
             this.lblSerie.Size = new System.Drawing.Size(47, 16);
             this.lblSerie.TabIndex = 101;
@@ -130,16 +134,17 @@
             // 
             // txtSerie
             // 
-            this.txtSerie.Location = new System.Drawing.Point(175, 45);
+            this.txtSerie.Location = new System.Drawing.Point(97, 33);
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.ShortcutsEnabled = false;
-            this.txtSerie.Size = new System.Drawing.Size(100, 22);
+            this.txtSerie.Size = new System.Drawing.Size(46, 22);
             this.txtSerie.TabIndex = 102;
+            this.txtSerie.Text = "1";
             // 
             // lblNumNota
             // 
             this.lblNumNota.AutoSize = true;
-            this.lblNumNota.Location = new System.Drawing.Point(281, 27);
+            this.lblNumNota.Location = new System.Drawing.Point(169, 14);
             this.lblNumNota.Name = "lblNumNota";
             this.lblNumNota.Size = new System.Drawing.Size(89, 16);
             this.lblNumNota.TabIndex = 101;
@@ -147,16 +152,16 @@
             // 
             // txtNumDaNota
             // 
-            this.txtNumDaNota.Location = new System.Drawing.Point(284, 45);
+            this.txtNumDaNota.Location = new System.Drawing.Point(172, 32);
             this.txtNumDaNota.Name = "txtNumDaNota";
             this.txtNumDaNota.ShortcutsEnabled = false;
-            this.txtNumDaNota.Size = new System.Drawing.Size(100, 22);
+            this.txtNumDaNota.Size = new System.Drawing.Size(129, 22);
             this.txtNumDaNota.TabIndex = 102;
             // 
             // lblFornecedor
             // 
             this.lblFornecedor.AutoSize = true;
-            this.lblFornecedor.Location = new System.Drawing.Point(394, 27);
+            this.lblFornecedor.Location = new System.Drawing.Point(324, 13);
             this.lblFornecedor.Name = "lblFornecedor";
             this.lblFornecedor.Size = new System.Drawing.Size(85, 16);
             this.lblFornecedor.TabIndex = 101;
@@ -164,25 +169,25 @@
             // 
             // txtFornecedor
             // 
-            this.txtFornecedor.Location = new System.Drawing.Point(397, 45);
+            this.txtFornecedor.Location = new System.Drawing.Point(393, 32);
             this.txtFornecedor.Name = "txtFornecedor";
             this.txtFornecedor.ShortcutsEnabled = false;
-            this.txtFornecedor.Size = new System.Drawing.Size(100, 22);
+            this.txtFornecedor.Size = new System.Drawing.Size(214, 22);
             this.txtFornecedor.TabIndex = 102;
             // 
             // btnPesquisarFornecedor
             // 
-            this.btnPesquisarFornecedor.Location = new System.Drawing.Point(504, 46);
+            this.btnPesquisarFornecedor.Location = new System.Drawing.Point(613, 32);
             this.btnPesquisarFornecedor.Name = "btnPesquisarFornecedor";
-            this.btnPesquisarFornecedor.Size = new System.Drawing.Size(87, 23);
+            this.btnPesquisarFornecedor.Size = new System.Drawing.Size(39, 25);
             this.btnPesquisarFornecedor.TabIndex = 103;
-            this.btnPesquisarFornecedor.Text = "Pesquisar";
+            this.btnPesquisarFornecedor.Text = "🔎";
             this.btnPesquisarFornecedor.UseVisualStyleBackColor = true;
             // 
             // lblDataEmissao
             // 
             this.lblDataEmissao.AutoSize = true;
-            this.lblDataEmissao.Location = new System.Drawing.Point(21, 82);
+            this.lblDataEmissao.Location = new System.Drawing.Point(673, 15);
             this.lblDataEmissao.Name = "lblDataEmissao";
             this.lblDataEmissao.Size = new System.Drawing.Size(119, 16);
             this.lblDataEmissao.TabIndex = 101;
@@ -191,34 +196,16 @@
             // lblDataEntrega
             // 
             this.lblDataEntrega.AutoSize = true;
-            this.lblDataEntrega.Location = new System.Drawing.Point(208, 82);
+            this.lblDataEntrega.Location = new System.Drawing.Point(806, 15);
             this.lblDataEntrega.Name = "lblDataEntrega";
             this.lblDataEntrega.Size = new System.Drawing.Size(113, 16);
             this.lblDataEntrega.TabIndex = 101;
             this.lblDataEntrega.Text = "Data de Entrega *";
             // 
-            // lblInformacoes
-            // 
-            this.lblInformacoes.AutoSize = true;
-            this.lblInformacoes.Location = new System.Drawing.Point(21, 9);
-            this.lblInformacoes.Name = "lblInformacoes";
-            this.lblInformacoes.Size = new System.Drawing.Size(81, 16);
-            this.lblInformacoes.TabIndex = 101;
-            this.lblInformacoes.Text = "Informações";
-            // 
-            // lblListaDeProdutos
-            // 
-            this.lblListaDeProdutos.AutoSize = true;
-            this.lblListaDeProdutos.Location = new System.Drawing.Point(21, 135);
-            this.lblListaDeProdutos.Name = "lblListaDeProdutos";
-            this.lblListaDeProdutos.Size = new System.Drawing.Size(111, 16);
-            this.lblListaDeProdutos.TabIndex = 101;
-            this.lblListaDeProdutos.Text = "Lista de Produtos";
-            // 
             // lblProduto
             // 
             this.lblProduto.AutoSize = true;
-            this.lblProduto.Location = new System.Drawing.Point(21, 158);
+            this.lblProduto.Location = new System.Drawing.Point(13, 61);
             this.lblProduto.Name = "lblProduto";
             this.lblProduto.Size = new System.Drawing.Size(62, 16);
             this.lblProduto.TabIndex = 101;
@@ -226,25 +213,25 @@
             // 
             // txtProduto
             // 
-            this.txtProduto.Location = new System.Drawing.Point(24, 176);
+            this.txtProduto.Location = new System.Drawing.Point(82, 80);
             this.txtProduto.Name = "txtProduto";
             this.txtProduto.ShortcutsEnabled = false;
-            this.txtProduto.Size = new System.Drawing.Size(100, 22);
+            this.txtProduto.Size = new System.Drawing.Size(207, 22);
             this.txtProduto.TabIndex = 102;
             // 
             // btnPesquisarProduto
             // 
-            this.btnPesquisarProduto.Location = new System.Drawing.Point(130, 176);
+            this.btnPesquisarProduto.Location = new System.Drawing.Point(295, 80);
             this.btnPesquisarProduto.Name = "btnPesquisarProduto";
-            this.btnPesquisarProduto.Size = new System.Drawing.Size(89, 23);
+            this.btnPesquisarProduto.Size = new System.Drawing.Size(39, 23);
             this.btnPesquisarProduto.TabIndex = 103;
-            this.btnPesquisarProduto.Text = "Pesquisar";
+            this.btnPesquisarProduto.Text = "🔎";
             this.btnPesquisarProduto.UseVisualStyleBackColor = true;
             // 
             // lblQuantidade
             // 
             this.lblQuantidade.AutoSize = true;
-            this.lblQuantidade.Location = new System.Drawing.Point(21, 212);
+            this.lblQuantidade.Location = new System.Drawing.Point(13, 115);
             this.lblQuantidade.Name = "lblQuantidade";
             this.lblQuantidade.Size = new System.Drawing.Size(77, 16);
             this.lblQuantidade.TabIndex = 101;
@@ -252,16 +239,16 @@
             // 
             // txtQuantidade
             // 
-            this.txtQuantidade.Location = new System.Drawing.Point(24, 230);
+            this.txtQuantidade.Location = new System.Drawing.Point(16, 133);
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.ShortcutsEnabled = false;
-            this.txtQuantidade.Size = new System.Drawing.Size(100, 22);
+            this.txtQuantidade.Size = new System.Drawing.Size(74, 22);
             this.txtQuantidade.TabIndex = 102;
             // 
             // lblValorUnitario
             // 
             this.lblValorUnitario.AutoSize = true;
-            this.lblValorUnitario.Location = new System.Drawing.Point(127, 212);
+            this.lblValorUnitario.Location = new System.Drawing.Point(104, 114);
             this.lblValorUnitario.Name = "lblValorUnitario";
             this.lblValorUnitario.Size = new System.Drawing.Size(88, 16);
             this.lblValorUnitario.TabIndex = 101;
@@ -269,16 +256,16 @@
             // 
             // txtValorUnitario
             // 
-            this.txtValorUnitario.Location = new System.Drawing.Point(130, 230);
+            this.txtValorUnitario.Location = new System.Drawing.Point(107, 132);
             this.txtValorUnitario.Name = "txtValorUnitario";
             this.txtValorUnitario.ShortcutsEnabled = false;
-            this.txtValorUnitario.Size = new System.Drawing.Size(100, 22);
+            this.txtValorUnitario.Size = new System.Drawing.Size(88, 22);
             this.txtValorUnitario.TabIndex = 102;
             // 
             // lblTotalProduto
             // 
             this.lblTotalProduto.AutoSize = true;
-            this.lblTotalProduto.Location = new System.Drawing.Point(233, 212);
+            this.lblTotalProduto.Location = new System.Drawing.Point(213, 115);
             this.lblTotalProduto.Name = "lblTotalProduto";
             this.lblTotalProduto.Size = new System.Drawing.Size(66, 16);
             this.lblTotalProduto.TabIndex = 101;
@@ -286,7 +273,7 @@
             // 
             // txtTotalProduto
             // 
-            this.txtTotalProduto.Location = new System.Drawing.Point(236, 230);
+            this.txtTotalProduto.Location = new System.Drawing.Point(216, 133);
             this.txtTotalProduto.Name = "txtTotalProduto";
             this.txtTotalProduto.ShortcutsEnabled = false;
             this.txtTotalProduto.Size = new System.Drawing.Size(100, 22);
@@ -294,7 +281,7 @@
             // 
             // btnAdicionarProduto
             // 
-            this.btnAdicionarProduto.Location = new System.Drawing.Point(342, 229);
+            this.btnAdicionarProduto.Location = new System.Drawing.Point(727, 133);
             this.btnAdicionarProduto.Name = "btnAdicionarProduto";
             this.btnAdicionarProduto.Size = new System.Drawing.Size(74, 23);
             this.btnAdicionarProduto.TabIndex = 103;
@@ -304,7 +291,7 @@
             // lblValorFrete
             // 
             this.lblValorFrete.AutoSize = true;
-            this.lblValorFrete.Location = new System.Drawing.Point(21, 406);
+            this.lblValorFrete.Location = new System.Drawing.Point(13, 381);
             this.lblValorFrete.Name = "lblValorFrete";
             this.lblValorFrete.Size = new System.Drawing.Size(101, 16);
             this.lblValorFrete.TabIndex = 101;
@@ -313,7 +300,7 @@
             // lblSeguro
             // 
             this.lblSeguro.AutoSize = true;
-            this.lblSeguro.Location = new System.Drawing.Point(127, 406);
+            this.lblSeguro.Location = new System.Drawing.Point(145, 383);
             this.lblSeguro.Name = "lblSeguro";
             this.lblSeguro.Size = new System.Drawing.Size(79, 16);
             this.lblSeguro.TabIndex = 101;
@@ -322,7 +309,7 @@
             // lblDespesas
             // 
             this.lblDespesas.AutoSize = true;
-            this.lblDespesas.Location = new System.Drawing.Point(233, 406);
+            this.lblDespesas.Location = new System.Drawing.Point(282, 383);
             this.lblDespesas.Name = "lblDespesas";
             this.lblDespesas.Size = new System.Drawing.Size(98, 16);
             this.lblDespesas.TabIndex = 101;
@@ -330,32 +317,32 @@
             // 
             // txtValorFrete
             // 
-            this.txtValorFrete.Location = new System.Drawing.Point(24, 424);
+            this.txtValorFrete.Location = new System.Drawing.Point(16, 401);
             this.txtValorFrete.Name = "txtValorFrete";
             this.txtValorFrete.ShortcutsEnabled = false;
-            this.txtValorFrete.Size = new System.Drawing.Size(100, 22);
+            this.txtValorFrete.Size = new System.Drawing.Size(113, 22);
             this.txtValorFrete.TabIndex = 102;
             // 
             // txtSeguro
             // 
-            this.txtSeguro.Location = new System.Drawing.Point(130, 424);
+            this.txtSeguro.Location = new System.Drawing.Point(148, 401);
             this.txtSeguro.Name = "txtSeguro";
             this.txtSeguro.ShortcutsEnabled = false;
-            this.txtSeguro.Size = new System.Drawing.Size(100, 22);
+            this.txtSeguro.Size = new System.Drawing.Size(113, 22);
             this.txtSeguro.TabIndex = 102;
             // 
             // txtDespesas
             // 
-            this.txtDespesas.Location = new System.Drawing.Point(236, 424);
+            this.txtDespesas.Location = new System.Drawing.Point(285, 401);
             this.txtDespesas.Name = "txtDespesas";
             this.txtDespesas.ShortcutsEnabled = false;
-            this.txtDespesas.Size = new System.Drawing.Size(100, 22);
+            this.txtDespesas.Size = new System.Drawing.Size(120, 22);
             this.txtDespesas.TabIndex = 102;
             // 
             // lblValorTotalValores
             // 
             this.lblValorTotalValores.AutoSize = true;
-            this.lblValorTotalValores.Location = new System.Drawing.Point(339, 406);
+            this.lblValorTotalValores.Location = new System.Drawing.Point(426, 383);
             this.lblValorTotalValores.Name = "lblValorTotalValores";
             this.lblValorTotalValores.Size = new System.Drawing.Size(101, 16);
             this.lblValorTotalValores.TabIndex = 101;
@@ -363,15 +350,15 @@
             // 
             // txtValorTotalValores
             // 
-            this.txtValorTotalValores.Location = new System.Drawing.Point(342, 424);
+            this.txtValorTotalValores.Location = new System.Drawing.Point(429, 401);
             this.txtValorTotalValores.Name = "txtValorTotalValores";
             this.txtValorTotalValores.ShortcutsEnabled = false;
-            this.txtValorTotalValores.Size = new System.Drawing.Size(100, 22);
+            this.txtValorTotalValores.Size = new System.Drawing.Size(138, 22);
             this.txtValorTotalValores.TabIndex = 102;
             // 
             // btnEditarProduto
             // 
-            this.btnEditarProduto.Location = new System.Drawing.Point(422, 229);
+            this.btnEditarProduto.Location = new System.Drawing.Point(807, 133);
             this.btnEditarProduto.Name = "btnEditarProduto";
             this.btnEditarProduto.Size = new System.Drawing.Size(76, 23);
             this.btnEditarProduto.TabIndex = 103;
@@ -380,7 +367,7 @@
             // 
             // btnRemoverProduto
             // 
-            this.btnRemoverProduto.Location = new System.Drawing.Point(504, 229);
+            this.btnRemoverProduto.Location = new System.Drawing.Point(889, 133);
             this.btnRemoverProduto.Name = "btnRemoverProduto";
             this.btnRemoverProduto.Size = new System.Drawing.Size(75, 23);
             this.btnRemoverProduto.TabIndex = 103;
@@ -390,16 +377,16 @@
             // listVProdutos
             // 
             this.listVProdutos.HideSelection = false;
-            this.listVProdutos.Location = new System.Drawing.Point(24, 268);
+            this.listVProdutos.Location = new System.Drawing.Point(16, 171);
             this.listVProdutos.Name = "listVProdutos";
-            this.listVProdutos.Size = new System.Drawing.Size(555, 97);
+            this.listVProdutos.Size = new System.Drawing.Size(1052, 180);
             this.listVProdutos.TabIndex = 104;
             this.listVProdutos.UseCompatibleStateImageBehavior = false;
             // 
             // lblCondicaoDePagamento
             // 
             this.lblCondicaoDePagamento.AutoSize = true;
-            this.lblCondicaoDePagamento.Location = new System.Drawing.Point(21, 486);
+            this.lblCondicaoDePagamento.Location = new System.Drawing.Point(13, 439);
             this.lblCondicaoDePagamento.Name = "lblCondicaoDePagamento";
             this.lblCondicaoDePagamento.Size = new System.Drawing.Size(165, 16);
             this.lblCondicaoDePagamento.TabIndex = 101;
@@ -407,15 +394,15 @@
             // 
             // txtCondicaoDePagamento
             // 
-            this.txtCondicaoDePagamento.Location = new System.Drawing.Point(24, 504);
+            this.txtCondicaoDePagamento.Location = new System.Drawing.Point(82, 457);
             this.txtCondicaoDePagamento.Name = "txtCondicaoDePagamento";
             this.txtCondicaoDePagamento.ShortcutsEnabled = false;
-            this.txtCondicaoDePagamento.Size = new System.Drawing.Size(100, 22);
+            this.txtCondicaoDePagamento.Size = new System.Drawing.Size(234, 22);
             this.txtCondicaoDePagamento.TabIndex = 102;
             // 
             // btnGerarParcelas
             // 
-            this.btnGerarParcelas.Location = new System.Drawing.Point(130, 503);
+            this.btnGerarParcelas.Location = new System.Drawing.Point(828, 456);
             this.btnGerarParcelas.Name = "btnGerarParcelas";
             this.btnGerarParcelas.Size = new System.Drawing.Size(112, 23);
             this.btnGerarParcelas.TabIndex = 103;
@@ -424,7 +411,7 @@
             // 
             // btnLimparParcelas
             // 
-            this.btnLimparParcelas.Location = new System.Drawing.Point(248, 503);
+            this.btnLimparParcelas.Location = new System.Drawing.Point(946, 456);
             this.btnLimparParcelas.Name = "btnLimparParcelas";
             this.btnLimparParcelas.Size = new System.Drawing.Size(122, 23);
             this.btnLimparParcelas.TabIndex = 103;
@@ -433,7 +420,7 @@
             // 
             // btnLimparListaProduto
             // 
-            this.btnLimparListaProduto.Location = new System.Drawing.Point(585, 229);
+            this.btnLimparListaProduto.Location = new System.Drawing.Point(970, 133);
             this.btnLimparListaProduto.Name = "btnLimparListaProduto";
             this.btnLimparListaProduto.Size = new System.Drawing.Size(98, 23);
             this.btnLimparListaProduto.TabIndex = 103;
@@ -443,52 +430,34 @@
             // listVParcelas
             // 
             this.listVParcelas.HideSelection = false;
-            this.listVParcelas.Location = new System.Drawing.Point(24, 532);
+            this.listVParcelas.Location = new System.Drawing.Point(16, 487);
             this.listVParcelas.Name = "listVParcelas";
-            this.listVParcelas.Size = new System.Drawing.Size(555, 80);
+            this.listVParcelas.Size = new System.Drawing.Size(1052, 182);
             this.listVParcelas.TabIndex = 104;
             this.listVParcelas.UseCompatibleStateImageBehavior = false;
-            // 
-            // lblCondicaoDePagamentolbl
-            // 
-            this.lblCondicaoDePagamentolbl.AutoSize = true;
-            this.lblCondicaoDePagamentolbl.Location = new System.Drawing.Point(21, 461);
-            this.lblCondicaoDePagamentolbl.Name = "lblCondicaoDePagamentolbl";
-            this.lblCondicaoDePagamentolbl.Size = new System.Drawing.Size(157, 16);
-            this.lblCondicaoDePagamentolbl.TabIndex = 101;
-            this.lblCondicaoDePagamentolbl.Text = "Condição de Pagamento";
-            // 
-            // lblValores
-            // 
-            this.lblValores.AutoSize = true;
-            this.lblValores.Location = new System.Drawing.Point(21, 381);
-            this.lblValores.Name = "lblValores";
-            this.lblValores.Size = new System.Drawing.Size(54, 16);
-            this.lblValores.TabIndex = 101;
-            this.lblValores.Text = "Valores";
             // 
             // dtpDataEntrega
             // 
             this.dtpDataEntrega.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataEntrega.Location = new System.Drawing.Point(212, 100);
+            this.dtpDataEntrega.Location = new System.Drawing.Point(810, 33);
             this.dtpDataEntrega.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDataEntrega.Name = "dtpDataEntrega";
-            this.dtpDataEntrega.Size = new System.Drawing.Size(135, 22);
+            this.dtpDataEntrega.Size = new System.Drawing.Size(109, 22);
             this.dtpDataEntrega.TabIndex = 105;
             // 
             // dtpDataEmissao
             // 
             this.dtpDataEmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataEmissao.Location = new System.Drawing.Point(25, 100);
+            this.dtpDataEmissao.Location = new System.Drawing.Point(677, 33);
             this.dtpDataEmissao.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDataEmissao.Name = "dtpDataEmissao";
-            this.dtpDataEmissao.Size = new System.Drawing.Size(135, 22);
+            this.dtpDataEmissao.Size = new System.Drawing.Size(115, 22);
             this.dtpDataEmissao.TabIndex = 106;
             // 
             // lblTotalGeralProdutos
             // 
             this.lblTotalGeralProdutos.AutoSize = true;
-            this.lblTotalGeralProdutos.Location = new System.Drawing.Point(339, 368);
+            this.lblTotalGeralProdutos.Location = new System.Drawing.Point(839, 354);
             this.lblTotalGeralProdutos.Name = "lblTotalGeralProdutos";
             this.lblTotalGeralProdutos.Size = new System.Drawing.Size(162, 16);
             this.lblTotalGeralProdutos.TabIndex = 101;
@@ -497,20 +466,52 @@
             // lblValorTotalGeralProdutos
             // 
             this.lblValorTotalGeralProdutos.AutoSize = true;
-            this.lblValorTotalGeralProdutos.Location = new System.Drawing.Point(501, 368);
+            this.lblValorTotalGeralProdutos.Location = new System.Drawing.Point(1001, 354);
             this.lblValorTotalGeralProdutos.Name = "lblValorTotalGeralProdutos";
             this.lblValorTotalGeralProdutos.Size = new System.Drawing.Size(14, 16);
             this.lblValorTotalGeralProdutos.TabIndex = 101;
             this.lblValorTotalGeralProdutos.Text = "0";
             // 
+            // btnPesquisarCondicaoDePagamento
+            // 
+            this.btnPesquisarCondicaoDePagamento.Location = new System.Drawing.Point(322, 456);
+            this.btnPesquisarCondicaoDePagamento.Name = "btnPesquisarCondicaoDePagamento";
+            this.btnPesquisarCondicaoDePagamento.Size = new System.Drawing.Size(39, 23);
+            this.btnPesquisarCondicaoDePagamento.TabIndex = 103;
+            this.btnPesquisarCondicaoDePagamento.Text = "🔎";
+            this.btnPesquisarCondicaoDePagamento.UseVisualStyleBackColor = true;
+            // 
+            // txtCodFornecedor
+            // 
+            this.txtCodFornecedor.Location = new System.Drawing.Point(327, 33);
+            this.txtCodFornecedor.Name = "txtCodFornecedor";
+            this.txtCodFornecedor.ShortcutsEnabled = false;
+            this.txtCodFornecedor.Size = new System.Drawing.Size(60, 22);
+            this.txtCodFornecedor.TabIndex = 102;
+            // 
+            // txtCodProduto
+            // 
+            this.txtCodProduto.Location = new System.Drawing.Point(16, 80);
+            this.txtCodProduto.Name = "txtCodProduto";
+            this.txtCodProduto.ShortcutsEnabled = false;
+            this.txtCodProduto.Size = new System.Drawing.Size(60, 22);
+            this.txtCodProduto.TabIndex = 102;
+            // 
+            // txtCodCondicaoDePagamento
+            // 
+            this.txtCodCondicaoDePagamento.Location = new System.Drawing.Point(16, 456);
+            this.txtCodCondicaoDePagamento.Name = "txtCodCondicaoDePagamento";
+            this.txtCodCondicaoDePagamento.ShortcutsEnabled = false;
+            this.txtCodCondicaoDePagamento.Size = new System.Drawing.Size(60, 22);
+            this.txtCodCondicaoDePagamento.TabIndex = 102;
+            // 
             // frmCadastroCompra
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(1342, 681);
             this.Controls.Add(this.dtpDataEmissao);
             this.Controls.Add(this.dtpDataEntrega);
             this.Controls.Add(this.listVParcelas);
             this.Controls.Add(this.listVProdutos);
+            this.Controls.Add(this.btnPesquisarCondicaoDePagamento);
             this.Controls.Add(this.btnPesquisarProduto);
             this.Controls.Add(this.btnLimparListaProduto);
             this.Controls.Add(this.btnRemoverProduto);
@@ -527,11 +528,13 @@
             this.Controls.Add(this.txtValorUnitario);
             this.Controls.Add(this.txtValorFrete);
             this.Controls.Add(this.txtQuantidade);
-            this.Controls.Add(this.lblCondicaoDePagamentolbl);
             this.Controls.Add(this.lblCondicaoDePagamento);
             this.Controls.Add(this.txtProduto);
             this.Controls.Add(this.lblValorTotalValores);
             this.Controls.Add(this.lblDespesas);
+            this.Controls.Add(this.txtCodProduto);
+            this.Controls.Add(this.txtCodCondicaoDePagamento);
+            this.Controls.Add(this.txtCodFornecedor);
             this.Controls.Add(this.txtFornecedor);
             this.Controls.Add(this.lblTotalProduto);
             this.Controls.Add(this.lblSeguro);
@@ -539,7 +542,6 @@
             this.Controls.Add(this.lblValorUnitario);
             this.Controls.Add(this.lblValorTotalGeralProdutos);
             this.Controls.Add(this.lblTotalGeralProdutos);
-            this.Controls.Add(this.lblValores);
             this.Controls.Add(this.lblValorFrete);
             this.Controls.Add(this.txtSerie);
             this.Controls.Add(this.lblQuantidade);
@@ -548,14 +550,10 @@
             this.Controls.Add(this.lblDataEmissao);
             this.Controls.Add(this.lblFornecedor);
             this.Controls.Add(this.lblNumNota);
-            this.Controls.Add(this.lblListaDeProdutos);
-            this.Controls.Add(this.lblInformacoes);
             this.Controls.Add(this.lblSerie);
             this.Name = "frmCadastroCompra";
             this.Text = "Cadastro de Compra";
             this.Controls.SetChildIndex(this.lblSerie, 0);
-            this.Controls.SetChildIndex(this.lblInformacoes, 0);
-            this.Controls.SetChildIndex(this.lblListaDeProdutos, 0);
             this.Controls.SetChildIndex(this.lblNumNota, 0);
             this.Controls.SetChildIndex(this.lblFornecedor, 0);
             this.Controls.SetChildIndex(this.lblDataEmissao, 0);
@@ -564,7 +562,6 @@
             this.Controls.SetChildIndex(this.lblQuantidade, 0);
             this.Controls.SetChildIndex(this.txtSerie, 0);
             this.Controls.SetChildIndex(this.lblValorFrete, 0);
-            this.Controls.SetChildIndex(this.lblValores, 0);
             this.Controls.SetChildIndex(this.lblTotalGeralProdutos, 0);
             this.Controls.SetChildIndex(this.lblValorTotalGeralProdutos, 0);
             this.Controls.SetChildIndex(this.lblValorUnitario, 0);
@@ -572,11 +569,13 @@
             this.Controls.SetChildIndex(this.lblSeguro, 0);
             this.Controls.SetChildIndex(this.lblTotalProduto, 0);
             this.Controls.SetChildIndex(this.txtFornecedor, 0);
+            this.Controls.SetChildIndex(this.txtCodFornecedor, 0);
+            this.Controls.SetChildIndex(this.txtCodCondicaoDePagamento, 0);
+            this.Controls.SetChildIndex(this.txtCodProduto, 0);
             this.Controls.SetChildIndex(this.lblDespesas, 0);
             this.Controls.SetChildIndex(this.lblValorTotalValores, 0);
             this.Controls.SetChildIndex(this.txtProduto, 0);
             this.Controls.SetChildIndex(this.lblCondicaoDePagamento, 0);
-            this.Controls.SetChildIndex(this.lblCondicaoDePagamentolbl, 0);
             this.Controls.SetChildIndex(this.txtQuantidade, 0);
             this.Controls.SetChildIndex(this.txtValorFrete, 0);
             this.Controls.SetChildIndex(this.txtValorUnitario, 0);
@@ -593,6 +592,7 @@
             this.Controls.SetChildIndex(this.btnRemoverProduto, 0);
             this.Controls.SetChildIndex(this.btnLimparListaProduto, 0);
             this.Controls.SetChildIndex(this.btnPesquisarProduto, 0);
+            this.Controls.SetChildIndex(this.btnPesquisarCondicaoDePagamento, 0);
             this.Controls.SetChildIndex(this.listVProdutos, 0);
             this.Controls.SetChildIndex(this.listVParcelas, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
@@ -624,8 +624,6 @@
         private System.Windows.Forms.Button btnPesquisarFornecedor;
         private System.Windows.Forms.Label lblDataEmissao;
         private System.Windows.Forms.Label lblDataEntrega;
-        private System.Windows.Forms.Label lblInformacoes;
-        private System.Windows.Forms.Label lblListaDeProdutos;
         private System.Windows.Forms.Label lblProduto;
         private System.Windows.Forms.TextBox txtProduto;
         private System.Windows.Forms.Button btnPesquisarProduto;
@@ -653,11 +651,13 @@
         private System.Windows.Forms.Button btnLimparParcelas;
         private System.Windows.Forms.Button btnLimparListaProduto;
         private System.Windows.Forms.ListView listVParcelas;
-        private System.Windows.Forms.Label lblCondicaoDePagamentolbl;
-        private System.Windows.Forms.Label lblValores;
         private System.Windows.Forms.DateTimePicker dtpDataEntrega;
         private System.Windows.Forms.DateTimePicker dtpDataEmissao;
         private System.Windows.Forms.Label lblTotalGeralProdutos;
         private System.Windows.Forms.Label lblValorTotalGeralProdutos;
+        private System.Windows.Forms.Button btnPesquisarCondicaoDePagamento;
+        private System.Windows.Forms.TextBox txtCodFornecedor;
+        private System.Windows.Forms.TextBox txtCodProduto;
+        private System.Windows.Forms.TextBox txtCodCondicaoDePagamento;
     }
 }

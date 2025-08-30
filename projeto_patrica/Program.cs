@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projeto_patrica.pages.cadastro;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace projeto_patrica
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new frmPrincipal());
+			Application.Run(new frmCadastroCompra());
 		}
 	}
 }
