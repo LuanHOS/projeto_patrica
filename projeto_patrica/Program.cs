@@ -17,7 +17,7 @@ namespace projeto_patrica
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new frmCadastroCompra());
+			Application.Run(new frmPrincipal());
 		}
 	}
 }
