@@ -28,9 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.clmModelo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmSerie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmNumNota = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmFornecedor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmDataEmissao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmValorTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SuspendLayout();
+            // 
+            // listV
+            // 
+            this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmModelo,
+            this.clmSerie,
+            this.clmNumNota,
+            this.clmFornecedor,
+            this.clmDataEmissao,
+            this.clmValorTotal,
+            this.clmAtivo});
+            this.listV.Columns.RemoveAt(0); // Remove a coluna "Código" base
+            this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
+            // 
+            // clmModelo
+            // 
+            this.clmModelo.Text = "Modelo";
+            this.clmModelo.Width = 70;
+            // 
+            // clmSerie
+            // 
+            this.clmSerie.Text = "Série";
+            this.clmSerie.Width = 70;
+            // 
+            // clmNumNota
+            // 
+            this.clmNumNota.Text = "Nº Nota";
+            this.clmNumNota.Width = 100;
+            // 
+            // clmFornecedor
+            // 
+            this.clmFornecedor.Text = "Fornecedor";
+            this.clmFornecedor.Width = 250;
+            // 
+            // clmDataEmissao
+            // 
+            this.clmDataEmissao.Text = "Data Emissão";
+            this.clmDataEmissao.Width = 120;
+            // 
+            // clmValorTotal
+            // 
+            this.clmValorTotal.Text = "Valor Total";
+            this.clmValorTotal.Width = 120;
+            // 
+            // clmAtivo
+            // 
+            this.clmAtivo.Text = "Ativo";
+            this.clmAtivo.Width = 80;
+            // 
+            // frmConsultaCompra
+            // 
+            this.Name = "frmConsultaCompra";
+            this.Text = "Consulta de Compras";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ColumnHeader clmModelo;
+        private System.Windows.Forms.ColumnHeader clmSerie;
+        private System.Windows.Forms.ColumnHeader clmNumNota;
+        private System.Windows.Forms.ColumnHeader clmFornecedor;
+        private System.Windows.Forms.ColumnHeader clmDataEmissao;
+        private System.Windows.Forms.ColumnHeader clmValorTotal;
+        private System.Windows.Forms.ColumnHeader clmAtivo;
     }
 }

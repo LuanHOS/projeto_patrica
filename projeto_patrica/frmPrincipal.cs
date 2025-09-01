@@ -24,6 +24,7 @@ namespace projeto_patrica
         private transportadora aTransportadora;
         private unidade_medida aUnidadeMedida;
         private produto oProduto;
+        private compra aCompra;
 
         //Controllers
         private Controller_formaPagamento oController_formaPagamento;
@@ -39,6 +40,7 @@ namespace projeto_patrica
         private Controller_transportadora oController_transportadora;
         private Controller_unidade_medida oController_unidade_medida;
         private Controller_produto oController_produto;
+        private Controller_compra oController_compra;
 
         /*
          * */
@@ -64,6 +66,7 @@ namespace projeto_patrica
             aTransportadora = new transportadora();
             aUnidadeMedida = new unidade_medida();
             oProduto = new produto();
+            aCompra = new compra();
 
             // Instanciando Controllers
             oController_formaPagamento = new Controller_formaPagamento();
@@ -79,6 +82,7 @@ namespace projeto_patrica
             oController_transportadora = new Controller_transportadora();
             oController_unidade_medida = new Controller_unidade_medida();
             oController_produto = new Controller_produto();
+            oController_compra = new Controller_compra();
 
             // Passando dependências de controllers
             oController_condicaoPagamento.AController_formaPagamento = oController_formaPagamento;
@@ -94,6 +98,9 @@ namespace projeto_patrica
             oController_produto.AController_categoria = oController_categoria;
             oController_produto.AController_unidade_medida = oController_unidade_medida;
             oController_produto.AController_fornecedor = oController_fornecedor;
+            oController_compra.AController_fornecedor = oController_fornecedor;
+            oController_compra.AController_produto = oController_produto;
+            oController_compra.AController_condicaoPagamento = oController_condicaoPagamento;
         }
 
         /*
@@ -199,5 +206,11 @@ namespace projeto_patrica
         {
             aInter.pecaConsultaFornecedor(oFornecedor, oController_fornecedor);
         }
+
+        private void compraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            aInter.pecaConsultaCompra(aCompra, oController_compra);
+        }
+
     }
 }

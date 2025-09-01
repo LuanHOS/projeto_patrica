@@ -22,6 +22,7 @@ namespace projeto_patrica
         frmCadastroTransportadora oFrmCadTransportadora;
         frmCadastroUnidade_medida oFrmCadUnidadeMedida;
         frmCadastroProduto oFrmCadProduto;
+        frmCadastroCompra oFrmCadCompra;
 
         // Formulários de Consulta
         frmConsultaCondicaoPagamento oFrmConCondPag;
@@ -37,6 +38,7 @@ namespace projeto_patrica
         frmConsultaTransportadora oFrmConTransportadora;
         frmConsultaUnidade_medida oFrmConUnidadeMedida;
         frmConsultaProduto oFrmConProduto;
+        frmConsultaCompra oFrmConCompra;
 
         /*
          * */
@@ -56,6 +58,7 @@ namespace projeto_patrica
             oFrmConTransportadora = new frmConsultaTransportadora();
             oFrmConUnidadeMedida = new frmConsultaUnidade_medida();
             oFrmConProduto = new frmConsultaProduto();
+            oFrmConCompra = new frmConsultaCompra();
 
             oFrmCadCondPag = new frmCadastroCondicaoPagamento();
             oFrmCadFormPag = new frmCadastroFormaPagamento();
@@ -70,6 +73,7 @@ namespace projeto_patrica
             oFrmCadTransportadora = new frmCadastroTransportadora();
             oFrmCadUnidadeMedida = new frmCadastroUnidade_medida();
             oFrmCadProduto = new frmCadastroProduto();
+            oFrmCadCompra = new frmCadastroCompra();
 
             oFrmConCondPag.setFrmCadastro(oFrmCadCondPag);
             oFrmConFormPag.setFrmCadastro(oFrmCadFormPag);
@@ -84,6 +88,7 @@ namespace projeto_patrica
             oFrmConTransportadora.setFrmCadastro(oFrmCadTransportadora);
             oFrmConUnidadeMedida.setFrmCadastro(oFrmCadUnidadeMedida);
             oFrmConProduto.setFrmCadastro(oFrmCadProduto);
+            oFrmConCompra.setFrmCadastro(oFrmCadCompra);
 
             oFrmCadCondPag.setConsultaFormaPagamento(oFrmConFormPag);
             oFrmCadEstado.setConsultaPais(oFrmConPais);
@@ -99,6 +104,9 @@ namespace projeto_patrica
             oFrmCadProduto.setConsultaCategoria(oFrmConCategoria);
             oFrmCadProduto.setConsultaUnidadeMedida(oFrmConUnidadeMedida);
             oFrmCadProduto.setConsultaFornecedor(oFrmConFornecedor);
+            oFrmCadCompra.setConsultaFornecedor(oFrmConFornecedor);
+            oFrmCadCompra.setConsultaProduto(oFrmConProduto);
+            oFrmCadCompra.setConsultaCondicaoPagamento(oFrmConCondPag);
         }
 
         /*
@@ -107,6 +115,12 @@ namespace projeto_patrica
         {
             oFrmConProduto.ConhecaObj(oProduto, oController_produto);
             oFrmConProduto.ShowDialog();
+        }
+
+        public void pecaConsultaCompra(compra aCompra, Controller_compra oController_compra)
+        {
+            oFrmConCompra.ConhecaObj(aCompra, oController_compra);
+            oFrmConCompra.ShowDialog();
         }
 
         /*
