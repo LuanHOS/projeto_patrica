@@ -260,9 +260,9 @@
             this.lblValorUnitario.AutoSize = true;
             this.lblValorUnitario.Location = new System.Drawing.Point(440, 61);
             this.lblValorUnitario.Name = "lblValorUnitario";
-            this.lblValorUnitario.Size = new System.Drawing.Size(70, 13);
+            this.lblValorUnitario.Size = new System.Drawing.Size(93, 13);
             this.lblValorUnitario.TabIndex = 101;
-            this.lblValorUnitario.Text = "Valor Unitário";
+            this.lblValorUnitario.Text = "Valor Unitário (R$)";
             // 
             // txtValorUnitario
             // 

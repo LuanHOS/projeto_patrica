@@ -19,7 +19,7 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
-            sql = "INSERT INTO PRODUTO (NOME, DESCRICAO, CODIGO_BARRAS, ID_MARCA, ID_CATEGORIA, ID_UNIDADE_MEDIDA, ID_FORNECEDOR, VALOR_COMPRA, VALOR_VENDA, PERCENTUAL_LUCRO, ESTOQUE, ATIVO) VALUES (" +
+            sql = "INSERT INTO PRODUTO (NOME, DESCRICAO, CODIGO_BARRAS, ID_MARCA, ID_CATEGORIA, ID_UNIDADE_MEDIDA, ID_FORNECEDOR, VALOR_COMPRA, VALOR_VENDA, VALOR_COMPRAANTERIOR, PERCENTUAL_LUCRO, ESTOQUE, ATIVO) VALUES (" +
                   "'" + oProduto.Nome + "', " +
                   (string.IsNullOrWhiteSpace(oProduto.Descricao) ? "NULL" : "'" + oProduto.Descricao + "'") + ", " +
                   "'" + oProduto.CodigoBarras + "', " +
@@ -29,6 +29,7 @@ namespace projeto_patrica.dao
                   "'" + oProduto.OFornecedor.Id + "', " +
                   "'" + oProduto.ValorCompra.ToString().Replace(",", ".") + "', " +
                   "'" + oProduto.ValorVenda.ToString().Replace(",", ".") + "', " +
+                  "'" + oProduto.ValorCompraAnterior.ToString().Replace(",", ".") + "', " +
                   "'" + oProduto.PercentualLucro.ToString().Replace(",", ".") + "', " +
                   "'" + oProduto.Estoque + "', " +
                   (oProduto.Ativo ? "1" : "0") + ")";
@@ -46,6 +47,7 @@ namespace projeto_patrica.dao
                       "ID_FORNECEDOR = '" + oProduto.OFornecedor.Id + "', " +
                       "VALOR_COMPRA = '" + oProduto.ValorCompra.ToString().Replace(",", ".") + "', " +
                       "VALOR_VENDA = '" + oProduto.ValorVenda.ToString().Replace(",", ".") + "', " +
+                      "VALOR_COMPRAANTERIOR = '" + oProduto.ValorCompraAnterior.ToString().Replace(",", ".") + "', " +
                       "PERCENTUAL_LUCRO = '" + oProduto.PercentualLucro.ToString().Replace(",", ".") + "', " +
                       "ESTOQUE = '" + oProduto.Estoque + "', " +
                       "ATIVO = " + (oProduto.Ativo ? "1" : "0") + ", " +
@@ -99,6 +101,7 @@ namespace projeto_patrica.dao
                     oProduto.OFornecedor.Id = Convert.ToInt32(dr["ID_FORNECEDOR"]);
                     oProduto.ValorCompra = Convert.ToDecimal(dr["VALOR_COMPRA"]);
                     oProduto.ValorVenda = Convert.ToDecimal(dr["VALOR_VENDA"]);
+                    oProduto.ValorCompraAnterior = Convert.ToDecimal(dr["VALOR_COMPRAANTERIOR"]);
                     oProduto.PercentualLucro = Convert.ToDecimal(dr["PERCENTUAL_LUCRO"]);
                     oProduto.Estoque = Convert.ToInt32(dr["ESTOQUE"]);
                     oProduto.Ativo = Convert.ToBoolean(dr["ATIVO"]);
@@ -166,6 +169,7 @@ namespace projeto_patrica.dao
                 oProduto.OFornecedor.Id = Convert.ToInt32(dr["ID_FORNECEDOR"]);
                 oProduto.ValorCompra = Convert.ToDecimal(dr["VALOR_COMPRA"]);
                 oProduto.ValorVenda = Convert.ToDecimal(dr["VALOR_VENDA"]);
+                oProduto.ValorCompraAnterior = Convert.ToDecimal(dr["VALOR_COMPRAANTERIOR"]);
                 oProduto.PercentualLucro = Convert.ToDecimal(dr["PERCENTUAL_LUCRO"]);
                 oProduto.Estoque = Convert.ToInt32(dr["ESTOQUE"]);
                 oProduto.Ativo = Convert.ToBoolean(dr["ATIVO"]);

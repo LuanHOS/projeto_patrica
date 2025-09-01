@@ -81,7 +81,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(produto.CodigoBarras);
                 item.SubItems.Add(produto.OMarca.Nome);
                 item.SubItems.Add(produto.OCategoria.Nome);
-                item.SubItems.Add(produto.ValorVenda.ToString());
+                item.SubItems.Add("R$ " + produto.ValorVenda.ToString("F2"));
                 item.SubItems.Add(produto.Estoque.ToString());
                 item.SubItems.Add(produto.Ativo ? "Sim" : "Não");
                 item.Tag = produto;

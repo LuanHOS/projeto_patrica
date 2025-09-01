@@ -44,14 +44,81 @@
             this.lblDataDemissao = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // txtRgInscEstadual
+            // 
+            this.txtRgInscEstadual.MaxLength = 10;
+            this.txtRgInscEstadual.ShortcutsEnabled = false;
+            // 
+            // txtNomeRazaoSocial
+            // 
+            this.txtNomeRazaoSocial.MaxLength = 40;
+            this.txtNomeRazaoSocial.ShortcutsEnabled = false;
+            // 
+            // txtCidade
+            // 
+            this.txtCidade.ShortcutsEnabled = false;
+            // 
+            // txtBairro
+            // 
+            this.txtBairro.MaxLength = 40;
+            this.txtBairro.ShortcutsEnabled = false;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.MaxLength = 40;
+            this.txtEmail.ShortcutsEnabled = false;
+            // 
+            // txtEndereco
+            // 
+            this.txtEndereco.MaxLength = 40;
+            this.txtEndereco.ShortcutsEnabled = false;
+            // 
+            // txtTelefone
+            // 
+            this.txtTelefone.MaxLength = 20;
+            this.txtTelefone.ShortcutsEnabled = false;
+            // 
+            // txtCpfCnpj
+            // 
+            this.txtCpfCnpj.MaxLength = 14;
+            this.txtCpfCnpj.ShortcutsEnabled = false;
+            // 
+            // txtCep
+            // 
+            this.txtCep.MaxLength = 8;
+            this.txtCep.ShortcutsEnabled = false;
+            // 
             // btnPesquisarCidade
             // 
             this.btnPesquisarCidade.Click += new System.EventHandler(this.btnPesquisarCidade_Click);
             // 
+            // txtApelidoNomeFantasia
+            // 
+            this.txtApelidoNomeFantasia.MaxLength = 40;
+            this.txtApelidoNomeFantasia.ShortcutsEnabled = false;
+            // 
             // lblNome
             // 
-            this.lblNome.Size = new System.Drawing.Size(125, 16);
+            this.lblNome.Size = new System.Drawing.Size(100, 13);
             this.lblNome.Text = "Funcionário Nome *";
+            // 
+            // txtNumeroEndereco
+            // 
+            this.txtNumeroEndereco.MaxLength = 20;
+            this.txtNumeroEndereco.ShortcutsEnabled = false;
+            // 
+            // txtComplementoEndereco
+            // 
+            this.txtComplementoEndereco.MaxLength = 40;
+            this.txtComplementoEndereco.ShortcutsEnabled = false;
+            // 
+            // txtEstado
+            // 
+            this.txtEstado.ShortcutsEnabled = false;
+            // 
+            // txtPais
+            // 
+            this.txtPais.ShortcutsEnabled = false;
             // 
             // btnSave
             // 
@@ -68,6 +135,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCodigo.ShortcutsEnabled = false;
             // 
             // lblMatricula
             // 
@@ -75,7 +143,7 @@
             this.lblMatricula.Location = new System.Drawing.Point(21, 373);
             this.lblMatricula.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMatricula.Name = "lblMatricula";
-            this.lblMatricula.Size = new System.Drawing.Size(69, 16);
+            this.lblMatricula.Size = new System.Drawing.Size(59, 13);
             this.lblMatricula.TabIndex = 30;
             this.lblMatricula.Text = "Matrícula *";
             // 
@@ -85,7 +153,8 @@
             this.txtMatricula.Location = new System.Drawing.Point(24, 391);
             this.txtMatricula.Margin = new System.Windows.Forms.Padding(2);
             this.txtMatricula.Name = "txtMatricula";
-            this.txtMatricula.Size = new System.Drawing.Size(336, 22);
+            this.txtMatricula.ShortcutsEnabled = false;
+            this.txtMatricula.Size = new System.Drawing.Size(336, 20);
             this.txtMatricula.TabIndex = 20;
             // 
             // lblCargo
@@ -94,7 +163,7 @@
             this.lblCargo.Location = new System.Drawing.Point(380, 373);
             this.lblCargo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCargo.Name = "lblCargo";
-            this.lblCargo.Size = new System.Drawing.Size(52, 16);
+            this.lblCargo.Size = new System.Drawing.Size(42, 13);
             this.lblCargo.TabIndex = 30;
             this.lblCargo.Text = "Cargo *";
             // 
@@ -104,7 +173,8 @@
             this.txtCargo.Location = new System.Drawing.Point(383, 391);
             this.txtCargo.Margin = new System.Windows.Forms.Padding(2);
             this.txtCargo.Name = "txtCargo";
-            this.txtCargo.Size = new System.Drawing.Size(332, 22);
+            this.txtCargo.ShortcutsEnabled = false;
+            this.txtCargo.Size = new System.Drawing.Size(332, 20);
             this.txtCargo.TabIndex = 21;
             // 
             // lblTurno
@@ -113,7 +183,7 @@
             this.lblTurno.Location = new System.Drawing.Point(22, 431);
             this.lblTurno.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTurno.Name = "lblTurno";
-            this.lblTurno.Size = new System.Drawing.Size(50, 16);
+            this.lblTurno.Size = new System.Drawing.Size(42, 13);
             this.lblTurno.TabIndex = 30;
             this.lblTurno.Text = "Turno *";
             // 
@@ -123,7 +193,8 @@
             this.txtTurno.Location = new System.Drawing.Point(24, 447);
             this.txtTurno.Margin = new System.Windows.Forms.Padding(2);
             this.txtTurno.Name = "txtTurno";
-            this.txtTurno.Size = new System.Drawing.Size(336, 22);
+            this.txtTurno.ShortcutsEnabled = false;
+            this.txtTurno.Size = new System.Drawing.Size(336, 20);
             this.txtTurno.TabIndex = 23;
             // 
             // lblCargaHoraria
@@ -132,7 +203,7 @@
             this.lblCargaHoraria.Location = new System.Drawing.Point(380, 431);
             this.lblCargaHoraria.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCargaHoraria.Name = "lblCargaHoraria";
-            this.lblCargaHoraria.Size = new System.Drawing.Size(100, 16);
+            this.lblCargaHoraria.Size = new System.Drawing.Size(79, 13);
             this.lblCargaHoraria.TabIndex = 30;
             this.lblCargaHoraria.Text = "Carga Horária *";
             // 
@@ -142,7 +213,8 @@
             this.txtCargaHoraria.Location = new System.Drawing.Point(383, 447);
             this.txtCargaHoraria.Margin = new System.Windows.Forms.Padding(2);
             this.txtCargaHoraria.Name = "txtCargaHoraria";
-            this.txtCargaHoraria.Size = new System.Drawing.Size(332, 22);
+            this.txtCargaHoraria.ShortcutsEnabled = false;
+            this.txtCargaHoraria.Size = new System.Drawing.Size(332, 20);
             this.txtCargaHoraria.TabIndex = 24;
             // 
             // lblSalario
@@ -151,9 +223,9 @@
             this.lblSalario.Location = new System.Drawing.Point(736, 375);
             this.lblSalario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSalario.Name = "lblSalario";
-            this.lblSalario.Size = new System.Drawing.Size(58, 16);
+            this.lblSalario.Size = new System.Drawing.Size(66, 13);
             this.lblSalario.TabIndex = 30;
-            this.lblSalario.Text = "Salário *";
+            this.lblSalario.Text = "Salário (R$)*";
             // 
             // txtSalario
             // 
@@ -161,7 +233,8 @@
             this.txtSalario.Location = new System.Drawing.Point(738, 391);
             this.txtSalario.Margin = new System.Windows.Forms.Padding(2);
             this.txtSalario.Name = "txtSalario";
-            this.txtSalario.Size = new System.Drawing.Size(292, 22);
+            this.txtSalario.ShortcutsEnabled = false;
+            this.txtSalario.Size = new System.Drawing.Size(292, 20);
             this.txtSalario.TabIndex = 22;
             // 
             // lblDataAdmissao
@@ -170,7 +243,7 @@
             this.lblDataAdmissao.Location = new System.Drawing.Point(735, 431);
             this.lblDataAdmissao.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDataAdmissao.Name = "lblDataAdmissao";
-            this.lblDataAdmissao.Size = new System.Drawing.Size(127, 16);
+            this.lblDataAdmissao.Size = new System.Drawing.Size(100, 13);
             this.lblDataAdmissao.TabIndex = 30;
             this.lblDataAdmissao.Text = "Data de Admissão *";
             // 
@@ -180,7 +253,7 @@
             this.dtpDataAdmissao.Location = new System.Drawing.Point(738, 447);
             this.dtpDataAdmissao.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDataAdmissao.Name = "dtpDataAdmissao";
-            this.dtpDataAdmissao.Size = new System.Drawing.Size(135, 22);
+            this.dtpDataAdmissao.Size = new System.Drawing.Size(135, 20);
             this.dtpDataAdmissao.TabIndex = 25;
             // 
             // dtpDataDemissao
@@ -191,7 +264,7 @@
             this.dtpDataDemissao.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDataDemissao.Name = "dtpDataDemissao";
             this.dtpDataDemissao.ShowCheckBox = true;
-            this.dtpDataDemissao.Size = new System.Drawing.Size(135, 22);
+            this.dtpDataDemissao.Size = new System.Drawing.Size(135, 20);
             this.dtpDataDemissao.TabIndex = 26;
             // 
             // lblDataDemissao
@@ -201,7 +274,7 @@
             this.lblDataDemissao.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDataDemissao.Name = "lblDataDemissao";
             this.lblDataDemissao.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblDataDemissao.Size = new System.Drawing.Size(120, 16);
+            this.lblDataDemissao.Size = new System.Drawing.Size(94, 13);
             this.lblDataDemissao.TabIndex = 34;
             this.lblDataDemissao.Text = "Data de Demissão";
             // 

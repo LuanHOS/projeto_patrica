@@ -19,6 +19,7 @@ namespace projeto_patrica.classes
         protected decimal valorVenda;
         protected decimal percentualLucro;
         protected int estoque;
+        protected decimal valorCompraAnterior;
 
         public produto()
         {
@@ -37,11 +38,12 @@ namespace projeto_patrica.classes
             ativo = true;
             dataCadastro = DateTime.MinValue;
             dataUltimaEdicao = null;
+            valorCompraAnterior = 0;
         }
 
         public produto(int id, string nome, string descricao, string codigoBarras, marca oMarca, categoria oCategoria,
                        unidade_medida oUnidadeMedida, fornecedor oFornecedor, decimal valorCompra, decimal valorVenda,
-                       decimal percentualLucro, int estoque, bool ativo, DateTime dataCadastro, DateTime? dataUltimaEdicao)
+                       decimal percentualLucro, int estoque, bool ativo, DateTime dataCadastro, DateTime? dataUltimaEdicao, decimal valorCompraAnterior)
             : base(id, ativo, dataCadastro, dataUltimaEdicao)
         {
             this.id = id;
@@ -59,6 +61,7 @@ namespace projeto_patrica.classes
             this.ativo = ativo;
             this.dataCadastro = dataCadastro;
             this.dataUltimaEdicao = dataUltimaEdicao;
+            this.valorCompraAnterior = valorCompraAnterior;
         }
 
         public string Nome
@@ -125,6 +128,11 @@ namespace projeto_patrica.classes
         {
             get => estoque;
             set => estoque = value;
+        }
+        public decimal ValorCompraAnterior
+        {
+            get => valorCompraAnterior;
+            set => valorCompraAnterior = value;
         }
     }
 }

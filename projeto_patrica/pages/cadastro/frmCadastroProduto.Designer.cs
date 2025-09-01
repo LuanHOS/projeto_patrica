@@ -54,6 +54,8 @@
             this.lblValorVenda = new System.Windows.Forms.Label();
             this.txtPorcentagemLucro = new System.Windows.Forms.TextBox();
             this.txtValorVenda = new System.Windows.Forms.TextBox();
+            this.txtValorCompraAnterior = new System.Windows.Forms.TextBox();
+            this.lblPrecoDeCustoAnterior = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSave
@@ -64,6 +66,10 @@
             // 
             this.btnSair.TabIndex = 18;
             // 
+            // txtCodigo
+            // 
+            this.txtCodigo.ShortcutsEnabled = false;
+            // 
             // txtCodBarras
             // 
             this.txtCodBarras.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -71,6 +77,7 @@
             this.txtCodBarras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCodBarras.MaxLength = 40;
             this.txtCodBarras.Name = "txtCodBarras";
+            this.txtCodBarras.ShortcutsEnabled = false;
             this.txtCodBarras.Size = new System.Drawing.Size(254, 20);
             this.txtCodBarras.TabIndex = 2;
             // 
@@ -90,6 +97,7 @@
             this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.MaxLength = 40;
             this.txtNome.Name = "txtNome";
+            this.txtNome.ShortcutsEnabled = false;
             this.txtNome.Size = new System.Drawing.Size(647, 20);
             this.txtNome.TabIndex = 3;
             // 
@@ -110,6 +118,7 @@
             this.txtDescricao.MaxLength = 40;
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.ShortcutsEnabled = false;
             this.txtDescricao.Size = new System.Drawing.Size(647, 35);
             this.txtDescricao.TabIndex = 4;
             // 
@@ -140,6 +149,7 @@
             this.txtFornecedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFornecedor.Name = "txtFornecedor";
             this.txtFornecedor.ReadOnly = true;
+            this.txtFornecedor.ShortcutsEnabled = false;
             this.txtFornecedor.Size = new System.Drawing.Size(411, 20);
             this.txtFornecedor.TabIndex = 7;
             // 
@@ -170,6 +180,7 @@
             this.txtCategoria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.ReadOnly = true;
+            this.txtCategoria.ShortcutsEnabled = false;
             this.txtCategoria.Size = new System.Drawing.Size(411, 20);
             this.txtCategoria.TabIndex = 9;
             // 
@@ -200,6 +211,7 @@
             this.txtMarca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.ReadOnly = true;
+            this.txtMarca.ShortcutsEnabled = false;
             this.txtMarca.Size = new System.Drawing.Size(411, 20);
             this.txtMarca.TabIndex = 5;
             // 
@@ -230,6 +242,7 @@
             this.txtUnidadeMedida.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUnidadeMedida.Name = "txtUnidadeMedida";
             this.txtUnidadeMedida.ReadOnly = true;
+            this.txtUnidadeMedida.ShortcutsEnabled = false;
             this.txtUnidadeMedida.Size = new System.Drawing.Size(104, 20);
             this.txtUnidadeMedida.TabIndex = 11;
             // 
@@ -247,9 +260,9 @@
             this.lblValorCompra.AutoSize = true;
             this.lblValorCompra.Location = new System.Drawing.Point(21, 466);
             this.lblValorCompra.Name = "lblValorCompra";
-            this.lblValorCompra.Size = new System.Drawing.Size(83, 13);
+            this.lblValorCompra.Size = new System.Drawing.Size(110, 13);
             this.lblValorCompra.TabIndex = 120;
-            this.lblValorCompra.Text = "Valor de Custo *";
+            this.lblValorCompra.Text = "Preço de Custo (R$) *";
             // 
             // lblEstoque
             // 
@@ -263,9 +276,11 @@
             // txtValorCompra
             // 
             this.txtValorCompra.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtValorCompra.Enabled = false;
             this.txtValorCompra.Location = new System.Drawing.Point(24, 485);
             this.txtValorCompra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorCompra.Name = "txtValorCompra";
+            this.txtValorCompra.ShortcutsEnabled = false;
             this.txtValorCompra.Size = new System.Drawing.Size(194, 20);
             this.txtValorCompra.TabIndex = 13;
             this.txtValorCompra.Leave += new System.EventHandler(this.txtValorCompra_Leave);
@@ -273,9 +288,11 @@
             // txtEstoque
             // 
             this.txtEstoque.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtEstoque.Enabled = false;
             this.txtEstoque.Location = new System.Drawing.Point(24, 541);
             this.txtEstoque.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEstoque.Name = "txtEstoque";
+            this.txtEstoque.ShortcutsEnabled = false;
             this.txtEstoque.Size = new System.Drawing.Size(194, 20);
             this.txtEstoque.TabIndex = 16;
             // 
@@ -284,25 +301,27 @@
             this.lblPorcentagemLucro.AutoSize = true;
             this.lblPorcentagemLucro.Location = new System.Drawing.Point(248, 466);
             this.lblPorcentagemLucro.Name = "lblPorcentagemLucro";
-            this.lblPorcentagemLucro.Size = new System.Drawing.Size(67, 13);
+            this.lblPorcentagemLucro.Size = new System.Drawing.Size(114, 13);
             this.lblPorcentagemLucro.TabIndex = 124;
-            this.lblPorcentagemLucro.Text = "% de Lucro *";
+            this.lblPorcentagemLucro.Text = "Margem de Lucro (%) *";
             // 
             // lblValorVenda
             // 
             this.lblValorVenda.AutoSize = true;
             this.lblValorVenda.Location = new System.Drawing.Point(474, 466);
             this.lblValorVenda.Name = "lblValorVenda";
-            this.lblValorVenda.Size = new System.Drawing.Size(87, 13);
+            this.lblValorVenda.Size = new System.Drawing.Size(114, 13);
             this.lblValorVenda.TabIndex = 125;
-            this.lblValorVenda.Text = "Valor de Venda *";
+            this.lblValorVenda.Text = "Preço de Venda (R$) *";
             // 
             // txtPorcentagemLucro
             // 
             this.txtPorcentagemLucro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPorcentagemLucro.Enabled = false;
             this.txtPorcentagemLucro.Location = new System.Drawing.Point(251, 485);
             this.txtPorcentagemLucro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPorcentagemLucro.Name = "txtPorcentagemLucro";
+            this.txtPorcentagemLucro.ShortcutsEnabled = false;
             this.txtPorcentagemLucro.Size = new System.Drawing.Size(194, 20);
             this.txtPorcentagemLucro.TabIndex = 14;
             this.txtPorcentagemLucro.Leave += new System.EventHandler(this.txtPorcentagemLucro_Leave);
@@ -313,15 +332,39 @@
             this.txtValorVenda.Location = new System.Drawing.Point(477, 485);
             this.txtValorVenda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorVenda.Name = "txtValorVenda";
+            this.txtValorVenda.ShortcutsEnabled = false;
             this.txtValorVenda.Size = new System.Drawing.Size(194, 20);
             this.txtValorVenda.TabIndex = 15;
             this.txtValorVenda.Leave += new System.EventHandler(this.txtValorVenda_Leave);
             // 
+            // txtValorCompraAnterior
+            // 
+            this.txtValorCompraAnterior.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtValorCompraAnterior.Enabled = false;
+            this.txtValorCompraAnterior.Location = new System.Drawing.Point(251, 541);
+            this.txtValorCompraAnterior.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtValorCompraAnterior.Name = "txtValorCompraAnterior";
+            this.txtValorCompraAnterior.ShortcutsEnabled = false;
+            this.txtValorCompraAnterior.Size = new System.Drawing.Size(194, 20);
+            this.txtValorCompraAnterior.TabIndex = 15;
+            this.txtValorCompraAnterior.Leave += new System.EventHandler(this.txtValorVenda_Leave);
+            // 
+            // lblPrecoDeCustoAnterior
+            // 
+            this.lblPrecoDeCustoAnterior.AutoSize = true;
+            this.lblPrecoDeCustoAnterior.Location = new System.Drawing.Point(248, 522);
+            this.lblPrecoDeCustoAnterior.Name = "lblPrecoDeCustoAnterior";
+            this.lblPrecoDeCustoAnterior.Size = new System.Drawing.Size(149, 13);
+            this.lblPrecoDeCustoAnterior.TabIndex = 125;
+            this.lblPrecoDeCustoAnterior.Text = "Preço de Custo Anterior (R$) *";
+            // 
             // frmCadastroProduto
             // 
             this.Controls.Add(this.lblPorcentagemLucro);
+            this.Controls.Add(this.lblPrecoDeCustoAnterior);
             this.Controls.Add(this.lblValorVenda);
             this.Controls.Add(this.txtPorcentagemLucro);
+            this.Controls.Add(this.txtValorCompraAnterior);
             this.Controls.Add(this.txtValorVenda);
             this.Controls.Add(this.lblValorCompra);
             this.Controls.Add(this.lblEstoque);
@@ -381,8 +424,10 @@
             this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditouNome, 0);
             this.Controls.SetChildIndex(this.checkBoxAtivo, 0);
             this.Controls.SetChildIndex(this.txtValorVenda, 0);
+            this.Controls.SetChildIndex(this.txtValorCompraAnterior, 0);
             this.Controls.SetChildIndex(this.txtPorcentagemLucro, 0);
             this.Controls.SetChildIndex(this.lblValorVenda, 0);
+            this.Controls.SetChildIndex(this.lblPrecoDeCustoAnterior, 0);
             this.Controls.SetChildIndex(this.lblPorcentagemLucro, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -417,5 +462,7 @@
         private System.Windows.Forms.Label lblValorVenda;
         private System.Windows.Forms.TextBox txtPorcentagemLucro;
         private System.Windows.Forms.TextBox txtValorVenda;
+        private System.Windows.Forms.TextBox txtValorCompraAnterior;
+        private System.Windows.Forms.Label lblPrecoDeCustoAnterior;
     }
 }

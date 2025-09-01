@@ -73,6 +73,7 @@ namespace projeto_patrica.pages.cadastro
             oProduto.CodigoBarras = txtCodBarras.Text;
             oProduto.ValorCompra = Convert.ToDecimal(txtValorCompra.Text);
             oProduto.ValorVenda = Convert.ToDecimal(txtValorVenda.Text);
+            oProduto.ValorCompraAnterior = Convert.ToDecimal(txtValorCompraAnterior.Text);
             oProduto.PercentualLucro = Convert.ToDecimal(txtPorcentagemLucro.Text);
             oProduto.Estoque = Convert.ToInt32(txtEstoque.Text);
             oProduto.Ativo = checkBoxAtivo.Checked;
@@ -154,6 +155,7 @@ namespace projeto_patrica.pages.cadastro
             txtFornecedor.Clear();
             txtValorCompra.Text = 0.ToString("F2");
             txtValorVenda.Text = 0.ToString("F2");
+            txtValorCompraAnterior.Text = 0.ToString("F2");
             txtPorcentagemLucro.Text = 0.ToString("F2");
             txtEstoque.Text = "0";
 
@@ -176,6 +178,7 @@ namespace projeto_patrica.pages.cadastro
             txtFornecedor.Text = oProduto.OFornecedor.Nome_razaoSocial;
             txtValorCompra.Text = oProduto.ValorCompra.ToString("F2");
             txtValorVenda.Text = oProduto.ValorVenda.ToString("F2");
+            txtValorCompraAnterior.Text = oProduto.ValorCompraAnterior.ToString("F2");
             txtPorcentagemLucro.Text = oProduto.PercentualLucro.ToString("F2");
             txtEstoque.Text = oProduto.Estoque.ToString();
             checkBoxAtivo.Checked = oProduto.Ativo;
@@ -195,6 +198,7 @@ namespace projeto_patrica.pages.cadastro
             txtFornecedor.Enabled = false;
             txtValorCompra.Enabled = false;
             txtValorVenda.Enabled = false;
+            txtValorCompraAnterior.Enabled = false;
             txtPorcentagemLucro.Enabled = false;
             txtEstoque.Enabled = false;
             btnPesquisarMarca.Enabled = false;
@@ -215,6 +219,7 @@ namespace projeto_patrica.pages.cadastro
             txtFornecedor.Enabled = true;
             txtValorCompra.Enabled = true;
             txtValorVenda.Enabled = true;
+            txtValorCompraAnterior.Enabled = true;
             txtPorcentagemLucro.Enabled = true;
             txtEstoque.Enabled = true;
             btnPesquisarMarca.Enabled = true;
@@ -340,6 +345,7 @@ namespace projeto_patrica.pages.cadastro
             txtDescricao.MaxLength = 80;
             txtValorCompra.MaxLength = 11;
             txtValorVenda.MaxLength = 11;
+            txtValorCompraAnterior.MaxLength = 11;
             txtPorcentagemLucro.MaxLength = 11;
             txtEstoque.MaxLength = 10;
 
@@ -352,6 +358,9 @@ namespace projeto_patrica.pages.cadastro
 
             txtValorVenda.KeyPress -= ApenasNumerosDecimal;
             txtValorVenda.KeyPress += ApenasNumerosDecimal;
+
+            txtValorCompraAnterior.KeyPress -= ApenasNumerosDecimal;
+            txtValorCompraAnterior.KeyPress += ApenasNumerosDecimal;
 
             txtPorcentagemLucro.KeyPress -= ApenasNumerosDecimal;
             txtPorcentagemLucro.KeyPress += ApenasNumerosDecimal;
