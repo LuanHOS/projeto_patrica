@@ -421,6 +421,9 @@
     <EmbeddedResource Include="pages\cadastro\frmCadastroProduto.resx">
       <DependentUpon>frmCadastroProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroUnidade_medida.resx">
+      <DependentUpon>frmCadastroUnidade_medida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsulta.resx">
       <DependentUpon>frmConsulta.cs</DependentUpon>
       <SubType>Designer</SubType>

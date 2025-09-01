@@ -78,6 +78,7 @@ namespace projeto_patrica.pages.consulta
                     ListViewItem item = new ListViewItem(oUnidadeMedida.Id.ToString());
                     item.SubItems.Add(oUnidadeMedida.Nome);
                     item.SubItems.Add(oUnidadeMedida.Ativo ? "Sim" : "Não");
+                    item.SubItems.Add(oUnidadeMedida.Sigla);
 
                     item.Tag = oUnidadeMedida;
                     listV.Items.Add(item);
@@ -111,6 +112,7 @@ namespace projeto_patrica.pages.consulta
             {
                 ListViewItem item = new ListViewItem(Convert.ToString(oUnidadeMedida.Id));
                 item.SubItems.Add(oUnidadeMedida.Nome);
+                item.SubItems.Add(oUnidadeMedida.Sigla);
                 item.SubItems.Add(oUnidadeMedida.Ativo ? "Sim" : "Não");
 
                 item.Tag = oUnidadeMedida;
@@ -129,6 +131,7 @@ namespace projeto_patrica.pages.consulta
 
                 oUnidadeMedida.Id = unidadeMedidaSelecionada.Id;
                 oUnidadeMedida.Nome = unidadeMedidaSelecionada.Nome;
+                oUnidadeMedida.Sigla = unidadeMedidaSelecionada.Sigla;
             }
         }
 
@@ -148,6 +151,7 @@ namespace projeto_patrica.pages.consulta
 
                 oUnidadeMedida.Id = unidadeMedidaSelecionada.Id;
                 oUnidadeMedida.Nome = unidadeMedidaSelecionada.Nome;
+                oUnidadeMedida.Sigla = unidadeMedidaSelecionada.Sigla;
 
                 this.Close();
             }

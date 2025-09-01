@@ -18,13 +18,14 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
-            sql = "INSERT INTO UNIDADE_MEDIDA (NOME, ATIVO) VALUES('" + oUnidadeMedida.Nome + "', '" + (oUnidadeMedida.Ativo ? 1 : 0) + "')";
+            sql = "INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA, ATIVO) VALUES('" + oUnidadeMedida.Nome + "', '" + oUnidadeMedida.Sigla + "', '" + (oUnidadeMedida.Ativo ? 1 : 0) + "')";
 
             if (oUnidadeMedida.Id != 0)
             {
                 operacao = 'U';
                 sql = "UPDATE UNIDADE_MEDIDA SET " +
                       "NOME = '" + oUnidadeMedida.Nome + "', " +
+                      "SIGLA = '" + oUnidadeMedida.Sigla + "', " +
                       "ATIVO = '" + (oUnidadeMedida.Ativo ? 1 : 0) + "', " +
                       "DATA_ULTIMA_EDICAO = CURRENT_DATE " +
                       "WHERE ID_UNIDADE_MEDIDA = '" + oUnidadeMedida.Id + "'";
@@ -65,6 +66,7 @@ namespace projeto_patrica.dao
                 lista.Add(new unidade_medida(
                     Convert.ToInt32(dr["ID_UNIDADE_MEDIDA"]),
                     dr["NOME"].ToString(),
+                    dr["SIGLA"].ToString(),
                     Convert.ToBoolean(dr["ATIVO"]),
                     Convert.ToDateTime(dr["DATA_CADASTRO"]),
                     dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"])
@@ -94,6 +96,7 @@ namespace projeto_patrica.dao
                 {
                     oUnidadeMedida.Id = Convert.ToInt32(dr["ID_UNIDADE_MEDIDA"]);
                     oUnidadeMedida.Nome = dr["NOME"].ToString();
+                    oUnidadeMedida.Sigla = dr["SIGLA"].ToString();
                     oUnidadeMedida.Ativo = Convert.ToBoolean(dr["ATIVO"]);
                     oUnidadeMedida.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
                     oUnidadeMedida.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);

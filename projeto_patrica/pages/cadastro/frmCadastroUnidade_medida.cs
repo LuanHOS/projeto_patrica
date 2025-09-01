@@ -32,6 +32,7 @@ namespace projeto_patrica.pages.cadastro
 
             oUnidadeMedida.Id = Convert.ToInt32(txtCodigo.Text);
             oUnidadeMedida.Nome = txtNome.Text;
+            oUnidadeMedida.Sigla = txtSigla.Text;
             oUnidadeMedida.Ativo = checkBoxAtivo.Checked;
 
             try
@@ -110,6 +111,7 @@ namespace projeto_patrica.pages.cadastro
             base.Carregatxt();
             txtCodigo.Text = Convert.ToString(oUnidadeMedida.Id);
             txtNome.Text = oUnidadeMedida.Nome;
+            txtSigla.Text = oUnidadeMedida.Sigla;
             lblDataCadastroData.Text = oUnidadeMedida.DataCadastro.ToShortDateString();
             lblDataUltimaEdicaoData.Text = oUnidadeMedida.DataUltimaEdicao?.ToShortDateString() ?? " ";
             checkBoxAtivo.Checked = oUnidadeMedida.Ativo;
@@ -119,17 +121,20 @@ namespace projeto_patrica.pages.cadastro
         {
             base.Bloqueiatxt();
             txtNome.Enabled = false;
+            txtSigla.Enabled = false;
         }
         public override void Desbloqueiatxt()
         {
             base.Desbloqueiatxt();
             txtNome.Enabled = true;
+            txtSigla.Enabled = true;
         }
 
         public override void CamposRestricoes()
         {
             base.CamposRestricoes();
             txtNome.MaxLength = 40;
+            txtSigla.MaxLength = 3;
         }
     }
 }
