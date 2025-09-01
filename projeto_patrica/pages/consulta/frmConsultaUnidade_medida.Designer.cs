@@ -63,8 +63,6 @@
             // 
             // frmConsultaUnidade_medida
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1344, 689);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "frmConsultaUnidade_medida";
             this.Text = "Consulta de Unidade de Medida";

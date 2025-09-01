@@ -11,7 +11,7 @@ namespace projeto_patrica.classes
         protected string nome;
         protected string sigla;
 
-        public unidade_medida(int v)
+        public unidade_medida()
         {
             id = 0;
             nome = " ";

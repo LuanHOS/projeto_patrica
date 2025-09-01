@@ -66,10 +66,10 @@ namespace projeto_patrica.dao
                 lista.Add(new unidade_medida(
                     Convert.ToInt32(dr["ID_UNIDADE_MEDIDA"]),
                     dr["NOME"].ToString(),
-                    dr["SIGLA"].ToString(),
                     Convert.ToBoolean(dr["ATIVO"]),
                     Convert.ToDateTime(dr["DATA_CADASTRO"]),
-                    dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"])
+                    dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]),
+                    dr["SIGLA"].ToString()
                 ));
             }
 
