@@ -118,12 +118,15 @@
     <Compile Include="classes\categoria.cs" />
     <Compile Include="classes\cidade.cs" />
     <Compile Include="classes\cliente.cs" />
+    <Compile Include="classes\compra.cs" />
     <Compile Include="classes\condicaoPagamento.cs" />
     <Compile Include="classes\estado.cs" />
     <Compile Include="classes\fornecedor.cs" />
     <Compile Include="classes\funcionario.cs" />
+    <Compile Include="classes\itemCompra.cs" />
     <Compile Include="classes\marca.cs" />
     <Compile Include="classes\pais.cs" />
+    <Compile Include="classes\parcelaCompra.cs" />
     <Compile Include="classes\parcelaCondicaoPagamento.cs" />
     <Compile Include="classes\pessoa.cs" />
     <Compile Include="classes\produto.cs" />
