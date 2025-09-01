@@ -89,8 +89,6 @@
             // 
             // frmCadastroUnidade_medida
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1344, 689);
             this.Controls.Add(this.txtSigla);
             this.Controls.Add(this.lblSigla);
             this.Controls.Add(this.txtNome);
