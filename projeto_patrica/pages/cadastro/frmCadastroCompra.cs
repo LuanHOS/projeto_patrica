@@ -55,6 +55,24 @@ namespace projeto_patrica.pages.cadastro
             oFrmConsultaCondicaoPagamento = consulta;
         }
 
+        public override bool ValidacaoCampos()
+        {
+            base.ValidacaoCampos();
+
+            if (string.IsNullOrWhiteSpace(txtSerie.Text) ||
+                string.IsNullOrWhiteSpace(txtNumDaNota.Text) ||
+                oCompra.OFornecedor == null || oCompra.OFornecedor.Id == 0 ||
+                listaItens.Count == 0 ||
+                oCompra.ACondicaoPagamento == null || oCompra.ACondicaoPagamento.Id == 0)
+            {
+                MessageBox.Show("Preencha todos os campos obrigatórios da nota, adicione pelo menos um produto e selecione a condição de pagamento para salvar.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
+
         public override void Salvar()
         {
             if (!ValidacaoCampos())
@@ -304,10 +322,19 @@ namespace projeto_patrica.pages.cadastro
 
         private void btnPesquisarProduto_Click(object sender, EventArgs e)
         {
+            if (oCompra.OFornecedor == null || oCompra.OFornecedor.Id == 0)
+            {
+                MessageBox.Show("Por favor, selecione um fornecedor antes de pesquisar produtos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (oFrmConsultaProduto == null) oFrmConsultaProduto = new frmConsultaProduto();
 
             produto p = new produto();
             Controller_produto controller = new Controller_produto();
+
+            // Passa o nome do fornecedor para a consulta
+            oFrmConsultaProduto.TermoDePesquisa = txtFornecedor.Text;
 
             oFrmConsultaProduto.ConhecaObj(p, controller);
             oFrmConsultaProduto.ShowDialog();
@@ -435,6 +462,13 @@ namespace projeto_patrica.pages.cadastro
         {
             AtualizarTotais();
         }
+
+        private void dtpDataEmissao_ValueChanged(object sender, EventArgs e)
+        {
+            // Garante que a data de entrega não seja anterior à data de emissão
+            dtpDataEntrega.MinDate = dtpDataEmissao.Value;
+        }
+
         #endregion
 
         private void txtValorFrete_Leave(object sender, EventArgs e)
@@ -450,28 +484,6 @@ namespace projeto_patrica.pages.cadastro
         private void txtDespesas_Leave(object sender, EventArgs e)
         {
             AtualizarTotais();
-        }
-
-        public override bool ValidacaoCampos()
-        {
-            base.ValidacaoCampos();
-
-            if (string.IsNullOrWhiteSpace(txtSerie.Text) ||
-                string.IsNullOrWhiteSpace(txtNumDaNota.Text) ||
-                oCompra.OFornecedor == null || oCompra.OFornecedor.Id == 0 ||
-                listaItens.Count == 0 ||
-                oCompra.ACondicaoPagamento == null || oCompra.ACondicaoPagamento.Id == 0)
-            {
-                MessageBox.Show("Preencha todos os campos obrigatórios da nota, adicione pelo menos um produto e selecione a condição de pagamento para salvar.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            return true;
-        }
-
-        private void dtpDataEmissao_ValueChanged(object sender, EventArgs e)
-        {
-            // Esta linha garante que a data de entrega não possa ser anterior à data de emissão
-            dtpDataEntrega.MinDate = dtpDataEmissao.Value;
         }
     }
 }

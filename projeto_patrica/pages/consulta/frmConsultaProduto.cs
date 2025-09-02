@@ -12,10 +12,23 @@ namespace projeto_patrica.pages.consulta
         private frmCadastroProduto oFrmCadastroProduto;
         private produto oProduto;
         private Controller_produto aController_produto;
+        public string TermoDePesquisa { get; set; }
+
 
         public frmConsultaProduto() : base()
         {
             InitializeComponent();
+            this.Shown += FrmConsultaProduto_Shown;
+        }
+
+        private void FrmConsultaProduto_Shown(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(TermoDePesquisa))
+            {
+                txtCodigo.Text = TermoDePesquisa;
+                Pesquisar();
+                TermoDePesquisa = null; // Limpa o termo para não pesquisar novamente
+            }
         }
 
         public override void setFrmCadastro(object obj)
@@ -71,22 +84,25 @@ namespace projeto_patrica.pages.consulta
         public override void CarregaLV()
         {
             base.CarregaLV();
-            listV.Items.Clear();
-            var lista = aController_produto.ListaProdutos();
+            //listV.Items.Clear();
+            //var lista = aController_produto.ListaProdutos();
 
-            foreach (var produto in lista)
-            {
-                ListViewItem item = new ListViewItem(produto.Id.ToString());
-                item.SubItems.Add(produto.Nome);
-                item.SubItems.Add(produto.CodigoBarras);
-                item.SubItems.Add(produto.OMarca.Nome);
-                item.SubItems.Add(produto.OCategoria.Nome);
-                item.SubItems.Add("R$ " + produto.ValorVenda.ToString("F2"));
-                item.SubItems.Add(produto.Estoque.ToString());
-                item.SubItems.Add(produto.Ativo ? "Sim" : "Não");
-                item.Tag = produto;
-                listV.Items.Add(item);
-            }
+            //foreach (var produto in lista)
+            //{
+            //    ListViewItem item = new ListViewItem(produto.Id.ToString());
+            //    item.SubItems.Add(produto.Nome);
+            //    item.SubItems.Add(produto.CodigoBarras);
+            //    item.SubItems.Add(produto.OMarca.Nome);
+            //    item.SubItems.Add(produto.OFornecedor.Nome_razaoSocial);
+            //    item.SubItems.Add(produto.OCategoria.Nome);
+            //    item.SubItems.Add("R$ " + produto.ValorVenda.ToString("F2"));
+            //    item.SubItems.Add(produto.Estoque.ToString());
+            //    item.SubItems.Add(produto.Ativo ? "Sim" : "Não");
+            //    item.Tag = produto;
+            //    listV.Items.Add(item);
+            //}
+
+            Pesquisar();
         }
 
         public override void Pesquisar()
@@ -94,21 +110,23 @@ namespace projeto_patrica.pages.consulta
             listV.Items.Clear();
 
             string termoPesquisa = txtCodigo.Text.Trim().ToUpper();
+            var listaCompleta = aController_produto.ListaProdutos();
             var listaResultados = new List<produto>();
 
             if (string.IsNullOrWhiteSpace(termoPesquisa))
             {
-                LimparPesquisa();
+                listaResultados = listaCompleta;
             }
             else
             {
-                foreach (var produto in aController_produto.ListaProdutos())
+                foreach (var produto in listaCompleta)
                 {
                     if (produto.Id.ToString() == termoPesquisa ||
-                        produto.Nome.ToUpper().Contains(termoPesquisa) ||
-                        produto.CodigoBarras.ToUpper().Contains(termoPesquisa) ||
-                        produto.OMarca.Nome.ToUpper().Contains(termoPesquisa) ||
-                        produto.OCategoria.Nome.ToUpper().Contains(termoPesquisa))
+                        (produto.Nome != null && produto.Nome.ToUpper().Contains(termoPesquisa)) ||
+                        (produto.CodigoBarras != null && produto.CodigoBarras.ToUpper().Contains(termoPesquisa)) ||
+                        (produto.OMarca?.Nome != null && produto.OMarca.Nome.ToUpper().Contains(termoPesquisa)) ||
+                        (produto.OCategoria?.Nome != null && produto.OCategoria.Nome.ToUpper().Contains(termoPesquisa)) ||
+                        (produto.OFornecedor?.Nome_razaoSocial != null && produto.OFornecedor.Nome_razaoSocial.ToUpper().Contains(termoPesquisa)))
                     {
                         listaResultados.Add(produto);
                     }
@@ -121,11 +139,11 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(produto.Nome);
                 item.SubItems.Add(produto.CodigoBarras);
                 item.SubItems.Add(produto.OMarca.Nome);
+                item.SubItems.Add(produto.OFornecedor.Nome_razaoSocial);
                 item.SubItems.Add(produto.OCategoria.Nome);
-                item.SubItems.Add(produto.ValorVenda.ToString("C"));
+                item.SubItems.Add("R$ " + produto.ValorVenda.ToString("F2"));
                 item.SubItems.Add(produto.Estoque.ToString());
                 item.SubItems.Add(produto.Ativo ? "Sim" : "Não");
-
                 item.Tag = produto;
                 listV.Items.Add(item);
             }
