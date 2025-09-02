@@ -36,10 +36,10 @@ namespace projeto_patrica.pages.cadastro
 
         public virtual void Limpartxt()
         {
-            txtCodigo.Text = "0";
-            lblDataCadastroData.Text = " ";
-            lblDataUltimaEdicaoData.Text = " ";
-            lblUltimoUsuarioQueEditouNome.Text = " ";
+            txtCodigo.Text = " ";
+            lblDataCadastroData.Text = "-";
+            lblDataUltimaEdicaoData.Text = "-";
+            lblUltimoUsuarioQueEditouNome.Text = "-";
             checkBoxAtivo.Checked = true;
             checkBoxAtivo.Enabled = false;
         }
@@ -106,7 +106,7 @@ namespace projeto_patrica.pages.cadastro
             {
                 char ch = e.KeyChar;
 
-                // Permite caracteres de controle (como Backspace, Delete)
+                // Permite caracteres de controle (Backspace, Delete, etc.)
                 if (char.IsControl(ch))
                 {
                     e.Handled = false;
@@ -116,42 +116,55 @@ namespace projeto_patrica.pages.cadastro
                 // Se for um dígito
                 if (char.IsDigit(ch))
                 {
-                    // Se já houver uma vírgula
                     if (textBox.Text.Contains(","))
                     {
                         int commaIndex = textBox.Text.IndexOf(',');
-                        // Calcula quantos dígitos já existem após a vírgula
                         int decimalDigits = textBox.Text.Length - (commaIndex + 1);
 
                         // Se o cursor estiver após a vírgula E já houver 2 dígitos decimais
                         if (textBox.SelectionStart > commaIndex && decimalDigits >= 2)
                         {
-                            e.Handled = true; // Impede a digitação de mais dígitos decimais
+                            e.Handled = true;
                             return;
                         }
                     }
-                    else // Se não houver vírgula
+                    else
                     {
-                        // Limita a 8 dígitos inteiros antes que a vírgula seja digitada
-                        // (DECIMAL(10,2) = 8 inteiros + 2 decimais + 1 vírgula)
+                        // Limita a 8 dígitos inteiros antes da vírgula
                         if (textBox.Text.Length >= 8 && textBox.SelectionStart == textBox.Text.Length)
                         {
-                            e.Handled = true; // Impede mais de 8 dígitos inteiros
+                            e.Handled = true;
                             return;
                         }
                     }
-                    e.Handled = false; // Permite o dígito
+
+                    e.Handled = false;
                     return;
                 }
 
-                // Se for uma vírgula
-                if (ch == ',')
+                // Se for um ponto, substitui por vírgula
+                if (ch == '.')
                 {
-                    // Permite apenas uma vírgula E não permite que seja o primeiro caractere
-                    // (ou seja, deve haver pelo menos um número antes da vírgula)
+                    // Se ainda não tem vírgula e não é o primeiro caractere
                     if (!textBox.Text.Contains(",") && textBox.Text.Length > 0)
                     {
-                        e.Handled = false; // Permite a vírgula
+                        int pos = textBox.SelectionStart; // posição do cursor
+
+                        // Insere uma vírgula no lugar do ponto
+                        textBox.Text = textBox.Text.Insert(pos, ",");
+                        textBox.SelectionStart = pos + 1; // move cursor depois da vírgula
+                    }
+
+                    e.Handled = true; // bloqueia o ponto original
+                    return;
+                }
+
+                // Se for uma vírgula digitada direto
+                if (ch == ',')
+                {
+                    if (!textBox.Text.Contains(",") && textBox.Text.Length > 0)
+                    {
+                        e.Handled = false;
                         return;
                     }
                 }
@@ -160,6 +173,7 @@ namespace projeto_patrica.pages.cadastro
                 e.Handled = true;
             }
         }
+
 
         // Desabilitar a colagem em todos os textboxes
         private void DisablePasteInTextBoxes(Control.ControlCollection controls)

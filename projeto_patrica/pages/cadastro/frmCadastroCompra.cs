@@ -56,15 +56,8 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            if (string.IsNullOrWhiteSpace(txtSerie.Text) ||
-                string.IsNullOrWhiteSpace(txtNumDaNota.Text) ||
-                oCompra.OFornecedor == null || oCompra.OFornecedor.Id == 0 ||
-                listaItens.Count == 0 ||
-                oCompra.ACondicaoPagamento == null || oCompra.ACondicaoPagamento.Id == 0)
-            {
-                MessageBox.Show("Preencha todos os campos obrigatórios da nota, adicione pelo menos um produto e selecione a condição de pagamento para salvar.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (!ValidacaoCampos())
                 return;
-            }
 
             // Popula o objeto principal com os dados do formulário
             oCompra.Modelo = Convert.ToInt32(txtCodigo.Text);
@@ -84,14 +77,20 @@ namespace projeto_patrica.pages.cadastro
             {
                 if (btnSave.Text == "Excluir")
                 {
-                    // Lógica de Exclusão
+                    DialogResult resp = MessageBox.Show("Deseja realmente excluir esta compra?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (resp == DialogResult.Yes)
+                    {
+                        aController_compra.Excluir(oCompra);
+                        MessageBox.Show("Compra excluída com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Sair();
+                    }
                 }
                 else
                 {
                     aController_compra.Salvar(oCompra);
                     MessageBox.Show("Compra salva com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    base.Salvar();
                 }
-                base.Salvar();
             }
             catch (Exception ex)
             {
@@ -120,6 +119,31 @@ namespace projeto_patrica.pages.cadastro
 
             oCompra = new compra();
         }
+
+        public override void Carregatxt()
+        {
+            base.Carregatxt();
+            txtCodigo.Text = oCompra.Modelo.ToString();
+            txtSerie.Text = oCompra.Serie;
+            txtNumDaNota.Text = oCompra.NumeroNota;
+            txtCodFornecedor.Text = oCompra.OFornecedor.Id.ToString();
+            txtFornecedor.Text = oCompra.OFornecedor.Nome_razaoSocial;
+            dtpDataEmissao.Value = oCompra.DataEmissao;
+            dtpDataEntrega.Value = oCompra.DataEntrega;
+            txtValorFrete.Text = oCompra.ValorFrete.ToString("F2");
+            txtSeguro.Text = oCompra.Seguro.ToString("F2");
+            txtDespesas.Text = oCompra.Despesas.ToString("F2");
+            txtCodCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Id.ToString();
+            txtCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Descricao;
+            checkBoxAtivo.Checked = oCompra.Ativo;
+
+            listaItens = oCompra.Itens;
+            CarregarItensNaListView();
+
+            listaParcelas = oCompra.Parcelas;
+            CarregarParcelasNaListView();
+        }
+
         #endregion
 
         #region Gerenciamento de Itens
@@ -223,7 +247,11 @@ namespace projeto_patrica.pages.cadastro
             }
 
             decimal totalProdutos = listaItens.Sum(item => item.ValorTotal);
-            decimal totalCompra = totalProdutos + Convert.ToDecimal(txtValorFrete.Text) + Convert.ToDecimal(txtSeguro.Text) + Convert.ToDecimal(txtDespesas.Text);
+            decimal.TryParse(txtValorFrete.Text, out decimal frete);
+            decimal.TryParse(txtSeguro.Text, out decimal seguro);
+            decimal.TryParse(txtDespesas.Text, out decimal despesas);
+
+            decimal totalCompra = totalProdutos + frete + seguro + despesas;
 
             // Lógica para aplicar desconto/juros da condição de pagamento
             totalCompra = totalCompra * (1 - (oCompra.ACondicaoPagamento.Desconto / 100));
@@ -381,9 +409,9 @@ namespace projeto_patrica.pages.cadastro
             decimal totalProdutos = listaItens.Sum(item => item.ValorTotal);
             lblValorTotalGeralProdutos.Text = totalProdutos.ToString("C2");
 
-            decimal frete = string.IsNullOrWhiteSpace(txtValorFrete.Text) ? 0 : Convert.ToDecimal(txtValorFrete.Text);
-            decimal seguro = string.IsNullOrWhiteSpace(txtSeguro.Text) ? 0 : Convert.ToDecimal(txtSeguro.Text);
-            decimal despesas = string.IsNullOrWhiteSpace(txtDespesas.Text) ? 0 : Convert.ToDecimal(txtDespesas.Text);
+            decimal.TryParse(txtValorFrete.Text, out decimal frete);
+            decimal.TryParse(txtSeguro.Text, out decimal seguro);
+            decimal.TryParse(txtDespesas.Text, out decimal despesas);
 
             txtValorTotalValores.Text = (totalProdutos + frete + seguro + despesas).ToString("C2");
 
@@ -407,6 +435,53 @@ namespace projeto_patrica.pages.cadastro
             AtualizarTotais();
         }
         #endregion
+
+        private void txtValorFrete_Leave(object sender, EventArgs e)
+        {
+            AtualizarTotais();
+        }
+
+        private void txtSeguro_Leave(object sender, EventArgs e)
+        {
+            AtualizarTotais();
+        }
+
+        private void txtDespesas_Leave(object sender, EventArgs e)
+        {
+            AtualizarTotais();
+        }
+
+        public override bool ValidacaoCampos()
+        {
+            base.ValidacaoCampos();
+
+            if (string.IsNullOrWhiteSpace(txtSerie.Text) ||
+                string.IsNullOrWhiteSpace(txtNumDaNota.Text) ||
+                oCompra.OFornecedor == null || oCompra.OFornecedor.Id == 0 ||
+                listaItens.Count == 0 ||
+                oCompra.ACondicaoPagamento == null || oCompra.ACondicaoPagamento.Id == 0)
+            {
+                MessageBox.Show("Preencha todos os campos obrigatórios da nota, adicione pelo menos um produto e selecione a condição de pagamento para salvar.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Validação da Data de Emissão
+            if (dtpDataEmissao.Value.Date > DateTime.Today)
+            {
+                MessageBox.Show("A Data de Emissão não pode ser uma data futura.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dtpDataEmissao.Focus();
+                return false;
+            }
+
+            // Validação da Data de Entrega
+            if (dtpDataEntrega.Value.Date < dtpDataEmissao.Value.Date)
+            {
+                MessageBox.Show("A Data de Entrega não pode ser anterior à Data de Emissão.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dtpDataEntrega.Focus();
+                return false;
+            }
+
+            return true;
+        }
     }
 }
-

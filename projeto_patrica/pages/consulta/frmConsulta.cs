@@ -13,8 +13,6 @@ namespace projeto_patrica.pages.consulta
 		public frmConsulta() : base()
 		{
             InitializeComponent();
-            btnAlterar.Enabled = false;
-            btnExcluir.Enabled = false;
         }
 
 
@@ -103,6 +101,17 @@ namespace projeto_patrica.pages.consulta
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
+            if (listV.SelectedItems.Count == 0)
+            {
+                MessageBox.Show(
+                    "Nenhum item selecionado. Selecione um registro para alterar.",
+                    "Atenção",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
             Alterar();
         }
 
@@ -114,6 +123,17 @@ namespace projeto_patrica.pages.consulta
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (listV.SelectedItems.Count == 0)
+            {
+                MessageBox.Show(
+                    "Nenhum item selecionado. Selecione um registro para excluir.",
+                    "Atenção",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
             Excluir();
         }
 
@@ -158,16 +178,7 @@ namespace projeto_patrica.pages.consulta
 
         public virtual void ListV_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.listV.SelectedItems.Count > 0)
-            {
-                btnAlterar.Enabled = true;
-                btnExcluir.Enabled = true;
-            }
-            else
-            {
-                btnAlterar.Enabled = false;
-                btnExcluir.Enabled = false;
-            }
+
         }
 
     }
