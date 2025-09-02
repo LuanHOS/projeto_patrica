@@ -36,7 +36,7 @@ namespace projeto_patrica.pages.cadastro
 
         public virtual void Limpartxt()
         {
-            txtCodigo.Text = " ";
+            txtCodigo.Text = "";
             lblDataCadastroData.Text = "-";
             lblDataUltimaEdicaoData.Text = "-";
             lblUltimoUsuarioQueEditouNome.Text = "-";

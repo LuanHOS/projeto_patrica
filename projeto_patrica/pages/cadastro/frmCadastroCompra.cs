@@ -314,9 +314,27 @@ namespace projeto_patrica.pages.cadastro
 
             if (fornecedorSelecionado.Id != 0)
             {
+                // Carrega o objeto completo do fornecedor, incluindo a condição de pagamento
+                aController_compra.AController_fornecedor.CarregaObj(fornecedorSelecionado);
+
                 oCompra.OFornecedor = fornecedorSelecionado;
                 txtCodFornecedor.Text = fornecedorSelecionado.Id.ToString();
                 txtFornecedor.Text = fornecedorSelecionado.Nome_razaoSocial;
+
+                // Preenche automaticamente a condição de pagamento
+                if (fornecedorSelecionado.ACondicaoPagamento != null && fornecedorSelecionado.ACondicaoPagamento.Id != 0)
+                {
+                    oCompra.ACondicaoPagamento = fornecedorSelecionado.ACondicaoPagamento;
+                    txtCodCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Id.ToString();
+                    txtCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Descricao;
+                }
+                else
+                {
+                    // Limpa os campos se o fornecedor não tiver uma condição de pagamento
+                    oCompra.ACondicaoPagamento = new condicaoPagamento();
+                    txtCodCondicaoDePagamento.Clear();
+                    txtCondicaoDePagamento.Clear();
+                }
             }
         }
 
@@ -484,6 +502,50 @@ namespace projeto_patrica.pages.cadastro
         private void txtDespesas_Leave(object sender, EventArgs e)
         {
             AtualizarTotais();
+        }
+
+        public override void CamposRestricoes()
+        {
+            base.CamposRestricoes();
+
+            txtCodigo.MaxLength = 2;
+            txtSerie.MaxLength = 3;
+            txtNumDaNota.MaxLength = 9;
+            txtQuantidade.MaxLength = 5;
+            txtValorUnitario.MaxLength = 11;
+            txtTotalProduto.MaxLength = 11;
+            txtValorFrete.MaxLength = 11;
+            txtSeguro.MaxLength = 11;
+            txtDespesas.MaxLength = 11;
+            txtValorTotalValores.MaxLength = 11;
+
+
+            txtCodigo.KeyPress -= ApenasNumeros;
+            txtCodigo.KeyPress += ApenasNumeros;
+
+            txtSerie.KeyPress -= ApenasNumeros;
+            txtSerie.KeyPress += ApenasNumeros;
+
+            txtNumDaNota.KeyPress -= ApenasNumeros;
+            txtNumDaNota.KeyPress += ApenasNumeros;
+
+            txtQuantidade.KeyPress -= ApenasNumeros;
+            txtQuantidade.KeyPress += ApenasNumeros;
+
+            txtValorUnitario.KeyPress -= ApenasNumerosDecimal;
+            txtValorUnitario.KeyPress += ApenasNumerosDecimal;
+
+            txtValorFrete.KeyPress -= ApenasNumerosDecimal;
+            txtValorFrete.KeyPress += ApenasNumerosDecimal;
+
+            txtSeguro.KeyPress -= ApenasNumerosDecimal;
+            txtSeguro.KeyPress += ApenasNumerosDecimal;
+
+            txtDespesas.KeyPress -= ApenasNumerosDecimal;
+            txtDespesas.KeyPress += ApenasNumerosDecimal;
+
+            txtValorTotalValores.KeyPress -= ApenasNumerosDecimal;
+            txtValorTotalValores.KeyPress += ApenasNumerosDecimal;
         }
     }
 }
