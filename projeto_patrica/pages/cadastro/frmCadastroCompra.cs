@@ -170,6 +170,13 @@ namespace projeto_patrica.pages.cadastro
         {
             if (ValidarCamposItem())
             {
+                // Verifica se o produto já foi adicionado (variável da lambda renomeada para 'i')
+                if (listaItens.Any(i => i.OProduto.Id == produtoSelecionado.Id))
+                {
+                    MessageBox.Show("Este produto já foi adicionado à lista.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 itemCompra item = new itemCompra
                 {
                     ModeloCompra = Convert.ToInt32(txtCodigo.Text),
