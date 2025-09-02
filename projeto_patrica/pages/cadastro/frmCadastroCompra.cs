@@ -32,6 +32,7 @@ namespace projeto_patrica.pages.cadastro
         {
             InitializeComponent();
             dtpDataEmissao.MaxDate = DateTime.Today;
+            GerenciarEstadoDosControles(); // Gerencia o estado inicial dos controles
         }
 
         public override void ConhecaObj(object obj, object ctrl)
@@ -137,6 +138,7 @@ namespace projeto_patrica.pages.cadastro
             btnLimparParcelas_Click(null, null);
 
             oCompra = new compra();
+            GerenciarEstadoDosControles();
         }
 
         public override void Carregatxt()
@@ -161,6 +163,99 @@ namespace projeto_patrica.pages.cadastro
 
             listaParcelas = oCompra.Parcelas;
             CarregarParcelasNaListView();
+
+            HabilitarSecaoCabecalho(false);
+            HabilitarSecaoProdutos(false);
+            HabilitarSecaoRodape(false);
+        }
+
+        public override void Bloqueiatxt()
+        {
+            base.Bloqueiatxt();
+
+            HabilitarSecaoCabecalho(false);
+            HabilitarSecaoProdutos(false);
+            HabilitarSecaoRodape(false);
+        }
+
+        #endregion
+
+        #region Gerenciamento de Estado dos Controles
+        private void GerenciarEstadoDosControles()
+        {
+            bool cabecalhoPreenchido = !string.IsNullOrWhiteSpace(txtSerie.Text) &&
+                                       !string.IsNullOrWhiteSpace(txtNumDaNota.Text) &&
+                                       !string.IsNullOrWhiteSpace(txtCodigo.Text) &&
+                                       oCompra != null && oCompra.OFornecedor != null && oCompra.OFornecedor.Id > 0;
+
+            bool temItens = listaItens.Any();
+            bool temParcelas = listaParcelas.Any();
+
+            if (!temItens)
+            {
+                HabilitarSecaoCabecalho(true);
+                HabilitarSecaoProdutos(cabecalhoPreenchido);
+                HabilitarSecaoRodape(false);
+            }
+            else if (temItens && !temParcelas)
+            {
+                HabilitarSecaoCabecalho(false);
+                HabilitarSecaoProdutos(true);
+                HabilitarSecaoRodape(true);
+            }
+            else // temItens && temParcelas
+            {
+                HabilitarSecaoCabecalho(false);
+                HabilitarSecaoProdutos(false);
+                HabilitarSecaoRodape(false); // Bloqueia tudo no rodapé...
+                btnLimparParcelas.Enabled = true; // ...exceto o botão de limpar.
+            }
+        }
+
+        private void HabilitarSecaoCabecalho(bool habilitar)
+        {
+            txtCodigo.Enabled = habilitar;
+            txtSerie.Enabled = habilitar;
+            txtNumDaNota.Enabled = habilitar;
+            txtCodFornecedor.Enabled = habilitar;
+            txtFornecedor.Enabled = habilitar;
+            btnPesquisarFornecedor.Enabled = habilitar;
+            dtpDataEmissao.Enabled = habilitar;
+            dtpDataEntrega.Enabled = habilitar;
+        }
+
+        private void HabilitarSecaoProdutos(bool habilitar)
+        {
+            txtCodProduto.Enabled = habilitar;
+            txtProduto.Enabled = habilitar;
+            btnPesquisarProduto.Enabled = habilitar;
+            txtQuantidade.Enabled = habilitar;
+            txtValorUnitario.Enabled = habilitar;
+            txtTotalProduto.Enabled = habilitar;
+            btnAdicionarProduto.Enabled = habilitar;
+            btnEditarProduto.Enabled = habilitar;
+            btnRemoverProduto.Enabled = habilitar;
+            btnLimparListaProduto.Enabled = habilitar;
+            //listVProdutos.Enabled = habilitar;
+        }
+
+        private void HabilitarSecaoRodape(bool habilitar)
+        {
+            txtValorFrete.Enabled = habilitar;
+            txtSeguro.Enabled = habilitar;
+            txtDespesas.Enabled = habilitar;
+            txtValorTotalValores.Enabled = habilitar;
+            txtCodCondicaoDePagamento.Enabled = habilitar;
+            txtCondicaoDePagamento.Enabled = habilitar;
+            btnPesquisarCondicaoDePagamento.Enabled = habilitar;
+            btnGerarParcelas.Enabled = habilitar;
+            btnLimparParcelas.Enabled = habilitar;
+            //listVParcelas.Enabled = habilitar;
+        }
+
+        private void Cabecalho_TextChanged(object sender, EventArgs e)
+        {
+            GerenciarEstadoDosControles();
         }
 
         #endregion
@@ -170,7 +265,6 @@ namespace projeto_patrica.pages.cadastro
         {
             if (ValidarCamposItem())
             {
-                // Verifica se o produto já foi adicionado (variável da lambda renomeada para 'i')
                 if (listaItens.Any(i => i.OProduto.Id == produtoSelecionado.Id))
                 {
                     MessageBox.Show("Este produto já foi adicionado à lista.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -190,6 +284,7 @@ namespace projeto_patrica.pages.cadastro
                 listaItens.Add(item);
                 CarregarItensNaListView();
                 LimparCamposProduto();
+                GerenciarEstadoDosControles();
             }
         }
 
@@ -248,6 +343,7 @@ namespace projeto_patrica.pages.cadastro
                 {
                     listaItens.RemoveAt(listVProdutos.SelectedItems[0].Index);
                     CarregarItensNaListView();
+                    GerenciarEstadoDosControles();
                 }
                 else
                 {
@@ -260,6 +356,7 @@ namespace projeto_patrica.pages.cadastro
         {
             listaItens.Clear();
             CarregarItensNaListView();
+            GerenciarEstadoDosControles();
         }
         #endregion
 
@@ -299,12 +396,14 @@ namespace projeto_patrica.pages.cadastro
             }
 
             CarregarParcelasNaListView();
+            GerenciarEstadoDosControles();
         }
 
         private void btnLimparParcelas_Click(object sender, EventArgs e)
         {
             listaParcelas.Clear();
             CarregarParcelasNaListView();
+            GerenciarEstadoDosControles();
         }
         #endregion
 
@@ -343,6 +442,7 @@ namespace projeto_patrica.pages.cadastro
                     txtCondicaoDePagamento.Clear();
                 }
             }
+            GerenciarEstadoDosControles();
         }
 
         private void btnPesquisarProduto_Click(object sender, EventArgs e)
@@ -483,15 +583,11 @@ namespace projeto_patrica.pages.cadastro
             }
         }
 
-        private void txtValoresAdicionais_Leave(object sender, EventArgs e)
-        {
-            AtualizarTotais();
-        }
-
         private void dtpDataEmissao_ValueChanged(object sender, EventArgs e)
         {
             // Garante que a data de entrega não seja anterior à data de emissão
             dtpDataEntrega.MinDate = dtpDataEmissao.Value;
+            Cabecalho_TextChanged(sender, e);
         }
 
         #endregion

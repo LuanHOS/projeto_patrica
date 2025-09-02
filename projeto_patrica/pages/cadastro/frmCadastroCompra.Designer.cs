@@ -150,6 +150,7 @@
             this.txtSerie.ShortcutsEnabled = false;
             this.txtSerie.Size = new System.Drawing.Size(46, 20);
             this.txtSerie.TabIndex = 102;
+            this.txtSerie.TextChanged += new System.EventHandler(this.Cabecalho_TextChanged);
             // 
             // lblNumNota
             // 
@@ -167,6 +168,7 @@
             this.txtNumDaNota.ShortcutsEnabled = false;
             this.txtNumDaNota.Size = new System.Drawing.Size(129, 20);
             this.txtNumDaNota.TabIndex = 102;
+            this.txtNumDaNota.TextChanged += new System.EventHandler(this.Cabecalho_TextChanged);
             // 
             // lblFornecedor
             // 
@@ -185,6 +187,7 @@
             this.txtFornecedor.ShortcutsEnabled = false;
             this.txtFornecedor.Size = new System.Drawing.Size(214, 20);
             this.txtFornecedor.TabIndex = 102;
+            this.txtFornecedor.TextChanged += new System.EventHandler(this.Cabecalho_TextChanged);
             // 
             // btnPesquisarFornecedor
             // 
@@ -538,6 +541,7 @@
             this.dtpDataEmissao.Name = "dtpDataEmissao";
             this.dtpDataEmissao.Size = new System.Drawing.Size(115, 20);
             this.dtpDataEmissao.TabIndex = 106;
+            this.dtpDataEmissao.ValueChanged += new System.EventHandler(this.Cabecalho_TextChanged);
             // 
             // lblTotalGeralProdutos
             // 
