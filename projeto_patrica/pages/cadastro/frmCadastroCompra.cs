@@ -31,6 +31,7 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastroCompra()
         {
             InitializeComponent();
+            dtpDataEmissao.MaxDate = DateTime.Today;
         }
 
         public override void ConhecaObj(object obj, object ctrl)
@@ -464,24 +465,13 @@ namespace projeto_patrica.pages.cadastro
                 MessageBox.Show("Preencha todos os campos obrigatórios da nota, adicione pelo menos um produto e selecione a condição de pagamento para salvar.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
-            // Validação da Data de Emissão
-            if (dtpDataEmissao.Value.Date > DateTime.Today)
-            {
-                MessageBox.Show("A Data de Emissão não pode ser uma data futura.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dtpDataEmissao.Focus();
-                return false;
-            }
-
-            // Validação da Data de Entrega
-            if (dtpDataEntrega.Value.Date < dtpDataEmissao.Value.Date)
-            {
-                MessageBox.Show("A Data de Entrega não pode ser anterior à Data de Emissão.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dtpDataEntrega.Focus();
-                return false;
-            }
-
             return true;
+        }
+
+        private void dtpDataEmissao_ValueChanged(object sender, EventArgs e)
+        {
+            // Esta linha garante que a data de entrega não possa ser anterior à data de emissão
+            dtpDataEntrega.MinDate = dtpDataEmissao.Value;
         }
     }
 }

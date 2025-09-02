@@ -528,6 +528,7 @@
             this.dtpDataEntrega.Name = "dtpDataEntrega";
             this.dtpDataEntrega.Size = new System.Drawing.Size(109, 20);
             this.dtpDataEntrega.TabIndex = 105;
+            this.dtpDataEntrega.ValueChanged += new System.EventHandler(this.dtpDataEmissao_ValueChanged);
             // 
             // dtpDataEmissao
             // 
