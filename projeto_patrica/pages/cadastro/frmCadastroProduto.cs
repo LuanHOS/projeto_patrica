@@ -2,7 +2,6 @@
 using projeto_patrica.classes;
 using projeto_patrica.controller;
 using projeto_patrica.pages.consulta;
-using projeto_patrica.validacao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +56,9 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
+            if (!ValidacaoCampos())
+                return;
+
             if (string.IsNullOrWhiteSpace(txtNome.Text) ||
                 string.IsNullOrWhiteSpace(txtCodBarras.Text) ||
                 string.IsNullOrWhiteSpace(txtMarca.Text) ||
@@ -80,7 +82,6 @@ namespace projeto_patrica.pages.cadastro
             oProduto.Ativo = checkBoxAtivo.Checked;
             oProduto.ValorCompra = Convert.ToDecimal(txtValorCompra.Text);
             oProduto.ValorCompraAnterior = Convert.ToDecimal(txtValorCompraAnterior.Text);
-            oProduto.PercentualLucro = Convert.ToDecimal(txtPorcentagemLucro.Text);
 
             try
             {
@@ -94,7 +95,7 @@ namespace projeto_patrica.pages.cadastro
                         Sair();
                     }
                 }
-                else 
+                else
                 {
                     // 1. Salva o produto principal (INSERT ou UPDATE). O ID do produto é atualizado no objeto oProduto.
                     aController_produto.Salvar(oProduto);
@@ -453,6 +454,16 @@ namespace projeto_patrica.pages.cadastro
             }
         }
 
+        public override bool ValidacaoCampos()
+        {
+            if (listaProdutoFornecedor.Count == 0)
+            {
+                MessageBox.Show("É necessário adicionar pelo menos um fornecedor para este produto.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            
+            return true;
+        }
         public override void CamposRestricoes()
         {
             base.CamposRestricoes();
