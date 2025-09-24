@@ -35,7 +35,6 @@
             this.clmValorVenda = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmEstoque = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmFornecedor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listV
@@ -44,7 +43,6 @@
             this.clmNome,
             this.clmCodBarras,
             this.clmMarca,
-            this.clmFornecedor,
             this.clmCategoria,
             this.clmValorVenda,
             this.clmEstoque,
@@ -91,11 +89,6 @@
             this.clmAtivo.Text = "Ativo";
             this.clmAtivo.Width = 100;
             // 
-            // clmFornecedor
-            // 
-            this.clmFornecedor.Text = "Fornecedor";
-            this.clmFornecedor.Width = 150;
-            // 
             // frmConsultaProduto
             // 
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -115,6 +108,5 @@
         private System.Windows.Forms.ColumnHeader clmValorVenda;
         private System.Windows.Forms.ColumnHeader clmEstoque;
         private System.Windows.Forms.ColumnHeader clmAtivo;
-        private System.Windows.Forms.ColumnHeader clmFornecedor;
     }
 }

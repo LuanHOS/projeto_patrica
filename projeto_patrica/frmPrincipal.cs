@@ -97,7 +97,6 @@ namespace projeto_patrica
             oController_produto.AController_marca = oController_marca;
             oController_produto.AController_categoria = oController_categoria;
             oController_produto.AController_unidade_medida = oController_unidade_medida;
-            oController_produto.AController_fornecedor = oController_fornecedor;
             oController_compra.AController_fornecedor = oController_fornecedor;
             oController_compra.AController_produto = oController_produto;
             oController_compra.AController_condicaoPagamento = oController_condicaoPagamento;

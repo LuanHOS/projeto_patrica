@@ -56,6 +56,16 @@
             this.txtValorVenda = new System.Windows.Forms.TextBox();
             this.txtValorCompraAnterior = new System.Windows.Forms.TextBox();
             this.lblPrecoDeCustoAnterior = new System.Windows.Forms.Label();
+            this.clmCodFornecedor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listVFornecedores = new System.Windows.Forms.ListView();
+            this.clmNomeRazaoSocial = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmTipo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnRemoverFornecedor = new System.Windows.Forms.Button();
+            this.btnAdicionarFornecedor = new System.Windows.Forms.Button();
+            this.txtCodMarca = new System.Windows.Forms.TextBox();
+            this.txtCodCategoria = new System.Windows.Forms.TextBox();
+            this.txtCodUnidadeDeMedida = new System.Windows.Forms.TextBox();
+            this.txtCodFornecedor = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnSave
@@ -133,61 +143,61 @@
             // 
             // btnPesquisarFornecedor
             // 
-            this.btnPesquisarFornecedor.Location = new System.Drawing.Point(441, 314);
+            this.btnPesquisarFornecedor.Location = new System.Drawing.Point(1052, 93);
             this.btnPesquisarFornecedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarFornecedor.Name = "btnPesquisarFornecedor";
-            this.btnPesquisarFornecedor.Size = new System.Drawing.Size(99, 28);
+            this.btnPesquisarFornecedor.Size = new System.Drawing.Size(49, 28);
             this.btnPesquisarFornecedor.TabIndex = 8;
-            this.btnPesquisarFornecedor.Text = "Pesquisar";
+            this.btnPesquisarFornecedor.Text = "🔎";
             this.btnPesquisarFornecedor.UseVisualStyleBackColor = true;
             this.btnPesquisarFornecedor.Click += new System.EventHandler(this.btnPesquisarFornecedor_Click);
             // 
             // txtFornecedor
             // 
             this.txtFornecedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtFornecedor.Location = new System.Drawing.Point(24, 319);
+            this.txtFornecedor.Location = new System.Drawing.Point(782, 98);
             this.txtFornecedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFornecedor.Name = "txtFornecedor";
             this.txtFornecedor.ReadOnly = true;
             this.txtFornecedor.ShortcutsEnabled = false;
-            this.txtFornecedor.Size = new System.Drawing.Size(411, 20);
+            this.txtFornecedor.Size = new System.Drawing.Size(264, 20);
             this.txtFornecedor.TabIndex = 7;
             // 
             // lblFornecedor
             // 
             this.lblFornecedor.AutoSize = true;
-            this.lblFornecedor.Location = new System.Drawing.Point(21, 300);
+            this.lblFornecedor.Location = new System.Drawing.Point(713, 79);
             this.lblFornecedor.Name = "lblFornecedor";
-            this.lblFornecedor.Size = new System.Drawing.Size(68, 13);
+            this.lblFornecedor.Size = new System.Drawing.Size(79, 13);
             this.lblFornecedor.TabIndex = 109;
-            this.lblFornecedor.Text = "Fornecedor *";
+            this.lblFornecedor.Text = "Fornecedores *";
             // 
             // btnPesquisarCategoria
             // 
-            this.btnPesquisarCategoria.Location = new System.Drawing.Point(441, 365);
+            this.btnPesquisarCategoria.Location = new System.Drawing.Point(441, 321);
             this.btnPesquisarCategoria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarCategoria.Name = "btnPesquisarCategoria";
-            this.btnPesquisarCategoria.Size = new System.Drawing.Size(99, 28);
+            this.btnPesquisarCategoria.Size = new System.Drawing.Size(49, 28);
             this.btnPesquisarCategoria.TabIndex = 10;
-            this.btnPesquisarCategoria.Text = "Pesquisar";
+            this.btnPesquisarCategoria.Text = "🔎";
             this.btnPesquisarCategoria.UseVisualStyleBackColor = true;
             this.btnPesquisarCategoria.Click += new System.EventHandler(this.btnPesquisarCategoria_Click);
             // 
             // txtCategoria
             // 
             this.txtCategoria.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCategoria.Location = new System.Drawing.Point(24, 370);
+            this.txtCategoria.Location = new System.Drawing.Point(90, 326);
             this.txtCategoria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.ReadOnly = true;
             this.txtCategoria.ShortcutsEnabled = false;
-            this.txtCategoria.Size = new System.Drawing.Size(411, 20);
+            this.txtCategoria.Size = new System.Drawing.Size(345, 20);
             this.txtCategoria.TabIndex = 9;
             // 
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(21, 351);
+            this.lblCategoria.Location = new System.Drawing.Point(21, 307);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(59, 13);
             this.lblCategoria.TabIndex = 112;
@@ -198,21 +208,21 @@
             this.btnPesquisarMarca.Location = new System.Drawing.Point(441, 263);
             this.btnPesquisarMarca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarMarca.Name = "btnPesquisarMarca";
-            this.btnPesquisarMarca.Size = new System.Drawing.Size(99, 28);
+            this.btnPesquisarMarca.Size = new System.Drawing.Size(49, 28);
             this.btnPesquisarMarca.TabIndex = 6;
-            this.btnPesquisarMarca.Text = "Pesquisar";
+            this.btnPesquisarMarca.Text = "🔎";
             this.btnPesquisarMarca.UseVisualStyleBackColor = true;
             this.btnPesquisarMarca.Click += new System.EventHandler(this.btnPesquisarMarca_Click);
             // 
             // txtMarca
             // 
             this.txtMarca.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMarca.Location = new System.Drawing.Point(24, 268);
+            this.txtMarca.Location = new System.Drawing.Point(90, 268);
             this.txtMarca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.ReadOnly = true;
             this.txtMarca.ShortcutsEnabled = false;
-            this.txtMarca.Size = new System.Drawing.Size(411, 20);
+            this.txtMarca.Size = new System.Drawing.Size(345, 20);
             this.txtMarca.TabIndex = 5;
             // 
             // lblMarca
@@ -226,19 +236,19 @@
             // 
             // btnPesquisarUnidadeMedida
             // 
-            this.btnPesquisarUnidadeMedida.Location = new System.Drawing.Point(134, 416);
+            this.btnPesquisarUnidadeMedida.Location = new System.Drawing.Point(200, 374);
             this.btnPesquisarUnidadeMedida.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarUnidadeMedida.Name = "btnPesquisarUnidadeMedida";
-            this.btnPesquisarUnidadeMedida.Size = new System.Drawing.Size(99, 28);
+            this.btnPesquisarUnidadeMedida.Size = new System.Drawing.Size(49, 28);
             this.btnPesquisarUnidadeMedida.TabIndex = 12;
-            this.btnPesquisarUnidadeMedida.Text = "Pesquisar";
+            this.btnPesquisarUnidadeMedida.Text = "🔎";
             this.btnPesquisarUnidadeMedida.UseVisualStyleBackColor = true;
             this.btnPesquisarUnidadeMedida.Click += new System.EventHandler(this.btnPesquisarUnidadeMedida_Click);
             // 
             // txtUnidadeMedida
             // 
             this.txtUnidadeMedida.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtUnidadeMedida.Location = new System.Drawing.Point(24, 421);
+            this.txtUnidadeMedida.Location = new System.Drawing.Point(90, 379);
             this.txtUnidadeMedida.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUnidadeMedida.Name = "txtUnidadeMedida";
             this.txtUnidadeMedida.ReadOnly = true;
@@ -249,7 +259,7 @@
             // lblUnidadeMedida
             // 
             this.lblUnidadeMedida.AutoSize = true;
-            this.lblUnidadeMedida.Location = new System.Drawing.Point(21, 402);
+            this.lblUnidadeMedida.Location = new System.Drawing.Point(21, 358);
             this.lblUnidadeMedida.Name = "lblUnidadeMedida";
             this.lblUnidadeMedida.Size = new System.Drawing.Size(107, 13);
             this.lblUnidadeMedida.TabIndex = 118;
@@ -258,48 +268,48 @@
             // lblValorCompra
             // 
             this.lblValorCompra.AutoSize = true;
-            this.lblValorCompra.Location = new System.Drawing.Point(21, 466);
+            this.lblValorCompra.Location = new System.Drawing.Point(21, 455);
             this.lblValorCompra.Name = "lblValorCompra";
-            this.lblValorCompra.Size = new System.Drawing.Size(110, 13);
+            this.lblValorCompra.Size = new System.Drawing.Size(103, 13);
             this.lblValorCompra.TabIndex = 120;
-            this.lblValorCompra.Text = "Preço de Custo (R$) *";
+            this.lblValorCompra.Text = "Preço de Custo (R$)";
             // 
             // lblEstoque
             // 
             this.lblEstoque.AutoSize = true;
-            this.lblEstoque.Location = new System.Drawing.Point(21, 522);
+            this.lblEstoque.Location = new System.Drawing.Point(21, 511);
             this.lblEstoque.Name = "lblEstoque";
-            this.lblEstoque.Size = new System.Drawing.Size(53, 13);
+            this.lblEstoque.Size = new System.Drawing.Size(49, 13);
             this.lblEstoque.TabIndex = 121;
-            this.lblEstoque.Text = "Estoque *";
+            this.lblEstoque.Text = "Estoque ";
             // 
             // txtValorCompra
             // 
             this.txtValorCompra.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtValorCompra.Enabled = false;
-            this.txtValorCompra.Location = new System.Drawing.Point(24, 485);
+            this.txtValorCompra.Location = new System.Drawing.Point(24, 474);
             this.txtValorCompra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorCompra.Name = "txtValorCompra";
             this.txtValorCompra.ShortcutsEnabled = false;
             this.txtValorCompra.Size = new System.Drawing.Size(194, 20);
             this.txtValorCompra.TabIndex = 13;
+            this.txtValorCompra.Text = "0";
             this.txtValorCompra.Leave += new System.EventHandler(this.txtValorCompra_Leave);
             // 
             // txtEstoque
             // 
             this.txtEstoque.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEstoque.Enabled = false;
-            this.txtEstoque.Location = new System.Drawing.Point(24, 541);
+            this.txtEstoque.Location = new System.Drawing.Point(24, 530);
             this.txtEstoque.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEstoque.Name = "txtEstoque";
             this.txtEstoque.ShortcutsEnabled = false;
             this.txtEstoque.Size = new System.Drawing.Size(194, 20);
             this.txtEstoque.TabIndex = 16;
+            this.txtEstoque.Text = "0";
             // 
             // lblPorcentagemLucro
             // 
             this.lblPorcentagemLucro.AutoSize = true;
-            this.lblPorcentagemLucro.Location = new System.Drawing.Point(248, 466);
+            this.lblPorcentagemLucro.Location = new System.Drawing.Point(248, 455);
             this.lblPorcentagemLucro.Name = "lblPorcentagemLucro";
             this.lblPorcentagemLucro.Size = new System.Drawing.Size(114, 13);
             this.lblPorcentagemLucro.TabIndex = 124;
@@ -308,7 +318,7 @@
             // lblValorVenda
             // 
             this.lblValorVenda.AutoSize = true;
-            this.lblValorVenda.Location = new System.Drawing.Point(474, 466);
+            this.lblValorVenda.Location = new System.Drawing.Point(474, 455);
             this.lblValorVenda.Name = "lblValorVenda";
             this.lblValorVenda.Size = new System.Drawing.Size(114, 13);
             this.lblValorVenda.TabIndex = 125;
@@ -317,49 +327,146 @@
             // txtPorcentagemLucro
             // 
             this.txtPorcentagemLucro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPorcentagemLucro.Enabled = false;
-            this.txtPorcentagemLucro.Location = new System.Drawing.Point(251, 485);
+            this.txtPorcentagemLucro.Location = new System.Drawing.Point(251, 474);
             this.txtPorcentagemLucro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPorcentagemLucro.Name = "txtPorcentagemLucro";
             this.txtPorcentagemLucro.ShortcutsEnabled = false;
             this.txtPorcentagemLucro.Size = new System.Drawing.Size(194, 20);
             this.txtPorcentagemLucro.TabIndex = 14;
+            this.txtPorcentagemLucro.Text = "0";
             this.txtPorcentagemLucro.Leave += new System.EventHandler(this.txtPorcentagemLucro_Leave);
             // 
             // txtValorVenda
             // 
             this.txtValorVenda.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtValorVenda.Location = new System.Drawing.Point(477, 485);
+            this.txtValorVenda.Location = new System.Drawing.Point(477, 474);
             this.txtValorVenda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorVenda.Name = "txtValorVenda";
             this.txtValorVenda.ShortcutsEnabled = false;
             this.txtValorVenda.Size = new System.Drawing.Size(194, 20);
             this.txtValorVenda.TabIndex = 15;
+            this.txtValorVenda.Text = "0";
             this.txtValorVenda.Leave += new System.EventHandler(this.txtValorVenda_Leave);
             // 
             // txtValorCompraAnterior
             // 
             this.txtValorCompraAnterior.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtValorCompraAnterior.Enabled = false;
-            this.txtValorCompraAnterior.Location = new System.Drawing.Point(251, 541);
+            this.txtValorCompraAnterior.Location = new System.Drawing.Point(251, 530);
             this.txtValorCompraAnterior.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorCompraAnterior.Name = "txtValorCompraAnterior";
             this.txtValorCompraAnterior.ShortcutsEnabled = false;
             this.txtValorCompraAnterior.Size = new System.Drawing.Size(194, 20);
             this.txtValorCompraAnterior.TabIndex = 15;
+            this.txtValorCompraAnterior.Text = "0";
             this.txtValorCompraAnterior.Leave += new System.EventHandler(this.txtValorVenda_Leave);
             // 
             // lblPrecoDeCustoAnterior
             // 
             this.lblPrecoDeCustoAnterior.AutoSize = true;
-            this.lblPrecoDeCustoAnterior.Location = new System.Drawing.Point(248, 522);
+            this.lblPrecoDeCustoAnterior.Location = new System.Drawing.Point(248, 511);
             this.lblPrecoDeCustoAnterior.Name = "lblPrecoDeCustoAnterior";
-            this.lblPrecoDeCustoAnterior.Size = new System.Drawing.Size(149, 13);
+            this.lblPrecoDeCustoAnterior.Size = new System.Drawing.Size(142, 13);
             this.lblPrecoDeCustoAnterior.TabIndex = 125;
-            this.lblPrecoDeCustoAnterior.Text = "Preço de Custo Anterior (R$) *";
+            this.lblPrecoDeCustoAnterior.Text = "Preço de Custo Anterior (R$)";
+            // 
+            // clmCodFornecedor
+            // 
+            this.clmCodFornecedor.Text = "Cód. Fornecedor";
+            this.clmCodFornecedor.Width = 100;
+            // 
+            // listVFornecedores
+            // 
+            this.listVFornecedores.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmCodFornecedor,
+            this.clmNomeRazaoSocial,
+            this.clmTipo});
+            this.listVFornecedores.FullRowSelect = true;
+            this.listVFornecedores.GridLines = true;
+            this.listVFornecedores.HideSelection = false;
+            this.listVFornecedores.Location = new System.Drawing.Point(716, 128);
+            this.listVFornecedores.Name = "listVFornecedores";
+            this.listVFornecedores.Size = new System.Drawing.Size(577, 448);
+            this.listVFornecedores.TabIndex = 126;
+            this.listVFornecedores.UseCompatibleStateImageBehavior = false;
+            this.listVFornecedores.View = System.Windows.Forms.View.Details;
+            // 
+            // clmNomeRazaoSocial
+            // 
+            this.clmNomeRazaoSocial.Text = "Nome/Razão Social";
+            this.clmNomeRazaoSocial.Width = 200;
+            // 
+            // clmTipo
+            // 
+            this.clmTipo.Text = "Tipo";
+            this.clmTipo.Width = 100;
+            // 
+            // btnRemoverFornecedor
+            // 
+            this.btnRemoverFornecedor.Location = new System.Drawing.Point(1218, 95);
+            this.btnRemoverFornecedor.Name = "btnRemoverFornecedor";
+            this.btnRemoverFornecedor.Size = new System.Drawing.Size(75, 23);
+            this.btnRemoverFornecedor.TabIndex = 128;
+            this.btnRemoverFornecedor.Text = "Remover";
+            this.btnRemoverFornecedor.UseVisualStyleBackColor = true;
+            this.btnRemoverFornecedor.Click += new System.EventHandler(this.btnRemoverFornecedor_Click);
+            // 
+            // btnAdicionarFornecedor
+            // 
+            this.btnAdicionarFornecedor.Location = new System.Drawing.Point(1138, 95);
+            this.btnAdicionarFornecedor.Name = "btnAdicionarFornecedor";
+            this.btnAdicionarFornecedor.Size = new System.Drawing.Size(74, 23);
+            this.btnAdicionarFornecedor.TabIndex = 130;
+            this.btnAdicionarFornecedor.Text = "Adicionar ";
+            this.btnAdicionarFornecedor.UseVisualStyleBackColor = true;
+            this.btnAdicionarFornecedor.Click += new System.EventHandler(this.btnAdicionarFornecedor_Click);
+            // 
+            // txtCodMarca
+            // 
+            this.txtCodMarca.Location = new System.Drawing.Point(24, 268);
+            this.txtCodMarca.Name = "txtCodMarca";
+            this.txtCodMarca.ReadOnly = true;
+            this.txtCodMarca.ShortcutsEnabled = false;
+            this.txtCodMarca.Size = new System.Drawing.Size(60, 20);
+            this.txtCodMarca.TabIndex = 131;
+            // 
+            // txtCodCategoria
+            // 
+            this.txtCodCategoria.Location = new System.Drawing.Point(24, 326);
+            this.txtCodCategoria.Name = "txtCodCategoria";
+            this.txtCodCategoria.ReadOnly = true;
+            this.txtCodCategoria.ShortcutsEnabled = false;
+            this.txtCodCategoria.Size = new System.Drawing.Size(60, 20);
+            this.txtCodCategoria.TabIndex = 132;
+            // 
+            // txtCodUnidadeDeMedida
+            // 
+            this.txtCodUnidadeDeMedida.Location = new System.Drawing.Point(24, 379);
+            this.txtCodUnidadeDeMedida.Name = "txtCodUnidadeDeMedida";
+            this.txtCodUnidadeDeMedida.ReadOnly = true;
+            this.txtCodUnidadeDeMedida.ShortcutsEnabled = false;
+            this.txtCodUnidadeDeMedida.Size = new System.Drawing.Size(60, 20);
+            this.txtCodUnidadeDeMedida.TabIndex = 133;
+            // 
+            // txtCodFornecedor
+            // 
+            this.txtCodFornecedor.Location = new System.Drawing.Point(716, 98);
+            this.txtCodFornecedor.Name = "txtCodFornecedor";
+            this.txtCodFornecedor.ReadOnly = true;
+            this.txtCodFornecedor.ShortcutsEnabled = false;
+            this.txtCodFornecedor.Size = new System.Drawing.Size(60, 20);
+            this.txtCodFornecedor.TabIndex = 134;
             // 
             // frmCadastroProduto
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(1344, 689);
+            this.Controls.Add(this.txtCodFornecedor);
+            this.Controls.Add(this.txtCodUnidadeDeMedida);
+            this.Controls.Add(this.txtCodCategoria);
+            this.Controls.Add(this.txtCodMarca);
+            this.Controls.Add(this.btnRemoverFornecedor);
+            this.Controls.Add(this.btnAdicionarFornecedor);
+            this.Controls.Add(this.listVFornecedores);
             this.Controls.Add(this.lblPorcentagemLucro);
             this.Controls.Add(this.lblPrecoDeCustoAnterior);
             this.Controls.Add(this.lblValorVenda);
@@ -412,6 +519,13 @@
             this.Controls.SetChildIndex(this.txtValorCompra, 0);
             this.Controls.SetChildIndex(this.lblEstoque, 0);
             this.Controls.SetChildIndex(this.lblValorCompra, 0);
+            this.Controls.SetChildIndex(this.txtValorVenda, 0);
+            this.Controls.SetChildIndex(this.txtValorCompraAnterior, 0);
+            this.Controls.SetChildIndex(this.txtPorcentagemLucro, 0);
+            this.Controls.SetChildIndex(this.lblValorVenda, 0);
+            this.Controls.SetChildIndex(this.lblPrecoDeCustoAnterior, 0);
+            this.Controls.SetChildIndex(this.lblPorcentagemLucro, 0);
+            this.Controls.SetChildIndex(this.listVFornecedores, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.lblCod, 0);
             this.Controls.SetChildIndex(this.btnSair, 0);
@@ -423,12 +537,12 @@
             this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditou, 0);
             this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditouNome, 0);
             this.Controls.SetChildIndex(this.checkBoxAtivo, 0);
-            this.Controls.SetChildIndex(this.txtValorVenda, 0);
-            this.Controls.SetChildIndex(this.txtValorCompraAnterior, 0);
-            this.Controls.SetChildIndex(this.txtPorcentagemLucro, 0);
-            this.Controls.SetChildIndex(this.lblValorVenda, 0);
-            this.Controls.SetChildIndex(this.lblPrecoDeCustoAnterior, 0);
-            this.Controls.SetChildIndex(this.lblPorcentagemLucro, 0);
+            this.Controls.SetChildIndex(this.btnAdicionarFornecedor, 0);
+            this.Controls.SetChildIndex(this.btnRemoverFornecedor, 0);
+            this.Controls.SetChildIndex(this.txtCodMarca, 0);
+            this.Controls.SetChildIndex(this.txtCodCategoria, 0);
+            this.Controls.SetChildIndex(this.txtCodUnidadeDeMedida, 0);
+            this.Controls.SetChildIndex(this.txtCodFornecedor, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,5 +578,15 @@
         private System.Windows.Forms.TextBox txtValorVenda;
         private System.Windows.Forms.TextBox txtValorCompraAnterior;
         private System.Windows.Forms.Label lblPrecoDeCustoAnterior;
+        private System.Windows.Forms.ColumnHeader clmCodFornecedor;
+        private System.Windows.Forms.ListView listVFornecedores;
+        private System.Windows.Forms.ColumnHeader clmNomeRazaoSocial;
+        private System.Windows.Forms.ColumnHeader clmTipo;
+        private System.Windows.Forms.Button btnRemoverFornecedor;
+        private System.Windows.Forms.Button btnAdicionarFornecedor;
+        private System.Windows.Forms.TextBox txtCodMarca;
+        private System.Windows.Forms.TextBox txtCodCategoria;
+        private System.Windows.Forms.TextBox txtCodUnidadeDeMedida;
+        private System.Windows.Forms.TextBox txtCodFornecedor;
     }
 }

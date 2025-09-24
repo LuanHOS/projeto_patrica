@@ -4,7 +4,8 @@ using projeto_patrica.controller;
 using projeto_patrica.pages.consulta;
 using projeto_patrica.validacao;
 using System;
-using System.Globalization;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace projeto_patrica.pages.cadastro
@@ -13,7 +14,9 @@ namespace projeto_patrica.pages.cadastro
     {
         private produto oProduto;
         private Controller_produto aController_produto;
-
+        private List<produto_fornecedor> listaProdutoFornecedor = new List<produto_fornecedor>();
+        private Controller_produto_fornecedor aController_prod_forn;
+        private Controller_fornecedor aController_fornecedor;
         private frmConsultaMarca oFrmConsultaMarca;
         private frmConsultaCategoria oFrmConsultaCategoria;
         private frmConsultaUnidade_medida oFrmConsultaUnidadeMedida;
@@ -22,6 +25,8 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastroProduto() : base()
         {
             InitializeComponent();
+            aController_prod_forn = new Controller_produto_fornecedor();
+            aController_fornecedor = new Controller_fornecedor();
         }
 
         public override void ConhecaObj(object obj, object ctrl)
@@ -57,8 +62,6 @@ namespace projeto_patrica.pages.cadastro
                 string.IsNullOrWhiteSpace(txtMarca.Text) ||
                 string.IsNullOrWhiteSpace(txtCategoria.Text) ||
                 string.IsNullOrWhiteSpace(txtUnidadeMedida.Text) ||
-                string.IsNullOrWhiteSpace(txtFornecedor.Text) ||
-                string.IsNullOrWhiteSpace(txtValorCompra.Text) ||
                 string.IsNullOrWhiteSpace(txtValorVenda.Text) ||
                 string.IsNullOrWhiteSpace(txtPorcentagemLucro.Text) ||
                 string.IsNullOrWhiteSpace(txtEstoque.Text))
@@ -71,12 +74,13 @@ namespace projeto_patrica.pages.cadastro
             oProduto.Nome = txtNome.Text;
             oProduto.Descricao = txtDescricao.Text;
             oProduto.CodigoBarras = txtCodBarras.Text;
-            oProduto.ValorCompra = Convert.ToDecimal(txtValorCompra.Text);
             oProduto.ValorVenda = Convert.ToDecimal(txtValorVenda.Text);
-            oProduto.ValorCompraAnterior = Convert.ToDecimal(txtValorCompraAnterior.Text);
             oProduto.PercentualLucro = Convert.ToDecimal(txtPorcentagemLucro.Text);
             oProduto.Estoque = Convert.ToInt32(txtEstoque.Text);
             oProduto.Ativo = checkBoxAtivo.Checked;
+            oProduto.ValorCompra = Convert.ToDecimal(txtValorCompra.Text);
+            oProduto.ValorCompraAnterior = Convert.ToDecimal(txtValorCompraAnterior.Text);
+            oProduto.PercentualLucro = Convert.ToDecimal(txtPorcentagemLucro.Text);
 
             try
             {
@@ -90,15 +94,38 @@ namespace projeto_patrica.pages.cadastro
                         Sair();
                     }
                 }
-                else if (btnSave.Text == "Alterar")
+                else 
                 {
+                    // 1. Salva o produto principal (INSERT ou UPDATE). O ID do produto é atualizado no objeto oProduto.
                     aController_produto.Salvar(oProduto);
-                    MessageBox.Show("O produto \"" + oProduto.Nome + "\" foi alterado com sucesso.");
-                }
-                else
-                {
-                    aController_produto.Salvar(oProduto);
-                    MessageBox.Show("O produto \"" + oProduto.Nome + "\" foi salvo com o código " + oProduto.Id + ".");
+
+                    // 2. Gerencia os fornecedores associados
+                    var fornecedoresAtuaisNoBanco = aController_prod_forn.ListarPorProduto(oProduto.Id);
+
+                    // Remove do banco os fornecedores que não estão mais na lista da tela
+                    foreach (var relacaoBanco in fornecedoresAtuaisNoBanco)
+                    {
+                        if (!listaProdutoFornecedor.Any(itemTela => itemTela.IdFornecedor == relacaoBanco.IdFornecedor))
+                        {
+                            aController_prod_forn.Excluir(relacaoBanco);
+                        }
+                    }
+
+                    // Adiciona/Atualiza os fornecedores que estão na lista da tela
+                    foreach (var relacaoTela in listaProdutoFornecedor)
+                    {
+                        relacaoTela.IdProduto = oProduto.Id; // Garante que o ID do produto está correto
+                        aController_prod_forn.Salvar(relacaoTela);
+                    }
+
+                    if (btnSave.Text == "Alterar")
+                    {
+                        MessageBox.Show("O produto \"" + oProduto.Nome + "\" foi alterado com sucesso.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("O produto \"" + oProduto.Nome + "\" foi salvo com o código " + oProduto.Id + ".");
+                    }
                 }
 
                 base.Salvar();
@@ -150,8 +177,12 @@ namespace projeto_patrica.pages.cadastro
             txtDescricao.Clear();
             txtCodBarras.Clear();
             txtMarca.Clear();
+            txtCodMarca.Clear();
             txtCategoria.Clear();
+            txtCodCategoria.Clear();
             txtUnidadeMedida.Clear();
+            txtCodUnidadeDeMedida.Clear();
+            txtCodFornecedor.Clear();
             txtFornecedor.Clear();
             txtValorCompra.Text = 0.ToString("F2");
             txtValorVenda.Text = 0.ToString("F2");
@@ -159,10 +190,13 @@ namespace projeto_patrica.pages.cadastro
             txtPorcentagemLucro.Text = 0.ToString("F2");
             txtEstoque.Text = "0";
 
+            listaProdutoFornecedor.Clear();
+            CarregarFornecedoresNaListView();
+
+            oProduto = new produto();
             oProduto.OMarca = new marca();
             oProduto.OCategoria = new categoria();
             oProduto.OUnidadeMedida = new unidade_medida();
-            oProduto.OFornecedor = new fornecedor();
         }
 
         public override void Carregatxt()
@@ -173,9 +207,11 @@ namespace projeto_patrica.pages.cadastro
             txtDescricao.Text = oProduto.Descricao;
             txtCodBarras.Text = oProduto.CodigoBarras;
             txtMarca.Text = oProduto.OMarca.Nome;
+            txtCodMarca.Text = oProduto.OMarca.Id.ToString();
             txtCategoria.Text = oProduto.OCategoria.Nome;
+            txtCodCategoria.Text = oProduto.OCategoria.Id.ToString();
             txtUnidadeMedida.Text = oProduto.OUnidadeMedida.Nome;
-            txtFornecedor.Text = oProduto.OFornecedor.Nome_razaoSocial;
+            txtCodUnidadeDeMedida.Text = oProduto.OUnidadeMedida.Id.ToString();
             txtValorCompra.Text = oProduto.ValorCompra.ToString("F2");
             txtValorVenda.Text = oProduto.ValorVenda.ToString("F2");
             txtValorCompraAnterior.Text = oProduto.ValorCompraAnterior.ToString("F2");
@@ -184,6 +220,10 @@ namespace projeto_patrica.pages.cadastro
             checkBoxAtivo.Checked = oProduto.Ativo;
             lblDataCadastroData.Text = oProduto.DataCadastro.ToShortDateString();
             lblDataUltimaEdicaoData.Text = oProduto.DataUltimaEdicao?.ToShortDateString() ?? " ";
+
+            // Carrega os fornecedores associados do banco
+            listaProdutoFornecedor = aController_prod_forn.ListarPorProduto(oProduto.Id);
+            CarregarFornecedoresNaListView();
         }
 
         public override void Bloqueiatxt()
@@ -193,9 +233,13 @@ namespace projeto_patrica.pages.cadastro
             txtDescricao.Enabled = false;
             txtCodBarras.Enabled = false;
             txtMarca.Enabled = false;
+            txtCodMarca.Enabled = false;
             txtCategoria.Enabled = false;
+            txtCodCategoria.Enabled = false;
             txtUnidadeMedida.Enabled = false;
+            txtCodUnidadeDeMedida.Enabled = false;
             txtFornecedor.Enabled = false;
+            txtCodFornecedor.Enabled = false;
             txtValorCompra.Enabled = false;
             txtValorVenda.Enabled = false;
             txtValorCompraAnterior.Enabled = false;
@@ -205,6 +249,8 @@ namespace projeto_patrica.pages.cadastro
             btnPesquisarCategoria.Enabled = false;
             btnPesquisarUnidadeMedida.Enabled = false;
             btnPesquisarFornecedor.Enabled = false;
+            btnAdicionarFornecedor.Enabled = false;
+            btnRemoverFornecedor.Enabled = false;
         }
 
         public override void Desbloqueiatxt()
@@ -226,6 +272,8 @@ namespace projeto_patrica.pages.cadastro
             btnPesquisarCategoria.Enabled = true;
             btnPesquisarUnidadeMedida.Enabled = true;
             btnPesquisarFornecedor.Enabled = true;
+            btnAdicionarFornecedor.Enabled = true;
+            btnRemoverFornecedor.Enabled = true;
         }
 
         private void btnPesquisarMarca_Click(object sender, EventArgs e)
@@ -242,6 +290,7 @@ namespace projeto_patrica.pages.cadastro
             {
                 oProduto.OMarca = oMarca;
                 txtMarca.Text = oMarca.Nome;
+                txtCodMarca.Text = oMarca.Id.ToString();
             }
         }
 
@@ -259,6 +308,7 @@ namespace projeto_patrica.pages.cadastro
             {
                 oProduto.OCategoria = oCategoria;
                 txtCategoria.Text = oCategoria.Nome;
+                txtCodCategoria.Text = oCategoria.Id.ToString();
             }
         }
 
@@ -276,6 +326,7 @@ namespace projeto_patrica.pages.cadastro
             {
                 oProduto.OUnidadeMedida = oUnidadeMedida;
                 txtUnidadeMedida.Text = oUnidadeMedida.Nome;
+                txtCodUnidadeDeMedida.Text = oUnidadeMedida.Id.ToString();
             }
         }
 
@@ -291,13 +342,75 @@ namespace projeto_patrica.pages.cadastro
 
             if (oFornecedor.Id != 0)
             {
-                oProduto.OFornecedor = oFornecedor;
+                txtCodFornecedor.Text = oFornecedor.Id.ToString();
                 txtFornecedor.Text = oFornecedor.Nome_razaoSocial;
             }
         }
 
+        private void btnAdicionarFornecedor_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtCodFornecedor.Text))
+            {
+                MessageBox.Show("Selecione um fornecedor.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-        // Cálculos de Valor Venda e Porcentagem de Lucro
+            int idFornecedor = Convert.ToInt32(txtCodFornecedor.Text);
+
+            if (listaProdutoFornecedor.Any(f => f.IdFornecedor == idFornecedor))
+            {
+                MessageBox.Show("Este fornecedor já foi adicionado a este produto.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            produto_fornecedor novaRelacao = new produto_fornecedor
+            {
+                IdProduto = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToInt32(txtCodigo.Text),
+                IdFornecedor = idFornecedor,
+                ValorAtualCompra = 0,
+                ValorUltimaCompra = 0,
+                DataUltimaCompra = DateTime.Now
+            };
+
+            listaProdutoFornecedor.Add(novaRelacao);
+            CarregarFornecedoresNaListView();
+
+            txtCodFornecedor.Clear();
+            txtFornecedor.Clear();
+        }
+
+        private void btnRemoverFornecedor_Click(object sender, EventArgs e)
+        {
+            if (listVFornecedores.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Selecione um fornecedor da lista para remover.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult resp = MessageBox.Show("Deseja realmente remover o vínculo deste produto com este fornecedor?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resp == DialogResult.Yes)
+            {
+                int index = listVFornecedores.SelectedItems[0].Index;
+                listaProdutoFornecedor.RemoveAt(index);
+                CarregarFornecedoresNaListView();
+            }
+        }
+
+        private void CarregarFornecedoresNaListView()
+        {
+            listVFornecedores.Items.Clear();
+            foreach (var relacao in listaProdutoFornecedor)
+            {
+                fornecedor f = new fornecedor { Id = relacao.IdFornecedor };
+                aController_fornecedor.CarregaObj(f);
+
+                ListViewItem item = new ListViewItem(f.Id.ToString());
+                item.SubItems.Add(f.Nome_razaoSocial);
+                item.SubItems.Add(f.TipoPessoa == 'F' ? "FÍSICA" : "JURÍDICA");
+                listVFornecedores.Items.Add(item);
+            }
+        }
+
         private void txtValorCompra_Leave(object sender, EventArgs e)
         {
             CalculaValorVenda();
@@ -333,6 +446,10 @@ namespace projeto_patrica.pages.cadastro
                     decimal percentualLucro = ((valorVenda / valorCompra) - 1) * 100;
                     txtPorcentagemLucro.Text = percentualLucro.ToString("F2");
                 }
+                else
+                {
+                    txtPorcentagemLucro.Text = "0";
+                }
             }
         }
 
@@ -348,7 +465,6 @@ namespace projeto_patrica.pages.cadastro
             txtValorCompraAnterior.MaxLength = 11;
             txtPorcentagemLucro.MaxLength = 11;
             txtEstoque.MaxLength = 10;
-
 
             txtCodBarras.KeyPress -= ApenasNumeros;
             txtCodBarras.KeyPress += ApenasNumeros;

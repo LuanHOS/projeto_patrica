@@ -14,12 +14,11 @@ namespace projeto_patrica.classes
         protected marca oMarca;
         protected categoria oCategoria;
         protected unidade_medida oUnidadeMedida;
-        protected fornecedor oFornecedor;
-        protected decimal valorCompra;
+        protected decimal valorCompra; // Representará o Custo Médio
         protected decimal valorVenda;
-        protected decimal percentualLucro;
+        protected decimal percentualLucro; 
         protected int estoque;
-        protected decimal valorCompraAnterior;
+        protected decimal valorCompraAnterior; // Representará o Custo Médio Anterior
 
         public produto()
         {
@@ -30,7 +29,6 @@ namespace projeto_patrica.classes
             oMarca = new marca();
             oCategoria = new categoria();
             oUnidadeMedida = new unidade_medida();
-            oFornecedor = new fornecedor();
             valorCompra = 0;
             valorVenda = 0;
             percentualLucro = 0;
@@ -42,8 +40,8 @@ namespace projeto_patrica.classes
         }
 
         public produto(int id, string nome, string descricao, string codigoBarras, marca oMarca, categoria oCategoria,
-                       unidade_medida oUnidadeMedida, fornecedor oFornecedor, decimal valorCompra, decimal valorVenda,
-                       decimal percentualLucro, int estoque, bool ativo, DateTime dataCadastro, DateTime? dataUltimaEdicao, decimal valorCompraAnterior)
+                       unidade_medida oUnidadeMedida, decimal valorCompra, decimal valorVenda, decimal percentualLucro,
+                       int estoque, bool ativo, DateTime dataCadastro, DateTime? dataUltimaEdicao, decimal valorCompraAnterior)
             : base(id, ativo, dataCadastro, dataUltimaEdicao)
         {
             this.id = id;
@@ -53,7 +51,6 @@ namespace projeto_patrica.classes
             this.oMarca = oMarca;
             this.oCategoria = oCategoria;
             this.oUnidadeMedida = oUnidadeMedida;
-            this.oFornecedor = oFornecedor;
             this.valorCompra = valorCompra;
             this.valorVenda = valorVenda;
             this.percentualLucro = percentualLucro;
@@ -98,12 +95,6 @@ namespace projeto_patrica.classes
         {
             get => oUnidadeMedida;
             set => oUnidadeMedida = value;
-        }
-
-        public fornecedor OFornecedor
-        {
-            get => oFornecedor;
-            set => oFornecedor = value;
         }
 
         public decimal ValorCompra

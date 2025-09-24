@@ -19,14 +19,13 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
-            sql = "INSERT INTO PRODUTO (NOME, DESCRICAO, CODIGO_BARRAS, ID_MARCA, ID_CATEGORIA, ID_UNIDADE_MEDIDA, ID_FORNECEDOR, VALOR_COMPRA, VALOR_VENDA, VALOR_COMPRAANTERIOR, PERCENTUAL_LUCRO, ESTOQUE, ATIVO) VALUES (" +
+            sql = "INSERT INTO PRODUTO (NOME, DESCRICAO, CODIGO_BARRAS, ID_MARCA, ID_CATEGORIA, ID_UNIDADE_MEDIDA, VALOR_COMPRA, VALOR_VENDA, VALOR_COMPRAANTERIOR, PERCENTUAL_LUCRO, ESTOQUE, ATIVO) VALUES (" +
                   "'" + oProduto.Nome + "', " +
                   (string.IsNullOrWhiteSpace(oProduto.Descricao) ? "NULL" : "'" + oProduto.Descricao + "'") + ", " +
                   "'" + oProduto.CodigoBarras + "', " +
                   "'" + oProduto.OMarca.Id + "', " +
                   "'" + oProduto.OCategoria.Id + "', " +
                   "'" + oProduto.OUnidadeMedida.Id + "', " +
-                  "'" + oProduto.OFornecedor.Id + "', " +
                   "'" + oProduto.ValorCompra.ToString().Replace(",", ".") + "', " +
                   "'" + oProduto.ValorVenda.ToString().Replace(",", ".") + "', " +
                   "'" + oProduto.ValorCompraAnterior.ToString().Replace(",", ".") + "', " +
@@ -44,7 +43,6 @@ namespace projeto_patrica.dao
                       "ID_MARCA = '" + oProduto.OMarca.Id + "', " +
                       "ID_CATEGORIA = '" + oProduto.OCategoria.Id + "', " +
                       "ID_UNIDADE_MEDIDA = '" + oProduto.OUnidadeMedida.Id + "', " +
-                      "ID_FORNECEDOR = '" + oProduto.OFornecedor.Id + "', " +
                       "VALOR_COMPRA = '" + oProduto.ValorCompra.ToString().Replace(",", ".") + "', " +
                       "VALOR_VENDA = '" + oProduto.ValorVenda.ToString().Replace(",", ".") + "', " +
                       "VALOR_COMPRAANTERIOR = '" + oProduto.ValorCompraAnterior.ToString().Replace(",", ".") + "', " +
@@ -98,7 +96,6 @@ namespace projeto_patrica.dao
                     oProduto.OMarca.Id = Convert.ToInt32(dr["ID_MARCA"]);
                     oProduto.OCategoria.Id = Convert.ToInt32(dr["ID_CATEGORIA"]);
                     oProduto.OUnidadeMedida.Id = Convert.ToInt32(dr["ID_UNIDADE_MEDIDA"]);
-                    oProduto.OFornecedor.Id = Convert.ToInt32(dr["ID_FORNECEDOR"]);
                     oProduto.ValorCompra = Convert.ToDecimal(dr["VALOR_COMPRA"]);
                     oProduto.ValorVenda = Convert.ToDecimal(dr["VALOR_VENDA"]);
                     oProduto.ValorCompraAnterior = Convert.ToDecimal(dr["VALOR_COMPRAANTERIOR"]);
@@ -120,8 +117,6 @@ namespace projeto_patrica.dao
                 Controller_unidade_medida controllerUnidadeMedida = new Controller_unidade_medida();
                 controllerUnidadeMedida.CarregaObj(oProduto.OUnidadeMedida);
 
-                Controller_fornecedor controllerFornecedor = new Controller_fornecedor();
-                controllerFornecedor.CarregaObj(oProduto.OFornecedor);
             }
             catch (MySqlException ex)
             {
@@ -135,7 +130,7 @@ namespace projeto_patrica.dao
         {
             produto oProduto = (produto)obj;
 
-             string sql = "DELETE FROM PRODUTO WHERE ID_PRODUTO = '" + oProduto.Id + "'";
+            string sql = "DELETE FROM PRODUTO WHERE ID_PRODUTO = '" + oProduto.Id + "'";
             MySqlCommand conn = new MySqlCommand();
             conn.Connection = Banco.Abrir();
             conn.CommandType = System.Data.CommandType.Text;
@@ -166,7 +161,6 @@ namespace projeto_patrica.dao
                 oProduto.OMarca.Id = Convert.ToInt32(dr["ID_MARCA"]);
                 oProduto.OCategoria.Id = Convert.ToInt32(dr["ID_CATEGORIA"]);
                 oProduto.OUnidadeMedida.Id = Convert.ToInt32(dr["ID_UNIDADE_MEDIDA"]);
-                oProduto.OFornecedor.Id = Convert.ToInt32(dr["ID_FORNECEDOR"]);
                 oProduto.ValorCompra = Convert.ToDecimal(dr["VALOR_COMPRA"]);
                 oProduto.ValorVenda = Convert.ToDecimal(dr["VALOR_VENDA"]);
                 oProduto.ValorCompraAnterior = Convert.ToDecimal(dr["VALOR_COMPRAANTERIOR"]);

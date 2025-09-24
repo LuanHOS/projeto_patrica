@@ -10,7 +10,6 @@ namespace projeto_patrica.controller
         private Controller_marca aController_marca;
         private Controller_categoria aController_categoria;
         private Controller_unidade_medida aController_unidade_medida;
-        private Controller_fornecedor aController_fornecedor;
 
         public Controller_produto()
         {
@@ -18,7 +17,6 @@ namespace projeto_patrica.controller
             aController_marca = new Controller_marca();
             aController_categoria = new Controller_categoria();
             aController_unidade_medida = new Controller_unidade_medida();
-            aController_fornecedor = new Controller_fornecedor();
         }
 
         public override string Salvar(object obj)
@@ -45,7 +43,6 @@ namespace projeto_patrica.controller
                 aController_marca.CarregaObj(oProduto.OMarca);
                 aController_categoria.CarregaObj(oProduto.OCategoria);
                 aController_unidade_medida.CarregaObj(oProduto.OUnidadeMedida);
-                aController_fornecedor.CarregaObj(oProduto.OFornecedor);
             }
 
             return lista;
@@ -67,12 +64,6 @@ namespace projeto_patrica.controller
         {
             get => aController_unidade_medida;
             set => aController_unidade_medida = value;
-        }
-
-        public Controller_fornecedor AController_fornecedor
-        {
-            get => aController_fornecedor;
-            set => aController_fornecedor = value;
         }
     }
 }
