@@ -47,8 +47,11 @@
             this.clmDataEmissao,
             this.clmValorTotal,
             this.clmAtivo});
-            this.listV.Columns.RemoveAt(0); // Remove a coluna "Código" base
             this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
+            // 
+            // clmCod
+            // 
+            this.clmCod.Width = 70;
             // 
             // clmModelo
             // 
@@ -58,11 +61,13 @@
             // clmSerie
             // 
             this.clmSerie.Text = "Série";
+            this.clmSerie.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmSerie.Width = 70;
             // 
             // clmNumNota
             // 
             this.clmNumNota.Text = "Nº Nota";
+            this.clmNumNota.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmNumNota.Width = 100;
             // 
             // clmFornecedor
@@ -78,6 +83,7 @@
             // clmValorTotal
             // 
             this.clmValorTotal.Text = "Valor Total";
+            this.clmValorTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmValorTotal.Width = 120;
             // 
             // clmAtivo

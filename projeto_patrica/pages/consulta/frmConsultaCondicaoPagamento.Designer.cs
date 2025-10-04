@@ -50,6 +50,7 @@
             // clmQtdParcelas
             // 
             this.clmQtdParcelas.Text = "Qtd. de Parcelas";
+            this.clmQtdParcelas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmQtdParcelas.Width = 150;
             // 
             // clmAtivo

@@ -60,6 +60,10 @@
             this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
             this.listV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listV_MouseDoubleClick);
             // 
+            // clmCod
+            // 
+            this.clmCod.DisplayIndex = 0;
+            // 
             // txtCodigo
             // 
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(5);
@@ -77,11 +81,13 @@
             // clmCpfCnpj
             // 
             this.clmCpfCnpj.Text = "CPF/CNPJ";
+            this.clmCpfCnpj.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmCpfCnpj.Width = 100;
             // 
             // clmRgInscEstadual
             // 
             this.clmRgInscEstadual.Text = "RG/Insc. Est.";
+            this.clmRgInscEstadual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmRgInscEstadual.Width = 100;
             // 
             // clmEmail
@@ -92,6 +98,7 @@
             // clmTelefone
             // 
             this.clmTelefone.Text = "Telefone";
+            this.clmTelefone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmTelefone.Width = 100;
             // 
             // clmCidade
@@ -117,6 +124,7 @@
             // clmLimiteDeCredito
             // 
             this.clmLimiteDeCredito.Text = "Limite de Crédito";
+            this.clmLimiteDeCredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmLimiteDeCredito.Width = 130;
             // 
             // frmConsultaCliente

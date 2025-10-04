@@ -62,6 +62,7 @@
             // clmCodBarras
             // 
             this.clmCodBarras.Text = "Código de Barras";
+            this.clmCodBarras.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmCodBarras.Width = 150;
             // 
             // clmMarca
@@ -77,11 +78,13 @@
             // clmValorVenda
             // 
             this.clmValorVenda.Text = "Valor de Venda";
+            this.clmValorVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmValorVenda.Width = 120;
             // 
             // clmEstoque
             // 
             this.clmEstoque.Text = "Estoque";
+            this.clmEstoque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmEstoque.Width = 80;
             // 
             // clmAtivo

@@ -447,6 +447,9 @@
       <DependentUpon>frmConsultaCliente.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaCompra.resx">
+      <DependentUpon>frmConsultaCompra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaCondicaoPagamento.resx">
       <DependentUpon>frmConsultaCondicaoPagamento.cs</DependentUpon>
       <SubType>Designer</SubType>

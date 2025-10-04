@@ -73,6 +73,7 @@
             // clmMatricula
             // 
             this.clmMatricula.Text = "Matrícula";
+            this.clmMatricula.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmMatricula.Width = 100;
             // 
             // clmNome
@@ -88,6 +89,7 @@
             // clmSalario
             // 
             this.clmSalario.Text = "Salário";
+            this.clmSalario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmSalario.Width = 130;
             // 
             // clmTurno
@@ -98,16 +100,19 @@
             // clmCargaHoraria
             // 
             this.clmCargaHoraria.Text = "Carga Horária";
+            this.clmCargaHoraria.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmCargaHoraria.Width = 80;
             // 
             // clmCpf
             // 
             this.clmCpf.Text = "CPF";
+            this.clmCpf.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmCpf.Width = 100;
             // 
             // clmRg
             // 
             this.clmRg.Text = "RG";
+            this.clmRg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmRg.Width = 100;
             // 
             // clmGenero
@@ -128,6 +133,7 @@
             // clmTelefone
             // 
             this.clmTelefone.Text = "Telefone";
+            this.clmTelefone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmTelefone.Width = 100;
             // 
             // clmDataAdmissao

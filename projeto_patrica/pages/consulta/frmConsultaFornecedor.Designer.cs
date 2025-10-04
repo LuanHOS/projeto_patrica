@@ -78,11 +78,13 @@
             // clmCpfCnpj
             // 
             this.clmCpfCnpj.Text = "CPF/CNPJ";
+            this.clmCpfCnpj.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmCpfCnpj.Width = 100;
             // 
             // clmRgInscEstadual
             // 
             this.clmRgInscEstadual.Text = "RG/Insc. Est.";
+            this.clmRgInscEstadual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmRgInscEstadual.Width = 100;
             // 
             // clmGenero
@@ -103,6 +105,7 @@
             // clmTelefone
             // 
             this.clmTelefone.Text = "Telefone";
+            this.clmTelefone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmTelefone.Width = 100;
             // 
             // clmAtivo
