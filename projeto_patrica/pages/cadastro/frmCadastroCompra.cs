@@ -65,9 +65,10 @@ namespace projeto_patrica.pages.cadastro
                 string.IsNullOrWhiteSpace(txtNumDaNota.Text) ||
                 oCompra.OFornecedor == null || oCompra.OFornecedor.Id == 0 ||
                 listaItens.Count == 0 ||
-                oCompra.ACondicaoPagamento == null || oCompra.ACondicaoPagamento.Id == 0)
+                oCompra.ACondicaoPagamento == null || oCompra.ACondicaoPagamento.Id == 0 ||
+                listaParcelas.Count == 0)
             {
-                MessageBox.Show("Preencha todos os campos obrigatórios da nota, adicione pelo menos um produto e selecione a condição de pagamento para salvar.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Preencha todos os campos obrigatórios, adicione produtos e gere as parcelas antes de salvar.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
