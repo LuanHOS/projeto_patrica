@@ -43,31 +43,37 @@ namespace projeto_patrica.pages.consulta
 
         public override void Alterar()
         {
-            string aux = oFrmCadastroCompra.btnSave.Text;
-            oFrmCadastroCompra.btnSave.Text = "Alterar";
             base.Alterar();
             aController_compra.CarregaObj(oCompra);
             oFrmCadastroCompra.ConhecaObj(oCompra, aController_compra);
             oFrmCadastroCompra.Carregatxt();
+            oFrmCadastroCompra.Bloqueiatxt();
+            oFrmCadastroCompra.btnSave.Visible = false; // Esconde o botão Salvar
             oFrmCadastroCompra.ShowDialog();
-            oFrmCadastroCompra.btnSave.Text = aux;
+            oFrmCadastroCompra.btnSave.Visible = true; // Mostra o botão Salvar novamente ao fechar
             this.CarregaLV();
         }
 
         public override void Excluir()
         {
             base.Excluir();
-            string aux = oFrmCadastroCompra.btnSave.Text;
-            oFrmCadastroCompra.btnSave.Text = "Excluir";
             aController_compra.CarregaObj(oCompra);
+
+            if (!oCompra.Ativo)
+            {
+                MessageBox.Show("Esta compra já está cancelada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             oFrmCadastroCompra.ConhecaObj(oCompra, aController_compra);
             oFrmCadastroCompra.Carregatxt();
             oFrmCadastroCompra.Bloqueiatxt();
+            oFrmCadastroCompra.btnSave.Text = "Cancelar Nota";
             oFrmCadastroCompra.ShowDialog(this);
-            oFrmCadastroCompra.Desbloqueiatxt();
-            oFrmCadastroCompra.btnSave.Text = aux;
+            oFrmCadastroCompra.btnSave.Text = "Salvar"; // Restaura o texto original do botão
             this.CarregaLV();
         }
+
 
         public override void CarregaLV()
         {

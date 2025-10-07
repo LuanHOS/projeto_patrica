@@ -4,6 +4,7 @@ using projeto_patrica.controller;
 using projeto_patrica.pages.consulta;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -32,7 +33,7 @@ namespace projeto_patrica.pages.cadastro
         {
             InitializeComponent();
             dtpDataEmissao.MaxDate = DateTime.Today;
-            GerenciarEstadoDosControles(); // Gerencia o estado inicial dos controles
+            GerenciarEstadoDosControles();
         }
 
         public override void ConhecaObj(object obj, object ctrl)
@@ -76,45 +77,71 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            if (!ValidacaoCampos())
-                return;
-
-            // Popula o objeto principal com os dados do formulário
-            oCompra.Modelo = Convert.ToInt32(txtCodigo.Text);
-            oCompra.Serie = txtSerie.Text;
-            oCompra.NumeroNota = txtNumDaNota.Text;
-            oCompra.DataEmissao = dtpDataEmissao.Value;
-            oCompra.DataEntrega = dtpDataEntrega.Value;
-            oCompra.ValorFrete = string.IsNullOrWhiteSpace(txtValorFrete.Text) ? 0 : Convert.ToDecimal(txtValorFrete.Text);
-            oCompra.Seguro = string.IsNullOrWhiteSpace(txtSeguro.Text) ? 0 : Convert.ToDecimal(txtSeguro.Text);
-            oCompra.Despesas = string.IsNullOrWhiteSpace(txtDespesas.Text) ? 0 : Convert.ToDecimal(txtDespesas.Text);
-            oCompra.Ativo = checkBoxAtivo.Checked;
-            oCompra.Itens = listaItens;
-            oCompra.Parcelas = listaParcelas;
-            oCompra.MotivoCancelamento = null; // Preenchido apenas ao cancelar
-
-            try
+            if (btnSave.Text == "Cancelar Nota")
             {
-                if (btnSave.Text == "Excluir")
+                using (Form prompt = new Form())
                 {
-                    DialogResult resp = MessageBox.Show("Deseja realmente excluir esta compra?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (resp == DialogResult.Yes)
+                    prompt.Width = 500;
+                    prompt.Height = 250;
+                    prompt.Text = "Motivo do Cancelamento";
+                    prompt.StartPosition = FormStartPosition.CenterParent;
+                    prompt.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    prompt.MinimizeBox = false;
+                    prompt.MaximizeBox = false;
+
+                    Label textLabel = new Label() { Left = 50, Top = 20, Width = 400, Text = "Para cancelar esta nota, digite o motivo do cancelamento abaixo." };
+                    TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400, Height = 80, Multiline = true, ScrollBars = ScrollBars.Vertical };
+                    Button confirmation = new Button() { Text = "Confirmar", Left = 240, Width = 100, Top = 150, DialogResult = DialogResult.OK };
+                    Button cancel = new Button() { Text = "Voltar", Left = 350, Width = 100, Top = 150, DialogResult = DialogResult.Cancel };
+
+                    confirmation.Click += (sender, e) => { prompt.Close(); };
+                    cancel.Click += (sender, e) => { prompt.Close(); };
+
+                    prompt.Controls.Add(textBox);
+                    prompt.Controls.Add(confirmation);
+                    prompt.Controls.Add(cancel);
+                    prompt.Controls.Add(textLabel);
+                    prompt.AcceptButton = confirmation;
+                    prompt.CancelButton = cancel;
+
+                    if (prompt.ShowDialog() == DialogResult.OK)
                     {
-                        aController_compra.Excluir(oCompra);
-                        MessageBox.Show("Compra excluída com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Sair();
+                        oCompra.MotivoCancelamento = textBox.Text;
+                        oCompra.Ativo = false;
+                        aController_compra.Salvar(oCompra);
+                        MessageBox.Show("Compra cancelada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
                     }
                 }
-                else
+            }
+            else
+            {
+                if (!ValidacaoCampos())
+                    return;
+
+                oCompra.Modelo = Convert.ToInt32(txtCodigo.Text);
+                oCompra.Serie = txtSerie.Text;
+                oCompra.NumeroNota = txtNumDaNota.Text;
+                oCompra.DataEmissao = dtpDataEmissao.Value;
+                oCompra.DataEntrega = dtpDataEntrega.Value;
+                oCompra.ValorFrete = string.IsNullOrWhiteSpace(txtValorFrete.Text) ? 0 : Convert.ToDecimal(txtValorFrete.Text);
+                oCompra.Seguro = string.IsNullOrWhiteSpace(txtSeguro.Text) ? 0 : Convert.ToDecimal(txtSeguro.Text);
+                oCompra.Despesas = string.IsNullOrWhiteSpace(txtDespesas.Text) ? 0 : Convert.ToDecimal(txtDespesas.Text);
+                oCompra.Ativo = checkBoxAtivo.Checked;
+                oCompra.Itens = listaItens;
+                oCompra.Parcelas = listaParcelas;
+                oCompra.MotivoCancelamento = null;
+
+                try
                 {
                     aController_compra.Salvar(oCompra);
                     MessageBox.Show("Compra salva com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     base.Salvar();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocorreu um erro ao salvar a compra: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocorreu um erro ao salvar a compra: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -149,8 +176,10 @@ namespace projeto_patrica.pages.cadastro
             txtNumDaNota.Text = oCompra.NumeroNota;
             txtCodFornecedor.Text = oCompra.OFornecedor.Id.ToString();
             txtFornecedor.Text = oCompra.OFornecedor.Nome_razaoSocial;
+
             dtpDataEmissao.Value = oCompra.DataEmissao;
             dtpDataEntrega.Value = oCompra.DataEntrega;
+
             txtValorFrete.Text = oCompra.ValorFrete.ToString("F2");
             txtSeguro.Text = oCompra.Seguro.ToString("F2");
             txtDespesas.Text = oCompra.Despesas.ToString("F2");
@@ -163,21 +192,24 @@ namespace projeto_patrica.pages.cadastro
 
             listaParcelas = oCompra.Parcelas;
             CarregarParcelasNaListView();
-
-            HabilitarSecaoCabecalho(false);
-            HabilitarSecaoProdutos(false);
-            HabilitarSecaoRodape(false);
         }
 
         public override void Bloqueiatxt()
         {
             base.Bloqueiatxt();
-
             HabilitarSecaoCabecalho(false);
             HabilitarSecaoProdutos(false);
             HabilitarSecaoRodape(false);
         }
 
+        public override void Desbloqueiatxt()
+        {
+            base.Desbloqueiatxt();
+            HabilitarSecaoCabecalho(true);
+            HabilitarSecaoProdutos(true);
+            HabilitarSecaoRodape(true);
+            GerenciarEstadoDosControles();
+        }
         #endregion
 
         #region Gerenciamento de Estado dos Controles
@@ -207,8 +239,8 @@ namespace projeto_patrica.pages.cadastro
             {
                 HabilitarSecaoCabecalho(false);
                 HabilitarSecaoProdutos(false);
-                HabilitarSecaoRodape(false); // Bloqueia tudo no rodapé...
-                btnLimparParcelas.Enabled = true; // ...exceto o botão de limpar.
+                HabilitarSecaoRodape(false);
+                btnLimparParcelas.Enabled = true;
             }
         }
 
@@ -236,7 +268,6 @@ namespace projeto_patrica.pages.cadastro
             btnEditarProduto.Enabled = habilitar;
             btnRemoverProduto.Enabled = habilitar;
             btnLimparListaProduto.Enabled = habilitar;
-            //listVProdutos.Enabled = habilitar;
         }
 
         private void HabilitarSecaoRodape(bool habilitar)
@@ -250,7 +281,6 @@ namespace projeto_patrica.pages.cadastro
             btnPesquisarCondicaoDePagamento.Enabled = habilitar;
             btnGerarParcelas.Enabled = habilitar;
             btnLimparParcelas.Enabled = habilitar;
-            //listVParcelas.Enabled = habilitar;
         }
 
         private void Cabecalho_TextChanged(object sender, EventArgs e)
@@ -290,7 +320,7 @@ namespace projeto_patrica.pages.cadastro
 
         private void btnEditarProduto_Click(object sender, EventArgs e)
         {
-            if (editandoItem) // Salvar edição
+            if (editandoItem)
             {
                 if (ValidarCamposItem())
                 {
@@ -304,7 +334,7 @@ namespace projeto_patrica.pages.cadastro
                     FinalizarEdicaoItem();
                 }
             }
-            else // Entrar no modo de edição
+            else
             {
                 if (listVProdutos.SelectedItems.Count > 0)
                 {
@@ -376,7 +406,6 @@ namespace projeto_patrica.pages.cadastro
 
             decimal totalCompra = totalProdutos + frete + seguro + despesas;
 
-            // Lógica para aplicar desconto/juros da condição de pagamento
             totalCompra = totalCompra * (1 - (oCompra.ACondicaoPagamento.Desconto / 100));
             totalCompra = totalCompra * (1 + (oCompra.ACondicaoPagamento.Juros / 100));
 
@@ -388,9 +417,12 @@ namespace projeto_patrica.pages.cadastro
                     ModeloCompra = Convert.ToInt32(txtCodigo.Text),
                     SerieCompra = txtSerie.Text,
                     NumeroNotaCompra = txtNumDaNota.Text,
+                    IdFornecedor = oCompra.OFornecedor.Id,
                     NumeroParcela = parcelaCondicao.NumeroParcela,
+                    DataEmissao = dtpDataEmissao.Value,
                     DataVencimento = dtpDataEmissao.Value.AddDays(parcelaCondicao.DiasAposVenda),
-                    ValorParcela = totalCompra * (parcelaCondicao.ValorPercentual / 100)
+                    ValorParcela = totalCompra * (parcelaCondicao.ValorPercentual / 100),
+                    AFormaPagamento = parcelaCondicao.AFormaPagamento
                 };
                 listaParcelas.Add(novaParcela);
             }
@@ -420,14 +452,12 @@ namespace projeto_patrica.pages.cadastro
 
             if (fornecedorSelecionado.Id != 0)
             {
-                // Carrega o objeto completo do fornecedor, incluindo a condição de pagamento
                 aController_compra.AController_fornecedor.CarregaObj(fornecedorSelecionado);
 
                 oCompra.OFornecedor = fornecedorSelecionado;
                 txtCodFornecedor.Text = fornecedorSelecionado.Id.ToString();
                 txtFornecedor.Text = fornecedorSelecionado.Nome_razaoSocial;
 
-                // Preenche automaticamente a condição de pagamento
                 if (fornecedorSelecionado.ACondicaoPagamento != null && fornecedorSelecionado.ACondicaoPagamento.Id != 0)
                 {
                     oCompra.ACondicaoPagamento = fornecedorSelecionado.ACondicaoPagamento;
@@ -436,7 +466,6 @@ namespace projeto_patrica.pages.cadastro
                 }
                 else
                 {
-                    // Limpa os campos se o fornecedor não tiver uma condição de pagamento
                     oCompra.ACondicaoPagamento = new condicaoPagamento();
                     txtCodCondicaoDePagamento.Clear();
                     txtCondicaoDePagamento.Clear();
@@ -447,12 +476,6 @@ namespace projeto_patrica.pages.cadastro
 
         private void btnPesquisarProduto_Click(object sender, EventArgs e)
         {
-            if (oCompra.OFornecedor == null || oCompra.OFornecedor.Id == 0)
-            {
-                MessageBox.Show("Por favor, selecione um fornecedor antes de pesquisar produtos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             if (oFrmConsultaProduto == null) oFrmConsultaProduto = new frmConsultaProduto();
 
             produto p = new produto();
@@ -463,6 +486,7 @@ namespace projeto_patrica.pages.cadastro
 
             if (p.Id != 0)
             {
+                aController_compra.AController_produto.CarregaObj(p);
                 produtoSelecionado = p;
                 txtCodProduto.Text = p.Id.ToString();
                 txtProduto.Text = p.Nome;
@@ -484,7 +508,7 @@ namespace projeto_patrica.pages.cadastro
 
             if (condicaoSelecionada.Id != 0)
             {
-                controller.CarregaObj(condicaoSelecionada); // Carrega as parcelas da condição
+                controller.CarregaObj(condicaoSelecionada);
                 oCompra.ACondicaoPagamento = condicaoSelecionada;
                 txtCodCondicaoDePagamento.Text = condicaoSelecionada.Id.ToString();
                 txtCondicaoDePagamento.Text = condicaoSelecionada.Descricao;
@@ -582,7 +606,6 @@ namespace projeto_patrica.pages.cadastro
 
         private void dtpDataEmissao_ValueChanged(object sender, EventArgs e)
         {
-            // Garante que a data de entrega não seja anterior à data de emissão
             dtpDataEntrega.MinDate = dtpDataEmissao.Value;
             Cabecalho_TextChanged(sender, e);
         }
