@@ -94,6 +94,12 @@ namespace projeto_patrica.pages.cadastro
                     Button confirmation = new Button() { Text = "Confirmar", Left = 240, Width = 100, Top = 150, DialogResult = DialogResult.OK };
                     Button cancel = new Button() { Text = "Voltar", Left = 350, Width = 100, Top = 150, DialogResult = DialogResult.Cancel };
 
+                    confirmation.Enabled = false;
+                    textBox.TextChanged += (sender, e) =>
+                    {
+                        confirmation.Enabled = !string.IsNullOrWhiteSpace(textBox.Text);
+                    };
+
                     confirmation.Click += (sender, e) => { prompt.Close(); };
                     cancel.Click += (sender, e) => { prompt.Close(); };
 
