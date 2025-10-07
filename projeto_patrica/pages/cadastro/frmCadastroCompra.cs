@@ -170,6 +170,9 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Carregatxt()
         {
+            // [CORREÇÃO] Remove o manipulador de eventos para evitar que ele dispare durante o carregamento.
+            this.dtpDataEmissao.ValueChanged -= new System.EventHandler(this.dtpDataEmissao_ValueChanged);
+
             base.Carregatxt();
             txtCodigo.Text = oCompra.Modelo.ToString();
             txtSerie.Text = oCompra.Serie;
@@ -178,6 +181,11 @@ namespace projeto_patrica.pages.cadastro
             txtFornecedor.Text = oCompra.OFornecedor.Nome_razaoSocial;
 
             dtpDataEmissao.Value = oCompra.DataEmissao;
+
+            // [CORREÇÃO] Define a data mínima da entrega com base na data de emissão.
+            dtpDataEntrega.MinDate = dtpDataEmissao.Value;
+
+            // [CORREÇÃO] Agora é seguro atribuir o valor da Data de Entrega.
             dtpDataEntrega.Value = oCompra.DataEntrega;
 
             txtValorFrete.Text = oCompra.ValorFrete.ToString("F2");
@@ -192,7 +200,11 @@ namespace projeto_patrica.pages.cadastro
 
             listaParcelas = oCompra.Parcelas;
             CarregarParcelasNaListView();
+
+            // [CORREÇÃO] Reatribui o manipulador de eventos para que funcione para interações do usuário.
+            this.dtpDataEmissao.ValueChanged += new System.EventHandler(this.dtpDataEmissao_ValueChanged);
         }
+
 
         public override void Bloqueiatxt()
         {
