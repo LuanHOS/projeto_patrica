@@ -458,9 +458,6 @@ namespace projeto_patrica.pages.cadastro
             produto p = new produto();
             Controller_produto controller = new Controller_produto();
 
-            // Passa o nome do fornecedor para a consulta
-            oFrmConsultaProduto.TermoDePesquisa = txtFornecedor.Text;
-
             oFrmConsultaProduto.ConhecaObj(p, controller);
             oFrmConsultaProduto.ShowDialog();
 
