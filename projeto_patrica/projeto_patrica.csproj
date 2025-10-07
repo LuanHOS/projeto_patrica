@@ -126,7 +126,7 @@
     <Compile Include="classes\itemCompra.cs" />
     <Compile Include="classes\marca.cs" />
     <Compile Include="classes\pais.cs" />
-    <Compile Include="classes\parcelaCompra.cs" />
+    <Compile Include="classes\contasAPagar.cs" />
     <Compile Include="classes\parcelaCondicaoPagamento.cs" />
     <Compile Include="classes\pessoa.cs" />
     <Compile Include="classes\produto.cs" />

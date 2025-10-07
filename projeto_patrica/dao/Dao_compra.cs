@@ -91,7 +91,7 @@ namespace projeto_patrica.dao
                     SalvarItem(item, conn, trans);
                 }
 
-                foreach (parcelaCompra parcela in aCompra.Parcelas)
+                foreach (contasAPagar parcela in aCompra.Parcelas)
                 {
                     SalvarParcela(parcela, conn, trans);
                 }
@@ -254,7 +254,7 @@ namespace projeto_patrica.dao
             cmd.ExecuteNonQuery();
         }
 
-        private void SalvarParcela(parcelaCompra parcela, MySqlConnection conn, MySqlTransaction trans)
+        private void SalvarParcela(contasAPagar parcela, MySqlConnection conn, MySqlTransaction trans)
         {
             string sql = "INSERT INTO PARCELA_COMPRA (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, NUMERO_PARCELA, DATA_VENCIMENTO, VALOR_PARCELA) VALUES " +
                          "(@ModeloCompra, @SerieCompra, @NumeroNotaCompra, @NumeroParcela, @DataVencimento, @ValorParcela)";
@@ -296,9 +296,9 @@ namespace projeto_patrica.dao
             return itens;
         }
 
-        private List<parcelaCompra> ListarParcelasDaCompra(compra aCompra, MySqlConnection conn)
+        private List<contasAPagar> ListarParcelasDaCompra(compra aCompra, MySqlConnection conn)
         {
-            List<parcelaCompra> parcelas = new List<parcelaCompra>();
+            List<contasAPagar> parcelas = new List<contasAPagar>();
             string sql = "SELECT * FROM PARCELA_COMPRA WHERE MODELO_COMPRA = @Modelo AND SERIE_COMPRA = @Serie AND NUMERO_NOTA_COMPRA = @NumeroNota";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@Modelo", aCompra.Modelo);
@@ -308,7 +308,7 @@ namespace projeto_patrica.dao
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                parcelaCompra parcela = new parcelaCompra();
+                contasAPagar parcela = new contasAPagar();
                 parcela.NumeroParcela = Convert.ToInt32(dr["NUMERO_PARCELA"]);
                 parcela.DataVencimento = Convert.ToDateTime(dr["DATA_VENCIMENTO"]);
                 parcela.ValorParcela = Convert.ToDecimal(dr["VALOR_PARCELA"]);

@@ -16,7 +16,7 @@ namespace projeto_patrica.classes
         protected decimal seguro;
         protected decimal despesas;
         protected condicaoPagamento aCondicaoPagamento;
-        protected List<parcelaCompra> parcelas;
+        protected List<contasAPagar> parcelas;
         protected string motivoCancelamento;
 
         public compra()
@@ -32,7 +32,7 @@ namespace projeto_patrica.classes
             seguro = 0;
             despesas = 0;
             aCondicaoPagamento = new condicaoPagamento();
-            parcelas = new List<parcelaCompra>();
+            parcelas = new List<contasAPagar>();
             ativo = true;
             dataCadastro = DateTime.MinValue;
             dataUltimaEdicao = null;
@@ -41,7 +41,7 @@ namespace projeto_patrica.classes
 
         public compra(int modelo, string serie, string numeroNota, fornecedor oFornecedor, DateTime dataEmissao,
                       DateTime dataEntrega, List<itemCompra> itens, decimal valorFrete, decimal seguro,
-                      decimal despesas, condicaoPagamento aCondicaoPagamento, List<parcelaCompra> parcelas,
+                      decimal despesas, condicaoPagamento aCondicaoPagamento, List<contasAPagar> parcelas,
                       bool ativo, DateTime dataCadastro, DateTime? dataUltimaEdicao, string motivoCancelamento)
             : base(0, ativo, dataCadastro, dataUltimaEdicao)
         {
@@ -126,7 +126,7 @@ namespace projeto_patrica.classes
             set => aCondicaoPagamento = value;
         }
 
-        public List<parcelaCompra> Parcelas
+        public List<contasAPagar> Parcelas
         {
             get => parcelas;
             set => parcelas = value;

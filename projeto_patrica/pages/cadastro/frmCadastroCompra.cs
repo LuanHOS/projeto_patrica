@@ -21,7 +21,7 @@ namespace projeto_patrica.pages.cadastro
 
         // Listas locais para gerenciamento de dados na tela
         private List<itemCompra> listaItens = new List<itemCompra>();
-        private List<parcelaCompra> listaParcelas = new List<parcelaCompra>();
+        private List<contasAPagar> listaParcelas = new List<contasAPagar>();
 
         // Controle de edição de item
         private bool editandoItem = false;
@@ -383,7 +383,7 @@ namespace projeto_patrica.pages.cadastro
             listaParcelas.Clear();
             foreach (var parcelaCondicao in oCompra.ACondicaoPagamento.Parcelas)
             {
-                parcelaCompra novaParcela = new parcelaCompra
+                contasAPagar novaParcela = new contasAPagar
                 {
                     ModeloCompra = Convert.ToInt32(txtCodigo.Text),
                     SerieCompra = txtSerie.Text,
