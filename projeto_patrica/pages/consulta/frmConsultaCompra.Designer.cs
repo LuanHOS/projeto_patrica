@@ -37,6 +37,12 @@
             this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(1130, 617);
+            this.btnExcluir.Size = new System.Drawing.Size(94, 34);
+            this.btnExcluir.Text = "Cancelar Nota";
+            // 
             // listV
             // 
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -52,6 +58,15 @@
             // clmCod
             // 
             this.clmCod.Width = 70;
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Location = new System.Drawing.Point(1044, 617);
+            this.btnAlterar.Text = "Vizualizar";
+            // 
+            // btnIncluir
+            // 
+            this.btnIncluir.Location = new System.Drawing.Point(957, 617);
             // 
             // clmModelo
             // 
