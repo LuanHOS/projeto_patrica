@@ -1,8 +1,30 @@
--- ################################################################# --
--- ##################### INSERÇÃO DE DADOS INICIAIS ################# --
--- ################################################################# --
+-- #################################################################
+-- ######################### POPULAÇÃO MASSA #######################
+-- #################################################################
 
 USE projeto_patrica;
+
+-- (Opcional) Zerar tabelas para repetição de carga em ambiente de testes
+-- SET FOREIGN_KEY_CHECKS = 0;
+-- TRUNCATE TABLE CONTAS_A_PAGAR;
+-- TRUNCATE TABLE ITEM_COMPRA;
+-- TRUNCATE TABLE COMPRA;
+-- TRUNCATE TABLE PRODUTO_FORNECEDOR;
+-- TRUNCATE TABLE PRODUTO;
+-- TRUNCATE TABLE TRANSPORTADORA;
+-- TRUNCATE TABLE CLIENTE;
+-- TRUNCATE TABLE FUNCIONARIO;
+-- TRUNCATE TABLE CIDADE;
+-- TRUNCATE TABLE ESTADO;
+-- TRUNCATE TABLE PAIS;
+-- TRUNCATE TABLE PARCELA_CONDICAO_PAGAMENTO;
+-- TRUNCATE TABLE CONDICAO_PAGAMENTO;
+-- TRUNCATE TABLE FORMA_PAGAMENTO;
+-- TRUNCATE TABLE UNIDADE_MEDIDA;
+-- TRUNCATE TABLE MARCA;
+-- TRUNCATE TABLE CATEGORIA;
+-- TRUNCATE TABLE FORNECEDOR;
+-- SET FOREIGN_KEY_CHECKS = 1;
 
 -- ============================== PAÍSES ==============================
 INSERT INTO PAIS (NOME) VALUES
@@ -13,89 +35,130 @@ INSERT INTO PAIS (NOME) VALUES
 ('ALEMANHA');
 
 -- ============================== ESTADOS ============================
+-- BRASIL (ID=1): 1=PR, 2=SP, 3=RJ, 4=SC, 5=RS
 INSERT INTO ESTADO (NOME, ID_PAIS) VALUES
 ('PARANÁ', 1),
 ('SÃO PAULO', 1),
 ('RIO DE JANEIRO', 1),
+('SANTA CATARINA', 1),
+('RIO GRANDE DO SUL', 1),
+-- EUA (ID=3)
 ('FLÓRIDA', 3),
-('ONTÁRIO', 4);
+('CALIFÓRNIA', 3),
+-- CANADÁ (ID=4)
+('ONTÁRIO', 4),
+('QUEBEC', 4),
+-- ALEMANHA (ID=5)
+('BAVIERA', 5);
 
 -- ============================== CIDADES ============================
+-- (mapeamento esperado)
+-- 1 PR, 2 SP, 3 RJ, 4 SC, 5 RS, 6 FL, 7 CA, 8 ON, 9 QC, 10 Baviera
 INSERT INTO CIDADE (NOME, ID_ESTADO) VALUES
 ('FOZ DO IGUAÇU', 1),
 ('CURITIBA', 1),
+('LONDRINA', 1),
 ('SÃO PAULO', 2),
+('CAMPINAS', 2),
 ('RIO DE JANEIRO', 3),
-('MIAMI', 4),
-('TORONTO', 5);
+('FLORIANÓPOLIS', 4),
+('PORTO ALEGRE', 5),
+('MIAMI', 6),
+('ORLANDO', 6),
+('LOS ANGELES', 7),
+('TORONTO', 8),
+('OTTAWA', 8),
+('MONTREAL', 9),
+('MUNIQUE', 10);
 
 -- ======================= FORMAS DE PAGAMENTO =======================
 INSERT INTO FORMA_PAGAMENTO (DESCRICAO) VALUES
-('DINHEIRO'),
-('CARTÃO DE CRÉDITO'),
-('CARTÃO DE DÉBITO'),
-('PIX'),
-('BOLETO');
+('DINHEIRO'),            -- 1
+('CARTÃO DE CRÉDITO'),   -- 2
+('CARTÃO DE DÉBITO'),    -- 3
+('PIX'),                 -- 4
+('BOLETO'),              -- 5
+('TRANSFERÊNCIA'),       -- 6
+('CHEQUE');              -- 7
 
 -- ===================== CONDIÇÕES DE PAGAMENTO ======================
 INSERT INTO CONDICAO_PAGAMENTO (DESCRICAO, QUANTIDADE_PARCELAS, JUROS, MULTA, DESCONTO) VALUES
-('À VISTA', 1, 0.00, 0.00, 5.00),
-('30/60 DIAS', 2, 0.00, 2.00, 0.00),
-('3X COM JUROS', 3, 1.50, 2.00, 0.00),
-('ENTRADA + 2X', 3, 0.50, 2.00, 0.00),
-('6X SEM JUROS', 6, 0.00, 2.00, 0.00);
+('À VISTA', 1, 0.00, 0.00, 5.00),            -- 1
+('30/60 DIAS', 2, 0.00, 2.00, 0.00),         -- 2
+('3X COM JUROS', 3, 1.50, 2.00, 0.00),       -- 3
+('ENTRADA + 2X', 3, 0.50, 2.00, 0.00),       -- 4
+('6X SEM JUROS', 6, 0.00, 2.00, 0.00),       -- 5
+('90 DIAS', 1, 0.20, 2.00, 0.00),            -- 6
+('14/28/42 DIAS', 3, 0.00, 1.00, 0.00);      -- 7
 
--- ============ PARCELAS DA CONDIÇÃO DE PAGAMENTO (soma ~100%) ============
+-- ============ PARCELAS DA CONDIÇÃO DE PAGAMENTO (100%) ============
 -- (ID_CONDICAO_PAGAMENTO, NUMERO_PARCELA, ID_FORMA_PAGAMENTO, VALOR_PERCENTUAL, DIAS_APOS_VENDA)
 INSERT INTO PARCELA_CONDICAO_PAGAMENTO VALUES
+-- 1 À VISTA (dinheiro)
 (1, 1, 1, 100.00, 0),
 
+-- 2 30/60 (crédito)
 (2, 1, 2, 50.00, 30),
 (2, 2, 2, 50.00, 60),
 
+-- 3 3x com juros (crédito)
 (3, 1, 2, 34.00, 30),
 (3, 2, 2, 33.00, 60),
 (3, 3, 2, 33.00, 90),
 
+-- 4 Entrada (PIX) + 2x (crédito)
 (4, 1, 4, 40.00, 0),
 (4, 2, 2, 30.00, 30),
 (4, 3, 2, 30.00, 60),
 
+-- 5 6x sem juros (crédito)
 (5, 1, 2, 16.67, 30),
 (5, 2, 2, 16.67, 60),
 (5, 3, 2, 16.67, 90),
 (5, 4, 2, 16.67, 120),
 (5, 5, 2, 16.67, 150),
-(5, 6, 2, 16.65, 180);
+(5, 6, 2, 16.65, 180),
+
+-- 6 90 dias (boleto)
+(6, 1, 5, 100.00, 90),
+
+-- 7 14/28/42 (boleto)
+(7, 1, 5, 33.34, 14),
+(7, 2, 5, 33.33, 28),
+(7, 3, 5, 33.33, 42);
 
 -- ============================= CATEGORIAS ==========================
 INSERT INTO CATEGORIA (NOME, DESCRICAO) VALUES
 ('BEBIDAS ALCOÓLICAS', 'Cervejas, destilados e vinhos.'),
 ('BEBIDAS NÃO ALCOÓLICAS', 'Refrigerantes, sucos e água.'),
 ('PETISCOS', 'Porções e snacks.'),
-('INGREDIENTES', 'Itens de preparo e insumos.');
+('INGREDIENTES', 'Itens de preparo e insumos.'),
+('ENERGÉTICOS', 'Bebidas energéticas.'),
+('DESCARTÁVEIS', 'Copos, canudos, guardanapos.');
 
 -- =============================== MARCAS ============================
 INSERT INTO MARCA (NOME) VALUES
-('HEINEKEN'),
-('BUDWEISER'),
-('COCA-COLA'),
-('JACK DANIEL\'S'),
-('SMIRNOFF'),
-('DORITOS'),
-('RANCHITO');
+('HEINEKEN'),       -- 1
+('BUDWEISER'),      -- 2
+('COCA-COLA'),      -- 3
+('JACK DANIEL\'S'), -- 4
+('SMIRNOFF'),       -- 5
+('DORITOS'),        -- 6
+('RANCHITO'),       -- 7
+('RED BULL'),       -- 8
+('MONSTER'),        -- 9
+('PEPSI');          -- 10
 
 -- ========================== UNIDADES DE MEDIDA =====================
--- (NOME, SIGLA)  <= SIGLA obrigatória e única
 INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA) VALUES
-('UNIDADE', 'UN'),
-('LITRO', 'L'),
-('MILILITRO', 'ML'),
-('CAIXA', 'CX'),
-('PACOTE', 'PC');
+('UNIDADE', 'UN'),  -- 1
+('LITRO', 'L'),     -- 2
+('MILILITRO', 'ML'),-- 3
+('CAIXA', 'CX'),    -- 4
+('PACOTE', 'PC');   -- 5
 
 -- ============================== FORNECEDORES =======================
--- Observação: RG_INSCRICAO_ESTADUAL é NOT NULL => usar "ISENTO-XX" quando aplicável
+-- Observação: RG_INSCRICAO_ESTADUAL é NOT NULL e UNIQUE => usar "ISENTO-XX" p/ PJ sem IE
 INSERT INTO FORNECEDOR (
   TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO,
   CPF_CNPJ, RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, NUMERO_ENDERECO,
@@ -103,7 +166,9 @@ INSERT INTO FORNECEDOR (
 ) VALUES
 ('J','DISTRIBUIDORA DE BEBIDAS IGUAÇU LTDA','DIST. IGUAÇU','2012-03-15','34876543000155','IE12345678','contato@dbiguacu.com','45999887766','Av. Paraná','1200',NULL,'Centro',1,'85851000',NULL,2),
 ('J','SNACKS BRASIL COMÉRCIO ME','SNACKS BRASIL','2016-08-10','11222333000140','IE87654321','vendas@snacksbr.com','41988887777','Rua das Indústrias','450',NULL,'Industrial',2,'80000000',NULL,3),
-('J','MUNDIAL BEBIDAS IMPORT','MUNDIAL IMPORT','2018-05-02','55999111000122','IE00011223','import@mundial.com','1133334444','Rod. dos Imigrantes','900',NULL,'Comercial',3,'01000000',NULL,4);
+('J','MUNDIAL BEBIDAS IMPORT','MUNDIAL IMPORT','2018-05-02','55999111000122','IE00011223','import@mundial.com','1133334444','Rod. dos Imigrantes','900',NULL,'Comercial',4,'01000000',NULL,4),
+('J','ENERGY IMPORTS LTD','ENERGY IMPORTS','2019-02-01','77990011000111','ISENTO-01','sales@energy.com','11999990000','Rua Potência','77',NULL,'Vila Nova',4,'01100000',NULL,5),
+('J','COPOS E CIA LTDA','COPOS&CIA','2020-06-20','22113344000166','ISENTO-02','contato@coposecia.com','41995123456','Rua do Papel','321',NULL,'Rebouças',2,'80220000',NULL,7);
 
 -- ============================== TRANSPORTADORAS ====================
 INSERT INTO TRANSPORTADORA (
@@ -111,32 +176,58 @@ INSERT INTO TRANSPORTADORA (
   CPF_CNPJ, RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, NUMERO_ENDERECO,
   COMPLEMENTO_ENDERECO, BAIRRO, ID_CIDADE, CEP, GENERO, ID_CONDICAO_PAGAMENTO
 ) VALUES
-('J','TRANS IGUAÇU LOGÍSTICA LTDA','TRANS IGUAÇU','2010-01-20','77889966000188','ISENTO-01','contato@transiguacu.com','45997000000','Rua das Entregas','100',NULL,'Vila A',1,'85853000',NULL,2),
-('J','RÁPIDO SUL TRANSPORTES','RÁPIDO SUL','2014-11-05','66778899000170','ISENTO-02','comercial@rapidosul.com','41996123456','Av. Rápida','2500',NULL,'Rebouças',2,'80220000',NULL,2);
+('J','TRANS IGUAÇU LOGÍSTICA LTDA','TRANS IGUAÇU','2010-01-20','77889966000188','ISENTO-11','contato@transiguacu.com','45997000000','Rua das Entregas','100',NULL,'Vila A',1,'85853000',NULL,2),
+('J','RÁPIDO SUL TRANSPORTES','RÁPIDO SUL','2014-11-05','66778899000170','ISENTO-12','comercial@rapidosul.com','41996123456','Av. Rápida','2500',NULL,'Rebouças',2,'80220000',NULL,2),
+('J','NORTE SUL CARGAS','NORTE SUL','2016-04-14','55001122000133','ISENTO-13','ns@ns.com','11988887777','Rua Cargas','10',NULL,'Industrial',4,'01020000',NULL,3);
 
 -- =============================== PRODUTOS ==========================
--- Mapas de IDs (assumindo AUTOINCREMENT a partir de 1):
--- MARCA: 1=HEINEKEN, 2=BUDWEISER, 3=COCA-COLA, 4=JACK DANIEL'S, 5=SMIRNOFF, 6=DORITOS, 7=RANCHITO
--- CATEGORIA: 1=BEBIDAS ALCOÓLICAS, 2=BEBIDAS NÃO ALCOÓLICAS, 3=PETISCOS, 4=INGREDIENTES
+-- Mapas de IDs:
+-- MARCA: 1=HEINEKEN, 2=BUDWEISER, 3=COCA-COLA, 4=JACK D., 5=SMIRNOFF, 6=DORITOS, 7=RANCHITO, 8=RED BULL, 9=MONSTER, 10=PEPSI
+-- CATEGORIA: 1=BEB ALCO, 2=BEB NAO ALCO, 3=PETISCOS, 4=INGREDIENTES, 5=ENERGÉTICOS, 6=DESCARTÁVEIS
 -- UNIDADE: 1=UN, 2=L, 3=ML, 4=CX, 5=PC
--- FORNECEDOR: 1=DIST. IGUAÇU, 2=SNACKS BRASIL, 3=MUNDIAL IMPORT
 INSERT INTO PRODUTO (
   NOME, DESCRICAO, CODIGO_BARRAS, ID_MARCA, ID_CATEGORIA, ID_UNIDADE_MEDIDA,
-  ID_FORNECEDOR, VALOR_COMPRA, VALOR_VENDA, VALOR_COMPRAANTERIOR, PERCENTUAL_LUCRO, ESTOQUE
+  VALOR_COMPRA, VALOR_VENDA, VALOR_COMPRAANTERIOR, PERCENTUAL_LUCRO, ESTOQUE
 ) VALUES
-('CERVEJA HEINEKEN 600ML','Garrafa 600ml','7891000000001',1,1,1,1,7.90,14.90,7.50,88.61,120),
-('CERVEJA BUDWEISER LATA 350ML','Lata 350ml','7891000000002',2,1,1,1,4.20,8.50,4.10,102.38,300),
-('REFRIGERANTE COCA-COLA 2L','Garrafa PET 2 litros','7891000000003',3,2,1,1,6.50,12.90,6.20,98.46,80),
-('REFRIGERANTE COCA-COLA LATA 350ML','Lata 350ml','7891000000004',3,2,1,1,3.20,6.50,3.00,103.13,240),
-('VODKA SMIRNOFF 1L','Garrafa 1L','7891000000005',5,1,1,3,35.00,69.90,34.00,99.71,30),
-('WHISKY JACK DANIELS 1L','Garrafa 1L','7891000000006',4,1,1,3,120.00,199.90,115.00,66.58,15),
-('DORITOS NACHO 96G','Pacote 96g','7891000000007',6,3,5,2,5.20,9.90,5.00,90.38,60),
-('AMENDOIM TORRADO 500G','Pacote 500g','7891000000008',7,3,5,2,8.00,15.90,7.50,98.75,55),
-('ÁGUA MINERAL 500ML','Garrafa 500ml','7891000000009',7,2,1,1,1.10,3.50,1.00,218.18,200),
-('SUCO LARANJA 1L','Pronto para beber 1L','7891000000010',7,2,2,1,4.80,9.90,4.50,106.25,70);
+('CERVEJA HEINEKEN 600ML','Garrafa 600ml','7891000000001',1,1,1,7.90,14.90,7.50,88.61,120),
+('CERVEJA BUDWEISER LATA 350ML','Lata 350ml','7891000000002',2,1,1,4.20,8.50,4.10,102.38,300),
+('REFRIGERANTE COCA-COLA 2L','PET 2L','7891000000003',3,2,1,6.50,12.90,6.20,98.46,80),
+('REFRIGERANTE COCA-COLA LATA 350ML','Lata 350ml','7891000000004',3,2,1,3.20,6.50,3.00,103.13,240),
+('VODKA SMIRNOFF 1L','Garrafa 1L','7891000000005',5,1,1,35.00,69.90,34.00,99.71,30),
+('WHISKY JACK DANIELS 1L','Garrafa 1L','7891000000006',4,1,1,120.00,199.90,115.00,66.58,15),
+('DORITOS NACHO 96G','Pacote 96g','7891000000007',6,3,5,5.20,9.90,5.00,90.38,60),
+('AMENDOIM TORRADO 500G','Pacote 500g','7891000000008',7,3,5,8.00,15.90,7.50,98.75,55),
+('ÁGUA MINERAL 500ML','Garrafa 500ml','7891000000009',7,2,1,1.10,3.50,1.00,218.18,200),
+('SUCO LARANJA 1L','Pronto para beber 1L','7891000000010',7,2,2,4.80,9.90,4.50,106.25,70),
+('RED BULL LATA 250ML','Lata 250ml','7891000000011',8,5,1,6.20,12.90,6.00,108.06,90),
+('MONSTER LATA 473ML','Lata 473ml','7891000000012',9,5,1,7.80,14.90,7.50,91.03,60),
+('PEPSI LATA 350ML','Lata 350ml','7891000000013',10,2,1,2.90,5.99,2.80,106.55,180),
+('GUARDANAPO 23X23 50UN','Pacote 50 un','7891000000014',7,6,5,1.50,3.50,1.40,133.33,300),
+('COPO DESCARTÁVEL 300ML C/50','Pacote','7891000000015',7,6,5,3.20,6.90,3.00,115.63,250);
+
+-- ===================== PRODUTO x FORNECEDOR (associação) ==========
+-- Mapeamento de produtos (IDs iniciam em 1 conforme ordem acima)
+INSERT INTO PRODUTO_FORNECEDOR (
+  ID_PRODUTO, ID_FORNECEDOR, VALOR_ULTIMA_COMPRA, DATA_ULTIMA_COMPRA, VALOR_ATUAL_COMPRA, OBSERVACAO
+) VALUES
+(1, 1, 7.50, '2025-07-15', 7.90, 'LOTE A'),
+(2, 1, 4.10, '2025-07-15', 4.20, 'LOTE B'),
+(3, 1, 6.20, '2025-07-01', 6.50, 'PET 2L'),
+(4, 1, 3.00, '2025-07-01', 3.20, 'LATA'),
+(5, 3, 34.00, '2025-06-20', 35.00, 'IMPORT'),
+(6, 3,115.00, '2025-06-20',120.00, 'IMPORT'),
+(7, 2, 5.00, '2025-07-10', 5.20, 'NACHO'),
+(8, 2, 7.50, '2025-07-10', 8.00, 'TORRADO'),
+(9, 1, 1.00, '2025-07-05', 1.10, 'GARR 500'),
+(10,1, 4.50, '2025-07-05', 4.80, '1L'),
+(11,4, 6.00, '2025-07-12', 6.20, 'ENERGY'),
+(12,4, 7.50, '2025-07-12', 7.80, 'ENERGY'),
+(13,1, 2.80, '2025-07-18', 2.90, 'LATA'),
+(14,5, 1.40, '2025-07-08', 1.50, 'PAPEL'),
+(15,5, 3.00, '2025-07-08', 3.20, 'PLÁSTICO');
 
 -- ============================== FUNCIONÁRIOS =======================
--- FK ID_CIDADE: 1=FOZ DO IGUAÇU, 2=CURITIBA, 3=SÃO PAULO, 4=RIO, 5=MIAMI, 6=TORONTO
+-- FK ID_CIDADE (1..15)
 INSERT INTO FUNCIONARIO (
   TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO,
   CPF_CNPJ, RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, NUMERO_ENDERECO,
@@ -145,10 +236,12 @@ INSERT INTO FUNCIONARIO (
 ) VALUES
 ('F','LUCAS ANDRADE','LUCAS','1994-02-10','12345678901','RG1000001','lucas@barlocal.com','45999111111','Rua das Flores','100',NULL,'Centro',1,'85851000','MAT001','BARMAN',2800.00,'2023-01-10',NULL,'NOITE',44,'M'),
 ('F','MARIANA ROCHA','MARI','1996-07-21','22233344455','RG1000002','mariana@barlocal.com','45999222222','Av. Brasil','250',NULL,'Centro',1,'85851010','MAT002','CAIXA',2200.00,'2022-09-01',NULL,'TARDE',40,'F'),
-('F','PEDRO HENRIQUE LIMA','PH','1990-11-05','33344455566','RG1000003','pedro@barlocal.com','45999333333','Rua Iguaçu','455','Fundos','Jardim Europa',2,'80000000','MAT003','GARÇOM',2000.00,'2024-03-01',NULL,'NOITE',36,'M');
+('F','PEDRO HENRIQUE LIMA','PH','1990-11-05','33344455566','RG1000003','pedro@barlocal.com','45999333333','Rua Iguaçu','455','Fundos','Jardim Europa',2,'80000000','MAT003','GARÇOM',2000.00,'2024-03-01',NULL,'NOITE',36,'M'),
+('F','AMANDA COSTA','AMANDA','1998-03-03','44455566677','RG1000004','amanda@barlocal.com','41999887766','Rua XV','11',NULL,'Centro',4,'01001000','MAT004','GERENTE',4200.00,'2023-05-10',NULL,'ADMIN',44,'F'),
+('F','THIAGO MORAES','THI','1992-12-01','55566677788','RG1000005','thi@barlocal.com','41999123456','Av. Sete','700',NULL,'Batel',2,'80220000','MAT005','COZINHEIRO',2600.00,'2024-02-01',NULL,'TARDE',44,'M'),
+('F','KAREN SOUZA','KAREN','1997-05-15','66677788899','RG1000006','karen@barlocal.com','41999000111','Rua Itália','321',NULL,'Centro',8,'90000000','MAT006','ATENDENTE',1900.00,'2025-01-15',NULL,'MANHÃ',36,'F');
 
 -- ================================ CLIENTES =========================
--- Clientes PF e 1 PJ (ex.: buffet parceiro). RG/IE sempre preenchido (campo NOT NULL)
 INSERT INTO CLIENTE (
   TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO,
   CPF_CNPJ, RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, NUMERO_ENDERECO,
@@ -157,20 +250,27 @@ INSERT INTO CLIENTE (
 ('F','JOÃO DA SILVA','JOÃO','1992-04-12','55566677788','RG2000001','joao@email.com','45999444444','Rua das Laranjeiras','12',NULL,'Centro',1,'85851020',TRUE,'M',1,300.00),
 ('F','ANA PAULA MORAES','ANA','1988-01-30','44455566677','RG2000002','ana@email.com','45999555555','Rua do Comércio','500','Ap 402','Centro',1,'85851030',TRUE,'F',2,600.00),
 ('F','CARLOS EDUARDO','CARLINHOS','1995-09-09','11122233344','RG2000003','carlos@email.com','45999666666','Av. Paraná','1230',NULL,'Centro',1,'85851040',TRUE,'M',5,800.00),
-('J','BUFFET FOZ LTDA','BUFFET FOZ','2015-01-01','12345678000190','ISENTO-03','compras@buffetfoz.com','45999777777','Rua Eventos','999',NULL,'Polo Centro',1,'85851050',TRUE,NULL,3,5000.00);
+('J','BUFFET FOZ LTDA','BUFFET FOZ','2015-01-01','12345678000190','ISENTO-03','compras@buffetfoz.com','45999777777','Rua Eventos','999',NULL,'Polo Centro',1,'85851050',TRUE,NULL,3,5000.00),
+('F','RENATA SOUZA','RENATA','1993-06-10','99988877766','RG2000004','renata@email.com','41999000222','Rua 7','70',NULL,'Centro',4,'01002000',TRUE,'F',7,400.00),
+('F','MATEUS PEREIRA','MATEUS','1991-08-18','77766655544','RG2000005','mateus@email.com','41999000333','Rua das Araucárias','301',NULL,'Juvevê',2,'80040000',TRUE,'M',6,500.00),
+('J','EVENTOS CURITIBA LTDA','EVENTOS CTBA','2020-02-02','11220033000111','ISENTO-04','compras@eventosctba.com','41999000444','Av. Sete','707',NULL,'Centro',2,'80230000',TRUE,NULL,2,8000.00),
+('F','BRUNA LIMA','BRU','1997-11-25','88877766655','RG2000006','bruna@email.com','41999000555','Rua Atlântica','9',NULL,'Copacabana',6,'22000000',TRUE,'F',1,200.00);
 
 -- ================================ COMPRAS ==========================
--- Compras (modelo 55 - NF-e). Fornecedor 1 e 3, condições 2 e 3, etc.
+-- Compras (modelo 55 - NF-e). ID_FORNECEDOR conforme inseridos acima.
 INSERT INTO COMPRA (
   MODELO, SERIE, NUMERO_NOTA, ID_FORNECEDOR, DATA_EMISSAO, DATA_ENTREGA,
   VALOR_FRETE, SEGURO, DESPESAS, ID_CONDICAO_PAGAMENTO, MOTIVO_CANCELAMENTO
 ) VALUES
 (55, '1', '000000101', 1, '2025-08-01', '2025-08-02', 120.00, 0.00, 30.00, 2, NULL),
 (55, '1', '000000102', 3, '2025-08-10', '2025-08-12', 200.00, 20.00, 0.00, 3, NULL),
-(55, '1', '000000103', 2, '2025-08-15', '2025-08-16', 0.00, 0.00, 0.00, 1, NULL);
+(55, '1', '000000103', 2, '2025-08-15', '2025-08-16', 0.00, 0.00, 0.00, 1, NULL),
+(55, '1', '000000104', 4, '2025-08-20', '2025-08-22', 150.00, 0.00, 50.00, 5, NULL),
+(55, '1', '000000105', 5, '2025-08-25', '2025-08-26', 0.00, 0.00, 25.00, 4, NULL);
 
 -- ============================= ITENS DA COMPRA =====================
 -- Compra 000000101 (fornecedor 1): cervejas e refrigerantes
+-- Total itens: (100*7.90)=790 + (300*4.20)=1260 + (60*6.50)=390 + (200*3.20)=640 => 3080
 INSERT INTO ITEM_COMPRA (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_PRODUTO, QUANTIDADE, VALOR_UNITARIO) VALUES
 (55,'1','000000101', 1, 100, 7.90),  -- HEINEKEN 600
 (55,'1','000000101', 2, 300, 4.20),  -- BUD LATA
@@ -178,38 +278,74 @@ INSERT INTO ITEM_COMPRA (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_PRO
 (55,'1','000000101', 4, 200, 3.20);  -- COCA LATA
 
 -- Compra 000000102 (fornecedor 3): destilados
-INSERT INTO ITEM_COMPRA (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_PRODUTO, QUANTIDADE, VALOR_UNITARIO) VALUES
-(55,'1','000000102', 5, 40, 35.00),  -- VODKA SMIRNOFF 1L
-(55,'1','000000102', 6, 20,120.00);  -- WHISKY JACK 1L
+-- Total itens: (40*35)=1400 + (20*120)=2400 => 3800
+INSERT INTO ITEM_COMPRA VALUES
+(55,'1','000000102', 5, 40, 35.00),  -- VODKA
+(55,'1','000000102', 6, 20,120.00);  -- WHISKY
 
 -- Compra 000000103 (fornecedor 2): snacks e água/suco
-INSERT INTO ITEM_COMPRA (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_PRODUTO, QUANTIDADE, VALOR_UNITARIO) VALUES
+-- Total itens: (200*5.20)=1040 + (100*8.00)=800 + (150*1.10)=165 + (80*4.80)=384 => 2389
+INSERT INTO ITEM_COMPRA VALUES
 (55,'1','000000103', 7, 200, 5.20),  -- DORITOS
-(55,'1','000000103', 8, 100, 8.00),  -- AMENDOIM 500g
-(55,'1','000000103', 9, 150, 1.10),  -- ÁGUA 500ml
-(55,'1','000000103',10, 80,  4.80);  -- SUCO 1L
+(55,'1','000000103', 8, 100, 8.00),  -- AMENDOIM
+(55,'1','000000103', 9, 150, 1.10),  -- ÁGUA
+(55,'1','000000103',10, 80,  4.80);  -- SUCO
 
--- ============================ PARCELAS DA COMPRA ===================
--- Para 000000101 (condição 2 = 30/60, 2 parcelas 50/50). Total aproximado = itens + frete + despesas.
--- Total itens 101: (100*7.90) + (300*4.20) + (60*6.50) + (200*3.20) = 790 + 1260 + 390 + 640 = 3080,00
--- + frete 120 + despesas 30 = 3230,00 => 2x de 1615,00
-INSERT INTO PARCELA_COMPRA VALUES
-(55,'1','000000101',1,'2025-08-31',1615.00),
-(55,'1','000000101',2,'2025-09-30',1615.00);
+-- Compra 000000104 (fornecedor 4): energéticos e copos
+-- Total itens: (120*6.20)=744 + (80*7.80)=624 + (60*1.50)=90 + (50*3.20)=160 => 1618
+-- + frete 150 + despesas 50 => 1818
+INSERT INTO ITEM_COMPRA VALUES
+(55,'1','000000104',11,120, 6.20),   -- RED BULL
+(55,'1','000000104',12, 80, 7.80),   -- MONSTER
+(55,'1','000000104',14, 60, 1.50),   -- GUARDANAPO
+(55,'1','000000104',15, 50, 3.20);   -- COPOS
 
--- Para 000000102 (condição 3 = 3x com juros; aqui apenas distribuindo 33/33/34 para exemplo)
--- Total itens 102: (40*35) + (20*120) = 1400 + 2400 = 3800,00
--- + frete 200 + seguro 20 = 4020,00 => (aprox.) 1326,60 / 1326,60 / 1366,80
-INSERT INTO PARCELA_COMPRA VALUES
-(55,'1','000000102',1,'2025-09-09',1326.60),
-(55,'1','000000102',2,'2025-10-10',1326.60),
-(55,'1','000000102',3,'2025-11-09',1366.80);
+-- Compra 000000105 (fornecedor 5): descartáveis
+-- Total itens: (200*1.50)=300 + (150*3.20)=480 => 780
+-- + despesas 25 => 805
+INSERT INTO ITEM_COMPRA VALUES
+(55,'1','000000105',14,200,1.50),
+(55,'1','000000105',15,150,3.20);
 
--- Para 000000103 (condição 1 = à vista, 1 parcela com 5% desc. aplicável na operação real; aqui usamos total simples)
--- Total itens 103: (200*5.20) + (100*8.00) + (150*1.10) + (80*4.80) = 1040 + 800 + 165 + 384 = 2389,00
-INSERT INTO PARCELA_COMPRA VALUES
-(55,'1','000000103',1,'2025-08-15',2389.00);
+-- ============================ CONTAS A PAGAR =======================
+-- Regra usada: valor total = soma(itens) + frete + seguro + despesas.
+-- Forma e vencimentos conforme PARCELA_CONDICAO_PAGAMENTO da condição da compra.
 
--- ################################################################# --
--- ###################### DADOS INSERIDOS! ########################## --
--- ################################################################# --
+-- 000000101 (condição 2 = 30/60, 2x 50/50 no crédito)
+-- Total 3080 + 120 + 30 = 3230 => 2x de 1615,00
+INSERT INTO CONTAS_A_PAGAR VALUES
+(55,'1','000000101',1,1,'2025-08-01','2025-08-31',1615.00,2),
+(55,'1','000000101',1,2,'2025-08-01','2025-09-30',1615.00,2);
+
+-- 000000102 (condição 3 = 3x com juros; distribuição aproximada 34/33/33)
+-- Total 3800 + 200 + 20 = 4020 => 1366,80 / 1326,60 / 1326,60 (ajuste para 2 dec)
+INSERT INTO CONTAS_A_PAGAR VALUES
+(55,'1','000000102',3,1,'2025-08-10','2025-09-09',1366.80,2),
+(55,'1','000000102',3,2,'2025-08-10','2025-10-10',1326.60,2),
+(55,'1','000000102',3,3,'2025-08-10','2025-11-08',1326.60,2);
+
+-- 000000103 (condição 1 = à vista, 100% em D+0 no dinheiro)
+-- Total 2389,00
+INSERT INTO CONTAS_A_PAGAR VALUES
+(55,'1','000000103',2,1,'2025-08-15','2025-08-15',2389.00,1);
+
+-- 000000104 (condição 5 = 6x sem juros, crédito; 1818 / 6)
+-- 16.67% => 303.00 / 303.00 / 303.00 / 303.00 / 303.00 / 303.00 (ajuste centavos na última)
+INSERT INTO CONTAS_A_PAGAR VALUES
+(55,'1','000000104',4,1,'2025-08-20','2025-09-19',303.00,2),
+(55,'1','000000104',4,2,'2025-08-20','2025-10-19',303.00,2),
+(55,'1','000000104',4,3,'2025-08-20','2025-11-18',303.00,2),
+(55,'1','000000104',4,4,'2025-08-20','2025-12-18',303.00,2),
+(55,'1','000000104',4,5,'2025-08-20','2026-01-17',303.00,2),
+(55,'1','000000104',4,6,'2025-08-20','2026-02-16',303.00,2);
+
+-- 000000105 (condição 4 = entrada PIX 40% + 2x 30% no crédito)
+-- Total 805 => 322.00 / 241.50 / 241.50 (ajustes de centavos somam 805,00)
+INSERT INTO CONTAS_A_PAGAR VALUES
+(55,'1','000000105',5,1,'2025-08-25','2025-08-25',322.00,4),  -- PIX (40%)
+(55,'1','000000105',5,2,'2025-08-25','2025-09-24',241.50,2),  -- 30%
+(55,'1','000000105',5,3,'2025-08-25','2025-10-24',241.50,2);  -- 30%
+
+-- #################################################################
+-- ###################### DADOS INSERIDOS! ##########################
+-- #################################################################
