@@ -435,8 +435,6 @@ namespace projeto_patrica.pages.cadastro
 
             decimal totalCompra = totalProdutos + frete + seguro + despesas;
 
-            totalCompra = totalCompra * (1 - (oCompra.ACondicaoPagamento.Desconto / 100));
-            totalCompra = totalCompra * (1 + (oCompra.ACondicaoPagamento.Juros / 100));
 
             listaParcelas.Clear();
             foreach (var parcelaCondicao in oCompra.ACondicaoPagamento.Parcelas)
@@ -459,6 +457,7 @@ namespace projeto_patrica.pages.cadastro
             CarregarParcelasNaListView();
             GerenciarEstadoDosControles();
         }
+
 
         private void btnLimparParcelas_Click(object sender, EventArgs e)
         {
