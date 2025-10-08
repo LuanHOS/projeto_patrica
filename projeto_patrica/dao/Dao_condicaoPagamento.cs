@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using projeto_patrica.classes;
+using projeto_patrica.controller;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -28,7 +29,7 @@ namespace projeto_patrica.dao
                   "'" + aCondicaoPagamento.Desconto.ToString().Replace(",", ".") + "')";
 
             if (aCondicaoPagamento.Id != 0)
-            { 
+            {
                 operacao = 'U';
                 sql = "UPDATE CONDICAO_PAGAMENTO SET " +
                       "DESCRICAO = '" + aCondicaoPagamento.Descricao + "', " +
@@ -104,7 +105,7 @@ namespace projeto_patrica.dao
                       "ID_FORMA_PAGAMENTO = '" + parcela.AFormaPagamento.Id + "', " +
                       "VALOR_PERCENTUAL = '" + parcela.ValorPercentual.ToString().Replace(",", ".") + "', " +
                       "DIAS_APOS_VENDA = '" + parcela.DiasAposVenda + "' " +
-                      "WHERE ID_CONDICAO_PAGAMENTO = '" + parcela.CodCondPagto + 
+                      "WHERE ID_CONDICAO_PAGAMENTO = '" + parcela.CodCondPagto +
                       "' AND NUMERO_PARCELA = '" + parcela.NumeroParcela + "'";
             }
             else
@@ -196,6 +197,7 @@ namespace projeto_patrica.dao
         {
             parcelaCondicaoPagamento parcela;
             List<parcelaCondicaoPagamento> lista = new List<parcelaCondicaoPagamento>();
+            Controller_formaPagamento controllerFP = new Controller_formaPagamento();
 
             string sql = "SELECT * FROM PARCELA_CONDICAO_PAGAMENTO WHERE ID_CONDICAO_PAGAMENTO = '" + idCondicaoPagamento + "'";
             MySqlCommand conn = new MySqlCommand();
@@ -209,6 +211,7 @@ namespace projeto_patrica.dao
                 parcela.CodCondPagto = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
                 parcela.NumeroParcela = Convert.ToInt32(dr["NUMERO_PARCELA"]);
                 parcela.AFormaPagamento.Id = Convert.ToInt32(dr["ID_FORMA_PAGAMENTO"]);
+                controllerFP.CarregaObj(parcela.AFormaPagamento);
                 parcela.ValorPercentual = Convert.ToDecimal(dr["VALOR_PERCENTUAL"]);
                 parcela.DiasAposVenda = Convert.ToInt32(dr["DIAS_APOS_VENDA"]);
 
