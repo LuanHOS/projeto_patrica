@@ -19,6 +19,16 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
+            // Recalcula o percentual de lucro antes de salvar
+            if (oProduto.ValorCompra > 0)
+            {
+                oProduto.PercentualLucro = ((oProduto.ValorVenda / oProduto.ValorCompra) - 1) * 100;
+            }
+            else
+            {
+                oProduto.PercentualLucro = 0;
+            }
+
             sql = "INSERT INTO PRODUTO (NOME, DESCRICAO, CODIGO_BARRAS, ID_MARCA, ID_CATEGORIA, ID_UNIDADE_MEDIDA, VALOR_COMPRA, VALOR_VENDA, VALOR_COMPRAANTERIOR, PERCENTUAL_LUCRO, ESTOQUE, ATIVO) VALUES (" +
                   "'" + oProduto.Nome + "', " +
                   (string.IsNullOrWhiteSpace(oProduto.Descricao) ? "NULL" : "'" + oProduto.Descricao + "'") + ", " +

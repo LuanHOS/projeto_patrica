@@ -185,7 +185,7 @@ namespace projeto_patrica.dao
 
         private void AtualizarProduto(itemCompra item, decimal custoUnitarioReal, MySqlConnection conn, MySqlTransaction trans)
         {
-            string sqlSelect = "SELECT ESTOQUE, VALOR_COMPRA FROM PRODUTO WHERE ID_PRODUTO = @IdProduto";
+            string sqlSelect = "SELECT ESTOQUE, VALOR_COMPRA, VALOR_VENDA FROM PRODUTO WHERE ID_PRODUTO = @IdProduto";
             MySqlCommand cmdSelect = new MySqlCommand(sqlSelect, conn, trans);
             cmdSelect.Parameters.AddWithValue("@IdProduto", item.OProduto.Id);
 
@@ -195,15 +195,24 @@ namespace projeto_patrica.dao
                 {
                     int estoqueAtual = reader.GetInt32("ESTOQUE");
                     decimal custoAtual = reader.GetDecimal("VALOR_COMPRA");
+                    decimal valorVenda = reader.GetDecimal("VALOR_VENDA");
                     reader.Close();
 
                     decimal novoCustoMedio = ((custoAtual * estoqueAtual) + (custoUnitarioReal * item.Quantidade)) / (estoqueAtual + item.Quantidade);
 
-                    string sqlUpdate = "UPDATE PRODUTO SET ESTOQUE = @NovoEstoque, VALOR_COMPRA = @NovoCustoMedio, VALOR_COMPRAANTERIOR = @CustoAnterior WHERE ID_PRODUTO = @IdProduto";
+                    decimal novoPercentualLucro = 0;
+                    if (novoCustoMedio > 0)
+                    {
+                        novoPercentualLucro = ((valorVenda / novoCustoMedio) - 1) * 100;
+                    }
+
+
+                    string sqlUpdate = "UPDATE PRODUTO SET ESTOQUE = @NovoEstoque, VALOR_COMPRA = @NovoCustoMedio, VALOR_COMPRAANTERIOR = @CustoAnterior, PERCENTUAL_LUCRO = @NovoPercentualLucro WHERE ID_PRODUTO = @IdProduto";
                     MySqlCommand cmdUpdate = new MySqlCommand(sqlUpdate, conn, trans);
                     cmdUpdate.Parameters.AddWithValue("@NovoEstoque", estoqueAtual + item.Quantidade);
                     cmdUpdate.Parameters.AddWithValue("@NovoCustoMedio", novoCustoMedio);
                     cmdUpdate.Parameters.AddWithValue("@CustoAnterior", custoAtual);
+                    cmdUpdate.Parameters.AddWithValue("@NovoPercentualLucro", novoPercentualLucro);
                     cmdUpdate.Parameters.AddWithValue("@IdProduto", item.OProduto.Id);
                     cmdUpdate.ExecuteNonQuery();
                 }
@@ -214,9 +223,10 @@ namespace projeto_patrica.dao
             }
         }
 
+
         private void ReverterAtualizacaoProduto(itemCompra item, MySqlConnection conn, MySqlTransaction trans)
         {
-            string sqlSelect = "SELECT ESTOQUE, VALOR_COMPRA, VALOR_COMPRAANTERIOR FROM PRODUTO WHERE ID_PRODUTO = @IdProduto";
+            string sqlSelect = "SELECT ESTOQUE, VALOR_COMPRA, VALOR_COMPRAANTERIOR, VALOR_VENDA FROM PRODUTO WHERE ID_PRODUTO = @IdProduto";
             MySqlCommand cmdSelect = new MySqlCommand(sqlSelect, conn, trans);
             cmdSelect.Parameters.AddWithValue("@IdProduto", item.OProduto.Id);
 
@@ -227,6 +237,7 @@ namespace projeto_patrica.dao
                     int estoqueAtual = reader.GetInt32("ESTOQUE");
                     decimal custoMedioAtual = reader.GetDecimal("VALOR_COMPRA");
                     decimal valorCompraAnterior = reader.GetDecimal("VALOR_COMPRAANTERIOR");
+                    decimal valorVenda = reader.GetDecimal("VALOR_VENDA");
                     reader.Close();
 
                     int novoEstoque = estoqueAtual - item.Quantidade;
@@ -241,11 +252,18 @@ namespace projeto_patrica.dao
                         novoCustoMedio = valorCompraAnterior;
                     }
 
-                    string sqlUpdate = "UPDATE PRODUTO SET ESTOQUE = @NovoEstoque, VALOR_COMPRA = @NovoCustoMedio, VALOR_COMPRAANTERIOR = @CustoAnterior WHERE ID_PRODUTO = @IdProduto";
+                    decimal novoPercentualLucro = 0;
+                    if (novoCustoMedio > 0)
+                    {
+                        novoPercentualLucro = ((valorVenda / novoCustoMedio) - 1) * 100;
+                    }
+
+                    string sqlUpdate = "UPDATE PRODUTO SET ESTOQUE = @NovoEstoque, VALOR_COMPRA = @NovoCustoMedio, VALOR_COMPRAANTERIOR = @CustoAnterior, PERCENTUAL_LUCRO = @NovoPercentualLucro WHERE ID_PRODUTO = @IdProduto";
                     MySqlCommand cmdUpdate = new MySqlCommand(sqlUpdate, conn, trans);
                     cmdUpdate.Parameters.AddWithValue("@NovoEstoque", novoEstoque);
                     cmdUpdate.Parameters.AddWithValue("@NovoCustoMedio", novoCustoMedio);
                     cmdUpdate.Parameters.AddWithValue("@CustoAnterior", valorCompraAnterior);
+                    cmdUpdate.Parameters.AddWithValue("@NovoPercentualLucro", novoPercentualLucro);
                     cmdUpdate.Parameters.AddWithValue("@IdProduto", item.OProduto.Id);
                     cmdUpdate.ExecuteNonQuery();
                 }
