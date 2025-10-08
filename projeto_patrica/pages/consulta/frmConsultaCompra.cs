@@ -44,6 +44,7 @@ namespace projeto_patrica.pages.consulta
         public override void Alterar()
         {
             base.Alterar();
+            oFrmCadastroCompra.Limpartxt();
             aController_compra.CarregaObj(oCompra);
             oFrmCadastroCompra.ConhecaObj(oCompra, aController_compra);
             oFrmCadastroCompra.Carregatxt();
@@ -57,6 +58,7 @@ namespace projeto_patrica.pages.consulta
         public override void Excluir()
         {
             base.Excluir();
+            oFrmCadastroCompra.Limpartxt();
             aController_compra.CarregaObj(oCompra);
 
             if (!oCompra.Ativo)

@@ -70,8 +70,10 @@
             this.btnLimparListaProduto = new System.Windows.Forms.Button();
             this.listVParcelas = new System.Windows.Forms.ListView();
             this.clmNumParcela = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmDataEmissao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDataVencimento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmValorParcela = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmFormaPagamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dtpDataEntrega = new System.Windows.Forms.DateTimePicker();
             this.dtpDataEmissao = new System.Windows.Forms.DateTimePicker();
             this.lblTotalGeralProdutos = new System.Windows.Forms.Label();
@@ -88,8 +90,6 @@
             this.lblQtdTotalProdutos = new System.Windows.Forms.Label();
             this.lblValorQtdTotalProdutos = new System.Windows.Forms.Label();
             this.lblUnidadeDeMedida = new System.Windows.Forms.Label();
-            this.clmDataEmissão = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmFormaPagamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnSave
@@ -508,7 +508,7 @@
             // 
             this.listVParcelas.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmNumParcela,
-            this.clmDataEmissão,
+            this.clmDataEmissao,
             this.clmDataVencimento,
             this.clmValorParcela,
             this.clmFormaPagamento});
@@ -527,6 +527,11 @@
             this.clmNumParcela.Text = "Num. Parcela";
             this.clmNumParcela.Width = 120;
             // 
+            // clmDataEmissao
+            // 
+            this.clmDataEmissao.Text = "Data de Emissão";
+            this.clmDataEmissao.Width = 120;
+            // 
             // clmDataVencimento
             // 
             this.clmDataVencimento.Text = "Data de Vencimento";
@@ -537,6 +542,11 @@
             this.clmValorParcela.Text = "Valor Parcela";
             this.clmValorParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmValorParcela.Width = 120;
+            // 
+            // clmFormaPagamento
+            // 
+            this.clmFormaPagamento.Text = "Forma de Pagamento";
+            this.clmFormaPagamento.Width = 200;
             // 
             // dtpDataEntrega
             // 
@@ -686,16 +696,6 @@
             this.lblUnidadeDeMedida.Size = new System.Drawing.Size(77, 13);
             this.lblUnidadeDeMedida.TabIndex = 101;
             this.lblUnidadeDeMedida.Text = "Un. de Medida";
-            // 
-            // clmDataEmissão
-            // 
-            this.clmDataEmissão.Text = "Data de Emissão";
-            this.clmDataEmissão.Width = 120;
-            // 
-            // clmFormaPagamento
-            // 
-            this.clmFormaPagamento.Text = "Forma de Pagamento";
-            this.clmFormaPagamento.Width = 200;
             // 
             // frmCadastroCompra
             // 
@@ -883,7 +883,7 @@
         private System.Windows.Forms.Label lblQtdTotalProdutos;
         private System.Windows.Forms.Label lblValorQtdTotalProdutos;
         private System.Windows.Forms.Label lblUnidadeDeMedida;
-        private System.Windows.Forms.ColumnHeader clmDataEmissão;
+        private System.Windows.Forms.ColumnHeader clmDataEmissao;
         private System.Windows.Forms.ColumnHeader clmFormaPagamento;
     }
 }

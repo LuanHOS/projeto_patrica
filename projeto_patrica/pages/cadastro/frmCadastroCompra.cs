@@ -173,6 +173,8 @@ namespace projeto_patrica.pages.cadastro
             lblMotivoCancelamentoTitulo.Visible = false;
             lblMotivCancelamentoExplicacao.Visible = false;
             lblMotivCancelamentoExplicacao.Text = "";
+            txtCodProduto.Clear();
+            txtProduto.Clear();
 
 
             oCompra = new compra();
@@ -199,7 +201,6 @@ namespace projeto_patrica.pages.cadastro
             txtCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Descricao;
             checkBoxAtivo.Checked = oCompra.Ativo;
 
-            // Lógica para exibir o motivo do cancelamento
             if (!oCompra.Ativo)
             {
                 lblMotivoCancelamentoTitulo.Visible = true;
@@ -212,7 +213,6 @@ namespace projeto_patrica.pages.cadastro
                 lblMotivCancelamentoExplicacao.Visible = false;
                 lblMotivCancelamentoExplicacao.Text = "";
             }
-
 
             listaItens = oCompra.Itens;
             CarregarItensNaListView();
@@ -289,6 +289,7 @@ namespace projeto_patrica.pages.cadastro
         {
             txtCodProduto.Enabled = habilitar;
             txtProduto.Enabled = habilitar;
+            txtUnidadeDeMedida.Enabled = habilitar;
             btnPesquisarProduto.Enabled = habilitar;
             txtQuantidade.Enabled = habilitar;
             txtValorUnitario.Enabled = habilitar;
@@ -373,6 +374,7 @@ namespace projeto_patrica.pages.cadastro
                     produtoSelecionado = item.OProduto;
                     txtCodProduto.Text = item.OProduto.Id.ToString();
                     txtProduto.Text = item.OProduto.Nome;
+                    txtUnidadeDeMedida.Text = item.OProduto.OUnidadeMedida.Sigla;
                     txtQuantidade.Text = item.Quantidade.ToString();
                     txtValorUnitario.Text = item.ValorUnitario.ToString("F2");
                     txtTotalProduto.Text = item.ValorTotal.ToString("F2");
@@ -435,7 +437,6 @@ namespace projeto_patrica.pages.cadastro
 
             decimal totalCompra = totalProdutos + frete + seguro + despesas;
 
-
             listaParcelas.Clear();
             foreach (var parcelaCondicao in oCompra.ACondicaoPagamento.Parcelas)
             {
@@ -457,7 +458,6 @@ namespace projeto_patrica.pages.cadastro
             CarregarParcelasNaListView();
             GerenciarEstadoDosControles();
         }
-
 
         private void btnLimparParcelas_Click(object sender, EventArgs e)
         {
@@ -518,6 +518,7 @@ namespace projeto_patrica.pages.cadastro
                 produtoSelecionado = p;
                 txtCodProduto.Text = p.Id.ToString();
                 txtProduto.Text = p.Nome;
+                txtUnidadeDeMedida.Text = p.OUnidadeMedida.Sigla;
                 txtValorUnitario.Text = p.ValorCompra.ToString("F2");
                 txtQuantidade.Text = "1";
                 txtTotalProduto.Text = p.ValorCompra.ToString("F2");
@@ -566,8 +567,10 @@ namespace projeto_patrica.pages.cadastro
             foreach (var parcela in listaParcelas)
             {
                 ListViewItem lvi = new ListViewItem(parcela.NumeroParcela.ToString());
+                lvi.SubItems.Add(parcela.DataEmissao.ToShortDateString());
                 lvi.SubItems.Add(parcela.DataVencimento.ToShortDateString());
                 lvi.SubItems.Add(parcela.ValorParcela.ToString("C2"));
+                lvi.SubItems.Add(parcela.AFormaPagamento.Descricao);
                 listVParcelas.Items.Add(lvi);
             }
             AtualizarTotais();
@@ -578,6 +581,7 @@ namespace projeto_patrica.pages.cadastro
             produtoSelecionado = new produto();
             txtCodProduto.Clear();
             txtProduto.Clear();
+            txtUnidadeDeMedida.Clear();
             txtQuantidade.Clear();
             txtValorUnitario.Clear();
             txtTotalProduto.Clear();
@@ -608,6 +612,9 @@ namespace projeto_patrica.pages.cadastro
 
         private void AtualizarTotais()
         {
+            int totalQuantidade = listaItens.Sum(item => item.Quantidade);
+            lblValorQtdTotalProdutos.Text = totalQuantidade.ToString();
+
             decimal totalProdutos = listaItens.Sum(item => item.ValorTotal);
             lblValorTotalGeralProdutos.Text = totalProdutos.ToString("C2");
 
