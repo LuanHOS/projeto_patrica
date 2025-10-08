@@ -294,6 +294,8 @@
             this.txtValorCompra.TabIndex = 13;
             this.txtValorCompra.Text = "0";
             this.txtValorCompra.Leave += new System.EventHandler(this.txtValorCompra_Leave);
+            this.txtValorCompra.ReadOnly = true;
+
             // 
             // txtEstoque
             // 
@@ -305,6 +307,8 @@
             this.txtEstoque.Size = new System.Drawing.Size(194, 20);
             this.txtEstoque.TabIndex = 16;
             this.txtEstoque.Text = "0";
+            this.txtEstoque.ReadOnly = true;
+
             // 
             // lblPorcentagemLucro
             // 
@@ -359,6 +363,7 @@
             this.txtValorCompraAnterior.TabIndex = 15;
             this.txtValorCompraAnterior.Text = "0";
             this.txtValorCompraAnterior.Leave += new System.EventHandler(this.txtValorVenda_Leave);
+            this.txtValorCompraAnterior.ReadOnly = true;
             // 
             // lblPrecoDeCustoAnterior
             // 
