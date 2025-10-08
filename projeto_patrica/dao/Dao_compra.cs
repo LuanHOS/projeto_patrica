@@ -14,6 +14,21 @@ namespace projeto_patrica.dao
         {
         }
 
+        public bool VerificarCompraExistente(int modelo, string serie, string numeroNota, int idFornecedor)
+        {
+            using (MySqlConnection conn = Banco.Abrir())
+            {
+                string sql = "SELECT COUNT(*) FROM COMPRA WHERE MODELO = @Modelo AND SERIE = @Serie AND NUMERO_NOTA = @NumeroNota AND ID_FORNECEDOR = @IdFornecedor";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Modelo", modelo);
+                cmd.Parameters.AddWithValue("@Serie", serie);
+                cmd.Parameters.AddWithValue("@NumeroNota", numeroNota);
+                cmd.Parameters.AddWithValue("@IdFornecedor", idFornecedor);
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                return count > 0;
+            }
+        }
+
         public override string Salvar(object obj)
         {
             compra aCompra = (compra)obj;
@@ -26,11 +41,12 @@ namespace projeto_patrica.dao
                 conn = Banco.Abrir();
                 trans = conn.BeginTransaction();
 
-                string sqlCheck = "SELECT COUNT(*) FROM COMPRA WHERE MODELO = @Modelo AND SERIE = @Serie AND NUMERO_NOTA = @NumeroNota";
+                string sqlCheck = "SELECT COUNT(*) FROM COMPRA WHERE MODELO = @Modelo AND SERIE = @Serie AND NUMERO_NOTA = @NumeroNota AND ID_FORNECEDOR = @IdFornecedor";
                 MySqlCommand cmdCheck = new MySqlCommand(sqlCheck, conn, trans);
                 cmdCheck.Parameters.AddWithValue("@Modelo", aCompra.Modelo);
                 cmdCheck.Parameters.AddWithValue("@Serie", aCompra.Serie);
                 cmdCheck.Parameters.AddWithValue("@NumeroNota", aCompra.NumeroNota);
+                cmdCheck.Parameters.AddWithValue("@IdFornecedor", aCompra.OFornecedor.Id);
                 bool existe = Convert.ToInt32(cmdCheck.ExecuteScalar()) > 0;
 
                 string sql;
@@ -42,7 +58,6 @@ namespace projeto_patrica.dao
                 else
                 {
                     sql = "UPDATE COMPRA SET " +
-                          "ID_FORNECEDOR = @IdFornecedor, " +
                           "DATA_EMISSAO = @DataEmissao, " +
                           "DATA_ENTREGA = @DataEntrega, " +
                           "VALOR_FRETE = @ValorFrete, " +
@@ -52,7 +67,7 @@ namespace projeto_patrica.dao
                           "MOTIVO_CANCELAMENTO = @MotivoCancelamento, " +
                           "ATIVO = @Ativo, " +
                           "DATA_ULTIMA_EDICAO = CURRENT_DATE " +
-                          "WHERE MODELO = @Modelo AND SERIE = @Serie AND NUMERO_NOTA = @NumeroNota";
+                          "WHERE MODELO = @Modelo AND SERIE = @Serie AND NUMERO_NOTA = @NumeroNota AND ID_FORNECEDOR = @IdFornecedor";
                 }
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn, trans);
@@ -86,7 +101,6 @@ namespace projeto_patrica.dao
 
                 foreach (itemCompra item in aCompra.Itens)
                 {
-                    item.IdFornecedor = aCompra.OFornecedor.Id;
                     SalvarItem(item, conn, trans);
                 }
 

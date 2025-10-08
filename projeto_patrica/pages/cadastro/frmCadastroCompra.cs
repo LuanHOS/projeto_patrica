@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using projeto_patrica.classes;
 using projeto_patrica.controller;
+using projeto_patrica.dao;
 using projeto_patrica.pages.consulta;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,8 @@ namespace projeto_patrica.pages.cadastro
         private bool editandoItem = false;
         private int indiceItemEditando = -1;
         private produto produtoSelecionado = new produto();
+        private bool compraExistente = false;
+        private bool _isLoading = false;
 
         public frmCadastroCompra()
         {
@@ -56,6 +59,36 @@ namespace projeto_patrica.pages.cadastro
         {
             oFrmConsultaCondicaoPagamento = consulta;
         }
+
+        private void VerificarCompraExistente()
+        {
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
+                string.IsNullOrWhiteSpace(txtSerie.Text) ||
+                string.IsNullOrWhiteSpace(txtNumDaNota.Text) ||
+                oCompra.OFornecedor == null || oCompra.OFornecedor.Id == 0)
+            {
+                compraExistente = false;
+                return;
+            }
+
+            int modelo = Convert.ToInt32(txtCodigo.Text);
+            string serie = txtSerie.Text;
+            string numeroNota = txtNumDaNota.Text;
+            int idFornecedor = oCompra.OFornecedor.Id;
+
+            Dao_compra dao = new Dao_compra();
+            if (dao.VerificarCompraExistente(modelo, serie, numeroNota, idFornecedor))
+            {
+                MessageBox.Show("Esta nota de compra já foi cadastrada para este fornecedor.", "Compra Duplicada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                compraExistente = true;
+            }
+            else
+            {
+                compraExistente = false;
+            }
+            GerenciarEstadoDosControles();
+        }
+
 
         public override bool ValidacaoCampos()
         {
@@ -145,9 +178,33 @@ namespace projeto_patrica.pages.cadastro
                     MessageBox.Show("Compra salva com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     base.Salvar();
                 }
+                catch (MySqlException ex)
+                {
+                    switch (ex.Number)
+                    {
+                        case 1062: // Entrada duplicada
+                            MessageBox.Show(
+                                "Não foi possível salvar o item.\n\nJá existe um item salvo com estes dados.",
+                                "Erro: Item duplicado",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error
+                            );
+                            break;
+
+                        default: // Outros erros de banco de dados
+                            MessageBox.Show(
+                                "Não foi possível concluir a operação. Verifique os dados e tente novamente.\n\nDetalhes técnicos: " + ex.Message,
+                                "Erro no Banco de Dados",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error
+                            );
+                            break;
+                    }
+                    return;
+                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ocorreu um erro ao salvar a compra: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -155,72 +212,85 @@ namespace projeto_patrica.pages.cadastro
         #region Métodos de Controle do Formulário
         public override void Limpartxt()
         {
-            base.Limpartxt();
-            txtSerie.Clear();
-            txtNumDaNota.Clear();
-            txtCodFornecedor.Clear();
-            txtFornecedor.Clear();
-            dtpDataEmissao.Value = DateTime.Today;
-            dtpDataEntrega.Value = DateTime.Today;
-            LimparCamposProduto();
-            btnLimparListaProduto_Click(null, null);
-            txtValorFrete.Text = "0,00";
-            txtSeguro.Text = "0,00";
-            txtDespesas.Text = "0,00";
-            txtCodCondicaoDePagamento.Clear();
-            txtCondicaoDePagamento.Clear();
-            btnLimparParcelas_Click(null, null);
-            lblMotivoCancelamentoTitulo.Visible = false;
-            lblMotivCancelamentoExplicacao.Visible = false;
-            lblMotivCancelamentoExplicacao.Text = "";
-            txtCodProduto.Clear();
-            txtProduto.Clear();
+            _isLoading = true;
+            try
+            {
+                base.Limpartxt();
+                txtSerie.Clear();
+                txtNumDaNota.Clear();
+                txtCodFornecedor.Clear();
+                txtFornecedor.Clear();
+                dtpDataEmissao.Value = DateTime.Today;
+                dtpDataEntrega.Value = DateTime.Today;
+                LimparCamposProduto();
+                btnLimparListaProduto_Click(null, null);
+                txtValorFrete.Text = "0,00";
+                txtSeguro.Text = "0,00";
+                txtDespesas.Text = "0,00";
+                txtCodCondicaoDePagamento.Clear();
+                txtCondicaoDePagamento.Clear();
+                btnLimparParcelas_Click(null, null);
+                lblMotivoCancelamentoTitulo.Visible = false;
+                lblMotivCancelamentoExplicacao.Visible = false;
+                lblMotivCancelamentoExplicacao.Text = "";
+                txtCodProduto.Clear();
+                txtProduto.Clear();
 
 
-            oCompra = new compra();
-            GerenciarEstadoDosControles();
+                oCompra = new compra();
+                compraExistente = false;
+                GerenciarEstadoDosControles();
+            }
+            finally
+            {
+                _isLoading = false;
+            }
         }
 
         public override void Carregatxt()
         {
-            this.dtpDataEmissao.ValueChanged -= new System.EventHandler(this.dtpDataEmissao_ValueChanged);
-
-            base.Carregatxt();
-            txtCodigo.Text = oCompra.Modelo.ToString();
-            txtSerie.Text = oCompra.Serie;
-            txtNumDaNota.Text = oCompra.NumeroNota;
-            txtCodFornecedor.Text = oCompra.OFornecedor.Id.ToString();
-            txtFornecedor.Text = oCompra.OFornecedor.Nome_razaoSocial;
-            dtpDataEmissao.Value = oCompra.DataEmissao;
-            dtpDataEntrega.MinDate = dtpDataEmissao.Value;
-            dtpDataEntrega.Value = oCompra.DataEntrega;
-            txtValorFrete.Text = oCompra.ValorFrete.ToString("F2");
-            txtSeguro.Text = oCompra.Seguro.ToString("F2");
-            txtDespesas.Text = oCompra.Despesas.ToString("F2");
-            txtCodCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Id.ToString();
-            txtCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Descricao;
-            checkBoxAtivo.Checked = oCompra.Ativo;
-
-            if (!oCompra.Ativo)
+            _isLoading = true;
+            try
             {
-                lblMotivoCancelamentoTitulo.Visible = true;
-                lblMotivCancelamentoExplicacao.Visible = true;
-                lblMotivCancelamentoExplicacao.Text = oCompra.MotivoCancelamento;
+                base.Carregatxt();
+                txtCodigo.Text = oCompra.Modelo.ToString();
+                txtSerie.Text = oCompra.Serie;
+                txtNumDaNota.Text = oCompra.NumeroNota;
+                txtCodFornecedor.Text = oCompra.OFornecedor.Id.ToString();
+                txtFornecedor.Text = oCompra.OFornecedor.Nome_razaoSocial;
+                dtpDataEmissao.Value = oCompra.DataEmissao;
+                dtpDataEntrega.MinDate = dtpDataEmissao.Value;
+                dtpDataEntrega.Value = oCompra.DataEntrega;
+                txtValorFrete.Text = oCompra.ValorFrete.ToString("F2");
+                txtSeguro.Text = oCompra.Seguro.ToString("F2");
+                txtDespesas.Text = oCompra.Despesas.ToString("F2");
+                txtCodCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Id.ToString();
+                txtCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Descricao;
+                checkBoxAtivo.Checked = oCompra.Ativo;
+
+                if (!oCompra.Ativo)
+                {
+                    lblMotivoCancelamentoTitulo.Visible = true;
+                    lblMotivCancelamentoExplicacao.Visible = true;
+                    lblMotivCancelamentoExplicacao.Text = oCompra.MotivoCancelamento;
+                }
+                else
+                {
+                    lblMotivoCancelamentoTitulo.Visible = false;
+                    lblMotivCancelamentoExplicacao.Visible = false;
+                    lblMotivCancelamentoExplicacao.Text = "";
+                }
+
+                listaItens = oCompra.Itens;
+                CarregarItensNaListView();
+
+                listaParcelas = oCompra.Parcelas;
+                CarregarParcelasNaListView();
             }
-            else
+            finally
             {
-                lblMotivoCancelamentoTitulo.Visible = false;
-                lblMotivCancelamentoExplicacao.Visible = false;
-                lblMotivCancelamentoExplicacao.Text = "";
+                _isLoading = false;
             }
-
-            listaItens = oCompra.Itens;
-            CarregarItensNaListView();
-
-            listaParcelas = oCompra.Parcelas;
-            CarregarParcelasNaListView();
-
-            this.dtpDataEmissao.ValueChanged += new System.EventHandler(this.dtpDataEmissao_ValueChanged);
         }
 
         public override void Bloqueiatxt()
@@ -255,13 +325,13 @@ namespace projeto_patrica.pages.cadastro
             if (!temItens)
             {
                 HabilitarSecaoCabecalho(true);
-                HabilitarSecaoProdutos(cabecalhoPreenchido);
+                HabilitarSecaoProdutos(cabecalhoPreenchido && !compraExistente);
                 HabilitarSecaoRodape(false);
             }
             else if (temItens && !temParcelas)
             {
                 HabilitarSecaoCabecalho(false);
-                HabilitarSecaoProdutos(true);
+                HabilitarSecaoProdutos(true && !compraExistente);
                 HabilitarSecaoRodape(true);
             }
             else // temItens && temParcelas
@@ -315,6 +385,8 @@ namespace projeto_patrica.pages.cadastro
 
         private void Cabecalho_TextChanged(object sender, EventArgs e)
         {
+            if (_isLoading) return;
+            VerificarCompraExistente();
             GerenciarEstadoDosControles();
         }
 

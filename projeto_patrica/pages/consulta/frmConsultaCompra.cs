@@ -37,6 +37,8 @@ namespace projeto_patrica.pages.consulta
             // Passa um novo objeto para o formulário de cadastro
             oFrmCadastroCompra.ConhecaObj(new compra(), aController_compra);
             oFrmCadastroCompra.Limpartxt();
+            oFrmCadastroCompra.btnSave.Text = "Salvar"; // Garante que o modo é de inclusão
+            oFrmCadastroCompra.btnSave.Visible = true;
             oFrmCadastroCompra.ShowDialog();
             this.CarregaLV();
         }
@@ -49,9 +51,11 @@ namespace projeto_patrica.pages.consulta
             oFrmCadastroCompra.ConhecaObj(oCompra, aController_compra);
             oFrmCadastroCompra.Carregatxt();
             oFrmCadastroCompra.Bloqueiatxt();
+            oFrmCadastroCompra.btnSave.Text = "Visualizar"; // Define o modo de visualização
             oFrmCadastroCompra.btnSave.Visible = false; // Esconde o botão Salvar
             oFrmCadastroCompra.ShowDialog();
             oFrmCadastroCompra.btnSave.Visible = true; // Mostra o botão Salvar novamente ao fechar
+            oFrmCadastroCompra.btnSave.Text = "Salvar"; // Restaura o texto original
             this.CarregaLV();
         }
 
@@ -71,6 +75,7 @@ namespace projeto_patrica.pages.consulta
             oFrmCadastroCompra.Carregatxt();
             oFrmCadastroCompra.Bloqueiatxt();
             oFrmCadastroCompra.btnSave.Text = "Cancelar Nota";
+            oFrmCadastroCompra.btnSave.Visible = true;
             oFrmCadastroCompra.ShowDialog(this);
             oFrmCadastroCompra.btnSave.Text = "Salvar"; // Restaura o texto original do botão
             this.CarregaLV();
@@ -86,7 +91,8 @@ namespace projeto_patrica.pages.consulta
 
             foreach (var compra in lista)
             {
-                // Calcula o valor total da compra para exibição
+                // Carrega os dados completos para calcular o valor total
+                aController_compra.CarregaObj(compra);
                 decimal totalItens = compra.Itens.Sum(i => i.ValorTotal);
                 decimal valorTotal = totalItens + compra.ValorFrete + compra.Seguro + compra.Despesas;
 
@@ -128,6 +134,7 @@ namespace projeto_patrica.pages.consulta
 
             foreach (var compra in listaResultados)
             {
+                aController_compra.CarregaObj(compra);
                 decimal totalItens = compra.Itens.Sum(i => i.ValorTotal);
                 decimal valorTotal = totalItens + compra.ValorFrete + compra.Seguro + compra.Despesas;
 
