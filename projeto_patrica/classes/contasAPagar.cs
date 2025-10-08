@@ -13,6 +13,7 @@ namespace projeto_patrica.classes
         protected DateTime dataVencimento;
         protected decimal valorParcela;
         protected formaPagamento aFormaPagamento;
+        protected bool ativo;
 
         public contasAPagar()
         {
@@ -25,9 +26,10 @@ namespace projeto_patrica.classes
             dataVencimento = DateTime.MinValue;
             valorParcela = 0;
             aFormaPagamento = new formaPagamento();
+            ativo = true;
         }
 
-        public contasAPagar(int modeloCompra, string serieCompra, string numeroNotaCompra, int idFornecedor, int numeroParcela, DateTime dataEmissao, DateTime dataVencimento, decimal valorParcela, formaPagamento aFormaPagamento)
+        public contasAPagar(int modeloCompra, string serieCompra, string numeroNotaCompra, int idFornecedor, int numeroParcela, DateTime dataEmissao, DateTime dataVencimento, decimal valorParcela, formaPagamento aFormaPagamento, bool ativo)
         {
             this.modeloCompra = modeloCompra;
             this.serieCompra = serieCompra;
@@ -38,6 +40,7 @@ namespace projeto_patrica.classes
             this.dataVencimento = dataVencimento;
             this.valorParcela = valorParcela;
             this.aFormaPagamento = aFormaPagamento;
+            this.ativo = ativo;
         }
 
         public int ModeloCompra
@@ -92,6 +95,11 @@ namespace projeto_patrica.classes
         {
             get => aFormaPagamento;
             set => aFormaPagamento = value;
+        }
+        public bool Ativo
+        {
+            get => ativo;
+            set => ativo = value;
         }
     }
 }

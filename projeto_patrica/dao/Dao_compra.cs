@@ -120,12 +120,17 @@ namespace projeto_patrica.dao
                         AtualizarProduto(item, item.CustoUnitarioReal, conn, trans);
                     }
                 }
-                else
+                else // Se a compra está sendo cancelada
                 {
                     foreach (itemCompra item in aCompra.Itens)
                     {
                         SalvarItem(item, conn, trans);
                         ReverterAtualizacaoProduto(item, conn, trans);
+                    }
+                    // Define todas as parcelas como inativas
+                    foreach (var parcela in aCompra.Parcelas)
+                    {
+                        parcela.Ativo = false;
                     }
                 }
 
@@ -404,8 +409,8 @@ namespace projeto_patrica.dao
 
         private void SalvarContaAPagar(contasAPagar conta, MySqlConnection conn, MySqlTransaction trans)
         {
-            string sql = "INSERT INTO CONTAS_A_PAGAR (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_FORNECEDOR, NUMERO_PARCELA, DATA_EMISSAO, DATA_VENCIMENTO, VALOR_PARCELA, ID_FORMA_PAGAMENTO) VALUES " +
-                         "(@ModeloCompra, @SerieCompra, @NumeroNotaCompra, @IdFornecedor, @NumeroParcela, @DataEmissao, @DataVencimento, @ValorParcela, @IdFormaPagamento)";
+            string sql = "INSERT INTO CONTAS_A_PAGAR (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_FORNECEDOR, NUMERO_PARCELA, DATA_EMISSAO, DATA_VENCIMENTO, VALOR_PARCELA, ID_FORMA_PAGAMENTO, ATIVO) VALUES " +
+                         "(@ModeloCompra, @SerieCompra, @NumeroNotaCompra, @IdFornecedor, @NumeroParcela, @DataEmissao, @DataVencimento, @ValorParcela, @IdFormaPagamento, @Ativo)";
             MySqlCommand cmd = new MySqlCommand(sql, conn, trans);
             cmd.Parameters.AddWithValue("@ModeloCompra", conta.ModeloCompra);
             cmd.Parameters.AddWithValue("@SerieCompra", conta.SerieCompra);
@@ -416,6 +421,7 @@ namespace projeto_patrica.dao
             cmd.Parameters.AddWithValue("@DataVencimento", conta.DataVencimento);
             cmd.Parameters.AddWithValue("@ValorParcela", conta.ValorParcela);
             cmd.Parameters.AddWithValue("@IdFormaPagamento", conta.AFormaPagamento.Id);
+            cmd.Parameters.AddWithValue("@Ativo", conta.Ativo);
             cmd.ExecuteNonQuery();
         }
 
@@ -477,6 +483,7 @@ namespace projeto_patrica.dao
                 parcela.DataVencimento = Convert.ToDateTime(dr["DATA_VENCIMENTO"]);
                 parcela.ValorParcela = Convert.ToDecimal(dr["VALOR_PARCELA"]);
                 parcela.AFormaPagamento.Id = Convert.ToInt32(dr["ID_FORMA_PAGAMENTO"]);
+                parcela.Ativo = Convert.ToBoolean(dr["ATIVO"]);
 
                 parcelas.Add(parcela);
             }
