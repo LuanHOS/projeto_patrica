@@ -336,6 +336,7 @@ namespace projeto_patrica.pages.cadastro
                     ModeloCompra = Convert.ToInt32(txtCodigo.Text),
                     SerieCompra = txtSerie.Text,
                     NumeroNotaCompra = txtNumDaNota.Text,
+                    IdFornecedor = oCompra.OFornecedor.Id,
                     OProduto = produtoSelecionado,
                     Quantidade = Convert.ToInt32(txtQuantidade.Text),
                     ValorUnitario = Convert.ToDecimal(txtValorUnitario.Text)

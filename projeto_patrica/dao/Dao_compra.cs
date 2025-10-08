@@ -73,10 +73,11 @@ namespace projeto_patrica.dao
                 if (existe)
                 {
                     cmd.Parameters.Clear();
-                    cmd.CommandText = "DELETE FROM ITEM_COMPRA WHERE MODELO_COMPRA = @Modelo AND SERIE_COMPRA = @Serie AND NUMERO_NOTA_COMPRA = @NumeroNota";
+                    cmd.CommandText = "DELETE FROM ITEM_COMPRA WHERE MODELO_COMPRA = @Modelo AND SERIE_COMPRA = @Serie AND NUMERO_NOTA_COMPRA = @NumeroNota AND ID_FORNECEDOR = @IdFornecedor";
                     cmd.Parameters.AddWithValue("@Modelo", aCompra.Modelo);
                     cmd.Parameters.AddWithValue("@Serie", aCompra.Serie);
                     cmd.Parameters.AddWithValue("@NumeroNota", aCompra.NumeroNota);
+                    cmd.Parameters.AddWithValue("@IdFornecedor", aCompra.OFornecedor.Id);
                     cmd.ExecuteNonQuery();
 
                     cmd.CommandText = "DELETE FROM CONTAS_A_PAGAR WHERE MODELO_COMPRA = @Modelo AND SERIE_COMPRA = @Serie AND NUMERO_NOTA_COMPRA = @NumeroNota";
@@ -85,6 +86,7 @@ namespace projeto_patrica.dao
 
                 foreach (itemCompra item in aCompra.Itens)
                 {
+                    item.IdFornecedor = aCompra.OFornecedor.Id;
                     SalvarItem(item, conn, trans);
                 }
 
@@ -243,12 +245,13 @@ namespace projeto_patrica.dao
 
         private void SalvarItem(itemCompra item, MySqlConnection conn, MySqlTransaction trans)
         {
-            string sql = "INSERT INTO ITEM_COMPRA (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_PRODUTO, QUANTIDADE, VALOR_UNITARIO) VALUES " +
-                         "(@ModeloCompra, @SerieCompra, @NumeroNotaCompra, @IdProduto, @Quantidade, @ValorUnitario)";
+            string sql = "INSERT INTO ITEM_COMPRA (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_FORNECEDOR, ID_PRODUTO, QUANTIDADE, VALOR_UNITARIO) VALUES " +
+                         "(@ModeloCompra, @SerieCompra, @NumeroNotaCompra, @IdFornecedor, @IdProduto, @Quantidade, @ValorUnitario)";
             MySqlCommand cmd = new MySqlCommand(sql, conn, trans);
             cmd.Parameters.AddWithValue("@ModeloCompra", item.ModeloCompra);
             cmd.Parameters.AddWithValue("@SerieCompra", item.SerieCompra);
             cmd.Parameters.AddWithValue("@NumeroNotaCompra", item.NumeroNotaCompra);
+            cmd.Parameters.AddWithValue("@IdFornecedor", item.IdFornecedor);
             cmd.Parameters.AddWithValue("@IdProduto", item.OProduto.Id);
             cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
             cmd.Parameters.AddWithValue("@ValorUnitario", item.ValorUnitario);
@@ -275,11 +278,12 @@ namespace projeto_patrica.dao
         private List<itemCompra> ListarItensDaCompra(compra aCompra, MySqlConnection conn)
         {
             List<itemCompra> itens = new List<itemCompra>();
-            string sql = "SELECT * FROM ITEM_COMPRA WHERE MODELO_COMPRA = @Modelo AND SERIE_COMPRA = @Serie AND NUMERO_NOTA_COMPRA = @NumeroNota";
+            string sql = "SELECT * FROM ITEM_COMPRA WHERE MODELO_COMPRA = @Modelo AND SERIE_COMPRA = @Serie AND NUMERO_NOTA_COMPRA = @NumeroNota AND ID_FORNECEDOR = @IdFornecedor";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@Modelo", aCompra.Modelo);
             cmd.Parameters.AddWithValue("@Serie", aCompra.Serie);
             cmd.Parameters.AddWithValue("@NumeroNota", aCompra.NumeroNota);
+            cmd.Parameters.AddWithValue("@IdFornecedor", aCompra.OFornecedor.Id);
 
             var dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -288,6 +292,7 @@ namespace projeto_patrica.dao
                 item.ModeloCompra = aCompra.Modelo;
                 item.SerieCompra = aCompra.Serie;
                 item.NumeroNotaCompra = aCompra.NumeroNota;
+                item.IdFornecedor = aCompra.OFornecedor.Id;
                 item.OProduto.Id = Convert.ToInt32(dr["ID_PRODUTO"]);
                 item.Quantidade = Convert.ToInt32(dr["QUANTIDADE"]);
                 item.ValorUnitario = Convert.ToDecimal(dr["VALOR_UNITARIO"]);
