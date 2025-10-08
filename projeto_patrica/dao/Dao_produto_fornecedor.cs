@@ -31,20 +31,18 @@ namespace projeto_patrica.dao
                 sql = "UPDATE PRODUTO_FORNECEDOR SET " +
                       "VALOR_ULTIMA_COMPRA = '" + oProdForn.ValorUltimaCompra.ToString().Replace(",", ".") + "', " +
                       "DATA_ULTIMA_COMPRA = '" + oProdForn.DataUltimaCompra.ToString("yyyy-MM-dd") + "', " +
-                      "VALOR_ATUAL_COMPRA = '" + oProdForn.ValorAtualCompra.ToString().Replace(",", ".") + "', " +
-                      "OBSERVACAO = " + (string.IsNullOrWhiteSpace(oProdForn.Observacao) ? "NULL" : "'" + oProdForn.Observacao + "'") + " " +
+                      "VALOR_ATUAL_COMPRA = '" + oProdForn.ValorAtualCompra.ToString().Replace(",", ".") + "' " +
                       "WHERE ID_PRODUTO = '" + oProdForn.IdProduto + "' AND ID_FORNECEDOR = '" + oProdForn.IdFornecedor + "'";
             }
             else
             {
                 // INSERT
-                sql = "INSERT INTO PRODUTO_FORNECEDOR (ID_PRODUTO, ID_FORNECEDOR, VALOR_ULTIMA_COMPRA, DATA_ULTIMA_COMPRA, VALOR_ATUAL_COMPRA, OBSERVACAO) VALUES (" +
+                sql = "INSERT INTO PRODUTO_FORNECEDOR (ID_PRODUTO, ID_FORNECEDOR, VALOR_ULTIMA_COMPRA, DATA_ULTIMA_COMPRA, VALOR_ATUAL_COMPRA) VALUES (" +
                       "'" + oProdForn.IdProduto + "', " +
                       "'" + oProdForn.IdFornecedor + "', " +
                       "'" + oProdForn.ValorUltimaCompra.ToString().Replace(",", ".") + "', " +
                       "'" + oProdForn.DataUltimaCompra.ToString("yyyy-MM-dd") + "', " +
-                      "'" + oProdForn.ValorAtualCompra.ToString().Replace(",", ".") + "', " +
-                      (string.IsNullOrWhiteSpace(oProdForn.Observacao) ? "NULL" : "'" + oProdForn.Observacao + "'") + ")";
+                      "'" + oProdForn.ValorAtualCompra.ToString().Replace(",", ".") + "')";
             }
 
             conn.CommandText = sql;
@@ -86,7 +84,6 @@ namespace projeto_patrica.dao
                 oProdForn.ValorUltimaCompra = Convert.ToDecimal(dr["VALOR_ULTIMA_COMPRA"]);
                 oProdForn.DataUltimaCompra = Convert.ToDateTime(dr["DATA_ULTIMA_COMPRA"]);
                 oProdForn.ValorAtualCompra = Convert.ToDecimal(dr["VALOR_ATUAL_COMPRA"]);
-                oProdForn.Observacao = dr["OBSERVACAO"] == DBNull.Value ? null : dr["OBSERVACAO"].ToString();
                 lista.Add(oProdForn);
             }
 
