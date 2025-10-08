@@ -9,6 +9,7 @@
         protected produto oProduto;
         protected int quantidade;
         protected decimal valorUnitario;
+        protected decimal custoUnitarioReal;
 
         public itemCompra()
         {
@@ -19,9 +20,10 @@
             oProduto = new produto();
             quantidade = 0;
             valorUnitario = 0;
+            custoUnitarioReal = 0;
         }
 
-        public itemCompra(int modeloCompra, string serieCompra, string numeroNotaCompra, int idFornecedor, produto oProduto, int quantidade, decimal valorUnitario)
+        public itemCompra(int modeloCompra, string serieCompra, string numeroNotaCompra, int idFornecedor, produto oProduto, int quantidade, decimal valorUnitario, decimal custoUnitarioReal)
         {
             this.modeloCompra = modeloCompra;
             this.serieCompra = serieCompra;
@@ -30,6 +32,7 @@
             this.oProduto = oProduto;
             this.quantidade = quantidade;
             this.valorUnitario = valorUnitario;
+            this.custoUnitarioReal = custoUnitarioReal;
         }
 
         public int ModeloCompra
@@ -72,6 +75,12 @@
         {
             get => valorUnitario;
             set => valorUnitario = value;
+        }
+
+        public decimal CustoUnitarioReal
+        {
+            get => custoUnitarioReal;
+            set => custoUnitarioReal = value;
         }
 
         public decimal ValorTotal

@@ -4,6 +4,7 @@ using projeto_patrica.controller;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace projeto_patrica.dao
@@ -99,9 +100,33 @@ namespace projeto_patrica.dao
                     cmd.ExecuteNonQuery();
                 }
 
-                foreach (itemCompra item in aCompra.Itens)
+                // Lógica de atualização de estoque e custos
+                if (aCompra.Ativo)
                 {
-                    SalvarItem(item, conn, trans);
+                    decimal totalCustosAdicionais = aCompra.ValorFrete + aCompra.Seguro + aCompra.Despesas;
+                    decimal valorTotalCompra = aCompra.Itens.Sum(i => i.ValorTotal);
+
+                    foreach (itemCompra item in aCompra.Itens)
+                    {
+                        decimal custoUnitarioReal = item.ValorUnitario;
+                        if (valorTotalCompra > 0 && item.Quantidade > 0)
+                        {
+                            custoUnitarioReal += (totalCustosAdicionais * (item.ValorTotal / valorTotalCompra)) / item.Quantidade;
+                        }
+                        item.CustoUnitarioReal = custoUnitarioReal;
+
+                        SalvarItem(item, conn, trans);
+                        AtualizarProdutoFornecedor(item, item.CustoUnitarioReal, aCompra.DataEmissao, conn, trans);
+                        AtualizarProduto(item, item.CustoUnitarioReal, conn, trans);
+                    }
+                }
+                else
+                {
+                    foreach (itemCompra item in aCompra.Itens)
+                    {
+                        SalvarItem(item, conn, trans);
+                        ReverterAtualizacaoProduto(item, conn, trans);
+                    }
                 }
 
                 foreach (contasAPagar conta in aCompra.Parcelas)
@@ -115,7 +140,7 @@ namespace projeto_patrica.dao
             catch (Exception ex)
             {
                 trans?.Rollback();
-                ok = "Erro ao salvar compra: " + ex.Message;
+                return "Erro ao salvar compra: " + ex.Message;
             }
             finally
             {
@@ -123,6 +148,109 @@ namespace projeto_patrica.dao
             }
             return ok;
         }
+
+        private void AtualizarProdutoFornecedor(itemCompra item, decimal custoUnitarioReal, DateTime dataCompra, MySqlConnection conn, MySqlTransaction trans)
+        {
+            string sqlCheck = "SELECT VALOR_ATUAL_COMPRA FROM PRODUTO_FORNECEDOR WHERE ID_PRODUTO = @IdProduto AND ID_FORNECEDOR = @IdFornecedor";
+            MySqlCommand cmdCheck = new MySqlCommand(sqlCheck, conn, trans);
+            cmdCheck.Parameters.AddWithValue("@IdProduto", item.OProduto.Id);
+            cmdCheck.Parameters.AddWithValue("@IdFornecedor", item.IdFornecedor);
+            var valorAtualCompraAnterior = cmdCheck.ExecuteScalar();
+
+            string sql;
+            if (valorAtualCompraAnterior != null)
+            {
+                sql = "UPDATE PRODUTO_FORNECEDOR SET VALOR_ULTIMA_COMPRA = @ValorUltimaCompra, DATA_ULTIMA_COMPRA = @DataUltimaCompra, VALOR_ATUAL_COMPRA = @ValorAtualCompra " +
+                      "WHERE ID_PRODUTO = @IdProduto AND ID_FORNECEDOR = @IdFornecedor";
+            }
+            else
+            {
+                sql = "INSERT INTO PRODUTO_FORNECEDOR (ID_PRODUTO, ID_FORNECEDOR, VALOR_ULTIMA_COMPRA, DATA_ULTIMA_COMPRA, VALOR_ATUAL_COMPRA) " +
+                      "VALUES (@IdProduto, @IdFornecedor, @ValorUltimaCompra, @DataUltimaCompra, @ValorAtualCompra)";
+            }
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn, trans);
+            cmd.Parameters.AddWithValue("@IdProduto", item.OProduto.Id);
+            cmd.Parameters.AddWithValue("@IdFornecedor", item.IdFornecedor);
+            cmd.Parameters.AddWithValue("@ValorUltimaCompra", valorAtualCompraAnterior ?? (object)custoUnitarioReal);
+            cmd.Parameters.AddWithValue("@DataUltimaCompra", dataCompra);
+            cmd.Parameters.AddWithValue("@ValorAtualCompra", custoUnitarioReal);
+            cmd.ExecuteNonQuery();
+        }
+
+        private void AtualizarProduto(itemCompra item, decimal custoUnitarioReal, MySqlConnection conn, MySqlTransaction trans)
+        {
+            string sqlSelect = "SELECT ESTOQUE, VALOR_COMPRA FROM PRODUTO WHERE ID_PRODUTO = @IdProduto";
+            MySqlCommand cmdSelect = new MySqlCommand(sqlSelect, conn, trans);
+            cmdSelect.Parameters.AddWithValue("@IdProduto", item.OProduto.Id);
+
+            using (var reader = cmdSelect.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    int estoqueAtual = reader.GetInt32("ESTOQUE");
+                    decimal custoAtual = reader.GetDecimal("VALOR_COMPRA");
+                    reader.Close();
+
+                    decimal novoCustoMedio = ((custoAtual * estoqueAtual) + (custoUnitarioReal * item.Quantidade)) / (estoqueAtual + item.Quantidade);
+
+                    string sqlUpdate = "UPDATE PRODUTO SET ESTOQUE = @NovoEstoque, VALOR_COMPRA = @NovoCustoMedio, VALOR_COMPRAANTERIOR = @CustoAnterior WHERE ID_PRODUTO = @IdProduto";
+                    MySqlCommand cmdUpdate = new MySqlCommand(sqlUpdate, conn, trans);
+                    cmdUpdate.Parameters.AddWithValue("@NovoEstoque", estoqueAtual + item.Quantidade);
+                    cmdUpdate.Parameters.AddWithValue("@NovoCustoMedio", novoCustoMedio);
+                    cmdUpdate.Parameters.AddWithValue("@CustoAnterior", custoAtual);
+                    cmdUpdate.Parameters.AddWithValue("@IdProduto", item.OProduto.Id);
+                    cmdUpdate.ExecuteNonQuery();
+                }
+                else
+                {
+                    reader.Close();
+                }
+            }
+        }
+
+        private void ReverterAtualizacaoProduto(itemCompra item, MySqlConnection conn, MySqlTransaction trans)
+        {
+            string sqlSelect = "SELECT ESTOQUE, VALOR_COMPRA, VALOR_COMPRAANTERIOR FROM PRODUTO WHERE ID_PRODUTO = @IdProduto";
+            MySqlCommand cmdSelect = new MySqlCommand(sqlSelect, conn, trans);
+            cmdSelect.Parameters.AddWithValue("@IdProduto", item.OProduto.Id);
+
+            using (var reader = cmdSelect.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    int estoqueAtual = reader.GetInt32("ESTOQUE");
+                    decimal custoMedioAtual = reader.GetDecimal("VALOR_COMPRA");
+                    decimal valorCompraAnterior = reader.GetDecimal("VALOR_COMPRAANTERIOR");
+                    reader.Close();
+
+                    int novoEstoque = estoqueAtual - item.Quantidade;
+
+                    decimal novoCustoMedio;
+                    if (novoEstoque > 0)
+                    {
+                        novoCustoMedio = ((custoMedioAtual * estoqueAtual) - (item.CustoUnitarioReal * item.Quantidade)) / novoEstoque;
+                    }
+                    else
+                    {
+                        novoCustoMedio = valorCompraAnterior;
+                    }
+
+                    string sqlUpdate = "UPDATE PRODUTO SET ESTOQUE = @NovoEstoque, VALOR_COMPRA = @NovoCustoMedio, VALOR_COMPRAANTERIOR = @CustoAnterior WHERE ID_PRODUTO = @IdProduto";
+                    MySqlCommand cmdUpdate = new MySqlCommand(sqlUpdate, conn, trans);
+                    cmdUpdate.Parameters.AddWithValue("@NovoEstoque", novoEstoque);
+                    cmdUpdate.Parameters.AddWithValue("@NovoCustoMedio", novoCustoMedio);
+                    cmdUpdate.Parameters.AddWithValue("@CustoAnterior", valorCompraAnterior);
+                    cmdUpdate.Parameters.AddWithValue("@IdProduto", item.OProduto.Id);
+                    cmdUpdate.ExecuteNonQuery();
+                }
+                else
+                {
+                    reader.Close();
+                }
+            }
+        }
+
 
         public override string Excluir(object obj)
         {
@@ -259,8 +387,8 @@ namespace projeto_patrica.dao
 
         private void SalvarItem(itemCompra item, MySqlConnection conn, MySqlTransaction trans)
         {
-            string sql = "INSERT INTO ITEM_COMPRA (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_FORNECEDOR, ID_PRODUTO, QUANTIDADE, VALOR_UNITARIO) VALUES " +
-                         "(@ModeloCompra, @SerieCompra, @NumeroNotaCompra, @IdFornecedor, @IdProduto, @Quantidade, @ValorUnitario)";
+            string sql = "INSERT INTO ITEM_COMPRA (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_FORNECEDOR, ID_PRODUTO, QUANTIDADE, VALOR_UNITARIO, CUSTO_UNITARIO_REAL) VALUES " +
+                         "(@ModeloCompra, @SerieCompra, @NumeroNotaCompra, @IdFornecedor, @IdProduto, @Quantidade, @ValorUnitario, @CustoUnitarioReal)";
             MySqlCommand cmd = new MySqlCommand(sql, conn, trans);
             cmd.Parameters.AddWithValue("@ModeloCompra", item.ModeloCompra);
             cmd.Parameters.AddWithValue("@SerieCompra", item.SerieCompra);
@@ -269,8 +397,10 @@ namespace projeto_patrica.dao
             cmd.Parameters.AddWithValue("@IdProduto", item.OProduto.Id);
             cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
             cmd.Parameters.AddWithValue("@ValorUnitario", item.ValorUnitario);
+            cmd.Parameters.AddWithValue("@CustoUnitarioReal", item.CustoUnitarioReal);
             cmd.ExecuteNonQuery();
         }
+
 
         private void SalvarContaAPagar(contasAPagar conta, MySqlConnection conn, MySqlTransaction trans)
         {
@@ -310,6 +440,7 @@ namespace projeto_patrica.dao
                 item.OProduto.Id = Convert.ToInt32(dr["ID_PRODUTO"]);
                 item.Quantidade = Convert.ToInt32(dr["QUANTIDADE"]);
                 item.ValorUnitario = Convert.ToDecimal(dr["VALOR_UNITARIO"]);
+                item.CustoUnitarioReal = Convert.ToDecimal(dr["CUSTO_UNITARIO_REAL"]);
                 itens.Add(item);
             }
             dr.Close();
