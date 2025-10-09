@@ -95,14 +95,18 @@ namespace projeto_patrica.pages.consulta
                 aController_compra.CarregaObj(compra);
                 decimal totalItens = compra.Itens.Sum(i => i.ValorTotal);
                 decimal valorTotal = totalItens + compra.ValorFrete + compra.Seguro + compra.Despesas;
+                int qtdProdutos = compra.Itens.Sum(i => i.Quantidade);
 
-                ListViewItem item = new ListViewItem(compra.Modelo.ToString());
-                item.SubItems.Add(compra.Serie);
-                item.SubItems.Add(compra.NumeroNota);
-                item.SubItems.Add(compra.OFornecedor.Nome_razaoSocial);
-                item.SubItems.Add(compra.DataEmissao.ToShortDateString());
-                item.SubItems.Add(valorTotal.ToString("C2"));
-                item.SubItems.Add(compra.Ativo ? "Sim" : "Não");
+                ListViewItem item = new ListViewItem(compra.Modelo.ToString()); // clmCod
+                item.SubItems.Add(compra.Serie); // clmSerie
+                item.SubItems.Add(compra.NumeroNota); // clmNumNota
+                item.SubItems.Add(compra.OFornecedor.Nome_razaoSocial); // clmFornecedor
+                item.SubItems.Add(compra.DataEmissao.ToShortDateString()); // clmDataEmissao
+                item.SubItems.Add(compra.DataEntrega.ToShortDateString()); // clmDataEntrega
+                item.SubItems.Add(qtdProdutos.ToString()); // clmQtdProdutos
+                item.SubItems.Add(valorTotal.ToString("C2")); // clmValorTotal
+                item.SubItems.Add(compra.ACondicaoPagamento.Descricao); // clmCondicaoPagamento
+                item.SubItems.Add(compra.Ativo ? "Sim" : "Não"); // clmAtivo
 
                 item.Tag = compra;
                 listV.Items.Add(item);
@@ -137,14 +141,19 @@ namespace projeto_patrica.pages.consulta
                 aController_compra.CarregaObj(compra);
                 decimal totalItens = compra.Itens.Sum(i => i.ValorTotal);
                 decimal valorTotal = totalItens + compra.ValorFrete + compra.Seguro + compra.Despesas;
+                int qtdProdutos = compra.Itens.Sum(i => i.Quantidade);
 
-                ListViewItem item = new ListViewItem(compra.Modelo.ToString());
-                item.SubItems.Add(compra.Serie);
-                item.SubItems.Add(compra.NumeroNota);
-                item.SubItems.Add(compra.OFornecedor.Nome_razaoSocial);
-                item.SubItems.Add(compra.DataEmissao.ToShortDateString());
-                item.SubItems.Add(valorTotal.ToString("C2"));
-                item.SubItems.Add(compra.Ativo ? "Sim" : "Não");
+                ListViewItem item = new ListViewItem(compra.Modelo.ToString()); // clmCod
+                item.SubItems.Add(compra.Serie); // clmSerie
+                item.SubItems.Add(compra.NumeroNota); // clmNumNota
+                item.SubItems.Add(compra.OFornecedor.Nome_razaoSocial); // clmFornecedor
+                item.SubItems.Add(compra.DataEmissao.ToShortDateString()); // clmDataEmissao
+                item.SubItems.Add(compra.DataEntrega.ToShortDateString()); // clmDataEntrega
+                item.SubItems.Add(qtdProdutos.ToString()); // clmQtdProdutos
+                item.SubItems.Add(valorTotal.ToString("C2")); // clmValorTotal
+                item.SubItems.Add(compra.ACondicaoPagamento.Descricao); // clmCondicaoPagamento
+                item.SubItems.Add(compra.Ativo ? "Sim" : "Não"); // clmAtivo
+
 
                 item.Tag = compra;
                 listV.Items.Add(item);
@@ -165,6 +174,7 @@ namespace projeto_patrica.pages.consulta
                 oCompra.Modelo = compraSelecionada.Modelo;
                 oCompra.Serie = compraSelecionada.Serie;
                 oCompra.NumeroNota = compraSelecionada.NumeroNota;
+                oCompra.OFornecedor.Id = compraSelecionada.OFornecedor.Id;
             }
         }
     }
