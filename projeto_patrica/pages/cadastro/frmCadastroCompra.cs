@@ -267,7 +267,8 @@ namespace projeto_patrica.pages.cadastro
                 txtCodCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Id.ToString();
                 txtCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Descricao;
                 checkBoxAtivo.Checked = oCompra.Ativo;
-
+                lblDataCadastroData.Text = oCompra.DataCadastro.ToShortDateString();
+                lblDataUltimaEdicaoData.Text = oCompra.DataUltimaEdicao?.ToShortDateString() ?? " ";
                 if (!oCompra.Ativo)
                 {
                     lblMotivoCancelamentoTitulo.Visible = true;
