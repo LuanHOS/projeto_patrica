@@ -123,7 +123,7 @@ namespace projeto_patrica.pages.cadastro
                     prompt.MinimizeBox = false;
                     prompt.MaximizeBox = false;
 
-                    Label textLabel = new Label() { Left = 50, Top = 20, Width = 400, Text = "Para cancelar esta nota, digite o motivo do cancelamento abaixo." };
+                    Label textLabel = new Label() { Left = 50, Top = 20, Width = 400, Text = "Para cancelar esta nota, digite o motivo do cancelamento (mínimo 20 caracteres)." };
                     TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400, Height = 80, Multiline = true, ScrollBars = ScrollBars.Vertical, MaxLength = 100 };
                     Button confirmation = new Button() { Text = "Confirmar", Left = 240, Width = 100, Top = 150, DialogResult = DialogResult.OK };
                     Button cancel = new Button() { Text = "Voltar", Left = 350, Width = 100, Top = 150, DialogResult = DialogResult.Cancel };
@@ -131,7 +131,7 @@ namespace projeto_patrica.pages.cadastro
                     confirmation.Enabled = false;
                     textBox.TextChanged += (sender, e) =>
                     {
-                        confirmation.Enabled = !string.IsNullOrWhiteSpace(textBox.Text);
+                        confirmation.Enabled = textBox.Text.Trim().Length >= 20;
                     };
 
                     confirmation.Click += (sender, e) => { prompt.Close(); };
