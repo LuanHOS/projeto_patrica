@@ -103,6 +103,7 @@
             this.txtQtdParcelas.ShortcutsEnabled = false;
             this.txtQtdParcelas.Size = new System.Drawing.Size(142, 22);
             this.txtQtdParcelas.TabIndex = 3;
+            this.txtQtdParcelas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lvlQtdParcelas
             // 
@@ -267,6 +268,7 @@
             this.txtPrazoDias.ShortcutsEnabled = false;
             this.txtPrazoDias.Size = new System.Drawing.Size(135, 22);
             this.txtPrazoDias.TabIndex = 9;
+            this.txtPrazoDias.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblPrazoDias
             // 
@@ -286,6 +288,7 @@
             this.txtPercentualParcela.ShortcutsEnabled = false;
             this.txtPercentualParcela.Size = new System.Drawing.Size(135, 22);
             this.txtPercentualParcela.TabIndex = 8;
+            this.txtPercentualParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblPercentualParcela
             // 
@@ -305,6 +308,7 @@
             this.txtNumParcela.ShortcutsEnabled = false;
             this.txtNumParcela.Size = new System.Drawing.Size(143, 22);
             this.txtNumParcela.TabIndex = 7;
+            this.txtNumParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblNumParcela
             // 
@@ -333,6 +337,7 @@
             this.txtJuros.ShortcutsEnabled = false;
             this.txtJuros.Size = new System.Drawing.Size(142, 22);
             this.txtJuros.TabIndex = 4;
+            this.txtJuros.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblJuros
             // 
@@ -352,6 +357,7 @@
             this.txtMulta.ShortcutsEnabled = false;
             this.txtMulta.Size = new System.Drawing.Size(142, 22);
             this.txtMulta.TabIndex = 5;
+            this.txtMulta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblMulta
             // 
@@ -371,6 +377,7 @@
             this.txtDesconto.ShortcutsEnabled = false;
             this.txtDesconto.Size = new System.Drawing.Size(142, 22);
             this.txtDesconto.TabIndex = 6;
+            this.txtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblDesconto
             // 

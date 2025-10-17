@@ -158,6 +158,7 @@
             this.txtSerie.ShortcutsEnabled = false;
             this.txtSerie.Size = new System.Drawing.Size(46, 20);
             this.txtSerie.TabIndex = 102;
+            this.txtSerie.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSerie.TextChanged += new System.EventHandler(this.Cabecalho_TextChanged);
             // 
             // lblNumNota
@@ -176,6 +177,7 @@
             this.txtNumDaNota.ShortcutsEnabled = false;
             this.txtNumDaNota.Size = new System.Drawing.Size(129, 20);
             this.txtNumDaNota.TabIndex = 102;
+            this.txtNumDaNota.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumDaNota.TextChanged += new System.EventHandler(this.Cabecalho_TextChanged);
             // 
             // lblFornecedor
@@ -269,6 +271,7 @@
             this.txtQuantidade.ShortcutsEnabled = false;
             this.txtQuantidade.Size = new System.Drawing.Size(74, 20);
             this.txtQuantidade.TabIndex = 102;
+            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtQuantidade.Leave += new System.EventHandler(this.txtQuantidade_Leave);
             // 
             // lblValorUnitario
@@ -287,6 +290,7 @@
             this.txtValorUnitario.ShortcutsEnabled = false;
             this.txtValorUnitario.Size = new System.Drawing.Size(88, 20);
             this.txtValorUnitario.TabIndex = 102;
+            this.txtValorUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValorUnitario.Leave += new System.EventHandler(this.txtValorUnitario_Leave);
             // 
             // lblTotalProduto
@@ -306,6 +310,7 @@
             this.txtTotalProduto.ShortcutsEnabled = false;
             this.txtTotalProduto.Size = new System.Drawing.Size(100, 20);
             this.txtTotalProduto.TabIndex = 102;
+            this.txtTotalProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnAdicionarProduto
             // 
@@ -351,6 +356,7 @@
             this.txtValorFrete.ShortcutsEnabled = false;
             this.txtValorFrete.Size = new System.Drawing.Size(113, 20);
             this.txtValorFrete.TabIndex = 102;
+            this.txtValorFrete.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValorFrete.Leave += new System.EventHandler(this.txtValorFrete_Leave);
             // 
             // txtSeguro
@@ -360,6 +366,7 @@
             this.txtSeguro.ShortcutsEnabled = false;
             this.txtSeguro.Size = new System.Drawing.Size(113, 20);
             this.txtSeguro.TabIndex = 102;
+            this.txtSeguro.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSeguro.Leave += new System.EventHandler(this.txtSeguro_Leave);
             // 
             // txtDespesas
@@ -369,6 +376,7 @@
             this.txtDespesas.ShortcutsEnabled = false;
             this.txtDespesas.Size = new System.Drawing.Size(120, 20);
             this.txtDespesas.TabIndex = 102;
+            this.txtDespesas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDespesas.Leave += new System.EventHandler(this.txtDespesas_Leave);
             // 
             // lblValorTotalValores
@@ -389,6 +397,7 @@
             this.txtValorTotalValores.ShortcutsEnabled = false;
             this.txtValorTotalValores.Size = new System.Drawing.Size(172, 20);
             this.txtValorTotalValores.TabIndex = 102;
+            this.txtValorTotalValores.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnEditarProduto
             // 
@@ -604,6 +613,7 @@
             this.txtCodFornecedor.ShortcutsEnabled = false;
             this.txtCodFornecedor.Size = new System.Drawing.Size(60, 20);
             this.txtCodFornecedor.TabIndex = 102;
+            this.txtCodFornecedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtCodProduto
             // 
@@ -613,6 +623,7 @@
             this.txtCodProduto.ShortcutsEnabled = false;
             this.txtCodProduto.Size = new System.Drawing.Size(60, 20);
             this.txtCodProduto.TabIndex = 102;
+            this.txtCodProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtCodCondicaoDePagamento
             // 
@@ -622,6 +633,7 @@
             this.txtCodCondicaoDePagamento.ShortcutsEnabled = false;
             this.txtCodCondicaoDePagamento.Size = new System.Drawing.Size(60, 20);
             this.txtCodCondicaoDePagamento.TabIndex = 102;
+            this.txtCodCondicaoDePagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblTotalParcelas
             // 

@@ -201,6 +201,7 @@
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(336, 22);
             this.txtTelefone.TabIndex = 18;
+            this.txtTelefone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblTelefone
             // 
@@ -219,6 +220,7 @@
             this.txtCpfCnpj.Name = "txtCpfCnpj";
             this.txtCpfCnpj.Size = new System.Drawing.Size(336, 22);
             this.txtCpfCnpj.TabIndex = 15;
+            this.txtCpfCnpj.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblCpf
             // 
@@ -246,6 +248,7 @@
             this.txtCep.Name = "txtCep";
             this.txtCep.Size = new System.Drawing.Size(332, 22);
             this.txtCep.TabIndex = 13;
+            this.txtCep.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dtpDataNascimentoCriacao
             // 
@@ -305,6 +308,7 @@
             this.txtRgInscEstadual.Name = "txtRgInscEstadual";
             this.txtRgInscEstadual.Size = new System.Drawing.Size(332, 22);
             this.txtRgInscEstadual.TabIndex = 16;
+            this.txtRgInscEstadual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtNomeRazaoSocial
             // 
@@ -354,6 +358,7 @@
             this.txtNumeroEndereco.Name = "txtNumeroEndereco";
             this.txtNumeroEndereco.Size = new System.Drawing.Size(82, 22);
             this.txtNumeroEndereco.TabIndex = 11;
+            this.txtNumeroEndereco.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblComplementoEndereco
             // 
@@ -448,7 +453,6 @@
             this.Controls.Add(this.txtNomeRazaoSocial);
             this.Controls.Add(this.txtApelidoNomeFantasia);
             this.Controls.Add(this.lblNome);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroPessoa";
             this.Text = "Cadastro de Pessoa";
             this.Controls.SetChildIndex(this.checkBoxAtivo, 0);

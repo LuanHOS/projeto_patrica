@@ -156,6 +156,7 @@
             this.txtMatricula.ShortcutsEnabled = false;
             this.txtMatricula.Size = new System.Drawing.Size(336, 20);
             this.txtMatricula.TabIndex = 20;
+            this.txtMatricula.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblCargo
             // 
@@ -216,6 +217,7 @@
             this.txtCargaHoraria.ShortcutsEnabled = false;
             this.txtCargaHoraria.Size = new System.Drawing.Size(332, 20);
             this.txtCargaHoraria.TabIndex = 24;
+            this.txtCargaHoraria.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblSalario
             // 
@@ -236,6 +238,7 @@
             this.txtSalario.ShortcutsEnabled = false;
             this.txtSalario.Size = new System.Drawing.Size(292, 20);
             this.txtSalario.TabIndex = 22;
+            this.txtSalario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblDataAdmissao
             // 

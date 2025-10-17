@@ -179,6 +179,7 @@
             this.txtLimiteDeCredito.ShortcutsEnabled = false;
             this.txtLimiteDeCredito.Size = new System.Drawing.Size(183, 20);
             this.txtLimiteDeCredito.TabIndex = 22;
+            this.txtLimiteDeCredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // frmCadastroCliente
             // 

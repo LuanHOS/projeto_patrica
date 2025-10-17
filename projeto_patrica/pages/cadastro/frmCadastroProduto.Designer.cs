@@ -90,6 +90,7 @@
             this.txtCodBarras.ShortcutsEnabled = false;
             this.txtCodBarras.Size = new System.Drawing.Size(254, 20);
             this.txtCodBarras.TabIndex = 2;
+            this.txtCodBarras.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblCodBarras
             // 
@@ -289,13 +290,13 @@
             this.txtValorCompra.Location = new System.Drawing.Point(24, 474);
             this.txtValorCompra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorCompra.Name = "txtValorCompra";
+            this.txtValorCompra.ReadOnly = true;
             this.txtValorCompra.ShortcutsEnabled = false;
             this.txtValorCompra.Size = new System.Drawing.Size(194, 20);
             this.txtValorCompra.TabIndex = 13;
             this.txtValorCompra.Text = "0";
+            this.txtValorCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValorCompra.Leave += new System.EventHandler(this.txtValorCompra_Leave);
-            this.txtValorCompra.ReadOnly = true;
-
             // 
             // txtEstoque
             // 
@@ -303,12 +304,12 @@
             this.txtEstoque.Location = new System.Drawing.Point(24, 530);
             this.txtEstoque.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEstoque.Name = "txtEstoque";
+            this.txtEstoque.ReadOnly = true;
             this.txtEstoque.ShortcutsEnabled = false;
             this.txtEstoque.Size = new System.Drawing.Size(194, 20);
             this.txtEstoque.TabIndex = 16;
             this.txtEstoque.Text = "0";
-            this.txtEstoque.ReadOnly = true;
-
+            this.txtEstoque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblPorcentagemLucro
             // 
@@ -338,6 +339,7 @@
             this.txtPorcentagemLucro.Size = new System.Drawing.Size(194, 20);
             this.txtPorcentagemLucro.TabIndex = 14;
             this.txtPorcentagemLucro.Text = "0";
+            this.txtPorcentagemLucro.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPorcentagemLucro.Leave += new System.EventHandler(this.txtPorcentagemLucro_Leave);
             // 
             // txtValorVenda
@@ -350,6 +352,7 @@
             this.txtValorVenda.Size = new System.Drawing.Size(194, 20);
             this.txtValorVenda.TabIndex = 15;
             this.txtValorVenda.Text = "0";
+            this.txtValorVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValorVenda.Leave += new System.EventHandler(this.txtValorVenda_Leave);
             // 
             // txtValorCompraAnterior
@@ -358,12 +361,13 @@
             this.txtValorCompraAnterior.Location = new System.Drawing.Point(251, 530);
             this.txtValorCompraAnterior.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorCompraAnterior.Name = "txtValorCompraAnterior";
+            this.txtValorCompraAnterior.ReadOnly = true;
             this.txtValorCompraAnterior.ShortcutsEnabled = false;
             this.txtValorCompraAnterior.Size = new System.Drawing.Size(194, 20);
             this.txtValorCompraAnterior.TabIndex = 15;
             this.txtValorCompraAnterior.Text = "0";
+            this.txtValorCompraAnterior.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValorCompraAnterior.Leave += new System.EventHandler(this.txtValorVenda_Leave);
-            this.txtValorCompraAnterior.ReadOnly = true;
             // 
             // lblPrecoDeCustoAnterior
             // 
@@ -390,7 +394,7 @@
             this.listVFornecedores.HideSelection = false;
             this.listVFornecedores.Location = new System.Drawing.Point(716, 128);
             this.listVFornecedores.Name = "listVFornecedores";
-            this.listVFornecedores.Size = new System.Drawing.Size(577, 448);
+            this.listVFornecedores.Size = new System.Drawing.Size(577, 194);
             this.listVFornecedores.TabIndex = 126;
             this.listVFornecedores.UseCompatibleStateImageBehavior = false;
             this.listVFornecedores.View = System.Windows.Forms.View.Details;
@@ -433,6 +437,7 @@
             this.txtCodMarca.ShortcutsEnabled = false;
             this.txtCodMarca.Size = new System.Drawing.Size(60, 20);
             this.txtCodMarca.TabIndex = 131;
+            this.txtCodMarca.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtCodCategoria
             // 
@@ -442,6 +447,7 @@
             this.txtCodCategoria.ShortcutsEnabled = false;
             this.txtCodCategoria.Size = new System.Drawing.Size(60, 20);
             this.txtCodCategoria.TabIndex = 132;
+            this.txtCodCategoria.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtCodUnidadeDeMedida
             // 
@@ -451,6 +457,7 @@
             this.txtCodUnidadeDeMedida.ShortcutsEnabled = false;
             this.txtCodUnidadeDeMedida.Size = new System.Drawing.Size(60, 20);
             this.txtCodUnidadeDeMedida.TabIndex = 133;
+            this.txtCodUnidadeDeMedida.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtCodFornecedor
             // 
@@ -460,6 +467,7 @@
             this.txtCodFornecedor.ShortcutsEnabled = false;
             this.txtCodFornecedor.Size = new System.Drawing.Size(60, 20);
             this.txtCodFornecedor.TabIndex = 134;
+            this.txtCodFornecedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // frmCadastroProduto
             // 
