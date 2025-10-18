@@ -35,7 +35,9 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastroCompra()
         {
             InitializeComponent();
-            dtpDataEmissao.MaxDate = DateTime.Today;
+            dtpDataEmissao.MaxDate = DateTime.Today; // Data máxima inicial da emissão
+            dtpDataEntrega.MaxDate = DateTime.Today; // Data máxima inicial da entrega
+            dtpDataEntrega.MinDate = dtpDataEmissao.Value; // Data mínima inicial da entrega
             GerenciarEstadoDosControles();
         }
 
@@ -222,6 +224,8 @@ namespace projeto_patrica.pages.cadastro
                 txtFornecedor.Clear();
                 dtpDataEmissao.Value = DateTime.Today;
                 dtpDataEntrega.Value = DateTime.Today;
+                dtpDataEntrega.MinDate = dtpDataEmissao.Value; // Garante MinDate inicial
+                dtpDataEntrega.MaxDate = DateTime.Today; // Garante MaxDate inicial
                 LimparCamposProduto();
                 btnLimparListaProduto_Click(null, null);
                 txtValorFrete.Text = "0,00";
@@ -259,7 +263,8 @@ namespace projeto_patrica.pages.cadastro
                 txtCodFornecedor.Text = oCompra.OFornecedor.Id.ToString();
                 txtFornecedor.Text = oCompra.OFornecedor.Nome_razaoSocial;
                 dtpDataEmissao.Value = oCompra.DataEmissao;
-                dtpDataEntrega.MinDate = dtpDataEmissao.Value;
+                dtpDataEntrega.MinDate = dtpDataEmissao.Value; // Ajusta MinDate ao carregar
+                dtpDataEntrega.MaxDate = DateTime.Today; // Ajusta MaxDate ao carregar
                 dtpDataEntrega.Value = oCompra.DataEntrega;
                 txtValorFrete.Text = oCompra.ValorFrete.ToString("F2");
                 txtSeguro.Text = oCompra.Seguro.ToString("F2");
@@ -715,7 +720,14 @@ namespace projeto_patrica.pages.cadastro
 
         private void dtpDataEmissao_ValueChanged(object sender, EventArgs e)
         {
-            dtpDataEntrega.MinDate = dtpDataEmissao.Value;
+            dtpDataEntrega.MinDate = dtpDataEmissao.Value; // Define a data mínima da entrega como a data de emissão
+            dtpDataEntrega.MaxDate = DateTime.Today; // Define a data máxima da entrega como hoje
+
+            // Se a data de entrega atual for menor que a nova data mínima (emissão), ajusta a data de entrega
+            if (dtpDataEntrega.Value < dtpDataEntrega.MinDate)
+            {
+                dtpDataEntrega.Value = dtpDataEntrega.MinDate;
+            }
             Cabecalho_TextChanged(sender, e);
         }
 
