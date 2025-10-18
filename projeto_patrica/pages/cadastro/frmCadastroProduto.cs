@@ -456,12 +456,6 @@ namespace projeto_patrica.pages.cadastro
 
         public override bool ValidacaoCampos()
         {
-            if (listaProdutoFornecedor.Count == 0)
-            {
-                MessageBox.Show("É necessário adicionar pelo menos um fornecedor para este produto.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
             return true;
         }
         public override void CamposRestricoes()

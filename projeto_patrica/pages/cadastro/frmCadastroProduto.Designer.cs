@@ -171,7 +171,7 @@
             this.lblFornecedor.Name = "lblFornecedor";
             this.lblFornecedor.Size = new System.Drawing.Size(79, 13);
             this.lblFornecedor.TabIndex = 109;
-            this.lblFornecedor.Text = "Fornecedores *";
+            this.lblFornecedor.Text = "Fornecedores";
             // 
             // btnPesquisarCategoria
             // 
