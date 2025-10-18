@@ -106,7 +106,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(qtdProdutos.ToString()); // clmQtdProdutos
                 item.SubItems.Add(valorTotal.ToString("C2")); // clmValorTotal
                 item.SubItems.Add(compra.ACondicaoPagamento.Descricao); // clmCondicaoPagamento
-                item.SubItems.Add(compra.Ativo ? "Sim" : "Não"); // clmAtivo
+                item.SubItems.Add(compra.Ativo ? "ATIVO" : "CANCELADO"); // clmAtivo
 
                 item.Tag = compra;
                 listV.Items.Add(item);
@@ -152,7 +152,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(qtdProdutos.ToString()); // clmQtdProdutos
                 item.SubItems.Add(valorTotal.ToString("C2")); // clmValorTotal
                 item.SubItems.Add(compra.ACondicaoPagamento.Descricao); // clmCondicaoPagamento
-                item.SubItems.Add(compra.Ativo ? "Sim" : "Não"); // clmAtivo
+                item.SubItems.Add(compra.Ativo ? "ATIVO" : "CANCELADO"); // clmAtivo
 
 
                 item.Tag = compra;

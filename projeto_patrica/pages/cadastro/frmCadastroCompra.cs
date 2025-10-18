@@ -38,6 +38,10 @@ namespace projeto_patrica.pages.cadastro
             dtpDataEmissao.MaxDate = DateTime.Today; // Data máxima inicial da emissão
             dtpDataEntrega.MaxDate = DateTime.Today; // Data máxima inicial da entrega
             dtpDataEntrega.MinDate = dtpDataEmissao.Value; // Data mínima inicial da entrega
+
+            this.checkBoxAtivo.CheckedChanged += new System.EventHandler(this.checkBoxAtivo_CheckedChanged);
+            checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
+
             GerenciarEstadoDosControles();
         }
 
@@ -239,8 +243,7 @@ namespace projeto_patrica.pages.cadastro
                 lblMotivCancelamentoExplicacao.Text = "";
                 txtCodProduto.Clear();
                 txtProduto.Clear();
-
-
+                checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
                 oCompra = new compra();
                 compraExistente = false;
                 GerenciarEstadoDosControles();
@@ -272,6 +275,7 @@ namespace projeto_patrica.pages.cadastro
                 txtCodCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Id.ToString();
                 txtCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Descricao;
                 checkBoxAtivo.Checked = oCompra.Ativo;
+                checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
                 lblDataCadastroData.Text = oCompra.DataCadastro.ToShortDateString();
                 lblDataUltimaEdicaoData.Text = oCompra.DataUltimaEdicao?.ToShortDateString() ?? " ";
                 if (!oCompra.Ativo)
@@ -746,6 +750,11 @@ namespace projeto_patrica.pages.cadastro
         private void txtDespesas_Leave(object sender, EventArgs e)
         {
             AtualizarTotais();
+        }
+
+        private void checkBoxAtivo_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
         }
 
         public override void CamposRestricoes()
