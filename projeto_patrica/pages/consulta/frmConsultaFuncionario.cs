@@ -92,7 +92,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(oFuncionario.Telefone);
                 item.SubItems.Add(oFuncionario.DataAdmissao == DateTime.MinValue ? "" : oFuncionario.DataAdmissao.ToShortDateString());
                 item.SubItems.Add(oFuncionario.DataDemissao.HasValue ? oFuncionario.DataDemissao.Value.ToShortDateString() : "");
-                item.SubItems.Add(oFuncionario.Ativo ? "Sim" : "Não");
+                item.SubItems.Add(oFuncionario.Ativo ? "" : "Não");
 
                 item.Tag = oFuncionario;
                 listV.Items.Add(item);
@@ -142,7 +142,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(oFuncionario.Email);
                 item.SubItems.Add(oFuncionario.Telefone);
                 item.SubItems.Add(oFuncionario.DataAdmissao == DateTime.MinValue ? "" : oFuncionario.DataAdmissao.ToShortDateString());
-                item.SubItems.Add(oFuncionario.Ativo ? "Sim" : "Não");
+                item.SubItems.Add(oFuncionario.Ativo ? "" : "Não");
 
                 item.Tag = oFuncionario;
                 listV.Items.Add(item);

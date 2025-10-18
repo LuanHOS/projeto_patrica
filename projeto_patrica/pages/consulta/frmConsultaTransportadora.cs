@@ -86,7 +86,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(oTransportadora.ACidade.Nome);
                 item.SubItems.Add(oTransportadora.Email);
                 item.SubItems.Add(oTransportadora.Telefone);
-                item.SubItems.Add(oTransportadora.Ativo ? "Sim" : "Não");
+                item.SubItems.Add(oTransportadora.Ativo ? "" : "Não");
 
                 item.Tag = oTransportadora;
                 listV.Items.Add(item);
@@ -128,7 +128,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(oTransportadora.ACidade.Nome);
                 item.SubItems.Add(oTransportadora.Email);
                 item.SubItems.Add(oTransportadora.Telefone);
-                item.SubItems.Add(oTransportadora.Ativo ? "Sim" : "Não");
+                item.SubItems.Add(oTransportadora.Ativo ? "" : "Não");
 
                 item.Tag = oTransportadora;
                 listV.Items.Add(item);

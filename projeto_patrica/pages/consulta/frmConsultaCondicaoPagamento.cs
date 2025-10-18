@@ -78,7 +78,7 @@ namespace projeto_patrica.pages.consulta
                 ListViewItem item = new ListViewItem(Convert.ToString(aCondPag.Id));
                 item.SubItems.Add(aCondPag.Descricao);
                 item.SubItems.Add(Convert.ToString(aCondPag.QuantidadeParcelas));
-                item.SubItems.Add(aCondPag.Ativo ? "Sim" : "Não");
+                item.SubItems.Add(aCondPag.Ativo ? "" : "Não");
 
                 item.Tag = aCondPag;
                 listV.Items.Add(item);
@@ -113,7 +113,7 @@ namespace projeto_patrica.pages.consulta
                 ListViewItem item = new ListViewItem(Convert.ToString(aCondPag.Id));
                 item.SubItems.Add(aCondPag.Descricao);
                 item.SubItems.Add(Convert.ToString(aCondPag.QuantidadeParcelas));
-                item.SubItems.Add(aCondPag.Ativo ? "Sim" : "Não");
+                item.SubItems.Add(aCondPag.Ativo ? "" : "Não");
 
                 item.Tag = aCondPag;
                 listV.Items.Add(item);

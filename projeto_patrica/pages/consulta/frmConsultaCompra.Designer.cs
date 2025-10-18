@@ -35,8 +35,9 @@
             this.clmValorTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDataEntrega = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmQtdProdutos = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmCondicaoPagamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmIdFornecedor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmMotivoCancelamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnExcluir
@@ -50,13 +51,14 @@
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmSerie,
             this.clmNumNota,
+            this.clmIdFornecedor,
             this.clmFornecedor,
             this.clmDataEmissao,
             this.clmDataEntrega,
-            this.clmQtdProdutos,
             this.clmValorTotal,
             this.clmCondicaoPagamento,
-            this.clmAtivo});
+            this.clmAtivo,
+            this.clmMotivoCancelamento});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
             // 
             // clmCod
@@ -111,16 +113,21 @@
             this.clmDataEntrega.Text = "Data Entrega";
             this.clmDataEntrega.Width = 120;
             // 
-            // clmQtdProdutos
-            // 
-            this.clmQtdProdutos.Text = "Qtd. Produtos";
-            this.clmQtdProdutos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.clmQtdProdutos.Width = 80;
-            // 
             // clmCondicaoPagamento
             // 
             this.clmCondicaoPagamento.Text = "Condição de Pagamento";
             this.clmCondicaoPagamento.Width = 150;
+            // 
+            // clmIdFornecedor
+            // 
+            this.clmIdFornecedor.Text = "Cód. Fornecedor";
+            this.clmIdFornecedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.clmIdFornecedor.Width = 100;
+            // 
+            // clmMotivoCancelamento
+            // 
+            this.clmMotivoCancelamento.Text = "Motivo do Cancelamento";
+            this.clmMotivoCancelamento.Width = 500;
             // 
             // frmConsultaCompra
             // 
@@ -139,7 +146,8 @@
         private System.Windows.Forms.ColumnHeader clmValorTotal;
         private System.Windows.Forms.ColumnHeader clmAtivo;
         private System.Windows.Forms.ColumnHeader clmDataEntrega;
-        private System.Windows.Forms.ColumnHeader clmQtdProdutos;
         private System.Windows.Forms.ColumnHeader clmCondicaoPagamento;
+        private System.Windows.Forms.ColumnHeader clmIdFornecedor;
+        private System.Windows.Forms.ColumnHeader clmMotivoCancelamento;
     }
 }

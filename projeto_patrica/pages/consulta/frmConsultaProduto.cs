@@ -123,7 +123,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(produto.OCategoria.Nome);
                 item.SubItems.Add("R$ " + produto.ValorVenda.ToString("F2"));
                 item.SubItems.Add(produto.Estoque.ToString());
-                item.SubItems.Add(produto.Ativo ? "Sim" : "Não");
+                item.SubItems.Add(produto.Ativo ? "" : "Não");
                 item.Tag = produto;
                 listV.Items.Add(item);
             }

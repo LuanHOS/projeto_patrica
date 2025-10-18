@@ -88,7 +88,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(oCliente.ACidade.Nome);
                 item.SubItems.Add(oCliente.Email);
                 item.SubItems.Add(oCliente.Telefone);
-                item.SubItems.Add(oCliente.Ativo ? "Sim" : "Não");
+                item.SubItems.Add(oCliente.Ativo ? "" : "Não");
 
                 item.Tag = oCliente;
                 listV.Items.Add(item);
@@ -131,7 +131,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(oCliente.ACidade.Nome);
                 item.SubItems.Add(oCliente.Email);
                 item.SubItems.Add(oCliente.Telefone);
-                item.SubItems.Add(oCliente.Ativo ? "Sim" : "Não");
+                item.SubItems.Add(oCliente.Ativo ? "" : "Não");
 
                 item.Tag = oCliente;
                 listV.Items.Add(item);

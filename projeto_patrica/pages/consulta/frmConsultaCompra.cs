@@ -95,18 +95,18 @@ namespace projeto_patrica.pages.consulta
                 aController_compra.CarregaObj(compra);
                 decimal totalItens = compra.Itens.Sum(i => i.ValorTotal);
                 decimal valorTotal = totalItens + compra.ValorFrete + compra.Seguro + compra.Despesas;
-                int qtdProdutos = compra.Itens.Sum(i => i.Quantidade);
 
-                ListViewItem item = new ListViewItem(compra.Modelo.ToString()); // clmCod
-                item.SubItems.Add(compra.Serie); // clmSerie
-                item.SubItems.Add(compra.NumeroNota); // clmNumNota
-                item.SubItems.Add(compra.OFornecedor.Nome_razaoSocial); // clmFornecedor
-                item.SubItems.Add(compra.DataEmissao.ToShortDateString()); // clmDataEmissao
-                item.SubItems.Add(compra.DataEntrega.ToShortDateString()); // clmDataEntrega
-                item.SubItems.Add(qtdProdutos.ToString()); // clmQtdProdutos
-                item.SubItems.Add(valorTotal.ToString("C2")); // clmValorTotal
-                item.SubItems.Add(compra.ACondicaoPagamento.Descricao); // clmCondicaoPagamento
-                item.SubItems.Add(compra.Ativo ? "ATIVO" : "CANCELADO"); // clmAtivo
+                ListViewItem item = new ListViewItem(compra.Modelo.ToString()); // clmCod (0)
+                item.SubItems.Add(compra.Serie); // clmSerie (1)
+                item.SubItems.Add(compra.NumeroNota); // clmNumNota (2)
+                item.SubItems.Add(compra.OFornecedor.Id.ToString()); // clmIdFornecedor (3)
+                item.SubItems.Add(compra.OFornecedor.Nome_razaoSocial); // clmFornecedor (4)
+                item.SubItems.Add(compra.DataEmissao.ToShortDateString()); // clmDataEmissao (5)
+                item.SubItems.Add(compra.DataEntrega.ToShortDateString()); // clmDataEntrega (6)
+                item.SubItems.Add(valorTotal.ToString("C2")); // clmValorTotal (7)
+                item.SubItems.Add(compra.ACondicaoPagamento.Descricao); // clmCondicaoPagamento (8)
+                item.SubItems.Add(compra.Ativo ? "" : "CANCELADO"); // clmAtivo (9)
+                item.SubItems.Add(compra.MotivoCancelamento ?? ""); // clmMotivoCancelamento (10)
 
                 item.Tag = compra;
                 listV.Items.Add(item);
@@ -141,18 +141,18 @@ namespace projeto_patrica.pages.consulta
                 aController_compra.CarregaObj(compra);
                 decimal totalItens = compra.Itens.Sum(i => i.ValorTotal);
                 decimal valorTotal = totalItens + compra.ValorFrete + compra.Seguro + compra.Despesas;
-                int qtdProdutos = compra.Itens.Sum(i => i.Quantidade);
 
-                ListViewItem item = new ListViewItem(compra.Modelo.ToString()); // clmCod
-                item.SubItems.Add(compra.Serie); // clmSerie
-                item.SubItems.Add(compra.NumeroNota); // clmNumNota
-                item.SubItems.Add(compra.OFornecedor.Nome_razaoSocial); // clmFornecedor
-                item.SubItems.Add(compra.DataEmissao.ToShortDateString()); // clmDataEmissao
-                item.SubItems.Add(compra.DataEntrega.ToShortDateString()); // clmDataEntrega
-                item.SubItems.Add(qtdProdutos.ToString()); // clmQtdProdutos
-                item.SubItems.Add(valorTotal.ToString("C2")); // clmValorTotal
-                item.SubItems.Add(compra.ACondicaoPagamento.Descricao); // clmCondicaoPagamento
-                item.SubItems.Add(compra.Ativo ? "ATIVO" : "CANCELADO"); // clmAtivo
+                ListViewItem item = new ListViewItem(compra.Modelo.ToString()); // clmCod (0)
+                item.SubItems.Add(compra.Serie); // clmSerie (1)
+                item.SubItems.Add(compra.NumeroNota); // clmNumNota (2)
+                item.SubItems.Add(compra.OFornecedor.Id.ToString()); // clmIdFornecedor (3)
+                item.SubItems.Add(compra.OFornecedor.Nome_razaoSocial); // clmFornecedor (4)
+                item.SubItems.Add(compra.DataEmissao.ToShortDateString()); // clmDataEmissao (5)
+                item.SubItems.Add(compra.DataEntrega.ToShortDateString()); // clmDataEntrega (6)
+                item.SubItems.Add(valorTotal.ToString("C2")); // clmValorTotal (7)
+                item.SubItems.Add(compra.ACondicaoPagamento.Descricao); // clmCondicaoPagamento (8)
+                item.SubItems.Add(compra.Ativo ? "" : "CANCELADO"); // clmAtivo (9)
+                item.SubItems.Add(compra.MotivoCancelamento ?? ""); // clmMotivoCancelamento (10)
 
 
                 item.Tag = compra;

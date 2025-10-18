@@ -81,7 +81,7 @@ namespace projeto_patrica.pages.consulta
                 {
                     ListViewItem item = new ListViewItem(oPais.Id.ToString());
                     item.SubItems.Add(oPais.Nome);
-                    item.SubItems.Add(oPais.Ativo ? "Sim" : "Não");
+                    item.SubItems.Add(oPais.Ativo ? "" : "Não");
 
                     item.Tag = oPais;
                     listV.Items.Add(item);
@@ -115,7 +115,7 @@ namespace projeto_patrica.pages.consulta
             {
                 ListViewItem item = new ListViewItem(Convert.ToString(oPais.Id));
                 item.SubItems.Add(oPais.Nome);
-                item.SubItems.Add(oPais.Ativo ? "Sim" : "Não");
+                item.SubItems.Add(oPais.Ativo ? "" : "Não");
 
                 item.Tag = oPais;
                 this.listV.Items.Add(item);
