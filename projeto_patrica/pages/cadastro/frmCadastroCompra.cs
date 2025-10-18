@@ -39,7 +39,9 @@ namespace projeto_patrica.pages.cadastro
             dtpDataEntrega.MaxDate = DateTime.Today; // Data máxima inicial da entrega
             dtpDataEntrega.MinDate = dtpDataEmissao.Value; // Data mínima inicial da entrega
 
+            // Adiciona o manipulador de evento
             this.checkBoxAtivo.CheckedChanged += new System.EventHandler(this.checkBoxAtivo_CheckedChanged);
+            // Define o texto inicial
             checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
 
             GerenciarEstadoDosControles();
@@ -243,7 +245,11 @@ namespace projeto_patrica.pages.cadastro
                 lblMotivCancelamentoExplicacao.Text = "";
                 txtCodProduto.Clear();
                 txtProduto.Clear();
+
+                // Atualiza o texto do CheckBox
                 checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
+
+
                 oCompra = new compra();
                 compraExistente = false;
                 GerenciarEstadoDosControles();
@@ -275,7 +281,10 @@ namespace projeto_patrica.pages.cadastro
                 txtCodCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Id.ToString();
                 txtCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Descricao;
                 checkBoxAtivo.Checked = oCompra.Ativo;
+
+                // Atualiza o texto do CheckBox
                 checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
+
                 lblDataCadastroData.Text = oCompra.DataCadastro.ToShortDateString();
                 lblDataUltimaEdicaoData.Text = oCompra.DataUltimaEdicao?.ToShortDateString() ?? " ";
                 if (!oCompra.Ativo)
@@ -634,11 +643,12 @@ namespace projeto_patrica.pages.cadastro
             listVProdutos.Items.Clear();
             foreach (var item in listaItens)
             {
-                ListViewItem lvi = new ListViewItem(item.OProduto.Id.ToString());
-                lvi.SubItems.Add(item.OProduto.Nome);
-                lvi.SubItems.Add(item.Quantidade.ToString());
-                lvi.SubItems.Add(item.ValorUnitario.ToString("C2"));
-                lvi.SubItems.Add(item.ValorTotal.ToString("C2"));
+                ListViewItem lvi = new ListViewItem(item.OProduto.Id.ToString()); // 0 clmCodProduto
+                lvi.SubItems.Add(item.OProduto.Nome); // 1 clmProduto
+                lvi.SubItems.Add(item.OProduto.OUnidadeMedida.Sigla); // 2 clmUnMedida
+                lvi.SubItems.Add(item.Quantidade.ToString()); // 3 clmQtd
+                lvi.SubItems.Add(item.ValorUnitario.ToString("C2")); // 4 clmValorUnitario
+                lvi.SubItems.Add(item.ValorTotal.ToString("C2")); // 5 clmTotal
                 listVProdutos.Items.Add(lvi);
             }
             AtualizarTotais();
@@ -752,6 +762,7 @@ namespace projeto_patrica.pages.cadastro
             AtualizarTotais();
         }
 
+        // Novo método para o evento CheckedChanged
         private void checkBoxAtivo_CheckedChanged(object sender, EventArgs e)
         {
             checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
