@@ -107,6 +107,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(compra.ACondicaoPagamento.Descricao); // clmCondicaoPagamento (8)
                 item.SubItems.Add(compra.Ativo ? "" : "CANCELADO"); // clmAtivo (9)
                 item.SubItems.Add(compra.MotivoCancelamento ?? ""); // clmMotivoCancelamento (10)
+                item.SubItems.Add(compra.DataUltimaEdicao.HasValue ? compra.DataUltimaEdicao.Value.ToString("dd/MM/yyyy HH:mm") : ""); // clmDataCancelamento (11)
 
                 item.Tag = compra;
                 listV.Items.Add(item);
@@ -153,6 +154,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(compra.ACondicaoPagamento.Descricao); // clmCondicaoPagamento (8)
                 item.SubItems.Add(compra.Ativo ? "" : "CANCELADO"); // clmAtivo (9)
                 item.SubItems.Add(compra.MotivoCancelamento ?? ""); // clmMotivoCancelamento (10)
+                item.SubItems.Add(compra.DataUltimaEdicao.HasValue ? compra.DataUltimaEdicao.Value.ToString("dd/MM/yyyy HH:mm") : ""); // clmDataCancelamento (11)
 
 
                 item.Tag = compra;

@@ -38,6 +38,7 @@
             this.clmCondicaoPagamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmIdFornecedor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmMotivoCancelamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmDataCancelamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnExcluir
@@ -58,7 +59,8 @@
             this.clmValorTotal,
             this.clmCondicaoPagamento,
             this.clmAtivo,
-            this.clmMotivoCancelamento});
+            this.clmMotivoCancelamento,
+            this.clmDataCancelamento});
             this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
             // 
             // clmCod
@@ -129,6 +131,11 @@
             this.clmMotivoCancelamento.Text = "Motivo do Cancelamento";
             this.clmMotivoCancelamento.Width = 500;
             // 
+            // clmDataCancelamento
+            // 
+            this.clmDataCancelamento.Text = "Data Cancelamento";
+            this.clmDataCancelamento.Width = 150;
+            // 
             // frmConsultaCompra
             // 
             this.Name = "frmConsultaCompra";
@@ -149,5 +156,6 @@
         private System.Windows.Forms.ColumnHeader clmCondicaoPagamento;
         private System.Windows.Forms.ColumnHeader clmIdFornecedor;
         private System.Windows.Forms.ColumnHeader clmMotivoCancelamento;
+        private System.Windows.Forms.ColumnHeader clmDataCancelamento;
     }
 }

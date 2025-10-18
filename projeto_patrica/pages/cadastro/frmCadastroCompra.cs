@@ -286,7 +286,7 @@ namespace projeto_patrica.pages.cadastro
                 checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
 
                 lblDataCadastroData.Text = oCompra.DataCadastro.ToShortDateString();
-                lblDataUltimaEdicaoData.Text = oCompra.DataUltimaEdicao?.ToShortDateString() ?? " ";
+                lblDataUltimaEdicaoData.Text = oCompra.DataUltimaEdicao?.ToString("dd/MM/yyyy HH:mm");
                 if (!oCompra.Ativo)
                 {
                     lblMotivoCancelamentoTitulo.Visible = true;

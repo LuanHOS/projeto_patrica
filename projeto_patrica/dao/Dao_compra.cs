@@ -67,7 +67,7 @@ namespace projeto_patrica.dao
                           "ID_CONDICAO_PAGAMENTO = @IdCondicaoPagamento, " +
                           "MOTIVO_CANCELAMENTO = @MotivoCancelamento, " +
                           "ATIVO = @Ativo, " +
-                          "DATA_ULTIMA_EDICAO = CURRENT_DATE " +
+                          "DATA_ULTIMA_EDICAO = CURRENT_TIMESTAMP " +
                           "WHERE MODELO = @Modelo AND SERIE = @Serie AND NUMERO_NOTA = @NumeroNota AND ID_FORNECEDOR = @IdFornecedor";
                 }
 

@@ -85,7 +85,7 @@
             this.lblDataUltimaEdicao.Name = "lblDataUltimaEdicao";
             this.lblDataUltimaEdicao.Size = new System.Drawing.Size(116, 13);
             this.lblDataUltimaEdicao.TabIndex = 3;
-            this.lblDataUltimaEdicao.Text = "Data da Última Edição:";
+            this.lblDataUltimaEdicao.Text = "Data do Cancelamento:";
             // 
             // lblUltimoUsuarioQueEditou
             // 
