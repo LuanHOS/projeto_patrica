@@ -100,7 +100,6 @@ namespace projeto_patrica.dao
                     cmd.ExecuteNonQuery();
                 }
 
-                // Lógica de atualização de estoque e custos
                 if (aCompra.Ativo)
                 {
                     decimal totalCustosAdicionais = aCompra.ValorFrete + aCompra.Seguro + aCompra.Despesas;
@@ -120,14 +119,13 @@ namespace projeto_patrica.dao
                         AtualizarProduto(item, item.CustoUnitarioReal, conn, trans);
                     }
                 }
-                else // Se a compra está sendo cancelada
+                else
                 {
                     foreach (itemCompra item in aCompra.Itens)
                     {
                         SalvarItem(item, conn, trans);
                         ReverterAtualizacaoProduto(item, conn, trans);
                     }
-                    // Define todas as parcelas como inativas
                     foreach (var parcela in aCompra.Parcelas)
                     {
                         parcela.Ativo = false;
@@ -165,13 +163,13 @@ namespace projeto_patrica.dao
             string sql;
             if (valorAtualCompraAnterior != null)
             {
-                sql = "UPDATE PRODUTO_FORNECEDOR SET VALOR_ULTIMA_COMPRA = @ValorUltimaCompra, DATA_ULTIMA_COMPRA = @DataUltimaCompra, VALOR_ATUAL_COMPRA = @ValorAtualCompra " +
+                sql = "UPDATE PRODUTO_FORNECEDOR SET VALOR_ULTIMA_COMPRA = @ValorUltimaCompra, DATA_ULTIMA_COMPRA = @DataUltimaCompra, VALOR_ATUAL_COMPRA = @ValorAtualCompra, VALOR_UNITARIO = @ValorUnitario " + 
                       "WHERE ID_PRODUTO = @IdProduto AND ID_FORNECEDOR = @IdFornecedor";
             }
             else
             {
-                sql = "INSERT INTO PRODUTO_FORNECEDOR (ID_PRODUTO, ID_FORNECEDOR, VALOR_ULTIMA_COMPRA, DATA_ULTIMA_COMPRA, VALOR_ATUAL_COMPRA) " +
-                      "VALUES (@IdProduto, @IdFornecedor, @ValorUltimaCompra, @DataUltimaCompra, @ValorAtualCompra)";
+                sql = "INSERT INTO PRODUTO_FORNECEDOR (ID_PRODUTO, ID_FORNECEDOR, VALOR_ULTIMA_COMPRA, DATA_ULTIMA_COMPRA, VALOR_ATUAL_COMPRA, VALOR_UNITARIO) " + 
+                      "VALUES (@IdProduto, @IdFornecedor, @ValorUltimaCompra, @DataUltimaCompra, @ValorAtualCompra, @ValorUnitario)"; 
             }
 
             MySqlCommand cmd = new MySqlCommand(sql, conn, trans);
@@ -180,6 +178,7 @@ namespace projeto_patrica.dao
             cmd.Parameters.AddWithValue("@ValorUltimaCompra", valorAtualCompraAnterior ?? (object)custoUnitarioReal);
             cmd.Parameters.AddWithValue("@DataUltimaCompra", dataCompra);
             cmd.Parameters.AddWithValue("@ValorAtualCompra", custoUnitarioReal);
+            cmd.Parameters.AddWithValue("@ValorUnitario", item.ValorUnitario); 
             cmd.ExecuteNonQuery();
         }
 
@@ -206,7 +205,6 @@ namespace projeto_patrica.dao
                         novoPercentualLucro = ((valorVenda / novoCustoMedio) - 1) * 100;
                     }
 
-
                     string sqlUpdate = "UPDATE PRODUTO SET ESTOQUE = @NovoEstoque, VALOR_COMPRA = @NovoCustoMedio, VALOR_COMPRAANTERIOR = @CustoAnterior, PERCENTUAL_LUCRO = @NovoPercentualLucro WHERE ID_PRODUTO = @IdProduto";
                     MySqlCommand cmdUpdate = new MySqlCommand(sqlUpdate, conn, trans);
                     cmdUpdate.Parameters.AddWithValue("@NovoEstoque", estoqueAtual + item.Quantidade);
@@ -222,7 +220,6 @@ namespace projeto_patrica.dao
                 }
             }
         }
-
 
         private void ReverterAtualizacaoProduto(itemCompra item, MySqlConnection conn, MySqlTransaction trans)
         {
@@ -273,7 +270,6 @@ namespace projeto_patrica.dao
                 }
             }
         }
-
 
         public override string Excluir(object obj)
         {
@@ -423,7 +419,6 @@ namespace projeto_patrica.dao
             cmd.Parameters.AddWithValue("@CustoUnitarioReal", item.CustoUnitarioReal);
             cmd.ExecuteNonQuery();
         }
-
 
         private void SalvarContaAPagar(contasAPagar conta, MySqlConnection conn, MySqlTransaction trans)
         {

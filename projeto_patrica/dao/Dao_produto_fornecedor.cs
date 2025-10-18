@@ -17,7 +17,6 @@ namespace projeto_patrica.dao
             string ok = "";
             string sql;
 
-            // Verifica se o relacionamento já existe
             sql = "SELECT COUNT(*) FROM PRODUTO_FORNECEDOR WHERE ID_PRODUTO = '" + oProdForn.IdProduto + "' AND ID_FORNECEDOR = '" + oProdForn.IdFornecedor + "'";
 
             MySqlCommand conn = new MySqlCommand();
@@ -31,18 +30,20 @@ namespace projeto_patrica.dao
                 sql = "UPDATE PRODUTO_FORNECEDOR SET " +
                       "VALOR_ULTIMA_COMPRA = '" + oProdForn.ValorUltimaCompra.ToString().Replace(",", ".") + "', " +
                       "DATA_ULTIMA_COMPRA = '" + oProdForn.DataUltimaCompra.ToString("yyyy-MM-dd") + "', " +
-                      "VALOR_ATUAL_COMPRA = '" + oProdForn.ValorAtualCompra.ToString().Replace(",", ".") + "' " +
+                      "VALOR_ATUAL_COMPRA = '" + oProdForn.ValorAtualCompra.ToString().Replace(",", ".") + "', " +
+                      "VALOR_UNITARIO = '" + oProdForn.ValorUnitario.ToString().Replace(",", ".") + "' " + 
                       "WHERE ID_PRODUTO = '" + oProdForn.IdProduto + "' AND ID_FORNECEDOR = '" + oProdForn.IdFornecedor + "'";
             }
             else
             {
                 // INSERT
-                sql = "INSERT INTO PRODUTO_FORNECEDOR (ID_PRODUTO, ID_FORNECEDOR, VALOR_ULTIMA_COMPRA, DATA_ULTIMA_COMPRA, VALOR_ATUAL_COMPRA) VALUES (" +
+                sql = "INSERT INTO PRODUTO_FORNECEDOR (ID_PRODUTO, ID_FORNECEDOR, VALOR_ULTIMA_COMPRA, DATA_ULTIMA_COMPRA, VALOR_ATUAL_COMPRA, VALOR_UNITARIO) VALUES (" + // Adicionado VALOR_UNITARIO
                       "'" + oProdForn.IdProduto + "', " +
                       "'" + oProdForn.IdFornecedor + "', " +
                       "'" + oProdForn.ValorUltimaCompra.ToString().Replace(",", ".") + "', " +
                       "'" + oProdForn.DataUltimaCompra.ToString("yyyy-MM-dd") + "', " +
-                      "'" + oProdForn.ValorAtualCompra.ToString().Replace(",", ".") + "')";
+                      "'" + oProdForn.ValorAtualCompra.ToString().Replace(",", ".") + "', " +
+                      "'" + oProdForn.ValorUnitario.ToString().Replace(",", ".") + "')"; 
             }
 
             conn.CommandText = sql;
@@ -84,6 +85,7 @@ namespace projeto_patrica.dao
                 oProdForn.ValorUltimaCompra = Convert.ToDecimal(dr["VALOR_ULTIMA_COMPRA"]);
                 oProdForn.DataUltimaCompra = Convert.ToDateTime(dr["DATA_ULTIMA_COMPRA"]);
                 oProdForn.ValorAtualCompra = Convert.ToDecimal(dr["VALOR_ATUAL_COMPRA"]);
+                oProdForn.ValorUnitario = Convert.ToDecimal(dr["VALOR_UNITARIO"]);
                 lista.Add(oProdForn);
             }
 

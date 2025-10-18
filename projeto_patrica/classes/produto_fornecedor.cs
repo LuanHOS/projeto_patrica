@@ -9,6 +9,7 @@ namespace projeto_patrica.classes
         protected decimal valorUltimaCompra;
         protected DateTime dataUltimaCompra;
         protected decimal valorAtualCompra;
+        protected decimal valorUnitario; 
 
         public produto_fornecedor()
         {
@@ -17,15 +18,17 @@ namespace projeto_patrica.classes
             valorUltimaCompra = 0;
             dataUltimaCompra = DateTime.MinValue;
             valorAtualCompra = 0;
+            valorUnitario = 0; 
         }
 
-        public produto_fornecedor(int idProduto, int idFornecedor, decimal valorUltimaCompra, DateTime dataUltimaCompra, decimal valorAtualCompra)
+        public produto_fornecedor(int idProduto, int idFornecedor, decimal valorUltimaCompra, DateTime dataUltimaCompra, decimal valorAtualCompra, decimal valorUnitario)
         {
             this.idProduto = idProduto;
             this.idFornecedor = idFornecedor;
             this.valorUltimaCompra = valorUltimaCompra;
             this.dataUltimaCompra = dataUltimaCompra;
             this.valorAtualCompra = valorAtualCompra;
+            this.valorUnitario = valorUnitario;
         }
 
         public int IdProduto
@@ -56,6 +59,12 @@ namespace projeto_patrica.classes
         {
             get => valorAtualCompra;
             set => valorAtualCompra = value;
+        }
+
+        public decimal ValorUnitario
+        {
+            get => valorUnitario;
+            set => valorUnitario = value;
         }
     }
 }

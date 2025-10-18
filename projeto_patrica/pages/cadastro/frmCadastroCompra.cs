@@ -611,9 +611,9 @@ namespace projeto_patrica.pages.cadastro
                 txtCodProduto.Text = p.Id.ToString();
                 txtProduto.Text = p.Nome;
                 txtUnidadeDeMedida.Text = p.OUnidadeMedida.Sigla;
-                txtValorUnitario.Text = p.ValorCompra.ToString("F2");
+                txtValorUnitario.Text = "0,00";
                 txtQuantidade.Text = "1";
-                txtTotalProduto.Text = p.ValorCompra.ToString("F2");
+                txtTotalProduto.Text = "0,00";
             }
         }
 
