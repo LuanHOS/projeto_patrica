@@ -40,7 +40,8 @@
             this.clmProduto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmUnMedida = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmQtd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmValorUnitario = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmPrecoVenda = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmDesconto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnPesquisarCondicaoDePagamento = new System.Windows.Forms.Button();
             this.btnPesquisarProduto = new System.Windows.Forms.Button();
@@ -201,7 +202,8 @@
             this.clmProduto,
             this.clmUnMedida,
             this.clmQtd,
-            this.clmValorUnitario,
+            this.clmPrecoVenda,
+            this.clmDesconto,
             this.clmTotal});
             this.listVProdutos.FullRowSelect = true;
             this.listVProdutos.GridLines = true;
@@ -234,11 +236,17 @@
             this.clmQtd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmQtd.Width = 120;
             // 
-            // clmValorUnitario
+            // clmPrecoVenda
             // 
-            this.clmValorUnitario.Text = "Valor Unitário";
-            this.clmValorUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.clmValorUnitario.Width = 120;
+            this.clmPrecoVenda.Text = "Preço Venda Un.";
+            this.clmPrecoVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.clmPrecoVenda.Width = 120;
+            // 
+            // clmDesconto
+            // 
+            this.clmDesconto.Text = "Desconto por Un.";
+            this.clmDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.clmDesconto.Width = 120;
             // 
             // clmTotal
             // 
@@ -266,7 +274,7 @@
             // 
             // btnLimparListaProduto
             // 
-            this.btnLimparListaProduto.Location = new System.Drawing.Point(1122, 78);
+            this.btnLimparListaProduto.Location = new System.Drawing.Point(1169, 78);
             this.btnLimparListaProduto.Name = "btnLimparListaProduto";
             this.btnLimparListaProduto.Size = new System.Drawing.Size(98, 23);
             this.btnLimparListaProduto.TabIndex = 146;
@@ -275,7 +283,7 @@
             // 
             // btnRemoverProduto
             // 
-            this.btnRemoverProduto.Location = new System.Drawing.Point(1041, 78);
+            this.btnRemoverProduto.Location = new System.Drawing.Point(1088, 78);
             this.btnRemoverProduto.Name = "btnRemoverProduto";
             this.btnRemoverProduto.Size = new System.Drawing.Size(75, 23);
             this.btnRemoverProduto.TabIndex = 154;
@@ -284,7 +292,7 @@
             // 
             // btnEditarProduto
             // 
-            this.btnEditarProduto.Location = new System.Drawing.Point(959, 78);
+            this.btnEditarProduto.Location = new System.Drawing.Point(1006, 78);
             this.btnEditarProduto.Name = "btnEditarProduto";
             this.btnEditarProduto.Size = new System.Drawing.Size(76, 23);
             this.btnEditarProduto.TabIndex = 150;
@@ -293,7 +301,7 @@
             // 
             // btnAdicionarProduto
             // 
-            this.btnAdicionarProduto.Location = new System.Drawing.Point(879, 78);
+            this.btnAdicionarProduto.Location = new System.Drawing.Point(926, 78);
             this.btnAdicionarProduto.Name = "btnAdicionarProduto";
             this.btnAdicionarProduto.Size = new System.Drawing.Size(74, 23);
             this.btnAdicionarProduto.TabIndex = 151;
@@ -357,7 +365,7 @@
             // 
             // txtTotalProduto
             // 
-            this.txtTotalProduto.Location = new System.Drawing.Point(750, 80);
+            this.txtTotalProduto.Location = new System.Drawing.Point(797, 80);
             this.txtTotalProduto.Name = "txtTotalProduto";
             this.txtTotalProduto.ReadOnly = true;
             this.txtTotalProduto.ShortcutsEnabled = false;
@@ -371,7 +379,7 @@
             this.txtValorUnitario.Name = "txtValorUnitario";
             this.txtValorUnitario.ReadOnly = true;
             this.txtValorUnitario.ShortcutsEnabled = false;
-            this.txtValorUnitario.Size = new System.Drawing.Size(88, 20);
+            this.txtValorUnitario.Size = new System.Drawing.Size(109, 20);
             this.txtValorUnitario.TabIndex = 142;
             this.txtValorUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -454,7 +462,7 @@
             // lblTotalProduto
             // 
             this.lblTotalProduto.AutoSize = true;
-            this.lblTotalProduto.Location = new System.Drawing.Point(747, 62);
+            this.lblTotalProduto.Location = new System.Drawing.Point(794, 62);
             this.lblTotalProduto.Name = "lblTotalProduto";
             this.lblTotalProduto.Size = new System.Drawing.Size(54, 13);
             this.lblTotalProduto.TabIndex = 109;
@@ -474,9 +482,9 @@
             this.lblPrecoVenda.AutoSize = true;
             this.lblPrecoVenda.Location = new System.Drawing.Point(531, 62);
             this.lblPrecoVenda.Name = "lblPrecoVenda";
-            this.lblPrecoVenda.Size = new System.Drawing.Size(92, 13);
+            this.lblPrecoVenda.Size = new System.Drawing.Size(112, 13);
             this.lblPrecoVenda.TabIndex = 111;
-            this.lblPrecoVenda.Text = "Preço Venda (R$)";
+            this.lblPrecoVenda.Text = "Preço Venda Un. (R$)";
             // 
             // lblValorTotalParcelas
             // 
@@ -664,18 +672,18 @@
             // lblDesconto
             // 
             this.lblDesconto.AutoSize = true;
-            this.lblDesconto.Location = new System.Drawing.Point(638, 62);
+            this.lblDesconto.Location = new System.Drawing.Point(665, 62);
             this.lblDesconto.Name = "lblDesconto";
-            this.lblDesconto.Size = new System.Drawing.Size(76, 13);
+            this.lblDesconto.Size = new System.Drawing.Size(111, 13);
             this.lblDesconto.TabIndex = 111;
-            this.lblDesconto.Text = "Desconto (R$)";
+            this.lblDesconto.Text = "Desconto por Un.(R$)";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(641, 81);
+            this.textBox1.Location = new System.Drawing.Point(668, 81);
             this.textBox1.Name = "textBox1";
             this.textBox1.ShortcutsEnabled = false;
-            this.textBox1.Size = new System.Drawing.Size(88, 20);
+            this.textBox1.Size = new System.Drawing.Size(108, 20);
             this.textBox1.TabIndex = 142;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -813,7 +821,7 @@
         private System.Windows.Forms.ColumnHeader clmProduto;
         private System.Windows.Forms.ColumnHeader clmUnMedida;
         private System.Windows.Forms.ColumnHeader clmQtd;
-        private System.Windows.Forms.ColumnHeader clmValorUnitario;
+        private System.Windows.Forms.ColumnHeader clmPrecoVenda;
         private System.Windows.Forms.ColumnHeader clmTotal;
         private System.Windows.Forms.Button btnPesquisarCondicaoDePagamento;
         private System.Windows.Forms.Button btnPesquisarProduto;
@@ -862,5 +870,6 @@
         private System.Windows.Forms.Button btnPesquisarCliente;
         private System.Windows.Forms.Label lblDesconto;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ColumnHeader clmDesconto;
     }
 }
