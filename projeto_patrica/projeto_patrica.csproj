@@ -276,6 +276,12 @@
     <Compile Include="pages\cadastro\frmCadastroUnidade_medida.Designer.cs">
       <DependentUpon>frmCadastroUnidade_medida.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\cadastro\frmCadastroVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroVenda.Designer.cs">
+      <DependentUpon>frmCadastroVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\consulta\frmConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -437,6 +443,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroUnidade_medida.resx">
       <DependentUpon>frmCadastroUnidade_medida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroVenda.resx">
+      <DependentUpon>frmCadastroVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsulta.resx">
       <DependentUpon>frmConsulta.cs</DependentUpon>
