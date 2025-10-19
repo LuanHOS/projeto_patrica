@@ -136,8 +136,6 @@
             // 
             // frmConsultaContasAPagar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1344, 689);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.lblFiltros);
             this.Name = "frmConsultaContasAPagar";
