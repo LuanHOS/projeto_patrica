@@ -312,6 +312,12 @@
     <Compile Include="pages\consulta\frmConsultaCondicaoPagamento.Designer.cs">
       <DependentUpon>frmConsultaCondicaoPagamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\consulta\frmConsultaContasAPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaContasAPagar.Designer.cs">
+      <DependentUpon>frmConsultaContasAPagar.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\consulta\frmConsultaEstado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -453,6 +459,9 @@
     <EmbeddedResource Include="pages\consulta\frmConsultaCondicaoPagamento.resx">
       <DependentUpon>frmConsultaCondicaoPagamento.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaContasAPagar.resx">
+      <DependentUpon>frmConsultaContasAPagar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaEstado.resx">
       <DependentUpon>frmConsultaEstado.cs</DependentUpon>
