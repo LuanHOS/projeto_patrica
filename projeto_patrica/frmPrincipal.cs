@@ -211,5 +211,9 @@ namespace projeto_patrica
             aInter.pecaConsultaCompra(aCompra, oController_compra);
         }
 
+        private void contasAPagarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
