@@ -132,8 +132,19 @@ namespace projeto_patrica.dao
                     }
                 }
 
+                // Carrega a Condicao de Pagamento completa para obter Juros, Multa, Desconto
+                Controller_condicaoPagamento ccp = new Controller_condicaoPagamento();
+                ccp.CarregaObj(aCompra.ACondicaoPagamento);
+
                 foreach (contasAPagar conta in aCompra.Parcelas)
                 {
+                    // Atribui os valores da condição de pagamento à parcela
+                    conta.Juros = aCompra.ACondicaoPagamento.Juros;
+                    conta.Multa = aCompra.ACondicaoPagamento.Multa;
+                    conta.Desconto = aCompra.ACondicaoPagamento.Desconto;
+                    conta.Situacao = 0; // Define como "Em aberto"
+                    conta.ValorPago = null; // Inicializa como nulo
+                    conta.DataPagamento = null; // Inicializa como nulo
                     SalvarContaAPagar(conta, conn, trans);
                 }
 
@@ -163,13 +174,13 @@ namespace projeto_patrica.dao
             string sql;
             if (valorAtualCompraAnterior != null)
             {
-                sql = "UPDATE PRODUTO_FORNECEDOR SET VALOR_ULTIMA_COMPRA = @ValorUltimaCompra, DATA_ULTIMA_COMPRA = @DataUltimaCompra, VALOR_ATUAL_COMPRA = @ValorAtualCompra, VALOR_UNITARIO = @ValorUnitario " + 
+                sql = "UPDATE PRODUTO_FORNECEDOR SET VALOR_ULTIMA_COMPRA = @ValorUltimaCompra, DATA_ULTIMA_COMPRA = @DataUltimaCompra, VALOR_ATUAL_COMPRA = @ValorAtualCompra, VALOR_UNITARIO = @ValorUnitario " +
                       "WHERE ID_PRODUTO = @IdProduto AND ID_FORNECEDOR = @IdFornecedor";
             }
             else
             {
-                sql = "INSERT INTO PRODUTO_FORNECEDOR (ID_PRODUTO, ID_FORNECEDOR, VALOR_ULTIMA_COMPRA, DATA_ULTIMA_COMPRA, VALOR_ATUAL_COMPRA, VALOR_UNITARIO) " + 
-                      "VALUES (@IdProduto, @IdFornecedor, @ValorUltimaCompra, @DataUltimaCompra, @ValorAtualCompra, @ValorUnitario)"; 
+                sql = "INSERT INTO PRODUTO_FORNECEDOR (ID_PRODUTO, ID_FORNECEDOR, VALOR_ULTIMA_COMPRA, DATA_ULTIMA_COMPRA, VALOR_ATUAL_COMPRA, VALOR_UNITARIO) " +
+                      "VALUES (@IdProduto, @IdFornecedor, @ValorUltimaCompra, @DataUltimaCompra, @ValorAtualCompra, @ValorUnitario)";
             }
 
             MySqlCommand cmd = new MySqlCommand(sql, conn, trans);
@@ -178,7 +189,7 @@ namespace projeto_patrica.dao
             cmd.Parameters.AddWithValue("@ValorUltimaCompra", valorAtualCompraAnterior ?? (object)custoUnitarioReal);
             cmd.Parameters.AddWithValue("@DataUltimaCompra", dataCompra);
             cmd.Parameters.AddWithValue("@ValorAtualCompra", custoUnitarioReal);
-            cmd.Parameters.AddWithValue("@ValorUnitario", item.ValorUnitario); 
+            cmd.Parameters.AddWithValue("@ValorUnitario", item.ValorUnitario);
             cmd.ExecuteNonQuery();
         }
 
@@ -195,9 +206,10 @@ namespace projeto_patrica.dao
                     int estoqueAtual = reader.GetInt32("ESTOQUE");
                     decimal custoAtual = reader.GetDecimal("VALOR_COMPRA");
                     decimal valorVenda = reader.GetDecimal("VALOR_VENDA");
-                    reader.Close();
+                    reader.Close(); 
 
                     decimal novoCustoMedio = ((custoAtual * estoqueAtual) + (custoUnitarioReal * item.Quantidade)) / (estoqueAtual + item.Quantidade);
+
 
                     decimal novoPercentualLucro = 0;
                     if (novoCustoMedio > 0)
@@ -209,7 +221,7 @@ namespace projeto_patrica.dao
                     MySqlCommand cmdUpdate = new MySqlCommand(sqlUpdate, conn, trans);
                     cmdUpdate.Parameters.AddWithValue("@NovoEstoque", estoqueAtual + item.Quantidade);
                     cmdUpdate.Parameters.AddWithValue("@NovoCustoMedio", novoCustoMedio);
-                    cmdUpdate.Parameters.AddWithValue("@CustoAnterior", custoAtual);
+                    cmdUpdate.Parameters.AddWithValue("@CustoAnterior", custoAtual); 
                     cmdUpdate.Parameters.AddWithValue("@NovoPercentualLucro", novoPercentualLucro);
                     cmdUpdate.Parameters.AddWithValue("@IdProduto", item.OProduto.Id);
                     cmdUpdate.ExecuteNonQuery();
@@ -220,6 +232,7 @@ namespace projeto_patrica.dao
                 }
             }
         }
+
 
         private void ReverterAtualizacaoProduto(itemCompra item, MySqlConnection conn, MySqlTransaction trans)
         {
@@ -249,6 +262,7 @@ namespace projeto_patrica.dao
                         novoCustoMedio = valorCompraAnterior;
                     }
 
+
                     decimal novoPercentualLucro = 0;
                     if (novoCustoMedio > 0)
                     {
@@ -270,6 +284,7 @@ namespace projeto_patrica.dao
                 }
             }
         }
+
 
         public override string Excluir(object obj)
         {
@@ -313,35 +328,35 @@ namespace projeto_patrica.dao
                 cmd.Parameters.AddWithValue("@Serie", aCompra.Serie);
                 cmd.Parameters.AddWithValue("@NumeroNota", aCompra.NumeroNota);
 
-                var dr = cmd.ExecuteReader();
-
-                if (dr.Read())
+                using (var dr = cmd.ExecuteReader()) 
                 {
-                    aCompra.Modelo = Convert.ToInt32(dr["MODELO"]);
-                    aCompra.Serie = dr["SERIE"].ToString();
-                    aCompra.NumeroNota = dr["NUMERO_NOTA"].ToString();
-                    aCompra.OFornecedor.Id = Convert.ToInt32(dr["ID_FORNECEDOR"]);
-                    aCompra.DataEmissao = Convert.ToDateTime(dr["DATA_EMISSAO"]);
-
-                    if (dr.IsDBNull(dr.GetOrdinal("DATA_ENTREGA")) || Convert.ToDateTime(dr["DATA_ENTREGA"]) < new DateTime(1753, 1, 1))
+                    if (dr.Read())
                     {
-                        aCompra.DataEntrega = aCompra.DataEmissao;
-                    }
-                    else
-                    {
-                        aCompra.DataEntrega = Convert.ToDateTime(dr["DATA_ENTREGA"]);
-                    }
+                        aCompra.Modelo = Convert.ToInt32(dr["MODELO"]);
+                        aCompra.Serie = dr["SERIE"].ToString();
+                        aCompra.NumeroNota = dr["NUMERO_NOTA"].ToString();
+                        aCompra.OFornecedor.Id = Convert.ToInt32(dr["ID_FORNECEDOR"]);
+                        aCompra.DataEmissao = Convert.ToDateTime(dr["DATA_EMISSAO"]);
 
-                    aCompra.ValorFrete = Convert.ToDecimal(dr["VALOR_FRETE"]);
-                    aCompra.Seguro = Convert.ToDecimal(dr["SEGURO"]);
-                    aCompra.Despesas = Convert.ToDecimal(dr["DESPESAS"]);
-                    aCompra.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
-                    aCompra.MotivoCancelamento = dr.IsDBNull(dr.GetOrdinal("MOTIVO_CANCELAMENTO")) ? null : dr["MOTIVO_CANCELAMENTO"].ToString();
-                    aCompra.Ativo = Convert.ToBoolean(dr["ATIVO"]);
-                    aCompra.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
-                    aCompra.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
+                        if (!dr.IsDBNull(dr.GetOrdinal("DATA_ENTREGA")) && Convert.ToDateTime(dr["DATA_ENTREGA"]) >= new DateTime(1753, 1, 1))
+                        {
+                            aCompra.DataEntrega = Convert.ToDateTime(dr["DATA_ENTREGA"]);
+                        }
+                        else
+                        {
+                            aCompra.DataEntrega = aCompra.DataEmissao; 
+                        }
+
+                        aCompra.ValorFrete = Convert.ToDecimal(dr["VALOR_FRETE"]);
+                        aCompra.Seguro = Convert.ToDecimal(dr["SEGURO"]);
+                        aCompra.Despesas = Convert.ToDecimal(dr["DESPESAS"]);
+                        aCompra.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
+                        aCompra.MotivoCancelamento = dr.IsDBNull(dr.GetOrdinal("MOTIVO_CANCELAMENTO")) ? null : dr["MOTIVO_CANCELAMENTO"].ToString();
+                        aCompra.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                        aCompra.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                        aCompra.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
+                    }
                 }
-                dr.Close();
 
                 Controller_fornecedor cf = new Controller_fornecedor();
                 cf.CarregaObj(aCompra.OFornecedor);
@@ -349,8 +364,8 @@ namespace projeto_patrica.dao
                 Controller_condicaoPagamento ccp = new Controller_condicaoPagamento();
                 ccp.CarregaObj(aCompra.ACondicaoPagamento);
 
-                aCompra.Itens = ListarItensDaCompra(aCompra, conn);
-                aCompra.Parcelas = ListarContasAPagarDaCompra(aCompra, conn);
+                aCompra.Itens = ListarItensDaCompra(aCompra, conn); 
+                aCompra.Parcelas = ListarContasAPagarDaCompra(aCompra, conn); 
             }
             catch (Exception ex)
             {
@@ -362,6 +377,7 @@ namespace projeto_patrica.dao
             }
             return ok;
         }
+
 
         public List<compra> ListarCompras()
         {
@@ -383,14 +399,24 @@ namespace projeto_patrica.dao
                     aCompra.OFornecedor.Id = Convert.ToInt32(dr["ID_FORNECEDOR"]);
                     aCompra.DataEmissao = Convert.ToDateTime(dr["DATA_EMISSAO"]);
                     aCompra.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                    aCompra.DataEntrega = dr.IsDBNull(dr.GetOrdinal("DATA_ENTREGA")) ? DateTime.MinValue : Convert.ToDateTime(dr["DATA_ENTREGA"]);
+                    aCompra.ValorFrete = Convert.ToDecimal(dr["VALOR_FRETE"]);
+                    aCompra.Seguro = Convert.ToDecimal(dr["SEGURO"]);
+                    aCompra.Despesas = Convert.ToDecimal(dr["DESPESAS"]);
+                    aCompra.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
+                    aCompra.MotivoCancelamento = dr.IsDBNull(dr.GetOrdinal("MOTIVO_CANCELAMENTO")) ? null : dr["MOTIVO_CANCELAMENTO"].ToString();
+                    aCompra.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
+
                     lista.Add(aCompra);
                 }
                 dr.Close();
 
                 Controller_fornecedor cf = new Controller_fornecedor();
+                Controller_condicaoPagamento ccp = new Controller_condicaoPagamento();
                 foreach (var compra in lista)
                 {
                     cf.CarregaObj(compra.OFornecedor);
+                    ccp.CarregaObj(compra.ACondicaoPagamento); // Carrega a condição de pagamento
                 }
             }
             catch (Exception ex)
@@ -403,6 +429,7 @@ namespace projeto_patrica.dao
             }
             return lista;
         }
+
 
         private void SalvarItem(itemCompra item, MySqlConnection conn, MySqlTransaction trans)
         {
@@ -422,8 +449,12 @@ namespace projeto_patrica.dao
 
         private void SalvarContaAPagar(contasAPagar conta, MySqlConnection conn, MySqlTransaction trans)
         {
-            string sql = "INSERT INTO CONTAS_A_PAGAR (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_FORNECEDOR, NUMERO_PARCELA, DATA_EMISSAO, DATA_VENCIMENTO, VALOR_PARCELA, ID_FORMA_PAGAMENTO, ATIVO) VALUES " +
-                         "(@ModeloCompra, @SerieCompra, @NumeroNotaCompra, @IdFornecedor, @NumeroParcela, @DataEmissao, @DataVencimento, @ValorParcela, @IdFormaPagamento, @Ativo)";
+            string sql = "INSERT INTO CONTAS_A_PAGAR (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_FORNECEDOR, NUMERO_PARCELA, " +
+                         "DATA_EMISSAO, DATA_VENCIMENTO, VALOR_PARCELA, ID_FORMA_PAGAMENTO, ATIVO, " +
+                         "SITUACAO, JUROS, MULTA, DESCONTO, VALOR_PAGO, DATA_PAGAMENTO) VALUES " +
+                         "(@ModeloCompra, @SerieCompra, @NumeroNotaCompra, @IdFornecedor, @NumeroParcela, " +
+                         "@DataEmissao, @DataVencimento, @ValorParcela, @IdFormaPagamento, @Ativo, " +
+                         "@Situacao, @Juros, @Multa, @Desconto, @ValorPago, @DataPagamento)";
             MySqlCommand cmd = new MySqlCommand(sql, conn, trans);
             cmd.Parameters.AddWithValue("@ModeloCompra", conta.ModeloCompra);
             cmd.Parameters.AddWithValue("@SerieCompra", conta.SerieCompra);
@@ -435,8 +466,15 @@ namespace projeto_patrica.dao
             cmd.Parameters.AddWithValue("@ValorParcela", conta.ValorParcela);
             cmd.Parameters.AddWithValue("@IdFormaPagamento", conta.AFormaPagamento.Id);
             cmd.Parameters.AddWithValue("@Ativo", conta.Ativo);
+            cmd.Parameters.AddWithValue("@Situacao", conta.Situacao); 
+            cmd.Parameters.AddWithValue("@Juros", conta.Juros); 
+            cmd.Parameters.AddWithValue("@Multa", conta.Multa); 
+            cmd.Parameters.AddWithValue("@Desconto", conta.Desconto);
+            cmd.Parameters.AddWithValue("@ValorPago", (object)conta.ValorPago ?? DBNull.Value); 
+            cmd.Parameters.AddWithValue("@DataPagamento", (object)conta.DataPagamento ?? DBNull.Value);
             cmd.ExecuteNonQuery();
         }
+
 
         private List<itemCompra> ListarItensDaCompra(compra aCompra, MySqlConnection conn)
         {
@@ -448,21 +486,22 @@ namespace projeto_patrica.dao
             cmd.Parameters.AddWithValue("@NumeroNota", aCompra.NumeroNota);
             cmd.Parameters.AddWithValue("@IdFornecedor", aCompra.OFornecedor.Id);
 
-            var dr = cmd.ExecuteReader();
-            while (dr.Read())
+            using (var dr = cmd.ExecuteReader())
             {
-                itemCompra item = new itemCompra();
-                item.ModeloCompra = aCompra.Modelo;
-                item.SerieCompra = aCompra.Serie;
-                item.NumeroNotaCompra = aCompra.NumeroNota;
-                item.IdFornecedor = aCompra.OFornecedor.Id;
-                item.OProduto.Id = Convert.ToInt32(dr["ID_PRODUTO"]);
-                item.Quantidade = Convert.ToInt32(dr["QUANTIDADE"]);
-                item.ValorUnitario = Convert.ToDecimal(dr["VALOR_UNITARIO"]);
-                item.CustoUnitarioReal = Convert.ToDecimal(dr["CUSTO_UNITARIO_REAL"]);
-                itens.Add(item);
-            }
-            dr.Close();
+                while (dr.Read())
+                {
+                    itemCompra item = new itemCompra();
+                    item.ModeloCompra = aCompra.Modelo;
+                    item.SerieCompra = aCompra.Serie;
+                    item.NumeroNotaCompra = aCompra.NumeroNota;
+                    item.IdFornecedor = aCompra.OFornecedor.Id;
+                    item.OProduto.Id = Convert.ToInt32(dr["ID_PRODUTO"]);
+                    item.Quantidade = Convert.ToInt32(dr["QUANTIDADE"]);
+                    item.ValorUnitario = Convert.ToDecimal(dr["VALOR_UNITARIO"]);
+                    item.CustoUnitarioReal = Convert.ToDecimal(dr["CUSTO_UNITARIO_REAL"]);
+                    itens.Add(item);
+                }
+            } 
 
             Controller_produto cp = new Controller_produto();
             foreach (var item in itens)
@@ -471,6 +510,7 @@ namespace projeto_patrica.dao
             }
             return itens;
         }
+
 
         private List<contasAPagar> ListarContasAPagarDaCompra(compra aCompra, MySqlConnection conn)
         {
@@ -481,33 +521,43 @@ namespace projeto_patrica.dao
             cmd.Parameters.AddWithValue("@Serie", aCompra.Serie);
             cmd.Parameters.AddWithValue("@NumeroNota", aCompra.NumeroNota);
 
-            var dr = cmd.ExecuteReader();
-            Controller_formaPagamento cfp = new Controller_formaPagamento();
-
-            while (dr.Read())
+            using (var dr = cmd.ExecuteReader())
             {
-                contasAPagar parcela = new contasAPagar();
-                parcela.ModeloCompra = aCompra.Modelo;
-                parcela.SerieCompra = aCompra.Serie;
-                parcela.NumeroNotaCompra = aCompra.NumeroNota;
-                parcela.IdFornecedor = Convert.ToInt32(dr["ID_FORNECEDOR"]);
-                parcela.NumeroParcela = Convert.ToInt32(dr["NUMERO_PARCELA"]);
-                parcela.DataEmissao = Convert.ToDateTime(dr["DATA_EMISSAO"]);
-                parcela.DataVencimento = Convert.ToDateTime(dr["DATA_VENCIMENTO"]);
-                parcela.ValorParcela = Convert.ToDecimal(dr["VALOR_PARCELA"]);
-                parcela.AFormaPagamento.Id = Convert.ToInt32(dr["ID_FORMA_PAGAMENTO"]);
-                parcela.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                Controller_formaPagamento cfp = new Controller_formaPagamento();
 
-                parcelas.Add(parcela);
-            }
-            dr.Close();
+                while (dr.Read())
+                {
+                    contasAPagar parcela = new contasAPagar();
+                    parcela.ModeloCompra = aCompra.Modelo;
+                    parcela.SerieCompra = aCompra.Serie;
+                    parcela.NumeroNotaCompra = aCompra.NumeroNota;
+                    parcela.IdFornecedor = Convert.ToInt32(dr["ID_FORNECEDOR"]);
+                    parcela.NumeroParcela = Convert.ToInt32(dr["NUMERO_PARCELA"]);
+                    parcela.DataEmissao = Convert.ToDateTime(dr["DATA_EMISSAO"]);
+                    parcela.DataVencimento = Convert.ToDateTime(dr["DATA_VENCIMENTO"]);
+                    parcela.ValorParcela = Convert.ToDecimal(dr["VALOR_PARCELA"]);
+                    parcela.AFormaPagamento.Id = Convert.ToInt32(dr["ID_FORMA_PAGAMENTO"]);
+                    parcela.Ativo = Convert.ToBoolean(dr["ATIVO"]);
+                    parcela.Situacao = Convert.ToInt32(dr["SITUACAO"]);
+                    parcela.Juros = Convert.ToDecimal(dr["JUROS"]);
+                    parcela.Multa = Convert.ToDecimal(dr["MULTA"]);
+                    parcela.Desconto = Convert.ToDecimal(dr["DESCONTO"]);
+                    parcela.ValorPago = dr.IsDBNull(dr.GetOrdinal("VALOR_PAGO")) ? (decimal?)null : Convert.ToDecimal(dr["VALOR_PAGO"]);
+                    parcela.DataPagamento = dr.IsDBNull(dr.GetOrdinal("DATA_PAGAMENTO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_PAGAMENTO"]);
 
+
+                    parcelas.Add(parcela);
+                }
+            } 
+
+            Controller_formaPagamento cfpForLoop = new Controller_formaPagamento();
             foreach (var p in parcelas)
             {
-                cfp.CarregaObj(p.AFormaPagamento);
+                cfpForLoop.CarregaObj(p.AFormaPagamento);
             }
 
             return parcelas;
         }
+
     }
 }

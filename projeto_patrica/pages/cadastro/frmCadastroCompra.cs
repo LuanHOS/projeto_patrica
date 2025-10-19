@@ -517,11 +517,7 @@ namespace projeto_patrica.pages.cadastro
         #region Geração de Parcelas
         private void btnGerarParcelas_Click(object sender, EventArgs e)
         {
-            if (oCompra.ACondicaoPagamento == null || oCompra.ACondicaoPagamento.Id == 0)
-            {
-                MessageBox.Show("Selecione uma condição de pagamento primeiro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            aController_compra.AController_condicaoPagamento.CarregaObj(oCompra.ACondicaoPagamento);
 
             decimal totalProdutos = listaItens.Sum(item => item.ValorTotal);
             decimal.TryParse(txtValorFrete.Text, out decimal frete);
@@ -543,7 +539,14 @@ namespace projeto_patrica.pages.cadastro
                     DataEmissao = dtpDataEmissao.Value,
                     DataVencimento = dtpDataEmissao.Value.AddDays(parcelaCondicao.DiasAposVenda),
                     ValorParcela = totalCompra * (parcelaCondicao.ValorPercentual / 100),
-                    AFormaPagamento = parcelaCondicao.AFormaPagamento
+                    AFormaPagamento = parcelaCondicao.AFormaPagamento,
+                    Ativo = true,
+                    Situacao = 0, // 0 - Em aberto
+                    Juros = oCompra.ACondicaoPagamento.Juros,
+                    Multa = oCompra.ACondicaoPagamento.Multa,
+                    Desconto = oCompra.ACondicaoPagamento.Desconto,
+                    ValorPago = null,
+                    DataPagamento = null
                 };
                 listaParcelas.Add(novaParcela);
             }
