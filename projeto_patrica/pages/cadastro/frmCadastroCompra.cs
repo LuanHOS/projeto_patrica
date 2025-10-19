@@ -224,8 +224,9 @@ namespace projeto_patrica.pages.cadastro
             try
             {
                 base.Limpartxt();
-                txtSerie.Clear();
-                txtNumDaNota.Clear();
+                txtCodigo.Text = "55";
+                txtSerie.Text = "1"
+;               txtNumDaNota.Clear();
                 txtCodFornecedor.Clear();
                 txtFornecedor.Clear();
                 dtpDataEmissao.Value = DateTime.Today;
