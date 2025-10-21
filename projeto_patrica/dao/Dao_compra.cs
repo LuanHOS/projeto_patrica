@@ -459,7 +459,7 @@ namespace projeto_patrica.dao
             cmd.Parameters.AddWithValue("@ModeloCompra", conta.ModeloCompra);
             cmd.Parameters.AddWithValue("@SerieCompra", conta.SerieCompra);
             cmd.Parameters.AddWithValue("@NumeroNotaCompra", conta.NumeroNotaCompra);
-            cmd.Parameters.AddWithValue("@IdFornecedor", conta.IdFornecedor);
+            cmd.Parameters.AddWithValue("@IdFornecedor", conta.OFornecedor.Id);
             cmd.Parameters.AddWithValue("@NumeroParcela", conta.NumeroParcela);
             cmd.Parameters.AddWithValue("@DataEmissao", conta.DataEmissao);
             cmd.Parameters.AddWithValue("@DataVencimento", conta.DataVencimento);
@@ -531,7 +531,7 @@ namespace projeto_patrica.dao
                     parcela.ModeloCompra = aCompra.Modelo;
                     parcela.SerieCompra = aCompra.Serie;
                     parcela.NumeroNotaCompra = aCompra.NumeroNota;
-                    parcela.IdFornecedor = Convert.ToInt32(dr["ID_FORNECEDOR"]);
+                    parcela.OFornecedor.Id = Convert.ToInt32(dr["ID_FORNECEDOR"]);
                     parcela.NumeroParcela = Convert.ToInt32(dr["NUMERO_PARCELA"]);
                     parcela.DataEmissao = Convert.ToDateTime(dr["DATA_EMISSAO"]);
                     parcela.DataVencimento = Convert.ToDateTime(dr["DATA_VENCIMENTO"]);

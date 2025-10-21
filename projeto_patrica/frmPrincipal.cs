@@ -25,6 +25,7 @@ namespace projeto_patrica
         private unidade_medida aUnidadeMedida;
         private produto oProduto;
         private compra aCompra;
+        private contasAPagar aContasAPagar;
 
         //Controllers
         private Controller_formaPagamento oController_formaPagamento;
@@ -41,6 +42,7 @@ namespace projeto_patrica
         private Controller_unidade_medida oController_unidade_medida;
         private Controller_produto oController_produto;
         private Controller_compra oController_compra;
+        private Controller_contasAPagar oController_contasAPagar;
 
         /*
          * */
@@ -67,6 +69,7 @@ namespace projeto_patrica
             aUnidadeMedida = new unidade_medida();
             oProduto = new produto();
             aCompra = new compra();
+            aContasAPagar = new contasAPagar();
 
             // Instanciando Controllers
             oController_formaPagamento = new Controller_formaPagamento();
@@ -83,6 +86,7 @@ namespace projeto_patrica
             oController_unidade_medida = new Controller_unidade_medida();
             oController_produto = new Controller_produto();
             oController_compra = new Controller_compra();
+            oController_contasAPagar = new Controller_contasAPagar();
 
             // Passando dependências de controllers
             oController_condicaoPagamento.AController_formaPagamento = oController_formaPagamento;
@@ -100,6 +104,9 @@ namespace projeto_patrica
             oController_compra.AController_fornecedor = oController_fornecedor;
             oController_compra.AController_produto = oController_produto;
             oController_compra.AController_condicaoPagamento = oController_condicaoPagamento;
+            oController_contasAPagar.AController_fornecedor = oController_fornecedor;
+            oController_contasAPagar.AController_formaPagamento = oController_formaPagamento;
+
         }
 
         /*
@@ -213,7 +220,7 @@ namespace projeto_patrica
 
         private void contasAPagarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            aInter.pecaConsultaContasAPagar(aContasAPagar, oController_contasAPagar);
         }
     }
 }

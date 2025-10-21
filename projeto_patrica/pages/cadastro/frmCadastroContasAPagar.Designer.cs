@@ -43,7 +43,7 @@
             this.txtNumParcela = new System.Windows.Forms.TextBox();
             this.btnPesquisarFornecedor = new System.Windows.Forms.Button();
             this.lblValorParcela = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtValorParcela = new System.Windows.Forms.TextBox();
             this.lblDataPagamento = new System.Windows.Forms.Label();
             this.dtpDataPagamento = new System.Windows.Forms.DateTimePicker();
             this.lblFormaPagamento = new System.Windows.Forms.Label();
@@ -60,7 +60,7 @@
             this.checkBoxJuros = new System.Windows.Forms.CheckBox();
             this.checkBoxDesconto = new System.Windows.Forms.CheckBox();
             this.lblValorFinal = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtValorPago = new System.Windows.Forms.TextBox();
             this.btnPesquisarFormaPagamento = new System.Windows.Forms.Button();
             this.txtCodFormaPagamento = new System.Windows.Forms.TextBox();
             this.txtFormaPagamento = new System.Windows.Forms.TextBox();
@@ -203,6 +203,7 @@
             this.btnPesquisarFornecedor.TabIndex = 150;
             this.btnPesquisarFornecedor.Text = "🔎";
             this.btnPesquisarFornecedor.UseVisualStyleBackColor = true;
+            this.btnPesquisarFornecedor.Click += new System.EventHandler(this.btnPesquisarFornecedor_Click);
             // 
             // lblValorParcela
             // 
@@ -213,14 +214,14 @@
             this.lblValorParcela.TabIndex = 103;
             this.lblValorParcela.Text = "Valor da Parcela (R$)";
             // 
-            // textBox1
+            // txtValorParcela
             // 
-            this.textBox1.Location = new System.Drawing.Point(127, 103);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ShortcutsEnabled = false;
-            this.textBox1.Size = new System.Drawing.Size(131, 20);
-            this.textBox1.TabIndex = 105;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValorParcela.Location = new System.Drawing.Point(127, 103);
+            this.txtValorParcela.Name = "txtValorParcela";
+            this.txtValorParcela.ShortcutsEnabled = false;
+            this.txtValorParcela.Size = new System.Drawing.Size(131, 20);
+            this.txtValorParcela.TabIndex = 105;
+            this.txtValorParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblDataPagamento
             // 
@@ -239,6 +240,7 @@
             this.dtpDataPagamento.Name = "dtpDataPagamento";
             this.dtpDataPagamento.Size = new System.Drawing.Size(115, 20);
             this.dtpDataPagamento.TabIndex = 114;
+            this.dtpDataPagamento.ValueChanged += new System.EventHandler(this.dtpDataPagamento_ValueChanged);
             // 
             // lblFormaPagamento
             // 
@@ -374,14 +376,14 @@
             this.lblValorFinal.TabIndex = 103;
             this.lblValorFinal.Text = "Valor Final da Parcela (R$)";
             // 
-            // textBox2
+            // txtValorPago
             // 
-            this.textBox2.Location = new System.Drawing.Point(24, 318);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ShortcutsEnabled = false;
-            this.textBox2.Size = new System.Drawing.Size(131, 20);
-            this.textBox2.TabIndex = 105;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValorPago.Location = new System.Drawing.Point(24, 318);
+            this.txtValorPago.Name = "txtValorPago";
+            this.txtValorPago.ShortcutsEnabled = false;
+            this.txtValorPago.Size = new System.Drawing.Size(131, 20);
+            this.txtValorPago.TabIndex = 105;
+            this.txtValorPago.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnPesquisarFormaPagamento
             // 
@@ -437,8 +439,8 @@
             this.Controls.Add(this.lblDataVencimento);
             this.Controls.Add(this.lblDataEmissao);
             this.Controls.Add(this.lblFornecedor);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtValorPago);
+            this.Controls.Add(this.txtValorParcela);
             this.Controls.Add(this.txtSituacao);
             this.Controls.Add(this.lblValorFinal);
             this.Controls.Add(this.txtNumParcela);
@@ -461,8 +463,8 @@
             this.Controls.SetChildIndex(this.txtNumParcela, 0);
             this.Controls.SetChildIndex(this.lblValorFinal, 0);
             this.Controls.SetChildIndex(this.txtSituacao, 0);
-            this.Controls.SetChildIndex(this.textBox1, 0);
-            this.Controls.SetChildIndex(this.textBox2, 0);
+            this.Controls.SetChildIndex(this.txtValorParcela, 0);
+            this.Controls.SetChildIndex(this.txtValorPago, 0);
             this.Controls.SetChildIndex(this.lblFornecedor, 0);
             this.Controls.SetChildIndex(this.lblDataEmissao, 0);
             this.Controls.SetChildIndex(this.lblDataVencimento, 0);
@@ -520,7 +522,7 @@
         private System.Windows.Forms.TextBox txtNumParcela;
         private System.Windows.Forms.Button btnPesquisarFornecedor;
         private System.Windows.Forms.Label lblValorParcela;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtValorParcela;
         private System.Windows.Forms.Label lblDataPagamento;
         private System.Windows.Forms.DateTimePicker dtpDataPagamento;
         private System.Windows.Forms.Label lblFormaPagamento;
@@ -537,7 +539,7 @@
         private System.Windows.Forms.CheckBox checkBoxJuros;
         private System.Windows.Forms.CheckBox checkBoxDesconto;
         private System.Windows.Forms.Label lblValorFinal;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtValorPago;
         private System.Windows.Forms.Button btnPesquisarFormaPagamento;
         private System.Windows.Forms.TextBox txtCodFormaPagamento;
         private System.Windows.Forms.TextBox txtFormaPagamento;

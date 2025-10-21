@@ -38,7 +38,7 @@
             this.clmDataVencimento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblFiltros = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxFiltroStatus = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // listV
@@ -118,23 +118,24 @@
             this.lblFiltros.TabIndex = 10;
             this.lblFiltros.Text = "Filtros de Parcelas";
             // 
-            // comboBox1
+            // comboBoxFiltroStatus
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxFiltroStatus.FormattingEnabled = true;
+            this.comboBoxFiltroStatus.Items.AddRange(new object[] {
             "Em Aberto",
             "Paga",
             "Vencida",
             "Cancelada",
             "Todas"});
-            this.comboBox1.Location = new System.Drawing.Point(1057, 46);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(252, 21);
-            this.comboBox1.TabIndex = 11;
+            this.comboBoxFiltroStatus.Location = new System.Drawing.Point(1057, 46);
+            this.comboBoxFiltroStatus.Name = "comboBoxFiltroStatus";
+            this.comboBoxFiltroStatus.Size = new System.Drawing.Size(252, 21);
+            this.comboBoxFiltroStatus.TabIndex = 11;
+            this.comboBoxFiltroStatus.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiltroStatus_SelectedIndexChanged);
             // 
             // frmConsultaContasAPagar
             // 
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxFiltroStatus);
             this.Controls.Add(this.lblFiltros);
             this.Name = "frmConsultaContasAPagar";
             this.Text = "Consulta de Contas a Pagar";
@@ -147,7 +148,7 @@
             this.Controls.SetChildIndex(this.bntLimparPesquisa, 0);
             this.Controls.SetChildIndex(this.listV, 0);
             this.Controls.SetChildIndex(this.lblFiltros, 0);
-            this.Controls.SetChildIndex(this.comboBox1, 0);
+            this.Controls.SetChildIndex(this.comboBoxFiltroStatus, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,6 +166,6 @@
         private System.Windows.Forms.ColumnHeader clmDataVencimento;
         private System.Windows.Forms.ColumnHeader clmAtivo;
         private System.Windows.Forms.Label lblFiltros;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxFiltroStatus;
     }
 }

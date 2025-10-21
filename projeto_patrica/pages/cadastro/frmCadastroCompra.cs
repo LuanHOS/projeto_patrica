@@ -534,7 +534,7 @@ namespace projeto_patrica.pages.cadastro
                     ModeloCompra = Convert.ToInt32(txtCodigo.Text),
                     SerieCompra = txtSerie.Text,
                     NumeroNotaCompra = txtNumDaNota.Text,
-                    IdFornecedor = oCompra.OFornecedor.Id,
+                    OFornecedor = oCompra.OFornecedor,
                     NumeroParcela = parcelaCondicao.NumeroParcela,
                     DataEmissao = dtpDataEmissao.Value,
                     DataVencimento = dtpDataEmissao.Value.AddDays(parcelaCondicao.DiasAposVenda),

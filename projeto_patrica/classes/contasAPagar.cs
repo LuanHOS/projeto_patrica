@@ -7,7 +7,7 @@ namespace projeto_patrica.classes
         protected int modeloCompra;
         protected string serieCompra;
         protected string numeroNotaCompra;
-        protected int idFornecedor;
+        protected fornecedor oFornecedor;
         protected int numeroParcela;
         protected DateTime dataEmissao;
         protected DateTime dataVencimento;
@@ -27,7 +27,7 @@ namespace projeto_patrica.classes
             modeloCompra = 0;
             serieCompra = " ";
             numeroNotaCompra = " ";
-            idFornecedor = 0;
+            oFornecedor = new fornecedor();
             numeroParcela = 0;
             dataEmissao = DateTime.MinValue;
             dataVencimento = DateTime.MinValue;
@@ -42,14 +42,14 @@ namespace projeto_patrica.classes
             dataPagamento = null;
         }
 
-        public contasAPagar(int modeloCompra, string serieCompra, string numeroNotaCompra, int idFornecedor, int numeroParcela,
+        public contasAPagar(int modeloCompra, string serieCompra, string numeroNotaCompra, fornecedor oFornecedor, int numeroParcela,
                             DateTime dataEmissao, DateTime dataVencimento, decimal valorParcela, formaPagamento aFormaPagamento, bool ativo,
                             int situacao, decimal juros, decimal multa, decimal desconto, decimal? valorPago, DateTime? dataPagamento)
         {
             this.modeloCompra = modeloCompra;
             this.serieCompra = serieCompra;
             this.numeroNotaCompra = numeroNotaCompra;
-            this.idFornecedor = idFornecedor;
+            this.oFornecedor = oFornecedor;
             this.numeroParcela = numeroParcela;
             this.dataEmissao = dataEmissao;
             this.dataVencimento = dataVencimento;
@@ -82,10 +82,10 @@ namespace projeto_patrica.classes
             set => numeroNotaCompra = value;
         }
 
-        public int IdFornecedor
+        public fornecedor OFornecedor
         {
-            get => idFornecedor;
-            set => idFornecedor = value;
+            get => oFornecedor;
+            set => oFornecedor = value;
         }
 
         public int NumeroParcela
