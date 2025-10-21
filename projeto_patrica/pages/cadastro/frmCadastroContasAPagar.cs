@@ -174,7 +174,6 @@ namespace projeto_patrica.pages.cadastro
             txtValorParcela.Text = "0,00";
             txtFormaPagamento.Clear();
             txtCodFormaPagamento.Clear();
-            txtSituacao.Text = "0"; // 0 = Em Aberto
             txtJuros.Text = "0,00";
             txtMulta.Text = "0,00";
             txtDesconto.Text = "0,00";
@@ -243,7 +242,6 @@ namespace projeto_patrica.pages.cadastro
             txtJuros.Text = oContaAPagar.Juros.ToString("F2");
             txtMulta.Text = oContaAPagar.Multa.ToString("F2");
             txtDesconto.Text = oContaAPagar.Desconto.ToString("F2");
-            txtSituacao.Text = oContaAPagar.Situacao.ToString(); // 0 ou 1
 
             txtValorPago.Text = oContaAPagar.ValorPago.HasValue ? oContaAPagar.ValorPago.Value.ToString("F2") : "0,00";
             dtpDataPagamento.Value = oContaAPagar.DataPagamento.HasValue ? oContaAPagar.DataPagamento.Value : DateTime.Today;
@@ -270,7 +268,6 @@ namespace projeto_patrica.pages.cadastro
             txtCodFormaPagamento.Enabled = false;
             txtFormaPagamento.Enabled = false;
             btnPesquisarFormaPagamento.Enabled = false;
-            txtSituacao.Enabled = false;
             txtJuros.Enabled = false;
             txtMulta.Enabled = false;
             txtDesconto.Enabled = false;
@@ -295,7 +292,6 @@ namespace projeto_patrica.pages.cadastro
             dtpDataVencimento.Enabled = true;
             txtValorParcela.Enabled = true;
             btnPesquisarFormaPagamento.Enabled = true;
-            txtSituacao.Enabled = false; 
             txtJuros.Enabled = true;
             txtMulta.Enabled = true;
             txtDesconto.Enabled = true;
@@ -395,7 +391,6 @@ namespace projeto_patrica.pages.cadastro
         {
             if (dtpDataPagamento.Checked)
             {
-                txtSituacao.Text = "1"; // Pago
                 if (string.IsNullOrWhiteSpace(txtValorPago.Text) || txtValorPago.Text == "0,00")
                 {
                     txtValorPago.Text = txtValorParcela.Text;
@@ -403,7 +398,6 @@ namespace projeto_patrica.pages.cadastro
             }
             else
             {
-                txtSituacao.Text = "0"; // Em Aberto
                 txtValorPago.Text = "0,00";
             }
         }
