@@ -39,7 +39,15 @@
             this.clmAtivo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblFiltros = new System.Windows.Forms.Label();
             this.comboBoxFiltroStatus = new System.Windows.Forms.ComboBox();
+            this.btnDarBaixa = new System.Windows.Forms.Button();
+            this.clmFormaPagamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(1127, 617);
+            this.btnExcluir.Size = new System.Drawing.Size(96, 34);
+            this.btnExcluir.Text = "Cancelar Conta";
             // 
             // listV
             // 
@@ -50,6 +58,7 @@
             this.clmIdFornecedor,
             this.clmFornecedor,
             this.clmValorParcela,
+            this.clmFormaPagamento,
             this.clmDataEmissao,
             this.clmDataVencimento,
             this.clmAtivo});
@@ -58,6 +67,15 @@
             // 
             this.clmCod.Text = "Num. Parcela";
             this.clmCod.Width = 120;
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Location = new System.Drawing.Point(1041, 617);
+            this.btnAlterar.Text = "Visualizar";
+            // 
+            // btnIncluir
+            // 
+            this.btnIncluir.Location = new System.Drawing.Point(869, 617);
             // 
             // clmModelo
             // 
@@ -106,7 +124,7 @@
             // 
             // clmAtivo
             // 
-            this.clmAtivo.Text = "Ativo";
+            this.clmAtivo.Text = "Status";
             this.clmAtivo.Width = 80;
             // 
             // lblFiltros
@@ -133,8 +151,23 @@
             this.comboBoxFiltroStatus.TabIndex = 11;
             this.comboBoxFiltroStatus.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiltroStatus_SelectedIndexChanged);
             // 
+            // btnDarBaixa
+            // 
+            this.btnDarBaixa.Location = new System.Drawing.Point(955, 617);
+            this.btnDarBaixa.Name = "btnDarBaixa";
+            this.btnDarBaixa.Size = new System.Drawing.Size(80, 34);
+            this.btnDarBaixa.TabIndex = 12;
+            this.btnDarBaixa.Text = "Dar Baixa";
+            this.btnDarBaixa.UseVisualStyleBackColor = true;
+            // 
+            // clmFormaPagamento
+            // 
+            this.clmFormaPagamento.Text = "Forma de Pagamento";
+            this.clmFormaPagamento.Width = 150;
+            // 
             // frmConsultaContasAPagar
             // 
+            this.Controls.Add(this.btnDarBaixa);
             this.Controls.Add(this.comboBoxFiltroStatus);
             this.Controls.Add(this.lblFiltros);
             this.Name = "frmConsultaContasAPagar";
@@ -149,6 +182,7 @@
             this.Controls.SetChildIndex(this.listV, 0);
             this.Controls.SetChildIndex(this.lblFiltros, 0);
             this.Controls.SetChildIndex(this.comboBoxFiltroStatus, 0);
+            this.Controls.SetChildIndex(this.btnDarBaixa, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +201,7 @@
         private System.Windows.Forms.ColumnHeader clmAtivo;
         private System.Windows.Forms.Label lblFiltros;
         private System.Windows.Forms.ComboBox comboBoxFiltroStatus;
+        private System.Windows.Forms.Button btnDarBaixa;
+        private System.Windows.Forms.ColumnHeader clmFormaPagamento;
     }
 }

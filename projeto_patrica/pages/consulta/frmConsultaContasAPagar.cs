@@ -146,7 +146,8 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(conta.NumeroNotaCompra);                 
                 item.SubItems.Add(conta.OFornecedor.Id.ToString());          
                 item.SubItems.Add(conta.OFornecedor.Nome_razaoSocial);
-                item.SubItems.Add(conta.ValorParcela.ToString("C2"));      
+                item.SubItems.Add(conta.ValorParcela.ToString("C2"));   
+                item.SubItems.Add(conta.AFormaPagamento.Descricao);
                 item.SubItems.Add(conta.DataEmissao.ToShortDateString());  
                 item.SubItems.Add(conta.DataVencimento.ToShortDateString());
                 item.SubItems.Add(conta.Ativo ? "" : "CANCELADO"); 

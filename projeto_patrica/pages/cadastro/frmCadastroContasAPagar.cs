@@ -181,9 +181,6 @@ namespace projeto_patrica.pages.cadastro
             txtValorPago.Text = "0,00"; 
             dtpDataPagamento.Value = DateTime.Today;
             dtpDataPagamento.Checked = false;
-            checkBoxJuros.Checked = false;
-            checkBoxMulta.Checked = false;
-            checkBoxDesconto.Checked = false;
 
             oContaAPagar = new contasAPagar();
         }
@@ -252,10 +249,6 @@ namespace projeto_patrica.pages.cadastro
             dtpDataPagamento.Value = oContaAPagar.DataPagamento.HasValue ? oContaAPagar.DataPagamento.Value : DateTime.Today;
             dtpDataPagamento.Checked = oContaAPagar.DataPagamento.HasValue;
 
-            checkBoxJuros.Checked = false; 
-            checkBoxMulta.Checked = false;
-            checkBoxDesconto.Checked = false;
-
             checkBoxAtivo.Checked = oContaAPagar.Ativo;
             lblDataCadastroData.Text = "-";
             lblDataUltimaEdicaoData.Text = "-";
@@ -283,9 +276,6 @@ namespace projeto_patrica.pages.cadastro
             txtDesconto.Enabled = false;
             txtValorPago.Enabled = false;
             dtpDataPagamento.Enabled = false;
-            checkBoxJuros.Enabled = false;
-            checkBoxMulta.Enabled = false;
-            checkBoxDesconto.Enabled = false;
         }
 
         public override void Desbloqueiatxt()
@@ -311,9 +301,6 @@ namespace projeto_patrica.pages.cadastro
             txtDesconto.Enabled = true;
             txtValorPago.Enabled = true;
             dtpDataPagamento.Enabled = true;
-            checkBoxJuros.Enabled = true;
-            checkBoxMulta.Enabled = true;
-            checkBoxDesconto.Enabled = true;
         }
 
         public override bool ValidacaoCampos()

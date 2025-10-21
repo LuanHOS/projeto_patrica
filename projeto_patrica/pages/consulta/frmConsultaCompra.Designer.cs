@@ -71,7 +71,7 @@
             // btnAlterar
             // 
             this.btnAlterar.Location = new System.Drawing.Point(1044, 617);
-            this.btnAlterar.Text = "Vizualizar";
+            this.btnAlterar.Text = "Visualizar";
             // 
             // btnIncluir
             // 
@@ -107,7 +107,7 @@
             // 
             // clmAtivo
             // 
-            this.clmAtivo.Text = "Ativo";
+            this.clmAtivo.Text = "Status";
             this.clmAtivo.Width = 80;
             // 
             // clmDataEntrega

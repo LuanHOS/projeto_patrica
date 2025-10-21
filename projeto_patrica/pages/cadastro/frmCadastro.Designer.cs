@@ -85,7 +85,7 @@
             this.lblDataUltimaEdicao.Name = "lblDataUltimaEdicao";
             this.lblDataUltimaEdicao.Size = new System.Drawing.Size(116, 13);
             this.lblDataUltimaEdicao.TabIndex = 3;
-            this.lblDataUltimaEdicao.Text = "Data do Cancelamento:";
+            this.lblDataUltimaEdicao.Text = "Data da Última Edição:";
             // 
             // lblUltimoUsuarioQueEditou
             // 
@@ -138,8 +138,6 @@
             // 
             // frmCadastro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1344, 689);
             this.Controls.Add(this.checkBoxAtivo);
             this.Controls.Add(this.lblUltimoUsuarioQueEditouNome);
             this.Controls.Add(this.lblUltimoUsuarioQueEditou);

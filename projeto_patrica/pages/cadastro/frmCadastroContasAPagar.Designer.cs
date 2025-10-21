@@ -55,21 +55,23 @@
             this.txtJuros = new System.Windows.Forms.TextBox();
             this.lblSituacao = new System.Windows.Forms.Label();
             this.txtSituacao = new System.Windows.Forms.TextBox();
-            this.checkBoxMulta = new System.Windows.Forms.CheckBox();
-            this.lblDesconsiderar = new System.Windows.Forms.Label();
-            this.checkBoxJuros = new System.Windows.Forms.CheckBox();
-            this.checkBoxDesconto = new System.Windows.Forms.CheckBox();
             this.lblValorFinal = new System.Windows.Forms.Label();
             this.txtValorPago = new System.Windows.Forms.TextBox();
             this.btnPesquisarFormaPagamento = new System.Windows.Forms.Button();
             this.txtCodFormaPagamento = new System.Windows.Forms.TextBox();
             this.txtFormaPagamento = new System.Windows.Forms.TextBox();
+            this.lblMotivCancelamentoExplicacao = new System.Windows.Forms.Label();
+            this.lblMotivoCancelamentoTitulo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblCod
             // 
             this.lblCod.Size = new System.Drawing.Size(42, 13);
             this.lblCod.Text = "Modelo";
+            // 
+            // checkBoxAtivo
+            // 
+            this.checkBoxAtivo.Location = new System.Drawing.Point(1243, 22);
             // 
             // txtCodigo
             // 
@@ -328,45 +330,6 @@
             this.txtSituacao.Size = new System.Drawing.Size(156, 20);
             this.txtSituacao.TabIndex = 105;
             // 
-            // checkBoxMulta
-            // 
-            this.checkBoxMulta.AutoSize = true;
-            this.checkBoxMulta.Location = new System.Drawing.Point(24, 263);
-            this.checkBoxMulta.Name = "checkBoxMulta";
-            this.checkBoxMulta.Size = new System.Drawing.Size(52, 17);
-            this.checkBoxMulta.TabIndex = 160;
-            this.checkBoxMulta.Text = "Multa";
-            this.checkBoxMulta.UseVisualStyleBackColor = true;
-            // 
-            // lblDesconsiderar
-            // 
-            this.lblDesconsiderar.AutoSize = true;
-            this.lblDesconsiderar.Location = new System.Drawing.Point(21, 243);
-            this.lblDesconsiderar.Name = "lblDesconsiderar";
-            this.lblDesconsiderar.Size = new System.Drawing.Size(78, 13);
-            this.lblDesconsiderar.TabIndex = 151;
-            this.lblDesconsiderar.Text = "Desconsiderar:";
-            // 
-            // checkBoxJuros
-            // 
-            this.checkBoxJuros.AutoSize = true;
-            this.checkBoxJuros.Location = new System.Drawing.Point(88, 263);
-            this.checkBoxJuros.Name = "checkBoxJuros";
-            this.checkBoxJuros.Size = new System.Drawing.Size(51, 17);
-            this.checkBoxJuros.TabIndex = 160;
-            this.checkBoxJuros.Text = "Juros";
-            this.checkBoxJuros.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxDesconto
-            // 
-            this.checkBoxDesconto.AutoSize = true;
-            this.checkBoxDesconto.Location = new System.Drawing.Point(151, 263);
-            this.checkBoxDesconto.Name = "checkBoxDesconto";
-            this.checkBoxDesconto.Size = new System.Drawing.Size(72, 17);
-            this.checkBoxDesconto.TabIndex = 160;
-            this.checkBoxDesconto.Text = "Desconto";
-            this.checkBoxDesconto.UseVisualStyleBackColor = true;
-            // 
             // lblValorFinal
             // 
             this.lblValorFinal.AutoSize = true;
@@ -413,21 +376,39 @@
             this.txtFormaPagamento.Size = new System.Drawing.Size(214, 20);
             this.txtFormaPagamento.TabIndex = 162;
             // 
+            // lblMotivCancelamentoExplicacao
+            // 
+            this.lblMotivCancelamentoExplicacao.AutoSize = true;
+            this.lblMotivCancelamentoExplicacao.Location = new System.Drawing.Point(388, 609);
+            this.lblMotivCancelamentoExplicacao.Name = "lblMotivCancelamentoExplicacao";
+            this.lblMotivCancelamentoExplicacao.Size = new System.Drawing.Size(109, 13);
+            this.lblMotivCancelamentoExplicacao.TabIndex = 164;
+            this.lblMotivCancelamentoExplicacao.Text = "Explicação do Motivo";
+            this.lblMotivCancelamentoExplicacao.Visible = false;
+            // 
+            // lblMotivoCancelamentoTitulo
+            // 
+            this.lblMotivoCancelamentoTitulo.AutoSize = true;
+            this.lblMotivoCancelamentoTitulo.Location = new System.Drawing.Point(387, 590);
+            this.lblMotivoCancelamentoTitulo.Name = "lblMotivoCancelamentoTitulo";
+            this.lblMotivoCancelamentoTitulo.Size = new System.Drawing.Size(125, 13);
+            this.lblMotivoCancelamentoTitulo.TabIndex = 165;
+            this.lblMotivoCancelamentoTitulo.Text = "Motivo de Cancelamento";
+            this.lblMotivoCancelamentoTitulo.Visible = false;
+            // 
             // frmCadastroContasAPagar
             // 
+            this.Controls.Add(this.lblMotivCancelamentoExplicacao);
+            this.Controls.Add(this.lblMotivoCancelamentoTitulo);
             this.Controls.Add(this.btnPesquisarFormaPagamento);
             this.Controls.Add(this.txtCodFormaPagamento);
             this.Controls.Add(this.txtFormaPagamento);
-            this.Controls.Add(this.checkBoxDesconto);
-            this.Controls.Add(this.checkBoxJuros);
-            this.Controls.Add(this.checkBoxMulta);
             this.Controls.Add(this.lblDesconto);
             this.Controls.Add(this.lblMulta);
             this.Controls.Add(this.lblJuros);
             this.Controls.Add(this.txtDesconto);
             this.Controls.Add(this.txtMulta);
             this.Controls.Add(this.txtJuros);
-            this.Controls.Add(this.lblDesconsiderar);
             this.Controls.Add(this.lblFormaPagamento);
             this.Controls.Add(this.btnPesquisarFornecedor);
             this.Controls.Add(this.dtpDataPagamento);
@@ -487,19 +468,17 @@
             this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditouNome, 0);
             this.Controls.SetChildIndex(this.checkBoxAtivo, 0);
             this.Controls.SetChildIndex(this.lblFormaPagamento, 0);
-            this.Controls.SetChildIndex(this.lblDesconsiderar, 0);
             this.Controls.SetChildIndex(this.txtJuros, 0);
             this.Controls.SetChildIndex(this.txtMulta, 0);
             this.Controls.SetChildIndex(this.txtDesconto, 0);
             this.Controls.SetChildIndex(this.lblJuros, 0);
             this.Controls.SetChildIndex(this.lblMulta, 0);
             this.Controls.SetChildIndex(this.lblDesconto, 0);
-            this.Controls.SetChildIndex(this.checkBoxMulta, 0);
-            this.Controls.SetChildIndex(this.checkBoxJuros, 0);
-            this.Controls.SetChildIndex(this.checkBoxDesconto, 0);
             this.Controls.SetChildIndex(this.txtFormaPagamento, 0);
             this.Controls.SetChildIndex(this.txtCodFormaPagamento, 0);
             this.Controls.SetChildIndex(this.btnPesquisarFormaPagamento, 0);
+            this.Controls.SetChildIndex(this.lblMotivoCancelamentoTitulo, 0);
+            this.Controls.SetChildIndex(this.lblMotivCancelamentoExplicacao, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -534,14 +513,12 @@
         private System.Windows.Forms.TextBox txtJuros;
         private System.Windows.Forms.Label lblSituacao;
         private System.Windows.Forms.TextBox txtSituacao;
-        private System.Windows.Forms.CheckBox checkBoxMulta;
-        private System.Windows.Forms.Label lblDesconsiderar;
-        private System.Windows.Forms.CheckBox checkBoxJuros;
-        private System.Windows.Forms.CheckBox checkBoxDesconto;
         private System.Windows.Forms.Label lblValorFinal;
         private System.Windows.Forms.TextBox txtValorPago;
         private System.Windows.Forms.Button btnPesquisarFormaPagamento;
         private System.Windows.Forms.TextBox txtCodFormaPagamento;
         private System.Windows.Forms.TextBox txtFormaPagamento;
+        private System.Windows.Forms.Label lblMotivCancelamentoExplicacao;
+        private System.Windows.Forms.Label lblMotivoCancelamentoTitulo;
     }
 }
