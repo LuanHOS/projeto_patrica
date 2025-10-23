@@ -320,6 +320,8 @@ namespace projeto_patrica.pages.cadastro
                 txtCodFornecedor.Enabled = false;
                 txtFornecedor.Enabled = false;
                 btnSave.Visible = true;
+                txtCodFormaPagamento.Enabled = true;
+                txtFormaPagamento.Enabled = true;
 
                 // Habilita campos da baixa
                 txtJuros.Enabled = true;
@@ -327,6 +329,7 @@ namespace projeto_patrica.pages.cadastro
                 txtDesconto.Enabled = true;
                 btnPesquisarFormaPagamento.Enabled = true;
                 dtpDataPagamento.Enabled = true;
+                txtValorPago.Enabled = true;
 
                 // Campos de baixa ficam visíveis
                 dtpDataPagamento.Visible = true;
