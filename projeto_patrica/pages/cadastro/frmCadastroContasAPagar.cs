@@ -274,24 +274,21 @@ namespace projeto_patrica.pages.cadastro
 
             if (btnSave.Text == "Visualizar")
             {
-                btnSave.Visible = false; // Botão Salvar fica invisível
+                btnSave.Visible = false;
 
-                // Mostra campos de pagamento se estiver paga
                 bool pago = oContaAPagar.Situacao == 1;
                 dtpDataPagamento.Visible = pago;
                 txtValorPago.Visible = pago;
                 lblDataPagamento.Visible = pago;
                 lblValorFinal.Visible = pago;
 
-                // Mostra campos de cancelamento se estiver cancelada
                 bool cancelado = !oContaAPagar.Ativo;
                 lblMotivoCancelamentoTitulo.Visible = cancelado;
                 lblMotivCancelamentoExplicacao.Visible = cancelado;
             }
             else if (btnSave.Text == "Cancelar Conta")
             {
-                btnSave.Visible = true; // Botão "Cancelar Conta" visível
-                // Esconde campos de pagamento
+                btnSave.Visible = true; 
                 dtpDataPagamento.Visible = false;
                 txtValorPago.Visible = false;
                 lblDataPagamento.Visible = false;
@@ -304,7 +301,7 @@ namespace projeto_patrica.pages.cadastro
             base.Desbloqueiatxt();
 
 
-            if (btnSave.Text == "Salvar") // Modo Inclusão
+            if (btnSave.Text == "Salvar") 
             {
                 txtCodigo.Enabled = true;
                 txtSerie.Enabled = true;
@@ -325,7 +322,6 @@ namespace projeto_patrica.pages.cadastro
                 btnSave.Visible = true;
                 checkBoxAtivo.Enabled = false;
 
-                // Campos de baixa/visualização ficam ocultos
                 dtpDataPagamento.Visible = false;
                 txtValorPago.Visible = false;
                 lblDataPagamento.Visible = false;
@@ -335,7 +331,6 @@ namespace projeto_patrica.pages.cadastro
             }
             else if (btnSave.Text == "Dar Baixa")
             {
-                // Bloqueia a chave primária e dados da nota
                 txtCodigo.Enabled = false;
                 txtSerie.Enabled = false;
                 txtNumDaNota.Enabled = false;
@@ -351,7 +346,6 @@ namespace projeto_patrica.pages.cadastro
                 txtCodFormaPagamento.Enabled = true;
                 txtFormaPagamento.Enabled = true;
 
-                // Habilita campos da baixa
                 txtJuros.Enabled = true;
                 txtMulta.Enabled = true;
                 txtDesconto.Enabled = true;
@@ -359,13 +353,11 @@ namespace projeto_patrica.pages.cadastro
                 dtpDataPagamento.Enabled = true;
                 txtValorPago.Enabled = true;
 
-                // Campos de baixa ficam visíveis
                 dtpDataPagamento.Visible = true;
                 txtValorPago.Visible = true;
                 lblDataPagamento.Visible = true;
                 lblValorFinal.Visible = true;
 
-                // Restrições de data para pagamento
                 dtpDataPagamento.MinDate = dtpDataEmissao.Value.Date;
                 dtpDataPagamento.MaxDate = DateTime.Today;
 
@@ -508,7 +500,6 @@ namespace projeto_patrica.pages.cadastro
             txtValorPago.Text = total.ToString("F2");
         }
 
-        // Pop-up de confirmação para "Dar Baixa"
         private bool ConfirmarBaixa()
         {
             string dataPagto = dtpDataPagamento.Value.ToShortDateString();
@@ -522,7 +513,6 @@ namespace projeto_patrica.pages.cadastro
             return resp == DialogResult.Yes;
         }
 
-        // Pop-up para solicitar motivo do cancelamento
         private string SolicitarMotivoCancelamento()
         {
             using (Form prompt = new Form())

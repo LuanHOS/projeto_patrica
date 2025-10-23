@@ -36,11 +36,9 @@ namespace projeto_patrica.controller
 
             if (retorno == "")
             {
-                // Carrega os dados completos do fornecedor e da condição de pagamento
                 aController_fornecedor.CarregaObj(aCompra.OFornecedor);
                 aController_condicaoPagamento.CarregaObj(aCompra.ACondicaoPagamento);
 
-                // Carrega os dados completos de cada produto nos itens da compra
                 foreach (itemCompra item in aCompra.Itens)
                 {
                     aController_produto.CarregaObj(item.OProduto);
@@ -54,7 +52,6 @@ namespace projeto_patrica.controller
         {
             List<compra> lista = aDao_compra.ListarCompras();
 
-            // Para cada compra na lista, carrega os dados completos do fornecedor
             foreach (compra aCompra in lista)
             {
                 aController_fornecedor.CarregaObj(aCompra.OFornecedor);

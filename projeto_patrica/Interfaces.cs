@@ -116,8 +116,8 @@ namespace projeto_patrica
             oFrmCadCompra.setConsultaFornecedor(oFrmConFornecedor);
             oFrmCadCompra.setConsultaProduto(oFrmConProduto);
             oFrmCadCompra.setConsultaCondicaoPagamento(oFrmConCondPag);
-            oFrmCadContasAPagar.setConsultaFornecedor(oFrmConFornecedor); // Adicionado
-            oFrmCadContasAPagar.setConsultaFormaPagamento(oFrmConFormPag); // Adicionado
+            oFrmCadContasAPagar.setConsultaFornecedor(oFrmConFornecedor);
+            oFrmCadContasAPagar.setConsultaFormaPagamento(oFrmConFormPag); 
         }
 
         /*

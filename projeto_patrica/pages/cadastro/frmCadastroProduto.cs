@@ -97,13 +97,10 @@ namespace projeto_patrica.pages.cadastro
                 }
                 else
                 {
-                    // 1. Salva o produto principal (INSERT ou UPDATE). O ID do produto é atualizado no objeto oProduto.
                     aController_produto.Salvar(oProduto);
 
-                    // 2. Gerencia os fornecedores associados
                     var fornecedoresAtuaisNoBanco = aController_prod_forn.ListarPorProduto(oProduto.Id);
 
-                    // Remove do banco os fornecedores que não estão mais na lista da tela
                     foreach (var relacaoBanco in fornecedoresAtuaisNoBanco)
                     {
                         if (!listaProdutoFornecedor.Any(itemTela => itemTela.IdFornecedor == relacaoBanco.IdFornecedor))
@@ -112,10 +109,9 @@ namespace projeto_patrica.pages.cadastro
                         }
                     }
 
-                    // Adiciona/Atualiza os fornecedores que estão na lista da tela
                     foreach (var relacaoTela in listaProdutoFornecedor)
                     {
-                        relacaoTela.IdProduto = oProduto.Id; // Garante que o ID do produto está correto
+                        relacaoTela.IdProduto = oProduto.Id; 
                         aController_prod_forn.Salvar(relacaoTela);
                     }
 

@@ -19,7 +19,6 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
-            // Recalcula o percentual de lucro antes de salvar
             if (oProduto.ValorCompra > 0)
             {
                 oProduto.PercentualLucro = ((oProduto.ValorVenda / oProduto.ValorCompra) - 1) * 100;

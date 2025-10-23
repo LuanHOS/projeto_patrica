@@ -14,11 +14,11 @@ namespace projeto_patrica.classes
         protected marca oMarca;
         protected categoria oCategoria;
         protected unidade_medida oUnidadeMedida;
-        protected decimal valorCompra; // Representará o Custo Médio
+        protected decimal valorCompra;
         protected decimal valorVenda;
         protected decimal percentualLucro; 
         protected int estoque;
-        protected decimal valorCompraAnterior; // Representará o Custo Médio Anterior
+        protected decimal valorCompraAnterior;
 
         public produto()
         {

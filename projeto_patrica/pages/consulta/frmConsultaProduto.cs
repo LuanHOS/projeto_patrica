@@ -27,7 +27,7 @@ namespace projeto_patrica.pages.consulta
             {
                 txtCodigo.Text = TermoDePesquisa;
                 Pesquisar();
-                TermoDePesquisa = null; // Limpa o termo para não pesquisar novamente
+                TermoDePesquisa = null;
             }
         }
 

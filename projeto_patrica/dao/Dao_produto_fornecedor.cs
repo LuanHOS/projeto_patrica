@@ -26,7 +26,6 @@ namespace projeto_patrica.dao
 
             if (count > 0)
             {
-                // UPDATE
                 sql = "UPDATE PRODUTO_FORNECEDOR SET " +
                       "VALOR_ULTIMA_COMPRA = '" + oProdForn.ValorUltimaCompra.ToString().Replace(",", ".") + "', " +
                       "DATA_ULTIMA_COMPRA = '" + oProdForn.DataUltimaCompra.ToString("yyyy-MM-dd") + "', " +
@@ -36,7 +35,6 @@ namespace projeto_patrica.dao
             }
             else
             {
-                // INSERT
                 sql = "INSERT INTO PRODUTO_FORNECEDOR (ID_PRODUTO, ID_FORNECEDOR, VALOR_ULTIMA_COMPRA, DATA_ULTIMA_COMPRA, VALOR_ATUAL_COMPRA, VALOR_UNITARIO) VALUES (" + // Adicionado VALOR_UNITARIO
                       "'" + oProdForn.IdProduto + "', " +
                       "'" + oProdForn.IdFornecedor + "', " +
