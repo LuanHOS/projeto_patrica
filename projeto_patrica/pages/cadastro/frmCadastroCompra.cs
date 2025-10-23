@@ -271,7 +271,6 @@ namespace projeto_patrica.pages.cadastro
                 txtCondicaoDePagamento.Text = oCompra.ACondicaoPagamento.Descricao;
                 checkBoxAtivo.Checked = oCompra.Ativo;
 
-                // Atualiza o texto do CheckBox
                 checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
 
                 lblDataCadastroData.Text = oCompra.DataCadastro.ToShortDateString();
@@ -342,7 +341,7 @@ namespace projeto_patrica.pages.cadastro
                 HabilitarSecaoProdutos(true && !compraExistente);
                 HabilitarSecaoRodape(true);
             }
-            else // temItens && temParcelas
+            else
             {
                 HabilitarSecaoCabecalho(false);
                 HabilitarSecaoProdutos(false);
@@ -635,12 +634,12 @@ namespace projeto_patrica.pages.cadastro
             listVProdutos.Items.Clear();
             foreach (var item in listaItens)
             {
-                ListViewItem lvi = new ListViewItem(item.OProduto.Id.ToString()); // 0 clmCodProduto
-                lvi.SubItems.Add(item.OProduto.Nome); // 1 clmProduto
-                lvi.SubItems.Add(item.OProduto.OUnidadeMedida.Sigla); // 2 clmUnMedida
-                lvi.SubItems.Add(item.Quantidade.ToString()); // 3 clmQtd
-                lvi.SubItems.Add(item.ValorUnitario.ToString("C2")); // 4 clmValorUnitario
-                lvi.SubItems.Add(item.ValorTotal.ToString("C2")); // 5 clmTotal
+                ListViewItem lvi = new ListViewItem(item.OProduto.Id.ToString()); 
+                lvi.SubItems.Add(item.OProduto.Nome); 
+                lvi.SubItems.Add(item.OProduto.OUnidadeMedida.Sigla);
+                lvi.SubItems.Add(item.Quantidade.ToString()); 
+                lvi.SubItems.Add(item.ValorUnitario.ToString("C2")); 
+                lvi.SubItems.Add(item.ValorTotal.ToString("C2")); 
                 listVProdutos.Items.Add(lvi);
             }
             AtualizarTotais();
@@ -726,10 +725,9 @@ namespace projeto_patrica.pages.cadastro
 
         private void dtpDataEmissao_ValueChanged(object sender, EventArgs e)
         {
-            dtpDataEntrega.MinDate = dtpDataEmissao.Value; // Define a data mínima da entrega como a data de emissão
-            dtpDataEntrega.MaxDate = DateTime.Today; // Define a data máxima da entrega como hoje
+            dtpDataEntrega.MinDate = dtpDataEmissao.Value; 
+            dtpDataEntrega.MaxDate = DateTime.Today; 
 
-            // Se a data de entrega atual for menor que a nova data mínima (emissão), ajusta a data de entrega
             if (dtpDataEntrega.Value < dtpDataEntrega.MinDate)
             {
                 dtpDataEntrega.Value = dtpDataEntrega.MinDate;

@@ -209,14 +209,16 @@ namespace projeto_patrica.pages.cadastro
             txtMulta.Text = oContaAPagar.Multa.ToString("F2");
             txtDesconto.Text = oContaAPagar.Desconto.ToString("F2");
             txtValorPago.Text = oContaAPagar.ValorPago.HasValue ? oContaAPagar.ValorPago.Value.ToString("F2") : "0,00";
-
             checkBoxAtivo.Checked = oContaAPagar.Ativo;
+
+            checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
             lblDataCadastroData.Text = oContaAPagar.DataCadastro.ToShortDateString();
             lblDataUltimaEdicaoData.Text = oContaAPagar.DataUltimaEdicao?.ToString("dd/MM/yyyy HH:mm") ?? " ";
 
             lblMotivoCancelamentoTitulo.Visible = !oContaAPagar.Ativo;
             lblMotivCancelamentoExplicacao.Visible = !oContaAPagar.Ativo;
             lblMotivCancelamentoExplicacao.Text = oContaAPagar.MotivoCancelamento ?? "";
+
         }
 
         public override void Bloqueiatxt()
