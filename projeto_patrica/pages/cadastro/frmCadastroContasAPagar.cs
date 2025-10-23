@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using projeto_patrica.classes;
 using projeto_patrica.controller;
+using projeto_patrica.dao;
 using projeto_patrica.pages.consulta;
 using System;
 using System.Windows.Forms;
@@ -13,12 +14,14 @@ namespace projeto_patrica.pages.cadastro
         private Controller_contasAPagar aController_contasAPagar;
         private frmConsultaFornecedor oFrmConsultaFornecedor;
         private frmConsultaFormaPagamento oFrmConsultaFormaPagamento;
+        private Dao_contasAPagar aDao_contasAPagar;
 
         public frmCadastroContasAPagar()
         {
             InitializeComponent();
-            dtpDataEmissao.MaxDate = DateTime.Today; 
+            dtpDataEmissao.MaxDate = DateTime.Today;
             dtpDataVencimento.MinDate = dtpDataEmissao.Value.Date;
+            aDao_contasAPagar = new Dao_contasAPagar();
         }
 
         public override void ConhecaObj(object obj, object ctrl)
@@ -61,6 +64,27 @@ namespace projeto_patrica.pages.cadastro
                 oContaAPagar.OFornecedor = new fornecedor { Id = Convert.ToInt32(txtCodFornecedor.Text) };
             }
 
+            if (btnSave.Text == "Salvar")
+            {
+                bool contaExistente = aDao_contasAPagar.VerificarContaExistente(
+                    oContaAPagar.ModeloCompra,
+                    oContaAPagar.SerieCompra,
+                    oContaAPagar.NumeroNotaCompra,
+                    oContaAPagar.OFornecedor.Id,
+                    oContaAPagar.NumeroParcela
+                );
+
+                if (contaExistente)
+                {
+                    MessageBox.Show(
+                        "Não foi possível salvar.\n\nJá existe uma parcela com este Modelo, Série, Número da Nota, Fornecedor e Número de Parcela.",
+                        "Erro: Item duplicado",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                    return;
+                }
+            }
             try
             {
                 if (btnSave.Text == "Cancelar Conta")
@@ -97,7 +121,7 @@ namespace projeto_patrica.pages.cadastro
                         return;
                     }
                 }
-                else
+                else 
                 {
                     oContaAPagar.Juros = Convert.ToDecimal(txtJuros.Text);
                     oContaAPagar.Multa = Convert.ToDecimal(txtMulta.Text);
@@ -111,7 +135,7 @@ namespace projeto_patrica.pages.cadastro
                     MessageBox.Show("Conta a Pagar salva com sucesso.");
                 }
 
-                base.Salvar();
+                base.Salvar(); 
             }
             catch (MySqlException ex)
             {
@@ -366,6 +390,8 @@ namespace projeto_patrica.pages.cadastro
             if (btnSave.Text == "Salvar")
             {
                 if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
+                    string.IsNullOrWhiteSpace(txtSerie.Text) ||
+                    string.IsNullOrWhiteSpace(txtNumDaNota.Text) ||
                     string.IsNullOrWhiteSpace(txtCodFornecedor.Text) ||
                     string.IsNullOrWhiteSpace(txtNumParcela.Text) ||
                     string.IsNullOrWhiteSpace(txtCodFormaPagamento.Text) ||

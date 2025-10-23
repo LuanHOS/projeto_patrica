@@ -181,7 +181,8 @@ namespace projeto_patrica.pages.consulta
             switch (filtroStatus)
             {
                 case "Em Aberto":
-                    listaFiltrada = listaFiltrada.Where(c => c.Ativo && c.Situacao == 0 && c.DataVencimento.Date >= DateTime.Today);
+                    listaFiltrada = listaFiltrada.Where(c => c.Ativo && c.Situacao == 0)
+                                                 .OrderBy(c => c.DataVencimento);
                     break;
 
                 case "Paga":
@@ -189,7 +190,8 @@ namespace projeto_patrica.pages.consulta
                     break;
 
                 case "Vencida":
-                    listaFiltrada = listaFiltrada.Where(c => c.Ativo && c.Situacao == 0 && c.DataVencimento.Date < DateTime.Today);
+                    listaFiltrada = listaFiltrada.Where(c => c.Ativo && c.Situacao == 0 && c.DataVencimento.Date < DateTime.Today)
+                                                 .OrderBy(c => c.DataVencimento);
                     break;
 
                 case "Cancelada":

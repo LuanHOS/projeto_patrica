@@ -12,6 +12,27 @@ namespace projeto_patrica.dao
         {
         }
 
+        public bool VerificarContaExistente(int modelo, string serie, string numeroNota, int idFornecedor, int numeroParcela)
+        {
+            using (MySqlConnection conn = Banco.Abrir())
+            {
+                string sql = "SELECT COUNT(*) FROM CONTAS_A_PAGAR " +
+                             "WHERE MODELO_COMPRA = @ModeloCompra AND SERIE_COMPRA = @SerieCompra " +
+                             "AND NUMERO_NOTA_COMPRA = @NumeroNotaCompra AND ID_FORNECEDOR = @IdFornecedor " +
+                             "AND NUMERO_PARCELA = @NumeroParcela";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@ModeloCompra", modelo);
+                cmd.Parameters.AddWithValue("@SerieCompra", serie);
+                cmd.Parameters.AddWithValue("@NumeroNotaCompra", numeroNota);
+                cmd.Parameters.AddWithValue("@IdFornecedor", idFornecedor);
+                cmd.Parameters.AddWithValue("@NumeroParcela", numeroParcela);
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                return count > 0;
+            }
+        }
+
         public override string Salvar(object obj)
         {
             contasAPagar oContaAPagar = (contasAPagar)obj;
@@ -81,11 +102,6 @@ namespace projeto_patrica.dao
 
                 cmd.ExecuteNonQuery();
                 ok = "Conta a Pagar salva com sucesso!";
-            }
-            catch (MySqlException ex)
-            {
-                ok = "Erro ao salvar Conta a Pagar: " + ex.Message;
-                MessageBox.Show(ok, "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
