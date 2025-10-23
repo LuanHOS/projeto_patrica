@@ -76,8 +76,8 @@ namespace projeto_patrica.dao
                 cmd.Parameters.AddWithValue("@Desconto", oContaAPagar.Desconto);
                 cmd.Parameters.AddWithValue("@ValorPago", (object)oContaAPagar.ValorPago ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@DataPagamento", (object)oContaAPagar.DataPagamento ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@DataUltimaEdicao", (object)oContaAPagar.DataUltimaEdicao ?? DBNull.Value); // Herdado
-                cmd.Parameters.AddWithValue("@MotivoCancelamento", (object)oContaAPagar.MotivoCancelamento ?? DBNull.Value); // Novo
+                cmd.Parameters.AddWithValue("@DataUltimaEdicao", (object)oContaAPagar.DataUltimaEdicao ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@MotivoCancelamento", (object)oContaAPagar.MotivoCancelamento ?? DBNull.Value);
 
                 cmd.ExecuteNonQuery();
                 ok = "Conta a Pagar salva com sucesso!";
@@ -132,7 +132,7 @@ namespace projeto_patrica.dao
                         oContaAPagar.ValorPago = dr.IsDBNull(dr.GetOrdinal("VALOR_PAGO")) ? (decimal?)null : Convert.ToDecimal(dr["VALOR_PAGO"]);
                         oContaAPagar.DataPagamento = dr.IsDBNull(dr.GetOrdinal("DATA_PAGAMENTO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_PAGAMENTO"]);
                         oContaAPagar.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
-                        oContaAPagar.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]); 
+                        oContaAPagar.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
                         oContaAPagar.MotivoCancelamento = dr.IsDBNull(dr.GetOrdinal("MOTIVO_CANCELAMENTO")) ? null : dr["MOTIVO_CANCELAMENTO"].ToString();
                     }
                     else
@@ -158,11 +158,6 @@ namespace projeto_patrica.dao
             contasAPagar oContaAPagar = (contasAPagar)obj;
             string ok = "";
             MySqlConnection conn = null;
-
-            if (oContaAPagar.Situacao == 1)
-            {
-                return "Não é possível cancelar uma conta que já foi paga.";
-            }
 
             try
             {

@@ -12,7 +12,7 @@ namespace projeto_patrica.pages.consulta
     public partial class frmConsultaContasAPagar : projeto_patrica.pages.consulta.frmConsulta
     {
         private frmCadastroContasAPagar oFrmCadastroContasAPagar;
-        private contasAPagar oContaAPagar; 
+        private contasAPagar oContaAPagar;
         private Controller_contasAPagar aController_contasAPagar;
         private List<contasAPagar> listaCompletaContas;
 
@@ -96,12 +96,6 @@ namespace projeto_patrica.pages.consulta
         public override void Excluir()
         {
             base.Excluir();
-
-            if (oContaAPagar.Situacao == 1)
-            {
-                MessageBox.Show("Não é possível cancelar uma conta que já foi paga.", "Ação Interrompida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
             if (!oContaAPagar.Ativo)
             {
@@ -197,17 +191,17 @@ namespace projeto_patrica.pages.consulta
 
             foreach (var conta in listaFiltrada)
             {
-                ListViewItem item = new ListViewItem(conta.NumeroParcela.ToString()); 
-                item.SubItems.Add(conta.ModeloCompra.ToString());         
-                item.SubItems.Add(conta.SerieCompra);                     
-                item.SubItems.Add(conta.NumeroNotaCompra);                 
-                item.SubItems.Add(conta.OFornecedor.Id.ToString());          
+                ListViewItem item = new ListViewItem(conta.NumeroParcela.ToString());
+                item.SubItems.Add(conta.ModeloCompra.ToString());
+                item.SubItems.Add(conta.SerieCompra);
+                item.SubItems.Add(conta.NumeroNotaCompra);
+                item.SubItems.Add(conta.OFornecedor.Id.ToString());
                 item.SubItems.Add(conta.OFornecedor.Nome_razaoSocial);
-                item.SubItems.Add(conta.ValorParcela.ToString("C2"));   
+                item.SubItems.Add(conta.ValorParcela.ToString("C2"));
                 item.SubItems.Add(conta.AFormaPagamento.Descricao);
-                item.SubItems.Add(conta.DataEmissao.ToShortDateString());  
+                item.SubItems.Add(conta.DataEmissao.ToShortDateString());
                 item.SubItems.Add(conta.DataVencimento.ToShortDateString());
-                item.SubItems.Add(conta.Ativo ? "" : "CANCELADO"); 
+                item.SubItems.Add(conta.Ativo ? "" : "CANCELADO");
 
                 item.Tag = conta;
                 listV.Items.Add(item);
@@ -232,7 +226,7 @@ namespace projeto_patrica.pages.consulta
 
         public override void ListV_SelectedIndexChanged(object sender, EventArgs e)
         {
-            base.ListV_SelectedIndexChanged(sender, e); 
+            base.ListV_SelectedIndexChanged(sender, e);
 
             if (listV.SelectedItems.Count > 0)
             {
