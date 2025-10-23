@@ -88,22 +88,22 @@ namespace projeto_patrica.dao
 
                 cmd.ExecuteNonQuery();
 
-                if (existe)
-                {
-                    cmd.Parameters.Clear();
-                    cmd.CommandText = "DELETE FROM ITEM_COMPRA WHERE MODELO_COMPRA = @Modelo AND SERIE_COMPRA = @Serie AND NUMERO_NOTA_COMPRA = @NumeroNota AND ID_FORNECEDOR = @IdFornecedor";
-                    cmd.Parameters.AddWithValue("@Modelo", aCompra.Modelo);
-                    cmd.Parameters.AddWithValue("@Serie", aCompra.Serie);
-                    cmd.Parameters.AddWithValue("@NumeroNota", aCompra.NumeroNota);
-                    cmd.Parameters.AddWithValue("@IdFornecedor", aCompra.OFornecedor.Id);
-                    cmd.ExecuteNonQuery();
-
-                    cmd.CommandText = "DELETE FROM CONTAS_A_PAGAR WHERE MODELO_COMPRA = @Modelo AND SERIE_COMPRA = @Serie AND NUMERO_NOTA_COMPRA = @NumeroNota AND ID_FORNECEDOR = @IdFornecedor";
-                    cmd.ExecuteNonQuery();
-                }
-
                 if (aCompra.Ativo)
                 {
+                    if (existe)
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.CommandText = "DELETE FROM ITEM_COMPRA WHERE MODELO_COMPRA = @Modelo AND SERIE_COMPRA = @Serie AND NUMERO_NOTA_COMPRA = @NumeroNota AND ID_FORNECEDOR = @IdFornecedor";
+                        cmd.Parameters.AddWithValue("@Modelo", aCompra.Modelo);
+                        cmd.Parameters.AddWithValue("@Serie", aCompra.Serie);
+                        cmd.Parameters.AddWithValue("@NumeroNota", aCompra.NumeroNota);
+                        cmd.Parameters.AddWithValue("@IdFornecedor", aCompra.OFornecedor.Id);
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = "DELETE FROM CONTAS_A_PAGAR WHERE MODELO_COMPRA = @Modelo AND SERIE_COMPRA = @Serie AND NUMERO_NOTA_COMPRA = @NumeroNota AND ID_FORNECEDOR = @IdFornecedor";
+                        cmd.ExecuteNonQuery();
+                    }
+
                     decimal totalCustosAdicionais = aCompra.ValorFrete + aCompra.Seguro + aCompra.Despesas;
                     decimal valorTotalCompra = aCompra.Itens.Sum(i => i.ValorTotal);
 
@@ -132,17 +132,16 @@ namespace projeto_patrica.dao
                         conta.Situacao = 0;
                         conta.ValorPago = null;
                         conta.DataPagamento = null;
-                        conta.Ativo = true; 
+                        conta.Ativo = true;
                         conta.MotivoCancelamento = null;
                         conta.DataUltimaEdicao = null;
                         SalvarContaAPagar(conta, conn, trans);
                     }
                 }
-                else
+                else 
                 {
                     foreach (itemCompra item in aCompra.Itens)
                     {
-                        SalvarItem(item, conn, trans);
                         ReverterAtualizacaoProduto(item, conn, trans);
                     }
                 }
@@ -260,12 +259,12 @@ namespace projeto_patrica.dao
                         }
                         else
                         {
-                            novoCustoMedio = 0; 
+                            novoCustoMedio = 0;
                         }
                     }
                     else
                     {
-                        novoCustoMedio = valorCompraAnterior; 
+                        novoCustoMedio = valorCompraAnterior;
                     }
 
                     decimal novoPercentualLucro = 0;
