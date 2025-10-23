@@ -159,6 +159,7 @@
             this.btnDarBaixa.TabIndex = 12;
             this.btnDarBaixa.Text = "Dar Baixa";
             this.btnDarBaixa.UseVisualStyleBackColor = true;
+            this.btnDarBaixa.Click += new System.EventHandler(this.btnDarBaixa_Click);
             // 
             // clmFormaPagamento
             // 

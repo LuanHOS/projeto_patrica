@@ -329,6 +329,7 @@
             this.btnPesquisarFormaPagamento.TabIndex = 163;
             this.btnPesquisarFormaPagamento.Text = "🔎";
             this.btnPesquisarFormaPagamento.UseVisualStyleBackColor = true;
+            this.btnPesquisarFormaPagamento.Click += new System.EventHandler(this.btnPesquisarFormaPagamento_Click);
             // 
             // txtCodFormaPagamento
             // 

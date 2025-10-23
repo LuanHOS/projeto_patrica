@@ -12,7 +12,6 @@ namespace projeto_patrica.dao
         {
         }
 
-        // Salva ou atualiza uma conta a pagar no banco de dados.
         public override string Salvar(object obj)
         {
             contasAPagar oContaAPagar = (contasAPagar)obj;
@@ -42,10 +41,10 @@ namespace projeto_patrica.dao
                 {
                     sql = "INSERT INTO CONTAS_A_PAGAR (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_FORNECEDOR, NUMERO_PARCELA, " +
                           "DATA_EMISSAO, DATA_VENCIMENTO, VALOR_PARCELA, ID_FORMA_PAGAMENTO, ATIVO, " +
-                          "SITUACAO, JUROS, MULTA, DESCONTO, VALOR_PAGO, DATA_PAGAMENTO) VALUES " +
+                          "SITUACAO, JUROS, MULTA, DESCONTO, VALOR_PAGO, DATA_PAGAMENTO, DATA_ULTIMA_EDICAO, MOTIVO_CANCELAMENTO) VALUES " +
                           "(@ModeloCompra, @SerieCompra, @NumeroNotaCompra, @IdFornecedor, @NumeroParcela, " +
                           "@DataEmissao, @DataVencimento, @ValorParcela, @IdFormaPagamento, @Ativo, " +
-                          "@Situacao, @Juros, @Multa, @Desconto, @ValorPago, @DataPagamento)";
+                          "@Situacao, @Juros, @Multa, @Desconto, @ValorPago, @DataPagamento, @DataUltimaEdicao, @MotivoCancelamento)";
                 }
                 else
                 {
@@ -53,7 +52,8 @@ namespace projeto_patrica.dao
                           "DATA_EMISSAO = @DataEmissao, DATA_VENCIMENTO = @DataVencimento, VALOR_PARCELA = @ValorParcela, " +
                           "ID_FORMA_PAGAMENTO = @IdFormaPagamento, ATIVO = @Ativo, SITUACAO = @Situacao, " +
                           "JUROS = @Juros, MULTA = @Multa, DESCONTO = @Desconto, " +
-                          "VALOR_PAGO = @ValorPago, DATA_PAGAMENTO = @DataPagamento " +
+                          "VALOR_PAGO = @ValorPago, DATA_PAGAMENTO = @DataPagamento, " +
+                          "DATA_ULTIMA_EDICAO = @DataUltimaEdicao, MOTIVO_CANCELAMENTO = @MotivoCancelamento " +
                           "WHERE MODELO_COMPRA = @ModeloCompra AND SERIE_COMPRA = @SerieCompra " +
                           "AND NUMERO_NOTA_COMPRA = @NumeroNotaCompra AND ID_FORNECEDOR = @IdFornecedor " +
                           "AND NUMERO_PARCELA = @NumeroParcela";
@@ -76,6 +76,8 @@ namespace projeto_patrica.dao
                 cmd.Parameters.AddWithValue("@Desconto", oContaAPagar.Desconto);
                 cmd.Parameters.AddWithValue("@ValorPago", (object)oContaAPagar.ValorPago ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@DataPagamento", (object)oContaAPagar.DataPagamento ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@DataUltimaEdicao", (object)oContaAPagar.DataUltimaEdicao ?? DBNull.Value); // Herdado
+                cmd.Parameters.AddWithValue("@MotivoCancelamento", (object)oContaAPagar.MotivoCancelamento ?? DBNull.Value); // Novo
 
                 cmd.ExecuteNonQuery();
                 ok = "Conta a Pagar salva com sucesso!";
@@ -92,7 +94,6 @@ namespace projeto_patrica.dao
             return ok;
         }
 
-        // Carrega os dados de uma conta a pagar específica do banco.
         public override string CarregaObj(object obj)
         {
             contasAPagar oContaAPagar = (contasAPagar)obj;
@@ -111,7 +112,7 @@ namespace projeto_patrica.dao
                 cmd.Parameters.AddWithValue("@ModeloCompra", oContaAPagar.ModeloCompra);
                 cmd.Parameters.AddWithValue("@SerieCompra", oContaAPagar.SerieCompra);
                 cmd.Parameters.AddWithValue("@NumeroNotaCompra", oContaAPagar.NumeroNotaCompra);
-                cmd.Parameters.AddWithValue("@IdFornecedor", oContaAPagar.OFornecedor.Id);
+                cmd.Parameters.AddWithValue("@IdFornecedor", oContaAPagar.OFornecedor?.Id ?? 0);
                 cmd.Parameters.AddWithValue("@NumeroParcela", oContaAPagar.NumeroParcela);
 
                 using (var dr = cmd.ExecuteReader())
@@ -130,6 +131,9 @@ namespace projeto_patrica.dao
                         oContaAPagar.Desconto = Convert.ToDecimal(dr["DESCONTO"]);
                         oContaAPagar.ValorPago = dr.IsDBNull(dr.GetOrdinal("VALOR_PAGO")) ? (decimal?)null : Convert.ToDecimal(dr["VALOR_PAGO"]);
                         oContaAPagar.DataPagamento = dr.IsDBNull(dr.GetOrdinal("DATA_PAGAMENTO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_PAGAMENTO"]);
+                        oContaAPagar.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                        oContaAPagar.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]); 
+                        oContaAPagar.MotivoCancelamento = dr.IsDBNull(dr.GetOrdinal("MOTIVO_CANCELAMENTO")) ? null : dr["MOTIVO_CANCELAMENTO"].ToString();
                     }
                     else
                     {
@@ -149,22 +153,30 @@ namespace projeto_patrica.dao
             return ok;
         }
 
-        // Exclui uma conta a pagar do banco de dados.
         public override string Excluir(object obj)
         {
             contasAPagar oContaAPagar = (contasAPagar)obj;
             string ok = "";
             MySqlConnection conn = null;
 
+            if (oContaAPagar.Situacao == 1)
+            {
+                return "Não é possível cancelar uma conta que já foi paga.";
+            }
+
             try
             {
                 conn = Banco.Abrir();
-                string sql = "DELETE FROM CONTAS_A_PAGAR " +
+                string sql = "UPDATE CONTAS_A_PAGAR SET " +
+                             "ATIVO = FALSE, " +
+                             "MOTIVO_CANCELAMENTO = @MotivoCancelamento, " +
+                             "DATA_ULTIMA_EDICAO = CURRENT_TIMESTAMP " +
                              "WHERE MODELO_COMPRA = @ModeloCompra AND SERIE_COMPRA = @SerieCompra " +
                              "AND NUMERO_NOTA_COMPRA = @NumeroNotaCompra AND ID_FORNECEDOR = @IdFornecedor " +
                              "AND NUMERO_PARCELA = @NumeroParcela";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@MotivoCancelamento", (object)oContaAPagar.MotivoCancelamento ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@ModeloCompra", oContaAPagar.ModeloCompra);
                 cmd.Parameters.AddWithValue("@SerieCompra", oContaAPagar.SerieCompra);
                 cmd.Parameters.AddWithValue("@NumeroNotaCompra", oContaAPagar.NumeroNotaCompra);
@@ -174,20 +186,16 @@ namespace projeto_patrica.dao
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)
                 {
-                    ok = "Conta a Pagar excluída com sucesso!";
+                    ok = "Conta a Pagar cancelada com sucesso!";
                 }
                 else
                 {
-                    ok = "Nenhuma Conta a Pagar encontrada para excluir com os dados fornecidos.";
+                    ok = "Nenhuma Conta a Pagar encontrada para cancelar com os dados fornecidos.";
                 }
             }
             catch (MySqlException ex)
             {
-                ok = "Erro ao excluir Conta a Pagar: " + ex.Message;
-                if (ex.Number == 1451)
-                {
-                    ok = "Não é possível excluir esta conta, pois ela está referenciada em outro lugar.";
-                }
+                ok = "Erro ao cancelar Conta a Pagar: " + ex.Message;
                 MessageBox.Show(ok, "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
@@ -197,7 +205,6 @@ namespace projeto_patrica.dao
             return ok;
         }
 
-        // Lista todas as contas a pagar do banco de dados.
         public List<contasAPagar> ListarContasAPagar()
         {
             List<contasAPagar> lista = new List<contasAPagar>();
@@ -223,7 +230,6 @@ namespace projeto_patrica.dao
                         conta.DataVencimento = Convert.ToDateTime(dr["DATA_VENCIMENTO"]);
                         conta.ValorParcela = Convert.ToDecimal(dr["VALOR_PARCELA"]);
                         conta.AFormaPagamento = new formaPagamento { Id = Convert.ToInt32(dr["ID_FORMA_PAGAMENTO"]) };
-                        conta.OFornecedor = new fornecedor { Id = Convert.ToInt32(dr["ID_FORNECEDOR"]) };
                         conta.Ativo = Convert.ToBoolean(dr["ATIVO"]);
                         conta.Situacao = Convert.ToInt32(dr["SITUACAO"]);
                         conta.Juros = Convert.ToDecimal(dr["JUROS"]);
@@ -231,6 +237,9 @@ namespace projeto_patrica.dao
                         conta.Desconto = Convert.ToDecimal(dr["DESCONTO"]);
                         conta.ValorPago = dr.IsDBNull(dr.GetOrdinal("VALOR_PAGO")) ? (decimal?)null : Convert.ToDecimal(dr["VALOR_PAGO"]);
                         conta.DataPagamento = dr.IsDBNull(dr.GetOrdinal("DATA_PAGAMENTO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_PAGAMENTO"]);
+                        conta.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
+                        conta.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
+                        conta.MotivoCancelamento = dr.IsDBNull(dr.GetOrdinal("MOTIVO_CANCELAMENTO")) ? null : dr["MOTIVO_CANCELAMENTO"].ToString();
 
                         lista.Add(conta);
                     }

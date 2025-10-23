@@ -17,6 +17,13 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastroContasAPagar()
         {
             InitializeComponent();
+            // Eventos para recalcular o valor pago ao alterar os campos
+            txtValorParcela.Leave += RecalcularValorPago;
+            txtJuros.Leave += RecalcularValorPago;
+            txtMulta.Leave += RecalcularValorPago;
+            txtDesconto.Leave += RecalcularValorPago;
+            dtpDataVencimento.ValueChanged += RecalcularValorPago;
+            dtpDataPagamento.ValueChanged += RecalcularValorPago;
         }
 
         public override void ConhecaObj(object obj, object ctrl)
@@ -37,35 +44,9 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            if (btnSave.Text == "Excluir")
-            {
-                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (resp == DialogResult.Yes)
-                {
-                    try
-                    {
-                        aController_contasAPagar.Excluir(oContaAPagar);
-                        MessageBox.Show("Conta a Pagar excluída com sucesso.");
-                        Sair();
-                    }
-                    catch (MySqlException ex)
-                    {
-                        MessageBox.Show("Não foi possível excluir o item.\n\nDetalhes técnicos: " + ex.Message, "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ocorreu um erro inesperado: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-                return;
-            }
-
             if (!ValidacaoCampos())
                 return;
 
-            // Preenche o objeto com os dados da tela
             oContaAPagar.ModeloCompra = Convert.ToInt32(txtCodigo.Text); // txtCodigo é o Modelo
             oContaAPagar.SerieCompra = txtSerie.Text;
             oContaAPagar.NumeroNotaCompra = txtNumDaNota.Text;
@@ -74,10 +55,7 @@ namespace projeto_patrica.pages.cadastro
             oContaAPagar.DataEmissao = dtpDataEmissao.Value;
             oContaAPagar.DataVencimento = dtpDataVencimento.Value;
             oContaAPagar.ValorParcela = Convert.ToDecimal(txtValorParcela.Text);
-            oContaAPagar.Ativo = checkBoxAtivo.Checked;
-            oContaAPagar.Juros = Convert.ToDecimal(txtJuros.Text);
-            oContaAPagar.Multa = Convert.ToDecimal(txtMulta.Text);
-            oContaAPagar.Desconto = Convert.ToDecimal(txtDesconto.Text);
+            oContaAPagar.AFormaPagamento.Id = Convert.ToInt32(txtCodFormaPagamento.Text);
 
             if (oContaAPagar.AFormaPagamento == null || oContaAPagar.AFormaPagamento.Id == 0)
             {
@@ -88,45 +66,63 @@ namespace projeto_patrica.pages.cadastro
                 oContaAPagar.OFornecedor = new fornecedor { Id = Convert.ToInt32(txtCodFornecedor.Text) };
             }
 
-            // Define Situação, ValorPago e DataPagamento baseado na interação
-            if (dtpDataPagamento.Checked && decimal.TryParse(txtValorPago.Text, out decimal valorPago) && valorPago > 0)
-            {
-                oContaAPagar.Situacao = 1; // Pago
-                oContaAPagar.ValorPago = valorPago;
-                oContaAPagar.DataPagamento = dtpDataPagamento.Value;
-            }
-            else
-            {
-                oContaAPagar.Situacao = 0; // Em Aberto
-                oContaAPagar.ValorPago = null;
-                oContaAPagar.DataPagamento = null;
-            }
-
-            // Os CheckBoxes checkBoxMulta, checkBoxJuros, checkBoxDesconto parecem ser para outra lógica (cálculo),
-            // que não afeta o 'Salvar' diretamente no banco (os valores de juros/multa/desconto vêm dos TextBoxes).
-
             try
             {
-                string msgSucesso = "";
-                if (btnSave.Text == "Alterar")
+                if (btnSave.Text == "Cancelar Conta")
                 {
+                    string motivo = SolicitarMotivoCancelamento();
+                    if (string.IsNullOrEmpty(motivo)) return; // Usuário cancelou o popup
+
+                    oContaAPagar.Ativo = false;
+                    oContaAPagar.MotivoCancelamento = motivo;
+                    oContaAPagar.DataUltimaEdicao = DateTime.Now;
+
                     aController_contasAPagar.Salvar(oContaAPagar);
-                    msgSucesso = "Conta a Pagar alterada com sucesso.";
+                    MessageBox.Show("Conta a Pagar cancelada com sucesso.");
                 }
-                else // "Salvar"
+                else if (btnSave.Text == "Dar Baixa")
                 {
+                    RecalcularValorPago(null, null); 
+                    if (ConfirmarBaixa())
+                    {
+                        oContaAPagar.Juros = Convert.ToDecimal(txtJuros.Text);
+                        oContaAPagar.Multa = Convert.ToDecimal(txtMulta.Text);
+                        oContaAPagar.Desconto = Convert.ToDecimal(txtDesconto.Text);
+                        oContaAPagar.Situacao = 1;
+                        oContaAPagar.ValorPago = Convert.ToDecimal(txtValorPago.Text);
+                        oContaAPagar.DataPagamento = dtpDataPagamento.Value;
+                        oContaAPagar.DataUltimaEdicao = DateTime.Now;
+                        oContaAPagar.Ativo = true;
+
+                        aController_contasAPagar.Salvar(oContaAPagar);
+                        MessageBox.Show("Conta a Pagar baixada com sucesso.");
+                    }
+                    else
+                    {
+                        return; 
+                    }
+                }
+                else
+                {
+                    oContaAPagar.Juros = Convert.ToDecimal(txtJuros.Text);
+                    oContaAPagar.Multa = Convert.ToDecimal(txtMulta.Text);
+                    oContaAPagar.Desconto = Convert.ToDecimal(txtDesconto.Text);
+                    oContaAPagar.Situacao = 0; 
+                    oContaAPagar.ValorPago = null;
+                    oContaAPagar.DataPagamento = null;
+                    oContaAPagar.Ativo = checkBoxAtivo.Checked; 
+
                     aController_contasAPagar.Salvar(oContaAPagar);
-                    msgSucesso = "Conta a Pagar salva com sucesso.";
+                    MessageBox.Show("Conta a Pagar salva com sucesso.");
                 }
 
-                MessageBox.Show(msgSucesso, "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                base.Salvar(); // Fecha o formulário
+                base.Salvar();
             }
             catch (MySqlException ex)
             {
                 switch (ex.Number)
                 {
-                    case 1062: // Chave duplicada (PK composta)
+                    case 1062: 
                         MessageBox.Show(
                             "Não foi possível salvar.\n\nJá existe uma parcela com este Modelo, Série, Número da Nota, Fornecedor e Número de Parcela.",
                             "Erro: Item duplicado",
@@ -134,15 +130,15 @@ namespace projeto_patrica.pages.cadastro
                             MessageBoxIcon.Error
                         );
                         break;
-                    case 1451: // Chave estrangeira
+                    case 1452: 
                         MessageBox.Show(
-                            "Não foi possível salvar.\n\nO Fornecedor ou Forma de Pagamento especificado não existe.",
+                            "Não foi possível salvar.\n\nO Fornecedor ou a Forma de Pagamento especificada não existe.",
                             "Erro: Referência inválida",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error
                         );
                         break;
-                    default: // Outros erros
+                    default:
                         MessageBox.Show(
                             "Não foi possível concluir a operação. Verifique os dados e tente novamente.\n\nDetalhes técnicos: " + ex.Message,
                             "Erro no Banco de Dados",
@@ -162,13 +158,13 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Limpartxt()
         {
-            base.Limpartxt(); 
-            txtCodigo.Text = "0";
+            base.Limpartxt();
+            txtCodigo.Text = "0"; // Modelo 0 para avulsa
             txtSerie.Clear();
             txtNumDaNota.Clear();
             txtCodFornecedor.Clear();
             txtFornecedor.Clear();
-            txtNumParcela.Clear();
+            txtNumParcela.Text = "1"; // Parcela 1 para avulsa
             dtpDataEmissao.Value = DateTime.Today;
             dtpDataVencimento.Value = DateTime.Today;
             txtValorParcela.Text = "0,00";
@@ -177,9 +173,12 @@ namespace projeto_patrica.pages.cadastro
             txtJuros.Text = "0,00";
             txtMulta.Text = "0,00";
             txtDesconto.Text = "0,00";
-            txtValorPago.Text = "0,00"; 
+            txtValorPago.Text = "0,00";
             dtpDataPagamento.Value = DateTime.Today;
             dtpDataPagamento.Checked = false;
+
+            lblMotivoCancelamentoTitulo.Visible = false;
+            lblMotivCancelamentoExplicacao.Visible = false;
 
             oContaAPagar = new contasAPagar();
         }
@@ -194,35 +193,34 @@ namespace projeto_patrica.pages.cadastro
             txtCodFornecedor.Text = oContaAPagar.OFornecedor.Id.ToString();
             txtNumParcela.Text = oContaAPagar.NumeroParcela.ToString();
 
-            if (oContaAPagar.OFornecedor.Id > 0)
+            // Carrega Fornecedor (se tiver)
+            if (oContaAPagar.OFornecedor.Id > 0 && aController_contasAPagar.AController_fornecedor != null)
             {
                 aController_contasAPagar.AController_fornecedor.CarregaObj(oContaAPagar.OFornecedor);
                 txtFornecedor.Text = oContaAPagar.OFornecedor.Nome_razaoSocial;
             }
-            if (oContaAPagar.AFormaPagamento.Id > 0)
+            else
+            {
+                txtFornecedor.Clear();
+            }
+
+            // Carrega Forma de Pagamento (se tiver)
+            if (oContaAPagar.AFormaPagamento.Id > 0 && aController_contasAPagar.AController_formaPagamento != null)
             {
                 aController_contasAPagar.AController_formaPagamento.CarregaObj(oContaAPagar.AFormaPagamento);
                 txtFormaPagamento.Text = oContaAPagar.AFormaPagamento.Descricao;
                 txtCodFormaPagamento.Text = oContaAPagar.AFormaPagamento.Id.ToString();
             }
+            else
+            {
+                txtFormaPagamento.Clear();
+                txtCodFormaPagamento.Clear();
+            }
 
+            dtpDataEmissao.Value = (oContaAPagar.DataEmissao >= dtpDataEmissao.MinDate) ? oContaAPagar.DataEmissao : DateTime.Today;
+            dtpDataVencimento.Value = (oContaAPagar.DataVencimento >= dtpDataVencimento.MinDate) ? oContaAPagar.DataVencimento : DateTime.Today;
 
-
-
-
-            dtpDataEmissao.Value =
-                (oContaAPagar.DataEmissao >= dtpDataEmissao.MinDate && oContaAPagar.DataEmissao <= dtpDataEmissao.MaxDate)
-                ? oContaAPagar.DataEmissao
-                : DateTime.Today;
-
-            dtpDataVencimento.Value =
-                (oContaAPagar.DataVencimento >= dtpDataVencimento.MinDate && oContaAPagar.DataVencimento <= dtpDataVencimento.MaxDate)
-                ? oContaAPagar.DataVencimento
-                : DateTime.Today;
-
-            if (oContaAPagar.DataPagamento.HasValue &&
-                oContaAPagar.DataPagamento.Value >= dtpDataPagamento.MinDate &&
-                oContaAPagar.DataPagamento.Value <= dtpDataPagamento.MaxDate)
+            if (oContaAPagar.DataPagamento.HasValue)
             {
                 dtpDataPagamento.Value = oContaAPagar.DataPagamento.Value;
                 dtpDataPagamento.Checked = true;
@@ -233,29 +231,26 @@ namespace projeto_patrica.pages.cadastro
                 dtpDataPagamento.Checked = false;
             }
 
-
-
-
-
-
             txtValorParcela.Text = oContaAPagar.ValorParcela.ToString("F2");
             txtJuros.Text = oContaAPagar.Juros.ToString("F2");
             txtMulta.Text = oContaAPagar.Multa.ToString("F2");
             txtDesconto.Text = oContaAPagar.Desconto.ToString("F2");
-
             txtValorPago.Text = oContaAPagar.ValorPago.HasValue ? oContaAPagar.ValorPago.Value.ToString("F2") : "0,00";
-            dtpDataPagamento.Value = oContaAPagar.DataPagamento.HasValue ? oContaAPagar.DataPagamento.Value : DateTime.Today;
-            dtpDataPagamento.Checked = oContaAPagar.DataPagamento.HasValue;
 
             checkBoxAtivo.Checked = oContaAPagar.Ativo;
-            lblDataCadastroData.Text = "-";
-            lblDataUltimaEdicaoData.Text = "-";
-            lblUltimoUsuarioQueEditouNome.Text = "-";
+            lblDataCadastroData.Text = oContaAPagar.DataCadastro.ToShortDateString();
+            lblDataUltimaEdicaoData.Text = oContaAPagar.DataUltimaEdicao?.ToString("dd/MM/yyyy HH:mm") ?? " ";
+
+            lblMotivoCancelamentoTitulo.Visible = !oContaAPagar.Ativo;
+            lblMotivCancelamentoExplicacao.Visible = !oContaAPagar.Ativo;
+            lblMotivCancelamentoExplicacao.Text = oContaAPagar.MotivoCancelamento ?? "";
         }
 
         public override void Bloqueiatxt()
         {
             base.Bloqueiatxt();
+
+            txtCodigo.Enabled = false;
             txtSerie.Enabled = false;
             txtNumDaNota.Enabled = false;
             txtCodFornecedor.Enabled = false;
@@ -273,52 +268,127 @@ namespace projeto_patrica.pages.cadastro
             txtDesconto.Enabled = false;
             txtValorPago.Enabled = false;
             dtpDataPagamento.Enabled = false;
+
+            // Controla visibilidade baseado no modo
+            if (btnSave.Text == "Visualizar")
+            {
+                btnSave.Visible = false; // Botão Salvar fica invisível
+
+                // Mostra campos de pagamento se estiver paga
+                bool pago = oContaAPagar.Situacao == 1;
+                dtpDataPagamento.Visible = pago;
+                txtValorPago.Visible = pago;
+                lblDataPagamento.Visible = pago;
+                lblValorFinal.Visible = pago;
+
+                // Mostra campos de cancelamento se estiver cancelada
+                bool cancelado = !oContaAPagar.Ativo;
+                lblMotivoCancelamentoTitulo.Visible = cancelado;
+                lblMotivCancelamentoExplicacao.Visible = cancelado;
+            }
+            else if (btnSave.Text == "Cancelar Conta")
+            {
+                btnSave.Visible = true; // Botão "Cancelar Conta" visível
+                // Esconde campos de pagamento
+                dtpDataPagamento.Visible = false;
+                txtValorPago.Visible = false;
+                lblDataPagamento.Visible = false;
+                lblValorFinal.Visible = false;
+            }
         }
 
         public override void Desbloqueiatxt()
         {
             base.Desbloqueiatxt();
 
-            bool inclusao = (btnSave.Text == "Salvar");
 
-            
-            txtSerie.Enabled = inclusao;
-            txtNumDaNota.Enabled = inclusao;
-            txtCodFornecedor.Enabled = inclusao;
-            btnPesquisarFornecedor.Enabled = inclusao;
-            txtNumParcela.Enabled = inclusao;
+            if (btnSave.Text == "Salvar") // Modo Inclusão
+            {
+                txtCodigo.Enabled = true; // Modelo
+                txtSerie.Enabled = true;
+                txtNumDaNota.Enabled = true;
+                btnPesquisarFornecedor.Enabled = true;
+                txtNumParcela.Enabled = true;
+                dtpDataEmissao.Enabled = true;
+                dtpDataVencimento.Enabled = true;
+                txtValorParcela.Enabled = true;
+                btnPesquisarFormaPagamento.Enabled = true;
+                txtJuros.Enabled = true;
+                txtMulta.Enabled = true;
+                txtDesconto.Enabled = true;
 
-            dtpDataEmissao.Enabled = true;
-            dtpDataVencimento.Enabled = true;
-            txtValorParcela.Enabled = true;
-            btnPesquisarFormaPagamento.Enabled = true;
-            txtJuros.Enabled = true;
-            txtMulta.Enabled = true;
-            txtDesconto.Enabled = true;
-            txtValorPago.Enabled = true;
-            dtpDataPagamento.Enabled = true;
+                // Campos de baixa/visualização ficam ocultos
+                dtpDataPagamento.Visible = false;
+                txtValorPago.Visible = false;
+                lblDataPagamento.Visible = false;
+                lblValorFinal.Visible = false;
+                lblMotivoCancelamentoTitulo.Visible = false;
+                lblMotivCancelamentoExplicacao.Visible = false;
+            }
+            else if (btnSave.Text == "Dar Baixa")
+            {
+                // Bloqueia a chave primária e dados da nota
+                txtCodigo.Enabled = false;
+                txtSerie.Enabled = false;
+                txtNumDaNota.Enabled = false;
+                btnPesquisarFornecedor.Enabled = false;
+                txtNumParcela.Enabled = false;
+                dtpDataEmissao.Enabled = false;
+                dtpDataVencimento.Enabled = false;
+                txtValorParcela.Enabled = false; // Valor original não muda
+                checkBoxAtivo.Enabled = false; // Não pode cancelar na baixa
+
+                // Habilita campos da baixa
+                txtJuros.Enabled = true;
+                txtMulta.Enabled = true;
+                txtDesconto.Enabled = true;
+                btnPesquisarFormaPagamento.Enabled = true;
+                dtpDataPagamento.Enabled = true;
+
+                // Campos de baixa ficam visíveis
+                dtpDataPagamento.Visible = true;
+                txtValorPago.Visible = true;
+                lblDataPagamento.Visible = true;
+                lblValorFinal.Visible = true;
+
+                dtpDataPagamento.Checked = true; // Força o check ao entrar no modo
+                RecalcularValorPago(null, null); // Calcula o valor inicial da baixa
+            }
+
+            // Modos "Visualizar" e "Cancelar Conta" são tratados pelo Bloqueiatxt()
         }
 
         public override bool ValidacaoCampos()
         {
             base.ValidacaoCampos();
 
-            if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
-                string.IsNullOrWhiteSpace(txtSerie.Text) ||
-                string.IsNullOrWhiteSpace(txtNumDaNota.Text) ||
-                string.IsNullOrWhiteSpace(txtCodFornecedor.Text) ||
-                string.IsNullOrWhiteSpace(txtNumParcela.Text) ||
-                string.IsNullOrWhiteSpace(txtCodFormaPagamento.Text))
+            if (btnSave.Text == "Salvar")
             {
-                MessageBox.Show("Preencha todos os campos obrigatórios (Modelo, Série, Nota, Fornecedor, Parcela, Forma Pag.).", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            if (dtpDataPagamento.Checked)
-            {
-                if (string.IsNullOrWhiteSpace(txtValorPago.Text) || !decimal.TryParse(txtValorPago.Text, out decimal valorPago) || valorPago <= 0)
+                if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
+                    string.IsNullOrWhiteSpace(txtCodFornecedor.Text) ||
+                    string.IsNullOrWhiteSpace(txtNumParcela.Text) ||
+                    string.IsNullOrWhiteSpace(txtCodFormaPagamento.Text) ||
+                    string.IsNullOrWhiteSpace(txtValorParcela.Text))
                 {
-                    MessageBox.Show("Se a Data de Pagamento está marcada, o Valor Final (Pago) deve ser preenchido e maior que zero.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Preencha todos os campos obrigatórios (*).", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+            else if (btnSave.Text == "Dar Baixa")
+            {
+                if (!dtpDataPagamento.Checked)
+                {
+                    MessageBox.Show("Selecione uma data de pagamento.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                if (string.IsNullOrWhiteSpace(txtCodFormaPagamento.Text))
+                {
+                    MessageBox.Show("Selecione a forma de pagamento.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                if (!decimal.TryParse(txtValorPago.Text, out decimal valorPago) || valorPago <= 0)
+                {
+                    MessageBox.Show("O Valor Final (Pago) deve ser maior que zero.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtValorPago.Focus();
                     return false;
                 }
@@ -331,6 +401,7 @@ namespace projeto_patrica.pages.cadastro
         {
             base.CamposRestricoes();
 
+            txtCodigo.MaxLength = 10; // Modelo
             txtSerie.MaxLength = 3;
             txtNumDaNota.MaxLength = 9;
             txtNumParcela.MaxLength = 10;
@@ -340,6 +411,7 @@ namespace projeto_patrica.pages.cadastro
             txtDesconto.MaxLength = 11;
             txtValorPago.MaxLength = 11;
 
+            txtCodigo.KeyPress += ApenasNumeros;
             txtNumParcela.KeyPress += ApenasNumeros;
             txtNumDaNota.KeyPress += ApenasNumeros;
 
@@ -363,7 +435,6 @@ namespace projeto_patrica.pages.cadastro
             if (forn.Id != 0)
             {
                 oContaAPagar.OFornecedor = forn;
-                oContaAPagar.OFornecedor.Id = forn.Id;
                 txtCodFornecedor.Text = forn.Id.ToString();
                 txtFornecedor.Text = forn.Nome_razaoSocial;
             }
@@ -387,18 +458,114 @@ namespace projeto_patrica.pages.cadastro
             }
         }
 
+        // Atualiza o valor pago quando data de pagamento muda (check/uncheck)
         private void dtpDataPagamento_ValueChanged(object sender, EventArgs e)
         {
+            RecalcularValorPago(sender, e);
+        }
+
+        // Recalcula o valor final da parcela
+        private void RecalcularValorPago(object sender, EventArgs e)
+        {
+            // Só recalcula se estiver no modo "Dar Baixa"
+            if (btnSave.Text != "Dar Baixa")
+            {
+                // Se não estiver em modo baixa, e o checkbox for desmarcado, zera o valor pago
+                if (sender == dtpDataPagamento && !dtpDataPagamento.Checked)
+                {
+                    txtValorPago.Text = "0,00";
+                }
+                return;
+            }
+
+            decimal.TryParse(txtValorParcela.Text, out decimal valorParcela);
+            decimal.TryParse(txtJuros.Text, out decimal juros);
+            decimal.TryParse(txtMulta.Text, out decimal multa);
+            decimal.TryParse(txtDesconto.Text, out decimal desconto);
+
+            decimal total = valorParcela;
+
+            // Juros (influencia sempre, se houver)
+            total += (valorParcela * (juros / 100));
+
             if (dtpDataPagamento.Checked)
             {
-                if (string.IsNullOrWhiteSpace(txtValorPago.Text) || txtValorPago.Text == "0,00")
+                // Multa (só se data pagto > vencimento)
+                if (dtpDataPagamento.Value.Date > dtpDataVencimento.Value.Date)
                 {
-                    txtValorPago.Text = txtValorParcela.Text;
+                    total += (valorParcela * (multa / 100));
+                }
+                // Desconto (só se data pagto <= vencimento)
+                else
+                {
+                    total -= (valorParcela * (desconto / 100));
                 }
             }
             else
             {
-                txtValorPago.Text = "0,00";
+                // Se desmarcar a data, zera o valor pago
+                total = 0;
+            }
+
+            txtValorPago.Text = total.ToString("F2");
+        }
+
+        // Pop-up de confirmação para "Dar Baixa"
+        private bool ConfirmarBaixa()
+        {
+            string dataPagto = dtpDataPagamento.Value.ToShortDateString();
+            string valorFinal = txtValorPago.Text;
+
+            string mensagem = $"Confirma a baixa desta conta?\n\n" +
+                              $"Data do Pagamento: {dataPagto}\n" +
+                              $"Valor Final: R$ {valorFinal}";
+
+            DialogResult resp = MessageBox.Show(mensagem, "Confirmar Baixa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            return resp == DialogResult.Yes;
+        }
+
+        // Pop-up para solicitar motivo do cancelamento (Similar ao frmCadastroCompra)
+        private string SolicitarMotivoCancelamento()
+        {
+            using (Form prompt = new Form())
+            {
+                prompt.Width = 500;
+                prompt.Height = 250;
+                prompt.Text = "Motivo do Cancelamento";
+                prompt.StartPosition = FormStartPosition.CenterParent;
+                prompt.FormBorderStyle = FormBorderStyle.FixedDialog;
+                prompt.MinimizeBox = false;
+                prompt.MaximizeBox = false;
+
+                Label textLabel = new Label() { Left = 50, Top = 20, Width = 400, Text = "Para cancelar esta conta, digite o motivo (mínimo 20 caracteres)." };
+                TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400, Height = 80, Multiline = true, ScrollBars = ScrollBars.Vertical, MaxLength = 100, CharacterCasing = CharacterCasing.Upper };
+                Button confirmation = new Button() { Text = "Confirmar", Left = 240, Width = 100, Top = 150, DialogResult = DialogResult.OK };
+                Button cancel = new Button() { Text = "Voltar", Left = 350, Width = 100, Top = 150, DialogResult = DialogResult.Cancel };
+
+                confirmation.Enabled = false;
+                textBox.TextChanged += (sender, e) =>
+                {
+                    confirmation.Enabled = textBox.Text.Trim().Length >= 20;
+                };
+
+                confirmation.Click += (sender, e) => { prompt.Close(); };
+                cancel.Click += (sender, e) => { prompt.Close(); };
+
+                prompt.Controls.Add(textBox);
+                prompt.Controls.Add(confirmation);
+                prompt.Controls.Add(cancel);
+                prompt.Controls.Add(textLabel);
+                prompt.AcceptButton = confirmation;
+                prompt.CancelButton = cancel;
+
+                if (prompt.ShowDialog() == DialogResult.OK)
+                {
+                    return textBox.Text.Trim();
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
     }

@@ -12,7 +12,7 @@ namespace projeto_patrica.pages.consulta
     public partial class frmConsultaContasAPagar : projeto_patrica.pages.consulta.frmConsulta
     {
         private frmCadastroContasAPagar oFrmCadastroContasAPagar;
-        private contasAPagar oContaAPagar;
+        private contasAPagar oContaAPagar; 
         private Controller_contasAPagar aController_contasAPagar;
         private List<contasAPagar> listaCompletaContas;
 
@@ -29,7 +29,7 @@ namespace projeto_patrica.pages.consulta
 
         public override void ConhecaObj(object obj, object ctrl)
         {
-            oContaAPagar = (contasAPagar)obj;
+            oContaAPagar = new contasAPagar();
             aController_contasAPagar = (Controller_contasAPagar)ctrl;
             CarregaLV();
         }
@@ -38,22 +38,24 @@ namespace projeto_patrica.pages.consulta
         {
             base.Incluir();
             contasAPagar novaConta = new contasAPagar();
+
+            if (oFrmCadastroContasAPagar == null)
+                oFrmCadastroContasAPagar = new frmCadastroContasAPagar();
+
             oFrmCadastroContasAPagar.ConhecaObj(novaConta, aController_contasAPagar);
             oFrmCadastroContasAPagar.Limpartxt();
-            oFrmCadastroContasAPagar.Desbloqueiatxt();
             oFrmCadastroContasAPagar.btnSave.Text = "Salvar";
+            oFrmCadastroContasAPagar.Desbloqueiatxt();
             oFrmCadastroContasAPagar.ShowDialog();
             CarregaLV();
         }
 
-        public override void Alterar()
+        private void btnDarBaixa_Click(object sender, EventArgs e)
         {
-            base.Alterar();
-
             aController_contasAPagar.CarregaObj(oContaAPagar);
 
             string aux = oFrmCadastroContasAPagar.btnSave.Text;
-            oFrmCadastroContasAPagar.btnSave.Text = "Alterar";
+            oFrmCadastroContasAPagar.btnSave.Text = "Dar Baixa";
 
             oFrmCadastroContasAPagar.ConhecaObj(oContaAPagar, aController_contasAPagar);
             oFrmCadastroContasAPagar.Carregatxt();
@@ -64,21 +66,57 @@ namespace projeto_patrica.pages.consulta
             CarregaLV();
         }
 
-        public override void Excluir()
+        public override void Alterar()
         {
-            base.Excluir();
+            base.Alterar();
 
             aController_contasAPagar.CarregaObj(oContaAPagar);
 
             string aux = oFrmCadastroContasAPagar.btnSave.Text;
-            oFrmCadastroContasAPagar.btnSave.Text = "Excluir";
+            oFrmCadastroContasAPagar.btnSave.Text = "Visualizar";
+
+            oFrmCadastroContasAPagar.ConhecaObj(oContaAPagar, aController_contasAPagar);
+            oFrmCadastroContasAPagar.Carregatxt();
+            oFrmCadastroContasAPagar.Bloqueiatxt();
+            oFrmCadastroContasAPagar.ShowDialog();
+
+            oFrmCadastroContasAPagar.btnSave.Text = aux;
+            CarregaLV();
+        }
+
+        // Excluir agora é Cancelar Conta
+        public override void Excluir()
+        {
+            base.Excluir();
+
+            if (oContaAPagar.Situacao == 1)
+            {
+                MessageBox.Show("Não é possível cancelar uma conta que já foi paga.", "Ação Interrompida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!oContaAPagar.Ativo)
+            {
+                MessageBox.Show("Esta conta já está cancelada.", "Ação Interrompida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (oContaAPagar.ModeloCompra != 0 && !string.IsNullOrWhiteSpace(oContaAPagar.NumeroNotaCompra) && oContaAPagar.ModeloCompra != 99999) // 99999 ou outro nº mágico para avulsa
+            {
+                MessageBox.Show("Contas vinculadas a uma nota fiscal não podem ser canceladas individualmente.\nCancele a Nota Fiscal de Compra para cancelar esta conta.", "Ação Interrompida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            aController_contasAPagar.CarregaObj(oContaAPagar);
+
+            string aux = oFrmCadastroContasAPagar.btnSave.Text;
+            oFrmCadastroContasAPagar.btnSave.Text = "Cancelar Conta";
 
             oFrmCadastroContasAPagar.ConhecaObj(oContaAPagar, aController_contasAPagar);
             oFrmCadastroContasAPagar.Carregatxt();
             oFrmCadastroContasAPagar.Bloqueiatxt();
             oFrmCadastroContasAPagar.ShowDialog(this);
 
-            oFrmCadastroContasAPagar.Desbloqueiatxt();
             oFrmCadastroContasAPagar.btnSave.Text = aux;
             CarregaLV();
         }
@@ -125,7 +163,6 @@ namespace projeto_patrica.pages.consulta
             }
 
 
-            // Filtrar pelo campo de Pesquisa (txtCodigo herdado)
             string termoPesquisa = txtCodigo.Text.Trim().ToUpper();
             if (!string.IsNullOrWhiteSpace(termoPesquisa))
             {
@@ -137,7 +174,6 @@ namespace projeto_patrica.pages.consulta
                  );
             }
 
-            // Preencher a ListView
             foreach (var conta in listaFiltrada)
             {
                 ListViewItem item = new ListViewItem(conta.NumeroParcela.ToString()); 
@@ -152,6 +188,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(conta.DataVencimento.ToShortDateString());
                 item.SubItems.Add(conta.Ativo ? "" : "CANCELADO"); 
 
+                item.Tag = conta;
                 listV.Items.Add(item);
             }
         }
@@ -170,6 +207,30 @@ namespace projeto_patrica.pages.consulta
         private void comboBoxFiltroStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             FiltrarEPreencherListView();
+        }
+
+        public override void ListV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            base.ListV_SelectedIndexChanged(sender, e); 
+
+            if (listV.SelectedItems.Count > 0)
+            {
+                ListViewItem linha = listV.SelectedItems[0];
+                contasAPagar contaSelecionada = (contasAPagar)linha.Tag;
+
+                oContaAPagar.ModeloCompra = contaSelecionada.ModeloCompra;
+                oContaAPagar.SerieCompra = contaSelecionada.SerieCompra;
+                oContaAPagar.NumeroNotaCompra = contaSelecionada.NumeroNotaCompra;
+                oContaAPagar.OFornecedor = contaSelecionada.OFornecedor; // Passa o objeto fornecedor
+                oContaAPagar.NumeroParcela = contaSelecionada.NumeroParcela;
+
+                oContaAPagar.Situacao = contaSelecionada.Situacao;
+                oContaAPagar.Ativo = contaSelecionada.Ativo;
+            }
+            else
+            {
+                oContaAPagar = new contasAPagar();
+            }
         }
     }
 }

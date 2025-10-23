@@ -2,7 +2,7 @@
 
 namespace projeto_patrica.classes
 {
-    class contasAPagar
+    class contasAPagar : pai 
     {
         protected int modeloCompra;
         protected string serieCompra;
@@ -13,16 +13,15 @@ namespace projeto_patrica.classes
         protected DateTime dataVencimento;
         protected decimal valorParcela;
         protected formaPagamento aFormaPagamento;
-        protected bool ativo;
         protected int situacao; // 0 - Em aberto, 1 - Pago
         protected decimal juros;
         protected decimal multa;
         protected decimal desconto;
         protected decimal? valorPago;
         protected DateTime? dataPagamento;
+        protected string motivoCancelamento;
 
-
-        public contasAPagar()
+        public contasAPagar() : base()
         {
             modeloCompra = 0;
             serieCompra = " ";
@@ -33,18 +32,21 @@ namespace projeto_patrica.classes
             dataVencimento = DateTime.MinValue;
             valorParcela = 0;
             aFormaPagamento = new formaPagamento();
-            ativo = true;
-            situacao = 0; // Default: Em aberto
+            situacao = 0; 
             juros = 0;
             multa = 0;
             desconto = 0;
             valorPago = null;
             dataPagamento = null;
+            motivoCancelamento = null; 
         }
 
-        public contasAPagar(int modeloCompra, string serieCompra, string numeroNotaCompra, fornecedor oFornecedor, int numeroParcela,
-                            DateTime dataEmissao, DateTime dataVencimento, decimal valorParcela, formaPagamento aFormaPagamento, bool ativo,
-                            int situacao, decimal juros, decimal multa, decimal desconto, decimal? valorPago, DateTime? dataPagamento)
+        public contasAPagar(
+            int modeloCompra, string serieCompra, string numeroNotaCompra, fornecedor oFornecedor, int numeroParcela,
+            DateTime dataEmissao, DateTime dataVencimento, decimal valorParcela, formaPagamento aFormaPagamento, bool ativo,
+            int situacao, decimal juros, decimal multa, decimal desconto, decimal? valorPago, DateTime? dataPagamento,
+            DateTime dataCadastro, DateTime? dataUltimaEdicao, string motivoCancelamento
+        ) : base(0, ativo, dataCadastro, dataUltimaEdicao)
         {
             this.modeloCompra = modeloCompra;
             this.serieCompra = serieCompra;
@@ -55,13 +57,13 @@ namespace projeto_patrica.classes
             this.dataVencimento = dataVencimento;
             this.valorParcela = valorParcela;
             this.aFormaPagamento = aFormaPagamento;
-            this.ativo = ativo;
             this.situacao = situacao;
             this.juros = juros;
             this.multa = multa;
             this.desconto = desconto;
             this.valorPago = valorPago;
             this.dataPagamento = dataPagamento;
+            this.motivoCancelamento = motivoCancelamento;
         }
 
         public int ModeloCompra
@@ -117,11 +119,6 @@ namespace projeto_patrica.classes
             get => aFormaPagamento;
             set => aFormaPagamento = value;
         }
-        public bool Ativo
-        {
-            get => ativo;
-            set => ativo = value;
-        }
         public int Situacao
         {
             get => situacao;
@@ -151,6 +148,11 @@ namespace projeto_patrica.classes
         {
             get => dataPagamento;
             set => dataPagamento = value;
+        }
+        public string MotivoCancelamento
+        {
+            get => motivoCancelamento;
+            set => motivoCancelamento = value;
         }
     }
 }
