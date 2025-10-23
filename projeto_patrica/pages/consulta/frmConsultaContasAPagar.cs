@@ -64,11 +64,36 @@ namespace projeto_patrica.pages.consulta
                 return;
             }
 
+            ListViewItem linhaSelecionada = listV.SelectedItems[0];
+            contasAPagar contaSelecionada = (contasAPagar)linhaSelecionada.Tag;
+
+            if (!contaSelecionada.Ativo)
+            {
+                MessageBox.Show(
+                    "Esta conta está cancelada e não pode ser baixada.",
+                    "Ação Interrompida",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            aController_contasAPagar.CarregaObj(contaSelecionada);
+
+            if (contaSelecionada.Situacao == 1)
+            {
+                MessageBox.Show(
+                    "Esta conta já foi baixada.",
+                    "Ação Interrompida",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                return;
+            }
 
             string aux = oFrmCadastroContasAPagar.btnSave.Text;
             oFrmCadastroContasAPagar.btnSave.Text = "Dar Baixa";
-            aController_contasAPagar.CarregaObj(oContaAPagar);
-            oFrmCadastroContasAPagar.ConhecaObj(oContaAPagar, aController_contasAPagar);
+            oFrmCadastroContasAPagar.ConhecaObj(contaSelecionada, aController_contasAPagar);
             oFrmCadastroContasAPagar.Carregatxt();
             oFrmCadastroContasAPagar.Desbloqueiatxt();
             oFrmCadastroContasAPagar.ShowDialog();
@@ -76,6 +101,7 @@ namespace projeto_patrica.pages.consulta
             oFrmCadastroContasAPagar.btnSave.Text = aux;
             CarregaLV();
         }
+
 
         public override void Alterar()
         {
