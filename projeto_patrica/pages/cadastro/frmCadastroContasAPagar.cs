@@ -17,6 +17,7 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastroContasAPagar()
         {
             InitializeComponent();
+            dtpDataEmissao.MaxDate = DateTime.Today;
         }
 
         public override void ConhecaObj(object obj, object ctrl)
@@ -75,7 +76,7 @@ namespace projeto_patrica.pages.cadastro
                 }
                 else if (btnSave.Text == "Dar Baixa")
                 {
-                    RecalcularValorPago(null, null); 
+                    RecalcularValorPago(null, null);
                     if (ConfirmarBaixa())
                     {
                         oContaAPagar.Juros = Convert.ToDecimal(txtJuros.Text);
@@ -92,7 +93,7 @@ namespace projeto_patrica.pages.cadastro
                     }
                     else
                     {
-                        return; 
+                        return;
                     }
                 }
                 else
@@ -100,10 +101,10 @@ namespace projeto_patrica.pages.cadastro
                     oContaAPagar.Juros = Convert.ToDecimal(txtJuros.Text);
                     oContaAPagar.Multa = Convert.ToDecimal(txtMulta.Text);
                     oContaAPagar.Desconto = Convert.ToDecimal(txtDesconto.Text);
-                    oContaAPagar.Situacao = 0; 
+                    oContaAPagar.Situacao = 0;
                     oContaAPagar.ValorPago = null;
                     oContaAPagar.DataPagamento = null;
-                    oContaAPagar.Ativo = checkBoxAtivo.Checked; 
+                    oContaAPagar.Ativo = checkBoxAtivo.Checked;
 
                     aController_contasAPagar.Salvar(oContaAPagar);
                     MessageBox.Show("Conta a Pagar salva com sucesso.");
@@ -115,7 +116,7 @@ namespace projeto_patrica.pages.cadastro
             {
                 switch (ex.Number)
                 {
-                    case 1062: 
+                    case 1062:
                         MessageBox.Show(
                             "Não foi possível salvar.\n\nJá existe uma parcela com este Modelo, Série, Número da Nota, Fornecedor e Número de Parcela.",
                             "Erro: Item duplicado",
@@ -123,7 +124,7 @@ namespace projeto_patrica.pages.cadastro
                             MessageBoxIcon.Error
                         );
                         break;
-                    case 1452: 
+                    case 1452:
                         MessageBox.Show(
                             "Não foi possível salvar.\n\nO Fornecedor ou a Forma de Pagamento especificada não existe.",
                             "Erro: Referência inválida",
@@ -157,7 +158,7 @@ namespace projeto_patrica.pages.cadastro
             txtNumDaNota.Clear();
             txtCodFornecedor.Clear();
             txtFornecedor.Clear();
-            txtNumParcela.Text = "1"; 
+            txtNumParcela.Text = "1";
             dtpDataEmissao.Value = DateTime.Today;
             dtpDataVencimento.Value = DateTime.Today;
             txtValorParcela.Text = "0,00";
@@ -316,7 +317,7 @@ namespace projeto_patrica.pages.cadastro
                 dtpDataEmissao.Enabled = false;
                 dtpDataVencimento.Enabled = false;
                 txtValorParcela.Enabled = false;
-                checkBoxAtivo.Enabled = false; 
+                checkBoxAtivo.Enabled = false;
                 txtCodFornecedor.Enabled = false;
                 txtFornecedor.Enabled = false;
                 btnSave.Visible = true;
@@ -338,7 +339,7 @@ namespace projeto_patrica.pages.cadastro
                 lblValorFinal.Visible = true;
 
                 dtpDataPagamento.Checked = true;
-                RecalcularValorPago(null, null); 
+                RecalcularValorPago(null, null);
             }
         }
 
