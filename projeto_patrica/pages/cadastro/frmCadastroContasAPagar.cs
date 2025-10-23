@@ -17,10 +17,8 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastroContasAPagar()
         {
             InitializeComponent();
-
-            dtpDataEmissao.MaxDate = DateTime.Today;
+            dtpDataEmissao.MaxDate = DateTime.Today; 
             dtpDataVencimento.MinDate = dtpDataEmissao.Value.Date;
-            
         }
 
         public override void ConhecaObj(object obj, object ctrl)
@@ -195,9 +193,9 @@ namespace projeto_patrica.pages.cadastro
             aController_contasAPagar.AController_formaPagamento.CarregaObj(oContaAPagar.AFormaPagamento);
             txtFormaPagamento.Text = oContaAPagar.AFormaPagamento.Descricao;
             txtCodFormaPagamento.Text = oContaAPagar.AFormaPagamento.Id.ToString();
-            dtpDataEmissao.Value = (oContaAPagar.DataEmissao >= dtpDataEmissao.MinDate) ? oContaAPagar.DataEmissao : DateTime.Today;
+            dtpDataEmissao.Value = oContaAPagar.DataEmissao;
             dtpDataVencimento.MinDate = dtpDataEmissao.Value.Date;
-            dtpDataVencimento.Value = (oContaAPagar.DataVencimento >= dtpDataVencimento.MinDate) ? oContaAPagar.DataVencimento : DateTime.Today;
+            dtpDataVencimento.Value = oContaAPagar.DataVencimento;
 
             if (oContaAPagar.DataPagamento.HasValue)
             {
@@ -342,6 +340,19 @@ namespace projeto_patrica.pages.cadastro
                 txtValorPago.Visible = true;
                 lblDataPagamento.Visible = true;
                 lblValorFinal.Visible = true;
+
+                // Restrições de data para pagamento
+                dtpDataPagamento.MinDate = dtpDataEmissao.Value.Date;
+                dtpDataPagamento.MaxDate = DateTime.Today;
+
+                if (DateTime.Today < dtpDataPagamento.MinDate)
+                {
+                    dtpDataPagamento.Value = dtpDataPagamento.MinDate;
+                }
+                else
+                {
+                    dtpDataPagamento.Value = DateTime.Today;
+                }
 
                 dtpDataPagamento.Checked = true;
                 RecalcularValorPago(null, null);
