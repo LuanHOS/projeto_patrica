@@ -34,10 +34,9 @@ namespace projeto_patrica.pages.consulta
         public override void Incluir()
         {
             base.Incluir();
-            // Passa um novo objeto para o formulário de cadastro
             oFrmCadastroCompra.ConhecaObj(new compra(), aController_compra);
             oFrmCadastroCompra.Limpartxt();
-            oFrmCadastroCompra.btnSave.Text = "Salvar"; // Garante que o modo é de inclusão
+            oFrmCadastroCompra.btnSave.Text = "Salvar"; 
             oFrmCadastroCompra.btnSave.Visible = true;
             oFrmCadastroCompra.ShowDialog();
             this.CarregaLV();
@@ -51,11 +50,11 @@ namespace projeto_patrica.pages.consulta
             oFrmCadastroCompra.ConhecaObj(oCompra, aController_compra);
             oFrmCadastroCompra.Carregatxt();
             oFrmCadastroCompra.Bloqueiatxt();
-            oFrmCadastroCompra.btnSave.Text = "Visualizar"; // Define o modo de visualização
-            oFrmCadastroCompra.btnSave.Visible = false; // Esconde o botão Salvar
+            oFrmCadastroCompra.btnSave.Text = "Visualizar"; 
+            oFrmCadastroCompra.btnSave.Visible = false; 
             oFrmCadastroCompra.ShowDialog();
-            oFrmCadastroCompra.btnSave.Visible = true; // Mostra o botão Salvar novamente ao fechar
-            oFrmCadastroCompra.btnSave.Text = "Salvar"; // Restaura o texto original
+            oFrmCadastroCompra.btnSave.Visible = true; 
+            oFrmCadastroCompra.btnSave.Text = "Salvar";
             this.CarregaLV();
         }
 
@@ -77,7 +76,7 @@ namespace projeto_patrica.pages.consulta
             oFrmCadastroCompra.btnSave.Text = "Cancelar Nota";
             oFrmCadastroCompra.btnSave.Visible = true;
             oFrmCadastroCompra.ShowDialog(this);
-            oFrmCadastroCompra.btnSave.Text = "Salvar"; // Restaura o texto original do botão
+            oFrmCadastroCompra.btnSave.Text = "Salvar";
             this.CarregaLV();
         }
 
@@ -91,23 +90,22 @@ namespace projeto_patrica.pages.consulta
 
             foreach (var compra in lista)
             {
-                // Carrega os dados completos para calcular o valor total
                 aController_compra.CarregaObj(compra);
                 decimal totalItens = compra.Itens.Sum(i => i.ValorTotal);
                 decimal valorTotal = totalItens + compra.ValorFrete + compra.Seguro + compra.Despesas;
 
-                ListViewItem item = new ListViewItem(compra.Modelo.ToString()); // clmCod (0)
-                item.SubItems.Add(compra.Serie); // clmSerie (1)
-                item.SubItems.Add(compra.NumeroNota); // clmNumNota (2)
-                item.SubItems.Add(compra.OFornecedor.Id.ToString()); // clmIdFornecedor (3)
-                item.SubItems.Add(compra.OFornecedor.Nome_razaoSocial); // clmFornecedor (4)
-                item.SubItems.Add(compra.DataEmissao.ToShortDateString()); // clmDataEmissao (5)
-                item.SubItems.Add(compra.DataEntrega.ToShortDateString()); // clmDataEntrega (6)
-                item.SubItems.Add(valorTotal.ToString("C2")); // clmValorTotal (7)
-                item.SubItems.Add(compra.ACondicaoPagamento.Descricao); // clmCondicaoPagamento (8)
-                item.SubItems.Add(compra.Ativo ? "" : "CANCELADO"); // clmAtivo (9)
-                item.SubItems.Add(compra.MotivoCancelamento ?? ""); // clmMotivoCancelamento (10)
-                item.SubItems.Add(compra.DataUltimaEdicao.HasValue ? compra.DataUltimaEdicao.Value.ToString("dd/MM/yyyy HH:mm") : ""); // clmDataCancelamento (11)
+                ListViewItem item = new ListViewItem(compra.Modelo.ToString()); 
+                item.SubItems.Add(compra.Serie);
+                item.SubItems.Add(compra.NumeroNota); 
+                item.SubItems.Add(compra.OFornecedor.Id.ToString()); 
+                item.SubItems.Add(compra.OFornecedor.Nome_razaoSocial); 
+                item.SubItems.Add(compra.DataEmissao.ToShortDateString()); 
+                item.SubItems.Add(compra.DataEntrega.ToShortDateString()); 
+                item.SubItems.Add(valorTotal.ToString("C2")); 
+                item.SubItems.Add(compra.ACondicaoPagamento.Descricao); 
+                item.SubItems.Add(compra.Ativo ? "" : "CANCELADO"); 
+                item.SubItems.Add(compra.MotivoCancelamento ?? ""); 
+                item.SubItems.Add(compra.DataUltimaEdicao.HasValue ? compra.DataUltimaEdicao.Value.ToString("dd/MM/yyyy HH:mm") : ""); 
 
                 item.Tag = compra;
                 listV.Items.Add(item);
@@ -143,18 +141,18 @@ namespace projeto_patrica.pages.consulta
                 decimal totalItens = compra.Itens.Sum(i => i.ValorTotal);
                 decimal valorTotal = totalItens + compra.ValorFrete + compra.Seguro + compra.Despesas;
 
-                ListViewItem item = new ListViewItem(compra.Modelo.ToString()); // clmCod (0)
-                item.SubItems.Add(compra.Serie); // clmSerie (1)
-                item.SubItems.Add(compra.NumeroNota); // clmNumNota (2)
-                item.SubItems.Add(compra.OFornecedor.Id.ToString()); // clmIdFornecedor (3)
-                item.SubItems.Add(compra.OFornecedor.Nome_razaoSocial); // clmFornecedor (4)
-                item.SubItems.Add(compra.DataEmissao.ToShortDateString()); // clmDataEmissao (5)
-                item.SubItems.Add(compra.DataEntrega.ToShortDateString()); // clmDataEntrega (6)
-                item.SubItems.Add(valorTotal.ToString("C2")); // clmValorTotal (7)
-                item.SubItems.Add(compra.ACondicaoPagamento.Descricao); // clmCondicaoPagamento (8)
-                item.SubItems.Add(compra.Ativo ? "" : "CANCELADO"); // clmAtivo (9)
-                item.SubItems.Add(compra.MotivoCancelamento ?? ""); // clmMotivoCancelamento (10)
-                item.SubItems.Add(compra.DataUltimaEdicao.HasValue ? compra.DataUltimaEdicao.Value.ToString("dd/MM/yyyy HH:mm") : ""); // clmDataCancelamento (11)
+                ListViewItem item = new ListViewItem(compra.Modelo.ToString());
+                item.SubItems.Add(compra.Serie); 
+                item.SubItems.Add(compra.NumeroNota); 
+                item.SubItems.Add(compra.OFornecedor.Id.ToString()); 
+                item.SubItems.Add(compra.OFornecedor.Nome_razaoSocial); 
+                item.SubItems.Add(compra.DataEmissao.ToShortDateString()); 
+                item.SubItems.Add(compra.DataEntrega.ToShortDateString());
+                item.SubItems.Add(valorTotal.ToString("C2")); 
+                item.SubItems.Add(compra.ACondicaoPagamento.Descricao); 
+                item.SubItems.Add(compra.Ativo ? "" : "CANCELADO"); 
+                item.SubItems.Add(compra.MotivoCancelamento ?? "");
+                item.SubItems.Add(compra.DataUltimaEdicao.HasValue ? compra.DataUltimaEdicao.Value.ToString("dd/MM/yyyy HH:mm") : "");
 
 
                 item.Tag = compra;
@@ -172,7 +170,6 @@ namespace projeto_patrica.pages.consulta
                 ListViewItem linha = listV.SelectedItems[0];
                 compra compraSelecionada = (compra)linha.Tag;
 
-                // Define as chaves da compra selecionada para as operações de Alterar/Excluir
                 oCompra.Modelo = compraSelecionada.Modelo;
                 oCompra.Serie = compraSelecionada.Serie;
                 oCompra.NumeroNota = compraSelecionada.NumeroNota;

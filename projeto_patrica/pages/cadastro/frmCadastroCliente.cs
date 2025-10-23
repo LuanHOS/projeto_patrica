@@ -130,7 +130,7 @@ namespace projeto_patrica.pages.cadastro
             {
                 switch (ex.Number)
                 {
-                    case 1062: // Entrada duplicada
+                    case 1062: 
                         MessageBox.Show(
                             "Não foi possível salvar o item.\n\nJá existe um item salvo com estes dados.",
                             "Erro: Item duplicado",
@@ -139,7 +139,7 @@ namespace projeto_patrica.pages.cadastro
                         );
                         break;
 
-                    case 1451: //  Entrada interligada
+                    case 1451:
                         MessageBox.Show(
                             "Não foi possível excluir o item.\n\nEle está interligado a outro item existente.",
                             "Erro: Item em uso",
@@ -148,7 +148,7 @@ namespace projeto_patrica.pages.cadastro
                         );
                         break;
 
-                    default: // Outros erros de banco de dados
+                    default:
                         MessageBox.Show(
                             "Não foi possível concluir a operação. Verifique os dados e tente novamente.\n\nDetalhes técnicos: " + ex.Message,
                             "Erro no Banco de Dados",

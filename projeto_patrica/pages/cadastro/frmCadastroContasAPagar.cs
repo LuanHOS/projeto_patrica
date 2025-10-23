@@ -17,13 +17,6 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastroContasAPagar()
         {
             InitializeComponent();
-            // Eventos para recalcular o valor pago ao alterar os campos
-            txtValorParcela.Leave += RecalcularValorPago;
-            txtJuros.Leave += RecalcularValorPago;
-            txtMulta.Leave += RecalcularValorPago;
-            txtDesconto.Leave += RecalcularValorPago;
-            dtpDataVencimento.ValueChanged += RecalcularValorPago;
-            dtpDataPagamento.ValueChanged += RecalcularValorPago;
         }
 
         public override void ConhecaObj(object obj, object ctrl)
@@ -47,7 +40,7 @@ namespace projeto_patrica.pages.cadastro
             if (!ValidacaoCampos())
                 return;
 
-            oContaAPagar.ModeloCompra = Convert.ToInt32(txtCodigo.Text); // txtCodigo é o Modelo
+            oContaAPagar.ModeloCompra = Convert.ToInt32(txtCodigo.Text);
             oContaAPagar.SerieCompra = txtSerie.Text;
             oContaAPagar.NumeroNotaCompra = txtNumDaNota.Text;
             oContaAPagar.OFornecedor.Id = Convert.ToInt32(txtCodFornecedor.Text);
@@ -71,7 +64,7 @@ namespace projeto_patrica.pages.cadastro
                 if (btnSave.Text == "Cancelar Conta")
                 {
                     string motivo = SolicitarMotivoCancelamento();
-                    if (string.IsNullOrEmpty(motivo)) return; // Usuário cancelou o popup
+                    if (string.IsNullOrEmpty(motivo)) return;
 
                     oContaAPagar.Ativo = false;
                     oContaAPagar.MotivoCancelamento = motivo;
@@ -159,12 +152,12 @@ namespace projeto_patrica.pages.cadastro
         public override void Limpartxt()
         {
             base.Limpartxt();
-            txtCodigo.Text = "0"; // Modelo 0 para avulsa
-            txtSerie.Clear();
+            txtCodigo.Text = "55";
+            txtSerie.Text = "1";
             txtNumDaNota.Clear();
             txtCodFornecedor.Clear();
             txtFornecedor.Clear();
-            txtNumParcela.Text = "1"; // Parcela 1 para avulsa
+            txtNumParcela.Text = "1"; 
             dtpDataEmissao.Value = DateTime.Today;
             dtpDataVencimento.Value = DateTime.Today;
             txtValorParcela.Text = "0,00";
@@ -192,31 +185,11 @@ namespace projeto_patrica.pages.cadastro
             txtNumDaNota.Text = oContaAPagar.NumeroNotaCompra;
             txtCodFornecedor.Text = oContaAPagar.OFornecedor.Id.ToString();
             txtNumParcela.Text = oContaAPagar.NumeroParcela.ToString();
-
-            // Carrega Fornecedor (se tiver)
-            if (oContaAPagar.OFornecedor.Id > 0 && aController_contasAPagar.AController_fornecedor != null)
-            {
-                aController_contasAPagar.AController_fornecedor.CarregaObj(oContaAPagar.OFornecedor);
-                txtFornecedor.Text = oContaAPagar.OFornecedor.Nome_razaoSocial;
-            }
-            else
-            {
-                txtFornecedor.Clear();
-            }
-
-            // Carrega Forma de Pagamento (se tiver)
-            if (oContaAPagar.AFormaPagamento.Id > 0 && aController_contasAPagar.AController_formaPagamento != null)
-            {
-                aController_contasAPagar.AController_formaPagamento.CarregaObj(oContaAPagar.AFormaPagamento);
-                txtFormaPagamento.Text = oContaAPagar.AFormaPagamento.Descricao;
-                txtCodFormaPagamento.Text = oContaAPagar.AFormaPagamento.Id.ToString();
-            }
-            else
-            {
-                txtFormaPagamento.Clear();
-                txtCodFormaPagamento.Clear();
-            }
-
+            aController_contasAPagar.AController_fornecedor.CarregaObj(oContaAPagar.OFornecedor);
+            txtFornecedor.Text = oContaAPagar.OFornecedor.Nome_razaoSocial;
+            aController_contasAPagar.AController_formaPagamento.CarregaObj(oContaAPagar.AFormaPagamento);
+            txtFormaPagamento.Text = oContaAPagar.AFormaPagamento.Descricao;
+            txtCodFormaPagamento.Text = oContaAPagar.AFormaPagamento.Id.ToString();
             dtpDataEmissao.Value = (oContaAPagar.DataEmissao >= dtpDataEmissao.MinDate) ? oContaAPagar.DataEmissao : DateTime.Today;
             dtpDataVencimento.Value = (oContaAPagar.DataVencimento >= dtpDataVencimento.MinDate) ? oContaAPagar.DataVencimento : DateTime.Today;
 
@@ -269,7 +242,6 @@ namespace projeto_patrica.pages.cadastro
             txtValorPago.Enabled = false;
             dtpDataPagamento.Enabled = false;
 
-            // Controla visibilidade baseado no modo
             if (btnSave.Text == "Visualizar")
             {
                 btnSave.Visible = false; // Botão Salvar fica invisível
@@ -304,7 +276,7 @@ namespace projeto_patrica.pages.cadastro
 
             if (btnSave.Text == "Salvar") // Modo Inclusão
             {
-                txtCodigo.Enabled = true; // Modelo
+                txtCodigo.Enabled = true;
                 txtSerie.Enabled = true;
                 txtNumDaNota.Enabled = true;
                 btnPesquisarFornecedor.Enabled = true;
@@ -316,6 +288,12 @@ namespace projeto_patrica.pages.cadastro
                 txtJuros.Enabled = true;
                 txtMulta.Enabled = true;
                 txtDesconto.Enabled = true;
+                txtCodFormaPagamento.Enabled = true;
+                txtFormaPagamento.Enabled = true;
+                txtCodFornecedor.Enabled = true;
+                txtFornecedor.Enabled = true;
+                btnSave.Visible = true;
+                checkBoxAtivo.Enabled = false;
 
                 // Campos de baixa/visualização ficam ocultos
                 dtpDataPagamento.Visible = false;
@@ -335,8 +313,11 @@ namespace projeto_patrica.pages.cadastro
                 txtNumParcela.Enabled = false;
                 dtpDataEmissao.Enabled = false;
                 dtpDataVencimento.Enabled = false;
-                txtValorParcela.Enabled = false; // Valor original não muda
-                checkBoxAtivo.Enabled = false; // Não pode cancelar na baixa
+                txtValorParcela.Enabled = false;
+                checkBoxAtivo.Enabled = false; 
+                txtCodFornecedor.Enabled = false;
+                txtFornecedor.Enabled = false;
+                btnSave.Visible = true;
 
                 // Habilita campos da baixa
                 txtJuros.Enabled = true;
@@ -351,11 +332,9 @@ namespace projeto_patrica.pages.cadastro
                 lblDataPagamento.Visible = true;
                 lblValorFinal.Visible = true;
 
-                dtpDataPagamento.Checked = true; // Força o check ao entrar no modo
-                RecalcularValorPago(null, null); // Calcula o valor inicial da baixa
+                dtpDataPagamento.Checked = true;
+                RecalcularValorPago(null, null); 
             }
-
-            // Modos "Visualizar" e "Cancelar Conta" são tratados pelo Bloqueiatxt()
         }
 
         public override bool ValidacaoCampos()
@@ -397,31 +376,6 @@ namespace projeto_patrica.pages.cadastro
             return true;
         }
 
-        public override void CamposRestricoes()
-        {
-            base.CamposRestricoes();
-
-            txtCodigo.MaxLength = 10; // Modelo
-            txtSerie.MaxLength = 3;
-            txtNumDaNota.MaxLength = 9;
-            txtNumParcela.MaxLength = 10;
-            txtValorParcela.MaxLength = 11;
-            txtJuros.MaxLength = 11;
-            txtMulta.MaxLength = 11;
-            txtDesconto.MaxLength = 11;
-            txtValorPago.MaxLength = 11;
-
-            txtCodigo.KeyPress += ApenasNumeros;
-            txtNumParcela.KeyPress += ApenasNumeros;
-            txtNumDaNota.KeyPress += ApenasNumeros;
-
-            txtValorParcela.KeyPress += ApenasNumerosDecimal;
-            txtJuros.KeyPress += ApenasNumerosDecimal;
-            txtMulta.KeyPress += ApenasNumerosDecimal;
-            txtDesconto.KeyPress += ApenasNumerosDecimal;
-            txtValorPago.KeyPress += ApenasNumerosDecimal;
-        }
-
         private void btnPesquisarFornecedor_Click(object sender, EventArgs e)
         {
             if (oFrmConsultaFornecedor == null)
@@ -458,19 +412,15 @@ namespace projeto_patrica.pages.cadastro
             }
         }
 
-        // Atualiza o valor pago quando data de pagamento muda (check/uncheck)
         private void dtpDataPagamento_ValueChanged(object sender, EventArgs e)
         {
             RecalcularValorPago(sender, e);
         }
 
-        // Recalcula o valor final da parcela
         private void RecalcularValorPago(object sender, EventArgs e)
         {
-            // Só recalcula se estiver no modo "Dar Baixa"
             if (btnSave.Text != "Dar Baixa")
             {
-                // Se não estiver em modo baixa, e o checkbox for desmarcado, zera o valor pago
                 if (sender == dtpDataPagamento && !dtpDataPagamento.Checked)
                 {
                     txtValorPago.Text = "0,00";
@@ -524,7 +474,7 @@ namespace projeto_patrica.pages.cadastro
             return resp == DialogResult.Yes;
         }
 
-        // Pop-up para solicitar motivo do cancelamento (Similar ao frmCadastroCompra)
+        // Pop-up para solicitar motivo do cancelamento
         private string SolicitarMotivoCancelamento()
         {
             using (Form prompt = new Form())
@@ -567,6 +517,50 @@ namespace projeto_patrica.pages.cadastro
                     return null;
                 }
             }
+        }
+
+        public override void CamposRestricoes()
+        {
+            base.CamposRestricoes();
+
+            txtCodigo.MaxLength = 2;
+            txtSerie.MaxLength = 3;
+            txtNumDaNota.MaxLength = 9;
+            txtNumParcela.MaxLength = 10;
+            txtValorParcela.MaxLength = 11;
+            txtJuros.MaxLength = 11;
+            txtMulta.MaxLength = 11;
+            txtDesconto.MaxLength = 11;
+            txtValorPago.MaxLength = 11;
+
+
+
+            txtCodigo.KeyPress -= ApenasNumeros;
+            txtCodigo.KeyPress += ApenasNumeros;
+
+            txtSerie.KeyPress -= ApenasNumeros;
+            txtSerie.KeyPress += ApenasNumeros;
+
+            txtNumDaNota.KeyPress -= ApenasNumeros;
+            txtNumDaNota.KeyPress += ApenasNumeros;
+
+            txtNumParcela.KeyPress -= ApenasNumeros;
+            txtNumParcela.KeyPress += ApenasNumeros;
+
+            txtValorParcela.KeyPress -= ApenasNumerosDecimal;
+            txtValorParcela.KeyPress += ApenasNumerosDecimal;
+
+            txtJuros.KeyPress -= ApenasNumerosDecimal;
+            txtJuros.KeyPress += ApenasNumerosDecimal;
+
+            txtMulta.KeyPress -= ApenasNumerosDecimal;
+            txtMulta.KeyPress += ApenasNumerosDecimal;
+
+            txtDesconto.KeyPress -= ApenasNumerosDecimal;
+            txtDesconto.KeyPress += ApenasNumerosDecimal;
+
+            txtValorPago.KeyPress -= ApenasNumerosDecimal;
+            txtValorPago.KeyPress += ApenasNumerosDecimal;
         }
     }
 }

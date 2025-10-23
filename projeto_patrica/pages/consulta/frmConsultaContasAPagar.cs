@@ -37,6 +37,7 @@ namespace projeto_patrica.pages.consulta
         public override void Incluir()
         {
             base.Incluir();
+
             contasAPagar novaConta = new contasAPagar();
 
             if (oFrmCadastroContasAPagar == null)
@@ -52,11 +53,21 @@ namespace projeto_patrica.pages.consulta
 
         private void btnDarBaixa_Click(object sender, EventArgs e)
         {
-            aController_contasAPagar.CarregaObj(oContaAPagar);
+            if (listV.SelectedItems.Count == 0)
+            {
+                MessageBox.Show(
+                    "Nenhum item selecionado. Selecione um registro para dar baixa.",
+                    "Atenção",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
 
             string aux = oFrmCadastroContasAPagar.btnSave.Text;
             oFrmCadastroContasAPagar.btnSave.Text = "Dar Baixa";
-
+            aController_contasAPagar.CarregaObj(oContaAPagar);
             oFrmCadastroContasAPagar.ConhecaObj(oContaAPagar, aController_contasAPagar);
             oFrmCadastroContasAPagar.Carregatxt();
             oFrmCadastroContasAPagar.Desbloqueiatxt();
@@ -68,23 +79,20 @@ namespace projeto_patrica.pages.consulta
 
         public override void Alterar()
         {
-            base.Alterar();
-
-            aController_contasAPagar.CarregaObj(oContaAPagar);
-
             string aux = oFrmCadastroContasAPagar.btnSave.Text;
             oFrmCadastroContasAPagar.btnSave.Text = "Visualizar";
-
+            base.Alterar();
+            aController_contasAPagar.CarregaObj(oContaAPagar);
             oFrmCadastroContasAPagar.ConhecaObj(oContaAPagar, aController_contasAPagar);
             oFrmCadastroContasAPagar.Carregatxt();
             oFrmCadastroContasAPagar.Bloqueiatxt();
             oFrmCadastroContasAPagar.ShowDialog();
+            oFrmCadastroContasAPagar.Desbloqueiatxt();
 
             oFrmCadastroContasAPagar.btnSave.Text = aux;
             CarregaLV();
         }
 
-        // Excluir agora é Cancelar Conta
         public override void Excluir()
         {
             base.Excluir();
@@ -101,21 +109,34 @@ namespace projeto_patrica.pages.consulta
                 return;
             }
 
-            if (oContaAPagar.ModeloCompra != 0 && !string.IsNullOrWhiteSpace(oContaAPagar.NumeroNotaCompra) && oContaAPagar.ModeloCompra != 99999) // 99999 ou outro nº mágico para avulsa
+            var daoCompra = new projeto_patrica.dao.Dao_compra();
+            bool compraExiste = daoCompra.VerificarCompraExistente(
+                oContaAPagar.ModeloCompra,
+                oContaAPagar.SerieCompra,
+                oContaAPagar.NumeroNotaCompra,
+                oContaAPagar.OFornecedor.Id
+            );
+
+            if (compraExiste)
             {
-                MessageBox.Show("Contas vinculadas a uma nota fiscal não podem ser canceladas individualmente.\nCancele a Nota Fiscal de Compra para cancelar esta conta.", "Ação Interrompida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Contas vinculadas a uma nota fiscal de compra não podem ser canceladas individualmente.\n" +
+                    "Cancele a Nota Fiscal de Compra para cancelar esta conta.",
+                    "Ação Interrompida",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
                 return;
             }
 
-            aController_contasAPagar.CarregaObj(oContaAPagar);
-
             string aux = oFrmCadastroContasAPagar.btnSave.Text;
             oFrmCadastroContasAPagar.btnSave.Text = "Cancelar Conta";
-
+            aController_contasAPagar.CarregaObj(oContaAPagar);
             oFrmCadastroContasAPagar.ConhecaObj(oContaAPagar, aController_contasAPagar);
             oFrmCadastroContasAPagar.Carregatxt();
             oFrmCadastroContasAPagar.Bloqueiatxt();
             oFrmCadastroContasAPagar.ShowDialog(this);
+            oFrmCadastroContasAPagar.Desbloqueiatxt();
 
             oFrmCadastroContasAPagar.btnSave.Text = aux;
             CarregaLV();
@@ -221,9 +242,8 @@ namespace projeto_patrica.pages.consulta
                 oContaAPagar.ModeloCompra = contaSelecionada.ModeloCompra;
                 oContaAPagar.SerieCompra = contaSelecionada.SerieCompra;
                 oContaAPagar.NumeroNotaCompra = contaSelecionada.NumeroNotaCompra;
-                oContaAPagar.OFornecedor = contaSelecionada.OFornecedor; // Passa o objeto fornecedor
+                oContaAPagar.OFornecedor = contaSelecionada.OFornecedor;
                 oContaAPagar.NumeroParcela = contaSelecionada.NumeroParcela;
-
                 oContaAPagar.Situacao = contaSelecionada.Situacao;
                 oContaAPagar.Ativo = contaSelecionada.Ativo;
             }

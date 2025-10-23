@@ -15,17 +15,11 @@ namespace projeto_patrica.pages.cadastro
     {
         private compra oCompra;
         private Controller_compra aController_compra;
-
-        // Formulários de Consulta
         private frmConsultaFornecedor oFrmConsultaFornecedor;
         private frmConsultaProduto oFrmConsultaProduto;
         private frmConsultaCondicaoPagamento oFrmConsultaCondicaoPagamento;
-
-        // Listas locais para gerenciamento de dados na tela
         private List<itemCompra> listaItens = new List<itemCompra>();
         private List<contasAPagar> listaParcelas = new List<contasAPagar>();
-
-        // Controle de edição de item
         private bool editandoItem = false;
         private int indiceItemEditando = -1;
         private produto produtoSelecionado = new produto();
@@ -35,14 +29,9 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastroCompra()
         {
             InitializeComponent();
-            dtpDataEmissao.MaxDate = DateTime.Today; // Data máxima inicial da emissão
-            dtpDataEntrega.MaxDate = DateTime.Today; // Data máxima inicial da entrega
-            dtpDataEntrega.MinDate = dtpDataEmissao.Value; // Data mínima inicial da entrega
-
-            // Adiciona o manipulador de evento
-            this.checkBoxAtivo.CheckedChanged += new System.EventHandler(this.checkBoxAtivo_CheckedChanged);
-            // Define o texto inicial
-            checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
+            dtpDataEmissao.MaxDate = DateTime.Today;
+            dtpDataEntrega.MaxDate = DateTime.Today; 
+            dtpDataEntrega.MinDate = dtpDataEmissao.Value;
 
             GerenciarEstadoDosControles();
         }
@@ -190,7 +179,7 @@ namespace projeto_patrica.pages.cadastro
                 {
                     switch (ex.Number)
                     {
-                        case 1062: // Entrada duplicada
+                        case 1062:
                             MessageBox.Show(
                                 "Não foi possível salvar o item.\n\nJá existe um item salvo com estes dados.",
                                 "Erro: Item duplicado",
@@ -199,7 +188,7 @@ namespace projeto_patrica.pages.cadastro
                             );
                             break;
 
-                        default: // Outros erros de banco de dados
+                        default:
                             MessageBox.Show(
                                 "Não foi possível concluir a operação. Verifique os dados e tente novamente.\n\nDetalhes técnicos: " + ex.Message,
                                 "Erro no Banco de Dados",
@@ -231,8 +220,8 @@ namespace projeto_patrica.pages.cadastro
                 txtFornecedor.Clear();
                 dtpDataEmissao.Value = DateTime.Today;
                 dtpDataEntrega.Value = DateTime.Today;
-                dtpDataEntrega.MinDate = dtpDataEmissao.Value; // Garante MinDate inicial
-                dtpDataEntrega.MaxDate = DateTime.Today; // Garante MaxDate inicial
+                dtpDataEntrega.MinDate = dtpDataEmissao.Value; 
+                dtpDataEntrega.MaxDate = DateTime.Today; 
                 LimparCamposProduto();
                 btnLimparListaProduto_Click(null, null);
                 txtValorFrete.Text = "0,00";
@@ -247,7 +236,6 @@ namespace projeto_patrica.pages.cadastro
                 txtCodProduto.Clear();
                 txtProduto.Clear();
 
-                // Atualiza o texto do CheckBox
                 checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
 
 
@@ -273,8 +261,8 @@ namespace projeto_patrica.pages.cadastro
                 txtCodFornecedor.Text = oCompra.OFornecedor.Id.ToString();
                 txtFornecedor.Text = oCompra.OFornecedor.Nome_razaoSocial;
                 dtpDataEmissao.Value = oCompra.DataEmissao;
-                dtpDataEntrega.MinDate = dtpDataEmissao.Value; // Ajusta MinDate ao carregar
-                dtpDataEntrega.MaxDate = DateTime.Today; // Ajusta MaxDate ao carregar
+                dtpDataEntrega.MinDate = dtpDataEmissao.Value;
+                dtpDataEntrega.MaxDate = DateTime.Today; 
                 dtpDataEntrega.Value = oCompra.DataEntrega;
                 txtValorFrete.Text = oCompra.ValorFrete.ToString("F2");
                 txtSeguro.Text = oCompra.Seguro.ToString("F2");
@@ -764,12 +752,6 @@ namespace projeto_patrica.pages.cadastro
         private void txtDespesas_Leave(object sender, EventArgs e)
         {
             AtualizarTotais();
-        }
-
-        // Novo método para o evento CheckedChanged
-        private void checkBoxAtivo_CheckedChanged(object sender, EventArgs e)
-        {
-            checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
         }
 
         public override void CamposRestricoes()
