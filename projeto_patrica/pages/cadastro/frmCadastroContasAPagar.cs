@@ -17,7 +17,10 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastroContasAPagar()
         {
             InitializeComponent();
+
             dtpDataEmissao.MaxDate = DateTime.Today;
+            dtpDataVencimento.MinDate = dtpDataEmissao.Value.Date;
+            
         }
 
         public override void ConhecaObj(object obj, object ctrl)
@@ -160,6 +163,7 @@ namespace projeto_patrica.pages.cadastro
             txtFornecedor.Clear();
             txtNumParcela.Text = "1";
             dtpDataEmissao.Value = DateTime.Today;
+            dtpDataVencimento.MinDate = dtpDataEmissao.Value.Date;
             dtpDataVencimento.Value = DateTime.Today;
             txtValorParcela.Text = "0,00";
             txtFormaPagamento.Clear();
@@ -192,6 +196,7 @@ namespace projeto_patrica.pages.cadastro
             txtFormaPagamento.Text = oContaAPagar.AFormaPagamento.Descricao;
             txtCodFormaPagamento.Text = oContaAPagar.AFormaPagamento.Id.ToString();
             dtpDataEmissao.Value = (oContaAPagar.DataEmissao >= dtpDataEmissao.MinDate) ? oContaAPagar.DataEmissao : DateTime.Today;
+            dtpDataVencimento.MinDate = dtpDataEmissao.Value.Date;
             dtpDataVencimento.Value = (oContaAPagar.DataVencimento >= dtpDataVencimento.MinDate) ? oContaAPagar.DataVencimento : DateTime.Today;
 
             if (oContaAPagar.DataPagamento.HasValue)
@@ -522,6 +527,15 @@ namespace projeto_patrica.pages.cadastro
                 {
                     return null;
                 }
+            }
+        }
+
+        private void DtpDataEmissao_ValueChanged(object sender, EventArgs e)
+        {
+            dtpDataVencimento.MinDate = dtpDataEmissao.Value.Date;
+            if (dtpDataVencimento.Value < dtpDataVencimento.MinDate)
+            {
+                dtpDataVencimento.Value = dtpDataVencimento.MinDate;
             }
         }
 

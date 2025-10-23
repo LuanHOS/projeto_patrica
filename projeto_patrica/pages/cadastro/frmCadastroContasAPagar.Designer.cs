@@ -121,6 +121,7 @@
             this.dtpDataEmissao.Name = "dtpDataEmissao";
             this.dtpDataEmissao.Size = new System.Drawing.Size(115, 22);
             this.dtpDataEmissao.TabIndex = 114;
+            this.dtpDataEmissao.ValueChanged += new System.EventHandler(this.DtpDataEmissao_ValueChanged);
             // 
             // dtpDataVencimento
             // 
