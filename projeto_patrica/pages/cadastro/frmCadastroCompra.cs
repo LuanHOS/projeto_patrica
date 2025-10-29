@@ -24,15 +24,17 @@ namespace projeto_patrica.pages.cadastro
         private int indiceItemEditando = -1;
         private produto produtoSelecionado = new produto();
         private bool compraExistente = false;
+        private bool contaPagarExistente = false;
         private bool _isLoading = false;
+        private Dao_compra aDao_compra;
 
         public frmCadastroCompra()
         {
             InitializeComponent();
             dtpDataEmissao.MaxDate = DateTime.Today;
-            dtpDataEntrega.MaxDate = DateTime.Today; 
+            dtpDataEntrega.MaxDate = DateTime.Today;
             dtpDataEntrega.MinDate = dtpDataEmissao.Value;
-
+            aDao_compra = new Dao_compra();
             GerenciarEstadoDosControles();
         }
 
@@ -65,6 +67,8 @@ namespace projeto_patrica.pages.cadastro
                 oCompra.OFornecedor == null || oCompra.OFornecedor.Id == 0)
             {
                 compraExistente = false;
+                contaPagarExistente = false;
+                GerenciarEstadoDosControles();
                 return;
             }
 
@@ -73,15 +77,30 @@ namespace projeto_patrica.pages.cadastro
             string numeroNota = txtNumDaNota.Text;
             int idFornecedor = oCompra.OFornecedor.Id;
 
-            Dao_compra dao = new Dao_compra();
-            if (dao.VerificarCompraExistente(modelo, serie, numeroNota, idFornecedor))
+            if (aDao_compra.VerificarCompraExistente(modelo, serie, numeroNota, idFornecedor))
             {
                 MessageBox.Show("Esta nota de compra já foi cadastrada para este fornecedor.", "Compra Duplicada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 compraExistente = true;
+                contaPagarExistente = false;
             }
             else
             {
                 compraExistente = false;
+
+                if (aDao_compra.VerificarContaAPagarExistente(modelo, serie, numeroNota, idFornecedor))
+                {
+                    MessageBox.Show(
+                       "Já existe uma Conta a Pagar registrada com o mesmo Modelo, Série, Número da Nota e Fornecedor.\nNão será possível salvar uma nova Compra com estes dados.",
+                       "Erro: Conta a Pagar Existente",
+                       MessageBoxButtons.OK,
+                       MessageBoxIcon.Error
+                   );
+                    contaPagarExistente = true;
+                }
+                else
+                {
+                    contaPagarExistente = false;
+                }
             }
             GerenciarEstadoDosControles();
         }
@@ -214,14 +233,14 @@ namespace projeto_patrica.pages.cadastro
             {
                 base.Limpartxt();
                 txtCodigo.Text = "55";
-                txtSerie.Text = "1"
-;               txtNumDaNota.Clear();
+                txtSerie.Text = "1";               
+                txtNumDaNota.Clear();
                 txtCodFornecedor.Clear();
                 txtFornecedor.Clear();
                 dtpDataEmissao.Value = DateTime.Today;
                 dtpDataEntrega.Value = DateTime.Today;
-                dtpDataEntrega.MinDate = dtpDataEmissao.Value; 
-                dtpDataEntrega.MaxDate = DateTime.Today; 
+                dtpDataEntrega.MinDate = dtpDataEmissao.Value;
+                dtpDataEntrega.MaxDate = DateTime.Today;
                 LimparCamposProduto();
                 btnLimparListaProduto_Click(null, null);
                 txtValorFrete.Text = "0,00";
@@ -241,6 +260,7 @@ namespace projeto_patrica.pages.cadastro
 
                 oCompra = new compra();
                 compraExistente = false;
+                contaPagarExistente = false;
                 GerenciarEstadoDosControles();
             }
             finally
@@ -262,7 +282,7 @@ namespace projeto_patrica.pages.cadastro
                 txtFornecedor.Text = oCompra.OFornecedor.Nome_razaoSocial;
                 dtpDataEmissao.Value = oCompra.DataEmissao;
                 dtpDataEntrega.MinDate = dtpDataEmissao.Value;
-                dtpDataEntrega.MaxDate = DateTime.Today; 
+                dtpDataEntrega.MaxDate = DateTime.Today;
                 dtpDataEntrega.Value = oCompra.DataEntrega;
                 txtValorFrete.Text = oCompra.ValorFrete.ToString("F2");
                 txtSeguro.Text = oCompra.Seguro.ToString("F2");
@@ -329,16 +349,19 @@ namespace projeto_patrica.pages.cadastro
             bool temItens = listaItens.Any();
             bool temParcelas = listaParcelas.Any();
 
+            bool podeProsseguirCabecalho = cabecalhoPreenchido && !compraExistente && !contaPagarExistente;
+
+
             if (!temItens)
             {
                 HabilitarSecaoCabecalho(true);
-                HabilitarSecaoProdutos(cabecalhoPreenchido && !compraExistente);
+                HabilitarSecaoProdutos(podeProsseguirCabecalho);
                 HabilitarSecaoRodape(false);
             }
             else if (temItens && !temParcelas)
             {
                 HabilitarSecaoCabecalho(false);
-                HabilitarSecaoProdutos(true && !compraExistente);
+                HabilitarSecaoProdutos(podeProsseguirCabecalho);
                 HabilitarSecaoRodape(true);
             }
             else
@@ -394,7 +417,6 @@ namespace projeto_patrica.pages.cadastro
         {
             if (_isLoading) return;
             VerificarCompraExistente();
-            GerenciarEstadoDosControles();
         }
 
         #endregion
@@ -634,12 +656,12 @@ namespace projeto_patrica.pages.cadastro
             listVProdutos.Items.Clear();
             foreach (var item in listaItens)
             {
-                ListViewItem lvi = new ListViewItem(item.OProduto.Id.ToString()); 
-                lvi.SubItems.Add(item.OProduto.Nome); 
+                ListViewItem lvi = new ListViewItem(item.OProduto.Id.ToString());
+                lvi.SubItems.Add(item.OProduto.Nome);
                 lvi.SubItems.Add(item.OProduto.OUnidadeMedida.Sigla);
-                lvi.SubItems.Add(item.Quantidade.ToString()); 
-                lvi.SubItems.Add(item.ValorUnitario.ToString("C2")); 
-                lvi.SubItems.Add(item.ValorTotal.ToString("C2")); 
+                lvi.SubItems.Add(item.Quantidade.ToString());
+                lvi.SubItems.Add(item.ValorUnitario.ToString("C2"));
+                lvi.SubItems.Add(item.ValorTotal.ToString("C2"));
                 listVProdutos.Items.Add(lvi);
             }
             AtualizarTotais();
@@ -725,8 +747,8 @@ namespace projeto_patrica.pages.cadastro
 
         private void dtpDataEmissao_ValueChanged(object sender, EventArgs e)
         {
-            dtpDataEntrega.MinDate = dtpDataEmissao.Value; 
-            dtpDataEntrega.MaxDate = DateTime.Today; 
+            dtpDataEntrega.MinDate = dtpDataEmissao.Value;
+            dtpDataEntrega.MaxDate = DateTime.Today;
 
             if (dtpDataEntrega.Value < dtpDataEntrega.MinDate)
             {

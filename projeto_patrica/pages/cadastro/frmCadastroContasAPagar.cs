@@ -84,6 +84,24 @@ namespace projeto_patrica.pages.cadastro
                     );
                     return;
                 }
+
+                bool compraExistenteParaConta = aDao_contasAPagar.VerificarCompraExistente(
+                   oContaAPagar.ModeloCompra,
+                   oContaAPagar.SerieCompra,
+                   oContaAPagar.NumeroNotaCompra,
+                   oContaAPagar.OFornecedor.Id
+                );
+
+                if (compraExistenteParaConta)
+                {
+                    MessageBox.Show(
+                        "Não foi possível salvar a conta a pagar.\n\nJá existe uma Compra registrada com o mesmo Modelo, Série, Número da Nota e Fornecedor.",
+                        "Erro: Compra Existente",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                    return;
+                }
             }
             try
             {
@@ -121,7 +139,7 @@ namespace projeto_patrica.pages.cadastro
                         return;
                     }
                 }
-                else 
+                else
                 {
                     oContaAPagar.Juros = Convert.ToDecimal(txtJuros.Text);
                     oContaAPagar.Multa = Convert.ToDecimal(txtMulta.Text);
@@ -135,7 +153,7 @@ namespace projeto_patrica.pages.cadastro
                     MessageBox.Show("Conta a Pagar salva com sucesso.");
                 }
 
-                base.Salvar(); 
+                base.Salvar();
             }
             catch (MySqlException ex)
             {
@@ -288,7 +306,7 @@ namespace projeto_patrica.pages.cadastro
             }
             else if (btnSave.Text == "Cancelar Conta")
             {
-                btnSave.Visible = true; 
+                btnSave.Visible = true;
                 dtpDataPagamento.Visible = false;
                 txtValorPago.Visible = false;
                 lblDataPagamento.Visible = false;
@@ -301,7 +319,7 @@ namespace projeto_patrica.pages.cadastro
             base.Desbloqueiatxt();
 
 
-            if (btnSave.Text == "Salvar") 
+            if (btnSave.Text == "Salvar")
             {
                 txtCodigo.Enabled = true;
                 txtSerie.Enabled = true;
@@ -475,17 +493,13 @@ namespace projeto_patrica.pages.cadastro
 
             decimal total = valorParcela;
 
-            // Juros (influencia sempre, se houver)
-            total += (valorParcela * (juros / 100));
-
             if (dtpDataPagamento.Checked)
             {
-                // Multa (só se data pagto > vencimento)
                 if (dtpDataPagamento.Value.Date > dtpDataVencimento.Value.Date)
                 {
                     total += (valorParcela * (multa / 100));
+                    total += (valorParcela * (juros / 100));
                 }
-                // Desconto (só se data pagto <= vencimento)
                 else
                 {
                     total -= (valorParcela * (desconto / 100));
@@ -493,7 +507,7 @@ namespace projeto_patrica.pages.cadastro
             }
             else
             {
-                // Se desmarcar a data, zera o valor pago
+
                 total = 0;
             }
 

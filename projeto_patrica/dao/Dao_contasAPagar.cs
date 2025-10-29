@@ -33,6 +33,26 @@ namespace projeto_patrica.dao
             }
         }
 
+        public bool VerificarCompraExistente(int modelo, string serie, string numeroNota, int idFornecedor)
+        {
+            using (MySqlConnection conn = Banco.Abrir())
+            {
+                string sql = "SELECT COUNT(*) FROM COMPRA " +
+                             "WHERE MODELO = @Modelo AND SERIE = @Serie " +
+                             "AND NUMERO_NOTA = @NumeroNota AND ID_FORNECEDOR = @IdFornecedor";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Modelo", modelo);
+                cmd.Parameters.AddWithValue("@Serie", serie);
+                cmd.Parameters.AddWithValue("@NumeroNota", numeroNota);
+                cmd.Parameters.AddWithValue("@IdFornecedor", idFornecedor);
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                return count > 0;
+            }
+        }
+
+
         public override string Salvar(object obj)
         {
             contasAPagar oContaAPagar = (contasAPagar)obj;

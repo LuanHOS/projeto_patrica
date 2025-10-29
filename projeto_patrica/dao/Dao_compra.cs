@@ -30,6 +30,26 @@ namespace projeto_patrica.dao
             }
         }
 
+        public bool VerificarContaAPagarExistente(int modelo, string serie, string numeroNota, int idFornecedor)
+        {
+            using (MySqlConnection conn = Banco.Abrir())
+            {
+                string sql = "SELECT COUNT(*) FROM CONTAS_A_PAGAR " +
+                             "WHERE MODELO_COMPRA = @ModeloCompra AND SERIE_COMPRA = @SerieCompra " +
+                             "AND NUMERO_NOTA_COMPRA = @NumeroNotaCompra AND ID_FORNECEDOR = @IdFornecedor";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@ModeloCompra", modelo);
+                cmd.Parameters.AddWithValue("@SerieCompra", serie);
+                cmd.Parameters.AddWithValue("@NumeroNotaCompra", numeroNota);
+                cmd.Parameters.AddWithValue("@IdFornecedor", idFornecedor);
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                return count > 0;
+            }
+        }
+
+
         public override string Salvar(object obj)
         {
             compra aCompra = (compra)obj;
@@ -138,7 +158,7 @@ namespace projeto_patrica.dao
                         SalvarContaAPagar(conta, conn, trans);
                     }
                 }
-                else 
+                else
                 {
                     foreach (itemCompra item in aCompra.Itens)
                     {
