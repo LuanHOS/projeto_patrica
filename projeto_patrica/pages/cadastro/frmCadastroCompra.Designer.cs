@@ -226,7 +226,7 @@
             this.lblDataEntrega.Name = "lblDataEntrega";
             this.lblDataEntrega.Size = new System.Drawing.Size(113, 16);
             this.lblDataEntrega.TabIndex = 101;
-            this.lblDataEntrega.Text = "Data de Entrega *";
+            this.lblDataEntrega.Text = "Data de Chegada *";
             // 
             // lblProduto
             // 

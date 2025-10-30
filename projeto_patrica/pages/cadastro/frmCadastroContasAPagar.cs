@@ -503,6 +503,7 @@ namespace projeto_patrica.pages.cadastro
                 else
                 {
                     total -= (valorParcela * (desconto / 100));
+                    total += (valorParcela * (juros / 100));
                 }
             }
             else
