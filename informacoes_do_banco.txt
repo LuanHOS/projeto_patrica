@@ -1,0 +1,21 @@
+Informações do Banco
+
+Sistema Gerenciador de Banco de Dados (SGBD): MySQL
+Versão do Servidor MySQL: 9.2.0
+
+---------------------------------------------------
+
+README - COMO CONFIGURAR O BANCO DE DADOS
+
+Para rodar o projeto, o banco de dados "projeto_patrica" precisa ser criado e populado. Siga estes dois passos:
+
+1. CRIAR A ESTRUTURA DO BANCO:
+   - Em seu servidor MySQL, execute o script completo do arquivo "MySQL Código do banco.txt".
+   - Isso criará o banco de dados "projeto_patrica" e todas as suas tabelas, chaves.
+
+2. POPULAR O BANCO COM DADOS:
+   - Após a criação da estrutura, execute o script completo do arquivo "Código pra preencher o BD.txt".
+   - Isso irá inserir todos os dados de exemplo (clientes, produtos, países, etc.) nas tabelas.
+
+IMPORTANTE:
+Será necessário ajustar a string de conexão no arquivo "projeto_patrica/Banco.cs" para que corresponda às credenciais do seu servidor MySQL local (servidor, porta, usuário e senha).
