@@ -60,6 +60,12 @@
             this.lblMotivCancelamentoExplicacao = new System.Windows.Forms.Label();
             this.lblMotivoCancelamentoTitulo = new System.Windows.Forms.Label();
             this.dtpDataPagamento = new System.Windows.Forms.DateTimePicker();
+            this.txtJurosReais = new System.Windows.Forms.TextBox();
+            this.txtMultaReais = new System.Windows.Forms.TextBox();
+            this.txtDescontoReais = new System.Windows.Forms.TextBox();
+            this.lblJurosReais = new System.Windows.Forms.Label();
+            this.lblMultaReais = new System.Windows.Forms.Label();
+            this.lblDescontoReais = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblCod
@@ -229,7 +235,7 @@
             // lblDataPagamento
             // 
             this.lblDataPagamento.AutoSize = true;
-            this.lblDataPagamento.Location = new System.Drawing.Point(370, 258);
+            this.lblDataPagamento.Location = new System.Drawing.Point(369, 359);
             this.lblDataPagamento.Name = "lblDataPagamento";
             this.lblDataPagamento.Size = new System.Drawing.Size(136, 16);
             this.lblDataPagamento.TabIndex = 108;
@@ -238,7 +244,7 @@
             // lblFormaPagamento
             // 
             this.lblFormaPagamento.AutoSize = true;
-            this.lblFormaPagamento.Location = new System.Drawing.Point(21, 258);
+            this.lblFormaPagamento.Location = new System.Drawing.Point(20, 359);
             this.lblFormaPagamento.Name = "lblFormaPagamento";
             this.lblFormaPagamento.Size = new System.Drawing.Size(146, 16);
             this.lblFormaPagamento.TabIndex = 151;
@@ -247,7 +253,7 @@
             // lblDesconto
             // 
             this.lblDesconto.AutoSize = true;
-            this.lblDesconto.Location = new System.Drawing.Point(237, 167);
+            this.lblDesconto.Location = new System.Drawing.Point(237, 199);
             this.lblDesconto.Name = "lblDesconto";
             this.lblDesconto.Size = new System.Drawing.Size(88, 16);
             this.lblDesconto.TabIndex = 154;
@@ -256,7 +262,7 @@
             // lblMulta
             // 
             this.lblMulta.AutoSize = true;
-            this.lblMulta.Location = new System.Drawing.Point(20, 166);
+            this.lblMulta.Location = new System.Drawing.Point(20, 198);
             this.lblMulta.Name = "lblMulta";
             this.lblMulta.Size = new System.Drawing.Size(62, 16);
             this.lblMulta.TabIndex = 155;
@@ -265,7 +271,7 @@
             // lblJuros
             // 
             this.lblJuros.AutoSize = true;
-            this.lblJuros.Location = new System.Drawing.Point(130, 166);
+            this.lblJuros.Location = new System.Drawing.Point(130, 198);
             this.lblJuros.Name = "lblJuros";
             this.lblJuros.Size = new System.Drawing.Size(63, 16);
             this.lblJuros.TabIndex = 156;
@@ -274,7 +280,7 @@
             // txtDesconto
             // 
             this.txtDesconto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDesconto.Location = new System.Drawing.Point(240, 185);
+            this.txtDesconto.Location = new System.Drawing.Point(240, 217);
             this.txtDesconto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.ShortcutsEnabled = false;
@@ -286,7 +292,7 @@
             // txtMulta
             // 
             this.txtMulta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMulta.Location = new System.Drawing.Point(23, 185);
+            this.txtMulta.Location = new System.Drawing.Point(23, 217);
             this.txtMulta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMulta.Name = "txtMulta";
             this.txtMulta.ShortcutsEnabled = false;
@@ -298,7 +304,7 @@
             // txtJuros
             // 
             this.txtJuros.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtJuros.Location = new System.Drawing.Point(133, 185);
+            this.txtJuros.Location = new System.Drawing.Point(133, 217);
             this.txtJuros.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtJuros.Name = "txtJuros";
             this.txtJuros.ShortcutsEnabled = false;
@@ -311,7 +317,7 @@
             // 
             this.lblValorFinal.AutoSize = true;
             this.lblValorFinal.ForeColor = System.Drawing.Color.Red;
-            this.lblValorFinal.Location = new System.Drawing.Point(21, 415);
+            this.lblValorFinal.Location = new System.Drawing.Point(20, 467);
             this.lblValorFinal.Name = "lblValorFinal";
             this.lblValorFinal.Size = new System.Drawing.Size(168, 16);
             this.lblValorFinal.TabIndex = 103;
@@ -319,7 +325,7 @@
             // 
             // txtValorPago
             // 
-            this.txtValorPago.Location = new System.Drawing.Point(24, 433);
+            this.txtValorPago.Location = new System.Drawing.Point(23, 485);
             this.txtValorPago.Name = "txtValorPago";
             this.txtValorPago.ReadOnly = true;
             this.txtValorPago.ShortcutsEnabled = false;
@@ -329,7 +335,7 @@
             // 
             // btnPesquisarFormaPagamento
             // 
-            this.btnPesquisarFormaPagamento.Location = new System.Drawing.Point(310, 274);
+            this.btnPesquisarFormaPagamento.Location = new System.Drawing.Point(309, 375);
             this.btnPesquisarFormaPagamento.Name = "btnPesquisarFormaPagamento";
             this.btnPesquisarFormaPagamento.Size = new System.Drawing.Size(39, 25);
             this.btnPesquisarFormaPagamento.TabIndex = 163;
@@ -339,7 +345,7 @@
             // 
             // txtCodFormaPagamento
             // 
-            this.txtCodFormaPagamento.Location = new System.Drawing.Point(24, 277);
+            this.txtCodFormaPagamento.Location = new System.Drawing.Point(23, 378);
             this.txtCodFormaPagamento.Name = "txtCodFormaPagamento";
             this.txtCodFormaPagamento.ReadOnly = true;
             this.txtCodFormaPagamento.ShortcutsEnabled = false;
@@ -349,7 +355,7 @@
             // 
             // txtFormaPagamento
             // 
-            this.txtFormaPagamento.Location = new System.Drawing.Point(90, 276);
+            this.txtFormaPagamento.Location = new System.Drawing.Point(89, 377);
             this.txtFormaPagamento.Name = "txtFormaPagamento";
             this.txtFormaPagamento.ReadOnly = true;
             this.txtFormaPagamento.ShortcutsEnabled = false;
@@ -380,13 +386,76 @@
             // 
             this.dtpDataPagamento.Checked = false;
             this.dtpDataPagamento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataPagamento.Location = new System.Drawing.Point(373, 276);
+            this.dtpDataPagamento.Location = new System.Drawing.Point(372, 377);
             this.dtpDataPagamento.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDataPagamento.Name = "dtpDataPagamento";
             this.dtpDataPagamento.ShowCheckBox = true;
             this.dtpDataPagamento.Size = new System.Drawing.Size(135, 22);
             this.dtpDataPagamento.TabIndex = 166;
             this.dtpDataPagamento.ValueChanged += new System.EventHandler(this.RecalcularValorPago);
+            // 
+            // txtJurosReais
+            // 
+            this.txtJurosReais.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtJurosReais.Location = new System.Drawing.Point(133, 279);
+            this.txtJurosReais.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtJurosReais.Name = "txtJurosReais";
+            this.txtJurosReais.ShortcutsEnabled = false;
+            this.txtJurosReais.Size = new System.Drawing.Size(82, 22);
+            this.txtJurosReais.TabIndex = 157;
+            this.txtJurosReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtJurosReais.Leave += new System.EventHandler(this.RecalcularValorPago);
+            // 
+            // txtMultaReais
+            // 
+            this.txtMultaReais.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMultaReais.Location = new System.Drawing.Point(23, 279);
+            this.txtMultaReais.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMultaReais.Name = "txtMultaReais";
+            this.txtMultaReais.ShortcutsEnabled = false;
+            this.txtMultaReais.Size = new System.Drawing.Size(82, 22);
+            this.txtMultaReais.TabIndex = 158;
+            this.txtMultaReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMultaReais.Leave += new System.EventHandler(this.RecalcularValorPago);
+            // 
+            // txtDescontoReais
+            // 
+            this.txtDescontoReais.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtDescontoReais.Location = new System.Drawing.Point(240, 279);
+            this.txtDescontoReais.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDescontoReais.Name = "txtDescontoReais";
+            this.txtDescontoReais.ShortcutsEnabled = false;
+            this.txtDescontoReais.Size = new System.Drawing.Size(82, 22);
+            this.txtDescontoReais.TabIndex = 159;
+            this.txtDescontoReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDescontoReais.Leave += new System.EventHandler(this.RecalcularValorPago);
+            // 
+            // lblJurosReais
+            // 
+            this.lblJurosReais.AutoSize = true;
+            this.lblJurosReais.Location = new System.Drawing.Point(130, 260);
+            this.lblJurosReais.Name = "lblJurosReais";
+            this.lblJurosReais.Size = new System.Drawing.Size(68, 16);
+            this.lblJurosReais.TabIndex = 156;
+            this.lblJurosReais.Text = "Juros (R$)";
+            // 
+            // lblMultaReais
+            // 
+            this.lblMultaReais.AutoSize = true;
+            this.lblMultaReais.Location = new System.Drawing.Point(20, 260);
+            this.lblMultaReais.Name = "lblMultaReais";
+            this.lblMultaReais.Size = new System.Drawing.Size(67, 16);
+            this.lblMultaReais.TabIndex = 155;
+            this.lblMultaReais.Text = "Multa (R$)";
+            // 
+            // lblDescontoReais
+            // 
+            this.lblDescontoReais.AutoSize = true;
+            this.lblDescontoReais.Location = new System.Drawing.Point(237, 261);
+            this.lblDescontoReais.Name = "lblDescontoReais";
+            this.lblDescontoReais.Size = new System.Drawing.Size(93, 16);
+            this.lblDescontoReais.TabIndex = 154;
+            this.lblDescontoReais.Text = "Desconto (R$)";
             // 
             // frmCadastroContasAPagar
             // 
@@ -396,10 +465,16 @@
             this.Controls.Add(this.btnPesquisarFormaPagamento);
             this.Controls.Add(this.txtCodFormaPagamento);
             this.Controls.Add(this.txtFormaPagamento);
+            this.Controls.Add(this.lblDescontoReais);
             this.Controls.Add(this.lblDesconto);
+            this.Controls.Add(this.lblMultaReais);
             this.Controls.Add(this.lblMulta);
+            this.Controls.Add(this.lblJurosReais);
             this.Controls.Add(this.lblJuros);
+            this.Controls.Add(this.txtDescontoReais);
             this.Controls.Add(this.txtDesconto);
+            this.Controls.Add(this.txtMultaReais);
+            this.Controls.Add(this.txtJurosReais);
             this.Controls.Add(this.txtMulta);
             this.Controls.Add(this.txtJuros);
             this.Controls.Add(this.lblFormaPagamento);
@@ -457,10 +532,16 @@
             this.Controls.SetChildIndex(this.lblFormaPagamento, 0);
             this.Controls.SetChildIndex(this.txtJuros, 0);
             this.Controls.SetChildIndex(this.txtMulta, 0);
+            this.Controls.SetChildIndex(this.txtJurosReais, 0);
+            this.Controls.SetChildIndex(this.txtMultaReais, 0);
             this.Controls.SetChildIndex(this.txtDesconto, 0);
+            this.Controls.SetChildIndex(this.txtDescontoReais, 0);
             this.Controls.SetChildIndex(this.lblJuros, 0);
+            this.Controls.SetChildIndex(this.lblJurosReais, 0);
             this.Controls.SetChildIndex(this.lblMulta, 0);
+            this.Controls.SetChildIndex(this.lblMultaReais, 0);
             this.Controls.SetChildIndex(this.lblDesconto, 0);
+            this.Controls.SetChildIndex(this.lblDescontoReais, 0);
             this.Controls.SetChildIndex(this.txtFormaPagamento, 0);
             this.Controls.SetChildIndex(this.txtCodFormaPagamento, 0);
             this.Controls.SetChildIndex(this.btnPesquisarFormaPagamento, 0);
@@ -506,5 +587,11 @@
         private System.Windows.Forms.Label lblMotivCancelamentoExplicacao;
         private System.Windows.Forms.Label lblMotivoCancelamentoTitulo;
         private System.Windows.Forms.DateTimePicker dtpDataPagamento;
+        private System.Windows.Forms.TextBox txtJurosReais;
+        private System.Windows.Forms.TextBox txtMultaReais;
+        private System.Windows.Forms.TextBox txtDescontoReais;
+        private System.Windows.Forms.Label lblJurosReais;
+        private System.Windows.Forms.Label lblMultaReais;
+        private System.Windows.Forms.Label lblDescontoReais;
     }
 }

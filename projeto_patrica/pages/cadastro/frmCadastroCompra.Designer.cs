@@ -60,6 +60,7 @@
             this.listVProdutos = new System.Windows.Forms.ListView();
             this.clmCodProduto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmProduto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmUnMedida = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmQtd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmValorUnitario = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -90,7 +91,6 @@
             this.lblQtdTotalProdutos = new System.Windows.Forms.Label();
             this.lblValorQtdTotalProdutos = new System.Windows.Forms.Label();
             this.lblUnidadeDeMedida = new System.Windows.Forms.Label();
-            this.clmUnMedida = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnSave
@@ -224,7 +224,7 @@
             this.lblDataEntrega.AutoSize = true;
             this.lblDataEntrega.Location = new System.Drawing.Point(806, 15);
             this.lblDataEntrega.Name = "lblDataEntrega";
-            this.lblDataEntrega.Size = new System.Drawing.Size(113, 16);
+            this.lblDataEntrega.Size = new System.Drawing.Size(122, 16);
             this.lblDataEntrega.TabIndex = 101;
             this.lblDataEntrega.Text = "Data de Chegada *";
             // 
@@ -383,12 +383,13 @@
             // lblValorTotalValores
             // 
             this.lblValorTotalValores.AutoSize = true;
+            this.lblValorTotalValores.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorTotalValores.ForeColor = System.Drawing.Color.Red;
-            this.lblValorTotalValores.Location = new System.Drawing.Point(916, 400);
+            this.lblValorTotalValores.Location = new System.Drawing.Point(916, 391);
             this.lblValorTotalValores.Name = "lblValorTotalValores";
-            this.lblValorTotalValores.Size = new System.Drawing.Size(133, 16);
+            this.lblValorTotalValores.Size = new System.Drawing.Size(314, 25);
             this.lblValorTotalValores.TabIndex = 101;
-            this.lblValorTotalValores.Text = "Valor Total Nota (R$)";
+            this.lblValorTotalValores.Text = "VALOR TOTAL DA NOTA (R$)";
             // 
             // txtValorTotalValores
             // 
@@ -396,7 +397,7 @@
             this.txtValorTotalValores.Name = "txtValorTotalValores";
             this.txtValorTotalValores.ReadOnly = true;
             this.txtValorTotalValores.ShortcutsEnabled = false;
-            this.txtValorTotalValores.Size = new System.Drawing.Size(172, 22);
+            this.txtValorTotalValores.Size = new System.Drawing.Size(311, 22);
             this.txtValorTotalValores.TabIndex = 102;
             this.txtValorTotalValores.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -448,6 +449,11 @@
             // 
             this.clmProduto.Text = "Produto";
             this.clmProduto.Width = 180;
+            // 
+            // clmUnMedida
+            // 
+            this.clmUnMedida.Text = "Un. de Medida";
+            this.clmUnMedida.Width = 120;
             // 
             // clmQtd
             // 
@@ -711,11 +717,6 @@
             this.lblUnidadeDeMedida.Size = new System.Drawing.Size(95, 16);
             this.lblUnidadeDeMedida.TabIndex = 101;
             this.lblUnidadeDeMedida.Text = "Un. de Medida";
-            // 
-            // clmUnMedida
-            // 
-            this.clmUnMedida.Text = "Un. de Medida";
-            this.clmUnMedida.Width = 120;
             // 
             // frmCadastroCompra
             // 
