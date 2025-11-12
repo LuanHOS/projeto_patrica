@@ -111,7 +111,7 @@ namespace projeto_patrica.pages.cadastro
 
                     foreach (var relacaoTela in listaProdutoFornecedor)
                     {
-                        relacaoTela.IdProduto = oProduto.Id; 
+                        relacaoTela.IdProduto = oProduto.Id;
                         aController_prod_forn.Salvar(relacaoTela);
                     }
 
@@ -184,7 +184,7 @@ namespace projeto_patrica.pages.cadastro
             txtValorCompra.Text = 0.ToString("F2");
             txtValorVenda.Text = 0.ToString("F2");
             txtValorCompraAnterior.Text = 0.ToString("F2");
-            txtPorcentagemLucro.Text = 0.ToString("F2");
+            txtPorcentagemLucro.Text = 0.ToString("F6");
             txtEstoque.Text = "0";
 
             listaProdutoFornecedor.Clear();
@@ -212,7 +212,7 @@ namespace projeto_patrica.pages.cadastro
             txtValorCompra.Text = oProduto.ValorCompra.ToString("F2");
             txtValorVenda.Text = oProduto.ValorVenda.ToString("F2");
             txtValorCompraAnterior.Text = oProduto.ValorCompraAnterior.ToString("F2");
-            txtPorcentagemLucro.Text = oProduto.PercentualLucro.ToString("F2");
+            txtPorcentagemLucro.Text = oProduto.PercentualLucro.ToString("F6");
             txtEstoque.Text = oProduto.Estoque.ToString();
             checkBoxAtivo.Checked = oProduto.Ativo;
             lblDataCadastroData.Text = oProduto.DataCadastro.ToShortDateString();
@@ -441,7 +441,7 @@ namespace projeto_patrica.pages.cadastro
                 if (valorCompra > 0)
                 {
                     decimal percentualLucro = ((valorVenda / valorCompra) - 1) * 100;
-                    txtPorcentagemLucro.Text = percentualLucro.ToString("F2");
+                    txtPorcentagemLucro.Text = percentualLucro.ToString("F6");
                 }
                 else
                 {
@@ -461,10 +461,10 @@ namespace projeto_patrica.pages.cadastro
             txtCodBarras.MaxLength = 13;
             txtNome.MaxLength = 40;
             txtDescricao.MaxLength = 80;
-            txtValorCompra.MaxLength = 11;
-            txtValorVenda.MaxLength = 11;
-            txtValorCompraAnterior.MaxLength = 11;
-            txtPorcentagemLucro.MaxLength = 11;
+            txtValorCompra.MaxLength = 20;
+            txtValorVenda.MaxLength = 20;
+            txtValorCompraAnterior.MaxLength = 20;
+            txtPorcentagemLucro.MaxLength = 20;
             txtEstoque.MaxLength = 10;
 
             txtCodBarras.KeyPress -= ApenasNumeros;

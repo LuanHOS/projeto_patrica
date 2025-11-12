@@ -470,7 +470,7 @@ namespace projeto_patrica.dao
             cmd.Parameters.AddWithValue("@IdProduto", item.OProduto.Id);
             cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
             cmd.Parameters.AddWithValue("@ValorUnitario", item.ValorUnitario);
-            cmd.Parameters.AddWithValue("@CustoUnitarioReal", item.CustoUnitarioReal);
+            cmd.Parameters.AddWithValue("@CustoUnitarioReal", item.CustoUnitarioReal.ToString("F6", System.Globalization.CultureInfo.InvariantCulture));
             cmd.ExecuteNonQuery();
         }
 

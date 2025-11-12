@@ -169,9 +169,9 @@ namespace projeto_patrica.pages.cadastro
             txtCodigo.Text = aCondicaoPagamento.Id.ToString();
             txtDescricao.Text = aCondicaoPagamento.Descricao;
             txtQtdParcelas.Text = aCondicaoPagamento.QuantidadeParcelas.ToString();
-            txtMulta.Text = aCondicaoPagamento.Multa.ToString("F2");
-            txtJuros.Text = aCondicaoPagamento.Juros.ToString("F2");
-            txtDesconto.Text = aCondicaoPagamento.Desconto.ToString("F2");
+            txtMulta.Text = aCondicaoPagamento.Multa.ToString("F6");
+            txtJuros.Text = aCondicaoPagamento.Juros.ToString("F6");
+            txtDesconto.Text = aCondicaoPagamento.Desconto.ToString("F6");
             checkBoxAtivo.Checked = aCondicaoPagamento.Ativo;
             lblDataCadastroData.Text = aCondicaoPagamento.DataCadastro.ToShortDateString();
             lblDataUltimaEdicaoData.Text = aCondicaoPagamento.DataUltimaEdicao?.ToShortDateString() ?? " ";
@@ -205,7 +205,7 @@ namespace projeto_patrica.pages.cadastro
             btnPesquisarFormaPagamento.Enabled = true;
             txtMulta.Enabled = true;
             txtJuros.Enabled = true;
-            txtDesconto.Enabled = true; 
+            txtDesconto.Enabled = true;
             DesbloquearCamposParcela();
         }
 
@@ -275,7 +275,7 @@ namespace projeto_patrica.pages.cadastro
 
                     txtNumParcela.Text = parcela.NumeroParcela.ToString();
                     comboBoxFormaPagamento.SelectedValue = parcela.AFormaPagamento.Id;
-                    txtPercentualParcela.Text = parcela.ValorPercentual.ToString("F2");
+                    txtPercentualParcela.Text = parcela.ValorPercentual.ToString("F6");
                     txtPrazoDias.Text = parcela.DiasAposVenda.ToString();
 
                     btnAdicionarParcela.Enabled = false;
@@ -483,12 +483,12 @@ namespace projeto_patrica.pages.cadastro
 
             txtDescricao.MaxLength = 40;
             txtQtdParcelas.MaxLength = 10;
-            txtJuros.MaxLength = 11;
-            txtMulta.MaxLength = 11;
-            txtDesconto.MaxLength = 11;
+            txtJuros.MaxLength = 20;
+            txtMulta.MaxLength = 20;
+            txtDesconto.MaxLength = 20;
             txtNumParcela.MaxLength = 10;
             txtPrazoDias.MaxLength = 10;
-            txtPercentualParcela.MaxLength = 11;
+            txtPercentualParcela.MaxLength = 20;
 
 
             txtQtdParcelas.KeyPress -= ApenasNumeros;

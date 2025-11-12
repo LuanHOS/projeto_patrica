@@ -233,7 +233,7 @@ namespace projeto_patrica.pages.cadastro
             {
                 base.Limpartxt();
                 txtCodigo.Text = "55";
-                txtSerie.Text = "1";               
+                txtSerie.Text = "1";
                 txtNumDaNota.Clear();
                 txtCodFornecedor.Clear();
                 txtFornecedor.Clear();
@@ -536,8 +536,24 @@ namespace projeto_patrica.pages.cadastro
             decimal totalCompra = totalProdutos + frete + seguro + despesas;
 
             listaParcelas.Clear();
-            foreach (var parcelaCondicao in oCompra.ACondicaoPagamento.Parcelas)
+            decimal totalParcelasCalculado = 0;
+            var parcelasCondicao = oCompra.ACondicaoPagamento.Parcelas;
+
+            for (int i = 0; i < parcelasCondicao.Count; i++)
             {
+                var parcelaCondicao = parcelasCondicao[i];
+                decimal valorEstaParcela;
+
+                if (i == parcelasCondicao.Count - 1)
+                {
+                    valorEstaParcela = totalCompra - totalParcelasCalculado;
+                }
+                else
+                {
+                    valorEstaParcela = Math.Round(totalCompra * (parcelaCondicao.ValorPercentual / 100), 2);
+                    totalParcelasCalculado += valorEstaParcela;
+                }
+
                 contasAPagar novaParcela = new contasAPagar
                 {
                     ModeloCompra = Convert.ToInt32(txtCodigo.Text),
@@ -547,7 +563,7 @@ namespace projeto_patrica.pages.cadastro
                     NumeroParcela = parcelaCondicao.NumeroParcela,
                     DataEmissao = dtpDataEmissao.Value,
                     DataVencimento = dtpDataEmissao.Value.AddDays(parcelaCondicao.DiasAposVenda),
-                    ValorParcela = totalCompra * (parcelaCondicao.ValorPercentual / 100),
+                    ValorParcela = valorEstaParcela,
                     AFormaPagamento = parcelaCondicao.AFormaPagamento,
                     Ativo = true,
                     Situacao = 0, // 0 - Em aberto

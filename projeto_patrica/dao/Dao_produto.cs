@@ -38,7 +38,7 @@ namespace projeto_patrica.dao
                   "'" + oProduto.ValorCompra.ToString().Replace(",", ".") + "', " +
                   "'" + oProduto.ValorVenda.ToString().Replace(",", ".") + "', " +
                   "'" + oProduto.ValorCompraAnterior.ToString().Replace(",", ".") + "', " +
-                  "'" + oProduto.PercentualLucro.ToString().Replace(",", ".") + "', " +
+                  "'" + oProduto.PercentualLucro.ToString("F6", System.Globalization.CultureInfo.InvariantCulture) + "', " +
                   "'" + oProduto.Estoque + "', " +
                   (oProduto.Ativo ? "1" : "0") + ")";
 
@@ -55,7 +55,7 @@ namespace projeto_patrica.dao
                       "VALOR_COMPRA = '" + oProduto.ValorCompra.ToString().Replace(",", ".") + "', " +
                       "VALOR_VENDA = '" + oProduto.ValorVenda.ToString().Replace(",", ".") + "', " +
                       "VALOR_COMPRAANTERIOR = '" + oProduto.ValorCompraAnterior.ToString().Replace(",", ".") + "', " +
-                      "PERCENTUAL_LUCRO = '" + oProduto.PercentualLucro.ToString().Replace(",", ".") + "', " +
+                      "PERCENTUAL_LUCRO = '" + oProduto.PercentualLucro.ToString("F6", System.Globalization.CultureInfo.InvariantCulture) + "', " +
                       "ESTOQUE = '" + oProduto.Estoque + "', " +
                       "ATIVO = " + (oProduto.Ativo ? "1" : "0") + ", " +
                       "DATA_ULTIMA_EDICAO = CURRENT_DATE " +

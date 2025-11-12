@@ -111,7 +111,7 @@ namespace projeto_patrica.pages.cadastro
                         int commaIndex = textBox.Text.IndexOf(',');
                         int decimalDigits = textBox.Text.Length - (commaIndex + 1);
 
-                        if (textBox.SelectionStart > commaIndex && decimalDigits >= 2)
+                        if (textBox.SelectionStart > commaIndex && decimalDigits >= 6)
                         {
                             e.Handled = true;
                             return;
@@ -119,7 +119,7 @@ namespace projeto_patrica.pages.cadastro
                     }
                     else
                     {
-                        if (textBox.Text.Length >= 8 && textBox.SelectionStart == textBox.Text.Length)
+                        if (textBox.Text.Length >= 18 && textBox.SelectionStart == textBox.Text.Length)
                         {
                             e.Handled = true;
                             return;
@@ -134,13 +134,13 @@ namespace projeto_patrica.pages.cadastro
                 {
                     if (!textBox.Text.Contains(",") && textBox.Text.Length > 0)
                     {
-                        int pos = textBox.SelectionStart; 
+                        int pos = textBox.SelectionStart;
 
                         textBox.Text = textBox.Text.Insert(pos, ",");
-                        textBox.SelectionStart = pos + 1; 
+                        textBox.SelectionStart = pos + 1;
                     }
 
-                    e.Handled = true; 
+                    e.Handled = true;
                     return;
                 }
 

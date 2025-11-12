@@ -251,9 +251,9 @@ namespace projeto_patrica.pages.cadastro
             }
 
             txtValorParcela.Text = oContaAPagar.ValorParcela.ToString("F2");
-            txtJuros.Text = oContaAPagar.Juros.ToString("F2");
-            txtMulta.Text = oContaAPagar.Multa.ToString("F2");
-            txtDesconto.Text = oContaAPagar.Desconto.ToString("F2");
+            txtJuros.Text = oContaAPagar.Juros.ToString("F6");
+            txtMulta.Text = oContaAPagar.Multa.ToString("F6");
+            txtDesconto.Text = oContaAPagar.Desconto.ToString("F6");
             txtValorPago.Text = oContaAPagar.ValorPago.HasValue ? oContaAPagar.ValorPago.Value.ToString("F2") : "0,00";
             checkBoxAtivo.Checked = oContaAPagar.Ativo;
 
@@ -590,9 +590,9 @@ namespace projeto_patrica.pages.cadastro
             txtNumDaNota.MaxLength = 9;
             txtNumParcela.MaxLength = 10;
             txtValorParcela.MaxLength = 11;
-            txtJuros.MaxLength = 11;
-            txtMulta.MaxLength = 11;
-            txtDesconto.MaxLength = 11;
+            txtJuros.MaxLength = 20;
+            txtMulta.MaxLength = 20;
+            txtDesconto.MaxLength = 20;
             txtValorPago.MaxLength = 11;
 
 
