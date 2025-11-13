@@ -795,7 +795,7 @@ namespace projeto_patrica.pages.cadastro
             base.CamposRestricoes();
 
             txtCodigo.MaxLength = 2;
-            txtSerie.MaxLength = 3;
+            txtSerie.MaxLength = 4;
             txtNumDaNota.MaxLength = 9;
             txtQuantidade.MaxLength = 5;
             txtValorUnitario.MaxLength = 11;
