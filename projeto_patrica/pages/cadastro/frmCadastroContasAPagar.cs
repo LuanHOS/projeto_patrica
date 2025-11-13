@@ -15,6 +15,9 @@ namespace projeto_patrica.pages.cadastro
         private frmConsultaFornecedor oFrmConsultaFornecedor;
         private frmConsultaFormaPagamento oFrmConsultaFormaPagamento;
         private Dao_contasAPagar aDao_contasAPagar;
+        private bool _isLoading = false;
+        private bool contaExistente = false;
+        private bool compraExistenteParaConta = false;
 
         public frmCadastroContasAPagar()
         {
@@ -38,6 +41,63 @@ namespace projeto_patrica.pages.cadastro
         public void setConsultaFormaPagamento(frmConsultaFormaPagamento consulta)
         {
             oFrmConsultaFormaPagamento = consulta;
+        }
+
+        private void VerificarDuplicidadeConta()
+        {
+            if (_isLoading) return;
+
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
+                string.IsNullOrWhiteSpace(txtSerie.Text) ||
+                string.IsNullOrWhiteSpace(txtNumDaNota.Text) ||
+                string.IsNullOrWhiteSpace(txtCodFornecedor.Text) ||
+                string.IsNullOrWhiteSpace(txtNumParcela.Text) ||
+                !int.TryParse(txtCodFornecedor.Text, out int idFornecedor) || idFornecedor == 0 ||
+                !int.TryParse(txtNumParcela.Text, out int numParcela) ||
+                !int.TryParse(txtCodigo.Text, out int modelo))
+            {
+                contaExistente = false;
+                compraExistenteParaConta = false;
+                return;
+            }
+
+            string serie = txtSerie.Text;
+            string numeroNota = txtNumDaNota.Text;
+
+            contaExistente = aDao_contasAPagar.VerificarContaExistente(
+                modelo, serie, numeroNota, idFornecedor, numParcela
+            );
+
+            if (contaExistente)
+            {
+                MessageBox.Show(
+                    "Não é possível salvar.\n\nJá existe uma parcela com este Modelo, Série, Número da Nota, Fornecedor e Número de Parcela.",
+                    "Erro: Item duplicado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
+
+            compraExistenteParaConta = aDao_contasAPagar.VerificarCompraExistente(
+               modelo, serie, numeroNota, idFornecedor
+            );
+
+            if (compraExistenteParaConta)
+            {
+                MessageBox.Show(
+                    "Não é possível salvar a conta a pagar.\n\nJá existe uma Compra registrada com o mesmo Modelo, Série, Número da Nota e Fornecedor.",
+                    "Erro: Compra Existente",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+        }
+
+        private void CabecalhoConta_TextChanged(object sender, EventArgs e)
+        {
+            if (_isLoading) return;
+            VerificarDuplicidadeConta();
         }
 
         public override void Salvar()
@@ -66,18 +126,11 @@ namespace projeto_patrica.pages.cadastro
 
             if (btnSave.Text == "Salvar")
             {
-                bool contaExistente = aDao_contasAPagar.VerificarContaExistente(
-                    oContaAPagar.ModeloCompra,
-                    oContaAPagar.SerieCompra,
-                    oContaAPagar.NumeroNotaCompra,
-                    oContaAPagar.OFornecedor.Id,
-                    oContaAPagar.NumeroParcela
-                );
 
                 if (contaExistente)
                 {
                     MessageBox.Show(
-                        "Não foi possível salvar.\n\nJá existe uma parcela com este Modelo, Série, Número da Nota, Fornecedor e Número de Parcela.",
+                        "Não é possível salvar.\n\nJá existe uma parcela com este Modelo, Série, Número da Nota, Fornecedor e Número de Parcela.",
                         "Erro: Item duplicado",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
@@ -85,17 +138,10 @@ namespace projeto_patrica.pages.cadastro
                     return;
                 }
 
-                bool compraExistenteParaConta = aDao_contasAPagar.VerificarCompraExistente(
-                   oContaAPagar.ModeloCompra,
-                   oContaAPagar.SerieCompra,
-                   oContaAPagar.NumeroNotaCompra,
-                   oContaAPagar.OFornecedor.Id
-                );
-
                 if (compraExistenteParaConta)
                 {
                     MessageBox.Show(
-                        "Não foi possível salvar a conta a pagar.\n\nJá existe uma Compra registrada com o mesmo Modelo, Série, Número da Nota e Fornecedor.",
+                        "Não é possível salvar a conta a pagar.\n\nJá existe uma Compra registrada com o mesmo Modelo, Série, Número da Nota e Fornecedor.",
                         "Erro: Compra Existente",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
@@ -204,6 +250,7 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Limpartxt()
         {
+            _isLoading = true;
             base.Limpartxt();
             txtCodigo.Text = "55";
             txtSerie.Text = "1";
@@ -231,10 +278,12 @@ namespace projeto_patrica.pages.cadastro
             lblMotivCancelamentoExplicacao.Visible = false;
 
             oContaAPagar = new contasAPagar();
+            _isLoading = false;
         }
 
         public override void Carregatxt()
         {
+            _isLoading = true;
             base.Carregatxt();
 
             txtCodigo.Text = oContaAPagar.ModeloCompra.ToString();
@@ -279,7 +328,7 @@ namespace projeto_patrica.pages.cadastro
             lblMotivoCancelamentoTitulo.Visible = !oContaAPagar.Ativo;
             lblMotivCancelamentoExplicacao.Visible = !oContaAPagar.Ativo;
             lblMotivCancelamentoExplicacao.Text = oContaAPagar.MotivoCancelamento ?? "";
-
+            _isLoading = false;
         }
 
         public override void Bloqueiatxt()
@@ -408,7 +457,7 @@ namespace projeto_patrica.pages.cadastro
                 txtDescontoReais.Enabled = true;
                 btnPesquisarFormaPagamento.Enabled = true;
                 dtpDataPagamento.Enabled = true;
-                txtValorPago.Enabled = false; 
+                txtValorPago.Enabled = false;
 
                 dtpDataPagamento.Visible = true;
                 txtValorPago.Visible = true;
@@ -496,6 +545,7 @@ namespace projeto_patrica.pages.cadastro
                 txtCodFornecedor.Text = forn.Id.ToString();
                 txtFornecedor.Text = forn.Nome_razaoSocial;
             }
+            VerificarDuplicidadeConta();
         }
 
         private void btnPesquisarFormaPagamento_Click(object sender, EventArgs e)
