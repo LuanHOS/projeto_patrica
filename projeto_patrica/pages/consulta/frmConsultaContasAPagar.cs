@@ -91,6 +91,30 @@ namespace projeto_patrica.pages.consulta
                 return;
             }
 
+            if (contaSelecionada.NumeroParcela > 1)
+            {
+                bool parcelaAnteriorPendente = listaCompletaContas.Any(c =>
+                    c.ModeloCompra == contaSelecionada.ModeloCompra &&
+                    c.SerieCompra == contaSelecionada.SerieCompra &&
+                    c.NumeroNotaCompra == contaSelecionada.NumeroNotaCompra &&
+                    c.OFornecedor.Id == contaSelecionada.OFornecedor.Id &&
+                    c.NumeroParcela < contaSelecionada.NumeroParcela &&
+                    c.Situacao == 0 &&
+                    c.Ativo == true
+                );
+
+                if (parcelaAnteriorPendente)
+                {
+                    MessageBox.Show(
+                        "Não é possível dar baixa nesta parcela.\n\nExistem parcelas anteriores para esta mesma nota de compra que ainda estão em aberto.",
+                        "Pagamento Fora de Ordem",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
+            }
+
             string aux = oFrmCadastroContasAPagar.btnSave.Text;
             oFrmCadastroContasAPagar.btnSave.Text = "Dar Baixa";
             oFrmCadastroContasAPagar.ConhecaObj(contaSelecionada, aController_contasAPagar);
