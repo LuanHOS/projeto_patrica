@@ -60,6 +60,7 @@
             // 
             // clmCod
             // 
+            this.clmCod.DisplayIndex = 4;
             this.clmCod.Text = "Modelo";
             this.clmCod.Width = 80;
             // 
@@ -77,23 +78,27 @@
             // 
             // clmIdCliente
             // 
+            this.clmIdCliente.DisplayIndex = 0;
             this.clmIdCliente.Text = "Cód. Cliente";
             this.clmIdCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmIdCliente.Width = 100;
             // 
             // clmCliente
             // 
+            this.clmCliente.DisplayIndex = 1;
             this.clmCliente.Text = "Cliente";
             this.clmCliente.Width = 250;
             // 
             // clmIdFuncionario
             // 
+            this.clmIdFuncionario.DisplayIndex = 2;
             this.clmIdFuncionario.Text = "Cód. Funcionário";
             this.clmIdFuncionario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.clmIdFuncionario.Width = 100;
             // 
             // clmFuncionario
             // 
+            this.clmFuncionario.DisplayIndex = 3;
             this.clmFuncionario.Text = "Funcionário";
             this.clmFuncionario.Width = 250;
             // 
@@ -131,6 +136,7 @@
             // frmConsultaVenda
             // 
             this.Name = "frmConsultaVenda";
+            this.Text = "Consulta de Vendas";
             this.ResumeLayout(false);
             this.PerformLayout();
 

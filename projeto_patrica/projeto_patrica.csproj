@@ -224,6 +224,12 @@
     <Compile Include="pages\cadastro\frmCadastroContasAPagar.Designer.cs">
       <DependentUpon>frmCadastroContasAPagar.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\cadastro\frmCadastroContasAReceber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\cadastro\frmCadastroContasAReceber.Designer.cs">
+      <DependentUpon>frmCadastroContasAReceber.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\cadastro\frmCadastroEstado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -332,6 +338,12 @@
     <Compile Include="pages\consulta\frmConsultaContasAPagar.Designer.cs">
       <DependentUpon>frmConsultaContasAPagar.cs</DependentUpon>
     </Compile>
+    <Compile Include="pages\consulta\frmConsultaContasAReceber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\consulta\frmConsultaContasAReceber.Designer.cs">
+      <DependentUpon>frmConsultaContasAReceber.cs</DependentUpon>
+    </Compile>
     <Compile Include="pages\consulta\frmConsultaEstado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -428,6 +440,9 @@
     <EmbeddedResource Include="pages\cadastro\frmCadastroContasAPagar.resx">
       <DependentUpon>frmCadastroContasAPagar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroContasAReceber.resx">
+      <DependentUpon>frmCadastroContasAReceber.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroEstado.resx">
       <DependentUpon>frmCadastroEstado.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -488,6 +503,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaContasAPagar.resx">
       <DependentUpon>frmConsultaContasAPagar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\consulta\frmConsultaContasAReceber.resx">
+      <DependentUpon>frmConsultaContasAReceber.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaEstado.resx">
       <DependentUpon>frmConsultaEstado.cs</DependentUpon>
