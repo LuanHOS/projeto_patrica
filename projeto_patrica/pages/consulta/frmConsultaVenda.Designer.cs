@@ -42,6 +42,12 @@
             this.clmDataCancelamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(1127, 617);
+            this.btnExcluir.Size = new System.Drawing.Size(97, 34);
+            this.btnExcluir.Text = "Cancelar Nota";
+            // 
             // listV
             // 
             this.listV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -63,6 +69,15 @@
             this.clmCod.DisplayIndex = 4;
             this.clmCod.Text = "Modelo";
             this.clmCod.Width = 80;
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Location = new System.Drawing.Point(1041, 617);
+            this.btnAlterar.Text = "Visualizar";
+            // 
+            // btnIncluir
+            // 
+            this.btnIncluir.Location = new System.Drawing.Point(954, 617);
             // 
             // clmSerie
             // 
