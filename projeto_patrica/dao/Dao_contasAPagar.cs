@@ -82,10 +82,12 @@ namespace projeto_patrica.dao
                 {
                     sql = "INSERT INTO CONTAS_A_PAGAR (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_FORNECEDOR, NUMERO_PARCELA, " +
                           "DATA_EMISSAO, DATA_VENCIMENTO, VALOR_PARCELA, ID_FORMA_PAGAMENTO, ATIVO, " +
-                          "SITUACAO, JUROS, MULTA, DESCONTO, VALOR_PAGO, DATA_PAGAMENTO, DATA_ULTIMA_EDICAO, MOTIVO_CANCELAMENTO) VALUES " +
+                          "SITUACAO, JUROS, MULTA, DESCONTO, VALOR_PAGO, DATA_PAGAMENTO, DATA_ULTIMA_EDICAO, MOTIVO_CANCELAMENTO, " +
+                          "JUROS_VALOR, MULTA_VALOR, DESCONTO_VALOR) VALUES " +
                           "(@ModeloCompra, @SerieCompra, @NumeroNotaCompra, @IdFornecedor, @NumeroParcela, " +
                           "@DataEmissao, @DataVencimento, @ValorParcela, @IdFormaPagamento, @Ativo, " +
-                          "@Situacao, @Juros, @Multa, @Desconto, @ValorPago, @DataPagamento, @DataUltimaEdicao, @MotivoCancelamento)";
+                          "@Situacao, @Juros, @Multa, @Desconto, @ValorPago, @DataPagamento, @DataUltimaEdicao, @MotivoCancelamento, " +
+                          "@JurosValor, @MultaValor, @DescontoValor)";
                 }
                 else
                 {
@@ -94,7 +96,8 @@ namespace projeto_patrica.dao
                           "ID_FORMA_PAGAMENTO = @IdFormaPagamento, ATIVO = @Ativo, SITUACAO = @Situacao, " +
                           "JUROS = @Juros, MULTA = @Multa, DESCONTO = @Desconto, " +
                           "VALOR_PAGO = @ValorPago, DATA_PAGAMENTO = @DataPagamento, " +
-                          "DATA_ULTIMA_EDICAO = @DataUltimaEdicao, MOTIVO_CANCELAMENTO = @MotivoCancelamento " +
+                          "DATA_ULTIMA_EDICAO = @DataUltimaEdicao, MOTIVO_CANCELAMENTO = @MotivoCancelamento, " +
+                          "JUROS_VALOR = @JurosValor, MULTA_VALOR = @MultaValor, DESCONTO_VALOR = @DescontoValor " +
                           "WHERE MODELO_COMPRA = @ModeloCompra AND SERIE_COMPRA = @SerieCompra " +
                           "AND NUMERO_NOTA_COMPRA = @NumeroNotaCompra AND ID_FORNECEDOR = @IdFornecedor " +
                           "AND NUMERO_PARCELA = @NumeroParcela";
@@ -116,6 +119,9 @@ namespace projeto_patrica.dao
                 cmd.Parameters.AddWithValue("@Multa", oContaAPagar.Multa);
                 cmd.Parameters.AddWithValue("@Desconto", oContaAPagar.Desconto);
                 cmd.Parameters.AddWithValue("@ValorPago", (object)oContaAPagar.ValorPago ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@JurosValor", (object)oContaAPagar.JurosValor ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@MultaValor", (object)oContaAPagar.MultaValor ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@DescontoValor", (object)oContaAPagar.DescontoValor ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@DataPagamento", (object)oContaAPagar.DataPagamento ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@DataUltimaEdicao", (object)oContaAPagar.DataUltimaEdicao ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@MotivoCancelamento", (object)oContaAPagar.MotivoCancelamento ?? DBNull.Value);
@@ -166,6 +172,9 @@ namespace projeto_patrica.dao
                         oContaAPagar.Multa = Convert.ToDecimal(dr["MULTA"]);
                         oContaAPagar.Desconto = Convert.ToDecimal(dr["DESCONTO"]);
                         oContaAPagar.ValorPago = dr.IsDBNull(dr.GetOrdinal("VALOR_PAGO")) ? (decimal?)null : Convert.ToDecimal(dr["VALOR_PAGO"]);
+                        oContaAPagar.JurosValor = dr.IsDBNull(dr.GetOrdinal("JUROS_VALOR")) ? (decimal?)null : Convert.ToDecimal(dr["JUROS_VALOR"]);
+                        oContaAPagar.MultaValor = dr.IsDBNull(dr.GetOrdinal("MULTA_VALOR")) ? (decimal?)null : Convert.ToDecimal(dr["MULTA_VALOR"]);
+                        oContaAPagar.DescontoValor = dr.IsDBNull(dr.GetOrdinal("DESCONTO_VALOR")) ? (decimal?)null : Convert.ToDecimal(dr["DESCONTO_VALOR"]);
                         oContaAPagar.DataPagamento = dr.IsDBNull(dr.GetOrdinal("DATA_PAGAMENTO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_PAGAMENTO"]);
                         oContaAPagar.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
                         oContaAPagar.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
@@ -267,6 +276,9 @@ namespace projeto_patrica.dao
                         conta.Multa = Convert.ToDecimal(dr["MULTA"]);
                         conta.Desconto = Convert.ToDecimal(dr["DESCONTO"]);
                         conta.ValorPago = dr.IsDBNull(dr.GetOrdinal("VALOR_PAGO")) ? (decimal?)null : Convert.ToDecimal(dr["VALOR_PAGO"]);
+                        conta.JurosValor = dr.IsDBNull(dr.GetOrdinal("JUROS_VALOR")) ? (decimal?)null : Convert.ToDecimal(dr["JUROS_VALOR"]);
+                        conta.MultaValor = dr.IsDBNull(dr.GetOrdinal("MULTA_VALOR")) ? (decimal?)null : Convert.ToDecimal(dr["MULTA_VALOR"]);
+                        conta.DescontoValor = dr.IsDBNull(dr.GetOrdinal("DESCONTO_VALOR")) ? (decimal?)null : Convert.ToDecimal(dr["DESCONTO_VALOR"]);
                         conta.DataPagamento = dr.IsDBNull(dr.GetOrdinal("DATA_PAGAMENTO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_PAGAMENTO"]);
                         conta.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
                         conta.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);

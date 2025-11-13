@@ -2,7 +2,7 @@
 
 namespace projeto_patrica.classes
 {
-    class contasAPagar : pai 
+    class contasAPagar : pai
     {
         protected int modeloCompra;
         protected string serieCompra;
@@ -18,6 +18,9 @@ namespace projeto_patrica.classes
         protected decimal multa;
         protected decimal desconto;
         protected decimal? valorPago;
+        protected decimal? multaValor;
+        protected decimal? jurosValor;
+        protected decimal? descontoValor;
         protected DateTime? dataPagamento;
         protected string motivoCancelamento;
 
@@ -32,20 +35,23 @@ namespace projeto_patrica.classes
             dataVencimento = DateTime.MinValue;
             valorParcela = 0;
             aFormaPagamento = new formaPagamento();
-            situacao = 0; 
+            situacao = 0;
             juros = 0;
             multa = 0;
             desconto = 0;
             valorPago = null;
+            multaValor = null;
+            jurosValor = null;
+            descontoValor = null;
             dataPagamento = null;
-            motivoCancelamento = null; 
+            motivoCancelamento = null;
         }
 
         public contasAPagar(
             int modeloCompra, string serieCompra, string numeroNotaCompra, fornecedor oFornecedor, int numeroParcela,
             DateTime dataEmissao, DateTime dataVencimento, decimal valorParcela, formaPagamento aFormaPagamento, bool ativo,
             int situacao, decimal juros, decimal multa, decimal desconto, decimal? valorPago, DateTime? dataPagamento,
-            DateTime dataCadastro, DateTime? dataUltimaEdicao, string motivoCancelamento
+            DateTime dataCadastro, DateTime? dataUltimaEdicao, string motivoCancelamento, decimal? multaValor, decimal? jurosValor, decimal? descontoValor
         ) : base(0, ativo, dataCadastro, dataUltimaEdicao)
         {
             this.modeloCompra = modeloCompra;
@@ -62,6 +68,9 @@ namespace projeto_patrica.classes
             this.multa = multa;
             this.desconto = desconto;
             this.valorPago = valorPago;
+            this.multaValor = multaValor;
+            this.jurosValor = jurosValor;
+            this.descontoValor = descontoValor;
             this.dataPagamento = dataPagamento;
             this.motivoCancelamento = motivoCancelamento;
         }
@@ -143,6 +152,21 @@ namespace projeto_patrica.classes
         {
             get => valorPago;
             set => valorPago = value;
+        }
+        public decimal? MultaValor
+        {
+            get => multaValor;
+            set => multaValor = value;
+        }
+        public decimal? JurosValor
+        {
+            get => jurosValor;
+            set => jurosValor = value;
+        }
+        public decimal? DescontoValor
+        {
+            get => descontoValor;
+            set => descontoValor = value;
         }
         public DateTime? DataPagamento
         {

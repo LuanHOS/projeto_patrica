@@ -149,6 +149,9 @@ namespace projeto_patrica.dao
                         conta.Juros = aCompra.ACondicaoPagamento.Juros;
                         conta.Multa = aCompra.ACondicaoPagamento.Multa;
                         conta.Desconto = aCompra.ACondicaoPagamento.Desconto;
+                        conta.JurosValor = null;
+                        conta.MultaValor = null;
+                        conta.DescontoValor = null;
                         conta.Situacao = 0;
                         conta.ValorPago = null;
                         conta.DataPagamento = null;
@@ -478,10 +481,12 @@ namespace projeto_patrica.dao
         {
             string sql = "INSERT INTO CONTAS_A_PAGAR (MODELO_COMPRA, SERIE_COMPRA, NUMERO_NOTA_COMPRA, ID_FORNECEDOR, NUMERO_PARCELA, " +
                          "DATA_EMISSAO, DATA_VENCIMENTO, VALOR_PARCELA, ID_FORMA_PAGAMENTO, ATIVO, " +
-                         "SITUACAO, JUROS, MULTA, DESCONTO, VALOR_PAGO, DATA_PAGAMENTO, DATA_ULTIMA_EDICAO, MOTIVO_CANCELAMENTO) VALUES " +
+                         "SITUACAO, JUROS, MULTA, DESCONTO, VALOR_PAGO, DATA_PAGAMENTO, DATA_ULTIMA_EDICAO, MOTIVO_CANCELAMENTO, " +
+                         "JUROS_VALOR, MULTA_VALOR, DESCONTO_VALOR) VALUES " +
                          "(@ModeloCompra, @SerieCompra, @NumeroNotaCompra, @IdFornecedor, @NumeroParcela, " +
                          "@DataEmissao, @DataVencimento, @ValorParcela, @IdFormaPagamento, @Ativo, " +
-                         "@Situacao, @Juros, @Multa, @Desconto, @ValorPago, @DataPagamento, @DataUltimaEdicao, @MotivoCancelamento)";
+                         "@Situacao, @Juros, @Multa, @Desconto, @ValorPago, @DataPagamento, @DataUltimaEdicao, @MotivoCancelamento, " +
+                         "@JurosValor, @MultaValor, @DescontoValor)";
 
             MySqlCommand cmd = new MySqlCommand(sql, conn, trans);
             cmd.Parameters.AddWithValue("@ModeloCompra", conta.ModeloCompra);
@@ -499,6 +504,9 @@ namespace projeto_patrica.dao
             cmd.Parameters.AddWithValue("@Multa", conta.Multa);
             cmd.Parameters.AddWithValue("@Desconto", conta.Desconto);
             cmd.Parameters.AddWithValue("@ValorPago", (object)conta.ValorPago ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@JurosValor", (object)conta.JurosValor ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@MultaValor", (object)conta.MultaValor ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@DescontoValor", (object)conta.DescontoValor ?? DBNull.Value);
             cmd.Parameters.AddWithValue("@DataPagamento", (object)conta.DataPagamento ?? DBNull.Value);
             cmd.Parameters.AddWithValue("@DataUltimaEdicao", (object)conta.DataUltimaEdicao ?? DBNull.Value);
             cmd.Parameters.AddWithValue("@MotivoCancelamento", (object)conta.MotivoCancelamento ?? DBNull.Value);
@@ -576,6 +584,9 @@ namespace projeto_patrica.dao
                     parcela.Multa = Convert.ToDecimal(dr["MULTA"]);
                     parcela.Desconto = Convert.ToDecimal(dr["DESCONTO"]);
                     parcela.ValorPago = dr.IsDBNull(dr.GetOrdinal("VALOR_PAGO")) ? (decimal?)null : Convert.ToDecimal(dr["VALOR_PAGO"]);
+                    parcela.JurosValor = dr.IsDBNull(dr.GetOrdinal("JUROS_VALOR")) ? (decimal?)null : Convert.ToDecimal(dr["JUROS_VALOR"]);
+                    parcela.MultaValor = dr.IsDBNull(dr.GetOrdinal("MULTA_VALOR")) ? (decimal?)null : Convert.ToDecimal(dr["MULTA_VALOR"]);
+                    parcela.DescontoValor = dr.IsDBNull(dr.GetOrdinal("DESCONTO_VALOR")) ? (decimal?)null : Convert.ToDecimal(dr["DESCONTO_VALOR"]);
                     parcela.DataPagamento = dr.IsDBNull(dr.GetOrdinal("DATA_PAGAMENTO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_PAGAMENTO"]);
                     parcela.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
                     parcela.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);

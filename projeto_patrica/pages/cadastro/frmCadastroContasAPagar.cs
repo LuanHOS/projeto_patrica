@@ -119,12 +119,18 @@ namespace projeto_patrica.pages.cadastro
                 }
                 else if (btnSave.Text == "Dar Baixa")
                 {
-                    RecalcularValorPago(null, null);
+                    AtualizarValorPagoFinal();
+                    if (!ValidacaoCampos())
+                        return;
+
                     if (ConfirmarBaixa())
                     {
                         oContaAPagar.Juros = Convert.ToDecimal(txtJuros.Text);
                         oContaAPagar.Multa = Convert.ToDecimal(txtMulta.Text);
                         oContaAPagar.Desconto = Convert.ToDecimal(txtDesconto.Text);
+                        oContaAPagar.JurosValor = Convert.ToDecimal(txtJurosReais.Text);
+                        oContaAPagar.MultaValor = Convert.ToDecimal(txtMultaReais.Text);
+                        oContaAPagar.DescontoValor = Convert.ToDecimal(txtDescontoReais.Text);
                         oContaAPagar.Situacao = 1;
                         oContaAPagar.ValorPago = Convert.ToDecimal(txtValorPago.Text);
                         oContaAPagar.DataPagamento = dtpDataPagamento.Value;
@@ -144,6 +150,9 @@ namespace projeto_patrica.pages.cadastro
                     oContaAPagar.Juros = Convert.ToDecimal(txtJuros.Text);
                     oContaAPagar.Multa = Convert.ToDecimal(txtMulta.Text);
                     oContaAPagar.Desconto = Convert.ToDecimal(txtDesconto.Text);
+                    oContaAPagar.JurosValor = 0;
+                    oContaAPagar.MultaValor = 0;
+                    oContaAPagar.DescontoValor = 0;
                     oContaAPagar.Situacao = 0;
                     oContaAPagar.ValorPago = null;
                     oContaAPagar.DataPagamento = null;
@@ -211,6 +220,9 @@ namespace projeto_patrica.pages.cadastro
             txtJuros.Text = "0,00";
             txtMulta.Text = "0,00";
             txtDesconto.Text = "0,00";
+            txtJurosReais.Text = "0,00";
+            txtMultaReais.Text = "0,00";
+            txtDescontoReais.Text = "0,00";
             txtValorPago.Text = "0,00";
             dtpDataPagamento.Value = DateTime.Today;
             dtpDataPagamento.Checked = false;
@@ -251,9 +263,12 @@ namespace projeto_patrica.pages.cadastro
             }
 
             txtValorParcela.Text = oContaAPagar.ValorParcela.ToString("F2");
-            txtJuros.Text = oContaAPagar.Juros.ToString("F6");
-            txtMulta.Text = oContaAPagar.Multa.ToString("F6");
-            txtDesconto.Text = oContaAPagar.Desconto.ToString("F6");
+            txtJuros.Text = oContaAPagar.Juros.ToString("F2");
+            txtMulta.Text = oContaAPagar.Multa.ToString("F2");
+            txtDesconto.Text = oContaAPagar.Desconto.ToString("F2");
+            txtJurosReais.Text = oContaAPagar.JurosValor.HasValue ? oContaAPagar.JurosValor.Value.ToString("F2") : "0,00";
+            txtMultaReais.Text = oContaAPagar.MultaValor.HasValue ? oContaAPagar.MultaValor.Value.ToString("F2") : "0,00";
+            txtDescontoReais.Text = oContaAPagar.DescontoValor.HasValue ? oContaAPagar.DescontoValor.Value.ToString("F2") : "0,00";
             txtValorPago.Text = oContaAPagar.ValorPago.HasValue ? oContaAPagar.ValorPago.Value.ToString("F2") : "0,00";
             checkBoxAtivo.Checked = oContaAPagar.Ativo;
 
@@ -287,6 +302,9 @@ namespace projeto_patrica.pages.cadastro
             txtJuros.Enabled = false;
             txtMulta.Enabled = false;
             txtDesconto.Enabled = false;
+            txtJurosReais.Enabled = false;
+            txtMultaReais.Enabled = false;
+            txtDescontoReais.Enabled = false;
             txtValorPago.Enabled = false;
             dtpDataPagamento.Enabled = false;
 
@@ -299,6 +317,12 @@ namespace projeto_patrica.pages.cadastro
                 txtValorPago.Visible = pago;
                 lblDataPagamento.Visible = pago;
                 lblValorFinal.Visible = pago;
+                txtJurosReais.Visible = pago;
+                txtMultaReais.Visible = pago;
+                txtDescontoReais.Visible = pago;
+                lblJurosReais.Visible = pago;
+                lblMultaReais.Visible = pago;
+                lblDescontoReais.Visible = pago;
 
                 bool cancelado = !oContaAPagar.Ativo;
                 lblMotivoCancelamentoTitulo.Visible = cancelado;
@@ -311,6 +335,12 @@ namespace projeto_patrica.pages.cadastro
                 txtValorPago.Visible = false;
                 lblDataPagamento.Visible = false;
                 lblValorFinal.Visible = false;
+                txtJurosReais.Visible = false;
+                txtMultaReais.Visible = false;
+                txtDescontoReais.Visible = false;
+                lblJurosReais.Visible = false;
+                lblMultaReais.Visible = false;
+                lblDescontoReais.Visible = false;
             }
         }
 
@@ -344,6 +374,12 @@ namespace projeto_patrica.pages.cadastro
                 txtValorPago.Visible = false;
                 lblDataPagamento.Visible = false;
                 lblValorFinal.Visible = false;
+                txtJurosReais.Visible = false;
+                txtMultaReais.Visible = false;
+                txtDescontoReais.Visible = false;
+                lblJurosReais.Visible = false;
+                lblMultaReais.Visible = false;
+                lblDescontoReais.Visible = false;
                 lblMotivoCancelamentoTitulo.Visible = false;
                 lblMotivCancelamentoExplicacao.Visible = false;
             }
@@ -364,17 +400,26 @@ namespace projeto_patrica.pages.cadastro
                 txtCodFormaPagamento.Enabled = true;
                 txtFormaPagamento.Enabled = true;
 
-                txtJuros.Enabled = true;
-                txtMulta.Enabled = true;
-                txtDesconto.Enabled = true;
+                txtJuros.Enabled = false;
+                txtMulta.Enabled = false;
+                txtDesconto.Enabled = false;
+                txtJurosReais.Enabled = true;
+                txtMultaReais.Enabled = true;
+                txtDescontoReais.Enabled = true;
                 btnPesquisarFormaPagamento.Enabled = true;
                 dtpDataPagamento.Enabled = true;
-                txtValorPago.Enabled = true;
+                txtValorPago.Enabled = false; 
 
                 dtpDataPagamento.Visible = true;
                 txtValorPago.Visible = true;
                 lblDataPagamento.Visible = true;
                 lblValorFinal.Visible = true;
+                txtJurosReais.Visible = true;
+                txtMultaReais.Visible = true;
+                txtDescontoReais.Visible = true;
+                lblJurosReais.Visible = true;
+                lblMultaReais.Visible = true;
+                lblDescontoReais.Visible = true;
 
                 dtpDataPagamento.MinDate = dtpDataEmissao.Value.Date;
                 dtpDataPagamento.MaxDate = DateTime.Today;
@@ -389,7 +434,8 @@ namespace projeto_patrica.pages.cadastro
                 }
 
                 dtpDataPagamento.Checked = true;
-                RecalcularValorPago(null, null);
+                CalcularValoresReaisAutomaticamente();
+                AtualizarValorPagoFinal();
             }
         }
 
@@ -423,9 +469,9 @@ namespace projeto_patrica.pages.cadastro
                     MessageBox.Show("Selecione a forma de pagamento.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-                if (!decimal.TryParse(txtValorPago.Text, out decimal valorPago) || valorPago <= 0)
+                if (!decimal.TryParse(txtValorPago.Text, out decimal valorPago) || valorPago < 0)
                 {
-                    MessageBox.Show("O Valor Final (Pago) deve ser maior que zero.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("O Valor Final (Pago) não pode ser negativo.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtValorPago.Focus();
                     return false;
                 }
@@ -486,34 +532,62 @@ namespace projeto_patrica.pages.cadastro
                 return;
             }
 
-            decimal.TryParse(txtValorParcela.Text, out decimal valorParcela);
-            decimal.TryParse(txtJuros.Text, out decimal juros);
-            decimal.TryParse(txtMulta.Text, out decimal multa);
-            decimal.TryParse(txtDesconto.Text, out decimal desconto);
+            if (sender == dtpDataPagamento)
+            {
+                CalcularValoresReaisAutomaticamente();
+            }
 
-            decimal total = valorParcela;
+            AtualizarValorPagoFinal();
+        }
+
+        private void CalcularValoresReaisAutomaticamente()
+        {
+            decimal.TryParse(txtValorParcela.Text, out decimal valorParcela);
+            decimal.TryParse(txtJuros.Text, out decimal jurosPerc);
+            decimal.TryParse(txtMulta.Text, out decimal multaPerc);
+            decimal.TryParse(txtDesconto.Text, out decimal descontoPerc);
 
             if (dtpDataPagamento.Checked)
             {
                 if (dtpDataPagamento.Value.Date > dtpDataVencimento.Value.Date)
                 {
-                    total += (valorParcela * (multa / 100));
-                    total += (valorParcela * (juros / 100));
+                    TimeSpan diasAtraso = dtpDataPagamento.Value.Date - dtpDataVencimento.Value.Date;
+                    txtMultaReais.Text = (valorParcela * (multaPerc / 100)).ToString("F2");
+                    txtJurosReais.Text = (valorParcela * (jurosPerc / 100) * diasAtraso.Days).ToString("F2");
+                    txtDescontoReais.Text = "0,00";
                 }
                 else
                 {
-                    total -= (valorParcela * (desconto / 100));
-                    total += (valorParcela * (juros / 100));
+                    txtMultaReais.Text = "0,00";
+                    txtJurosReais.Text = "0,00";
+                    txtDescontoReais.Text = (valorParcela * (descontoPerc / 100)).ToString("F2");
                 }
             }
             else
             {
-
-                total = 0;
+                txtMultaReais.Text = "0,00";
+                txtJurosReais.Text = "0,00";
+                txtDescontoReais.Text = "0,00";
             }
+        }
 
+        private void AtualizarValorPagoFinal_Handler(object sender, EventArgs e)
+        {
+            AtualizarValorPagoFinal();
+        }
+
+
+        private void AtualizarValorPagoFinal()
+        {
+            decimal.TryParse(txtValorParcela.Text, out decimal valorParcela);
+            decimal.TryParse(txtJurosReais.Text, out decimal jurosValor);
+            decimal.TryParse(txtMultaReais.Text, out decimal multaValor);
+            decimal.TryParse(txtDescontoReais.Text, out decimal descontoValor);
+
+            decimal total = valorParcela + jurosValor + multaValor - descontoValor;
             txtValorPago.Text = total.ToString("F2");
         }
+
 
         private bool ConfirmarBaixa()
         {
@@ -593,6 +667,9 @@ namespace projeto_patrica.pages.cadastro
             txtJuros.MaxLength = 20;
             txtMulta.MaxLength = 20;
             txtDesconto.MaxLength = 20;
+            txtJurosReais.MaxLength = 11;
+            txtMultaReais.MaxLength = 11;
+            txtDescontoReais.MaxLength = 11;
             txtValorPago.MaxLength = 11;
 
 
@@ -620,6 +697,15 @@ namespace projeto_patrica.pages.cadastro
 
             txtDesconto.KeyPress -= ApenasNumerosDecimal;
             txtDesconto.KeyPress += ApenasNumerosDecimal;
+
+            txtJurosReais.KeyPress -= ApenasNumerosDecimal;
+            txtJurosReais.KeyPress += ApenasNumerosDecimal;
+
+            txtMultaReais.KeyPress -= ApenasNumerosDecimal;
+            txtMultaReais.KeyPress += ApenasNumerosDecimal;
+
+            txtDescontoReais.KeyPress -= ApenasNumerosDecimal;
+            txtDescontoReais.KeyPress += ApenasNumerosDecimal;
 
             txtValorPago.KeyPress -= ApenasNumerosDecimal;
             txtValorPago.KeyPress += ApenasNumerosDecimal;

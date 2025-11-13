@@ -137,7 +137,6 @@
             this.dtpDataVencimento.Name = "dtpDataVencimento";
             this.dtpDataVencimento.Size = new System.Drawing.Size(109, 22);
             this.dtpDataVencimento.TabIndex = 113;
-            this.dtpDataVencimento.ValueChanged += new System.EventHandler(this.RecalcularValorPago);
             // 
             // txtCodFornecedor
             // 
@@ -230,7 +229,7 @@
             this.txtValorParcela.Size = new System.Drawing.Size(189, 22);
             this.txtValorParcela.TabIndex = 105;
             this.txtValorParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtValorParcela.Leave += new System.EventHandler(this.RecalcularValorPago);
+            this.txtValorParcela.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
             // lblDataPagamento
             // 
@@ -287,7 +286,7 @@
             this.txtDesconto.Size = new System.Drawing.Size(82, 22);
             this.txtDesconto.TabIndex = 159;
             this.txtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtDesconto.Leave += new System.EventHandler(this.RecalcularValorPago);
+            this.txtDesconto.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
             // txtMulta
             // 
@@ -299,7 +298,7 @@
             this.txtMulta.Size = new System.Drawing.Size(82, 22);
             this.txtMulta.TabIndex = 158;
             this.txtMulta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtMulta.Leave += new System.EventHandler(this.RecalcularValorPago);
+            this.txtMulta.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
             // txtJuros
             // 
@@ -311,7 +310,7 @@
             this.txtJuros.Size = new System.Drawing.Size(82, 22);
             this.txtJuros.TabIndex = 157;
             this.txtJuros.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtJuros.Leave += new System.EventHandler(this.RecalcularValorPago);
+            this.txtJuros.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
             // lblValorFinal
             // 
@@ -404,7 +403,7 @@
             this.txtJurosReais.Size = new System.Drawing.Size(82, 22);
             this.txtJurosReais.TabIndex = 157;
             this.txtJurosReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtJurosReais.Leave += new System.EventHandler(this.RecalcularValorPago);
+            this.txtJurosReais.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
             // txtMultaReais
             // 
@@ -416,7 +415,7 @@
             this.txtMultaReais.Size = new System.Drawing.Size(82, 22);
             this.txtMultaReais.TabIndex = 158;
             this.txtMultaReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtMultaReais.Leave += new System.EventHandler(this.RecalcularValorPago);
+            this.txtMultaReais.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
             // txtDescontoReais
             // 
@@ -428,7 +427,7 @@
             this.txtDescontoReais.Size = new System.Drawing.Size(82, 22);
             this.txtDescontoReais.TabIndex = 159;
             this.txtDescontoReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtDescontoReais.Leave += new System.EventHandler(this.RecalcularValorPago);
+            this.txtDescontoReais.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
             // lblJurosReais
             // 

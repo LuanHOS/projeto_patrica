@@ -169,9 +169,9 @@ namespace projeto_patrica.pages.cadastro
             txtCodigo.Text = aCondicaoPagamento.Id.ToString();
             txtDescricao.Text = aCondicaoPagamento.Descricao;
             txtQtdParcelas.Text = aCondicaoPagamento.QuantidadeParcelas.ToString();
-            txtMulta.Text = aCondicaoPagamento.Multa.ToString("F6");
-            txtJuros.Text = aCondicaoPagamento.Juros.ToString("F6");
-            txtDesconto.Text = aCondicaoPagamento.Desconto.ToString("F6");
+            txtMulta.Text = aCondicaoPagamento.Multa.ToString("F2");
+            txtJuros.Text = aCondicaoPagamento.Juros.ToString("F2");
+            txtDesconto.Text = aCondicaoPagamento.Desconto.ToString("F2");
             checkBoxAtivo.Checked = aCondicaoPagamento.Ativo;
             lblDataCadastroData.Text = aCondicaoPagamento.DataCadastro.ToShortDateString();
             lblDataUltimaEdicaoData.Text = aCondicaoPagamento.DataUltimaEdicao?.ToShortDateString() ?? " ";
@@ -275,7 +275,7 @@ namespace projeto_patrica.pages.cadastro
 
                     txtNumParcela.Text = parcela.NumeroParcela.ToString();
                     comboBoxFormaPagamento.SelectedValue = parcela.AFormaPagamento.Id;
-                    txtPercentualParcela.Text = parcela.ValorPercentual.ToString("F6");
+                    txtPercentualParcela.Text = parcela.ValorPercentual.ToString("F2");
                     txtPrazoDias.Text = parcela.DiasAposVenda.ToString();
 
                     btnAdicionarParcela.Enabled = false;
