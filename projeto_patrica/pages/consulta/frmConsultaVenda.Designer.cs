@@ -63,6 +63,7 @@
             this.clmAtivo,
             this.clmMotivoCancelamento,
             this.clmDataCancelamento});
+            this.listV.SelectedIndexChanged += new System.EventHandler(this.listV_SelectedIndexChanged);
             // 
             // clmCod
             // 
