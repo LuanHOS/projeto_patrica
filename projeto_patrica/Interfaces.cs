@@ -24,6 +24,8 @@ namespace projeto_patrica
         frmCadastroProduto oFrmCadProduto;
         frmCadastroCompra oFrmCadCompra;
         frmCadastroContasAPagar oFrmCadContasAPagar;
+        frmCadastroVenda oFrmCadVenda;
+        frmCadastroContasAReceber oFrmCadContasAReceber;
 
         // Formulários de Consulta
         frmConsultaCondicaoPagamento oFrmConCondPag;
@@ -41,6 +43,8 @@ namespace projeto_patrica
         frmConsultaProduto oFrmConProduto;
         frmConsultaCompra oFrmConCompra;
         frmConsultaContasAPagar oFrmConContasAPagar;
+        frmConsultaVenda oFrmConVenda;
+        frmConsultaContasAReceber oFrmConContasAReceber;
 
         /*
          * */
@@ -63,6 +67,8 @@ namespace projeto_patrica
             oFrmConProduto = new frmConsultaProduto();
             oFrmConCompra = new frmConsultaCompra();
             oFrmConContasAPagar = new frmConsultaContasAPagar();
+            oFrmConVenda = new frmConsultaVenda();
+            oFrmConContasAReceber = new frmConsultaContasAReceber();
 
             // Instancia Formulários de Cadastro
             oFrmCadCondPag = new frmCadastroCondicaoPagamento();
@@ -80,6 +86,8 @@ namespace projeto_patrica
             oFrmCadProduto = new frmCadastroProduto();
             oFrmCadCompra = new frmCadastroCompra();
             oFrmCadContasAPagar = new frmCadastroContasAPagar();
+            oFrmCadVenda = new frmCadastroVenda();
+            oFrmCadContasAReceber = new frmCadastroContasAReceber();
 
             // Vincula Formulários de Consulta aos de Cadastro
             oFrmConCondPag.setFrmCadastro(oFrmCadCondPag);
@@ -97,6 +105,8 @@ namespace projeto_patrica
             oFrmConProduto.setFrmCadastro(oFrmCadProduto);
             oFrmConCompra.setFrmCadastro(oFrmCadCompra);
             oFrmConContasAPagar.setFrmCadastro(oFrmCadContasAPagar);
+            oFrmConVenda.setFrmCadastro(oFrmCadVenda);
+            oFrmConContasAReceber.setFrmCadastro(oFrmCadContasAReceber);
 
             // Vincula Consultas necessárias aos Cadastros
             oFrmCadCondPag.setConsultaFormaPagamento(oFrmConFormPag);
@@ -117,7 +127,13 @@ namespace projeto_patrica
             oFrmCadCompra.setConsultaProduto(oFrmConProduto);
             oFrmCadCompra.setConsultaCondicaoPagamento(oFrmConCondPag);
             oFrmCadContasAPagar.setConsultaFornecedor(oFrmConFornecedor);
-            oFrmCadContasAPagar.setConsultaFormaPagamento(oFrmConFormPag); 
+            oFrmCadContasAPagar.setConsultaFormaPagamento(oFrmConFormPag);
+            oFrmCadVenda.setConsultaCliente(oFrmConCliente);
+            oFrmCadVenda.setConsultaFuncionario(oFrmConFuncionario);
+            oFrmCadVenda.setConsultaProduto(oFrmConProduto);
+            oFrmCadVenda.setConsultaCondicaoPagamento(oFrmConCondPag);
+            oFrmCadContasAReceber.setConsultaCliente(oFrmConCliente);
+            oFrmCadContasAReceber.setConsultaFormaPagamento(oFrmConFormPag);
         }
 
         /*
@@ -132,6 +148,12 @@ namespace projeto_patrica
         {
             oFrmConCompra.ConhecaObj(aCompra, oController_compra);
             oFrmConCompra.ShowDialog();
+        }
+
+        public void pecaConsultaVenda(venda aVenda, Controller_venda oController_venda)
+        {
+            oFrmConVenda.ConhecaObj(aVenda, oController_venda);
+            oFrmConVenda.ShowDialog();
         }
 
         /*
@@ -246,6 +268,12 @@ namespace projeto_patrica
         {
             oFrmConContasAPagar.ConhecaObj(oContaAPagar, oController_contasAPagar);
             oFrmConContasAPagar.ShowDialog();
+        }
+
+        public void pecaConsultaContasAReceber(contasAReceber oContaAReceber, Controller_contasAReceber oController_contasAReceber)
+        {
+            oFrmConContasAReceber.ConhecaObj(oContaAReceber, oController_contasAReceber);
+            oFrmConContasAReceber.ShowDialog();
         }
     }
 }

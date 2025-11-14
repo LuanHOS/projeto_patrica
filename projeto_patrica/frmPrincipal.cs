@@ -26,6 +26,8 @@ namespace projeto_patrica
         private produto oProduto;
         private compra aCompra;
         private contasAPagar aContasAPagar;
+        private venda aVenda;
+        private contasAReceber aContasAReceber;
 
         //Controllers
         private Controller_formaPagamento oController_formaPagamento;
@@ -43,6 +45,8 @@ namespace projeto_patrica
         private Controller_produto oController_produto;
         private Controller_compra oController_compra;
         private Controller_contasAPagar oController_contasAPagar;
+        private Controller_venda oController_venda;
+        private Controller_contasAReceber oController_contasAReceber;
 
         /*
          * */
@@ -70,6 +74,8 @@ namespace projeto_patrica
             oProduto = new produto();
             aCompra = new compra();
             aContasAPagar = new contasAPagar();
+            aVenda = new venda();
+            aContasAReceber = new contasAReceber();
 
             // Instanciando Controllers
             oController_formaPagamento = new Controller_formaPagamento();
@@ -87,6 +93,8 @@ namespace projeto_patrica
             oController_produto = new Controller_produto();
             oController_compra = new Controller_compra();
             oController_contasAPagar = new Controller_contasAPagar();
+            oController_venda = new Controller_venda();
+            oController_contasAReceber = new Controller_contasAReceber();
 
             // Passando dependências de controllers
             oController_condicaoPagamento.AController_formaPagamento = oController_formaPagamento;
@@ -106,7 +114,12 @@ namespace projeto_patrica
             oController_compra.AController_condicaoPagamento = oController_condicaoPagamento;
             oController_contasAPagar.AController_fornecedor = oController_fornecedor;
             oController_contasAPagar.AController_formaPagamento = oController_formaPagamento;
-
+            oController_venda.AController_cliente = oController_cliente;
+            oController_venda.AController_funcionario = oController_funcionario;
+            oController_venda.AController_produto = oController_produto;
+            oController_venda.AController_condicaoPagamento = oController_condicaoPagamento;
+            oController_contasAReceber.AController_cliente = oController_cliente;
+            oController_contasAReceber.AController_formaPagamento = oController_formaPagamento;
         }
 
         /*
@@ -221,6 +234,16 @@ namespace projeto_patrica
         private void contasAPagarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             aInter.pecaConsultaContasAPagar(aContasAPagar, oController_contasAPagar);
+        }
+
+        private void vendaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            aInter.pecaConsultaVenda(aVenda, oController_venda);
+        }
+
+        private void contasAReceberToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            aInter.pecaConsultaContasAReceber(aContasAReceber, oController_contasAReceber);
         }
     }
 }

@@ -120,10 +120,12 @@
     <Compile Include="classes\cliente.cs" />
     <Compile Include="classes\compra.cs" />
     <Compile Include="classes\condicaoPagamento.cs" />
+    <Compile Include="classes\contasAReceber.cs" />
     <Compile Include="classes\estado.cs" />
     <Compile Include="classes\fornecedor.cs" />
     <Compile Include="classes\funcionario.cs" />
     <Compile Include="classes\itemCompra.cs" />
+    <Compile Include="classes\itemVenda.cs" />
     <Compile Include="classes\marca.cs" />
     <Compile Include="classes\pais.cs" />
     <Compile Include="classes\contasAPagar.cs" />
@@ -133,6 +135,7 @@
     <Compile Include="classes\produto_fornecedor.cs" />
     <Compile Include="classes\transportadora.cs" />
     <Compile Include="classes\unidade_medida.cs" />
+    <Compile Include="classes\venda.cs" />
     <Compile Include="controller\Controller.cs" />
     <Compile Include="controller\Controller_categoria.cs" />
     <Compile Include="controller\Controller_cidade.cs" />
@@ -140,6 +143,7 @@
     <Compile Include="controller\Controller_compra.cs" />
     <Compile Include="controller\Controller_condicaoPagamento.cs" />
     <Compile Include="controller\Controller_contasAPagar.cs" />
+    <Compile Include="controller\Controller_contasAReceber.cs" />
     <Compile Include="controller\Controller_estado.cs" />
     <Compile Include="controller\Controller_formaPagamento.cs" />
     <Compile Include="controller\controller_fornecedor.cs" />
@@ -150,6 +154,7 @@
     <Compile Include="controller\Controller_produto_fornecedor.cs" />
     <Compile Include="controller\Controller_transportadora.cs" />
     <Compile Include="controller\Controller_unidade_medida.cs" />
+    <Compile Include="controller\Controller_venda.cs" />
     <Compile Include="dao\Dao.cs" />
     <Compile Include="dao\Dao_categoria.cs" />
     <Compile Include="dao\Dao_cidade.cs" />
@@ -157,6 +162,7 @@
     <Compile Include="dao\Dao_compra.cs" />
     <Compile Include="dao\Dao_condicaoPagamento.cs" />
     <Compile Include="dao\Dao_contasAPagar.cs" />
+    <Compile Include="dao\Dao_contasAReceber.cs" />
     <Compile Include="dao\Dao_estado.cs" />
     <Compile Include="dao\Dao_formaPagamento.cs" />
     <Compile Include="classes\formaPagamento.cs" />
@@ -169,6 +175,7 @@
     <Compile Include="dao\Dao_produto_fornecedor.cs" />
     <Compile Include="dao\Dao_transportadora.cs" />
     <Compile Include="dao\Dao_unidade_medida.cs" />
+    <Compile Include="dao\Dao_venda.cs" />
     <Compile Include="frmBase.cs">
       <SubType>Form</SubType>
     </Compile>
