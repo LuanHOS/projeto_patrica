@@ -214,11 +214,6 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(conta.DataVencimento.ToShortDateString());
                 item.SubItems.Add(conta.Ativo ? "" : "CANCELADO");
 
-                if (!conta.Ativo)
-                {
-                    item.ForeColor = Color.Red;
-                }
-
                 item.Tag = conta;
                 listV.Items.Add(item);
             }

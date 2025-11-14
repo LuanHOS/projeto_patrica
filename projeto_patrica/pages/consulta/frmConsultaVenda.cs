@@ -115,11 +115,6 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(venda.MotivoCancelamento ?? "");
                 item.SubItems.Add(venda.Ativo ? "" : (venda.DataUltimaEdicao.HasValue ? venda.DataUltimaEdicao.Value.ToString("dd/MM/yyyy HH:mm") : ""));
 
-                if (!venda.Ativo)
-                {
-                    item.ForeColor = Color.Red;
-                }
-
                 item.Tag = venda;
                 listV.Items.Add(item);
             }
@@ -167,11 +162,6 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(venda.Ativo ? "" : "CANCELADO");
                 item.SubItems.Add(venda.MotivoCancelamento ?? "");
                 item.SubItems.Add(venda.Ativo ? "" : (venda.DataUltimaEdicao.HasValue ? venda.DataUltimaEdicao.Value.ToString("dd/MM/yyyy HH:mm") : ""));
-
-                if (!venda.Ativo)
-                {
-                    item.ForeColor = Color.Red;
-                }
 
                 item.Tag = venda;
                 listV.Items.Add(item);
