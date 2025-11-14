@@ -45,11 +45,11 @@
             this.txtMulta = new System.Windows.Forms.TextBox();
             this.txtJuros = new System.Windows.Forms.TextBox();
             this.lblFormaPagamento = new System.Windows.Forms.Label();
-            this.btnPesquisarFornecedor = new System.Windows.Forms.Button();
+            this.btnPesquisarCliente = new System.Windows.Forms.Button();
             this.dtpDataEmissao = new System.Windows.Forms.DateTimePicker();
             this.dtpDataVencimento = new System.Windows.Forms.DateTimePicker();
-            this.txtCodFornecedor = new System.Windows.Forms.TextBox();
-            this.txtFornecedor = new System.Windows.Forms.TextBox();
+            this.txtCodCliente = new System.Windows.Forms.TextBox();
+            this.txtCliente = new System.Windows.Forms.TextBox();
             this.lblDataPagamento = new System.Windows.Forms.Label();
             this.lblDataVencimento = new System.Windows.Forms.Label();
             this.lblDataEmissao = new System.Windows.Forms.Label();
@@ -246,14 +246,14 @@
             this.lblFormaPagamento.TabIndex = 186;
             this.lblFormaPagamento.Text = "Forma de Pagamento *";
             // 
-            // btnPesquisarFornecedor
+            // btnPesquisarCliente
             // 
-            this.btnPesquisarFornecedor.Location = new System.Drawing.Point(611, 44);
-            this.btnPesquisarFornecedor.Name = "btnPesquisarFornecedor";
-            this.btnPesquisarFornecedor.Size = new System.Drawing.Size(39, 25);
-            this.btnPesquisarFornecedor.TabIndex = 185;
-            this.btnPesquisarFornecedor.Text = "🔎";
-            this.btnPesquisarFornecedor.UseVisualStyleBackColor = true;
+            this.btnPesquisarCliente.Location = new System.Drawing.Point(611, 44);
+            this.btnPesquisarCliente.Name = "btnPesquisarCliente";
+            this.btnPesquisarCliente.Size = new System.Drawing.Size(39, 25);
+            this.btnPesquisarCliente.TabIndex = 185;
+            this.btnPesquisarCliente.Text = "🔎";
+            this.btnPesquisarCliente.UseVisualStyleBackColor = true;
             // 
             // dtpDataEmissao
             // 
@@ -273,24 +273,24 @@
             this.dtpDataVencimento.Size = new System.Drawing.Size(109, 22);
             this.dtpDataVencimento.TabIndex = 183;
             // 
-            // txtCodFornecedor
+            // txtCodCliente
             // 
-            this.txtCodFornecedor.Location = new System.Drawing.Point(325, 47);
-            this.txtCodFornecedor.Name = "txtCodFornecedor";
-            this.txtCodFornecedor.ReadOnly = true;
-            this.txtCodFornecedor.ShortcutsEnabled = false;
-            this.txtCodFornecedor.Size = new System.Drawing.Size(60, 22);
-            this.txtCodFornecedor.TabIndex = 181;
-            this.txtCodFornecedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCodCliente.Location = new System.Drawing.Point(325, 47);
+            this.txtCodCliente.Name = "txtCodCliente";
+            this.txtCodCliente.ReadOnly = true;
+            this.txtCodCliente.ShortcutsEnabled = false;
+            this.txtCodCliente.Size = new System.Drawing.Size(60, 22);
+            this.txtCodCliente.TabIndex = 181;
+            this.txtCodCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // txtFornecedor
+            // txtCliente
             // 
-            this.txtFornecedor.Location = new System.Drawing.Point(391, 46);
-            this.txtFornecedor.Name = "txtFornecedor";
-            this.txtFornecedor.ReadOnly = true;
-            this.txtFornecedor.ShortcutsEnabled = false;
-            this.txtFornecedor.Size = new System.Drawing.Size(214, 22);
-            this.txtFornecedor.TabIndex = 182;
+            this.txtCliente.Location = new System.Drawing.Point(391, 46);
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.ReadOnly = true;
+            this.txtCliente.ShortcutsEnabled = false;
+            this.txtCliente.Size = new System.Drawing.Size(214, 22);
+            this.txtCliente.TabIndex = 182;
             // 
             // lblDataPagamento
             // 
@@ -324,9 +324,9 @@
             this.lblFornecedor.AutoSize = true;
             this.lblFornecedor.Location = new System.Drawing.Point(322, 26);
             this.lblFornecedor.Name = "lblFornecedor";
-            this.lblFornecedor.Size = new System.Drawing.Size(85, 16);
+            this.lblFornecedor.Size = new System.Drawing.Size(56, 16);
             this.lblFornecedor.TabIndex = 180;
-            this.lblFornecedor.Text = "Fornecedor *";
+            this.lblFornecedor.Text = "Cliente *";
             // 
             // txtValorPago
             // 
@@ -461,11 +461,11 @@
             this.Controls.Add(this.txtMulta);
             this.Controls.Add(this.txtJuros);
             this.Controls.Add(this.lblFormaPagamento);
-            this.Controls.Add(this.btnPesquisarFornecedor);
+            this.Controls.Add(this.btnPesquisarCliente);
             this.Controls.Add(this.dtpDataEmissao);
             this.Controls.Add(this.dtpDataVencimento);
-            this.Controls.Add(this.txtCodFornecedor);
-            this.Controls.Add(this.txtFornecedor);
+            this.Controls.Add(this.txtCodCliente);
+            this.Controls.Add(this.txtCliente);
             this.Controls.Add(this.lblDataPagamento);
             this.Controls.Add(this.lblDataVencimento);
             this.Controls.Add(this.lblDataEmissao);
@@ -507,11 +507,11 @@
             this.Controls.SetChildIndex(this.lblDataEmissao, 0);
             this.Controls.SetChildIndex(this.lblDataVencimento, 0);
             this.Controls.SetChildIndex(this.lblDataPagamento, 0);
-            this.Controls.SetChildIndex(this.txtFornecedor, 0);
-            this.Controls.SetChildIndex(this.txtCodFornecedor, 0);
+            this.Controls.SetChildIndex(this.txtCliente, 0);
+            this.Controls.SetChildIndex(this.txtCodCliente, 0);
             this.Controls.SetChildIndex(this.dtpDataVencimento, 0);
             this.Controls.SetChildIndex(this.dtpDataEmissao, 0);
-            this.Controls.SetChildIndex(this.btnPesquisarFornecedor, 0);
+            this.Controls.SetChildIndex(this.btnPesquisarCliente, 0);
             this.Controls.SetChildIndex(this.lblFormaPagamento, 0);
             this.Controls.SetChildIndex(this.txtJuros, 0);
             this.Controls.SetChildIndex(this.txtMulta, 0);
@@ -555,11 +555,11 @@
         private System.Windows.Forms.TextBox txtMulta;
         private System.Windows.Forms.TextBox txtJuros;
         private System.Windows.Forms.Label lblFormaPagamento;
-        private System.Windows.Forms.Button btnPesquisarFornecedor;
+        private System.Windows.Forms.Button btnPesquisarCliente;
         private System.Windows.Forms.DateTimePicker dtpDataEmissao;
         private System.Windows.Forms.DateTimePicker dtpDataVencimento;
-        private System.Windows.Forms.TextBox txtCodFornecedor;
-        private System.Windows.Forms.TextBox txtFornecedor;
+        private System.Windows.Forms.TextBox txtCodCliente;
+        private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.Label lblDataPagamento;
         private System.Windows.Forms.Label lblDataVencimento;
         private System.Windows.Forms.Label lblDataEmissao;
