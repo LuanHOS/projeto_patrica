@@ -71,7 +71,7 @@ namespace projeto_patrica.pages.cadastro
                         oContaAReceber.JurosValor = Convert.ToDecimal(txtJurosReais.Text);
                         oContaAReceber.MultaValor = Convert.ToDecimal(txtMultaReais.Text);
                         oContaAReceber.DescontoValor = Convert.ToDecimal(txtDescontoReais.Text);
-                        oContaAReceber.Situacao = 1; 
+                        oContaAReceber.Situacao = 1;
                         oContaAReceber.ValorPago = Convert.ToDecimal(txtValorPago.Text);
                         oContaAReceber.DataPagamento = dtpDataPagamento.Value;
                         oContaAReceber.DataUltimaEdicao = DateTime.Now;
@@ -142,7 +142,7 @@ namespace projeto_patrica.pages.cadastro
 
             txtCodigo.Text = oContaAReceber.ModeloVenda.ToString();
             txtSerie.Text = oContaAReceber.SerieVenda;
-            txtNumDaNota.Text = oContaAReceber.NumeroNotaVenda;
+            txtNumDaNota.Text = oContaAReceber.NumeroNotaVenda.ToString();
             txtCodCliente.Text = oContaAReceber.OCliente.Id.ToString();
             txtNumParcela.Text = oContaAReceber.NumeroParcela.ToString();
             aController_contasAReceber.AController_cliente.CarregaObj(oContaAReceber.OCliente);

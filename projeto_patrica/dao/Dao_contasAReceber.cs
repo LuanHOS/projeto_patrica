@@ -193,7 +193,7 @@ namespace projeto_patrica.dao
                         contasAReceber conta = new contasAReceber();
                         conta.ModeloVenda = Convert.ToInt32(dr["MODELO_VENDA"]);
                         conta.SerieVenda = dr["SERIE_VENDA"].ToString();
-                        conta.NumeroNotaVenda = dr["NUMERO_NOTA_VENDA"].ToString();
+                        conta.NumeroNotaVenda = Convert.ToInt32(dr["NUMERO_NOTA_VENDA"]);
                         conta.OCliente.Id = Convert.ToInt32(dr["ID_CLIENTE"]);
                         conta.NumeroParcela = Convert.ToInt32(dr["NUMERO_PARCELA"]);
                         conta.DataEmissao = Convert.ToDateTime(dr["DATA_EMISSAO"]);

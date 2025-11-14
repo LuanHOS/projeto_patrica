@@ -15,7 +15,7 @@ namespace projeto_patrica.dao
         {
         }
 
-        public bool VerificarVendaExistente(int modelo, string serie, string numeroNota, int idCliente)
+        public bool VerificarVendaExistente(int modelo, string serie, int numeroNota, int idCliente)
         {
             using (MySqlConnection conn = Banco.Abrir())
             {
@@ -37,19 +37,26 @@ namespace projeto_patrica.dao
             string ok = "";
             MySqlConnection conn = null;
             MySqlTransaction trans = null;
+            bool existe = false;
 
             try
             {
                 conn = Banco.Abrir();
                 trans = conn.BeginTransaction();
 
-                string sqlCheck = "SELECT COUNT(*) FROM VENDA WHERE MODELO = @Modelo AND SERIE = @Serie AND NUMERO_NOTA = @NumeroNota AND ID_CLIENTE = @IdCliente";
-                MySqlCommand cmdCheck = new MySqlCommand(sqlCheck, conn, trans);
-                cmdCheck.Parameters.AddWithValue("@Modelo", aVenda.Modelo);
-                cmdCheck.Parameters.AddWithValue("@Serie", aVenda.Serie);
-                cmdCheck.Parameters.AddWithValue("@NumeroNota", aVenda.NumeroNota);
-                cmdCheck.Parameters.AddWithValue("@IdCliente", aVenda.OCliente.Id);
-                bool existe = Convert.ToInt32(cmdCheck.ExecuteScalar()) > 0;
+                if (aVenda.NumeroNota == 0) 
+                {
+                    string sqlGenNum = "SELECT IFNULL(MAX(NUMERO_NOTA), 0) + 1 FROM VENDA WHERE MODELO = @Modelo AND SERIE = @Serie";
+                    MySqlCommand cmdGenNum = new MySqlCommand(sqlGenNum, conn, trans);
+                    cmdGenNum.Parameters.AddWithValue("@Modelo", aVenda.Modelo);
+                    cmdGenNum.Parameters.AddWithValue("@Serie", aVenda.Serie);
+                    aVenda.NumeroNota = Convert.ToInt32(cmdGenNum.ExecuteScalar());
+                    existe = false;
+                }
+                else
+                {
+                    existe = true;
+                }
 
                 string sql;
                 if (!existe)
@@ -107,6 +114,10 @@ namespace projeto_patrica.dao
 
                     foreach (itemVenda item in aVenda.Itens)
                     {
+                        item.ModeloVenda = aVenda.Modelo;
+                        item.SerieVenda = aVenda.Serie;
+                        item.NumeroNotaVenda = aVenda.NumeroNota;
+                        item.IdCliente = aVenda.OCliente.Id;
                         SalvarItem(item, conn, trans);
                         AtualizarProduto(item, conn, trans);
                     }
@@ -116,6 +127,10 @@ namespace projeto_patrica.dao
 
                     foreach (contasAReceber conta in aVenda.Parcelas)
                     {
+                        conta.ModeloVenda = aVenda.Modelo;
+                        conta.SerieVenda = aVenda.Serie;
+                        conta.NumeroNotaVenda = aVenda.NumeroNota;
+                        conta.OCliente = aVenda.OCliente;
                         conta.Juros = aVenda.ACondicaoPagamento.Juros;
                         conta.Multa = aVenda.ACondicaoPagamento.Multa;
                         conta.Desconto = aVenda.ACondicaoPagamento.Desconto;
@@ -236,7 +251,7 @@ namespace projeto_patrica.dao
                     {
                         aVenda.Modelo = Convert.ToInt32(dr["MODELO"]);
                         aVenda.Serie = dr["SERIE"].ToString();
-                        aVenda.NumeroNota = dr["NUMERO_NOTA"].ToString();
+                        aVenda.NumeroNota = Convert.ToInt32(dr["NUMERO_NOTA"]);
                         aVenda.OCliente.Id = Convert.ToInt32(dr["ID_CLIENTE"]);
                         aVenda.OFuncionario.Id = Convert.ToInt32(dr["ID_FUNCIONARIO"]);
                         aVenda.DataEmissao = Convert.ToDateTime(dr["DATA_EMISSAO"]);
@@ -288,7 +303,7 @@ namespace projeto_patrica.dao
                     venda aVenda = new venda();
                     aVenda.Modelo = Convert.ToInt32(dr["MODELO"]);
                     aVenda.Serie = dr["SERIE"].ToString();
-                    aVenda.NumeroNota = dr["NUMERO_NOTA"].ToString();
+                    aVenda.NumeroNota = Convert.ToInt32(dr["NUMERO_NOTA"]);
                     aVenda.OCliente.Id = Convert.ToInt32(dr["ID_CLIENTE"]);
                     aVenda.OFuncionario.Id = Convert.ToInt32(dr["ID_FUNCIONARIO"]);
                     aVenda.DataEmissao = Convert.ToDateTime(dr["DATA_EMISSAO"]);

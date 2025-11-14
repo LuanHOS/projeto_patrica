@@ -4,7 +4,7 @@
     {
         protected int modeloVenda;
         protected string serieVenda;
-        protected string numeroNotaVenda;
+        protected int numeroNotaVenda;
         protected int idCliente;
         protected produto oProduto;
         protected int quantidade;
@@ -14,14 +14,14 @@
         {
             modeloVenda = 0;
             serieVenda = " ";
-            numeroNotaVenda = " ";
+            numeroNotaVenda = 0;
             idCliente = 0;
             oProduto = new produto();
             quantidade = 0;
             valorUnitario = 0;
         }
 
-        public itemVenda(int modeloVenda, string serieVenda, string numeroNotaVenda, int idCliente, produto oProduto, int quantidade, decimal valorUnitario)
+        public itemVenda(int modeloVenda, string serieVenda, int numeroNotaVenda, int idCliente, produto oProduto, int quantidade, decimal valorUnitario)
         {
             this.modeloVenda = modeloVenda;
             this.serieVenda = serieVenda;
@@ -44,7 +44,7 @@
             set => serieVenda = value;
         }
 
-        public string NumeroNotaVenda
+        public int NumeroNotaVenda
         {
             get => numeroNotaVenda;
             set => numeroNotaVenda = value;

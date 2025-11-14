@@ -6,7 +6,7 @@ namespace projeto_patrica.classes
     {
         protected int modeloVenda;
         protected string serieVenda;
-        protected string numeroNotaVenda;
+        protected int numeroNotaVenda;
         protected cliente oCliente;
         protected int numeroParcela;
         protected DateTime dataEmissao;
@@ -28,7 +28,7 @@ namespace projeto_patrica.classes
         {
             modeloVenda = 0;
             serieVenda = " ";
-            numeroNotaVenda = " ";
+            numeroNotaVenda = 0;
             oCliente = new cliente();
             numeroParcela = 0;
             dataEmissao = DateTime.MinValue;
@@ -48,7 +48,7 @@ namespace projeto_patrica.classes
         }
 
         public contasAReceber(
-            int modeloVenda, string serieVenda, string numeroNotaVenda, cliente oCliente, int numeroParcela,
+            int modeloVenda, string serieVenda, int numeroNotaVenda, cliente oCliente, int numeroParcela,
             DateTime dataEmissao, DateTime dataVencimento, decimal valorParcela, formaPagamento aFormaPagamento, bool ativo,
             int situacao, decimal juros, decimal multa, decimal desconto, decimal? valorPago, DateTime? dataPagamento,
             DateTime dataCadastro, DateTime? dataUltimaEdicao, string motivoCancelamento, decimal? multaValor, decimal? jurosValor, decimal? descontoValor
@@ -87,7 +87,7 @@ namespace projeto_patrica.classes
             set => serieVenda = value;
         }
 
-        public string NumeroNotaVenda
+        public int NumeroNotaVenda
         {
             get => numeroNotaVenda;
             set => numeroNotaVenda = value;

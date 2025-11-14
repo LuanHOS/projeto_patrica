@@ -7,7 +7,7 @@ namespace projeto_patrica.classes
     {
         protected int modelo;
         protected string serie;
-        protected string numeroNota;
+        protected int numeroNota;
         protected cliente oCliente;
         protected funcionario oFuncionario;
         protected DateTime dataEmissao;
@@ -20,7 +20,7 @@ namespace projeto_patrica.classes
         {
             modelo = 0;
             serie = " ";
-            numeroNota = " ";
+            numeroNota = 0;
             oCliente = new cliente();
             oFuncionario = new funcionario();
             dataEmissao = DateTime.MinValue;
@@ -33,7 +33,7 @@ namespace projeto_patrica.classes
             motivoCancelamento = null;
         }
 
-        public venda(int modelo, string serie, string numeroNota, cliente oCliente, funcionario oFuncionario, DateTime dataEmissao,
+        public venda(int modelo, string serie, int numeroNota, cliente oCliente, funcionario oFuncionario, DateTime dataEmissao,
                      List<itemVenda> itens, condicaoPagamento aCondicaoPagamento, List<contasAReceber> parcelas,
                      bool ativo, DateTime dataCadastro, DateTime? dataUltimaEdicao, string motivoCancelamento)
             : base(0, ativo, dataCadastro, dataUltimaEdicao)
@@ -62,7 +62,7 @@ namespace projeto_patrica.classes
             set => serie = value;
         }
 
-        public string NumeroNota
+        public int NumeroNota
         {
             get => numeroNota;
             set => numeroNota = value;

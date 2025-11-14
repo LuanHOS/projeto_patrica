@@ -193,7 +193,7 @@ namespace projeto_patrica.pages.consulta
             if (!string.IsNullOrWhiteSpace(termoPesquisa))
             {
                 listaFiltrada = listaFiltrada.Where(c =>
-                     c.NumeroNotaVenda.ToUpper().Contains(termoPesquisa) ||
+                     c.NumeroNotaVenda.ToString().ToUpper().Contains(termoPesquisa) ||
                      (c.OCliente != null && c.OCliente.Nome_razaoSocial != null && c.OCliente.Nome_razaoSocial.ToUpper().Contains(termoPesquisa)) ||
                      c.NumeroParcela.ToString().Contains(termoPesquisa) ||
                      c.OCliente.Id.ToString().Contains(termoPesquisa)
@@ -205,7 +205,7 @@ namespace projeto_patrica.pages.consulta
                 ListViewItem item = new ListViewItem(conta.NumeroParcela.ToString());
                 item.SubItems.Add(conta.ModeloVenda.ToString());
                 item.SubItems.Add(conta.SerieVenda);
-                item.SubItems.Add(conta.NumeroNotaVenda);
+                item.SubItems.Add(conta.NumeroNotaVenda.ToString());
                 item.SubItems.Add(conta.OCliente.Id.ToString());
                 item.SubItems.Add(conta.OCliente.Nome_razaoSocial);
                 item.SubItems.Add(conta.ValorParcela.ToString("C2"));

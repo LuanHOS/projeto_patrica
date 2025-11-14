@@ -211,6 +211,7 @@
             this.btnLimparParcelas.TabIndex = 152;
             this.btnLimparParcelas.Text = "Limpar Parcelas";
             this.btnLimparParcelas.UseVisualStyleBackColor = true;
+            this.btnLimparParcelas.Click += new System.EventHandler(this.btnLimparParcelas_Click);
             // 
             // btnGerarParcelas
             // 
@@ -220,10 +221,11 @@
             this.btnGerarParcelas.TabIndex = 153;
             this.btnGerarParcelas.Text = "Gerar Parcelas";
             this.btnGerarParcelas.UseVisualStyleBackColor = true;
+            this.btnGerarParcelas.Click += new System.EventHandler(this.btnGerarParcelas_Click);
             // 
             // btnPesquisarFuncionario
             // 
-            this.btnPesquisarFuncionario.Location = new System.Drawing.Point(613, 32);
+            this.btnPesquisarFuncionario.Location = new System.Drawing.Point(956, 32);
             this.btnPesquisarFuncionario.Name = "btnPesquisarFuncionario";
             this.btnPesquisarFuncionario.Size = new System.Drawing.Size(39, 25);
             this.btnPesquisarFuncionario.TabIndex = 149;
@@ -261,7 +263,7 @@
             // 
             // txtCodFuncionario
             // 
-            this.txtCodFuncionario.Location = new System.Drawing.Point(327, 33);
+            this.txtCodFuncionario.Location = new System.Drawing.Point(670, 33);
             this.txtCodFuncionario.Name = "txtCodFuncionario";
             this.txtCodFuncionario.ReadOnly = true;
             this.txtCodFuncionario.ShortcutsEnabled = false;
@@ -271,7 +273,7 @@
             // 
             // txtFuncionario
             // 
-            this.txtFuncionario.Location = new System.Drawing.Point(393, 32);
+            this.txtFuncionario.Location = new System.Drawing.Point(736, 32);
             this.txtFuncionario.Name = "txtFuncionario";
             this.txtFuncionario.ReadOnly = true;
             this.txtFuncionario.ShortcutsEnabled = false;
@@ -368,7 +370,7 @@
             // lblFuncionario
             // 
             this.lblFuncionario.AutoSize = true;
-            this.lblFuncionario.Location = new System.Drawing.Point(324, 13);
+            this.lblFuncionario.Location = new System.Drawing.Point(667, 13);
             this.lblFuncionario.Name = "lblFuncionario";
             this.lblFuncionario.Size = new System.Drawing.Size(85, 16);
             this.lblFuncionario.TabIndex = 126;
@@ -395,7 +397,7 @@
             // lblCliente
             // 
             this.lblCliente.AutoSize = true;
-            this.lblCliente.Location = new System.Drawing.Point(666, 13);
+            this.lblCliente.Location = new System.Drawing.Point(324, 13);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(56, 16);
             this.lblCliente.TabIndex = 126;
@@ -403,7 +405,7 @@
             // 
             // txtCliente
             // 
-            this.txtCliente.Location = new System.Drawing.Point(735, 32);
+            this.txtCliente.Location = new System.Drawing.Point(393, 32);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.ReadOnly = true;
             this.txtCliente.ShortcutsEnabled = false;
@@ -412,7 +414,7 @@
             // 
             // txtCodCliente
             // 
-            this.txtCodCliente.Location = new System.Drawing.Point(669, 33);
+            this.txtCodCliente.Location = new System.Drawing.Point(327, 33);
             this.txtCodCliente.Name = "txtCodCliente";
             this.txtCodCliente.ReadOnly = true;
             this.txtCodCliente.ShortcutsEnabled = false;
@@ -422,7 +424,7 @@
             // 
             // btnPesquisarCliente
             // 
-            this.btnPesquisarCliente.Location = new System.Drawing.Point(955, 32);
+            this.btnPesquisarCliente.Location = new System.Drawing.Point(613, 32);
             this.btnPesquisarCliente.Name = "btnPesquisarCliente";
             this.btnPesquisarCliente.Size = new System.Drawing.Size(39, 25);
             this.btnPesquisarCliente.TabIndex = 149;
@@ -500,6 +502,7 @@
             this.btnLimparListaProduto.TabIndex = 173;
             this.btnLimparListaProduto.Text = "Limpar Lista";
             this.btnLimparListaProduto.UseVisualStyleBackColor = true;
+            this.btnLimparListaProduto.Click += new System.EventHandler(this.btnLimparListaProduto_Click);
             // 
             // btnRemoverProduto
             // 
@@ -509,6 +512,7 @@
             this.btnRemoverProduto.TabIndex = 172;
             this.btnRemoverProduto.Text = "Remover";
             this.btnRemoverProduto.UseVisualStyleBackColor = true;
+            this.btnRemoverProduto.Click += new System.EventHandler(this.btnRemoverProduto_Click);
             // 
             // btnEditarProduto
             // 
@@ -518,6 +522,7 @@
             this.btnEditarProduto.TabIndex = 171;
             this.btnEditarProduto.Text = "Editar";
             this.btnEditarProduto.UseVisualStyleBackColor = true;
+            this.btnEditarProduto.Click += new System.EventHandler(this.btnEditarProduto_Click);
             // 
             // btnAdicionarProduto
             // 
@@ -527,6 +532,7 @@
             this.btnAdicionarProduto.TabIndex = 170;
             this.btnAdicionarProduto.Text = "Adicionar ";
             this.btnAdicionarProduto.UseVisualStyleBackColor = true;
+            this.btnAdicionarProduto.Click += new System.EventHandler(this.btnAdicionarProduto_Click);
             // 
             // txtUnidadeDeMedida
             // 
@@ -555,6 +561,7 @@
             this.txtValorUnitario.Size = new System.Drawing.Size(88, 22);
             this.txtValorUnitario.TabIndex = 167;
             this.txtValorUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValorUnitario.Leave += new System.EventHandler(this.txtValorUnitario_Leave);
             // 
             // txtQuantidade
             // 
@@ -564,6 +571,7 @@
             this.txtQuantidade.Size = new System.Drawing.Size(74, 22);
             this.txtQuantidade.TabIndex = 166;
             this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtQuantidade.Leave += new System.EventHandler(this.txtQuantidade_Leave);
             // 
             // txtProduto
             // 
@@ -598,9 +606,9 @@
             this.lblValorUnitario.AutoSize = true;
             this.lblValorUnitario.Location = new System.Drawing.Point(531, 62);
             this.lblValorUnitario.Name = "lblValorUnitario";
-            this.lblValorUnitario.Size = new System.Drawing.Size(116, 16);
+            this.lblValorUnitario.Size = new System.Drawing.Size(133, 16);
             this.lblValorUnitario.TabIndex = 161;
-            this.lblValorUnitario.Text = "Valor Unitário (R$)";
+            this.lblValorUnitario.Text = "Preço de Venda (R$)";
             // 
             // lblUnidadeDeMedida
             // 
