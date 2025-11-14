@@ -260,7 +260,7 @@ namespace projeto_patrica.pages.cadastro
                 txtCodCliente.Text = oVenda.OCliente.Id.ToString();
                 txtCliente.Text = oVenda.OCliente.Nome_razaoSocial;
                 txtCodFuncionario.Text = oVenda.OFuncionario.Id.ToString();
-                txtFuncionario.Text = oVenda.OFuncionario.Nome;
+                txtFuncionario.Text = oVenda.OFuncionario.Nome_razaoSocial;
                 dtpDataEmissao.Value = oVenda.DataEmissao;
 
                 txtCodCondicaoDePagamento.Text = oVenda.ACondicaoPagamento.Id.ToString();

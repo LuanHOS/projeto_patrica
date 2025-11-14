@@ -93,7 +93,7 @@ namespace projeto_patrica.pages.consulta
             base.CarregaLV();
             listV.Items.Clear();
 
-            var lista = aController_venda.ListarVendas();
+            var lista = aController_venda.ListaVendas();
 
             foreach (var venda in lista)
             {
@@ -107,7 +107,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(venda.OCliente.Id.ToString());
                 item.SubItems.Add(venda.OCliente.Nome_razaoSocial);
                 item.SubItems.Add(venda.OFuncionario.Id.ToString());
-                item.SubItems.Add(venda.OFuncionario.Nome);
+                item.SubItems.Add(venda.OFuncionario.Nome_razaoSocial);
                 item.SubItems.Add(venda.DataEmissao.ToShortDateString());
                 item.SubItems.Add(valorTotal.ToString("C2"));
                 item.SubItems.Add(venda.Ativo ? "" : "CANCELADO");
@@ -129,7 +129,7 @@ namespace projeto_patrica.pages.consulta
             listV.Items.Clear();
             string termo = txtCodigo.Text.Trim().ToUpper();
 
-            var lista = aController_venda.ListarVendas();
+            var lista = aController_venda.ListaVendas();
             var listaResultados = new List<venda>();
 
             if (string.IsNullOrWhiteSpace(termo))
@@ -159,7 +159,7 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(venda.OCliente.Id.ToString());
                 item.SubItems.Add(venda.OCliente.Nome_razaoSocial);
                 item.SubItems.Add(venda.OFuncionario.Id.ToString());
-                item.SubItems.Add(venda.OFuncionario.Nome);
+                item.SubItems.Add(venda.OFuncionario.Nome_razaoSocial);
                 item.SubItems.Add(venda.DataEmissao.ToShortDateString());
                 item.SubItems.Add(valorTotal.ToString("C2"));
                 item.SubItems.Add(venda.Ativo ? "" : "CANCELADO");
