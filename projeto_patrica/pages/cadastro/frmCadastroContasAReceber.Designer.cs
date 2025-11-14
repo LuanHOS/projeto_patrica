@@ -88,6 +88,7 @@
             this.dtpDataPagamento.ShowCheckBox = true;
             this.dtpDataPagamento.Size = new System.Drawing.Size(135, 22);
             this.dtpDataPagamento.TabIndex = 202;
+            this.dtpDataPagamento.ValueChanged += new System.EventHandler(this.RecalcularValorPago);
             // 
             // btnPesquisarFormaPagamento
             // 
@@ -97,6 +98,7 @@
             this.btnPesquisarFormaPagamento.TabIndex = 201;
             this.btnPesquisarFormaPagamento.Text = "🔎";
             this.btnPesquisarFormaPagamento.UseVisualStyleBackColor = true;
+            this.btnPesquisarFormaPagamento.Click += new System.EventHandler(this.btnPesquisarFormaPagamento_Click);
             // 
             // txtCodFormaPagamento
             // 
@@ -181,6 +183,7 @@
             this.txtDescontoReais.Size = new System.Drawing.Size(82, 22);
             this.txtDescontoReais.TabIndex = 198;
             this.txtDescontoReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDescontoReais.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
             // txtDesconto
             // 
@@ -192,6 +195,7 @@
             this.txtDesconto.Size = new System.Drawing.Size(82, 22);
             this.txtDesconto.TabIndex = 197;
             this.txtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDesconto.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
             // txtMultaReais
             // 
@@ -203,6 +207,7 @@
             this.txtMultaReais.Size = new System.Drawing.Size(82, 22);
             this.txtMultaReais.TabIndex = 195;
             this.txtMultaReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMultaReais.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
             // txtJurosReais
             // 
@@ -214,6 +219,7 @@
             this.txtJurosReais.Size = new System.Drawing.Size(82, 22);
             this.txtJurosReais.TabIndex = 194;
             this.txtJurosReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtJurosReais.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
             // txtMulta
             // 
@@ -225,6 +231,7 @@
             this.txtMulta.Size = new System.Drawing.Size(82, 22);
             this.txtMulta.TabIndex = 196;
             this.txtMulta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMulta.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
             // txtJuros
             // 
@@ -236,6 +243,7 @@
             this.txtJuros.Size = new System.Drawing.Size(82, 22);
             this.txtJuros.TabIndex = 193;
             this.txtJuros.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtJuros.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
             // lblFormaPagamento
             // 
@@ -254,6 +262,7 @@
             this.btnPesquisarCliente.TabIndex = 185;
             this.btnPesquisarCliente.Text = "🔎";
             this.btnPesquisarCliente.UseVisualStyleBackColor = true;
+            this.btnPesquisarCliente.Click += new System.EventHandler(this.btnPesquisarCliente_Click);
             // 
             // dtpDataEmissao
             // 

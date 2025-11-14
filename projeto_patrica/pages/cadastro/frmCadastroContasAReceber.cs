@@ -42,7 +42,6 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            // O modo "Salvar" (novo) foi removido. Este form só lida com Dar Baixa, Visualizar ou Cancelar.
 
             try
             {
@@ -72,7 +71,7 @@ namespace projeto_patrica.pages.cadastro
                         oContaAReceber.JurosValor = Convert.ToDecimal(txtJurosReais.Text);
                         oContaAReceber.MultaValor = Convert.ToDecimal(txtMultaReais.Text);
                         oContaAReceber.DescontoValor = Convert.ToDecimal(txtDescontoReais.Text);
-                        oContaAReceber.Situacao = 1; // 1 = Pago
+                        oContaAReceber.Situacao = 1; 
                         oContaAReceber.ValorPago = Convert.ToDecimal(txtValorPago.Text);
                         oContaAReceber.DataPagamento = dtpDataPagamento.Value;
                         oContaAReceber.DataUltimaEdicao = DateTime.Now;
@@ -109,7 +108,7 @@ namespace projeto_patrica.pages.cadastro
         public override void Limpartxt()
         {
             base.Limpartxt();
-            txtCodigo.Clear(); // Modelo
+            txtCodigo.Clear();
             txtSerie.Clear();
             txtNumDaNota.Clear();
             txtCodCliente.Clear();
@@ -251,7 +250,6 @@ namespace projeto_patrica.pages.cadastro
         {
             base.Desbloqueiatxt();
 
-            // O modo "Salvar" (novo) não existe mais
             if (btnSave.Text == "Dar Baixa")
             {
                 txtCodigo.Enabled = false;
