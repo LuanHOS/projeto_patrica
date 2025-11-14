@@ -216,7 +216,7 @@ namespace projeto_patrica.pages.cadastro
             try
             {
                 base.Limpartxt();
-                txtCodigo.Text = "1"; // Modelo padrão NFe
+                txtCodigo.Text = "55";
                 txtSerie.Text = "1";
                 txtNumDaNota.Clear();
                 txtCodCliente.Clear();
@@ -553,7 +553,7 @@ namespace projeto_patrica.pages.cadastro
                     ValorParcela = valorEstaParcela,
                     AFormaPagamento = parcelaCondicao.AFormaPagamento,
                     Ativo = true,
-                    Situacao = 0, // 0 - Em aberto
+                    Situacao = 0,
                     Juros = oVenda.ACondicaoPagamento.Juros,
                     Multa = oVenda.ACondicaoPagamento.Multa,
                     Desconto = oVenda.ACondicaoPagamento.Desconto,
