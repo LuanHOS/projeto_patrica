@@ -101,18 +101,18 @@ namespace projeto_patrica.pages.consulta
                 decimal totalItens = venda.Itens.Sum(i => i.ValorTotal);
                 decimal valorTotal = totalItens;
 
-                ListViewItem item = new ListViewItem(venda.Modelo.ToString());
-                item.SubItems.Add(venda.OCliente.Id.ToString());
-                item.SubItems.Add(venda.OCliente.Nome_razaoSocial);
+                ListViewItem item = new ListViewItem(venda.Modelo.ToString()); 
+                item.SubItems.Add(venda.OCliente.Id.ToString()); 
+                item.SubItems.Add(venda.OCliente.Nome_razaoSocial); 
                 item.SubItems.Add(venda.OFuncionario.Id.ToString());
-                item.SubItems.Add(venda.OFuncionario.Nome_razaoSocial);
-                item.SubItems.Add(venda.Serie);
-                item.SubItems.Add(venda.NumeroNota);
-                item.SubItems.Add(venda.DataEmissao.ToShortDateString());
-                item.SubItems.Add(valorTotal.ToString("C2"));
-                item.SubItems.Add(venda.ACondicaoPagamento.Descricao);
-                item.SubItems.Add(venda.Ativo ? "" : "CANCELADO");
-                item.SubItems.Add(venda.MotivoCancelamento ?? "");
+                item.SubItems.Add(venda.OFuncionario.Nome_razaoSocial); 
+                item.SubItems.Add(venda.Serie); 
+                item.SubItems.Add(venda.NumeroNota); 
+                item.SubItems.Add(venda.DataEmissao.ToShortDateString()); 
+                item.SubItems.Add(valorTotal.ToString("C2")); 
+                item.SubItems.Add(venda.ACondicaoPagamento.Descricao); 
+                item.SubItems.Add(venda.Ativo ? "" : "CANCELADO"); 
+                item.SubItems.Add(venda.MotivoCancelamento ?? ""); 
                 item.SubItems.Add(venda.Ativo ? "" : (venda.DataUltimaEdicao.HasValue ? venda.DataUltimaEdicao.Value.ToString("dd/MM/yyyy HH:mm") : ""));
 
                 if (!venda.Ativo)
@@ -154,18 +154,18 @@ namespace projeto_patrica.pages.consulta
                 decimal totalItens = venda.Itens.Sum(i => i.ValorTotal);
                 decimal valorTotal = totalItens;
 
-                ListViewItem item = new ListViewItem(venda.Modelo.ToString());
-                item.SubItems.Add(venda.OCliente.Id.ToString());
-                item.SubItems.Add(venda.OCliente.Nome_razaoSocial);
-                item.SubItems.Add(venda.OFuncionario.Id.ToString());
-                item.SubItems.Add(venda.OFuncionario.Nome_razaoSocial);
+                ListViewItem item = new ListViewItem(venda.Modelo.ToString()); 
+                item.SubItems.Add(venda.OCliente.Id.ToString()); 
+                item.SubItems.Add(venda.OCliente.Nome_razaoSocial); 
+                item.SubItems.Add(venda.OFuncionario.Id.ToString()); 
+                item.SubItems.Add(venda.OFuncionario.Nome_razaoSocial); 
                 item.SubItems.Add(venda.Serie);
-                item.SubItems.Add(venda.NumeroNota);
-                item.SubItems.Add(venda.DataEmissao.ToShortDateString());
+                item.SubItems.Add(venda.NumeroNota); 
+                item.SubItems.Add(venda.DataEmissao.ToShortDateString()); 
                 item.SubItems.Add(valorTotal.ToString("C2"));
-                item.SubItems.Add(venda.ACondicaoPagamento.Descricao);
-                item.SubItems.Add(venda.Ativo ? "" : "CANCELADO");
-                item.SubItems.Add(venda.MotivoCancelamento ?? "");
+                item.SubItems.Add(venda.ACondicaoPagamento.Descricao); 
+                item.SubItems.Add(venda.Ativo ? "" : "CANCELADO"); 
+                item.SubItems.Add(venda.MotivoCancelamento ?? ""); 
                 item.SubItems.Add(venda.Ativo ? "" : (venda.DataUltimaEdicao.HasValue ? venda.DataUltimaEdicao.Value.ToString("dd/MM/yyyy HH:mm") : ""));
 
                 if (!venda.Ativo)
@@ -191,16 +191,7 @@ namespace projeto_patrica.pages.consulta
                 oVenda.Modelo = vendaSelecionada.Modelo;
                 oVenda.Serie = vendaSelecionada.Serie;
                 oVenda.NumeroNota = vendaSelecionada.NumeroNota;
-                oVenda.OCliente = vendaSelecionada.OCliente;
-                oVenda.OFuncionario = vendaSelecionada.OFuncionario;
-                oVenda.DataEmissao = vendaSelecionada.DataEmissao;
-                oVenda.Itens = vendaSelecionada.Itens;
-                oVenda.ACondicaoPagamento = vendaSelecionada.ACondicaoPagamento;
-                oVenda.Parcelas = vendaSelecionada.Parcelas;
-                oVenda.MotivoCancelamento = vendaSelecionada.MotivoCancelamento;
-                oVenda.Ativo = vendaSelecionada.Ativo;
-                oVenda.DataCadastro = vendaSelecionada.DataCadastro;
-                oVenda.DataUltimaEdicao = vendaSelecionada.DataUltimaEdicao;
+                oVenda.OCliente.Id = vendaSelecionada.OCliente.Id;
             }
         }
     }

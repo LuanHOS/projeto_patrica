@@ -170,6 +170,7 @@ namespace projeto_patrica.pages.cadastro
                 oVenda.Itens = listaItens;
                 oVenda.Parcelas = listaParcelas;
                 oVenda.MotivoCancelamento = null;
+                // OCliente, OFuncionario e ACondicaoPagamento já definidos
 
                 try
                 {
@@ -648,7 +649,7 @@ namespace projeto_patrica.pages.cadastro
                 txtCodProduto.Text = p.Id.ToString();
                 txtProduto.Text = p.Nome;
                 txtUnidadeDeMedida.Text = p.OUnidadeMedida.Sigla;
-                txtValorUnitario.Text = p.ValorVenda.ToString("F2");
+                txtValorUnitario.Text = p.ValorVenda.ToString("F2"); // Alterado de 0,00 para Preço de Venda
                 txtQuantidade.Text = "1";
                 AtualizaTotalProduto();
             }
