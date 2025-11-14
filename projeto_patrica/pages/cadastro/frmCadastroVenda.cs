@@ -62,35 +62,6 @@ namespace projeto_patrica.pages.cadastro
             oFrmConsultaCondicaoPagamento = consulta;
         }
 
-        private void VerificarVendaExistente()
-        {
-            if (string.IsNullOrWhiteSpace(txtCodigo.Text) ||
-                string.IsNullOrWhiteSpace(txtSerie.Text) ||
-                string.IsNullOrWhiteSpace(txtNumDaNota.Text) ||
-                oVenda.OCliente == null || oVenda.OCliente.Id == 0)
-            {
-                vendaExistente = false;
-                GerenciarEstadoDosControles();
-                return;
-            }
-
-            int modelo = Convert.ToInt32(txtCodigo.Text);
-            string serie = txtSerie.Text;
-            int numeroNota = Convert.ToInt32(txtNumDaNota.Text);
-            int idCliente = oVenda.OCliente.Id;
-
-            if (aDao_venda.VerificarVendaExistente(modelo, serie, numeroNota, idCliente))
-            {
-                MessageBox.Show("Esta nota de venda já foi cadastrada para este cliente.", "Venda Duplicada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                vendaExistente = true;
-            }
-            else
-            {
-                vendaExistente = false;
-            }
-            GerenciarEstadoDosControles();
-        }
-
 
         public override bool ValidacaoCampos()
         {
@@ -218,8 +189,6 @@ namespace projeto_patrica.pages.cadastro
                 txtCodigo.Text = "55";
                 txtSerie.Text = "1";
                 txtNumDaNota.Clear();
-                txtNumDaNota.ReadOnly = true;
-                txtNumDaNota.Enabled = false;
                 txtCodCliente.Clear();
                 txtCliente.Clear();
                 txtCodFuncionario.Clear();
@@ -258,8 +227,6 @@ namespace projeto_patrica.pages.cadastro
                 txtCodigo.Text = oVenda.Modelo.ToString();
                 txtSerie.Text = oVenda.Serie;
                 txtNumDaNota.Text = oVenda.NumeroNota.ToString();
-                txtNumDaNota.ReadOnly = true;
-                txtNumDaNota.Enabled = true;
                 txtCodCliente.Text = oVenda.OCliente.Id.ToString();
                 txtCliente.Text = oVenda.OCliente.Nome_razaoSocial;
                 txtCodFuncionario.Text = oVenda.OFuncionario.Id.ToString();
@@ -305,7 +272,6 @@ namespace projeto_patrica.pages.cadastro
             HabilitarSecaoCabecalho(false);
             HabilitarSecaoProdutos(false);
             HabilitarSecaoRodape(false);
-            txtNumDaNota.Enabled = true;
         }
 
         public override void Desbloqueiatxt()
@@ -365,8 +331,6 @@ namespace projeto_patrica.pages.cadastro
 
         private void HabilitarSecaoCabecalho(bool habilitar)
         {
-            txtCodigo.Enabled = habilitar;
-            txtSerie.Enabled = habilitar;
             txtCodCliente.Enabled = habilitar;
             txtCliente.Enabled = habilitar;
             btnPesquisarCliente.Enabled = habilitar;

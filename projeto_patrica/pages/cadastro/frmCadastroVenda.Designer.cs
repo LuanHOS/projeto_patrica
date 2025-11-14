@@ -133,7 +133,6 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Enabled = true;
             this.txtCodigo.Location = new System.Drawing.Point(14, 32);
             this.txtCodigo.ShortcutsEnabled = false;
             this.txtCodigo.Size = new System.Drawing.Size(62, 22);
@@ -282,6 +281,7 @@
             // 
             // txtNumDaNota
             // 
+            this.txtNumDaNota.Enabled = false;
             this.txtNumDaNota.Location = new System.Drawing.Point(172, 32);
             this.txtNumDaNota.Name = "txtNumDaNota";
             this.txtNumDaNota.ReadOnly = true;
@@ -349,6 +349,7 @@
             // 
             // txtSerie
             // 
+            this.txtSerie.Enabled = false;
             this.txtSerie.Location = new System.Drawing.Point(97, 33);
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.ReadOnly = true;
