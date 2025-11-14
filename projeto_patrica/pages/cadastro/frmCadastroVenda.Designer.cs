@@ -137,6 +137,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(14, 32);
             this.txtCodigo.ShortcutsEnabled = false;
             this.txtCodigo.Size = new System.Drawing.Size(62, 22);
+            this.txtCodigo.TextChanged += new System.EventHandler(this.Cabecalho_TextChanged);
             // 
             // dtpDataEmissao
             // 
@@ -146,6 +147,7 @@
             this.dtpDataEmissao.Name = "dtpDataEmissao";
             this.dtpDataEmissao.Size = new System.Drawing.Size(115, 22);
             this.dtpDataEmissao.TabIndex = 158;
+            this.dtpDataEmissao.ValueChanged += new System.EventHandler(this.Cabecalho_TextChanged);
             // 
             // listVParcelas
             // 
@@ -199,6 +201,7 @@
             this.btnPesquisarCondicaoDePagamento.TabIndex = 147;
             this.btnPesquisarCondicaoDePagamento.Text = "🔎";
             this.btnPesquisarCondicaoDePagamento.UseVisualStyleBackColor = true;
+            this.btnPesquisarCondicaoDePagamento.Click += new System.EventHandler(this.btnPesquisarCondicaoDePagamento_Click);
             // 
             // btnLimparParcelas
             // 
@@ -226,6 +229,7 @@
             this.btnPesquisarFuncionario.TabIndex = 149;
             this.btnPesquisarFuncionario.Text = "🔎";
             this.btnPesquisarFuncionario.UseVisualStyleBackColor = true;
+            this.btnPesquisarFuncionario.Click += new System.EventHandler(this.btnPesquisarFuncionario_Click);
             // 
             // txtCondicaoDePagamento
             // 
@@ -283,6 +287,7 @@
             this.txtNumDaNota.Size = new System.Drawing.Size(129, 22);
             this.txtNumDaNota.TabIndex = 137;
             this.txtNumDaNota.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNumDaNota.TextChanged += new System.EventHandler(this.Cabecalho_TextChanged);
             // 
             // lblMotivCancelamentoExplicacao
             // 
@@ -349,6 +354,7 @@
             this.txtSerie.Size = new System.Drawing.Size(46, 22);
             this.txtSerie.TabIndex = 145;
             this.txtSerie.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSerie.TextChanged += new System.EventHandler(this.Cabecalho_TextChanged);
             // 
             // lblDataEmissao
             // 
@@ -422,6 +428,7 @@
             this.btnPesquisarCliente.TabIndex = 149;
             this.btnPesquisarCliente.Text = "🔎";
             this.btnPesquisarCliente.UseVisualStyleBackColor = true;
+            this.btnPesquisarCliente.Click += new System.EventHandler(this.btnPesquisarCliente_Click);
             // 
             // listVProdutos
             // 
@@ -483,6 +490,7 @@
             this.btnPesquisarProduto.TabIndex = 174;
             this.btnPesquisarProduto.Text = "🔎";
             this.btnPesquisarProduto.UseVisualStyleBackColor = true;
+            this.btnPesquisarProduto.Click += new System.EventHandler(this.btnPesquisarProduto_Click);
             // 
             // btnLimparListaProduto
             // 
