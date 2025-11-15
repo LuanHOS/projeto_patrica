@@ -137,8 +137,11 @@ namespace projeto_patrica.pages.cadastro
                 decimal valorVendaAtual = listaItens.Sum(item => item.ValorTotal);
                 if (valorVendaAtual > creditoDisponivelCliente)
                 {
-                    MessageBox.Show($"O valor total da venda (R$ {valorVendaAtual:F2}) ultrapassa o limite de crédito disponível do cliente (R$ {creditoDisponivelCliente:F2}).", "Limite de Crédito Excedido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    if (oVenda.ACondicaoPagamento == null || oVenda.ACondicaoPagamento.Descricao.Trim().ToUpper() != "À VISTA")
+                    {
+                        MessageBox.Show($"O valor total da venda (R$ {valorVendaAtual:F2}) ultrapassa o limite de crédito disponível do cliente (R$ {creditoDisponivelCliente:F2}).\n\nPara finalizar a venda, altere a Condição de Pagamento para \"À VISTA\".", "Limite de Crédito Excedido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                 }
 
                 oVenda.Modelo = Convert.ToInt32(txtCodigo.Text);
