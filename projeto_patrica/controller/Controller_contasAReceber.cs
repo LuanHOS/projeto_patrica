@@ -74,5 +74,10 @@ namespace projeto_patrica.controller
             }
             return lista;
         }
+
+        public decimal GetSaldoDevedor(int idCliente)
+        {
+            return aDao_contasAReceber.GetSaldoDevedor(idCliente);
+        }
     }
 }

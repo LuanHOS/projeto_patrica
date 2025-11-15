@@ -118,6 +118,7 @@ namespace projeto_patrica
             oController_venda.AController_funcionario = oController_funcionario;
             oController_venda.AController_produto = oController_produto;
             oController_venda.AController_condicaoPagamento = oController_condicaoPagamento;
+            oController_venda.AController_contasAReceber = oController_contasAReceber;
             oController_contasAReceber.AController_cliente = oController_cliente;
             oController_contasAReceber.AController_formaPagamento = oController_formaPagamento;
         }

@@ -482,6 +482,7 @@ namespace projeto_patrica.pages.cadastro
                     txtTotalProduto.Text = item.ValorTotal.ToString("F2");
 
                     btnAdicionarProduto.Enabled = false;
+                    btnLimparListaProduto.Enabled = false;
                     btnEditarProduto.Text = "Salvar Item";
                     btnRemoverProduto.Text = "Cancelar";
                     editandoItem = true;
@@ -714,6 +715,7 @@ namespace projeto_patrica.pages.cadastro
             editandoItem = false;
             indiceItemEditando = -1;
             btnAdicionarProduto.Enabled = true;
+            btnLimparListaProduto.Enabled = true;
             btnEditarProduto.Text = "Editar";
             btnRemoverProduto.Text = "Remover";
         }

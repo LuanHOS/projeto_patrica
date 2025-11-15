@@ -228,5 +228,36 @@ namespace projeto_patrica.dao
             }
             return lista;
         }
+
+        public decimal GetSaldoDevedor(int idCliente)
+        {
+            decimal saldoDevedor = 0;
+            MySqlConnection conn = null;
+
+            try
+            {
+                conn = Banco.Abrir();
+                string sql = "SELECT SUM(VALOR_PARCELA) FROM CONTAS_A_RECEBER " +
+                             "WHERE ID_CLIENTE = @IdCliente AND ATIVO = TRUE AND SITUACAO = 0";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@IdCliente", idCliente);
+
+                object result = cmd.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    saldoDevedor = Convert.ToDecimal(result);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro ao calcular saldo devedor: " + ex.Message, "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn?.Close();
+            }
+            return saldoDevedor;
+        }
     }
 }

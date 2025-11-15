@@ -11,6 +11,7 @@ namespace projeto_patrica.controller
         private Controller_funcionario aController_funcionario;
         private Controller_condicaoPagamento aController_condicaoPagamento;
         private Controller_produto aController_produto;
+        private Controller_contasAReceber aController_contasAReceber;
 
         public Controller_venda()
         {
@@ -87,6 +88,11 @@ namespace projeto_patrica.controller
         {
             get => aController_produto;
             set => aController_produto = value;
+        }
+        public Controller_contasAReceber AController_contasAReceber
+        {
+            get => aController_contasAReceber;
+            set => aController_contasAReceber = value;
         }
     }
 }

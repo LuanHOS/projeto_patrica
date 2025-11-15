@@ -87,6 +87,8 @@
             this.lblTotalParcelas = new System.Windows.Forms.Label();
             this.txtValorTotalValores = new System.Windows.Forms.TextBox();
             this.lblValorTotalValores = new System.Windows.Forms.Label();
+            this.lblCreditoDisponivelParaOCliente = new System.Windows.Forms.Label();
+            this.lblValorCreditoDisponivel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSave
@@ -677,6 +679,24 @@
             this.lblValorTotalValores.TabIndex = 176;
             this.lblValorTotalValores.Text = "VALOR TOTAL DA NOTA (R$)";
             // 
+            // lblCreditoDisponivelParaOCliente
+            // 
+            this.lblCreditoDisponivelParaOCliente.AutoSize = true;
+            this.lblCreditoDisponivelParaOCliente.Location = new System.Drawing.Point(14, 339);
+            this.lblCreditoDisponivelParaOCliente.Name = "lblCreditoDisponivelParaOCliente";
+            this.lblCreditoDisponivelParaOCliente.Size = new System.Drawing.Size(234, 16);
+            this.lblCreditoDisponivelParaOCliente.TabIndex = 118;
+            this.lblCreditoDisponivelParaOCliente.Text = "Crédito Disponível para o Cliente (R$):";
+            // 
+            // lblValorCreditoDisponivel
+            // 
+            this.lblValorCreditoDisponivel.AutoSize = true;
+            this.lblValorCreditoDisponivel.Location = new System.Drawing.Point(254, 339);
+            this.lblValorCreditoDisponivel.Name = "lblValorCreditoDisponivel";
+            this.lblValorCreditoDisponivel.Size = new System.Drawing.Size(11, 16);
+            this.lblValorCreditoDisponivel.TabIndex = 114;
+            this.lblValorCreditoDisponivel.Text = "-";
+            // 
             // frmCadastroVenda
             // 
             this.Controls.Add(this.txtValorTotalValores);
@@ -715,10 +735,12 @@
             this.Controls.Add(this.txtNumDaNota);
             this.Controls.Add(this.lblValorTotalParcelas);
             this.Controls.Add(this.lblMotivCancelamentoExplicacao);
+            this.Controls.Add(this.lblValorCreditoDisponivel);
             this.Controls.Add(this.lblValorQtdTotalProdutos);
             this.Controls.Add(this.lblValorTotalGeralProdutos);
             this.Controls.Add(this.lblTotalParcelas);
             this.Controls.Add(this.lblMotivoCancelamentoTitulo);
+            this.Controls.Add(this.lblCreditoDisponivelParaOCliente);
             this.Controls.Add(this.lblQtdTotalProdutos);
             this.Controls.Add(this.lblTotalGeralProdutos);
             this.Controls.Add(this.txtSerie);
@@ -737,10 +759,12 @@
             this.Controls.SetChildIndex(this.txtSerie, 0);
             this.Controls.SetChildIndex(this.lblTotalGeralProdutos, 0);
             this.Controls.SetChildIndex(this.lblQtdTotalProdutos, 0);
+            this.Controls.SetChildIndex(this.lblCreditoDisponivelParaOCliente, 0);
             this.Controls.SetChildIndex(this.lblMotivoCancelamentoTitulo, 0);
             this.Controls.SetChildIndex(this.lblTotalParcelas, 0);
             this.Controls.SetChildIndex(this.lblValorTotalGeralProdutos, 0);
             this.Controls.SetChildIndex(this.lblValorQtdTotalProdutos, 0);
+            this.Controls.SetChildIndex(this.lblValorCreditoDisponivel, 0);
             this.Controls.SetChildIndex(this.lblMotivCancelamentoExplicacao, 0);
             this.Controls.SetChildIndex(this.lblValorTotalParcelas, 0);
             this.Controls.SetChildIndex(this.txtNumDaNota, 0);
@@ -854,5 +878,7 @@
         private System.Windows.Forms.Label lblTotalParcelas;
         private System.Windows.Forms.TextBox txtValorTotalValores;
         private System.Windows.Forms.Label lblValorTotalValores;
+        private System.Windows.Forms.Label lblCreditoDisponivelParaOCliente;
+        private System.Windows.Forms.Label lblValorCreditoDisponivel;
     }
 }

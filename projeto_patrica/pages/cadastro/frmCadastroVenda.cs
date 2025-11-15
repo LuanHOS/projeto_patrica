@@ -27,6 +27,7 @@ namespace projeto_patrica.pages.cadastro
         private bool vendaExistente = false;
         private bool _isLoading = false;
         private Dao_venda aDao_venda;
+        private decimal creditoDisponivelCliente = 0;
 
         public frmCadastroVenda()
         {
@@ -133,6 +134,13 @@ namespace projeto_patrica.pages.cadastro
                 if (!ValidacaoCampos())
                     return;
 
+                decimal valorVendaAtual = listaItens.Sum(item => item.ValorTotal);
+                if (valorVendaAtual > creditoDisponivelCliente)
+                {
+                    MessageBox.Show($"O valor total da venda (R$ {valorVendaAtual:F2}) ultrapassa o limite de crédito disponível do cliente (R$ {creditoDisponivelCliente:F2}).", "Limite de Crédito Excedido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 oVenda.Modelo = Convert.ToInt32(txtCodigo.Text);
                 oVenda.Serie = txtSerie.Text;
                 oVenda.NumeroNota = string.IsNullOrWhiteSpace(txtNumDaNota.Text) ? 0 : Convert.ToInt32(txtNumDaNota.Text);
@@ -211,6 +219,7 @@ namespace projeto_patrica.pages.cadastro
                 oVenda = new venda();
                 vendaExistente = false;
                 GerenciarEstadoDosControles();
+                AtualizarCreditoDisponivel();
             }
             finally
             {
@@ -259,6 +268,9 @@ namespace projeto_patrica.pages.cadastro
 
                 listaParcelas = oVenda.Parcelas;
                 CarregarParcelasNaListView();
+
+                lblCreditoDisponivelParaOCliente.Visible = false;
+                lblValorCreditoDisponivel.Visible = false;
             }
             finally
             {
@@ -297,6 +309,10 @@ namespace projeto_patrica.pages.cadastro
             bool temParcelas = listaParcelas.Any();
 
             bool podeProsseguirCabecalho = cabecalhoPreenchido && !vendaExistente;
+            bool modoInclusao = (btnSave.Text == "Salvar");
+
+            lblCreditoDisponivelParaOCliente.Visible = modoInclusao && cabecalhoPreenchido;
+            lblValorCreditoDisponivel.Visible = modoInclusao && cabecalhoPreenchido;
 
 
             if (!temItens)
@@ -406,6 +422,7 @@ namespace projeto_patrica.pages.cadastro
                 CarregarItensNaListView();
                 LimparCamposProduto();
                 GerenciarEstadoDosControles();
+                AtualizarCreditoDisponivel();
             }
         }
 
@@ -430,6 +447,7 @@ namespace projeto_patrica.pages.cadastro
                     CarregarItensNaListView();
                     LimparCamposProduto();
                     FinalizarEdicaoItem();
+                    AtualizarCreditoDisponivel();
                 }
             }
             else
@@ -448,6 +466,7 @@ namespace projeto_patrica.pages.cadastro
                     txtTotalProduto.Text = item.ValorTotal.ToString("F2");
 
                     btnAdicionarProduto.Enabled = false;
+                    btnLimparListaProduto.Enabled = false;
                     btnEditarProduto.Text = "Salvar Item";
                     btnRemoverProduto.Text = "Cancelar";
                     editandoItem = true;
@@ -473,6 +492,7 @@ namespace projeto_patrica.pages.cadastro
                     listaItens.RemoveAt(listVProdutos.SelectedItems[0].Index);
                     CarregarItensNaListView();
                     GerenciarEstadoDosControles();
+                    AtualizarCreditoDisponivel();
                 }
                 else
                 {
@@ -486,6 +506,7 @@ namespace projeto_patrica.pages.cadastro
             listaItens.Clear();
             CarregarItensNaListView();
             GerenciarEstadoDosControles();
+            AtualizarCreditoDisponivel();
         }
         #endregion
 
@@ -583,6 +604,7 @@ namespace projeto_patrica.pages.cadastro
                 }
             }
             GerenciarEstadoDosControles();
+            AtualizarCreditoDisponivel();
         }
 
         private void btnPesquisarFuncionario_Click(object sender, EventArgs e)
@@ -698,6 +720,7 @@ namespace projeto_patrica.pages.cadastro
             editandoItem = false;
             indiceItemEditando = -1;
             btnAdicionarProduto.Enabled = true;
+            btnLimparListaProduto.Enabled = true;
             btnEditarProduto.Text = "Editar";
             btnRemoverProduto.Text = "Remover";
         }
@@ -745,6 +768,40 @@ namespace projeto_patrica.pages.cadastro
         private void dtpDataEmissao_ValueChanged(object sender, EventArgs e)
         {
             Cabecalho_TextChanged(sender, e);
+        }
+
+        private void AtualizarCreditoDisponivel()
+        {
+            if (oVenda.OCliente == null || oVenda.OCliente.Id == 0)
+            {
+                creditoDisponivelCliente = 0;
+                lblValorCreditoDisponivel.Text = "R$ 0,00";
+                lblCreditoDisponivelParaOCliente.Visible = false;
+                lblValorCreditoDisponivel.Visible = false;
+                return;
+            }
+
+            decimal limiteCredito = oVenda.OCliente.LimiteDeCredito;
+            decimal saldoDevedor = aController_venda.AController_contasAReceber.GetSaldoDevedor(oVenda.OCliente.Id);
+            creditoDisponivelCliente = limiteCredito - saldoDevedor;
+
+            decimal valorVendaAtual = listaItens.Sum(item => item.ValorTotal);
+            decimal creditoRestante = creditoDisponivelCliente - valorVendaAtual;
+
+            lblValorCreditoDisponivel.Text = creditoRestante.ToString("C2");
+
+            if (creditoRestante < 0)
+            {
+                lblValorCreditoDisponivel.ForeColor = Color.Red;
+            }
+            else
+            {
+                lblValorCreditoDisponivel.ForeColor = Color.DarkGreen;
+            }
+
+            bool modoInclusao = (btnSave.Text == "Salvar");
+            lblCreditoDisponivelParaOCliente.Visible = modoInclusao;
+            lblValorCreditoDisponivel.Visible = modoInclusao;
         }
 
         #endregion
