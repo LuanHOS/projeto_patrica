@@ -60,12 +60,12 @@
             // 
             // btnPesquisarCondicaoPagamento
             // 
-            this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(260, 394);
+            this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(321, 394);
             this.btnPesquisarCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4);
             this.btnPesquisarCondicaoPagamento.Name = "btnPesquisarCondicaoPagamento";
-            this.btnPesquisarCondicaoPagamento.Size = new System.Drawing.Size(100, 25);
+            this.btnPesquisarCondicaoPagamento.Size = new System.Drawing.Size(39, 25);
             this.btnPesquisarCondicaoPagamento.TabIndex = 21;
-            this.btnPesquisarCondicaoPagamento.Text = "Pesquisar";
+            this.btnPesquisarCondicaoPagamento.Text = "🔎";
             this.btnPesquisarCondicaoPagamento.UseVisualStyleBackColor = true;
             this.btnPesquisarCondicaoPagamento.Click += new System.EventHandler(this.BtnPesquisarCondicaoPagamento_Click);
             // 
@@ -76,7 +76,8 @@
             this.txtCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4);
             this.txtCondicaoPagamento.Name = "txtCondicaoPagamento";
             this.txtCondicaoPagamento.ReadOnly = true;
-            this.txtCondicaoPagamento.Size = new System.Drawing.Size(228, 22);
+            //this.txtCondicaoPagamento.Size = new System.Drawing.Size(228, 22);
+            this.txtCondicaoPagamento.Size = new System.Drawing.Size(291, 22);
             this.txtCondicaoPagamento.TabIndex = 20;
             // 
             // lblCondicaoPagamento

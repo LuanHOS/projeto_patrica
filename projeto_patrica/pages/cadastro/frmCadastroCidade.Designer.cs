@@ -62,9 +62,9 @@
             this.btnPesquisarEstado.Location = new System.Drawing.Point(451, 174);
             this.btnPesquisarEstado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarEstado.Name = "btnPesquisarEstado";
-            this.btnPesquisarEstado.Size = new System.Drawing.Size(99, 28);
+            this.btnPesquisarEstado.Size = new System.Drawing.Size(41, 28);
             this.btnPesquisarEstado.TabIndex = 4;
-            this.btnPesquisarEstado.Text = "Pesquisar";
+            this.btnPesquisarEstado.Text = "🔎";
             this.btnPesquisarEstado.UseVisualStyleBackColor = true;
             this.btnPesquisarEstado.Click += new System.EventHandler(this.btnPesquisarEstado_Click);
             // 

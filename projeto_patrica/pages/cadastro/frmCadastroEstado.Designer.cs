@@ -90,9 +90,9 @@
             this.btnPesquisarPais.Location = new System.Drawing.Point(447, 175);
             this.btnPesquisarPais.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarPais.Name = "btnPesquisarPais";
-            this.btnPesquisarPais.Size = new System.Drawing.Size(99, 28);
+            this.btnPesquisarPais.Size = new System.Drawing.Size(45, 28);
             this.btnPesquisarPais.TabIndex = 4;
-            this.btnPesquisarPais.Text = "Pesquisar";
+            this.btnPesquisarPais.Text = "🔎";
             this.btnPesquisarPais.UseVisualStyleBackColor = true;
             this.btnPesquisarPais.Click += new System.EventHandler(this.btnPesquisarPais_Click);
             // 

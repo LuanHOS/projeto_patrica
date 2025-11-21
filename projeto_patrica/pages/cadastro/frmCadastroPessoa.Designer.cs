@@ -92,6 +92,7 @@
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.ReadOnly = true;
             this.txtCidade.Size = new System.Drawing.Size(235, 22);
+            this.txtCidade.Size = new System.Drawing.Size(291, 22);
             this.txtCidade.TabIndex = 6;
             // 
             // lblCidade
@@ -274,12 +275,12 @@
             // 
             // btnPesquisarCidade
             // 
-            this.btnPesquisarCidade.Location = new System.Drawing.Point(265, 158);
+            this.btnPesquisarCidade.Location = new System.Drawing.Point(321, 158);
             this.btnPesquisarCidade.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarCidade.Name = "btnPesquisarCidade";
-            this.btnPesquisarCidade.Size = new System.Drawing.Size(96, 28);
+            this.btnPesquisarCidade.Size = new System.Drawing.Size(40, 28);
             this.btnPesquisarCidade.TabIndex = 7;
-            this.btnPesquisarCidade.Text = "Pesquisar";
+            this.btnPesquisarCidade.Text = "🔎";
             this.btnPesquisarCidade.UseVisualStyleBackColor = true;
             // 
             // lblTipo

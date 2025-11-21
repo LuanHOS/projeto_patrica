@@ -480,6 +480,9 @@
     <EmbeddedResource Include="pages\cadastro\frmCadastroProduto.resx">
       <DependentUpon>frmCadastroProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\cadastro\frmCadastroTransportadora.resx">
+      <DependentUpon>frmCadastroTransportadora.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroUnidade_medida.resx">
       <DependentUpon>frmCadastroUnidade_medida.cs</DependentUpon>
     </EmbeddedResource>

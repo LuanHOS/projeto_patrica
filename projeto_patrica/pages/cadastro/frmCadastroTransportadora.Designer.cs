@@ -33,6 +33,38 @@
             this.lblCondicaoPagamento = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // txtRgInscEstadual
+            // 
+            this.txtRgInscEstadual.MaxLength = 10;
+            // 
+            // txtNomeRazaoSocial
+            // 
+            this.txtNomeRazaoSocial.MaxLength = 40;
+            // 
+            // txtBairro
+            // 
+            this.txtBairro.MaxLength = 40;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.MaxLength = 40;
+            // 
+            // txtEndereco
+            // 
+            this.txtEndereco.MaxLength = 40;
+            // 
+            // txtTelefone
+            // 
+            this.txtTelefone.MaxLength = 20;
+            // 
+            // txtCpfCnpj
+            // 
+            this.txtCpfCnpj.MaxLength = 14;
+            // 
+            // txtCep
+            // 
+            this.txtCep.MaxLength = 8;
+            // 
             // comboBoxTipo
             // 
             this.comboBoxTipo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTipo_SelectedIndexChanged);
@@ -41,10 +73,22 @@
             // 
             this.btnPesquisarCidade.Click += new System.EventHandler(this.btnPesquisarCidade_Click);
             // 
+            // txtApelidoNomeFantasia
+            // 
+            this.txtApelidoNomeFantasia.MaxLength = 40;
+            // 
             // lblNome
             // 
             this.lblNome.Size = new System.Drawing.Size(149, 16);
             this.lblNome.Text = "Transportadora Nome *";
+            // 
+            // txtNumeroEndereco
+            // 
+            this.txtNumeroEndereco.MaxLength = 20;
+            // 
+            // txtComplementoEndereco
+            // 
+            this.txtComplementoEndereco.MaxLength = 40;
             // 
             // btnSave
             // 
@@ -60,12 +104,12 @@
             // 
             // btnPesquisarCondicaoPagamento
             // 
-            this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(260, 394);
+            this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(321, 394);
             this.btnPesquisarCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4);
             this.btnPesquisarCondicaoPagamento.Name = "btnPesquisarCondicaoPagamento";
-            this.btnPesquisarCondicaoPagamento.Size = new System.Drawing.Size(100, 25);
+            this.btnPesquisarCondicaoPagamento.Size = new System.Drawing.Size(39, 25);
             this.btnPesquisarCondicaoPagamento.TabIndex = 21;
-            this.btnPesquisarCondicaoPagamento.Text = "Pesquisar";
+            this.btnPesquisarCondicaoPagamento.Text = "🔎";
             this.btnPesquisarCondicaoPagamento.UseVisualStyleBackColor = true;
             this.btnPesquisarCondicaoPagamento.Click += new System.EventHandler(this.BtnPesquisarCondicaoPagamento_Click);
             // 
@@ -76,7 +120,8 @@
             this.txtCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4);
             this.txtCondicaoPagamento.Name = "txtCondicaoPagamento";
             this.txtCondicaoPagamento.ReadOnly = true;
-            this.txtCondicaoPagamento.Size = new System.Drawing.Size(228, 22);
+            this.txtCondicaoPagamento.ShortcutsEnabled = false;
+            this.txtCondicaoPagamento.Size = new System.Drawing.Size(291, 22);
             this.txtCondicaoPagamento.TabIndex = 20;
             // 
             // lblCondicaoPagamento
@@ -147,6 +192,7 @@
             this.Controls.SetChildIndex(this.btnPesquisarCondicaoPagamento, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

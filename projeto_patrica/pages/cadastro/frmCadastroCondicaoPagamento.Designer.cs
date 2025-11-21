@@ -163,7 +163,7 @@
             this.comboBoxFormaPagamento.Location = new System.Drawing.Point(492, 41);
             this.comboBoxFormaPagamento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxFormaPagamento.Name = "comboBoxFormaPagamento";
-            this.comboBoxFormaPagamento.Size = new System.Drawing.Size(183, 24);
+            this.comboBoxFormaPagamento.Size = new System.Drawing.Size(233, 24);
             this.comboBoxFormaPagamento.TabIndex = 10;
             // 
             // listVParcelas
@@ -241,12 +241,12 @@
             // 
             // btnPesquisarFormaPagamento
             // 
-            this.btnPesquisarFormaPagamento.Location = new System.Drawing.Point(681, 35);
+            this.btnPesquisarFormaPagamento.Location = new System.Drawing.Point(731, 35);
             this.btnPesquisarFormaPagamento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarFormaPagamento.Name = "btnPesquisarFormaPagamento";
-            this.btnPesquisarFormaPagamento.Size = new System.Drawing.Size(96, 34);
+            this.btnPesquisarFormaPagamento.Size = new System.Drawing.Size(46, 34);
             this.btnPesquisarFormaPagamento.TabIndex = 11;
-            this.btnPesquisarFormaPagamento.Text = "Pesquisar";
+            this.btnPesquisarFormaPagamento.Text = "🔎";
             this.btnPesquisarFormaPagamento.UseVisualStyleBackColor = true;
             this.btnPesquisarFormaPagamento.Click += new System.EventHandler(this.btnPesquisarFormaPagamento_Click);
             // 

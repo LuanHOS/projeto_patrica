@@ -38,46 +38,34 @@
             // txtRgInscEstadual
             // 
             this.txtRgInscEstadual.MaxLength = 10;
-            this.txtRgInscEstadual.ShortcutsEnabled = false;
             // 
             // txtNomeRazaoSocial
             // 
             this.txtNomeRazaoSocial.MaxLength = 40;
-            this.txtNomeRazaoSocial.ShortcutsEnabled = false;
-            // 
-            // txtCidade
-            // 
-            this.txtCidade.ShortcutsEnabled = false;
             // 
             // txtBairro
             // 
             this.txtBairro.MaxLength = 40;
-            this.txtBairro.ShortcutsEnabled = false;
             // 
             // txtEmail
             // 
             this.txtEmail.MaxLength = 40;
-            this.txtEmail.ShortcutsEnabled = false;
             // 
             // txtEndereco
             // 
             this.txtEndereco.MaxLength = 40;
-            this.txtEndereco.ShortcutsEnabled = false;
             // 
             // txtTelefone
             // 
             this.txtTelefone.MaxLength = 20;
-            this.txtTelefone.ShortcutsEnabled = false;
             // 
             // txtCpfCnpj
             // 
             this.txtCpfCnpj.MaxLength = 14;
-            this.txtCpfCnpj.ShortcutsEnabled = false;
             // 
             // txtCep
             // 
             this.txtCep.MaxLength = 8;
-            this.txtCep.ShortcutsEnabled = false;
             // 
             // comboBoxTipo
             // 
@@ -90,30 +78,19 @@
             // txtApelidoNomeFantasia
             // 
             this.txtApelidoNomeFantasia.MaxLength = 40;
-            this.txtApelidoNomeFantasia.ShortcutsEnabled = false;
             // 
             // lblNome
             // 
-            this.lblNome.Size = new System.Drawing.Size(77, 13);
+            this.lblNome.Size = new System.Drawing.Size(96, 16);
             this.lblNome.Text = "Cliente Nome *";
             // 
             // txtNumeroEndereco
             // 
             this.txtNumeroEndereco.MaxLength = 20;
-            this.txtNumeroEndereco.ShortcutsEnabled = false;
             // 
             // txtComplementoEndereco
             // 
             this.txtComplementoEndereco.MaxLength = 40;
-            this.txtComplementoEndereco.ShortcutsEnabled = false;
-            // 
-            // txtEstado
-            // 
-            this.txtEstado.ShortcutsEnabled = false;
-            // 
-            // txtPais
-            // 
-            this.txtPais.ShortcutsEnabled = false;
             // 
             // btnSave
             // 
@@ -130,15 +107,14 @@
             // txtCodigo
             // 
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCodigo.ShortcutsEnabled = false;
             // 
             // btnPesquisarCondicaoPagamento
             // 
-            this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(265, 390);
+            this.btnPesquisarCondicaoPagamento.Location = new System.Drawing.Point(321, 390);
             this.btnPesquisarCondicaoPagamento.Name = "btnPesquisarCondicaoPagamento";
-            this.btnPesquisarCondicaoPagamento.Size = new System.Drawing.Size(95, 26);
+            this.btnPesquisarCondicaoPagamento.Size = new System.Drawing.Size(39, 26);
             this.btnPesquisarCondicaoPagamento.TabIndex = 21;
-            this.btnPesquisarCondicaoPagamento.Text = "Pesquisar";
+            this.btnPesquisarCondicaoPagamento.Text = "🔎";
             this.btnPesquisarCondicaoPagamento.UseVisualStyleBackColor = true;
             this.btnPesquisarCondicaoPagamento.Click += new System.EventHandler(this.BtnPesquisarCondicaoPagamento_Click);
             // 
@@ -149,7 +125,7 @@
             this.txtCondicaoPagamento.Name = "txtCondicaoPagamento";
             this.txtCondicaoPagamento.ReadOnly = true;
             this.txtCondicaoPagamento.ShortcutsEnabled = false;
-            this.txtCondicaoPagamento.Size = new System.Drawing.Size(235, 20);
+            this.txtCondicaoPagamento.Size = new System.Drawing.Size(291, 22);
             this.txtCondicaoPagamento.TabIndex = 20;
             // 
             // lblCondicaoPagamento
@@ -157,7 +133,7 @@
             this.lblCondicaoPagamento.AutoSize = true;
             this.lblCondicaoPagamento.Location = new System.Drawing.Point(21, 375);
             this.lblCondicaoPagamento.Name = "lblCondicaoPagamento";
-            this.lblCondicaoPagamento.Size = new System.Drawing.Size(131, 13);
+            this.lblCondicaoPagamento.Size = new System.Drawing.Size(165, 16);
             this.lblCondicaoPagamento.TabIndex = 36;
             this.lblCondicaoPagamento.Text = "Condição de Pagamento *";
             // 
@@ -167,7 +143,7 @@
             this.lblLimiteDeCredito.Location = new System.Drawing.Point(380, 375);
             this.lblLimiteDeCredito.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLimiteDeCredito.Name = "lblLimiteDeCredito";
-            this.lblLimiteDeCredito.Size = new System.Drawing.Size(108, 13);
+            this.lblLimiteDeCredito.Size = new System.Drawing.Size(135, 16);
             this.lblLimiteDeCredito.TabIndex = 39;
             this.lblLimiteDeCredito.Text = "Limite de Crédito (R$)";
             // 
@@ -177,7 +153,7 @@
             this.txtLimiteDeCredito.Margin = new System.Windows.Forms.Padding(2);
             this.txtLimiteDeCredito.Name = "txtLimiteDeCredito";
             this.txtLimiteDeCredito.ShortcutsEnabled = false;
-            this.txtLimiteDeCredito.Size = new System.Drawing.Size(183, 20);
+            this.txtLimiteDeCredito.Size = new System.Drawing.Size(183, 22);
             this.txtLimiteDeCredito.TabIndex = 22;
             this.txtLimiteDeCredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
