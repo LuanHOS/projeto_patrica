@@ -81,7 +81,16 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(oCliente.Nome_razaoSocial);
                 item.SubItems.Add(oCliente.TipoPessoa == 'F' ? "FÍSICA" : oCliente.TipoPessoa == 'J' ? "JURÍDICA" : "");
                 item.SubItems.Add(oCliente.ACondicaoPagamento.Descricao);
-                item.SubItems.Add("R$ " + oCliente.LimiteDeCredito.ToString("F2"));
+
+                if (oCliente.LimiteDeCredito != null)
+                {
+                    item.SubItems.Add("R$ " + oCliente.LimiteDeCredito.Value.ToString("F2"));
+                }
+                else
+                {
+                    item.SubItems.Add("ILIMITADO");
+                }
+
                 item.SubItems.Add(oCliente.Cpf_cnpj);
                 item.SubItems.Add(oCliente.Rg_inscricaoEstadual);
                 item.SubItems.Add(oCliente.Genero == 'M' ? "MASCULINO" : oCliente.Genero == 'F' ? "FEMININO" : "");
@@ -125,6 +134,16 @@ namespace projeto_patrica.pages.consulta
                 item.SubItems.Add(oCliente.Nome_razaoSocial);
                 item.SubItems.Add(oCliente.TipoPessoa.ToString());
                 item.SubItems.Add(oCliente.ACondicaoPagamento.Descricao);
+
+                if (oCliente.LimiteDeCredito != null)
+                {
+                    item.SubItems.Add("R$ " + oCliente.LimiteDeCredito.Value.ToString("F2"));
+                }
+                else
+                {
+                    item.SubItems.Add("ILIMITADO");
+                }
+
                 item.SubItems.Add(oCliente.Cpf_cnpj);
                 item.SubItems.Add(oCliente.Rg_inscricaoEstadual);
                 item.SubItems.Add(oCliente.Genero == ' ' ? "" : oCliente.Genero.ToString());

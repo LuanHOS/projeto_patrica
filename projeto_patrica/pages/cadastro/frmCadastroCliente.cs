@@ -22,6 +22,15 @@ namespace projeto_patrica.pages.cadastro
             HabilitarCampos(false);
         }
 
+        private void CheckBoxLimiteDeCredito_CheckedChanged(object sender, EventArgs e)
+        {
+            txtLimiteDeCredito.Enabled = checkBoxLimiteDeCredito.Checked;
+            if (!checkBoxLimiteDeCredito.Checked)
+            {
+                txtLimiteDeCredito.Clear();
+            }
+        }
+
         public override void ConhecaObj(object obj, object ctrl)
         {
             oCliente = (cliente)obj;
@@ -108,7 +117,15 @@ namespace projeto_patrica.pages.cadastro
             oCliente.Genero = comboBoxGenero.SelectedIndex == -1 ? ' ' : (comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F');
             oCliente.NumeroEndereco = txtNumeroEndereco.Text;
             oCliente.ComplementoEndereco = string.IsNullOrWhiteSpace(txtComplementoEndereco.Text) ? null : txtComplementoEndereco.Text;
-            oCliente.LimiteDeCredito = string.IsNullOrWhiteSpace(txtLimiteDeCredito.Text) ? 0 : Convert.ToDecimal(txtLimiteDeCredito.Text.Replace(".", ","));
+
+            if (checkBoxLimiteDeCredito.Checked)
+            {
+                oCliente.LimiteDeCredito = string.IsNullOrWhiteSpace(txtLimiteDeCredito.Text) ? 0 : Convert.ToDecimal(txtLimiteDeCredito.Text.Replace(".", ","));
+            }
+            else
+            {
+                oCliente.LimiteDeCredito = null;
+            }
 
 
             try
@@ -130,7 +147,7 @@ namespace projeto_patrica.pages.cadastro
             {
                 switch (ex.Number)
                 {
-                    case 1062: 
+                    case 1062:
                         MessageBox.Show(
                             "Não foi possível salvar o item.\n\nJá existe um item salvo com estes dados.",
                             "Erro: Item duplicado",
@@ -192,6 +209,7 @@ namespace projeto_patrica.pages.cadastro
             dtpDataNascimentoCriacao.Value = DateTime.Today;
             oCliente.ACidade = new cidade();
             oCliente.ACondicaoPagamento = new condicaoPagamento();
+            checkBoxLimiteDeCredito.Checked = false;
             HabilitarCampos(false);
             comboBoxTipo.Enabled = true;
         }
@@ -217,7 +235,18 @@ namespace projeto_patrica.pages.cadastro
             dtpDataNascimentoCriacao.Value = (oCliente.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oCliente.DataNascimento_criacao;
             txtNumeroEndereco.Text = oCliente.NumeroEndereco;
             txtComplementoEndereco.Text = oCliente.ComplementoEndereco;
-            txtLimiteDeCredito.Text = oCliente.LimiteDeCredito.ToString("F2");
+
+            if (oCliente.LimiteDeCredito != null)
+            {
+                checkBoxLimiteDeCredito.Checked = true;
+                txtLimiteDeCredito.Text = oCliente.LimiteDeCredito.Value.ToString("F2");
+            }
+            else
+            {
+                checkBoxLimiteDeCredito.Checked = false;
+                txtLimiteDeCredito.Clear();
+            }
+
             lblDataCadastroData.Text = oCliente.DataCadastro.ToShortDateString();
             lblDataUltimaEdicaoData.Text = oCliente.DataUltimaEdicao?.ToShortDateString() ?? " ";
             comboBoxTipo.SelectedIndex = oCliente.TipoPessoa == 'F' ? 0 : 1;
@@ -347,7 +376,8 @@ namespace projeto_patrica.pages.cadastro
             btnPesquisarCondicaoPagamento.Enabled = habilita;
             txtNumeroEndereco.Enabled = habilita;
             txtComplementoEndereco.Enabled = habilita;
-            txtLimiteDeCredito.Enabled = habilita;
+            checkBoxLimiteDeCredito.Enabled = habilita;
+            txtLimiteDeCredito.Enabled = habilita && checkBoxLimiteDeCredito.Checked;
         }
 
         public override void CamposRestricoes()

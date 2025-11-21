@@ -135,7 +135,8 @@ namespace projeto_patrica.pages.cadastro
                     return;
 
                 decimal valorVendaAtual = listaItens.Sum(item => item.ValorTotal);
-                if (valorVendaAtual > creditoDisponivelCliente)
+
+                if (oVenda.OCliente.LimiteDeCredito != null && valorVendaAtual > creditoDisponivelCliente)
                 {
                     if (oVenda.ACondicaoPagamento == null || oVenda.ACondicaoPagamento.Descricao.Trim().ToUpper() != "À VISTA")
                     {
@@ -784,22 +785,31 @@ namespace projeto_patrica.pages.cadastro
                 return;
             }
 
-            decimal limiteCredito = oVenda.OCliente.LimiteDeCredito;
-            decimal saldoDevedor = aController_venda.AController_contasAReceber.GetSaldoDevedor(oVenda.OCliente.Id);
-            creditoDisponivelCliente = limiteCredito - saldoDevedor;
-
-            decimal valorVendaAtual = listaItens.Sum(item => item.ValorTotal);
-            decimal creditoRestante = creditoDisponivelCliente - valorVendaAtual;
-
-            lblValorCreditoDisponivel.Text = creditoRestante.ToString("C2");
-
-            if (creditoRestante < 0)
+            if (oVenda.OCliente.LimiteDeCredito == null)
             {
-                lblValorCreditoDisponivel.ForeColor = Color.Red;
+                creditoDisponivelCliente = decimal.MaxValue;
+                lblValorCreditoDisponivel.Text = "ILIMITADO";
+                lblValorCreditoDisponivel.ForeColor = Color.DarkGreen;
             }
             else
             {
-                lblValorCreditoDisponivel.ForeColor = Color.DarkGreen;
+                decimal limiteCredito = oVenda.OCliente.LimiteDeCredito.Value;
+                decimal saldoDevedor = aController_venda.AController_contasAReceber.GetSaldoDevedor(oVenda.OCliente.Id);
+                creditoDisponivelCliente = limiteCredito - saldoDevedor;
+
+                decimal valorVendaAtual = listaItens.Sum(item => item.ValorTotal);
+                decimal creditoRestante = creditoDisponivelCliente - valorVendaAtual;
+
+                lblValorCreditoDisponivel.Text = creditoRestante.ToString("C2");
+
+                if (creditoRestante < 0)
+                {
+                    lblValorCreditoDisponivel.ForeColor = Color.Red;
+                }
+                else
+                {
+                    lblValorCreditoDisponivel.ForeColor = Color.DarkGreen;
+                }
             }
 
             bool modoInclusao = (btnSave.Text == "Salvar");

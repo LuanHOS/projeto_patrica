@@ -9,7 +9,7 @@ namespace projeto_patrica.classes
     class cliente : pessoa
     {
         protected condicaoPagamento aCondicaoPagamento;
-        protected decimal limiteDeCredito;
+        protected decimal? limiteDeCredito;
 
         public cliente()
         {
@@ -33,14 +33,14 @@ namespace projeto_patrica.classes
             dataCadastro = DateTime.Now;
             dataUltimaEdicao = null;
             aCondicaoPagamento = new condicaoPagamento();
-            limiteDeCredito = 0;
+            limiteDeCredito = null;
         }
 
         public cliente(
             int id, char tipoPessoa, string nome_razaoSocial, string apelido_nomeFantasia, DateTime dataNascimento_criacao,
             string cpf_cnpj, string rg_inscricaoEstadual, string email, string telefone, string endereco, string numeroEndereco,
             string complementoEndereco, string bairro, cidade aCidade, string cep, bool ativo, char genero,
-            DateTime dataCadastro, DateTime? dataUltimaEdicao, condicaoPagamento aCondicaoPagamento, decimal limiteDeCredito
+            DateTime dataCadastro, DateTime? dataUltimaEdicao, condicaoPagamento aCondicaoPagamento, decimal? limiteDeCredito
         ) : base(id, tipoPessoa, nome_razaoSocial, apelido_nomeFantasia, dataNascimento_criacao, cpf_cnpj,
                  rg_inscricaoEstadual, email, telefone, endereco, numeroEndereco, complementoEndereco,
                  bairro, aCidade, cep, ativo, genero, dataCadastro, dataUltimaEdicao)
@@ -74,7 +74,7 @@ namespace projeto_patrica.classes
             set => aCondicaoPagamento = value;
         }
 
-        public decimal LimiteDeCredito
+        public decimal? LimiteDeCredito
         {
             get => limiteDeCredito;
             set => limiteDeCredito = value;

@@ -19,6 +19,10 @@ namespace projeto_patrica.dao
             char operacao = 'I';
             string sql;
 
+            string limiteCreditoSql = oCliente.LimiteDeCredito.HasValue
+                ? "'" + oCliente.LimiteDeCredito.Value.ToString().Replace(",", ".") + "'"
+                : "NULL";
+
             sql = "INSERT INTO cliente (" +
                 "TIPO_PESSOA, NOME_RAZAO_SOCIAL, APELIDO_NOME_FANTASIA, DATA_NASCIMENTO_CRIACAO, CPF_CNPJ, " +
                 "RG_INSCRICAO_ESTADUAL, EMAIL, TELEFONE, ENDERECO, BAIRRO, ID_CIDADE, CEP, ATIVO, GENERO, " +
@@ -34,8 +38,8 @@ namespace projeto_patrica.dao
                 (oCliente.Ativo ? "1" : "0") + ", " +
                 (oCliente.Genero == ' ' ? "NULL" : "'" + oCliente.Genero + "'") + ", '" +
                 oCliente.ACondicaoPagamento.Id + "', '" + oCliente.NumeroEndereco + "', " +
-                (string.IsNullOrWhiteSpace(oCliente.ComplementoEndereco) ? "NULL" : "'" + oCliente.ComplementoEndereco + "'") + ", '" +
-                oCliente.LimiteDeCredito.ToString().Replace(",", ".") + "')";
+                (string.IsNullOrWhiteSpace(oCliente.ComplementoEndereco) ? "NULL" : "'" + oCliente.ComplementoEndereco + "'") + ", " +
+                limiteCreditoSql + ")";
 
             if (oCliente.Id != 0)
             {
@@ -58,12 +62,9 @@ namespace projeto_patrica.dao
                     "ID_CONDICAO_PAGAMENTO = '" + oCliente.ACondicaoPagamento.Id + "', " +
                     "NUMERO_ENDERECO = '" + oCliente.NumeroEndereco + "', " +
                     "COMPLEMENTO_ENDERECO = " + (string.IsNullOrWhiteSpace(oCliente.ComplementoEndereco) ? "NULL" : "'" + oCliente.ComplementoEndereco + "'") + ", " +
-                    "LIMITE_CREDITO = '" + oCliente.LimiteDeCredito.ToString().Replace(",", ".") + "', " +
+                    "LIMITE_CREDITO = " + limiteCreditoSql + ", " +
                     "DATA_ULTIMA_EDICAO = CURRENT_DATE " +
                     "WHERE ID_CLIENTE = '" + oCliente.Id + "'";
-
-
-
             }
 
             MySqlCommand conn = new MySqlCommand();
@@ -120,10 +121,9 @@ namespace projeto_patrica.dao
                     oCliente.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
                     oCliente.NumeroEndereco = dr["NUMERO_ENDERECO"].ToString();
                     oCliente.ComplementoEndereco = dr["COMPLEMENTO_ENDERECO"] == DBNull.Value ? null : dr["COMPLEMENTO_ENDERECO"].ToString();
-                    oCliente.LimiteDeCredito = dr["LIMITE_CREDITO"] == DBNull.Value ? 0 : Convert.ToDecimal(dr["LIMITE_CREDITO"]);
+                    oCliente.LimiteDeCredito = dr["LIMITE_CREDITO"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(dr["LIMITE_CREDITO"]);
                     oCliente.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
                     oCliente.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
-
                 }
 
                 conn.Connection.Close();
@@ -144,7 +144,7 @@ namespace projeto_patrica.dao
         public override string Excluir(object obj)
         {
             cliente oCliente = (cliente)obj;
-            
+
             string sql = "DELETE FROM cliente WHERE ID_CLIENTE = '" + oCliente.Id + "'";
             MySqlCommand conn = new MySqlCommand();
             conn.Connection = Banco.Abrir();
@@ -187,10 +187,9 @@ namespace projeto_patrica.dao
                 oCliente.ACondicaoPagamento.Id = Convert.ToInt32(dr["ID_CONDICAO_PAGAMENTO"]);
                 oCliente.NumeroEndereco = dr["NUMERO_ENDERECO"].ToString();
                 oCliente.ComplementoEndereco = dr["COMPLEMENTO_ENDERECO"] == DBNull.Value ? null : dr["COMPLEMENTO_ENDERECO"].ToString();
-                oCliente.LimiteDeCredito = dr["LIMITE_CREDITO"] == DBNull.Value ? 0 : Convert.ToDecimal(dr["LIMITE_CREDITO"]);
+                oCliente.LimiteDeCredito = dr["LIMITE_CREDITO"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(dr["LIMITE_CREDITO"]);
                 oCliente.DataCadastro = Convert.ToDateTime(dr["DATA_CADASTRO"]);
                 oCliente.DataUltimaEdicao = dr.IsDBNull(dr.GetOrdinal("DATA_ULTIMA_EDICAO")) ? (DateTime?)null : Convert.ToDateTime(dr["DATA_ULTIMA_EDICAO"]);
-
 
                 lista.Add(oCliente);
             }

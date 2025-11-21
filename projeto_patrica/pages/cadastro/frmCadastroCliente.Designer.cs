@@ -166,6 +166,7 @@
             this.checkBoxLimiteDeCredito.Size = new System.Drawing.Size(18, 17);
             this.checkBoxLimiteDeCredito.TabIndex = 103;
             this.checkBoxLimiteDeCredito.UseVisualStyleBackColor = true;
+            this.checkBoxLimiteDeCredito.CheckedChanged += new System.EventHandler(this.CheckBoxLimiteDeCredito_CheckedChanged);
             // 
             // frmCadastroCliente
             // 
