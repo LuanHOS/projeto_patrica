@@ -175,7 +175,7 @@ namespace projeto_patrica.dao
             catch (Exception ex)
             {
                 trans?.Rollback();
-                return "Erro ao salvar compra: " + ex.Message;
+                throw;
             }
             finally
             {

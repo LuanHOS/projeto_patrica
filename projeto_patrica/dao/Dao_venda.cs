@@ -44,7 +44,7 @@ namespace projeto_patrica.dao
                 conn = Banco.Abrir();
                 trans = conn.BeginTransaction();
 
-                if (aVenda.NumeroNota == 0) 
+                if (aVenda.NumeroNota == 0)
                 {
                     string sqlGenNum = "SELECT IFNULL(MAX(NUMERO_NOTA), 0) + 1 FROM VENDA WHERE MODELO = @Modelo AND SERIE = @Serie";
                     MySqlCommand cmdGenNum = new MySqlCommand(sqlGenNum, conn, trans);
@@ -160,7 +160,7 @@ namespace projeto_patrica.dao
             catch (Exception ex)
             {
                 trans?.Rollback();
-                return "Erro ao salvar venda: " + ex.Message;
+                throw;
             }
             finally
             {
@@ -277,7 +277,7 @@ namespace projeto_patrica.dao
             }
             catch (Exception ex)
             {
-                ok = "Erro ao carregar venda: " + ex.Message;
+                throw;
             }
             finally
             {
