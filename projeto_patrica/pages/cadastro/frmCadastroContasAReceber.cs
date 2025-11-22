@@ -90,12 +90,26 @@ namespace projeto_patrica.pages.cadastro
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(
-                    "Não foi possível concluir a operação. Verifique os dados e tente novamente.\n\nDetalhes técnicos: " + ex.Message,
-                    "Erro no Banco de Dados",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                switch (ex.Number)
+                {
+                    case 1264:
+                        MessageBox.Show(
+                            "Não foi possível salvar o item.\n\nUm ou mais valores informados excedem o limite suportado pelo banco de dados.",
+                            "Erro: Valor muito grande",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        break;
+
+                    default:
+                        MessageBox.Show(
+                            "Não foi possível concluir a operação. Verifique os dados e tente novamente.\n\nDetalhes técnicos: " + ex.Message,
+                            "Erro no Banco de Dados",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        break;
+                }
                 return;
             }
             catch (Exception ex)
@@ -530,8 +544,8 @@ namespace projeto_patrica.pages.cadastro
             txtCodigo.KeyPress -= ApenasNumeros;
             txtCodigo.KeyPress += ApenasNumeros;
 
-            txtSerie.KeyPress -= ApenasNumeros;
-            txtSerie.KeyPress += ApenasNumeros;
+            //txtSerie.KeyPress -= ApenasNumeros;
+            //txtSerie.KeyPress += ApenasNumeros;
 
             txtNumDaNota.KeyPress -= ApenasNumeros;
             txtNumDaNota.KeyPress += ApenasNumeros;

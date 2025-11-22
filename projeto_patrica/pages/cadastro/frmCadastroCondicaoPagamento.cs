@@ -126,6 +126,15 @@ namespace projeto_patrica.pages.cadastro
                         );
                         break;
 
+                    case 1264: // Out of range value
+                        MessageBox.Show(
+                            "Não foi possível salvar o item.\n\nUm ou mais valores informados excedem o limite suportado pelo banco de dados.",
+                            "Erro: Valor muito grande",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        break;
+
                     default: // Outros erros de banco de dados
                         MessageBox.Show(
                             "Não foi possível concluir a operação. Verifique os dados e tente novamente.\n\nDetalhes técnicos: " + ex.Message,

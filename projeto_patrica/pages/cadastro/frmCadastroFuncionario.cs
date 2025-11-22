@@ -147,7 +147,7 @@ namespace projeto_patrica.pages.cadastro
             {
                 switch (ex.Number)
                 {
-                    case 1062: 
+                    case 1062:
                         MessageBox.Show(
                             "Não foi possível salvar o item.\n\nJá existe um item salvo com estes dados.",
                             "Erro: Item duplicado",
@@ -160,6 +160,15 @@ namespace projeto_patrica.pages.cadastro
                         MessageBox.Show(
                             "Não foi possível excluir o item.\n\nEle está interligado a outro item existente.",
                             "Erro: Item em uso",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        break;
+
+                    case 1264: 
+                        MessageBox.Show(
+                            "Não foi possível salvar o item.\n\nUm ou mais valores informados excedem o limite suportado pelo banco de dados.",
+                            "Erro: Valor muito grande",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error
                         );
@@ -207,9 +216,9 @@ namespace projeto_patrica.pages.cadastro
             txtCidade.Clear();
             txtEstado.Clear();
             txtPais.Clear();
-            txtNumeroEndereco.Clear(); 
-            txtComplementoEndereco.Clear(); 
-            dtpDataDemissao.Value = DateTime.Today; 
+            txtNumeroEndereco.Clear();
+            txtComplementoEndereco.Clear();
+            dtpDataDemissao.Value = DateTime.Today;
             dtpDataDemissao.Checked = false;
 
             dtpDataDemissao.Enabled = false;
@@ -243,7 +252,7 @@ namespace projeto_patrica.pages.cadastro
             txtTurno.Text = oFuncionario.Turno;
             txtCargaHoraria.Text = oFuncionario.CargaHoraria.ToString();
             txtNumeroEndereco.Text = oFuncionario.NumeroEndereco;
-            txtComplementoEndereco.Text = oFuncionario.ComplementoEndereco;  
+            txtComplementoEndereco.Text = oFuncionario.ComplementoEndereco;
             dtpDataDemissao.Value = (oFuncionario.DataDemissao ?? DateTime.Today);
             dtpDataDemissao.Checked = oFuncionario.DataDemissao.HasValue;
             lblDataCadastroData.Text = oFuncionario.DataCadastro.ToShortDateString();
@@ -279,8 +288,8 @@ namespace projeto_patrica.pages.cadastro
             dtpDataAdmissao.Enabled = false;
             txtTurno.Enabled = false;
             txtCargaHoraria.Enabled = false;
-            txtNumeroEndereco.Enabled = false; 
-            txtComplementoEndereco.Enabled = false; 
+            txtNumeroEndereco.Enabled = false;
+            txtComplementoEndereco.Enabled = false;
             dtpDataDemissao.Enabled = false;
         }
 
@@ -309,8 +318,8 @@ namespace projeto_patrica.pages.cadastro
             dtpDataAdmissao.Enabled = true;
             txtTurno.Enabled = true;
             txtCargaHoraria.Enabled = true;
-            txtNumeroEndereco.Enabled = true; 
-            txtComplementoEndereco.Enabled = true; 
+            txtNumeroEndereco.Enabled = true;
+            txtComplementoEndereco.Enabled = true;
             dtpDataDemissao.Enabled = true;
         }
 
