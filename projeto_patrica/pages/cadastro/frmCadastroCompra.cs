@@ -811,8 +811,8 @@ namespace projeto_patrica.pages.cadastro
             txtCodigo.KeyPress -= ApenasNumeros;
             txtCodigo.KeyPress += ApenasNumeros;
 
-            txtSerie.KeyPress -= ApenasNumeros;
-            txtSerie.KeyPress += ApenasNumeros;
+            //txtSerie.KeyPress -= ApenasNumeros;
+            //txtSerie.KeyPress += ApenasNumeros;
 
             txtNumDaNota.KeyPress -= ApenasNumeros;
             txtNumDaNota.KeyPress += ApenasNumeros;
