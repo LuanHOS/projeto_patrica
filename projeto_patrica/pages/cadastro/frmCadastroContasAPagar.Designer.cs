@@ -68,6 +68,10 @@
             this.lblDescontoReais = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // btnSave
+            // 
+            this.btnSave.TabIndex = 17;
+            // 
             // lblCod
             // 
             this.lblCod.Size = new System.Drawing.Size(61, 16);
@@ -76,6 +80,10 @@
             // checkBoxAtivo
             // 
             this.checkBoxAtivo.Location = new System.Drawing.Point(1243, 22);
+            // 
+            // btnSair
+            // 
+            this.btnSair.TabIndex = 18;
             // 
             // txtCodigo
             // 
@@ -90,7 +98,7 @@
             this.txtNumDaNota.Name = "txtNumDaNota";
             this.txtNumDaNota.ShortcutsEnabled = false;
             this.txtNumDaNota.Size = new System.Drawing.Size(129, 22);
-            this.txtNumDaNota.TabIndex = 105;
+            this.txtNumDaNota.TabIndex = 3;
             this.txtNumDaNota.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumDaNota.TextChanged += new System.EventHandler(this.CabecalhoConta_TextChanged);
             // 
@@ -100,7 +108,7 @@
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.ShortcutsEnabled = false;
             this.txtSerie.Size = new System.Drawing.Size(46, 22);
-            this.txtSerie.TabIndex = 106;
+            this.txtSerie.TabIndex = 2;
             this.txtSerie.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSerie.TextChanged += new System.EventHandler(this.CabecalhoConta_TextChanged);
             // 
@@ -129,7 +137,7 @@
             this.dtpDataEmissao.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDataEmissao.Name = "dtpDataEmissao";
             this.dtpDataEmissao.Size = new System.Drawing.Size(115, 22);
-            this.dtpDataEmissao.TabIndex = 114;
+            this.dtpDataEmissao.TabIndex = 5;
             this.dtpDataEmissao.ValueChanged += new System.EventHandler(this.DtpDataEmissao_ValueChanged);
             // 
             // dtpDataVencimento
@@ -139,7 +147,7 @@
             this.dtpDataVencimento.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDataVencimento.Name = "dtpDataVencimento";
             this.dtpDataVencimento.Size = new System.Drawing.Size(109, 22);
-            this.dtpDataVencimento.TabIndex = 113;
+            this.dtpDataVencimento.TabIndex = 6;
             // 
             // txtCodFornecedor
             // 
@@ -202,7 +210,7 @@
             this.txtNumParcela.Name = "txtNumParcela";
             this.txtNumParcela.ShortcutsEnabled = false;
             this.txtNumParcela.Size = new System.Drawing.Size(83, 22);
-            this.txtNumParcela.TabIndex = 105;
+            this.txtNumParcela.TabIndex = 7;
             this.txtNumParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumParcela.TextChanged += new System.EventHandler(this.CabecalhoConta_TextChanged);
             // 
@@ -211,7 +219,7 @@
             this.btnPesquisarFornecedor.Location = new System.Drawing.Point(610, 44);
             this.btnPesquisarFornecedor.Name = "btnPesquisarFornecedor";
             this.btnPesquisarFornecedor.Size = new System.Drawing.Size(39, 25);
-            this.btnPesquisarFornecedor.TabIndex = 150;
+            this.btnPesquisarFornecedor.TabIndex = 4;
             this.btnPesquisarFornecedor.Text = "🔎";
             this.btnPesquisarFornecedor.UseVisualStyleBackColor = true;
             this.btnPesquisarFornecedor.Click += new System.EventHandler(this.btnPesquisarFornecedor_Click);
@@ -231,7 +239,7 @@
             this.txtValorParcela.Name = "txtValorParcela";
             this.txtValorParcela.ShortcutsEnabled = false;
             this.txtValorParcela.Size = new System.Drawing.Size(189, 22);
-            this.txtValorParcela.TabIndex = 105;
+            this.txtValorParcela.TabIndex = 8;
             this.txtValorParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValorParcela.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
@@ -288,7 +296,7 @@
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.ShortcutsEnabled = false;
             this.txtDesconto.Size = new System.Drawing.Size(82, 22);
-            this.txtDesconto.TabIndex = 159;
+            this.txtDesconto.TabIndex = 11;
             this.txtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDesconto.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
@@ -300,7 +308,7 @@
             this.txtMulta.Name = "txtMulta";
             this.txtMulta.ShortcutsEnabled = false;
             this.txtMulta.Size = new System.Drawing.Size(82, 22);
-            this.txtMulta.TabIndex = 158;
+            this.txtMulta.TabIndex = 9;
             this.txtMulta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtMulta.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
@@ -312,7 +320,7 @@
             this.txtJuros.Name = "txtJuros";
             this.txtJuros.ShortcutsEnabled = false;
             this.txtJuros.Size = new System.Drawing.Size(82, 22);
-            this.txtJuros.TabIndex = 157;
+            this.txtJuros.TabIndex = 10;
             this.txtJuros.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtJuros.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
@@ -341,7 +349,7 @@
             this.btnPesquisarFormaPagamento.Location = new System.Drawing.Point(309, 375);
             this.btnPesquisarFormaPagamento.Name = "btnPesquisarFormaPagamento";
             this.btnPesquisarFormaPagamento.Size = new System.Drawing.Size(39, 25);
-            this.btnPesquisarFormaPagamento.TabIndex = 163;
+            this.btnPesquisarFormaPagamento.TabIndex = 15;
             this.btnPesquisarFormaPagamento.Text = "🔎";
             this.btnPesquisarFormaPagamento.UseVisualStyleBackColor = true;
             this.btnPesquisarFormaPagamento.Click += new System.EventHandler(this.btnPesquisarFormaPagamento_Click);
@@ -394,7 +402,7 @@
             this.dtpDataPagamento.Name = "dtpDataPagamento";
             this.dtpDataPagamento.ShowCheckBox = true;
             this.dtpDataPagamento.Size = new System.Drawing.Size(135, 22);
-            this.dtpDataPagamento.TabIndex = 166;
+            this.dtpDataPagamento.TabIndex = 16;
             this.dtpDataPagamento.ValueChanged += new System.EventHandler(this.RecalcularValorPago);
             // 
             // txtJurosReais
@@ -405,7 +413,7 @@
             this.txtJurosReais.Name = "txtJurosReais";
             this.txtJurosReais.ShortcutsEnabled = false;
             this.txtJurosReais.Size = new System.Drawing.Size(82, 22);
-            this.txtJurosReais.TabIndex = 157;
+            this.txtJurosReais.TabIndex = 13;
             this.txtJurosReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtJurosReais.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
@@ -417,7 +425,7 @@
             this.txtMultaReais.Name = "txtMultaReais";
             this.txtMultaReais.ShortcutsEnabled = false;
             this.txtMultaReais.Size = new System.Drawing.Size(82, 22);
-            this.txtMultaReais.TabIndex = 158;
+            this.txtMultaReais.TabIndex = 12;
             this.txtMultaReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtMultaReais.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
@@ -429,7 +437,7 @@
             this.txtDescontoReais.Name = "txtDescontoReais";
             this.txtDescontoReais.ShortcutsEnabled = false;
             this.txtDescontoReais.Size = new System.Drawing.Size(82, 22);
-            this.txtDescontoReais.TabIndex = 159;
+            this.txtDescontoReais.TabIndex = 14;
             this.txtDescontoReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDescontoReais.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 

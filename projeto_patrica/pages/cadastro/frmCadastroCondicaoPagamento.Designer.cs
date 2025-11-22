@@ -336,7 +336,7 @@
             this.txtJuros.Name = "txtJuros";
             this.txtJuros.ShortcutsEnabled = false;
             this.txtJuros.Size = new System.Drawing.Size(142, 22);
-            this.txtJuros.TabIndex = 4;
+            this.txtJuros.TabIndex = 5;
             this.txtJuros.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblJuros
@@ -356,7 +356,7 @@
             this.txtMulta.Name = "txtMulta";
             this.txtMulta.ShortcutsEnabled = false;
             this.txtMulta.Size = new System.Drawing.Size(142, 22);
-            this.txtMulta.TabIndex = 5;
+            this.txtMulta.TabIndex = 4;
             this.txtMulta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblMulta

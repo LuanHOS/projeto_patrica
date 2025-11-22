@@ -94,6 +94,7 @@
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(1143, 632);
+            this.btnSave.TabIndex = 15;
             // 
             // lblCod
             // 
@@ -132,6 +133,7 @@
             // btnSair
             // 
             this.btnSair.Location = new System.Drawing.Point(1236, 632);
+            this.btnSair.TabIndex = 16;
             // 
             // txtCodigo
             // 
@@ -147,7 +149,7 @@
             this.dtpDataEmissao.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDataEmissao.Name = "dtpDataEmissao";
             this.dtpDataEmissao.Size = new System.Drawing.Size(115, 22);
-            this.dtpDataEmissao.TabIndex = 158;
+            this.dtpDataEmissao.TabIndex = 4;
             this.dtpDataEmissao.ValueChanged += new System.EventHandler(this.Cabecalho_TextChanged);
             // 
             // listVParcelas
@@ -199,7 +201,7 @@
             this.btnPesquisarCondicaoDePagamento.Location = new System.Drawing.Point(318, 415);
             this.btnPesquisarCondicaoDePagamento.Name = "btnPesquisarCondicaoDePagamento";
             this.btnPesquisarCondicaoDePagamento.Size = new System.Drawing.Size(39, 23);
-            this.btnPesquisarCondicaoDePagamento.TabIndex = 147;
+            this.btnPesquisarCondicaoDePagamento.TabIndex = 12;
             this.btnPesquisarCondicaoDePagamento.Text = "🔎";
             this.btnPesquisarCondicaoDePagamento.UseVisualStyleBackColor = true;
             this.btnPesquisarCondicaoDePagamento.Click += new System.EventHandler(this.btnPesquisarCondicaoDePagamento_Click);
@@ -209,7 +211,7 @@
             this.btnLimparParcelas.Location = new System.Drawing.Point(485, 414);
             this.btnLimparParcelas.Name = "btnLimparParcelas";
             this.btnLimparParcelas.Size = new System.Drawing.Size(122, 23);
-            this.btnLimparParcelas.TabIndex = 152;
+            this.btnLimparParcelas.TabIndex = 14;
             this.btnLimparParcelas.Text = "Limpar Parcelas";
             this.btnLimparParcelas.UseVisualStyleBackColor = true;
             this.btnLimparParcelas.Click += new System.EventHandler(this.btnLimparParcelas_Click);
@@ -219,7 +221,7 @@
             this.btnGerarParcelas.Location = new System.Drawing.Point(367, 414);
             this.btnGerarParcelas.Name = "btnGerarParcelas";
             this.btnGerarParcelas.Size = new System.Drawing.Size(112, 23);
-            this.btnGerarParcelas.TabIndex = 153;
+            this.btnGerarParcelas.TabIndex = 13;
             this.btnGerarParcelas.Text = "Gerar Parcelas";
             this.btnGerarParcelas.UseVisualStyleBackColor = true;
             this.btnGerarParcelas.Click += new System.EventHandler(this.btnGerarParcelas_Click);
@@ -229,7 +231,7 @@
             this.btnPesquisarFuncionario.Location = new System.Drawing.Point(956, 32);
             this.btnPesquisarFuncionario.Name = "btnPesquisarFuncionario";
             this.btnPesquisarFuncionario.Size = new System.Drawing.Size(39, 25);
-            this.btnPesquisarFuncionario.TabIndex = 149;
+            this.btnPesquisarFuncionario.TabIndex = 3;
             this.btnPesquisarFuncionario.Text = "🔎";
             this.btnPesquisarFuncionario.UseVisualStyleBackColor = true;
             this.btnPesquisarFuncionario.Click += new System.EventHandler(this.btnPesquisarFuncionario_Click);
@@ -430,7 +432,7 @@
             this.btnPesquisarCliente.Location = new System.Drawing.Point(613, 32);
             this.btnPesquisarCliente.Name = "btnPesquisarCliente";
             this.btnPesquisarCliente.Size = new System.Drawing.Size(39, 25);
-            this.btnPesquisarCliente.TabIndex = 149;
+            this.btnPesquisarCliente.TabIndex = 2;
             this.btnPesquisarCliente.Text = "🔎";
             this.btnPesquisarCliente.UseVisualStyleBackColor = true;
             this.btnPesquisarCliente.Click += new System.EventHandler(this.btnPesquisarCliente_Click);
@@ -492,7 +494,7 @@
             this.btnPesquisarProduto.Location = new System.Drawing.Point(295, 80);
             this.btnPesquisarProduto.Name = "btnPesquisarProduto";
             this.btnPesquisarProduto.Size = new System.Drawing.Size(39, 23);
-            this.btnPesquisarProduto.TabIndex = 174;
+            this.btnPesquisarProduto.TabIndex = 5;
             this.btnPesquisarProduto.Text = "🔎";
             this.btnPesquisarProduto.UseVisualStyleBackColor = true;
             this.btnPesquisarProduto.Click += new System.EventHandler(this.btnPesquisarProduto_Click);
@@ -502,7 +504,7 @@
             this.btnLimparListaProduto.Location = new System.Drawing.Point(1013, 78);
             this.btnLimparListaProduto.Name = "btnLimparListaProduto";
             this.btnLimparListaProduto.Size = new System.Drawing.Size(98, 23);
-            this.btnLimparListaProduto.TabIndex = 173;
+            this.btnLimparListaProduto.TabIndex = 11;
             this.btnLimparListaProduto.Text = "Limpar Lista";
             this.btnLimparListaProduto.UseVisualStyleBackColor = true;
             this.btnLimparListaProduto.Click += new System.EventHandler(this.btnLimparListaProduto_Click);
@@ -512,7 +514,7 @@
             this.btnRemoverProduto.Location = new System.Drawing.Point(932, 78);
             this.btnRemoverProduto.Name = "btnRemoverProduto";
             this.btnRemoverProduto.Size = new System.Drawing.Size(75, 23);
-            this.btnRemoverProduto.TabIndex = 172;
+            this.btnRemoverProduto.TabIndex = 10;
             this.btnRemoverProduto.Text = "Remover";
             this.btnRemoverProduto.UseVisualStyleBackColor = true;
             this.btnRemoverProduto.Click += new System.EventHandler(this.btnRemoverProduto_Click);
@@ -522,7 +524,7 @@
             this.btnEditarProduto.Location = new System.Drawing.Point(850, 78);
             this.btnEditarProduto.Name = "btnEditarProduto";
             this.btnEditarProduto.Size = new System.Drawing.Size(76, 23);
-            this.btnEditarProduto.TabIndex = 171;
+            this.btnEditarProduto.TabIndex = 9;
             this.btnEditarProduto.Text = "Editar";
             this.btnEditarProduto.UseVisualStyleBackColor = true;
             this.btnEditarProduto.Click += new System.EventHandler(this.btnEditarProduto_Click);
@@ -532,7 +534,7 @@
             this.btnAdicionarProduto.Location = new System.Drawing.Point(770, 78);
             this.btnAdicionarProduto.Name = "btnAdicionarProduto";
             this.btnAdicionarProduto.Size = new System.Drawing.Size(74, 23);
-            this.btnAdicionarProduto.TabIndex = 170;
+            this.btnAdicionarProduto.TabIndex = 8;
             this.btnAdicionarProduto.Text = "Adicionar ";
             this.btnAdicionarProduto.UseVisualStyleBackColor = true;
             this.btnAdicionarProduto.Click += new System.EventHandler(this.btnAdicionarProduto_Click);
@@ -562,7 +564,7 @@
             this.txtValorUnitario.Name = "txtValorUnitario";
             this.txtValorUnitario.ShortcutsEnabled = false;
             this.txtValorUnitario.Size = new System.Drawing.Size(88, 22);
-            this.txtValorUnitario.TabIndex = 167;
+            this.txtValorUnitario.TabIndex = 7;
             this.txtValorUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValorUnitario.Leave += new System.EventHandler(this.txtValorUnitario_Leave);
             // 
@@ -572,7 +574,7 @@
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.ShortcutsEnabled = false;
             this.txtQuantidade.Size = new System.Drawing.Size(74, 22);
-            this.txtQuantidade.TabIndex = 166;
+            this.txtQuantidade.TabIndex = 6;
             this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtQuantidade.Leave += new System.EventHandler(this.txtQuantidade_Leave);
             // 

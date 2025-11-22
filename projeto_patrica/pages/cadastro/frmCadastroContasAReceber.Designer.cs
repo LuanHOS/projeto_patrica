@@ -68,10 +68,18 @@
             this.lblMotivoCancelamentoTitulo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // btnSave
+            // 
+            this.btnSave.TabIndex = 17;
+            // 
             // lblCod
             // 
             this.lblCod.Size = new System.Drawing.Size(53, 16);
             this.lblCod.Text = "Modelo";
+            // 
+            // btnSair
+            // 
+            this.btnSair.TabIndex = 18;
             // 
             // txtCodigo
             // 
@@ -87,7 +95,7 @@
             this.dtpDataPagamento.Name = "dtpDataPagamento";
             this.dtpDataPagamento.ShowCheckBox = true;
             this.dtpDataPagamento.Size = new System.Drawing.Size(135, 22);
-            this.dtpDataPagamento.TabIndex = 202;
+            this.dtpDataPagamento.TabIndex = 16;
             this.dtpDataPagamento.ValueChanged += new System.EventHandler(this.RecalcularValorPago);
             // 
             // btnPesquisarFormaPagamento
@@ -95,7 +103,7 @@
             this.btnPesquisarFormaPagamento.Location = new System.Drawing.Point(310, 375);
             this.btnPesquisarFormaPagamento.Name = "btnPesquisarFormaPagamento";
             this.btnPesquisarFormaPagamento.Size = new System.Drawing.Size(39, 25);
-            this.btnPesquisarFormaPagamento.TabIndex = 201;
+            this.btnPesquisarFormaPagamento.TabIndex = 15;
             this.btnPesquisarFormaPagamento.Text = "🔎";
             this.btnPesquisarFormaPagamento.UseVisualStyleBackColor = true;
             this.btnPesquisarFormaPagamento.Click += new System.EventHandler(this.btnPesquisarFormaPagamento_Click);
@@ -181,7 +189,7 @@
             this.txtDescontoReais.Name = "txtDescontoReais";
             this.txtDescontoReais.ShortcutsEnabled = false;
             this.txtDescontoReais.Size = new System.Drawing.Size(82, 22);
-            this.txtDescontoReais.TabIndex = 198;
+            this.txtDescontoReais.TabIndex = 14;
             this.txtDescontoReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDescontoReais.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
@@ -193,7 +201,7 @@
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.ShortcutsEnabled = false;
             this.txtDesconto.Size = new System.Drawing.Size(82, 22);
-            this.txtDesconto.TabIndex = 197;
+            this.txtDesconto.TabIndex = 11;
             this.txtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDesconto.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
@@ -205,7 +213,7 @@
             this.txtMultaReais.Name = "txtMultaReais";
             this.txtMultaReais.ShortcutsEnabled = false;
             this.txtMultaReais.Size = new System.Drawing.Size(82, 22);
-            this.txtMultaReais.TabIndex = 195;
+            this.txtMultaReais.TabIndex = 12;
             this.txtMultaReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtMultaReais.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
@@ -217,7 +225,7 @@
             this.txtJurosReais.Name = "txtJurosReais";
             this.txtJurosReais.ShortcutsEnabled = false;
             this.txtJurosReais.Size = new System.Drawing.Size(82, 22);
-            this.txtJurosReais.TabIndex = 194;
+            this.txtJurosReais.TabIndex = 13;
             this.txtJurosReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtJurosReais.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
@@ -229,7 +237,7 @@
             this.txtMulta.Name = "txtMulta";
             this.txtMulta.ShortcutsEnabled = false;
             this.txtMulta.Size = new System.Drawing.Size(82, 22);
-            this.txtMulta.TabIndex = 196;
+            this.txtMulta.TabIndex = 9;
             this.txtMulta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtMulta.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
@@ -241,7 +249,7 @@
             this.txtJuros.Name = "txtJuros";
             this.txtJuros.ShortcutsEnabled = false;
             this.txtJuros.Size = new System.Drawing.Size(82, 22);
-            this.txtJuros.TabIndex = 193;
+            this.txtJuros.TabIndex = 10;
             this.txtJuros.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtJuros.Leave += new System.EventHandler(this.AtualizarValorPagoFinal_Handler);
             // 
@@ -259,7 +267,7 @@
             this.btnPesquisarCliente.Location = new System.Drawing.Point(611, 44);
             this.btnPesquisarCliente.Name = "btnPesquisarCliente";
             this.btnPesquisarCliente.Size = new System.Drawing.Size(39, 25);
-            this.btnPesquisarCliente.TabIndex = 185;
+            this.btnPesquisarCliente.TabIndex = 4;
             this.btnPesquisarCliente.Text = "🔎";
             this.btnPesquisarCliente.UseVisualStyleBackColor = true;
             this.btnPesquisarCliente.Click += new System.EventHandler(this.btnPesquisarCliente_Click);
@@ -271,7 +279,7 @@
             this.dtpDataEmissao.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDataEmissao.Name = "dtpDataEmissao";
             this.dtpDataEmissao.Size = new System.Drawing.Size(115, 22);
-            this.dtpDataEmissao.TabIndex = 184;
+            this.dtpDataEmissao.TabIndex = 5;
             // 
             // dtpDataVencimento
             // 
@@ -280,7 +288,7 @@
             this.dtpDataVencimento.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDataVencimento.Name = "dtpDataVencimento";
             this.dtpDataVencimento.Size = new System.Drawing.Size(109, 22);
-            this.dtpDataVencimento.TabIndex = 183;
+            this.dtpDataVencimento.TabIndex = 6;
             // 
             // txtCodCliente
             // 
@@ -353,7 +361,7 @@
             this.txtValorParcela.Name = "txtValorParcela";
             this.txtValorParcela.ShortcutsEnabled = false;
             this.txtValorParcela.Size = new System.Drawing.Size(189, 22);
-            this.txtValorParcela.TabIndex = 173;
+            this.txtValorParcela.TabIndex = 8;
             this.txtValorParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblValorFinal
@@ -372,7 +380,7 @@
             this.txtNumParcela.Name = "txtNumParcela";
             this.txtNumParcela.ShortcutsEnabled = false;
             this.txtNumParcela.Size = new System.Drawing.Size(83, 22);
-            this.txtNumParcela.TabIndex = 172;
+            this.txtNumParcela.TabIndex = 7;
             this.txtNumParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblValorParcela
@@ -390,7 +398,7 @@
             this.txtNumDaNota.Name = "txtNumDaNota";
             this.txtNumDaNota.ShortcutsEnabled = false;
             this.txtNumDaNota.Size = new System.Drawing.Size(129, 22);
-            this.txtNumDaNota.TabIndex = 174;
+            this.txtNumDaNota.TabIndex = 3;
             this.txtNumDaNota.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblNumParcela
@@ -408,7 +416,7 @@
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.ShortcutsEnabled = false;
             this.txtSerie.Size = new System.Drawing.Size(46, 22);
-            this.txtSerie.TabIndex = 176;
+            this.txtSerie.TabIndex = 2;
             this.txtSerie.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblNumNota

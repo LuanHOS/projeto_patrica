@@ -36,11 +36,11 @@
             // 
             // btnSave
             // 
-            this.btnSave.TabIndex = 3;
+            this.btnSave.TabIndex = 4;
             // 
             // btnSair
             // 
-            this.btnSair.TabIndex = 4;
+            this.btnSair.TabIndex = 5;
             // 
             // txtCodigo
             // 
@@ -52,7 +52,7 @@
             this.lblNome.AutoSize = true;
             this.lblNome.Location = new System.Drawing.Point(24, 92);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(107, 13);
+            this.lblNome.Size = new System.Drawing.Size(135, 16);
             this.lblNome.TabIndex = 3;
             this.lblNome.Text = "Unidade de Medida *";
             // 
@@ -64,7 +64,7 @@
             this.txtNome.MaxLength = 40;
             this.txtNome.Name = "txtNome";
             this.txtNome.ShortcutsEnabled = false;
-            this.txtNome.Size = new System.Drawing.Size(411, 20);
+            this.txtNome.Size = new System.Drawing.Size(411, 22);
             this.txtNome.TabIndex = 2;
             // 
             // lblSigla
@@ -72,7 +72,7 @@
             this.lblSigla.AutoSize = true;
             this.lblSigla.Location = new System.Drawing.Point(24, 153);
             this.lblSigla.Name = "lblSigla";
-            this.lblSigla.Size = new System.Drawing.Size(37, 13);
+            this.lblSigla.Size = new System.Drawing.Size(46, 16);
             this.lblSigla.TabIndex = 3;
             this.lblSigla.Text = "Sigla *";
             // 
@@ -84,8 +84,8 @@
             this.txtSigla.MaxLength = 40;
             this.txtSigla.Name = "txtSigla";
             this.txtSigla.ShortcutsEnabled = false;
-            this.txtSigla.Size = new System.Drawing.Size(155, 20);
-            this.txtSigla.TabIndex = 2;
+            this.txtSigla.Size = new System.Drawing.Size(155, 22);
+            this.txtSigla.TabIndex = 3;
             // 
             // frmCadastroUnidade_medida
             // 

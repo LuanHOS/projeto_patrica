@@ -95,7 +95,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.TabIndex = 23;
+            this.btnSave.TabIndex = 24;
             // 
             // checkBoxAtivo
             // 
@@ -103,7 +103,7 @@
             // 
             // btnSair
             // 
-            this.btnSair.TabIndex = 24;
+            this.btnSair.TabIndex = 25;
             // 
             // txtCodigo
             // 
@@ -155,7 +155,7 @@
             this.txtLimiteDeCredito.Name = "txtLimiteDeCredito";
             this.txtLimiteDeCredito.ShortcutsEnabled = false;
             this.txtLimiteDeCredito.Size = new System.Drawing.Size(183, 22);
-            this.txtLimiteDeCredito.TabIndex = 22;
+            this.txtLimiteDeCredito.TabIndex = 23;
             this.txtLimiteDeCredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // checkBoxLimiteDeCredito
@@ -164,7 +164,7 @@
             this.checkBoxLimiteDeCredito.Location = new System.Drawing.Point(383, 396);
             this.checkBoxLimiteDeCredito.Name = "checkBoxLimiteDeCredito";
             this.checkBoxLimiteDeCredito.Size = new System.Drawing.Size(18, 17);
-            this.checkBoxLimiteDeCredito.TabIndex = 103;
+            this.checkBoxLimiteDeCredito.TabIndex = 22;
             this.checkBoxLimiteDeCredito.UseVisualStyleBackColor = true;
             this.checkBoxLimiteDeCredito.CheckedChanged += new System.EventHandler(this.CheckBoxLimiteDeCredito_CheckedChanged);
             // 
