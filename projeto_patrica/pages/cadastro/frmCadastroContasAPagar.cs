@@ -171,12 +171,12 @@ namespace projeto_patrica.pages.cadastro
 
                     if (ConfirmarBaixa())
                     {
-                        oContaAPagar.Juros = Convert.ToDecimal(txtJuros.Text);
-                        oContaAPagar.Multa = Convert.ToDecimal(txtMulta.Text);
-                        oContaAPagar.Desconto = Convert.ToDecimal(txtDesconto.Text);
-                        oContaAPagar.JurosValor = Convert.ToDecimal(txtJurosReais.Text);
-                        oContaAPagar.MultaValor = Convert.ToDecimal(txtMultaReais.Text);
-                        oContaAPagar.DescontoValor = Convert.ToDecimal(txtDescontoReais.Text);
+                        oContaAPagar.Juros = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtJuros.Text) ? "0" : txtJuros.Text);
+                        oContaAPagar.Multa = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtMulta.Text) ? "0" : txtMulta.Text);
+                        oContaAPagar.Desconto = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtDesconto.Text) ? "0" : txtDesconto.Text);
+                        oContaAPagar.JurosValor = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtJurosReais.Text) ? "0" : txtJurosReais.Text);
+                        oContaAPagar.MultaValor = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtMultaReais.Text) ? "0" : txtMultaReais.Text);
+                        oContaAPagar.DescontoValor = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtDescontoReais.Text) ? "0" : txtDescontoReais.Text);
                         oContaAPagar.Situacao = 1;
                         oContaAPagar.ValorPago = Convert.ToDecimal(txtValorPago.Text);
                         oContaAPagar.DataPagamento = dtpDataPagamento.Value;
@@ -193,9 +193,9 @@ namespace projeto_patrica.pages.cadastro
                 }
                 else
                 {
-                    oContaAPagar.Juros = Convert.ToDecimal(txtJuros.Text);
-                    oContaAPagar.Multa = Convert.ToDecimal(txtMulta.Text);
-                    oContaAPagar.Desconto = Convert.ToDecimal(txtDesconto.Text);
+                    oContaAPagar.Juros = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtJuros.Text) ? "0" : txtJuros.Text);
+                    oContaAPagar.Multa = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtMulta.Text) ? "0" : txtMulta.Text);
+                    oContaAPagar.Desconto = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtDesconto.Text) ? "0" : txtDesconto.Text);
                     oContaAPagar.JurosValor = 0;
                     oContaAPagar.MultaValor = 0;
                     oContaAPagar.DescontoValor = 0;

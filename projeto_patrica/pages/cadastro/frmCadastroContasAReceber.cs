@@ -65,12 +65,12 @@ namespace projeto_patrica.pages.cadastro
 
                     if (ConfirmarBaixa())
                     {
-                        oContaAReceber.Juros = Convert.ToDecimal(txtJuros.Text);
-                        oContaAReceber.Multa = Convert.ToDecimal(txtMulta.Text);
-                        oContaAReceber.Desconto = Convert.ToDecimal(txtDesconto.Text);
-                        oContaAReceber.JurosValor = Convert.ToDecimal(txtJurosReais.Text);
-                        oContaAReceber.MultaValor = Convert.ToDecimal(txtMultaReais.Text);
-                        oContaAReceber.DescontoValor = Convert.ToDecimal(txtDescontoReais.Text);
+                        oContaAReceber.Juros = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtJuros.Text) ? "0" : txtJuros.Text);
+                        oContaAReceber.Multa = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtMulta.Text) ? "0" : txtMulta.Text);
+                        oContaAReceber.Desconto = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtDesconto.Text) ? "0" : txtDesconto.Text);
+                        oContaAReceber.JurosValor = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtJurosReais.Text) ? "0" : txtJurosReais.Text);
+                        oContaAReceber.MultaValor = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtMultaReais.Text) ? "0" : txtMultaReais.Text);
+                        oContaAReceber.DescontoValor = Convert.ToDecimal(string.IsNullOrWhiteSpace(txtDescontoReais.Text) ? "0" : txtDescontoReais.Text);
                         oContaAReceber.Situacao = 1;
                         oContaAReceber.ValorPago = Convert.ToDecimal(txtValorPago.Text);
                         oContaAReceber.DataPagamento = dtpDataPagamento.Value;
