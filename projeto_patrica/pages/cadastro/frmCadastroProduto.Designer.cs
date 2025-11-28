@@ -70,11 +70,11 @@
             // 
             // btnSave
             // 
-            this.btnSave.TabIndex = 17;
+            this.btnSave.TabIndex = 50;
             // 
             // btnSair
             // 
-            this.btnSair.TabIndex = 18;
+            this.btnSair.TabIndex = 51;
             // 
             // txtCodigo
             // 
@@ -148,7 +148,7 @@
             this.btnPesquisarFornecedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarFornecedor.Name = "btnPesquisarFornecedor";
             this.btnPesquisarFornecedor.Size = new System.Drawing.Size(49, 28);
-            this.btnPesquisarFornecedor.TabIndex = 8;
+            this.btnPesquisarFornecedor.TabIndex = 17;
             this.btnPesquisarFornecedor.Text = "🔎";
             this.btnPesquisarFornecedor.UseVisualStyleBackColor = true;
             this.btnPesquisarFornecedor.Click += new System.EventHandler(this.btnPesquisarFornecedor_Click);
@@ -162,7 +162,7 @@
             this.txtFornecedor.ReadOnly = true;
             this.txtFornecedor.ShortcutsEnabled = false;
             this.txtFornecedor.Size = new System.Drawing.Size(264, 20);
-            this.txtFornecedor.TabIndex = 7;
+            this.txtFornecedor.TabIndex = 16;
             // 
             // lblFornecedor
             // 
@@ -179,7 +179,7 @@
             this.btnPesquisarCategoria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarCategoria.Name = "btnPesquisarCategoria";
             this.btnPesquisarCategoria.Size = new System.Drawing.Size(49, 28);
-            this.btnPesquisarCategoria.TabIndex = 10;
+            this.btnPesquisarCategoria.TabIndex = 8;
             this.btnPesquisarCategoria.Text = "🔎";
             this.btnPesquisarCategoria.UseVisualStyleBackColor = true;
             this.btnPesquisarCategoria.Click += new System.EventHandler(this.btnPesquisarCategoria_Click);
@@ -193,7 +193,7 @@
             this.txtCategoria.ReadOnly = true;
             this.txtCategoria.ShortcutsEnabled = false;
             this.txtCategoria.Size = new System.Drawing.Size(345, 20);
-            this.txtCategoria.TabIndex = 9;
+            this.txtCategoria.TabIndex = 7;
             // 
             // lblCategoria
             // 
@@ -241,7 +241,7 @@
             this.btnPesquisarUnidadeMedida.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPesquisarUnidadeMedida.Name = "btnPesquisarUnidadeMedida";
             this.btnPesquisarUnidadeMedida.Size = new System.Drawing.Size(49, 28);
-            this.btnPesquisarUnidadeMedida.TabIndex = 12;
+            this.btnPesquisarUnidadeMedida.TabIndex = 10;
             this.btnPesquisarUnidadeMedida.Text = "🔎";
             this.btnPesquisarUnidadeMedida.UseVisualStyleBackColor = true;
             this.btnPesquisarUnidadeMedida.Click += new System.EventHandler(this.btnPesquisarUnidadeMedida_Click);
@@ -255,7 +255,7 @@
             this.txtUnidadeMedida.ReadOnly = true;
             this.txtUnidadeMedida.ShortcutsEnabled = false;
             this.txtUnidadeMedida.Size = new System.Drawing.Size(104, 20);
-            this.txtUnidadeMedida.TabIndex = 11;
+            this.txtUnidadeMedida.TabIndex = 9;
             // 
             // lblUnidadeMedida
             // 
@@ -293,7 +293,7 @@
             this.txtValorCompra.ReadOnly = true;
             this.txtValorCompra.ShortcutsEnabled = false;
             this.txtValorCompra.Size = new System.Drawing.Size(194, 20);
-            this.txtValorCompra.TabIndex = 13;
+            this.txtValorCompra.TabIndex = 11;
             this.txtValorCompra.Text = "0";
             this.txtValorCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValorCompra.Leave += new System.EventHandler(this.txtValorCompra_Leave);
@@ -307,7 +307,7 @@
             this.txtEstoque.ReadOnly = true;
             this.txtEstoque.ShortcutsEnabled = false;
             this.txtEstoque.Size = new System.Drawing.Size(194, 20);
-            this.txtEstoque.TabIndex = 16;
+            this.txtEstoque.TabIndex = 14;
             this.txtEstoque.Text = "0";
             this.txtEstoque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -337,7 +337,7 @@
             this.txtPorcentagemLucro.Name = "txtPorcentagemLucro";
             this.txtPorcentagemLucro.ShortcutsEnabled = false;
             this.txtPorcentagemLucro.Size = new System.Drawing.Size(194, 20);
-            this.txtPorcentagemLucro.TabIndex = 14;
+            this.txtPorcentagemLucro.TabIndex = 12;
             this.txtPorcentagemLucro.Text = "0";
             this.txtPorcentagemLucro.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPorcentagemLucro.Leave += new System.EventHandler(this.txtPorcentagemLucro_Leave);
@@ -350,7 +350,7 @@
             this.txtValorVenda.Name = "txtValorVenda";
             this.txtValorVenda.ShortcutsEnabled = false;
             this.txtValorVenda.Size = new System.Drawing.Size(194, 20);
-            this.txtValorVenda.TabIndex = 15;
+            this.txtValorVenda.TabIndex = 13;
             this.txtValorVenda.Text = "0";
             this.txtValorVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValorVenda.Leave += new System.EventHandler(this.txtValorVenda_Leave);
@@ -414,7 +414,7 @@
             this.btnRemoverFornecedor.Location = new System.Drawing.Point(1218, 95);
             this.btnRemoverFornecedor.Name = "btnRemoverFornecedor";
             this.btnRemoverFornecedor.Size = new System.Drawing.Size(75, 23);
-            this.btnRemoverFornecedor.TabIndex = 128;
+            this.btnRemoverFornecedor.TabIndex = 19;
             this.btnRemoverFornecedor.Text = "Remover";
             this.btnRemoverFornecedor.UseVisualStyleBackColor = true;
             this.btnRemoverFornecedor.Click += new System.EventHandler(this.btnRemoverFornecedor_Click);
@@ -424,7 +424,7 @@
             this.btnAdicionarFornecedor.Location = new System.Drawing.Point(1138, 95);
             this.btnAdicionarFornecedor.Name = "btnAdicionarFornecedor";
             this.btnAdicionarFornecedor.Size = new System.Drawing.Size(74, 23);
-            this.btnAdicionarFornecedor.TabIndex = 130;
+            this.btnAdicionarFornecedor.TabIndex = 18;
             this.btnAdicionarFornecedor.Text = "Adicionar ";
             this.btnAdicionarFornecedor.UseVisualStyleBackColor = true;
             this.btnAdicionarFornecedor.Click += new System.EventHandler(this.btnAdicionarFornecedor_Click);

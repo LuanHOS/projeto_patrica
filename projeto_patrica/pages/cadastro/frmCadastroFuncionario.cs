@@ -165,7 +165,7 @@ namespace projeto_patrica.pages.cadastro
                         );
                         break;
 
-                    case 1264: 
+                    case 1264:
                         MessageBox.Show(
                             "Não foi possível salvar o item.\n\nUm ou mais valores informados excedem o limite suportado pelo banco de dados.",
                             "Erro: Valor muito grande",
@@ -213,6 +213,7 @@ namespace projeto_patrica.pages.cadastro
             txtTurno.Clear();
             txtCargaHoraria.Clear();
             oFuncionario.ACidade = new cidade();
+            txtCodCidade.Clear();
             txtCidade.Clear();
             txtEstado.Clear();
             txtPais.Clear();
@@ -239,6 +240,7 @@ namespace projeto_patrica.pages.cadastro
             txtEndereco.Text = oFuncionario.Endereco;
             txtBairro.Text = oFuncionario.Bairro;
             txtCep.Text = oFuncionario.Cep;
+            txtCodCidade.Text = oFuncionario.ACidade.Id.ToString();
             txtCidade.Text = oFuncionario.ACidade.Nome;
             txtEstado.Text = oFuncionario.ACidade.OEstado.Nome;
             txtPais.Text = oFuncionario.ACidade.OEstado.OPais.Nome;
@@ -275,6 +277,7 @@ namespace projeto_patrica.pages.cadastro
             txtEndereco.Enabled = false;
             txtBairro.Enabled = false;
             txtCep.Enabled = false;
+            txtCodCidade.Enabled = false;
             txtCidade.Enabled = false;
             txtEstado.Enabled = false;
             txtPais.Enabled = false;
@@ -306,6 +309,7 @@ namespace projeto_patrica.pages.cadastro
             txtEndereco.Enabled = true;
             txtBairro.Enabled = true;
             txtCep.Enabled = true;
+            txtCodCidade.Enabled = true;
             txtCidade.Enabled = true;
             txtEstado.Enabled = true;
             txtPais.Enabled = true;
@@ -338,6 +342,7 @@ namespace projeto_patrica.pages.cadastro
                 controller.CarregaObj(cidade);
 
                 oFuncionario.ACidade = cidade;
+                txtCodCidade.Text = cidade.Id.ToString();
                 txtCidade.Text = cidade.Nome;
                 txtEstado.Text = cidade.OEstado.Nome;
                 txtPais.Text = cidade.OEstado.OPais.Nome;

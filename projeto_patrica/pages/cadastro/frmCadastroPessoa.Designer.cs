@@ -63,6 +63,7 @@
             this.txtEstado = new System.Windows.Forms.TextBox();
             this.txtPais = new System.Windows.Forms.TextBox();
             this.lblPais = new System.Windows.Forms.Label();
+            this.txtCodCidade = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnSave
@@ -87,12 +88,11 @@
             // txtCidade
             // 
             this.txtCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCidade.Location = new System.Drawing.Point(24, 161);
+            this.txtCidade.Location = new System.Drawing.Point(90, 161);
             this.txtCidade.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.ReadOnly = true;
-            this.txtCidade.Size = new System.Drawing.Size(235, 22);
-            this.txtCidade.Size = new System.Drawing.Size(291, 22);
+            this.txtCidade.Size = new System.Drawing.Size(225, 22);
             this.txtCidade.TabIndex = 6;
             // 
             // lblCidade
@@ -417,8 +417,18 @@
             this.lblPais.TabIndex = 102;
             this.lblPais.Text = "País *";
             // 
+            // txtCodCidade
+            // 
+            this.txtCodCidade.Location = new System.Drawing.Point(24, 161);
+            this.txtCodCidade.Name = "txtCodCidade";
+            this.txtCodCidade.ReadOnly = true;
+            this.txtCodCidade.Size = new System.Drawing.Size(60, 22);
+            this.txtCodCidade.TabIndex = 165;
+            this.txtCodCidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // frmCadastroPessoa
             // 
+            this.Controls.Add(this.txtCodCidade);
             this.Controls.Add(this.txtPais);
             this.Controls.Add(this.lblPais);
             this.Controls.Add(this.txtEstado);
@@ -502,6 +512,7 @@
             this.Controls.SetChildIndex(this.txtEstado, 0);
             this.Controls.SetChildIndex(this.lblPais, 0);
             this.Controls.SetChildIndex(this.txtPais, 0);
+            this.Controls.SetChildIndex(this.txtCodCidade, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -543,5 +554,6 @@
         protected System.Windows.Forms.TextBox txtEstado;
         protected System.Windows.Forms.TextBox txtPais;
         protected System.Windows.Forms.Label lblPais;
+        protected System.Windows.Forms.TextBox txtCodCidade;
     }
 }

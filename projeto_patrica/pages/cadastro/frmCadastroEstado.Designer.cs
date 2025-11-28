@@ -33,6 +33,7 @@
             this.txtPais = new System.Windows.Forms.TextBox();
             this.lblPais = new System.Windows.Forms.Label();
             this.btnPesquisarPais = new System.Windows.Forms.Button();
+            this.txtCodPais = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnSave
@@ -69,11 +70,11 @@
             // txtPais
             // 
             this.txtPais.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPais.Location = new System.Drawing.Point(24, 178);
+            this.txtPais.Location = new System.Drawing.Point(90, 178);
             this.txtPais.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPais.Name = "txtPais";
             this.txtPais.ReadOnly = true;
-            this.txtPais.Size = new System.Drawing.Size(417, 22);
+            this.txtPais.Size = new System.Drawing.Size(351, 22);
             this.txtPais.TabIndex = 3;
             // 
             // lblPais
@@ -96,8 +97,18 @@
             this.btnPesquisarPais.UseVisualStyleBackColor = true;
             this.btnPesquisarPais.Click += new System.EventHandler(this.btnPesquisarPais_Click);
             // 
+            // txtCodPais
+            // 
+            this.txtCodPais.Location = new System.Drawing.Point(24, 178);
+            this.txtCodPais.Name = "txtCodPais";
+            this.txtCodPais.ReadOnly = true;
+            this.txtCodPais.Size = new System.Drawing.Size(60, 22);
+            this.txtCodPais.TabIndex = 165;
+            this.txtCodPais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // frmCadastroEstado
             // 
+            this.Controls.Add(this.txtCodPais);
             this.Controls.Add(this.btnPesquisarPais);
             this.Controls.Add(this.txtPais);
             this.Controls.Add(this.lblPais);
@@ -122,6 +133,7 @@
             this.Controls.SetChildIndex(this.lblPais, 0);
             this.Controls.SetChildIndex(this.txtPais, 0);
             this.Controls.SetChildIndex(this.btnPesquisarPais, 0);
+            this.Controls.SetChildIndex(this.txtCodPais, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,5 +146,6 @@
         private System.Windows.Forms.TextBox txtPais;
         private System.Windows.Forms.Label lblPais;
         private System.Windows.Forms.Button btnPesquisarPais;
+        private System.Windows.Forms.TextBox txtCodPais;
     }
 }

@@ -165,9 +165,6 @@ namespace projeto_patrica.pages.cadastro
             }
         }
 
-
-
-
         public override void Limpartxt()
         {
             base.Limpartxt();
@@ -181,11 +178,13 @@ namespace projeto_patrica.pages.cadastro
             txtEndereco.Clear();
             txtBairro.Clear();
             txtCep.Clear();
+            txtCodCidade.Clear();
             txtCidade.Clear();
             txtEstado.Clear();
             txtPais.Clear();
             txtNumeroEndereco.Clear();
             txtComplementoEndereco.Clear();
+            txtCodCondicaoPagamento.Clear();
             txtCondicaoPagamento.Clear();
             comboBoxTipo.SelectedIndex = -1;
             comboBoxGenero.SelectedIndex = -1;
@@ -210,11 +209,13 @@ namespace projeto_patrica.pages.cadastro
             txtEndereco.Text = oFornecedor.Endereco;
             txtBairro.Text = oFornecedor.Bairro;
             txtCep.Text = oFornecedor.Cep;
+            txtCodCidade.Text = oFornecedor.ACidade.Id.ToString();
             txtCidade.Text = oFornecedor.ACidade.Nome;
             txtEstado.Text = oFornecedor.ACidade.OEstado.Nome;
             txtPais.Text = oFornecedor.ACidade.OEstado.OPais.Nome;
             txtNumeroEndereco.Text = oFornecedor.NumeroEndereco;
             txtComplementoEndereco.Text = oFornecedor.ComplementoEndereco;
+            txtCodCondicaoPagamento.Text = oFornecedor.ACondicaoPagamento.Id.ToString();
             txtCondicaoPagamento.Text = oFornecedor.ACondicaoPagamento.Descricao;
             dtpDataNascimentoCriacao.Value = (oFornecedor.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oFornecedor.DataNascimento_criacao;
             comboBoxTipo.SelectedIndex = oFornecedor.TipoPessoa == 'F' ? 0 : 1;
@@ -268,7 +269,6 @@ namespace projeto_patrica.pages.cadastro
                 txtCpfCnpj.MaxLength = 14;
             }
 
-
             lblRg.Text = isFisica ? "RG *" : "Inscrição Estadual *";
             lblDataNascimento.Text = isFisica ? "Data de Nascimento *" : "Data de Criação *";
         }
@@ -288,6 +288,7 @@ namespace projeto_patrica.pages.cadastro
                 controller.CarregaObj(cidade);
 
                 oFornecedor.ACidade = cidade;
+                txtCodCidade.Text = cidade.Id.ToString();
                 txtCidade.Text = cidade.Nome;
                 txtEstado.Text = cidade.OEstado.Nome;
                 txtPais.Text = cidade.OEstado.OPais.Nome;
@@ -316,6 +317,7 @@ namespace projeto_patrica.pages.cadastro
             if (oCondicaoPagamento.Id != 0)
             {
                 oFornecedor.ACondicaoPagamento = oCondicaoPagamento;
+                txtCodCondicaoPagamento.Text = oCondicaoPagamento.Id.ToString();
                 txtCondicaoPagamento.Text = oCondicaoPagamento.Descricao;
             }
         }
@@ -331,6 +333,7 @@ namespace projeto_patrica.pages.cadastro
             txtEndereco.Enabled = habilita;
             txtBairro.Enabled = habilita;
             txtCep.Enabled = habilita;
+            txtCodCidade.Enabled = habilita;
             txtCidade.Enabled = habilita;
             txtEstado.Enabled = habilita;
             txtPais.Enabled = habilita;
@@ -340,6 +343,7 @@ namespace projeto_patrica.pages.cadastro
             comboBoxGenero.Enabled = habilita;
             btnPesquisarCidade.Enabled = habilita;
             btnPesquisarCondicaoPagamento.Enabled = habilita;
+            txtCodCondicaoPagamento.Enabled = habilita;
             txtCondicaoPagamento.Enabled = habilita;
         }
     }

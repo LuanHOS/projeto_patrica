@@ -31,6 +31,7 @@
             this.btnPesquisarCondicaoPagamento = new System.Windows.Forms.Button();
             this.txtCondicaoPagamento = new System.Windows.Forms.TextBox();
             this.lblCondicaoPagamento = new System.Windows.Forms.Label();
+            this.txtCodCondicaoPagamento = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBoxTipo
@@ -72,12 +73,11 @@
             // txtCondicaoPagamento
             // 
             this.txtCondicaoPagamento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCondicaoPagamento.Location = new System.Drawing.Point(24, 395);
+            this.txtCondicaoPagamento.Location = new System.Drawing.Point(91, 395);
             this.txtCondicaoPagamento.Margin = new System.Windows.Forms.Padding(4);
             this.txtCondicaoPagamento.Name = "txtCondicaoPagamento";
             this.txtCondicaoPagamento.ReadOnly = true;
-            //this.txtCondicaoPagamento.Size = new System.Drawing.Size(228, 22);
-            this.txtCondicaoPagamento.Size = new System.Drawing.Size(291, 22);
+            this.txtCondicaoPagamento.Size = new System.Drawing.Size(224, 22);
             this.txtCondicaoPagamento.TabIndex = 20;
             // 
             // lblCondicaoPagamento
@@ -90,8 +90,18 @@
             this.lblCondicaoPagamento.TabIndex = 36;
             this.lblCondicaoPagamento.Text = "Condição de Pagamento *";
             // 
+            // txtCodCondicaoPagamento
+            // 
+            this.txtCodCondicaoPagamento.Location = new System.Drawing.Point(24, 395);
+            this.txtCodCondicaoPagamento.Name = "txtCodCondicaoPagamento";
+            this.txtCodCondicaoPagamento.ReadOnly = true;
+            this.txtCodCondicaoPagamento.Size = new System.Drawing.Size(60, 22);
+            this.txtCodCondicaoPagamento.TabIndex = 166;
+            this.txtCodCondicaoPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // frmCadastroFornecedor
             // 
+            this.Controls.Add(this.txtCodCondicaoPagamento);
             this.Controls.Add(this.btnPesquisarCondicaoPagamento);
             this.Controls.Add(this.txtCondicaoPagamento);
             this.Controls.Add(this.lblCondicaoPagamento);
@@ -146,6 +156,7 @@
             this.Controls.SetChildIndex(this.lblCondicaoPagamento, 0);
             this.Controls.SetChildIndex(this.txtCondicaoPagamento, 0);
             this.Controls.SetChildIndex(this.btnPesquisarCondicaoPagamento, 0);
+            this.Controls.SetChildIndex(this.txtCodCondicaoPagamento, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,5 +166,6 @@
         private System.Windows.Forms.Button btnPesquisarCondicaoPagamento;
         private System.Windows.Forms.TextBox txtCondicaoPagamento;
         private System.Windows.Forms.Label lblCondicaoPagamento;
+        private System.Windows.Forms.TextBox txtCodCondicaoPagamento;
     }
 }

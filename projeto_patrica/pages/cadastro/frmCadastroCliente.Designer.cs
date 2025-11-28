@@ -34,6 +34,7 @@
             this.lblLimiteDeCredito = new System.Windows.Forms.Label();
             this.txtLimiteDeCredito = new System.Windows.Forms.TextBox();
             this.checkBoxLimiteDeCredito = new System.Windows.Forms.CheckBox();
+            this.txtCodCondicaoPagamento = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtRgInscEstadual
@@ -122,11 +123,11 @@
             // txtCondicaoPagamento
             // 
             this.txtCondicaoPagamento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCondicaoPagamento.Location = new System.Drawing.Point(24, 393);
+            this.txtCondicaoPagamento.Location = new System.Drawing.Point(90, 393);
             this.txtCondicaoPagamento.Name = "txtCondicaoPagamento";
             this.txtCondicaoPagamento.ReadOnly = true;
             this.txtCondicaoPagamento.ShortcutsEnabled = false;
-            this.txtCondicaoPagamento.Size = new System.Drawing.Size(291, 22);
+            this.txtCondicaoPagamento.Size = new System.Drawing.Size(225, 22);
             this.txtCondicaoPagamento.TabIndex = 20;
             // 
             // lblCondicaoPagamento
@@ -168,8 +169,18 @@
             this.checkBoxLimiteDeCredito.UseVisualStyleBackColor = true;
             this.checkBoxLimiteDeCredito.CheckedChanged += new System.EventHandler(this.CheckBoxLimiteDeCredito_CheckedChanged);
             // 
+            // txtCodCondicaoPagamento
+            // 
+            this.txtCodCondicaoPagamento.Location = new System.Drawing.Point(24, 394);
+            this.txtCodCondicaoPagamento.Name = "txtCodCondicaoPagamento";
+            this.txtCodCondicaoPagamento.ReadOnly = true;
+            this.txtCodCondicaoPagamento.Size = new System.Drawing.Size(60, 22);
+            this.txtCodCondicaoPagamento.TabIndex = 166;
+            this.txtCodCondicaoPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // frmCadastroCliente
             // 
+            this.Controls.Add(this.txtCodCondicaoPagamento);
             this.Controls.Add(this.checkBoxLimiteDeCredito);
             this.Controls.Add(this.txtLimiteDeCredito);
             this.Controls.Add(this.lblLimiteDeCredito);
@@ -231,6 +242,7 @@
             this.Controls.SetChildIndex(this.lblLimiteDeCredito, 0);
             this.Controls.SetChildIndex(this.txtLimiteDeCredito, 0);
             this.Controls.SetChildIndex(this.checkBoxLimiteDeCredito, 0);
+            this.Controls.SetChildIndex(this.txtCodCondicaoPagamento, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,5 +256,6 @@
         private System.Windows.Forms.Label lblLimiteDeCredito;
         private System.Windows.Forms.TextBox txtLimiteDeCredito;
         private System.Windows.Forms.CheckBox checkBoxLimiteDeCredito;
+        private System.Windows.Forms.TextBox txtCodCondicaoPagamento;
     }
 }

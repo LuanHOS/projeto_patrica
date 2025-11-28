@@ -116,6 +116,7 @@ namespace projeto_patrica.pages.cadastro
             base.Limpartxt();
 
             txtNome.Clear();
+            txtCodPais.Clear();
             txtPais.Clear();
             oEstado.OPais = new pais();
         }
@@ -126,6 +127,7 @@ namespace projeto_patrica.pages.cadastro
 
             txtCodigo.Text = oEstado.Id.ToString();
             txtNome.Text = oEstado.Nome;
+            txtCodPais.Text = oEstado.OPais.Id.ToString();
             txtPais.Text = oEstado.OPais.Nome;
             checkBoxAtivo.Checked = oEstado.Ativo;
             lblDataCadastroData.Text = oEstado.DataCadastro.ToShortDateString();
@@ -137,6 +139,7 @@ namespace projeto_patrica.pages.cadastro
             base.Bloqueiatxt();
 
             txtNome.Enabled = false;
+            txtCodPais.Enabled = false;
             txtPais.Enabled = false;
             btnPesquisarPais.Enabled = false;
         }
@@ -146,6 +149,7 @@ namespace projeto_patrica.pages.cadastro
             base.Desbloqueiatxt();
 
             txtNome.Enabled = true;
+            txtCodPais.Enabled = true;
             txtPais.Enabled = true;
             btnPesquisarPais.Enabled = true;
         }
@@ -163,6 +167,7 @@ namespace projeto_patrica.pages.cadastro
             if (oPais.Id != 0)
             {
                 oEstado.OPais = oPais;
+                txtCodPais.Text = oPais.Id.ToString();
                 txtPais.Text = oPais.Nome;
             }
         }

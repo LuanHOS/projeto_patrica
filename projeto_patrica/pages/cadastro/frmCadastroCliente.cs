@@ -165,7 +165,7 @@ namespace projeto_patrica.pages.cadastro
                         );
                         break;
 
-                    case 1264: 
+                    case 1264:
                         MessageBox.Show(
                             "Não foi possível salvar o item.\n\nUm ou mais valores informados excedem o limite suportado pelo banco de dados.",
                             "Erro: Valor muito grande",
@@ -206,12 +206,14 @@ namespace projeto_patrica.pages.cadastro
             txtEndereco.Clear();
             txtBairro.Clear();
             txtCep.Clear();
+            txtCodCidade.Clear();
             txtCidade.Clear();
             txtEstado.Clear();
             txtPais.Clear();
             txtNumeroEndereco.Clear();
             txtComplementoEndereco.Clear();
             txtLimiteDeCredito.Clear();
+            txtCodCondicaoPagamento.Clear();
             txtCondicaoPagamento.Clear();
             comboBoxTipo.SelectedIndex = -1;
             comboBoxGenero.SelectedIndex = -1;
@@ -237,9 +239,11 @@ namespace projeto_patrica.pages.cadastro
             txtEndereco.Text = oCliente.Endereco;
             txtBairro.Text = oCliente.Bairro;
             txtCep.Text = oCliente.Cep;
+            txtCodCidade.Text = oCliente.ACidade.Id.ToString();
             txtCidade.Text = oCliente.ACidade.Nome;
             txtEstado.Text = oCliente.ACidade.OEstado.Nome;
             txtPais.Text = oCliente.ACidade.OEstado.OPais.Nome;
+            txtCodCondicaoPagamento.Text = oCliente.ACondicaoPagamento.Id.ToString();
             txtCondicaoPagamento.Text = oCliente.ACondicaoPagamento.Descricao;
             dtpDataNascimentoCriacao.Value = (oCliente.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oCliente.DataNascimento_criacao;
             txtNumeroEndereco.Text = oCliente.NumeroEndereco;
@@ -326,6 +330,7 @@ namespace projeto_patrica.pages.cadastro
                 controller.CarregaObj(cidade);
 
                 oCliente.ACidade = cidade;
+                txtCodCidade.Text = cidade.Id.ToString();
                 txtCidade.Text = cidade.Nome;
                 txtEstado.Text = cidade.OEstado.Nome;
                 txtPais.Text = cidade.OEstado.OPais.Nome;
@@ -360,6 +365,7 @@ namespace projeto_patrica.pages.cadastro
             if (oCondicaoPagamento.Id != 0)
             {
                 oCliente.ACondicaoPagamento = oCondicaoPagamento;
+                txtCodCondicaoPagamento.Text = oCondicaoPagamento.Id.ToString();
                 txtCondicaoPagamento.Text = oCondicaoPagamento.Descricao;
             }
         }
@@ -375,9 +381,11 @@ namespace projeto_patrica.pages.cadastro
             txtEndereco.Enabled = habilita;
             txtBairro.Enabled = habilita;
             txtCep.Enabled = habilita;
+            txtCodCidade.Enabled = habilita;
             txtCidade.Enabled = habilita;
             txtEstado.Enabled = habilita;
             txtPais.Enabled = habilita;
+            txtCodCondicaoPagamento.Enabled = habilita;
             txtCondicaoPagamento.Enabled = habilita;
             dtpDataNascimentoCriacao.Enabled = habilita;
             comboBoxGenero.Enabled = habilita;

@@ -31,7 +31,7 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            if (string.IsNullOrWhiteSpace(txtNome.Text) || 
+            if (string.IsNullOrWhiteSpace(txtNome.Text) ||
                 aCidade.OEstado == null
                 )
             {
@@ -117,6 +117,7 @@ namespace projeto_patrica.pages.cadastro
             base.Limpartxt();
 
             txtNome.Clear();
+            txtCodEstado.Clear();
             txtEstado.Clear();
             aCidade.OEstado = new estado();
         }
@@ -127,6 +128,7 @@ namespace projeto_patrica.pages.cadastro
 
             txtCodigo.Text = aCidade.Id.ToString();
             txtNome.Text = aCidade.Nome;
+            txtCodEstado.Text = aCidade.OEstado.Id.ToString();
             txtEstado.Text = aCidade.OEstado.Nome;
             checkBoxAtivo.Checked = aCidade.Ativo;
             lblDataCadastroData.Text = aCidade.DataCadastro.ToShortDateString();
@@ -138,6 +140,7 @@ namespace projeto_patrica.pages.cadastro
             base.Bloqueiatxt();
 
             txtNome.Enabled = false;
+            txtCodEstado.Enabled = false;
             txtEstado.Enabled = false;
             btnPesquisarEstado.Enabled = false;
         }
@@ -147,6 +150,7 @@ namespace projeto_patrica.pages.cadastro
             base.Desbloqueiatxt();
 
             txtNome.Enabled = true;
+            txtCodEstado.Enabled = true;
             txtEstado.Enabled = true;
             btnPesquisarEstado.Enabled = true;
         }
@@ -164,6 +168,7 @@ namespace projeto_patrica.pages.cadastro
             if (oEstado.Id != 0)
             {
                 aCidade.OEstado = oEstado;
+                txtCodEstado.Text = oEstado.Id.ToString();
                 txtEstado.Text = oEstado.Nome;
             }
         }

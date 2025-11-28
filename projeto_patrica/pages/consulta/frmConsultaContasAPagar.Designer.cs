@@ -156,7 +156,7 @@
             this.btnDarBaixa.Location = new System.Drawing.Point(955, 617);
             this.btnDarBaixa.Name = "btnDarBaixa";
             this.btnDarBaixa.Size = new System.Drawing.Size(80, 34);
-            this.btnDarBaixa.TabIndex = 12;
+            this.btnDarBaixa.TabIndex = 6;
             this.btnDarBaixa.Text = "Dar Baixa";
             this.btnDarBaixa.UseVisualStyleBackColor = true;
             this.btnDarBaixa.Click += new System.EventHandler(this.btnDarBaixa_Click);

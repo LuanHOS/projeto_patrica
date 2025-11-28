@@ -34,6 +34,7 @@
             this.lblEstado = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
+            this.txtCodEstado = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnSave
@@ -71,12 +72,12 @@
             // txtEstado
             // 
             this.txtEstado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEstado.Location = new System.Drawing.Point(24, 177);
+            this.txtEstado.Location = new System.Drawing.Point(90, 177);
             this.txtEstado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.ReadOnly = true;
             this.txtEstado.ShortcutsEnabled = false;
-            this.txtEstado.Size = new System.Drawing.Size(421, 22);
+            this.txtEstado.Size = new System.Drawing.Size(355, 22);
             this.txtEstado.TabIndex = 3;
             // 
             // lblEstado
@@ -108,8 +109,18 @@
             this.lblNome.TabIndex = 10;
             this.lblNome.Text = "Cidade *";
             // 
+            // txtCodEstado
+            // 
+            this.txtCodEstado.Location = new System.Drawing.Point(24, 177);
+            this.txtCodEstado.Name = "txtCodEstado";
+            this.txtCodEstado.ReadOnly = true;
+            this.txtCodEstado.Size = new System.Drawing.Size(60, 22);
+            this.txtCodEstado.TabIndex = 165;
+            this.txtCodEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // frmCadastroCidade
             // 
+            this.Controls.Add(this.txtCodEstado);
             this.Controls.Add(this.btnPesquisarEstado);
             this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.lblEstado);
@@ -119,6 +130,12 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastroCidade";
             this.Text = "Cadastro de Cidade";
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.lblNome, 0);
+            this.Controls.SetChildIndex(this.txtNome, 0);
+            this.Controls.SetChildIndex(this.lblEstado, 0);
+            this.Controls.SetChildIndex(this.txtEstado, 0);
+            this.Controls.SetChildIndex(this.btnPesquisarEstado, 0);
             this.Controls.SetChildIndex(this.checkBoxAtivo, 0);
             this.Controls.SetChildIndex(this.lblCod, 0);
             this.Controls.SetChildIndex(this.lblDataCadastro, 0);
@@ -127,15 +144,10 @@
             this.Controls.SetChildIndex(this.lblDataUltimaEdicaoData, 0);
             this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditou, 0);
             this.Controls.SetChildIndex(this.lblUltimoUsuarioQueEditouNome, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.btnSair, 0);
             this.Controls.SetChildIndex(this.txtCodigo, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
-            this.Controls.SetChildIndex(this.lblNome, 0);
-            this.Controls.SetChildIndex(this.txtNome, 0);
-            this.Controls.SetChildIndex(this.lblEstado, 0);
-            this.Controls.SetChildIndex(this.txtEstado, 0);
-            this.Controls.SetChildIndex(this.btnPesquisarEstado, 0);
+            this.Controls.SetChildIndex(this.txtCodEstado, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,5 +161,6 @@
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label lblNome;
+        private System.Windows.Forms.TextBox txtCodEstado;
     }
 }
