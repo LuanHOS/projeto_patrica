@@ -285,12 +285,6 @@
     <Compile Include="pages\cadastro\frmCadastroProduto.Designer.cs">
       <DependentUpon>frmCadastroProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\cadastro\frmCadastroTransportadora.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="pages\cadastro\frmCadastroTransportadora.Designer.cs">
-      <DependentUpon>frmCadastroTransportadora.cs</DependentUpon>
-    </Compile>
     <Compile Include="pages\cadastro\frmCadastroUnidade_medida.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -393,12 +387,6 @@
     <Compile Include="pages\consulta\frmConsultaProduto.Designer.cs">
       <DependentUpon>frmConsultaProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\consulta\frmConsultaTransportadora.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="pages\consulta\frmConsultaTransportadora.Designer.cs">
-      <DependentUpon>frmConsultaTransportadora.cs</DependentUpon>
-    </Compile>
     <Compile Include="pages\consulta\frmConsultaUnidade_medida.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -480,9 +468,6 @@
     <EmbeddedResource Include="pages\cadastro\frmCadastroProduto.resx">
       <DependentUpon>frmCadastroProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\cadastro\frmCadastroTransportadora.resx">
-      <DependentUpon>frmCadastroTransportadora.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="pages\cadastro\frmCadastroUnidade_medida.resx">
       <DependentUpon>frmCadastroUnidade_medida.cs</DependentUpon>
     </EmbeddedResource>
@@ -539,9 +524,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaProduto.resx">
       <DependentUpon>frmConsultaProduto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="pages\consulta\frmConsultaTransportadora.resx">
-      <DependentUpon>frmConsultaTransportadora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\consulta\frmConsultaUnidade_medida.resx">
       <DependentUpon>frmConsultaUnidade_medida.cs</DependentUpon>

@@ -142,14 +142,6 @@ namespace projeto_patrica
         /*
          * */
 
-        private void transportadoraToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            aInter.pecaConsultaTransportadora(aTransportadora, oController_transportadora);
-        }
-
-        /*
-         * */
-
         private void marcaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             aInter.pecaConsultaMarca(aMarca, oController_marca);
