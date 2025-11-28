@@ -388,7 +388,7 @@ namespace projeto_patrica.pages.cadastro
             txtCodCondicaoPagamento.Enabled = habilita;
             txtCondicaoPagamento.Enabled = habilita;
             dtpDataNascimentoCriacao.Enabled = habilita;
-            comboBoxGenero.Enabled = habilita;
+            comboBoxGenero.Enabled = habilita && isFisica;
             btnPesquisarCidade.Enabled = habilita;
             btnPesquisarCondicaoPagamento.Enabled = habilita;
             txtNumeroEndereco.Enabled = habilita;
