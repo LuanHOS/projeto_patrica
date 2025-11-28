@@ -227,7 +227,7 @@
             this.lblSalario.Name = "lblSalario";
             this.lblSalario.Size = new System.Drawing.Size(66, 13);
             this.lblSalario.TabIndex = 30;
-            this.lblSalario.Text = "Salário (R$)*";
+            this.lblSalario.Text = "Salário (R$) *";
             // 
             // txtSalario
             // 

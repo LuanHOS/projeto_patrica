@@ -95,6 +95,7 @@
             this.lblUltimoUsuarioQueEditou.Size = new System.Drawing.Size(132, 13);
             this.lblUltimoUsuarioQueEditou.TabIndex = 3;
             this.lblUltimoUsuarioQueEditou.Text = "Último Usuário que Editou:";
+            this.lblUltimoUsuarioQueEditou.Visible = false;
             // 
             // lblDataCadastroData
             // 
@@ -122,6 +123,7 @@
             this.lblUltimoUsuarioQueEditouNome.Size = new System.Drawing.Size(10, 13);
             this.lblUltimoUsuarioQueEditouNome.TabIndex = 3;
             this.lblUltimoUsuarioQueEditouNome.Text = "-";
+            this.lblUltimoUsuarioQueEditouNome.Visible = false;
             // 
             // checkBoxAtivo
             // 

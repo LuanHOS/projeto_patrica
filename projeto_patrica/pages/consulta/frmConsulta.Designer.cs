@@ -112,6 +112,7 @@
             // 
             this.clmCod.Text = "Código";
             this.clmCod.Width = 100;
+            this.clmCod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // bntLimparPesquisa
             // 
