@@ -21,7 +21,6 @@ namespace projeto_patrica
         private fornecedor oFornecedor;
         private categoria aCategoria;
         private marca aMarca;
-        private transportadora aTransportadora;
         private unidade_medida aUnidadeMedida;
         private produto oProduto;
         private compra aCompra;
@@ -40,7 +39,6 @@ namespace projeto_patrica
         private Controller_fornecedor oController_fornecedor;
         private Controller_categoria oController_categoria;
         private Controller_marca oController_marca;
-        private Controller_transportadora oController_transportadora;
         private Controller_unidade_medida oController_unidade_medida;
         private Controller_produto oController_produto;
         private Controller_compra oController_compra;
@@ -69,7 +67,6 @@ namespace projeto_patrica
             oFornecedor = new fornecedor();
             aCategoria = new categoria();
             aMarca = new marca();
-            aTransportadora = new transportadora();
             aUnidadeMedida = new unidade_medida();
             oProduto = new produto();
             aCompra = new compra();
@@ -88,7 +85,6 @@ namespace projeto_patrica
             oController_fornecedor = new Controller_fornecedor();
             oController_categoria = new Controller_categoria();
             oController_marca = new Controller_marca();
-            oController_transportadora = new Controller_transportadora();
             oController_unidade_medida = new Controller_unidade_medida();
             oController_produto = new Controller_produto();
             oController_compra = new Controller_compra();
@@ -104,8 +100,6 @@ namespace projeto_patrica
             oController_fornecedor.AController_cidade = oController_cidade;
             oController_cliente.AController_condicaoPagamento = oController_condicaoPagamento;
             oController_fornecedor.AController_condicaoPagamento = oController_condicaoPagamento;
-            oController_transportadora.AController_cidade = oController_cidade;
-            oController_transportadora.AController_condicaoPagamento = oController_condicaoPagamento;
             oController_produto.AController_marca = oController_marca;
             oController_produto.AController_categoria = oController_categoria;
             oController_produto.AController_unidade_medida = oController_unidade_medida;

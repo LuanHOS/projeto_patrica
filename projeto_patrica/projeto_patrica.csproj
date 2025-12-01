@@ -133,7 +133,6 @@
     <Compile Include="classes\pessoa.cs" />
     <Compile Include="classes\produto.cs" />
     <Compile Include="classes\produto_fornecedor.cs" />
-    <Compile Include="classes\transportadora.cs" />
     <Compile Include="classes\unidade_medida.cs" />
     <Compile Include="classes\venda.cs" />
     <Compile Include="controller\Controller.cs" />
@@ -152,7 +151,6 @@
     <Compile Include="controller\Controller_pais.cs" />
     <Compile Include="controller\Controller_produto.cs" />
     <Compile Include="controller\Controller_produto_fornecedor.cs" />
-    <Compile Include="controller\Controller_transportadora.cs" />
     <Compile Include="controller\Controller_unidade_medida.cs" />
     <Compile Include="controller\Controller_venda.cs" />
     <Compile Include="dao\Dao.cs" />
@@ -173,7 +171,6 @@
     <Compile Include="dao\Dao_pais.cs" />
     <Compile Include="dao\Dao_produto.cs" />
     <Compile Include="dao\Dao_produto_fornecedor.cs" />
-    <Compile Include="dao\Dao_transportadora.cs" />
     <Compile Include="dao\Dao_unidade_medida.cs" />
     <Compile Include="dao\Dao_venda.cs" />
     <Compile Include="frmBase.cs">
