@@ -99,6 +99,20 @@ namespace projeto_patrica.pages.cadastro
                 return;
             }
 
+            if (dtpDataAdmissao.Value < dtpDataNascimentoCriacao.Value)
+            {
+                MessageBox.Show("A data de admissão não pode ser anterior à data de nascimento.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dtpDataAdmissao.Focus();
+                return;
+            }
+
+            if (dtpDataDemissao.Checked && dtpDataDemissao.Value < dtpDataNascimentoCriacao.Value)
+            {
+                MessageBox.Show("A data de demissão não pode ser anterior à data de nascimento.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dtpDataDemissao.Focus();
+                return;
+            }
+
             if (dtpDataDemissao.Checked && dtpDataDemissao.Value < dtpDataAdmissao.Value)
             {
                 MessageBox.Show("A data de demissão não pode ser anterior à data de admissão.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
