@@ -193,6 +193,9 @@ namespace projeto_patrica.pages.cadastro
             oFornecedor.ACondicaoPagamento = new condicaoPagamento();
             HabilitarCampos(false);
             comboBoxTipo.Enabled = true;
+
+            isEstrangeiro = false;
+            lblCep.Text = "CEP *";
         }
 
         public override void Carregatxt()
@@ -213,6 +216,10 @@ namespace projeto_patrica.pages.cadastro
             txtCidade.Text = oFornecedor.ACidade.Nome;
             txtEstado.Text = oFornecedor.ACidade.OEstado.Nome;
             txtPais.Text = oFornecedor.ACidade.OEstado.OPais.Nome;
+
+            isEstrangeiro = oFornecedor.ACidade.OEstado.OPais.Nome.Trim().ToUpper() != "BRASIL";
+            lblCep.Text = isEstrangeiro ? "CEP" : "CEP *";
+
             txtNumeroEndereco.Text = oFornecedor.NumeroEndereco;
             txtComplementoEndereco.Text = oFornecedor.ComplementoEndereco;
             txtCodCondicaoPagamento.Text = oFornecedor.ACondicaoPagamento.Id.ToString();
@@ -298,9 +305,15 @@ namespace projeto_patrica.pages.cadastro
                 lblCep.Text = isEstrangeiro ? "CEP" : "CEP *";
 
                 if (isFisica)
+                {
                     lblCpf.Text = isEstrangeiro ? "CPF" : "CPF *";
+                    txtCpfCnpj.MaxLength = 11;
+                }
                 else
+                {
                     lblCpf.Text = isEstrangeiro ? "CNPJ" : "CNPJ *";
+                    txtCpfCnpj.MaxLength = 14;
+                }
             }
         }
 

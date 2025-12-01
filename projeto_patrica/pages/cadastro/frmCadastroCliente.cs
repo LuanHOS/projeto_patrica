@@ -223,6 +223,10 @@ namespace projeto_patrica.pages.cadastro
             checkBoxLimiteDeCredito.Checked = false;
             HabilitarCampos(false);
             comboBoxTipo.Enabled = true;
+
+            isEstrangeiro = false;
+            lblCep.Text = "CEP *";
+            if (isFisica) lblCpf.Text = "CPF *"; else lblCpf.Text = "CNPJ *";
         }
 
         public override void Carregatxt()
@@ -243,6 +247,10 @@ namespace projeto_patrica.pages.cadastro
             txtCidade.Text = oCliente.ACidade.Nome;
             txtEstado.Text = oCliente.ACidade.OEstado.Nome;
             txtPais.Text = oCliente.ACidade.OEstado.OPais.Nome;
+
+            isEstrangeiro = oCliente.ACidade.OEstado.OPais.Nome.Trim().ToUpper() != "BRASIL";
+            lblCep.Text = isEstrangeiro ? "CEP" : "CEP *";
+
             txtCodCondicaoPagamento.Text = oCliente.ACondicaoPagamento.Id.ToString();
             txtCondicaoPagamento.Text = oCliente.ACondicaoPagamento.Descricao;
             dtpDataNascimentoCriacao.Value = (oCliente.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oCliente.DataNascimento_criacao;
@@ -262,15 +270,23 @@ namespace projeto_patrica.pages.cadastro
 
             lblDataCadastroData.Text = oCliente.DataCadastro.ToShortDateString();
             lblDataUltimaEdicaoData.Text = oCliente.DataUltimaEdicao?.ToShortDateString() ?? " ";
-            comboBoxTipo.SelectedIndex = oCliente.TipoPessoa == 'F' ? 0 : 1;
+
+            isFisica = oCliente.TipoPessoa == 'F';
+            comboBoxTipo.SelectedIndex = isFisica ? 0 : 1;
             comboBoxTipo.Enabled = false;
             comboBoxGenero.SelectedIndex = oCliente.Genero == 'M' ? 0 : (oCliente.Genero == 'F' ? 1 : -1);
             checkBoxAtivo.Checked = oCliente.Ativo;
 
             if (isFisica)
+            {
                 txtCpfCnpj.MaxLength = 11;
+                lblCpf.Text = isEstrangeiro ? "CPF" : "CPF *";
+            }
             else
+            {
                 txtCpfCnpj.MaxLength = 14;
+                lblCpf.Text = isEstrangeiro ? "CNPJ" : "CNPJ *";
+            }
         }
 
         public override void Bloqueiatxt()

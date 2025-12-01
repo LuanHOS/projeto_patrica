@@ -240,6 +240,10 @@ namespace projeto_patrica.pages.cadastro
 
             dtpDataDemissao.Enabled = false;
             lblDataDemissao.Enabled = false;
+
+            isEstrangeiro = false;
+            lblCep.Text = "CEP *";
+            lblCpf.Text = "CPF *";
         }
 
         public override void Carregatxt()
@@ -260,6 +264,11 @@ namespace projeto_patrica.pages.cadastro
             txtCidade.Text = oFuncionario.ACidade.Nome;
             txtEstado.Text = oFuncionario.ACidade.OEstado.Nome;
             txtPais.Text = oFuncionario.ACidade.OEstado.OPais.Nome;
+
+            isEstrangeiro = oFuncionario.ACidade.OEstado.OPais.Nome.Trim().ToUpper() != "BRASIL";
+            lblCep.Text = isEstrangeiro ? "CEP" : "CEP *";
+            lblCpf.Text = isEstrangeiro ? "CPF" : "CPF *";
+
             dtpDataNascimentoCriacao.Value = (oFuncionario.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oFuncionario.DataNascimento_criacao;
             comboBoxGenero.SelectedIndex = oFuncionario.Genero == 'M' ? 0 : 1;
             checkBoxAtivo.Checked = oFuncionario.Ativo;
