@@ -18,6 +18,8 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastroFuncionario() : base()
         {
             InitializeComponent();
+            dtpDataAdmissao.MaxDate = DateTime.Today;
+            dtpDataDemissao.MaxDate = DateTime.Today;
             comboBoxTipo.SelectedIndex = 0;
             comboBoxTipo.Enabled = false;
         }

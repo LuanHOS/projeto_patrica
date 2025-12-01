@@ -17,6 +17,7 @@ namespace projeto_patrica.pages.cadastro
         public frmCadastroPessoa() : base()
         {
             InitializeComponent();
+            dtpDataNascimentoCriacao.MaxDate = DateTime.Today;
             this.isFisica = true;
         }
 
