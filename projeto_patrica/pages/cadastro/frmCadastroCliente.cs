@@ -305,6 +305,7 @@ namespace projeto_patrica.pages.cadastro
 
         private void ComboBoxTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txtCpfCnpj.Clear();
             comboBoxGenero.SelectedIndex = -1;
 
             isFisica = comboBoxTipo.SelectedIndex == 0; // 0 = Pessoa Física, 1 = Pessoa Jurídica
