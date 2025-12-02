@@ -367,7 +367,7 @@ namespace projeto_patrica.pages.cadastro
             txtCodFuncionario.Enabled = habilitar;
             txtFuncionario.Enabled = habilitar;
             btnPesquisarFuncionario.Enabled = habilitar;
-            dtpDataEmissao.Enabled = habilitar;
+            dtpDataEmissao.Enabled = false;
         }
 
         private void HabilitarSecaoProdutos(bool habilitar)

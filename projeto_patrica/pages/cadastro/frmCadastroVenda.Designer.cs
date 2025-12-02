@@ -100,7 +100,7 @@
             // 
             this.lblCod.Location = new System.Drawing.Point(13, 16);
             this.lblCod.Size = new System.Drawing.Size(53, 16);
-            this.lblCod.Text = "Modelo";
+            this.lblCod.Text = "Modelo *";
             // 
             // lblDataCadastro
             // 
@@ -147,6 +147,7 @@
             this.dtpDataEmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDataEmissao.Location = new System.Drawing.Point(1022, 33);
             this.dtpDataEmissao.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpDataEmissao.Enabled = false;
             this.dtpDataEmissao.Name = "dtpDataEmissao";
             this.dtpDataEmissao.Size = new System.Drawing.Size(115, 22);
             this.dtpDataEmissao.TabIndex = 4;
