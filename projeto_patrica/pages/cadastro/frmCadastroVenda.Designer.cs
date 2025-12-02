@@ -1,33 +1,33 @@
 ﻿namespace projeto_patrica.pages.cadastro
 {
-	partial class frmCadastroVenda
-	{
-	        /// <summary>
-	        /// Required designer variable.
-	        /// </summary>
-		private System.ComponentModel.IContainer components = null;
+    partial class frmCadastroVenda
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-	        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
-		{
-			if(disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if(disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.dtpDataEmissao = new System.Windows.Forms.DateTimePicker();
             this.listVParcelas = new System.Windows.Forms.ListView();
             this.clmNumParcela = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -562,6 +562,7 @@
             // 
             this.txtValorUnitario.Location = new System.Drawing.Point(534, 81);
             this.txtValorUnitario.Name = "txtValorUnitario";
+            this.txtValorUnitario.ReadOnly = true;
             this.txtValorUnitario.ShortcutsEnabled = false;
             this.txtValorUnitario.Size = new System.Drawing.Size(88, 22);
             this.txtValorUnitario.TabIndex = 7;
@@ -817,7 +818,7 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
+        }
 
         #endregion
 
