@@ -173,6 +173,13 @@ namespace projeto_patrica.pages.consulta
                 return;
             }
 
+            if (oContaAPagar.Situacao == 1)
+            {
+                MessageBox.Show("Não é possível cancelar uma conta que já foi paga.", "Ação Interrompida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
             string aux = oFrmCadastroContasAPagar.btnSave.Text;
             oFrmCadastroContasAPagar.btnSave.Text = "Cancelar Conta";
             aController_contasAPagar.CarregaObj(oContaAPagar);
