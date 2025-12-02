@@ -206,6 +206,9 @@ namespace projeto_patrica.pages.cadastro
             _isLoading = true;
             try
             {
+                if (oVenda == null) oVenda = new venda();
+                else oVenda = new venda();
+
                 base.Limpartxt();
                 txtCodigo.Text = "55";
                 txtSerie.Text = "1";
@@ -228,8 +231,6 @@ namespace projeto_patrica.pages.cadastro
 
                 checkBoxAtivo.Text = checkBoxAtivo.Checked ? "Ativo" : "Cancelado";
 
-
-                oVenda = new venda();
                 vendaExistente = false;
                 GerenciarEstadoDosControles();
                 AtualizarCreditoDisponivel();
@@ -785,7 +786,7 @@ namespace projeto_patrica.pages.cadastro
 
         private void AtualizarCreditoDisponivel()
         {
-            if (oVenda.OCliente == null || oVenda.OCliente.Id == 0)
+            if (oVenda == null || oVenda.OCliente == null || oVenda.OCliente.Id == 0)
             {
                 creditoDisponivelCliente = 0;
                 lblValorCreditoDisponivel.Text = "R$ 0,00";
