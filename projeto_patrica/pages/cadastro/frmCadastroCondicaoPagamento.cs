@@ -189,6 +189,8 @@ namespace projeto_patrica.pages.cadastro
                 CarregarParcelasDoBanco();
             else
                 CarregarParcelasNaListView();
+
+            LimparCamposParcela();
         }
 
 
@@ -317,6 +319,7 @@ namespace projeto_patrica.pages.cadastro
                     var indice = listVParcelas.SelectedItems[0].Index;
                     listaParcelas.RemoveAt(indice);
                     CarregarParcelasNaListView();
+                    LimparCamposParcela();
                 }
                 else
                 {
@@ -404,15 +407,15 @@ namespace projeto_patrica.pages.cadastro
                 return false;
             }
 
-            if (!editandoParcela)
+            for (int i = 0; i < listaParcelas.Count; i++)
             {
-                foreach (var parcela in listaParcelas)
+                if (editandoParcela && i == indiceParcelaEditando)
+                    continue;
+
+                if (listaParcelas[i].NumeroParcela == numParcela)
                 {
-                    if (parcela.NumeroParcela == numParcela)
-                    {
-                        MessageBox.Show("Já existe uma parcela com esse número.");
-                        return false;
-                    }
+                    MessageBox.Show("Já existe uma parcela com esse número.");
+                    return false;
                 }
             }
 
