@@ -162,11 +162,20 @@ namespace projeto_patrica.pages.cadastro
 
                     if (prompt.ShowDialog() == DialogResult.OK)
                     {
-                        oCompra.MotivoCancelamento = textBox.Text;
-                        oCompra.Ativo = false;
-                        aController_compra.Salvar(oCompra);
-                        MessageBox.Show("Compra cancelada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+                        try
+                        {
+                            oCompra.MotivoCancelamento = textBox.Text;
+                            oCompra.Ativo = false;
+                            aController_compra.Salvar(oCompra);
+                            MessageBox.Show("Compra cancelada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            oCompra.Ativo = true;
+                            oCompra.MotivoCancelamento = null;
+                            MessageBox.Show("Erro ao cancelar a compra: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }

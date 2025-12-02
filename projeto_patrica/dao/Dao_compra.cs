@@ -273,6 +273,11 @@ namespace projeto_patrica.dao
 
                     int novoEstoque = estoqueAtual - item.Quantidade;
 
+                    if (novoEstoque < 0)
+                    {
+                        throw new Exception("Não é possível cancelar a compra pois o estoque de um ou mais produtos ficaria negativo.");
+                    }
+
                     decimal novoCustoMedio;
                     if (novoEstoque > 0)
                     {
