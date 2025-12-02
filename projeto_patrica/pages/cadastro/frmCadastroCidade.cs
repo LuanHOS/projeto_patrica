@@ -32,11 +32,11 @@ namespace projeto_patrica.pages.cadastro
         public override void Salvar()
         {
             if (string.IsNullOrWhiteSpace(txtNome.Text) ||
-                aCidade.OEstado == null
+                aCidade.OEstado == null || aCidade.OEstado.Id == 0
                 )
             {
                 txtNome.Focus();
-                txtEstado.Focus();
+                btnPesquisarEstado.Focus();
 
                 MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");
                 return;
