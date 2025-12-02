@@ -199,7 +199,7 @@ namespace projeto_patrica.dao
             List<parcelaCondicaoPagamento> lista = new List<parcelaCondicaoPagamento>();
             Controller_formaPagamento controllerFP = new Controller_formaPagamento();
 
-            string sql = "SELECT * FROM PARCELA_CONDICAO_PAGAMENTO WHERE ID_CONDICAO_PAGAMENTO = '" + idCondicaoPagamento + "'";
+            string sql = "SELECT * FROM PARCELA_CONDICAO_PAGAMENTO WHERE ID_CONDICAO_PAGAMENTO = '" + idCondicaoPagamento + "' ORDER BY NUMERO_PARCELA";
             MySqlCommand conn = new MySqlCommand();
             conn.Connection = Banco.Abrir();
             conn.CommandText = sql;

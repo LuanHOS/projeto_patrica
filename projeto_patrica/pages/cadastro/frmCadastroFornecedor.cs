@@ -15,7 +15,6 @@ namespace projeto_patrica.pages.cadastro
         private frmConsultaCidade oFrmConsultaCidade;
         private frmConsultaCondicaoPagamento oFrmConsultaCondicaoPagamento;
         private bool isEstrangeiro = false;
-        private bool isFisica = false;
 
         public frmCadastroFornecedor() : base()
         {
@@ -208,7 +207,7 @@ namespace projeto_patrica.pages.cadastro
             txtCodigo.Text = oFornecedor.Id.ToString();
             txtNomeRazaoSocial.Text = oFornecedor.Nome_razaoSocial;
             txtApelidoNomeFantasia.Text = oFornecedor.Apelido_nomeFantasia;
-            txtCpfCnpj.Text = oFornecedor.Cpf_cnpj;
+
             txtRgInscEstadual.Text = oFornecedor.Rg_inscricaoEstadual;
             txtEmail.Text = oFornecedor.Email;
             txtTelefone.Text = oFornecedor.Telefone;
@@ -239,9 +238,17 @@ namespace projeto_patrica.pages.cadastro
             lblDataUltimaEdicaoData.Text = oFornecedor.DataUltimaEdicao?.ToShortDateString() ?? " ";
 
             if (isFisica)
+            {
                 txtCpfCnpj.MaxLength = 11;
+                lblCpf.Text = isEstrangeiro ? "CPF" : "CPF *";
+            }
             else
+            {
                 txtCpfCnpj.MaxLength = 14;
+                lblCpf.Text = isEstrangeiro ? "CNPJ" : "CNPJ *";
+            }
+
+            txtCpfCnpj.Text = oFornecedor.Cpf_cnpj;
         }
 
         public override void Bloqueiatxt()
@@ -365,6 +372,13 @@ namespace projeto_patrica.pages.cadastro
             btnPesquisarCondicaoPagamento.Enabled = habilita;
             txtCodCondicaoPagamento.Enabled = habilita;
             txtCondicaoPagamento.Enabled = habilita;
+        }
+
+        public override bool ValidacaoCampos()
+        {
+            if (!base.ValidacaoCampos()) return false;
+
+            return true;
         }
     }
 }

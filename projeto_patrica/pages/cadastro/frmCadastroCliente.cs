@@ -237,7 +237,7 @@ namespace projeto_patrica.pages.cadastro
             txtCodigo.Text = oCliente.Id.ToString();
             txtNomeRazaoSocial.Text = oCliente.Nome_razaoSocial;
             txtApelidoNomeFantasia.Text = oCliente.Apelido_nomeFantasia;
-            txtCpfCnpj.Text = oCliente.Cpf_cnpj;
+
             txtRgInscEstadual.Text = oCliente.Rg_inscricaoEstadual;
             txtEmail.Text = oCliente.Email;
             txtTelefone.Text = oCliente.Telefone;
@@ -288,6 +288,8 @@ namespace projeto_patrica.pages.cadastro
                 txtCpfCnpj.MaxLength = 14;
                 lblCpf.Text = isEstrangeiro ? "CNPJ" : "CNPJ *";
             }
+
+            txtCpfCnpj.Text = oCliente.Cpf_cnpj;
         }
 
         public override void Bloqueiatxt()
@@ -423,6 +425,13 @@ namespace projeto_patrica.pages.cadastro
 
             txtLimiteDeCredito.KeyPress -= ApenasNumerosDecimal;
             txtLimiteDeCredito.KeyPress += ApenasNumerosDecimal;
+        }
+
+        public override bool ValidacaoCampos()
+        {
+            if (!base.ValidacaoCampos()) return false;
+
+            return true;
         }
     }
 }
