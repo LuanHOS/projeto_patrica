@@ -15,6 +15,7 @@ namespace projeto_patrica.pages.cadastro
         private frmConsultaCidade oFrmConsultaCidade;
         private frmConsultaCondicaoPagamento oFrmConsultaCondicaoPagamento;
         private bool isEstrangeiro = false;
+        private bool isFisica = false;
 
         public frmCadastroFornecedor() : base()
         {
@@ -225,7 +226,10 @@ namespace projeto_patrica.pages.cadastro
             txtCodCondicaoPagamento.Text = oFornecedor.ACondicaoPagamento.Id.ToString();
             txtCondicaoPagamento.Text = oFornecedor.ACondicaoPagamento.Descricao;
             dtpDataNascimentoCriacao.Value = (oFornecedor.DataNascimento_criacao < dtpDataNascimentoCriacao.MinDate) ? dtpDataNascimentoCriacao.MinDate : oFornecedor.DataNascimento_criacao;
-            comboBoxTipo.SelectedIndex = oFornecedor.TipoPessoa == 'F' ? 0 : 1;
+
+            isFisica = oFornecedor.TipoPessoa == 'F';
+            comboBoxTipo.SelectedIndex = isFisica ? 0 : 1;
+
             comboBoxTipo.Enabled = false;
             comboBoxGenero.SelectedIndex = oFornecedor.Genero == 'M' ? 0 : (oFornecedor.Genero == 'F' ? 1 : -1);
             checkBoxAtivo.Checked = oFornecedor.Ativo;
@@ -354,7 +358,7 @@ namespace projeto_patrica.pages.cadastro
             txtNumeroEndereco.Enabled = habilita;
             txtComplementoEndereco.Enabled = habilita;
             dtpDataNascimentoCriacao.Enabled = habilita;
-            comboBoxGenero.Enabled = habilita;
+            comboBoxGenero.Enabled = habilita && isFisica;
             btnPesquisarCidade.Enabled = habilita;
             btnPesquisarCondicaoPagamento.Enabled = habilita;
             txtCodCondicaoPagamento.Enabled = habilita;
