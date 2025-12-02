@@ -49,99 +49,100 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            if (btnSave.Text == "Excluir")
-            {
-                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (resp == DialogResult.Yes)
-                {
-                    aController_cliente.Excluir(oCliente);
-                    MessageBox.Show("Cliente excluído com sucesso.");
-                    Sair();
-                    return;
-                }
-            }
-
-            if (!ValidacaoCampos())
-                return;
-
-            if (
-                string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
-                (isFisica && comboBoxGenero.SelectedIndex == -1) || // obrigatório só se for física
-                string.IsNullOrWhiteSpace(txtCidade.Text) ||
-                string.IsNullOrWhiteSpace(txtEstado.Text) ||
-                string.IsNullOrWhiteSpace(txtEndereco.Text) ||
-                string.IsNullOrWhiteSpace(txtNumeroEndereco.Text) ||
-                string.IsNullOrWhiteSpace(txtBairro.Text) ||
-                (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCep.Text)) || // obrigatório só se for brasileiro
-                (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCpfCnpj.Text)) || // obrigatório só se for brasileiro
-                string.IsNullOrWhiteSpace(txtRgInscEstadual.Text) ||
-                dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate ||
-                string.IsNullOrWhiteSpace(txtTelefone.Text) ||
-                string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                string.IsNullOrWhiteSpace(txtCondicaoPagamento.Text)
-            )
-            {
-                comboBoxTipo.Focus();
-                txtNomeRazaoSocial.Focus();
-                if (isFisica) comboBoxGenero.Focus();
-                txtCidade.Focus();
-                txtEstado.Focus();
-                txtEndereco.Focus();
-                txtNumeroEndereco.Focus();
-                txtBairro.Focus();
-                if (!isEstrangeiro) txtCep.Focus();
-                if (!isEstrangeiro) txtCpfCnpj.Focus();
-                txtRgInscEstadual.Focus();
-                dtpDataNascimentoCriacao.Focus();
-                txtTelefone.Focus();
-                txtEmail.Focus();
-                txtCondicaoPagamento.Focus();
-
-                MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");
-                return;
-            }
-
-            oCliente.Id = Convert.ToInt32(txtCodigo.Text);
-            oCliente.TipoPessoa = comboBoxTipo.SelectedIndex == 0 ? 'F' : 'J';
-            oCliente.Nome_razaoSocial = txtNomeRazaoSocial.Text;
-            oCliente.Apelido_nomeFantasia = string.IsNullOrWhiteSpace(txtApelidoNomeFantasia.Text) ? null : txtApelidoNomeFantasia.Text;
-            oCliente.DataNascimento_criacao = dtpDataNascimentoCriacao.Value;
-            oCliente.Cpf_cnpj = string.IsNullOrWhiteSpace(txtCpfCnpj.Text) ? null : txtCpfCnpj.Text;
-            oCliente.Rg_inscricaoEstadual = txtRgInscEstadual.Text;
-            oCliente.Email = txtEmail.Text;
-            oCliente.Telefone = txtTelefone.Text;
-            oCliente.Endereco = txtEndereco.Text;
-            oCliente.Bairro = txtBairro.Text;
-            oCliente.Cep = string.IsNullOrWhiteSpace(txtCep.Text) ? null : txtCep.Text;
-            oCliente.Ativo = checkBoxAtivo.Checked;
-            oCliente.Genero = comboBoxGenero.SelectedIndex == -1 ? ' ' : (comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F');
-            oCliente.NumeroEndereco = txtNumeroEndereco.Text;
-            oCliente.ComplementoEndereco = string.IsNullOrWhiteSpace(txtComplementoEndereco.Text) ? null : txtComplementoEndereco.Text;
-
-            if (checkBoxLimiteDeCredito.Checked)
-            {
-                oCliente.LimiteDeCredito = string.IsNullOrWhiteSpace(txtLimiteDeCredito.Text) ? 0 : Convert.ToDecimal(txtLimiteDeCredito.Text.Replace(".", ","));
-            }
-            else
-            {
-                oCliente.LimiteDeCredito = null;
-            }
-
-
             try
             {
-                if (btnSave.Text == "Alterar")
+                if (btnSave.Text == "Excluir")
                 {
-                    aController_cliente.Salvar(oCliente);
-                    MessageBox.Show("Cliente alterado com sucesso.");
+                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (resp == DialogResult.Yes)
+                    {
+                        aController_cliente.Excluir(oCliente);
+                        MessageBox.Show("Cliente excluído com sucesso.");
+                        Sair();
+                        return;
+                    }
                 }
                 else
                 {
-                    aController_cliente.Salvar(oCliente);
-                    MessageBox.Show("Cliente salvo com o código " + oCliente.Id + ".");
-                }
+                    if (!ValidacaoCampos())
+                        return;
 
-                base.Salvar();
+                    if (
+                        string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
+                        (isFisica && comboBoxGenero.SelectedIndex == -1) || // obrigatório só se for física
+                        string.IsNullOrWhiteSpace(txtCidade.Text) ||
+                        string.IsNullOrWhiteSpace(txtEstado.Text) ||
+                        string.IsNullOrWhiteSpace(txtEndereco.Text) ||
+                        string.IsNullOrWhiteSpace(txtNumeroEndereco.Text) ||
+                        string.IsNullOrWhiteSpace(txtBairro.Text) ||
+                        (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCep.Text)) || // obrigatório só se for brasileiro
+                        (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCpfCnpj.Text)) || // obrigatório só se for brasileiro
+                        string.IsNullOrWhiteSpace(txtRgInscEstadual.Text) ||
+                        dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate ||
+                        string.IsNullOrWhiteSpace(txtTelefone.Text) ||
+                        string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                        string.IsNullOrWhiteSpace(txtCondicaoPagamento.Text)
+                    )
+                    {
+                        comboBoxTipo.Focus();
+                        txtNomeRazaoSocial.Focus();
+                        if (isFisica) comboBoxGenero.Focus();
+                        txtCidade.Focus();
+                        txtEstado.Focus();
+                        txtEndereco.Focus();
+                        txtNumeroEndereco.Focus();
+                        txtBairro.Focus();
+                        if (!isEstrangeiro) txtCep.Focus();
+                        if (!isEstrangeiro) txtCpfCnpj.Focus();
+                        txtRgInscEstadual.Focus();
+                        dtpDataNascimentoCriacao.Focus();
+                        txtTelefone.Focus();
+                        txtEmail.Focus();
+                        txtCondicaoPagamento.Focus();
+
+                        MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");
+                        return;
+                    }
+
+                    oCliente.Id = Convert.ToInt32(txtCodigo.Text);
+                    oCliente.TipoPessoa = comboBoxTipo.SelectedIndex == 0 ? 'F' : 'J';
+                    oCliente.Nome_razaoSocial = txtNomeRazaoSocial.Text;
+                    oCliente.Apelido_nomeFantasia = string.IsNullOrWhiteSpace(txtApelidoNomeFantasia.Text) ? null : txtApelidoNomeFantasia.Text;
+                    oCliente.DataNascimento_criacao = dtpDataNascimentoCriacao.Value;
+                    oCliente.Cpf_cnpj = string.IsNullOrWhiteSpace(txtCpfCnpj.Text) ? null : txtCpfCnpj.Text;
+                    oCliente.Rg_inscricaoEstadual = txtRgInscEstadual.Text;
+                    oCliente.Email = txtEmail.Text;
+                    oCliente.Telefone = txtTelefone.Text;
+                    oCliente.Endereco = txtEndereco.Text;
+                    oCliente.Bairro = txtBairro.Text;
+                    oCliente.Cep = string.IsNullOrWhiteSpace(txtCep.Text) ? null : txtCep.Text;
+                    oCliente.Ativo = checkBoxAtivo.Checked;
+                    oCliente.Genero = comboBoxGenero.SelectedIndex == -1 ? ' ' : (comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F');
+                    oCliente.NumeroEndereco = txtNumeroEndereco.Text;
+                    oCliente.ComplementoEndereco = string.IsNullOrWhiteSpace(txtComplementoEndereco.Text) ? null : txtComplementoEndereco.Text;
+
+                    if (checkBoxLimiteDeCredito.Checked)
+                    {
+                        oCliente.LimiteDeCredito = string.IsNullOrWhiteSpace(txtLimiteDeCredito.Text) ? 0 : Convert.ToDecimal(txtLimiteDeCredito.Text.Replace(".", ","));
+                    }
+                    else
+                    {
+                        oCliente.LimiteDeCredito = null;
+                    }
+
+                    if (btnSave.Text == "Alterar")
+                    {
+                        aController_cliente.Salvar(oCliente);
+                        MessageBox.Show("Cliente alterado com sucesso.");
+                    }
+                    else
+                    {
+                        aController_cliente.Salvar(oCliente);
+                        MessageBox.Show("Cliente salvo com o código " + oCliente.Id + ".");
+                    }
+
+                    base.Salvar();
+                }
             }
             catch (MySqlException ex)
             {

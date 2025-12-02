@@ -37,127 +37,129 @@ namespace projeto_patrica.pages.cadastro
 
         public override void Salvar()
         {
-            if (btnSave.Text == "Excluir")
-            {
-                DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (resp == DialogResult.Yes)
-                {
-                    aController_funcionario.Excluir(oFuncionario);
-                    MessageBox.Show("O funcionário foi excluído com sucesso.");
-                    Sair();
-                    return;
-                }
-            }
-
-            if (!ValidacaoCampos())
-                return;
-
-            if (
-                string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
-                comboBoxGenero.SelectedIndex == -1 ||
-                string.IsNullOrWhiteSpace(txtCidade.Text) ||
-                string.IsNullOrWhiteSpace(txtEstado.Text) ||
-                string.IsNullOrWhiteSpace(txtEndereco.Text) ||
-                string.IsNullOrWhiteSpace(txtNumeroEndereco.Text) ||
-                string.IsNullOrWhiteSpace(txtBairro.Text) ||
-                (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCep.Text)) || // obrigatório só se for brasileiro
-                (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCpfCnpj.Text)) || // obrigatório só se for brasileiro
-                string.IsNullOrWhiteSpace(txtRgInscEstadual.Text) ||
-                dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate ||
-                string.IsNullOrWhiteSpace(txtTelefone.Text) ||
-                string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                string.IsNullOrWhiteSpace(txtMatricula.Text) ||
-                string.IsNullOrWhiteSpace(txtCargo.Text) ||
-                string.IsNullOrWhiteSpace(txtSalario.Text) ||
-                string.IsNullOrWhiteSpace(txtTurno.Text) ||
-                string.IsNullOrWhiteSpace(txtCargaHoraria.Text) ||
-                dtpDataAdmissao.Value <= dtpDataAdmissao.MinDate
-            )
-            {
-                comboBoxTipo.Focus();
-                txtNomeRazaoSocial.Focus();
-                comboBoxGenero.Focus();
-                txtCidade.Focus();
-                txtEstado.Focus();
-                txtEndereco.Focus();
-                txtNumeroEndereco.Focus();
-                txtBairro.Focus();
-                if (!isEstrangeiro) txtCep.Focus();
-                if (!isEstrangeiro) txtCpfCnpj.Focus();
-                txtRgInscEstadual.Focus();
-                dtpDataNascimentoCriacao.Focus();
-                txtTelefone.Focus();
-                txtEmail.Focus();
-                txtMatricula.Focus();
-                txtCargo.Focus();
-                txtSalario.Focus();
-                txtTurno.Focus();
-                txtCargaHoraria.Focus();
-                dtpDataAdmissao.Focus();
-
-                MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");
-                return;
-            }
-
-            if (dtpDataAdmissao.Value < dtpDataNascimentoCriacao.Value)
-            {
-                MessageBox.Show("A data de admissão não pode ser anterior à data de nascimento.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dtpDataAdmissao.Focus();
-                return;
-            }
-
-            if (dtpDataDemissao.Checked && dtpDataDemissao.Value < dtpDataNascimentoCriacao.Value)
-            {
-                MessageBox.Show("A data de demissão não pode ser anterior à data de nascimento.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dtpDataDemissao.Focus();
-                return;
-            }
-
-            if (dtpDataDemissao.Checked && dtpDataDemissao.Value < dtpDataAdmissao.Value)
-            {
-                MessageBox.Show("A data de demissão não pode ser anterior à data de admissão.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dtpDataDemissao.Focus();
-                return;
-            }
-
-            oFuncionario.Id = Convert.ToInt32(txtCodigo.Text);
-            oFuncionario.TipoPessoa = 'F';
-            oFuncionario.Nome_razaoSocial = txtNomeRazaoSocial.Text;
-            oFuncionario.Apelido_nomeFantasia = string.IsNullOrWhiteSpace(txtApelidoNomeFantasia.Text) ? null : txtApelidoNomeFantasia.Text;
-            oFuncionario.DataNascimento_criacao = dtpDataNascimentoCriacao.Value;
-            oFuncionario.Cpf_cnpj = string.IsNullOrWhiteSpace(txtCpfCnpj.Text) ? null : txtCpfCnpj.Text;
-            oFuncionario.Rg_inscricaoEstadual = txtRgInscEstadual.Text;
-            oFuncionario.Email = txtEmail.Text;
-            oFuncionario.Telefone = txtTelefone.Text;
-            oFuncionario.Endereco = txtEndereco.Text;
-            oFuncionario.Bairro = txtBairro.Text;
-            oFuncionario.Cep = string.IsNullOrWhiteSpace(txtCep.Text) ? null : txtCep.Text;
-            oFuncionario.Ativo = checkBoxAtivo.Checked;
-            oFuncionario.Genero = comboBoxGenero.SelectedIndex == -1 ? ' ' : (comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F');
-            oFuncionario.Matricula = txtMatricula.Text;
-            oFuncionario.Cargo = txtCargo.Text;
-            oFuncionario.Salario = Convert.ToDecimal(txtSalario.Text);
-            oFuncionario.Turno = txtTurno.Text;
-            oFuncionario.CargaHoraria = Convert.ToInt32(txtCargaHoraria.Text);
-            oFuncionario.NumeroEndereco = txtNumeroEndereco.Text;
-            oFuncionario.ComplementoEndereco = string.IsNullOrWhiteSpace(txtComplementoEndereco.Text) ? null : txtComplementoEndereco.Text;
-            oFuncionario.DataAdmissao = dtpDataAdmissao.Value;
-            oFuncionario.DataDemissao = dtpDataDemissao.Checked ? dtpDataDemissao.Value : (DateTime?)null;
-
             try
             {
-                if (btnSave.Text == "Alterar")
+                if (btnSave.Text == "Excluir")
                 {
-                    aController_funcionario.Salvar(oFuncionario);
-                    MessageBox.Show("Funcionário alterado com sucesso.");
+                    DialogResult resp = MessageBox.Show("Deseja realmente excluir?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (resp == DialogResult.Yes)
+                    {
+                        aController_funcionario.Excluir(oFuncionario);
+                        MessageBox.Show("O funcionário foi excluído com sucesso.");
+                        Sair();
+                        return;
+                    }
                 }
                 else
                 {
-                    aController_funcionario.Salvar(oFuncionario);
-                    MessageBox.Show("Funcionário salvo com o código " + oFuncionario.Id);
-                }
+                    if (!ValidacaoCampos())
+                        return;
 
-                base.Salvar();
+                    if (
+                        string.IsNullOrWhiteSpace(txtNomeRazaoSocial.Text) ||
+                        comboBoxGenero.SelectedIndex == -1 ||
+                        string.IsNullOrWhiteSpace(txtCidade.Text) ||
+                        string.IsNullOrWhiteSpace(txtEstado.Text) ||
+                        string.IsNullOrWhiteSpace(txtEndereco.Text) ||
+                        string.IsNullOrWhiteSpace(txtNumeroEndereco.Text) ||
+                        string.IsNullOrWhiteSpace(txtBairro.Text) ||
+                        (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCep.Text)) || // obrigatório só se for brasileiro
+                        (!isEstrangeiro && string.IsNullOrWhiteSpace(txtCpfCnpj.Text)) || // obrigatório só se for brasileiro
+                        string.IsNullOrWhiteSpace(txtRgInscEstadual.Text) ||
+                        dtpDataNascimentoCriacao.Value <= dtpDataNascimentoCriacao.MinDate ||
+                        string.IsNullOrWhiteSpace(txtTelefone.Text) ||
+                        string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                        string.IsNullOrWhiteSpace(txtMatricula.Text) ||
+                        string.IsNullOrWhiteSpace(txtCargo.Text) ||
+                        string.IsNullOrWhiteSpace(txtSalario.Text) ||
+                        string.IsNullOrWhiteSpace(txtTurno.Text) ||
+                        string.IsNullOrWhiteSpace(txtCargaHoraria.Text) ||
+                        dtpDataAdmissao.Value <= dtpDataAdmissao.MinDate
+                    )
+                    {
+                        comboBoxTipo.Focus();
+                        txtNomeRazaoSocial.Focus();
+                        comboBoxGenero.Focus();
+                        txtCidade.Focus();
+                        txtEstado.Focus();
+                        txtEndereco.Focus();
+                        txtNumeroEndereco.Focus();
+                        txtBairro.Focus();
+                        if (!isEstrangeiro) txtCep.Focus();
+                        if (!isEstrangeiro) txtCpfCnpj.Focus();
+                        txtRgInscEstadual.Focus();
+                        dtpDataNascimentoCriacao.Focus();
+                        txtTelefone.Focus();
+                        txtEmail.Focus();
+                        txtMatricula.Focus();
+                        txtCargo.Focus();
+                        txtSalario.Focus();
+                        txtTurno.Focus();
+                        txtCargaHoraria.Focus();
+                        dtpDataAdmissao.Focus();
+
+                        MessageBox.Show("Preencha todos os campos obrigatórios para salvar.");
+                        return;
+                    }
+
+                    if (dtpDataAdmissao.Value < dtpDataNascimentoCriacao.Value)
+                    {
+                        MessageBox.Show("A data de admissão não pode ser anterior à data de nascimento.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        dtpDataAdmissao.Focus();
+                        return;
+                    }
+
+                    if (dtpDataDemissao.Checked && dtpDataDemissao.Value < dtpDataNascimentoCriacao.Value)
+                    {
+                        MessageBox.Show("A data de demissão não pode ser anterior à data de nascimento.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        dtpDataDemissao.Focus();
+                        return;
+                    }
+
+                    if (dtpDataDemissao.Checked && dtpDataDemissao.Value < dtpDataAdmissao.Value)
+                    {
+                        MessageBox.Show("A data de demissão não pode ser anterior à data de admissão.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        dtpDataDemissao.Focus();
+                        return;
+                    }
+
+                    oFuncionario.Id = Convert.ToInt32(txtCodigo.Text);
+                    oFuncionario.TipoPessoa = 'F';
+                    oFuncionario.Nome_razaoSocial = txtNomeRazaoSocial.Text;
+                    oFuncionario.Apelido_nomeFantasia = string.IsNullOrWhiteSpace(txtApelidoNomeFantasia.Text) ? null : txtApelidoNomeFantasia.Text;
+                    oFuncionario.DataNascimento_criacao = dtpDataNascimentoCriacao.Value;
+                    oFuncionario.Cpf_cnpj = string.IsNullOrWhiteSpace(txtCpfCnpj.Text) ? null : txtCpfCnpj.Text;
+                    oFuncionario.Rg_inscricaoEstadual = txtRgInscEstadual.Text;
+                    oFuncionario.Email = txtEmail.Text;
+                    oFuncionario.Telefone = txtTelefone.Text;
+                    oFuncionario.Endereco = txtEndereco.Text;
+                    oFuncionario.Bairro = txtBairro.Text;
+                    oFuncionario.Cep = string.IsNullOrWhiteSpace(txtCep.Text) ? null : txtCep.Text;
+                    oFuncionario.Ativo = checkBoxAtivo.Checked;
+                    oFuncionario.Genero = comboBoxGenero.SelectedIndex == -1 ? ' ' : (comboBoxGenero.SelectedIndex == 0 ? 'M' : 'F');
+                    oFuncionario.Matricula = txtMatricula.Text;
+                    oFuncionario.Cargo = txtCargo.Text;
+                    oFuncionario.Salario = Convert.ToDecimal(txtSalario.Text);
+                    oFuncionario.Turno = txtTurno.Text;
+                    oFuncionario.CargaHoraria = Convert.ToInt32(txtCargaHoraria.Text);
+                    oFuncionario.NumeroEndereco = txtNumeroEndereco.Text;
+                    oFuncionario.ComplementoEndereco = string.IsNullOrWhiteSpace(txtComplementoEndereco.Text) ? null : txtComplementoEndereco.Text;
+                    oFuncionario.DataAdmissao = dtpDataAdmissao.Value;
+                    oFuncionario.DataDemissao = dtpDataDemissao.Checked ? dtpDataDemissao.Value : (DateTime?)null;
+
+                    if (btnSave.Text == "Alterar")
+                    {
+                        aController_funcionario.Salvar(oFuncionario);
+                        MessageBox.Show("Funcionário alterado com sucesso.");
+                    }
+                    else
+                    {
+                        aController_funcionario.Salvar(oFuncionario);
+                        MessageBox.Show("Funcionário salvo com o código " + oFuncionario.Id);
+                    }
+
+                    base.Salvar();
+                }
             }
             catch (MySqlException ex)
             {
