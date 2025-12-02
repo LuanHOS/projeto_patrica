@@ -335,6 +335,7 @@
             this.txtPorcentagemLucro.Location = new System.Drawing.Point(251, 474);
             this.txtPorcentagemLucro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPorcentagemLucro.Name = "txtPorcentagemLucro";
+            this.txtPorcentagemLucro.ReadOnly = true;
             this.txtPorcentagemLucro.ShortcutsEnabled = false;
             this.txtPorcentagemLucro.Size = new System.Drawing.Size(194, 20);
             this.txtPorcentagemLucro.TabIndex = 12;

@@ -72,6 +72,16 @@ namespace projeto_patrica.pages.cadastro
                 return;
             }
 
+            decimal valorCompraCheck = Convert.ToDecimal(txtValorCompra.Text);
+            decimal valorVendaCheck = Convert.ToDecimal(txtValorVenda.Text);
+
+            if (valorCompraCheck > valorVendaCheck)
+            {
+                MessageBox.Show("O preço de custo não pode ser maior que o preço de venda.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtValorVenda.Focus();
+                return;
+            }
+
             oProduto.Id = Convert.ToInt32(txtCodigo.Text);
             oProduto.Nome = txtNome.Text;
             oProduto.Descricao = txtDescricao.Text;
@@ -226,8 +236,6 @@ namespace projeto_patrica.pages.cadastro
             checkBoxAtivo.Checked = oProduto.Ativo;
             lblDataCadastroData.Text = oProduto.DataCadastro.ToShortDateString();
             lblDataUltimaEdicaoData.Text = oProduto.DataUltimaEdicao?.ToShortDateString() ?? " ";
-
-            // Carrega os fornecedores associados do banco
             listaProdutoFornecedor = aController_prod_forn.ListarPorProduto(oProduto.Id);
             CarregarFornecedoresNaListView();
         }
@@ -274,6 +282,10 @@ namespace projeto_patrica.pages.cadastro
             txtValorCompraAnterior.Enabled = true;
             txtPorcentagemLucro.Enabled = true;
             txtEstoque.Enabled = true;
+            txtCodMarca.Enabled = true;
+            txtCodCategoria.Enabled = true;
+            txtCodUnidadeDeMedida.Enabled = true;
+            txtCodFornecedor.Enabled = true;
             btnPesquisarMarca.Enabled = true;
             btnPesquisarCategoria.Enabled = true;
             btnPesquisarUnidadeMedida.Enabled = true;
@@ -424,7 +436,6 @@ namespace projeto_patrica.pages.cadastro
 
         private void txtPorcentagemLucro_Leave(object sender, EventArgs e)
         {
-            CalculaValorVenda();
         }
 
         private void txtValorVenda_Leave(object sender, EventArgs e)
